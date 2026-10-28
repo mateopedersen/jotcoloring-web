@@ -1,8 +1,8 @@
 # Tek otomatik yayın yolu: GitHub Actions
 
-28 Ekim 2026 — `34d0da9` kaynak tabanında ilk gerçek Actions yayın denemesi yapıldı. Kullanıcı iki dar kapsamlı account-owned tokenı onayladı; operatör bunları ayrı ve branch kısıtlı GitHub environment secret'larına şifreli kaydetti ve repo aktivasyonunu açtı. **Staging run40696610833/attempt2: Verify PASS, jobs Worker upload PASS, ardından queue consumer uzlaştırmasındaki `GET /accounts/.../queues` isteği10000 ile reddedildi; web adımı çalışmadı.** Tam otomatik yayın başarısı ilan edilmez. [İlk gerçek run](https://github.com/mateopedersen/jotcoloring-web/actions/runs/40696610833/attempts/2)
+28 Ekim 2026 — `34d0da9` kaynak tabanında ilk gerçek Actions yayın denemesi yapıldı. Kullanıcı iki dar kapsamlı account-owned tokenı onayladı; operatör bunları ayrı ve branch kısıtlı GitHub environment secret'larına şifreli kaydetti ve repo aktivasyonunu açtı. **Staging run40696610833/attempt2: Verify PASS, jobs Worker upload PASS, ardından queue consumer uzlaştırmasındaki `GET /accounts/.../queues` isteği10000 ile reddedildi; web adımı çalışmadı.** Bu ilk denemenin tamamı başarısızdır; sonraki staging düzeltmesi aşağıda ayrı raporlanır. [İlk gerçek run](https://github.com/mateopedersen/jotcoloring-web/actions/runs/40696610833/attempts/2)
 
-Bu hataya yönelik version-only düzeltme yerel olarak hazırlanıp test edildi; henüz bu düzeltmeyle remote yayın yapılmadı. Token kapsamı genişletilmez. İlk inceleme kaydı `evidence/ci-deploy-review.json` tarihsel taslaktır; güncel düzeltme kanıtı `evidence/ci-version-release-review.json` içindedir.
+Bu hataya yönelik version-only düzeltme gerçek staging run 40703500734 ve 40706443510 ile başarıyla yayımlandı; iki Worker için kesin version/deployment ID doğrulandı. Token kapsamı genişletilmez. İlk inceleme kaydı `evidence/ci-deploy-review.json` tarihsel taslaktır; güncel düzeltme kanıtı `evidence/ci-version-release-review.json` içindedir.
 
 ## Neden Workers Builds seçilmedi
 
@@ -54,4 +54,4 @@ Bu dosyanın hazırlanması hesapta token oluşturma veya saklama işlemi değil
 4. Onaylı kurulum tamamlanınca değişkeni `true` yapar ve gerçek staging push'ıyla akışı sınar. Eksik secret açık hatadır; production secret eksikken staging tokenına fallback yapılmaz.
 5. Başarılı run URL/commit, jobs deployment, web deployment ve canlı smoke sonuçlarını kaydeder. Ardından production push ile aynı zinciri doğrular. Kontrol kapısının başarısız örnekte deploy'u gerçekten engellediği ayrı kanıtlanır.
 
-Operatör bildirimine göre iki onaylı token ayrı, branch kısıtlı environment'larda kayıtlı ve aktivasyon açık. İlk remote run yukarıdaki queue hatasıyla başarısız oldu. **Yeni version-only jobs→web yayını remote NOT RUN**; önce staging üzerinde gerçek run ve deployment/commit/smoke eşleşmesi doğrulanacak. Mevcut Workers Builds yayın tetikleyicilerinin kapalı kalması tek-yayın-yolu koşuludur. İlk başarısızlık başarılıymış gibi silinmez.
+Operatör bildirimine göre iki onaylı token ayrı, branch kısıtlı environment'larda kayıtlı ve aktivasyon açık. İlk remote run yukarıdaki queue hatasıyla başarısız oldu. **Staging version-only jobs→web yayını PASS**; production için aynı zincir ve deployment/commit/smoke eşleşmesi ayrıca doğrulanacak. Mevcut Workers Builds yayın tetikleyicilerinin kapalı kalması tek-yayın-yolu koşuludur. İlk başarısızlık başarılıymış gibi silinmez.

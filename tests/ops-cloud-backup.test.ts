@@ -22,6 +22,15 @@ test('default cloud backup command never calls fetch and does not need credentia
   const old=globalThis.fetch,log=console.log;let calls=0;globalThis.fetch=async()=>{calls++;throw new Error('Network forbidden in plan');};console.log=()=>{};
   try{const plan=await run(['--environment','staging']);assert.equal(plan.mode,'PLAN_ONLY');assert.equal(calls,0);assert.equal(plan.remote_acceptance,'NOT RUN until --apply completes');}finally{globalThis.fetch=old;console.log=log;}
 });
+test('backup-only plan cannot create or resume a restore database',async()=>{
+  const log=console.log;console.log=()=>{};
+  try{
+    const plan=await run(['--environment','staging','--backup-only','--snapshot-name','jotcoloring-backup-staging-test20261028']);
+    assert.equal(plan.backup_only,true);assert.ok(plan.operations.every((op:string)=>!op.includes('Create NEW separate D1')&&!op.includes('Import SQL')));
+    await assert.rejects(()=>run(['--environment','staging','--backup-only','--resume-empty-target']));
+    await assert.rejects(()=>run(['--environment','staging','--backup-only','--snapshot-name','jotcoloring-backup-production-test20261028']));
+  }finally{console.log=log;}
+});
 test('integer-primary-key parity keeps numeric order despite lossless text projection',()=>{
   const db=new DatabaseSync(':memory:');db.exec('CREATE TABLE events(seq INTEGER PRIMARY KEY,label TEXT);INSERT INTO events VALUES(1,\'one\'),(2,\'two\'),(10,\'ten\'),(11,\'eleven\');');
   const cols=[{name:'seq',type:'INTEGER'},{name:'label',type:'TEXT'}];

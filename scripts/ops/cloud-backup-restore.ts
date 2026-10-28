@@ -22,11 +22,15 @@ export async function run(argv:string[]){
   const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8')),env=config.env[environment];
   const source=env.d1_databases.find((d:any)=>d.binding==='CATALOG_DB'),bucket=env.r2_buckets.find((b:any)=>b.binding==='BACKUPS')?.bucket_name;
   if(config.account_id!==ACCOUNT||!ACTIVE_IDS.includes(source?.database_id)||source.database_name!==`jotcoloring-${environment}-catalog`||bucket!==`jotcoloring-${environment}-backups`)throw new Error('Reviewed source environment configuration changed');
-  const name=value('--new-restore-name');
-  if(name&&!new RegExp(`^jotcoloring-restore-${environment}-[a-z0-9-]{8,48}$`).test(name))throw new Error('Restore name must identify the source environment and a unique run suffix');
-  const plan={mode:argv.includes('--apply')?'APPLY':'PLAN_ONLY',environment,source_database:source.database_id,backup_bucket:bucket,new_restore_name:name||'Required when applying',operations:['Read backup privacy settings','Export real canonical SQL into memory','Remove private AI rows and validate SQL locally','Upload immutable SQL + checksum manifest to private BACKUPS; read both back','Create NEW separate D1; refuse active/nonempty target','Import SQL read back from R2','Compare every durable table row/hash, schema, foreign keys and active revisions'],no_source_writes:true,no_active_target_writes:true,existing_target_policy:'Only this task recorded new empty restore DB may be retried with --resume-empty-target',no_automatic_deletion:true,ai_private_rows_included:false,remote_acceptance:'NOT RUN until --apply completes'};
+  const backupOnly=argv.includes('--backup-only');
+  if(backupOnly&&(argv.includes('--resume-empty-target')||value('--new-restore-name')))throw new Error('Backup-only cannot create or resume a restore database');
+  const name=value(backupOnly?'--snapshot-name':'--new-restore-name');
+  const prefix=backupOnly?'backup':'restore';
+  if(name&&!new RegExp(`^jotcoloring-${prefix}-${environment}-[a-z0-9-]{8,48}$`).test(name))throw new Error('Run name must identify the action, source environment and a unique suffix');
+  const operations=['Read backup privacy settings','Export real canonical SQL into memory','Remove private AI rows and validate SQL locally','Upload immutable SQL + checksum manifest to private BACKUPS; read both back',...backupOnly?[]:['Create NEW separate D1; refuse active/nonempty target','Import SQL read back from R2','Compare every durable table row/hash, schema, foreign keys and active revisions']];
+  const plan={mode:argv.includes('--apply')?'APPLY':'PLAN_ONLY',environment,source_database:source.database_id,backup_bucket:bucket,backup_only:backupOnly,run_name:name||'Required when applying',operations,no_source_writes:true,no_active_target_writes:true,existing_target_policy:backupOnly?'No restore database is created':'Only this task recorded new empty restore DB may be retried with --resume-empty-target',no_automatic_deletion:true,ai_private_rows_included:false,remote_acceptance:'NOT RUN until --apply completes'};
   if(!argv.includes('--apply')){console.log(JSON.stringify(plan,null,2));return plan;}
-  if(!name)throw new Error('--new-restore-name is required when applying');
+  if(!name)throw new Error(backupOnly?'--snapshot-name is required when applying':'--new-restore-name is required when applying');
   let token=process.env.CLOUDFLARE_API_TOKEN;
   if(!token){const authFile=value('--wrangler-auth-file');if(!authFile)throw new Error('Provide secure environment authentication or a local Wrangler auth-file path');const auth=await fs.readFile(authFile,'utf8');token=auth.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1];const expiration=auth.match(/^expiration_time\s*=\s*"([^"]+)"/m)?.[1];if(!token||!expiration||Date.parse(expiration)<=Date.now())throw new Error('Wrangler session missing or expired');}
   let requests=0;
@@ -80,6 +84,7 @@ export async function run(argv:string[]){
     const backed=await backupObject('catalog.sql',sql,'application/sql'),manifestBacked=await backupObject('snapshot.json',manifest,'application/json');
     report.backup_objects=[backed,manifestBacked].map(({body,...item})=>item);report.excluded_private_rows=meta.excluded_private_rows;
     report.checks.push('Immutable SQL and manifest fetched back from private R2 with exact SHA256 and bytes');
+    if(backupOnly){report.outbox_watermark=meta.outbox_watermark;report.status='BACKUP_VERIFIED';return report;}
     // Only this newly created ID can ever be the import target. Never accept an ID argument.
     const created=resumedTarget?{uuid:resumedTarget}:await api('/d1/database','POST',{name});const target=created.uuid;
     assertRestoreTarget(target,name);report.restore_database={id:target,name};

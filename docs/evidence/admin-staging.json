@@ -15,7 +15,31 @@
     "Real HTTPS after archive: detail 404; search zero matches; PDF 404"
   ],
   "result": "PASS for tested existing-media flow",
-  "new_prepared_media_ui": "PENDING additional staging verification",
-  "restoration_revision_fix": "Local regression PASS; staging UI test pending",
-  "production_writes": "None"
+  "restoration_revision_fix": {
+    "status": "PASS",
+    "content_id": "jc-staging-qa-woodland",
+    "checks": [
+      "Archived version 2 exposed Edit only",
+      "Edited metadata with new asset IDs and expected version 2",
+      "Job 54faf4fe-dde6-41d9-a187-be4753359242 produced version 3",
+      "Published version 3 with updated title",
+      "Archived version 4 after the test"
+    ]
+  },
+  "production_writes": "None",
+  "updated_at": "2026-10-28T14:40:09.888098+00:00",
+  "prepared_media_ui": {
+    "source_commit": "d7ac2c99025628c411645918f7e4f9b646b1fe57",
+    "status": "PASS",
+    "content_id": "jc-staging-prepared-check",
+    "job_id": "ca9ebf0a-a493-441c-88df-81091a4139ae",
+    "checks": [
+      "Prepared signed manifest and five real derivatives with correct environment secret",
+      "Uploaded source and backup via owner-authenticated browser UI",
+      "Queued same files twice; same job ID returned",
+      "Ready for review -> published -> archived",
+      "HTTPS detail 200, search one correct item, PDF 743360 bytes and WEBP 519480 bytes"
+    ],
+    "final_status": "archived"
+  }
 }

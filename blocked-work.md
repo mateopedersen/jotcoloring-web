@@ -1,18 +1,14 @@
-# Açık kabul kapıları
+# Kalan kabul ve ölçek kapıları
 
-28 Ekim 2026 kesiti; root dağıtım çalışması devam ediyor. Bu liste tamamlanmış işleri başarısız saymaz; kalan kanıtı açık tutar. Kullanıcıdan yeni izin istemeyi gerektiren bir genel bekleme listesi değildir.
+28 Ekim 2026: Bunlar mevcut çalışan işlevleri başarısız saymaz; ölçülmemiş veya tamamlanmamış işleri ayırır.
 
-| İş | Etki | Şu anki sınır / sonraki adım |
-| --- | --- | --- |
-| Main staging/production deploy ve domain | Canlı site teslimi | Staging ve https://jotcoloring.com production gerçek HTTPS kabulü PASS; production267 GET/29 kontrol,18 içerik/50 arama/108 medya/54 indirme. On ekranın browser/görsel kabulü HTTP kontrolünden ayrı devam ediyor. |
-| Actions version-only yayın kabulü | Tek kontrollü yayın yolu | İki onaylı token ayrı ve branch kısıtlı environment'larda. İlk staging run40696610833/attempt2 Verify+jobs upload PASS, queue liste10000 ile FAIL; web çalışmadı. Queue/cron/route ayarlarına dokunmayan düzeltme yerel10 test ve gerçek bundle parity ile PASS; gerçek staging ardından production run hâlâ doğrulanacak. |
-| Access yönetimi | Yetkili içerik yönetimi | Ana domainde admin/api-admin302Access; alternate Worker'da anonim401 ve sahteJWT403 gerçek HTTPS ile PASS. Yetkili gerçek admin yönetim akışı ayrı kabul kapısıdır. |
-| Yeni marka footer'lı PDF/WEBP | Son kullanıcı biçim talebi | Son108 dosya yerel, staging ve production aynı-checksum doğrulamasından geçti; her ortamda54 download header/byte testi PASS.36 PDF en çok743.353byte. Tarayıcıdaki boyanmış çalışma export kabulü ayrı izlenir. |
-| On ekran görsel ve işlevsel kabul | Onaylı turuncu tasarım | Ekran bazlı gerçek screenshot/viewport/difference ve interaction kanıtı `docs/acceptance.json` içine işlenecek. |
-| Gerçek text/photo AI | Kullanıcının üretim akışı | Free gateway dağıtıldı. Gerçek bir ücretsiz metin işi ve WEBP/PDF/preview byte+görsel kontrolü PASS; evidence/ai-text-staging.json. Fotoğraf, tarayıcı üretim akışı, private retention ve quota exhaustion için bu kayıtta başarı kanıtı yok. |
-| Production CORS ve medya TLS | Tainted canvas olmadan export | Gerçek production origin + medya alan adı + tarayıcı export testi gerekli. |
-| Bulut DB/R2 restore | Felaket kurtarma | Gerçek staging D1→private R2→izole D1 tam metadata parity ve3 temsilî private R2 dosya restore PASS. İlgili46 şema nesnesi/498 satır doğrulandı. Production cutover, FTS rebuild, tüm medya kurtarma ve RTO/RPO henüz kanıtlanmadı. |
-| PostgreSQL/Hyperdrive production geçişi | D1 sınırı aşılınca büyüme | Gerçek yerel schema/import/replay/parity PASS. Canlı PostgreSQL repository/write/AI transaction adaptörü, provider/TLS/pool ve Hyperdrive yolu tamamlanmadı. Geçiş ihtiyacında sağlayıcı ve bütçe kararı gerekir. |
-| 100k/1m/5m yük testi | Kapasite garantisi | Yerel18 kayıt ölçüldü. Büyük veri, trafik, kuyruk gecikmesi ve çok bölge testi yapılmadı; projeksiyonlar test başarısı değildir. |
-
-Şu anda hesap doğrulaması gerektiren somut adım root tarafından ayrıca bildirilecektir; burada genel bir kullanıcı bekleme engeli varsayılmaz. Ücretli AI bütçesi0 olduğundan ücretli modele geçiş otomatik yapılmaz. Yalnız mevcut ücretsiz hesap kotası içinde çalışacak gerçek akış ayrıca doğrulanır.
+| İş | Gerçek durum |
+| --- | --- |
+| Güncel production otomatik yayın | Güncel kaynak staging'de gerçek scoped-token yayını ve yönetim akışıyla geçti. Production run ve commit/deployment eşleşmesi ayrıca doğrulanmalı. |
+| Beş milyon içerik kapasitesi | 18 aktif içerik ve gerçek küçük katalog test edildi. 100 bin, 1 milyon ve 5 milyon yük testi; queue gecikmesi ve çok bölge performansı yapılmadı. |
+| PostgreSQL/Hyperdrive | Yerel export/import, sürüm replay ve parity provası PASS. Production repository/yazma/AI kota adapteri, sağlayıcı ve gerçek Hyperdrive cutover tamamlanmadı. |
+| Yedek/geri dönüş | Gerçek staging metadata ve üç medya nesnesi izole hedefe restore edildi. Tüm production restore, FTS rebuild, RTO/RPO ve düzenli otomatik DB snapshot planı doğrulanmadı. |
+| Mobil dokunmatik ve fiziksel baskı | Tarayıcı pointer/klavye, responsive yerleşim ve PDF render kontrol edildi. In-app browser gerçek touch event ve blob PDF önizleme navigasyonunu desteklemedi; gerçek cihaz dokunması ve fiziksel baskı NOT RUN. |
+| AI ücretsiz kota | İki production işi ve sahip izolasyonu PASS; ayrı Free hesabın sağlayıcı kotası sonuna kadar tüketilmedi. Provider belirsizliğinde otomatik ikinci inference yapılmaz. |
+| Preview ve güvenlik | Staging/production kaynakları ve yayın anahtarları ayrıdır; iki tokenın birbirinin Worker'ına erişimi 403. Ayrı preview branch'inin canlı production'a yazmayı denediği tam entegrasyon testi yapılmadı. |
+| Editoryal/lisans | Mevcut koleksiyon JotColoring için hazırlanmış AI destekli çizimlerdir; marka kredisi tescil veya her ülkede münhasır telif garantisi değildir. Her yeni kaynağın hakları ve görselleri yayın öncesi gözden geçirilmelidir. |
