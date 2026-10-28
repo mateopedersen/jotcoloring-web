@@ -1,6 +1,8 @@
 # Tek otomatik yayın yolu: GitHub Actions
 
-28 Ekim 2026 — **incelenebilir yerel taslak; henüz commit/push edilmedi ve bu yeni yayın akışı GitHub'da çalıştırılmadı.** Token oluşturulmadı veya GitHub'a kaydedilmedi. Bu karar önceki Worker bootstrap yayınlarının veya `1ab244f` commit'indeki başarılı Verify kontrolünün yerine yeni bir başarı beyanı koymaz.
+28 Ekim 2026 — `34d0da9` kaynak tabanında ilk gerçek Actions yayın denemesi yapıldı. Kullanıcı iki dar kapsamlı account-owned tokenı onayladı; operatör bunları ayrı ve branch kısıtlı GitHub environment secret'larına şifreli kaydetti ve repo aktivasyonunu açtı. **Staging run40696610833/attempt2: Verify PASS, jobs Worker upload PASS, ardından queue consumer uzlaştırmasındaki `GET /accounts/.../queues` isteği10000 ile reddedildi; web adımı çalışmadı.** Bu ilk denemenin tamamı başarısızdır; sonraki staging düzeltmesi aşağıda ayrı raporlanır. [İlk gerçek run](https://github.com/mateopedersen/jotcoloring-web/actions/runs/40696610833/attempts/2)
+
+Bu hataya yönelik version-only düzeltme gerçek staging run 40703500734 ve 40706443510 ile başarıyla yayımlandı; iki Worker için kesin version/deployment ID doğrulandı. Token kapsamı genişletilmez. İlk inceleme kaydı `evidence/ci-deploy-review.json` tarihsel taslaktır; güncel düzeltme kanıtı `evidence/ci-version-release-review.json` içindedir.
 
 ## Neden Workers Builds seçilmedi
 
@@ -10,7 +12,7 @@ Cloudflare, Wrangler'da tek Worker düzeyinde granular yetki için **account-own
 
 Kaynak paketin `05_GITHUB_CLOUDFLARE_VE_OPERASYON.txt`, bölüm 4'ü zorunluluk durumunda Actions'ın tek yayın yetkilisi seçilmesine izin veriyor ve eşzamanlı Workers Builds deploy'unun kapatılmasını istiyor. Bu sağlayıcı token uyumsuzluğu karara gerekçedir. Seçim: GitHub Actions tek otomatik yayın yolu; Workers Builds'te production/staging yayın tetikleyicisi bırakılmayacak. Dashboard doğrulaması henüz bu taslak tarafından yapılmadı.
 
-## İncelenecek iki token
+## Onaylanan iki token
 
 Her token ana hesap `48c779c8eaa80234e0bb9d57f96e588b` altında account-owned oluşturulur. Free AI hesabı için token bu akışa eklenmez.
 
@@ -21,7 +23,11 @@ Her token ana hesap `48c779c8eaa80234e0bb9d57f96e588b` altında account-owned ol
 
 Platform geneli veya tüm Workers kapsamı, `Admin`, tüm zones, R2/D1 içerik erişimi, yeni kaynak oluşturma, billing ve başka ürün yetkileri plana eklenmez. İki ortamın tokenı birbirinin yerine kullanılmaz. Worker Editor kodu ve ayarları değiştirebildiği için güvenilir branch incelemesi ve kaynak kimliği kontrolleri korunur.
 
-Wrangler 4.153.0 jobs deployment sırasında mevcut queue consumer ayarlarını da uzlaştırır. Resource-scoped tokenla bu uçların gerçek kabulü henüz test edilmedi. İlk dar yetkili staging denemesi yetki hatası verirse otomatik geniş tokena geçilmez; reddedilen işlemin gerekli kapsamı somut olarak incelenir. Bu taslak doğrudan Queue yönetim veya tüm-account veri yetkisi verilmiş gibi davranmaz.
+Wrangler4.153.0 `deploy` mevcut queue consumer ayarlarını da uzlaştırır. İlk gerçek deneme bu hesap-geneli liste yetkisinde reddedildi. Sadece komutu `versions upload` yapmak da yeterli değildir: kurulu sürümün `preUploadApiChecks` fonksiyonu normal queue config'ini görünce kuyruk listesini okur. Ayrıca otomatik kaynak hazırlama bayrakları bu sürümde varsayılan olarak açıktır; yardımcı kod ikisini açıkça `false` yapar.
+
+`worker-version-release.ts` önce asıl config'in account/ortam/DB/bucket/queue/route/cron kimliklerini kontrol eden mevcut release kapısından geçer. Sonra sadece upload için geçici config üretir. İki producer aynı API metadata biçimiyle taşınır: `name`, `type: queue`, `queue_name`. Bu Cloudflare'ın tanımlı queue binding biçimidir. Consumer, cron, route ve observability ayarları geçici config'e eklenmez; platformda mevcut hâlleri korunur. D1/R2 binding değerleri, runtime değişkenleri ve gizli değerleri koruma talimatı değişmez. Kaynaklar: [Version upload API ve queue binding](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/versions/methods/create/), [ayrı trigger komutu](https://developers.cloudflare.com/workers/wrangler/commands/workers/#triggers-deploy).
+
+Kurulu Wrangler ile gerçek multipart dry-run karşılaştırması bütün metadata'nın eşit olduğunu kanıtlar; bu kontrol CI `--prepare` kapısında da çalışır. Upload öncesi Worker-kapsamlı service GET, mevcut grouping etiketlerinin bilinen gruplama veya gruplamasız durum olduğunu doğrular; geçici config aynı durumu korur. Beklenmeyen grouping upload'dan önce durur. Sabit Wrangler sürümünün gerçek komutları hem gruplu hem gruplamasız Worker için yerel sahte API'ye karşı sınanır: izin verilen tek yazmalar Worker `/versions` ve `/deployments` POST'larıdır. Queue/R2/D1 metadata, route, schedule veya settings-write isteği gelirse test başarısız olur. Bu yerel test gerçek tokenla remote API kabulü değildir.
 
 ## Kodun uyguladığı sıra
 
@@ -29,12 +35,14 @@ Wrangler 4.153.0 jobs deployment sırasında mevcut queue consumer ayarlarını 
 
 1. Credentials olmadan lockfile kurulumu, Astro check, bütün TypeScript testleri, Python operasyon testleri ve tracked dosya sır taraması çalışır.
 2. Push için doğru ortam build'i; PR için yerel build alınır. Jobs Worker aynı kaynak üzerinden `--dry-run` ile derlenir, yayımlanmaz.
-3. `deploy-release.ts --prepare` iki Worker'ın account/ortam/D1/R2/Queue/DLQ/route kimliklerini ve ücretsiz AI sınırını doğrular. Gateway yalnız `https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev`, model yalnız `@cf/black-forest-labs/flux-2-klein-4b`, günlük sınır 1–9000 tam sayı nöron, iş başına sınır 300 ve ücretli bütçeler sıfır olabilir; doğrudan AI binding'i kabul edilmez. Bütün `dist/` dosyaları, hidden `.assetsignore` dahil, commit ve lockfile hash'ine bağlanır.
+3. `deploy-release.ts --prepare` iki Worker'ın account/ortam/D1/R2/Queue/DLQ/route/cron kimliklerini ve ücretsiz AI sınırını doğrular. Gateway yalnız `https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev`, model yalnız `@cf/black-forest-labs/flux-2-klein-4b`, günlük sınır1–9000 tam sayı nöron, iş başına sınır300 ve ücretli bütçeler sıfır olabilir; doğrudan AI binding'i kabul edilmez. Her iki Worker için asıl ve version-only config gerçek `versions upload --dry-run` ile derlenir; bütün multipart metadata eşitliği zorunludur. Bütün `dist/` dosyaları, hidden `.assetsignore` dahil, commit ve lockfile hash'ine bağlanır.
 4. `deploy` yalnız upstream repo'da `push` + `main`/`staging`, başarılı `verify` ve `JOTCOLORING_DEPLOY_ENABLED=true` koşullarıyla açılır. PR, fork ve `pull_request_target` yayın yolu yoktur.
 5. Aynı workflow run'ının aynı commit artifact'i indirilir; byte/hash/commit/lockfile/ortam yeniden doğrulanır. Kurulum ve build adımlarına Cloudflare token verilmez.
-6. Son yayın adımı yalnız ilgili environment secret'ını alır. Branch ilerlemişse eski commit yayımlanmaz. Önce açık isimle jobs, sonra açık isimle web Worker deploy edilir. Jobs başarısızsa web adımı çalışmaz. Web başarısızsa workflow başarısız olur; jobs'ın yeni sürümde kalabileceği raporlanır, otomatik veri veya kod geri alma yapılmaz.
+6. Son yayın adımı yalnız ilgili environment secret'ını alır. Branch ilerlemişse eski commit yayımlanmaz. Önce jobs, sonra web için `versions upload` çalışır. Her komut ayrı ve yeni `WRANGLER_OUTPUT_FILE_PATH` NDJSON dosyasına yazar. Tek eşleşen Worker/şema/sürüm UUID'si yoksa işlem durur; log metninden veya “latest” listesinden sürüm seçilmez. [Wrangler yapılandırılmış çıktı](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables)
+7. Yalnız elde edilen UUID `versions deploy UUID@100% --yes` ile, sadece account ve Worker adını içeren minimal config üzerinden etkinleştirilir. `triggers deploy` çağrılmaz. Dönüşteki deployment UUID'si Workers kapsamındaki GET ile okunur; tam olarak yüklenen sürüme%100 atandığı doğrulanır. [Deployment oluşturma](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/create/) · [tek deployment okuma](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/get/)
+8. Jobs başarısızsa web çalışmaz. Web başarısızsa workflow başarısız olur; jobs yeni sürümde kalabilir. Upload tamamlanıp activation/readback başarısız olursa yerel receipt sürüm kimliğini saklar ve başarı ilan edilmez. Belirsiz transport sonucu otomatik başka sürüm seçerek geçiştirilmez; operatör kayıtlı Worker/version/deployment kimliğiyle durum okur. Otomatik veri veya kod geri alma yapılmaz.
 
-Ortam başına concurrency sıralaması yürüyen deploy'u iptal etmez; farklı staging/production ortamları birbirini kilitlemez. PR doğrulamaları eski PR run'ını iptal edebilir. D1 migration, içerik aktarımı, bucket oluşturma, AI gateway deploy veya silme komutu bu yayın akışında yoktur.
+Ortam başına concurrency yürüyen deploy'u iptal etmez; staging/production birbirini kilitlemez. PR doğrulamaları eski PR run'ını iptal edebilir. Queue consumer, cron ve route değişiklikleri ayrı operatör işidir. D1 migration, içerik aktarımı, bucket oluşturma, AI gateway deploy veya silme bu yayın akışında yoktur. Eski `deploy.mjs` bootstrap aracı Actions tarafından çağrılmaz.
 
 ## Etkinleştirme ve doğrulama
 
@@ -46,4 +54,4 @@ Bu dosyanın hazırlanması hesapta token oluşturma veya saklama işlemi değil
 4. Onaylı kurulum tamamlanınca değişkeni `true` yapar ve gerçek staging push'ıyla akışı sınar. Eksik secret açık hatadır; production secret eksikken staging tokenına fallback yapılmaz.
 5. Başarılı run URL/commit, jobs deployment, web deployment ve canlı smoke sonuçlarını kaydeder. Ardından production push ile aynı zinciri doğrular. Kontrol kapısının başarısız örnekte deploy'u gerçekten engellediği ayrı kanıtlanır.
 
-Şu anda remote secret kapsamı, environment branch politikaları, Workers Builds kapatma ve yeni otomatik jobs→web yayını **NOT RUN / operatör kurulumunu bekliyor**. Yerel doğrulama sonuçları `evidence/ci-deploy-review.json` içinde ayrı kayıtlıdır.
+Operatör bildirimine göre iki onaylı token ayrı, branch kısıtlı environment'larda kayıtlı ve aktivasyon açık. İlk remote run yukarıdaki queue hatasıyla başarısız oldu. **Staging version-only jobs→web yayını PASS**; production için aynı zincir ve deployment/commit/smoke eşleşmesi ayrıca doğrulanacak. Mevcut Workers Builds yayın tetikleyicilerinin kapalı kalması tek-yayın-yolu koşuludur. İlk başarısızlık başarılıymış gibi silinmez.

@@ -1,0 +1,115 @@
+{
+  "recorded_at": "2026-10-28T14:00:45.624740+00:00",
+  "environment": "production",
+  "source_commit": "1ab244fe20e3cd2329a4e6764f59bbf948034c50",
+  "status": "PASS",
+  "method": "Actual browser forms, real provider, D1 read-only receipt query, private downloads, Poppler-rendered PDF and actual WEBP visual review, separate owner HTTP session",
+  "jobs": [
+    {
+      "mode": "text",
+      "id": "b2b0c0e3-ab5d-4fea-b72b-0ec9f6c18165",
+      "status": "succeeded",
+      "model": "@cf/black-forest-labs/flux-2-klein-4b",
+      "provider_receipt_present": true,
+      "started_at": "2026-10-28T13:46:25.421Z",
+      "completed_at": "2026-10-28T13:47:43.494Z",
+      "actual_cost_micros": null,
+      "estimated_reservation_micros": 3300,
+      "reserved_neurons": 300,
+      "daily_limit_neurons": 9000,
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "mode": "photo",
+      "id": "f23c36f7-7631-4b63-af7c-8a60396def3f",
+      "status": "succeeded",
+      "model": "@cf/black-forest-labs/flux-2-klein-4b",
+      "provider_receipt_present": true,
+      "started_at": "2026-10-28T13:48:50.690Z",
+      "completed_at": "2026-10-28T13:49:13.344Z",
+      "actual_cost_micros": null,
+      "estimated_reservation_micros": 3300,
+      "reserved_neurons": 300,
+      "daily_limit_neurons": 9000,
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "files": [
+    {
+      "mode": "text",
+      "format": "pdf",
+      "bytes": 440689,
+      "sha256": "cd4459051ff825b4e8685b2f898895b62761449ad725f108c1cec7cf6b62aba4",
+      "pdf_under_1000000": true,
+      "browser_download": true,
+      "visually_inspected": true
+    },
+    {
+      "mode": "text",
+      "format": "webp",
+      "bytes": 662448,
+      "sha256": "e0072b7850c8c00ad637e7fabfaddb834957ae55d869e896eeb8fccd41ea02cb",
+      "pdf_under_1000000": null,
+      "browser_download": true,
+      "visually_inspected": true
+    },
+    {
+      "mode": "photo",
+      "format": "pdf",
+      "bytes": 192050,
+      "sha256": "76d6840182877b43883d2482b44cf8843988966801105099da4d3278b534b6ca",
+      "pdf_under_1000000": true,
+      "browser_download": true,
+      "visually_inspected": true
+    },
+    {
+      "mode": "photo",
+      "format": "webp",
+      "bytes": 274466,
+      "sha256": "370bfb710893b6abd340519238dbfd38b752bb9f4de51682a8b0df274f2762a7",
+      "pdf_under_1000000": null,
+      "browser_download": true,
+      "visually_inspected": true
+    }
+  ],
+  "owner_isolation": {
+    "session": {
+      "http": 200,
+      "cache_control": "no-store"
+    },
+    "text_status": {
+      "http": 404,
+      "cache_control": "no-store"
+    },
+    "text_result": {
+      "http": 404,
+      "cache_control": "no-store"
+    },
+    "photo_status": {
+      "http": 404,
+      "cache_control": "no-store"
+    },
+    "photo_result": {
+      "http": 404,
+      "cache_control": "no-store"
+    },
+    "wrong_origin": {
+      "http": 403,
+      "cache_control": "no-store"
+    }
+  },
+  "photo_fixture": {
+    "source": "https://commons.wikimedia.org/wiki/File:Cat_in_towel.jpg",
+    "author": "OboeBlanket",
+    "license": "CC0",
+    "catalog_publication": false
+  },
+  "paid_ai_boundary": "Dedicated Workers Free account; no paid-plan fallback; provider daily hard stop. Measured USD cost unavailable; reservation is an estimate, not a charge.",
+  "limits": "Two actual production jobs; no provider quota exhaustion, touch-device, or load benchmark."
+}

@@ -28,6 +28,19 @@ python3 scripts/ops/restore-bootstrap.py PRIVATE/deployment-data .local/new-rest
 
 Komut var olan hedefi kullanmaz, Cloudflare'a bağlanmaz ve gerçek kaynağı değiştirmez. Bu süre production RTO değildir. R2 API metadata/CORS/custom-domain kuralları, retention ve bulutta ayrı ortam restore henüz bu testin kapsamında değildir. Production RPO için ayrıca çalışan backup sıklığı ve son başarılı snapshot zamanı gerekir.
 
+## Tek başına D1 katalog yedeği
+
+Yedek almak için her seferinde geri yükleme veritabanı oluşturmak gerekmez. Aşağıdaki komut önce mevcut private BACKUPS alanının herkese kapalı olduğunu doğrular, canonical D1 export alır, özel AI iş/fotoğraf/kota satırlarını kalıcı snapshot'tan çıkarır ve SQL ile manifesti R2'ye yazıp hash ile tekrar okur. Yeni DB oluşturmaz, aktif Worker binding'ini değiştirmez. Kısa süreli okuma kesintisi olabileceği için uygun zaman seçin; gerçek düzenli zamanlama henüz kurulmuş değildir.
+
+```sh
+pnpm exec tsx scripts/ops/cloud-backup-restore.ts \
+  --environment staging --backup-only \
+  --snapshot-name jotcoloring-backup-staging-20261028-unique \
+  --wrangler-auth-file "$JOTCOLORING_WRANGLER_AUTH_FILE" --apply
+```
+
+Canlı yedekte `--environment production` ve `jotcoloring-backup-production-...` adı kullanılmalıdır. Her çalışmada benzersiz ad seçin; mevcut yedek anahtarının üstüne yazılmaz. `--apply` çıkarılırsa yalnız plan gösterilir. Gerçek staging ve production tek başına backup denemeleri: `evidence/cloud-backup-only-staging.json` ve `evidence/cloud-backup-only-production.json` (her biri 11 istek, yeni DB yok). Araç 50 MB SQL / 100 bin satır güvenli prova sınırına sahiptir; 5 milyon içerik yedekleyicisi olarak sunulmaz. Tam kurtarma için aşağıdaki ayrı izole restore provası ve medya dosyalarının geri yükleme kontrolü gerekir.
+
 ## Gerçek D1 → private R2 → yeni izole D1 provası
 
 `scripts/ops/cloud-backup-restore.ts` bu zinciri uygular. Gerçek staging provası 28 Ekim 2026'da tamamlandı; sonuç ve bulunan/düzeltilen sorunlar `evidence/cloud-restore-staging.json` içindedir. Varsayılan komut yalnız plan gösterir; kimlik bilgisi okumaz ve ağ isteği yapmaz:

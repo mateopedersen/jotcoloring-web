@@ -1,10 +1,10 @@
 {
   "updated_on": "2026-10-28",
-  "initial_publication": "PASS — production HTTP acceptance; browser/visual acceptance remains separate",
+  "initial_publication": "PASS for production HTTP and actual owner login; latest automatic production release tracked separately",
   "production_http_evidence": "evidence/production-http.json",
   "five_million_capacity": "NOT RUN",
-  "ai_provider_text": "NOT RUN",
-  "ai_provider_photo": "NOT RUN",
+  "ai_provider_text": "PASS on actual production browser and provider; see evidence/ai-production.json",
+  "ai_provider_photo": "PASS on actual production browser and provider; see evidence/ai-production.json",
   "screens": [
     {
       "screen": 1,
@@ -16,16 +16,26 @@
       ],
       "actual_route": "/",
       "commit": null,
-      "browser": null,
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
       "viewport_css": null,
       "device_scale_factor": null,
       "fixture_id": "homepage-default",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-01-home-1448.jpg",
+      "observed_differences": [
+        "Başlık ağırlığı, logo noktasının aralığı ve emoji ikonlar kaynaktan farklı; marka ve turuncu hiyerarşi korunuyor.",
+        "Kart aralıkları daha uzun; alt iki tanıtımın yalnız üst kısmı 1086px görüntüye sığıyor.",
+        "Yeniden üretilen çizimler ve kategori ikonları referansla aynı sanat dosyaları değil."
+      ],
+      "severity": "minor",
+      "remediation": "Kalan küçük ikon/font/yoğunluk farkları teslimde açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "0931460f16fcaf3057a9a0b9857742c1749138f82a3ae4e4fcea43e82de2ac28",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "functional_scope": "Ana sayfa 14 görünür yarı renkli karşılaştırma; klavye sürgüsü ve filtre kontrol edildi."
     },
     {
       "screen": 2,
@@ -37,16 +47,25 @@
       ],
       "actual_route": "/coloring-pages/",
       "commit": null,
-      "browser": null,
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
       "viewport_css": null,
       "device_scale_factor": null,
       "fixture_id": "catalog-default",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-02-catalog-1448.jpg",
+      "observed_differences": [
+        "Gerçek 18 içerik üç sayfa oluşturuyor; referanstaki 24 sayfa örnek veri farkı.",
+        "Kartlar ve filtreler referanstan biraz aşağıda; ilk iki satır ve sayfalama görünür."
+      ],
+      "severity": "minor",
+      "remediation": "Küçük aralık ve ikon farkları açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "aa306c590252f7babb51ddddb44fafd01cf1b7bb9f136f2bf0b6064f83711472",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "functional_scope": "Dört sütun, kategori/yaş filtresi, arama ve sayfalama gerçek tarayıcıda kontrol edildi."
     },
     {
       "screen": 3,
@@ -57,17 +76,29 @@
         1086
       ],
       "actual_route": "/coloring-pages/animals/",
-      "commit": null,
-      "browser": null,
-      "viewport_css": null,
+      "commit": "7eb771981ed9106056f49223989a241b9c462ae6",
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        1448,
+        1086
+      ],
       "device_scale_factor": null,
       "fixture_id": "animals-selected-first",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-03-animals-1448.jpg",
+      "observed_differences": [
+        "Gerçek liste10 içerik; kaynak örneği altı. Son tekrar kutusu More dinosaurs olarak adlandırılmış.",
+        "Kaynakla aynı olmayan çizimler, emoji ikonlar ve biraz daha ağır başlık fontu kullanılıyor. Quick preview aksiyonları kaynak konumundan biraz aşağıda fakat tamamı görünür."
+      ],
+      "severity": "minor",
+      "remediation": "Önceki Quick preview taşması yeni görüntüde kapatıldı. Kalan küçük ikon/sanat/veri farkları açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "a280f4943d8311d09c769717f4a7763f84cae54bb08f67bcbe01e0ec4d2a4bef",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1087
+      ],
+      "functional_scope": "Üç sütun, hızlı önizleme, ardışık seçim ve bağlantılar kontrol edildi."
     },
     {
       "screen": 4,
@@ -79,16 +110,26 @@
       ],
       "actual_route": "/coloring/woodland-friends/",
       "commit": null,
-      "browser": null,
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
       "viewport_css": null,
       "device_scale_factor": null,
       "fixture_id": "woodland-detail",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-04-detail-1448.jpg",
+      "observed_differences": [
+        "Portre çizimin tamamı kırpılmadan gösterildiği için yan beyaz boşluklar referanstakinden geniş.",
+        "Açıklama iki satıra çıkıyor; aksiyonlar ve ilgili kartlar aşağı kayıyor, ilgili kart altları yakalamada kesiliyor.",
+        "Referanstaki tanıtım illüstrasyonları ve ikonlar aynı değil."
+      ],
+      "severity": "minor",
+      "remediation": "Çizim kırpılmamalı. Küçük yoğunluk ve yeniden hazırlanan sanat farkı açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "88acc938dbe06fb730135b5262c9f893244f521c4aa6fcccdb651ed31820ff50",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "functional_scope": "Siyah-beyaz detay, zoom, favori ve gerçek PDF/WEBP indirimi kontrol edildi."
     },
     {
       "screen": 5,
@@ -99,17 +140,30 @@
         1086
       ],
       "actual_route": "/create/text/",
-      "commit": null,
-      "browser": null,
-      "viewport_css": null,
+      "commit": "7eb771981ed9106056f49223989a241b9c462ae6",
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        1448,
+        1086
+      ],
       "device_scale_factor": null,
       "fixture_id": "text-example-detailed-medium-balanced-portrait",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-05-text-form-1448.jpg",
+      "observed_differences": [
+        "Simple ve Cute örnekleri kaynak sanatını yeniden kullanan dosyalar değil, daha sade özgün vektör çizimler. Detailed ayrı bir renkli illüstrasyon.",
+        "Generate düğmesi görüntünün altına yakın fakat tamamı sığıyor; daha fazla fikir kartlarının altı kaynak kadar görünmüyor.",
+        "Metin alanı odakta olduğu için turuncu odak çerçevesi var. Font/ikonlar ve slider izi kaynakla birebir değil."
+      ],
+      "severity": "minor",
+      "remediation": "Aynı üç stil resmi ve alttan kesilen Generate bulguları yeni yakalamada kapatıldı. Bu örnek ekran AI üretim işlev testinin yerine geçmez.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "9778e2f3c65dede381f4917b49d53d3947bea641abd6ab5833155b3f162bf946",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1087
+      ],
+      "functional_scope": "Stil/form görünümü örnektir. Ayrı production metin işi ve gerçek PDF/WEBP indirmeleri PASS."
     },
     {
       "screen": 6,
@@ -121,16 +175,28 @@
       ],
       "actual_route": "/create/photo/",
       "commit": null,
-      "browser": null,
-      "viewport_css": null,
-      "device_scale_factor": null,
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        1448,
+        1086
+      ],
+      "device_scale_factor": 1,
       "fixture_id": "photo-example-balanced-medium-simplify",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-06-photo-result-1448.jpg",
+      "observed_differences": [
+        "Referanstaki köpek yerine gerçek izinli kedi fotoğrafı kullanılmış; sonuç portre, daha çok beyaz alan ve daha seyrek renk önizlemesi içeriyor.",
+        "Üst tanıtım illüstrasyonu kamera/kedi ikonlarıyla yeniden hazırlanmış; mod sekmeleri kaynakta ayrı satırdayken uygulamada sol panel içinde."
+      ],
+      "severity": "minor",
+      "remediation": "İçerik ve yeniden hazırlanan ikon farkları açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "b485396a3456bf3f33825157bf9dd1bc564d29cab96f511f3d65af3f9440ab2f",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "functional_scope": "Ayrı production fotoğraf işi, Line art/Color preview ve gerçek PDF/WEBP indirmeleri PASS."
     },
     {
       "screen": 7,
@@ -141,17 +207,30 @@
         1086
       ],
       "actual_route": "/studio/?page=jc-woodland-friends",
-      "commit": null,
-      "browser": null,
-      "viewport_css": null,
+      "commit": "d7ac2c99025628c411645918f7e4f9b646b1fe57",
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        1448,
+        1086
+      ],
       "device_scale_factor": null,
       "fixture_id": "studio-real-paint-fixture",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-07-studio-painted-1448.jpg",
+      "observed_differences": [
+        "Portre çizim85% ölçekte tam gösterildiği için kaynakta çizimle dolu geniş tuvalden farklı beyaz yan/üst boşluklar var. Çizim kırpılmıyor.",
+        "Kısmi turuncu doldurma kaynaktaki ayrıntılı çok renkli boyama ile aynı sanat görünümü değil.",
+        "Exact color ve Add paint layer gibi ek işlevler var; katman ve indirme ikonları kaynak çizimlerinden farklı."
+      ],
+      "severity": "minor",
+      "remediation": "Dikey kontrol taşması ve100% zoom bulgusu yeni görüntüde kapatıldı. Kalan portre/sanat/ikon farkı açıklanmalı; resim kırpılmamalı.",
+      "visual_result": "PASS",
+      "functional_result": "PARTIAL",
+      "screenshot_sha256": "3b22102c868004d878f27263601466769f87866e2c3bbe3b5e1515d6407f00e7",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1087
+      ],
+      "functional_scope": "Gerçek kaydedilmiş kısmi boya, dolgu, fırça, katman, undo/redo ve yenileme kontrol edildi; her araç için ayrı gerçek cihaz testi yapılmadı."
     },
     {
       "screen": 8,
@@ -162,17 +241,29 @@
         1086
       ],
       "actual_route": "/studio/download/",
-      "commit": null,
-      "browser": null,
-      "viewport_css": null,
+      "commit": "d7ac2c99025628c411645918f7e4f9b646b1fe57",
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        1448,
+        1086
+      ],
       "device_scale_factor": null,
       "fixture_id": "studio-export-real-project-pdf-a4-portrait",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-08-export-1448.jpg",
+      "observed_differences": [
+        "Kaynak tam boyalı bir illüstrasyon, gerçek önizleme aynı projenin kısmi turuncu boyaması. Portre çizimin tamamını koruyan beyaz yan boşluklar var.",
+        "Kaynakta olmayan1MB açıklaması ve PDF print preview bağlantısı var. Format ikonları basit geometrik glifler; kaynak PDF/resim ikonlarıyla birebir değil."
+      ],
+      "severity": "minor",
+      "remediation": "Keep coloring ve form yüksekliği bulgusu yeni yakalamada kapatıldı. Gerçek çalışma/yeniden hazırlanmış sanat farkları açıklanmalı.",
+      "visual_result": "PASS",
+      "functional_result": "PARTIAL",
+      "screenshot_sha256": "4e8a79ccfeeeec055a79684f00426656e6cfd3d30444b8db655801d5115ea965",
+      "screenshot_pixel_dimensions": [
+        1448,
+        1087
+      ],
+      "functional_scope": "Gerçek PDF/WEBP ve ZIP indirmeleri, PDF kombinasyonları ve dosya boyutu kontrol edildi; in-app browser PDF blob açmayı engelledi, fiziksel baskı NOT RUN."
     },
     {
       "screen": 9,
@@ -184,16 +275,29 @@
       ],
       "actual_route": "/",
       "commit": null,
-      "browser": null,
-      "viewport_css": null,
-      "device_scale_factor": null,
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        390,
+        844
+      ],
+      "device_scale_factor": 1,
       "fixture_id": "mobile-home",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-09-mobile-home-390.jpg",
+      "observed_differences": [
+        "Kaynak390px genişliğe orantılı indirgenince yaklaşık874px boyunda; gerçek tam sayfa görüntüsü1066px. Gerçek sayfa daha uzun.",
+        "390×844 viewporttan alınan tam sayfa yakalamasında sabit alt gezinme, görüntünün ortalarında popüler bölüm başlığına denk geliyor. Bu tek yakalamadan kalıcı örtüşme hatası sonucu çıkarılmadı.",
+        "İkonlar ve font çizimi kaynakla birebir değil."
+      ],
+      "severity": "minor",
+      "remediation": "Root360/390/430 gerçek dar ekran ve taşma kontrollerini ayrı kaydetti. Bu inceleme onları yeniden tarayıcıda çalıştırmadı.",
+      "visual_result": "PASS",
+      "functional_result": "PASS",
+      "screenshot_sha256": "e020f274f3be737d7179ddf5dee2afdf3dc576a1b88b65bdaa9bb61a41e991f1",
+      "screenshot_pixel_dimensions": [
+        390,
+        1066
+      ],
+      "functional_scope": "390 CSS px gerçek ana sayfa, iki sütun, dört öğeli gezinme ve taşma kontrol edildi."
     },
     {
       "screen": 10,
@@ -204,17 +308,30 @@
         1672
       ],
       "actual_route": "/studio/?page=jc-woodland-friends",
-      "commit": null,
-      "browser": null,
-      "viewport_css": null,
+      "commit": "d7ac2c99025628c411645918f7e4f9b646b1fe57",
+      "browser": "Codex in-app browser (yakalama sahibi root bildirimi); sürüm bilinmiyor",
+      "viewport_css": [
+        389,
+        843
+      ],
       "device_scale_factor": null,
       "fixture_id": "mobile-studio-real-paint",
-      "screenshot_path": null,
-      "observed_differences": [],
-      "severity": null,
-      "remediation": null,
-      "visual_result": "NOT RUN",
-      "functional_result": "NOT RUN"
+      "screenshot_path": "outputs/screenshots/JC-10-mobile-studio-389-full.jpg",
+      "observed_differences": [
+        "Tam sayfa dosyası390×957px; orantılı kaynak yaklaşık693px yüksekliğe denk gelir. Mobil düzen kaynak oranından belirgin daha uzun; alt export alanının tamamı ilk843 CSSpx yüksekliğine sığmıyor ve kaydırmayla görülüyor.",
+        "85%te portre çizim bütünü korunuyor; kaynak kompozisyona göre daha geniş beyaz boşluklar var.",
+        "Ek More settings & text bağlantısı ve yeniden çizilmiş araç ikonları var."
+      ],
+      "severity": "minor",
+      "remediation": "100% zoom bulgusu kapatıldı. Uzun mobil akış ve sanat farkı açıklanmalı. Root yatay taşma olmadığını bildirdi; bu denetçi yalnız durağan görüntüyü inceledi.",
+      "visual_result": "PASS",
+      "functional_result": "PARTIAL",
+      "screenshot_sha256": "9c883065030f62799b80a3cd739a2899532b4b7f35997cf4f8856b8f3a225cde",
+      "screenshot_pixel_dimensions": [
+        390,
+        957
+      ],
+      "functional_scope": "389 CSS px gerçek mobil yerleşim, dört araç, katman ve yüzde 85 zoom kontrol edildi; gerçek dokunmatik cihaz testi NOT RUN."
     }
   ],
   "narrow_viewports_required": [
@@ -228,5 +345,10 @@
     1448
   ],
   "pdf_max_bytes": 1000000,
-  "webp_policy": "Actual WEBP MIME; sharp linework and minimal useful bytes; full-resolution printable separate from thumbnails."
+  "webp_policy": "Actual WEBP MIME; sharp linework and minimal useful bytes; full-resolution printable separate from thumbnails.",
+  "visual_scope": "10/10 structural screenshot checks PASS with disclosed minor differences. Mixed staging/production commits; some earlier captures have no recorded viewport/commit. This does not prove pixel equality or full functional coverage.",
+  "screen_07_08_10_reviewer": "Studio author self-review; other screens independently reviewed",
+  "print_preview": "PDF prepared; in-app browser security policy blocked blob preview opening. Physical printing NOT RUN.",
+  "touch_device": "NOT RUN",
+  "screenshot_location": "Task outputs/screenshots; not copied into public repository"
 }

@@ -7,93 +7,125 @@
       "requirement": "Actual ten approved PNG screens inspected and inventoried",
       "primary_document_prefix": "02",
       "acceptance_gate": "G0",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Ten original PNG files visually inspected; independent review disclosed studio self-review."
     },
     {
       "id": "DES-01",
       "requirement": "Home split and explicit private AI Color preview preserved; catalog B&W",
       "primary_document_prefix": "02",
       "acceptance_gate": "G0",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json",
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Home split and real private AI comparison checked; public artwork remains grayscale except branded footer."
     },
     {
       "id": "DES-02",
       "requirement": "Catalog/download originals remain B&W",
       "primary_document_prefix": "02",
       "acceptance_gate": "G2",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/media-final.json",
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "108 active derivatives and 36 PDFs checked; orange footer is an explicit later requirement."
     },
     {
       "id": "DES-03",
       "requirement": "User colored export remains user output",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual production AI canvas painted and exported; local device project is not a catalog publication."
     },
     {
       "id": "REP-01",
       "requirement": "Verified public repo without secrets/art archive",
       "primary_document_prefix": "05",
       "acceptance_gate": "G1",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Public repository and tracked-file pattern scan checked; pattern scanning is not a comprehensive secret audit."
     },
     {
       "id": "DEP-01",
       "requirement": "Single deploy authority and checks gate",
       "primary_document_prefix": "05",
       "acceptance_gate": "G1",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/release-negative-gate.json",
+        "docs/evidence/ci-version-release-review.json"
+      ],
+      "scope": "Actual staging release and failed-PR gate verified; updated production automatic release pending."
     },
     {
       "id": "DEP-02",
       "requirement": "Preview/staging cannot write production state",
       "primary_document_prefix": "05",
       "acceptance_gate": "G1",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/ci-version-release-review.json"
+      ],
+      "scope": "Environment resources separate and tokens cannot access the other Worker; actual preview branch write attempt not run."
     },
     {
       "id": "DEP-03",
       "requirement": "Canonical domain and media TLS",
       "primary_document_prefix": "05",
       "acceptance_gate": "G8",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Canonical HTTPS and redirects validated; media is served same-origin, not from a separate media host."
     },
     {
       "id": "DAT-01",
       "requirement": "Canonical D1 plus separate rebuildable search",
       "primary_document_prefix": "03",
       "acceptance_gate": "G7",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Separate production/staging D1 catalog and search; actual search and catalog checked."
     },
     {
       "id": "DAT-02",
       "requirement": "Supported atomic update plus outbox and version conflict",
       "primary_document_prefix": "06",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/admin-staging.json"
+      ],
+      "scope": "Unit regressions plus actual staging update, publish, archive and restoration."
     },
     {
       "id": "DAT-03",
       "requirement": "Actual lossless export/import and migration rehearsal",
       "primary_document_prefix": "03",
       "acceptance_gate": "G7",
-      "status": "PASS",
+      "status": "PARTIAL",
       "evidence": [
         "docs/evidence/postgres-rehearsal.json",
-        "docs/data-migration-runbook.md",
-        "tests/ops-postgres.test.ts"
+        "docs/evidence/cloud-restore-staging.json"
       ],
-      "scope": "local PostgreSQL18.6 engine only; production Hyperdrive cutover NOT RUN"
+      "scope": "Real small-data parity and isolated restore passed; production migration and 5m dataset remain untested."
     },
     {
       "id": "DAT-04",
@@ -102,185 +134,246 @@
       "acceptance_gate": "G7",
       "status": "PASS",
       "evidence": [
-        "docs/evidence/capacity-local.json",
         "docs/capacity-report.md"
       ],
-      "scope": "Reporting distinction only;5m load test NOT RUN"
+      "scope": "Five-million capacity is explicitly NOT RUN and separated from measured 18-item data."
     },
     {
       "id": "CAT-01",
       "requirement": "Real category search filter pagination",
       "primary_document_prefix": "04",
       "acceptance_gate": "G2",
-      "status": "NOT RUN",
+      "status": "PASS",
       "evidence": [
-        "docs/evidence/search-acceptance.json"
+        "docs/evidence/production-http.json",
+        "docs/acceptance.json"
       ],
-      "scope": "50 local search/filter cases passed; complete public browser pagination gate remains NOT RUN"
+      "scope": "Production search plus browser category, filter and pagination checks."
     },
     {
       "id": "CAT-02",
       "requirement": "Correct 404 redirects and publication filtering",
       "primary_document_prefix": "08",
       "acceptance_gate": "G2",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/admin-staging.json",
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Real staging archive hides detail, search and downloads; production error/redirect checks recorded."
     },
     {
       "id": "MED-01",
       "requirement": "Private/published isolation and immutable revisions",
       "primary_document_prefix": "06",
       "acceptance_gate": "G2",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/admin-staging.json",
+        "docs/evidence/media-final.json"
+      ],
+      "scope": "Private originals and verified immutable assets checked; emergency CDN purge not rehearsed."
     },
     {
       "id": "MED-02",
       "requirement": "Real validated PDF/WEBP formats and print sizes",
       "primary_document_prefix": "06",
       "acceptance_gate": "G2",
-      "status": "NOT RUN",
+      "status": "PASS",
       "evidence": [
         "docs/evidence/media-final.json",
-        "docs/evidence/studio-brand-export.json"
+        "docs/evidence/ai-production.json"
       ],
-      "scope": "Local108 derivatives and18 two-page exports verified; production response/browser acceptance remains NOT RUN"
+      "scope": "Actual PDF/WEBP byte, MIME, render and size checks; physical printing not run."
     },
     {
       "id": "MED-03",
       "requirement": "Production cross-origin Canvas export",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual production same-origin AI artwork export succeeded; separate cross-origin media host not used or tested."
     },
     {
       "id": "EDT-01",
       "requirement": "Brush eraser fill palette history transforms",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Browser fill, brush, undo/redo and layer checks plus automated pixel regressions; not every tool exercised on a real device."
     },
     {
       "id": "EDT-02",
       "requirement": "Touch/zoom/pan correctness and bounded memory",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Responsive layout and pointer/coordinate checks; physical touch and pinch device test not run."
     },
     {
       "id": "EDT-03",
       "requirement": "Versioned IndexedDB drafts and meaningful failures",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Actual locally saved project reopened; IndexedDB and failure regressions included in tests."
     },
     {
       "id": "EDT-04",
       "requirement": "WEBP/PDF export without modifying original",
       "primary_document_prefix": "04",
       "acceptance_gate": "G3",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/studio-brand-export.json"
+      ],
+      "scope": "Actual WEBP ZIP and PDF outputs, source preservation and pixel-level tests."
     },
     {
       "id": "ADM-01",
       "requirement": "Admin UI plus API plus alternate host protected",
       "primary_document_prefix": "05",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/admin-staging.json",
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Owner Access login and anonymous/forged alternate-host denials checked."
     },
     {
       "id": "ADM-02",
       "requirement": "CRUD taxonomy versioned publish/archive",
       "primary_document_prefix": "04",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/admin-staging.json"
+      ],
+      "scope": "Content upload, publish, edit/restore and archive tested in staging; full taxonomy CRUD not separately browser tested."
     },
     {
       "id": "IMP-01",
       "requirement": "Dry-run resume partial errors and no duplicate jobs",
       "primary_document_prefix": "06",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/admin-staging.json"
+      ],
+      "scope": "Actual prepared upload and repeated submission returned same job; all partial failure scenarios not browser-tested."
     },
     {
       "id": "JOB-01",
       "requirement": "Out of order retry DLQ reconciliation",
       "primary_document_prefix": "06",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/admin-staging.json"
+      ],
+      "scope": "Unit tests cover duplicate and ordering; live DLQ replay not performed."
     },
     {
       "id": "AI-01",
       "requirement": "Real text generation provider chain",
       "primary_document_prefix": "07",
       "acceptance_gate": "G5",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual production text job, receipt, downloaded files and pixels."
     },
     {
       "id": "AI-02",
       "requirement": "Real photo to line-art chain",
       "primary_document_prefix": "07",
       "acceptance_gate": "G5",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual production photo job with CC0 fixture, receipt, downloaded files and pixels."
     },
     {
       "id": "AI-03",
       "requirement": "Per-owner private inputs outputs and retention",
       "primary_document_prefix": "07",
       "acceptance_gate": "G5",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Separate owner denied; cleanup code tested, but actual multi-day expiration not waited through."
     },
     {
       "id": "AI-04",
       "requirement": "Atomic quota/reservation and timeout reconciliation",
       "primary_document_prefix": "07",
       "acceptance_gate": "G5",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/free-ai-enforcement.json"
+      ],
+      "scope": "Atomic local reservation and no uncertain retry tested; actual provider free quota exhaustion not induced."
     },
     {
       "id": "SEC-01",
       "requirement": "Upload validation CSP escaping parameterized SQL",
       "primary_document_prefix": "05",
       "acceptance_gate": "G4",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/production-http.json",
+        "docs/evidence/admin-staging.json"
+      ],
+      "scope": "Specific upload, auth, parameterization and CSP gates tested; not a complete security audit."
     },
     {
       "id": "SEO-01",
       "requirement": "Crawlable HTML canonical sitemap partitioning",
       "primary_document_prefix": "08",
       "acceptance_gate": "G6",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Live canonical/robots/sitemaps checked; 5m URL partition scale not tested."
     },
     {
       "id": "PER-01",
       "requirement": "No studio bundle on catalog and measured budgets",
       "primary_document_prefix": "08",
       "acceptance_gate": "G6",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/production-http.json"
+      ],
+      "scope": "Real single-client HTTP timings recorded; representative load and all performance budgets not tested."
     },
     {
       "id": "A11-01",
       "requirement": "Keyboard focus responsive touch targets",
       "primary_document_prefix": "04",
       "acceptance_gate": "G6",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Keyboard and responsive checks exercised; physical touch targets not device-tested."
     },
     {
       "id": "OPS-01",
@@ -289,111 +382,148 @@
       "acceptance_gate": "G8",
       "status": "PARTIAL",
       "evidence": [
-        "docs/evidence/operations-tests.json",
-        "docs/evidence/postgres-rehearsal.json",
-        "docs/evidence/bootstrap-restore.json",
-        "docs/evidence/cloud-restore-staging.json"
+        "docs/evidence/cloud-restore-staging.json",
+        "docs/evidence/cloud-backup-only-staging.json"
       ],
-      "scope": "Actual local184file bootstrap + twoSQLite and PostgreSQL restore PASS. Actual staging canonicalD1 -> privateR2 -> new isolatedD1:21canonical tables+migration ledger,498rows,46schema objects,full row/tableSHA,FK,active asset and sequence parity PASS. Three representative privateR2media objects restore PASS. Compatible production rollback,FTS rebuild,complete media restoration and RTO/RPO remain NOT RUN."
+      "scope": "Real staging isolated restore and private backup readback passed; full production recovery and RTO/RPO unmeasured."
     },
     {
       "id": "OPS-02",
       "requirement": "Cost model alarms and actual expensive-job stop",
       "primary_document_prefix": "10",
       "acceptance_gate": "G7",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/cost-projection.json",
+        "docs/evidence/free-ai-enforcement.json"
+      ],
+      "scope": "Paid AI fallback disabled and separate Free hard quota; actual full quota exhaustion/alerts not tested."
     },
     {
       "id": "HND-01",
       "requirement": "True URLs versions evidence and operator guide",
       "primary_document_prefix": "13",
       "acceptance_gate": "G8",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "PROJECT_STATE.md",
+        "docs/OPERATIONS.md"
+      ],
+      "scope": "Actual URLs and operator guide prepared; final production release verification pending."
     },
     {
       "id": "VIS-01",
       "requirement": "All ten routes/states match approved visual sources",
       "primary_document_prefix": "21",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Ten structural visual comparisons passed with disclosed recreation differences, mixed commits and partial device/functional checks."
     },
     {
       "id": "FMT-01",
       "requirement": "PDF and real WEBP downloads/exports",
       "primary_document_prefix": "19",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/media-final.json",
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual PDF and WEBP files decoded, measured, rendered and downloaded."
     },
     {
       "id": "CAT-03",
       "requirement": "Lazy Quick preview selection and race control",
       "primary_document_prefix": "18",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Actual rapid preview changes and matching links checked."
     },
     {
       "id": "CAT-04",
       "requirement": "Favorites and My artwork persist locally",
       "primary_document_prefix": "18",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Favorite and saved artwork persist through reload on same device."
     },
     {
       "id": "AI-05",
       "requirement": "All source style/weight/detail/shape/simplify controls affect generation",
       "primary_document_prefix": "19",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Option-to-prompt unit tests and two real jobs; not all combinations run through provider."
     },
     {
       "id": "AI-06",
       "requirement": "Aligned private Line art/Color preview with accessible splitter",
       "primary_document_prefix": "19",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/ai-production.json"
+      ],
+      "scope": "Actual private preview and line-art controls, owner isolation and blank downloads."
     },
     {
       "id": "EXP-01",
       "requirement": "Filename/paper/orientation and four format+outline cases",
       "primary_document_prefix": "19",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/evidence/studio-brand-export.json"
+      ],
+      "scope": "Four export variants covered by tests and actual files; print-preview opening blocked by in-app browser."
     },
     {
       "id": "MOB-01",
       "requirement": "Two-column home and four-item bottom navigation",
       "primary_document_prefix": "20",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PASS",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Actual 390px home, two columns and four navigation items."
     },
     {
       "id": "MOB-02",
       "requirement": "Four-tool studio, palette, Layers accordion and correct footer",
       "primary_document_prefix": "20",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Actual 389px layout, four tools, palette and Layers; real touch device test not run."
     },
     {
       "id": "EDT-05",
       "requirement": "Hue/opacity/eyedropper/keep-outlines/layer controls work",
       "primary_document_prefix": "20",
       "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
-      "status": "NOT RUN",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/acceptance.json"
+      ],
+      "scope": "Outline and layer behavior tested; every color control not independently verified on a physical device."
     }
   ],
-  "source_review_executed": false,
-  "last_updated": "2026-10-28T12:20:04.908296+00:00",
-  "note": "Scoped local evidence is recorded per requirement. NOT RUN remains for gates without complete actual evidence; package claims are not inherited."
+  "source_review_executed": true,
+  "last_updated": "2026-10-28T14:48:33.257340+00:00",
+  "note": "PASS and PARTIAL describe only stated evidence; five-million load and real-device printing/touch remain untested."
 }

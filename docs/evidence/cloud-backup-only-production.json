@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-10-28T14:47:30.899Z",
+  "finished_at": "2026-10-28T14:47:42.867Z",
+  "status": "BACKUP_VERIFIED",
+  "environment": "production",
+  "backup_only": true,
+  "requests": 11,
+  "elapsed_seconds": 11.968,
+  "excluded_private_rows": {
+    "ai_free_reservation": 2,
+    "creator_upload": 1,
+    "creator_job": 2
+  },
+  "checks": [
+    "BACKUPS bucket has disabled managed domain and no enabled custom domain",
+    "Immutable SQL and manifest fetched back from private R2 with exact SHA256 and bytes"
+  ],
+  "outbox_watermark": "18",
+  "new_database_created": false,
+  "scope": "Production canonical D1 snapshot -> private R2 checksum/readback; not a full restore or RTO/RPO measurement",
+  "credentials_logged": false
+}
