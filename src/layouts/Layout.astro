@@ -1,12 +1,11 @@
 ---
 import {env} from 'cloudflare:workers';
 import '../styles/global.css';
-import '@fontsource/nunito-sans/800.css';
-import '@fontsource/nunito-sans/900.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-const {title='JotColoring — Print it. Color it. Make it yours.',description='Explore printable coloring pages and make them your own in the coloring studio.',noindex=false,canonical=Astro.url.pathname} = Astro.props;
+import '../styles/home-v3.css';
+import '../styles/inner-v3.css';
+import Footer from '../components/Footer.astro';
+import '@fontsource-variable/manrope';
+const {title='JotColoring — Print it. Color it. Make it yours.',description='Explore printable coloring pages and make them your own in the coloring studio.',noindex=false,canonical=Astro.url.pathname,bodyClass='site-v3'} = Astro.props;
 const origin=env.PUBLIC_SITE_URL || Astro.url.origin;
 ---
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/><title>{title}</title><meta name="description" content={description}/><meta name="theme-color" content="#ff631b"/><meta name="robots" content={noindex?'noindex,follow':'index,follow'}/><link rel="canonical" href={new URL(canonical,origin).href}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/><slot name="head"/></head><body><a class="skip-link" href="#main">Skip to content</a><slot/><div id="toast" class="toast" role="status" hidden></div><script>import '../ui/common';</script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/><title>{title}</title><meta name="description" content={description}/><meta name="theme-color" content="#ff631b"/><meta name="robots" content={noindex?'noindex,follow':'index,follow'}/><link rel="canonical" href={new URL(canonical,origin).href}/><link rel="icon" href="/favicon-3d.svg" type="image/svg+xml"/><slot name="head"/></head><body class={bodyClass}><a class="skip-link" href="#main">Skip to content</a><slot/>{bodyClass==='site-v3'&&!Astro.url.pathname.startsWith('/studio/')&&!Astro.url.pathname.startsWith('/admin/')&&<Footer/>}<div id="toast" class="toast" role="status" hidden></div><script>import '../ui/common';</script></body></html>
