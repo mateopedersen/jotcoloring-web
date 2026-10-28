@@ -90,3 +90,32 @@ test('free gateway distinguishes timeout and decode failures without retry or pr
  env.AI_FREE_ONLY_GATEWAY={fetch:async()=>new Response('{}')};
  await assert.rejects(infer(),error=>error instanceof AppError&&error.code==='FREE_GATEWAY_RECEIPT_MISSING'&&error.fields?.inference_attempted==='unknown');
 });
+
+test('AI outline processing opens a broad black mass while preserving contour, thin strokes and small pupils',async()=>{
+ const {openDarkInteriors}=await import('../src/server/line-art');const width=256,height=256,raw=new Uint8Array(width*height*4).fill(255);
+ const paint=(x0:number,y0:number,w:number,h:number)=>{for(let y=y0;y<y0+h;y++)for(let x=x0;x<x0+w;x++){const p=(y*width+x)*4;raw[p]=raw[p+1]=raw[p+2]=0}};
+ paint(30,30,80,80);paint(150,25,3,170);paint(180,50,9,9);paint(125,210,95,3);const before=raw.slice();
+ const result=openDarkInteriors(raw,width,height);assert.equal(result.openedRegions,1);assert.ok(result.whitenedPixels>5000);assert.equal(raw[(70*width+70)*4],255);assert.equal(raw[(30*width+70)*4],0);
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){const p=(y*width+x)*4;if(x<30||x>=110||y<30||y>=110)assert.deepEqual(raw.subarray(p,p+4),before.subarray(p,p+4));if(raw[p]!==before[p])assert.ok(before[p]===0&&raw[p]===255)}
+ const once=raw.slice();assert.equal(openDarkInteriors(raw,width,height).whitenedPixels,0);assert.deepEqual(raw,once);
+});
+
+test('AI outline processing bounds memory by validated image dimensions',async()=>{
+ const {openDarkInteriors}=await import('../src/server/line-art');assert.throws(()=>openDarkInteriors(new Uint8Array(4),2048,2048));assert.throws(()=>openDarkInteriors(new Uint8Array(3),1,1));assert.throws(()=>openDarkInteriors(new Uint8Array(4),0,1));
+});
+
+test('expired private jobs scrub prompts and pointers only after every result revision is deleted',async()=>{
+ const {env,db}=setup(),{cleanupPrivateJobs}=await import('../src/server/ai-cleanup'),{createGeneration,runGeneration}=await import('../src/server/ai');let providerCalls=0;
+ const keys=new Set<string>();let failDelete=true;
+ const bucket={async list({prefix,limit=100}:{prefix:string;limit?:number}){const all=[...keys].filter(k=>k.startsWith(prefix));return {objects:all.slice(0,limit).map(key=>({key})),truncated:all.length>limit}},async delete(values:string|string[]){if(failDelete)throw Error('Simulated R2 outage');for(const key of Array.isArray(values)?values:[values])keys.delete(key)}};
+ Object.assign(env,{AI_ENABLED:'true',AI_BILLING_MODE:'free_only',AI_FREE_DAILY_NEURONS:'9000',AI_FREE_MAX_JOB_NEURONS:'300',AI_MAX_CONCURRENT_JOBS:'1',AI_PER_SESSION_DAILY_LIMIT:'2',AI_MODEL_ID:'@cf/black-forest-labs/flux-2-klein-4b',AI_QUEUE:{send:async()=>{}},JOB_ASSETS:bucket,SESSION_SIGNING_SECRET:'s'.repeat(40),AI_FREE_ONLY_GATEWAY:{fetch:async()=>{providerCalls++;throw Error('Never infer expired work')}}});
+ const job=await createGeneration(env,'cleanup-owner',{mode:'text',prompt:'A private prompt that must expire',style:'simple',line_weight:'bold',detail_level:20,page_shape:'portrait',simplify_background:true},'cleanup-test-one');
+ await db.prepare("UPDATE creator_job SET expires_at='2020-01-01',input_key='private-input',line_art_key='private-webp',color_preview_key='private-color',pdf_key='private-pdf' WHERE id=?").bind(job.job_id).run();
+ await db.prepare("INSERT INTO ai_free_reservation(job_id,day,neurons,daily_limit,provider_receipt) VALUES(?,'2020-01-01',300,9000,'retained-receipt')").bind(job.job_id).run();
+ for(let i=0;i<102;i++)keys.add(`jobs/cleanup-owner/${job.job_id}/revision-${i}`);
+ await runGeneration(env,job.job_id);assert.equal(providerCalls,0);
+ await assert.rejects(()=>cleanupPrivateJobs(env));let row=await db.prepare('SELECT * FROM creator_job WHERE id=?').bind(job.job_id).first<any>();assert.ok(row.parameters_json.includes('private prompt'));assert.equal(row.input_key,'private-input');
+ failDelete=false;await cleanupPrivateJobs(env);assert.equal(keys.size,2);row=await db.prepare('SELECT * FROM creator_job WHERE id=?').bind(job.job_id).first<any>();assert.notEqual(row.status,'expired');
+ await cleanupPrivateJobs(env);assert.equal(keys.size,0);row=await db.prepare('SELECT * FROM creator_job WHERE id=?').bind(job.job_id).first<any>();assert.equal(row.status,'expired');assert.equal(row.parameters_json,'{}');for(const key of ['input_key','line_art_key','color_preview_key','pdf_key'])assert.equal(row[key],null);assert.equal(row.idempotency_key,'cleanup-test-one');assert.equal((await db.prepare('SELECT provider_receipt FROM ai_free_reservation WHERE job_id=?').bind(job.job_id).first<any>()).provider_receipt,'retained-receipt');
+ await cleanupPrivateJobs(env);assert.equal(providerCalls,0);
+});

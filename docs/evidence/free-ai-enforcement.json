@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-28T12:50:17.713801+00:00",
+  "status": "PASS",
+  "free_ai_account": "0dce4e45aa8f6fcab101ea9622db99f2",
+  "dashboard_plan": "Workers Free \u2014 $0 \u2014 Current plan",
+  "dashboard_evidence": "../../../outputs/screenshots/free-ai-plan-verified.jpg",
+  "provider_rule": "Workers Free has 10000 neurons daily; operations above the allowance fail; no Paid upgrade or prepaid credits configured.",
+  "primary_source": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+  "paid_account_has_ai_binding": false,
+  "only_inference_destination": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
+  "daily_reservation_ceiling": 9000,
+  "zero_usd_budget": true,
+  "automatic_paid_fallback": false,
+  "new_inference_calls": 0
+}

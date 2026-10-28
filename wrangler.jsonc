@@ -11,7 +11,8 @@
     "binding": "ASSETS"
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "head_sampling_rate": 0.05
   },
   "vars": {
     "APP_ENV": "local",
@@ -133,7 +134,7 @@
       "preview_urls": false,
       "vars": {
         "APP_ENV": "production",
-        "AI_ENABLED": "false",
+        "AI_ENABLED": "true",
         "AI_BILLING_MODE": "free_only",
         "AI_FREE_DAILY_NEURONS": "9000",
         "AI_FREE_MAX_JOB_NEURONS": "300",
