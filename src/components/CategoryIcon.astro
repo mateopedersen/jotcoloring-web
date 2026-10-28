@@ -1,0 +1,17 @@
+---
+const {name,size=28}=Astro.props;
+const paths:Record<string,string>={
+ animals:'m3 3 7 4h4l7-4-1 12-8 6-8-6L3 3Zm2 5 5 5m9-5-5 5m-6 2h.01M16 15h.01M10 18h4l-2 2-2-2Z',
+ flowers:'M12 12C4 12 3 6 6 4c3-2 6 3 6 8Zm0 0c0-8 6-9 8-6 2 3-3 6-8 6Zm0 0c8 0 9 6 6 8-3 2-6-3-6-8Zm0 0c0 8-6 9-8 6-2-3 3-6 8-6Zm0 0v10m0-4 6-2',
+ fantasy:'M4 21V8h5v13m6 0V8h5v13M2 21h20M6.5 8V3m11 5V3M5 3h4L6.5 5m11-2H21l-3.5 2M9 13h6m-3 8v-5m-7-5h3m8 0h3',
+ mandalas:'M12 2c7 5 7 15 0 20C5 17 5 7 12 2Zm-10 10c5-7 15-7 20 0-5 7-15 7-20 0Zm3-7c8-1 15 6 14 14C11 20 4 13 5 5Zm14 0c1 8-6 15-14 14C4 11 11 4 19 5Z',
+ holidays:'M12 2 5 10h4l-6 7h7v5h4v-5h7l-6-7h4l-7-8Zm-5 12h.01m10 0h.01M12 9h.01',
+ vehicles:'M3 7h13l5 6v6H3V7Zm0 7h18M7 7v7m6-7v7M6 19a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0M3 10h2m11-3 2 7',
+ space:'M17.5 6.5a8 8 0 1 1-11 11 8 8 0 0 1 11-11ZM4 13C-2 19 6 22 14 16S24 3 17 8M4 3v3M2.5 4.5h3M20 19v3m-1.5-1.5h3',
+ ocean:'M3 19c3-3 5 3 9 0s6 3 9 0M3 23c3-3 5 3 9 0s6 3 9 0M9 6c6-5 11-3 11 2s-6 8-11 5V6Zm0 0L3 3v13l6-3m7-6h.01',
+ food:'M6 13h12l-2 9H8l-2-9Zm-2 0c-2-4 1-6 4-6-1-4 7-6 8-1 5-1 7 5 4 7H4Zm5 3 1 3m5-3-1 3M12 3V1',
+ dinosaurs:'M21 4h-5v5h-4l-2 4-5-2-3-4 1 10h4v5h3v-5h5v5h3V12l3-3V4Zm-4 3h.01M5 11l2-3 3 4m4-3 2 4',
+ all:'M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 0h7v7h-7v-7Z'
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name]||paths.all}/></svg>
