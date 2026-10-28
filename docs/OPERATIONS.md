@@ -1,6 +1,6 @@
 # JotColoring işletim kılavuzu
 
-Güncelleme: 28 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Workers ve R2 kullanılacak; yalnız domain zone Free kalacak, Pro alınmayacak.** Paylaşılan abonelikler değiştirilmez. Ücretli AI bütçesi0 kalır; ayrı ücretsiz AI hesabındaki gateway ve yerel neuron rezervasyonu, gerçek sağlayıcı/limit testleri tamamlanmadan başarılı akış sayılmaz. Bu belge kurulu kaynakların kanıtı değildir. Gerçek URL, kaynak ve kabul durumu `PROJECT_STATE.md`, `RESOURCE_INVENTORY.md` ve `acceptance.json` içindedir. Ürün arayüzü İngilizce; işletim açıklamaları Türkçedir.
+Güncelleme: 28 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Workers ve R2 kullanılacak; yalnız domain zone Free kalacak, Pro alınmayacak.** Paylaşılan abonelikler değiştirilmez. Ücretli AI bütçesi0 kalır; ayrı ücretsiz AI hesabındaki gateway ve yerel neuron rezervasyonu kullanılır; iki gerçek production işi ve kota sınırları ayrı raporlanır. Bu belge kurulu kaynakların kanıtı değildir. Gerçek URL, kaynak ve kabul durumu `PROJECT_STATE.md`, `RESOURCE_INVENTORY.md` ve `acceptance.json` içindedir. Ürün arayüzü İngilizce; işletim açıklamaları Türkçedir.
 
 ## İçerik hazırlama
 
@@ -17,6 +17,9 @@ pnpm exec tsx scripts/data/prepare-media.ts \
   --alt 'A fox and rabbit surrounded by flowers and leaves.' \
   --categories animals,woodland --tags fox,rabbit \
   --ages teens,adults --difficulty detailed \
+  --source-type user_owned --rights-status documented \
+  --rights-reference 'Owner reviewed source and commercial usage rights.' \
+  --secret-file /absolute/path/private/secrets.json --environment staging \
   --output /absolute/path/private-prepared/woodland-friends
 ```
 
@@ -24,14 +27,14 @@ Komut çıktı klasöründe `manifest.json`, `reviews.json`, `files.json` ve tü
 
 ## Yönetimden aktarım ve yayın
 
-1. Yapılandırılmış `/admin/` adresine Cloudflare Access ile girin. Kabul edilen kimlik hesapta tanımlı olmalıdır; sadece e-posta header'ı yetki değildir.
-2. Dosyaları private incoming alanına yükleyin. Yayınlanmamış dosyaların public bucket'a gitmediğini doğrulayın.
-3. `/api/admin/imports/validate` ile manifest ön kontrolünü çalıştırın. Bu kontrol yayın yapmaz. Hash, gerçek MIME, dosya boyutu, boyutlar, required roles, kategori ve hak bilgisi hatalarını düzeltin.
-4. `POST /api/admin/imports` ile aynı idempotency anahtarıyla işi gönderin. `update` için okuduğunuz `expected_version` zorunludur. 409 alınırsa başka değişikliği okuyup birleştirin; sürümü körlemesine artırmayın.
-5. İşin gerçek durumunu ve hata kodunu izleyin. Başarılı yayın sonrası kategori, arama, detay, PDF ve WEBP'yi açın; doğru içerik kimliği ve revision olduklarını kontrol edin.
-6. Bir hata yüzünden işlemi tekrar gönderirken aynı payload aynı idempotency anahtarını kullanır. Değişen dosya/yeni revision yeni manifest ve yeni anahtar gerektirir.
+1. `/admin/` adresine yalnız izin verilen Cloudflare Access kimliğiyle girin ve **Import & upload** sekmesini açın. Test için `https://staging.jotcoloring.com/admin/`, gerçek yayın için `https://jotcoloring.com/admin/` kullanın.
+2. Önce kaynağın ve lisansın gerçekten size ait veya kullanıma uygun olduğunu kontrol edin. Hazırlama komutu varsayılan olarak hakları `unverified` bırakır; yalnız doğrulanmış bilgi için `--rights-status documented` ve doğru `--rights-reference` kullanın. Kaynağın türünü `--source-type` ile doğru belirtin; AI veya sahiplik iddiası varsayılmaz.
+3. Hazırlama komutunda aynı ortama ait `--secret-file` ve `--environment` kullanılır. Yerel dosyadaki doğrulama sırrı sunucuya veya Git'e gönderilmez. `reviews.json` belirli dosya hash'lerine bağlı imzalı inceleme içerir; yedi gün geçerlidir ve özel tutulur. Komut, kaynak, PDF ve WEBP çıktılarının görsel/hak incelemesinin yerine geçmez.
+4. **Original artwork** alanına özgün resmi; **Prepared manifest, reviews and files** alanına aynı klasördeki `manifest.json`, `reviews.json` ve bütün rol adlı WEBP/PDF türevlerini birlikte seçin. `files.json` seçilmez. İsteğe bağlı renkli `home_half_color.webp` varsa onu da seçin. Kaynak hash'i, gerçek byte'lar ve imzalar uyuşmazsa işlem durur.
+5. **Validate and queue prepared page** ile dosyalar private alana, özgün kaynak ve kopyası backup alanına yüklenir; kontrol edilen içerik inceleme kuyruğuna alınır. **Content → Refresh** ile durumunu görün. `ready_for_review` olduktan ve görünüm/hak kontrolü yapıldıktan sonra **Publish** düğmesini kullanın. İndirme, arama, kategori ve detay sayfasını kontrol edin.
+6. Aynı sekmede kesilen işlemi aynı dosyalarla tekrar başlatmak özel yükleme anahtarlarını korur; iş gönderimi aynı payload/anahtarla idempotenttir. Sekme oturumu silinirse yarım yüklemeler private kalabilir; yeni gönderim öncesi işleri ve audit kaydını kontrol edin. Düzenlemede önce güncel revision/expected version okunur; 409 durumunda çakışmayı inceleyin.
 
-Arayüzde uygulanmamış yönetim işlemleri tamamlanmış kabul edilmez. Toplu CLI ve canlı yönetim adımları teslim kanıtıyla eşleştirilmelidir. `scripts/data/import-catalog.ts` mevcut API sözleşmesinin CLI istemcisidir; kullanım seçeneklerini dosyanın yardımından alın. Kimlik doğrulama değerlerini komut argümanına veya sohbete yazmayın.
+`scripts/data/import-catalog.ts` API istemcisi ayrıca bir Cloudflare Access servis kimliği gerektirir; bu kurulumda böyle bir kimlik otomatik oluşturulmamıştır. Yönetimdeki hazırlanan dosya akışı mevcut sahip oturumunu kullanır. Doğrulama sırlarını ve imzalı özel dosyaları sohbet, repo veya herkese açık depolamaya koymayın.
 
 ## Yayından kaldırma
 
@@ -39,7 +42,7 @@ Metadata durumunu değiştirmek yeni kategori/detail erişimini kapatır; uzun s
 
 ## Yayın ve değişiklikler
 
-GitHub Actions tek otomatik yayın yoludur. Workers Builds'in user-token sınırı, tek Worker kapsamı için gereken account-owned token modeliyle uyuşmuyor. Onaylanan iki token ayrı, branch kısıtlı environment secret'larında saklandı (operatör bildirimi). İlk staging run40696610833/attempt2 Verify ve jobs upload'u geçti, hesap-geneli queue liste isteğinde10000 ile durdu; web çalışmadı. Düzeltme `CI_DEPLOYMENT_DECISION.md` ve `evidence/ci-version-release-review.json` içinde; yeni version-only yolun gerçek remote kabulü henüz NOT RUN.
+GitHub Actions tek otomatik yayın yoludur. Workers Builds'in user-token sınırı, tek Worker kapsamı için gereken account-owned token modeliyle uyuşmuyor. Onaylanan iki token ayrı, branch kısıtlı environment secret'larında saklandı (operatör bildirimi). İlk staging run40696610833/attempt2 Verify ve jobs upload'u geçti, hesap-geneli queue liste isteğinde10000 ile durdu; web çalışmadı. Düzeltme `CI_DEPLOYMENT_DECISION.md` ve `evidence/ci-version-release-review.json` içinde; version-only düzeltme staging üzerinde gerçek run 40703500734 ile doğrulandı; production kabulü ayrıca kaydedilir.
 
 Mevcut `Verify / verify` kontrol kapısı korunur. Typecheck, bütün testler, Python operasyon kontrolü, tracked sır taraması, ortam build'i ve gerçek config metadata parity aynı workflow'dadır. Yayın job'ı yalnız main/staging push, başarılı verify, doğru upstream repo ve `JOTCOLORING_DEPLOY_ENABLED=true` ile çalışır. Aynı commit artifact'i hash'lenir; token yalnız son yayın adımında vardır. Önce jobs, sonra web `versions upload` ve elde edilen kesin UUID'nin%100 etkinleştirilmesiyle yayımlanır; readback eşitliği zorunludur. Otomatik provision/auto-create kapalıdır. Queue consumers, cron ve routes korunur; bunların değişimi ayrı operatör işidir. Workflow'a production migration veya içerik aktarımı eklenmez. Ham CLI çıktısı önceki sürüm yazarlarını içerebildiğinden public loga basılmaz; sürüm/deployment/commit receipt ve sayısal hata kodları gösterilir.
 
@@ -70,7 +73,7 @@ Araç var olan hedefin üstüne yazmaz, symlink/traversal, eksik/fazla dosya ve 
 
 `python3 scripts/ops/capacity.py /private/catalog.sqlite --table content` gerçek yerel SQLite page/index alanını ölçer. Aynı işlem search DB için kendi kayıt tablosuyla yapılmalıdır. %30 büyüme payıyla %60 plan, %70 geçiş hazır, %80 büyük import durdur eşiği kullanılır. Bu ölçüm D1 ağ gecikmesi/RPS veya 5 milyon yük testi değildir. 5 milyon kayıt için geçiş PostgreSQL+Hyperdrive ve ayrı bütçe/yetki gerektirirse sessiz satın alma yapılmaz. Gerçek yerel PostgreSQL schema/import/parity/replay provası PASS; production adaptörü/Hyperdrive cutover NOT RUN. Ayrıntı `data-migration-runbook.md`.
 
-AI ücretli çağrı bütçesi **0**. Ayrı ücretsiz hesap için9.000 günlük neuron ve iş başına1.000 üst sınırı bir yerel rezervasyon politikasıdır; bu hesapta başka işlerin kullanımını ölçmez. Provider ücretsiz kotası üstünde ücretli çağrıya düşme kabul edilmez. Gerçek inference ve kota tükenmesi testi ayrıca gereklidir. Gerçek provider kapasitesi ve onaylı sayısal bütçe belirlenmeden açılmaz. Uyarı e-postası veya dashboard alarmı bütçe durdurma mekanizması değildir. Atomik rezervasyon yeni pahalı işi durdurur; katalog okumalarını kapatmaz. Belirsiz provider timeout'unda yeniden ücret doğurabilecek çağrıyı otomatik çoğaltmayın.
+AI ücretli çağrı bütçesi **0**. Ayrı ücretsiz hesap için9.000 günlük neuron ve iş başına300 üst sınırı bir yerel rezervasyon politikasıdır; bu hesapta başka işlerin kullanımını ölçmez. Provider ücretsiz kotası üstünde ücretli çağrıya düşme kabul edilmez. Production metin ve fotoğraf üretimi gerçek provider ile doğrulandı; sağlayıcının kotasını bilerek tüketme testi yapılmadı. Uyarı e-postası veya dashboard alarmı bütçe durdurma mekanizması değildir. Atomik rezervasyon yeni pahalı işi durdurur; katalog okumalarını kapatmaz. Belirsiz provider timeout'unda yeniden ücret doğurabilecek çağrıyı otomatik çoğaltmayın.
 
 ## Public dosya kontrolü
 

@@ -79,7 +79,7 @@ export async function mountStudio(){
   all<HTMLButtonElement>('[data-tool]').forEach(b=>b.onclick=()=>chooseTool(b.dataset.tool!));all<HTMLButtonElement>('[data-color]').forEach(b=>b.onclick=()=>setColor(b.dataset.color!));
   all<HTMLButtonElement>('[data-save]').forEach(b=>b.onclick=()=>void persist().catch(()=>{}));all<HTMLButtonElement>('[data-download]').forEach(b=>b.onclick=()=>void openDownload(b.dataset.download!));
   all<HTMLButtonElement>('[data-history]').forEach(b=>b.onclick=()=>{if(!ready)return;cancelFill();extensions?.clearSelection();if((b.dataset.history==='undo'?undo:redo)(project)){dirty();rebuild();syncLayers();syncTextList();}});
-  all<HTMLButtonElement>('[data-zoom]').forEach(b=>b.onclick=()=>setZoom(zoom*(b.dataset.zoom==='in'?1.2:1/1.2)));el<HTMLButtonElement>('[data-fit]').onclick=fit;
+  all<HTMLButtonElement>('[data-zoom]').forEach(b=>b.onclick=()=>setZoom(zoom*(b.dataset.zoom==='in'?1/.85:.85)));el<HTMLButtonElement>('[data-fit]').onclick=fit;
   el<HTMLInputElement>('[data-size]').oninput=e=>{size=Number((e.target as HTMLInputElement).value);el<HTMLOutputElement>('[data-size-value]').value=String(size);};
   el<HTMLInputElement>('[data-opacity]').oninput=e=>{opacity=Number((e.target as HTMLInputElement).value)/100;el<HTMLOutputElement>('[data-opacity-value]').value=`${Math.round(opacity*100)}%`;};
   el<HTMLInputElement>('[data-outlines]').onchange=e=>change(()=>{project.keepOutlines=(e.target as HTMLInputElement).checked;});

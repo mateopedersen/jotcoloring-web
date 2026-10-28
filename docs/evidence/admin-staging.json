@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-10-28T14:28:18.362151+00:00",
+  "environment": "staging",
+  "source_commit": "7eb771981ed9106056f49223989a241b9c462ae6",
+  "access": "Existing owner Cloudflare Access session successfully opened admin",
+  "content_id": "jc-staging-qa-woodland",
+  "job_id": "6f93a936-80ba-4121-9045-2403b66f04a9",
+  "workflow": [
+    "Uploaded an actual WEBP through admin to private incoming storage",
+    "Validated a manifest with existing verified JotColoring assets",
+    "Queued import, saw ready_for_review in admin",
+    "Published version 1 using admin",
+    "Real HTTPS: detail 200; search returned correct ID; PDF 200/743353 bytes; WEBP 200/519480 bytes",
+    "Archived in admin, version 2",
+    "Real HTTPS after archive: detail 404; search zero matches; PDF 404"
+  ],
+  "result": "PASS for tested existing-media flow",
+  "new_prepared_media_ui": "PENDING additional staging verification",
+  "restoration_revision_fix": "Local regression PASS; staging UI test pending",
+  "production_writes": "None"
+}
