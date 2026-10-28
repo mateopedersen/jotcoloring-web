@@ -1,0 +1,101 @@
+{
+  "measured_at": "2026-10-28T11:23:54.152995+00:00",
+  "scope": "actual final branded local artifacts; no traffic or paid usage assumption",
+  "active_derivatives": {
+    "count": 108,
+    "total_bytes": 38094254,
+    "median_bytes": 305245.0,
+    "p95_bytes": 655581,
+    "min_bytes": 118668,
+    "max_bytes": 743353
+  },
+  "all_active_variants_per_content": {
+    "count": 18,
+    "total_bytes": 38094254,
+    "median_bytes": 2111729.5,
+    "p95_bytes": 2774463,
+    "min_bytes": 1596388,
+    "max_bytes": 2774463
+  },
+  "private_raw_sources": {
+    "count": 18,
+    "total_bytes": 46071547,
+    "median_bytes": 2541684.5,
+    "p95_bytes": 3155582,
+    "min_bytes": 2075077,
+    "max_bytes": 3155582
+  },
+  "by_role": {
+    "catalog_preview_bw": {
+      "count": 18,
+      "total_bytes": 5187702,
+      "median_bytes": 283878.0,
+      "p95_bytes": 437398,
+      "min_bytes": 188690,
+      "max_bytes": 437398
+    },
+    "catalog_thumb_bw": {
+      "count": 18,
+      "total_bytes": 2664556,
+      "median_bytes": 148051.0,
+      "p95_bytes": 178954,
+      "min_bytes": 121706,
+      "max_bytes": 178954
+    },
+    "home_half_color": {
+      "count": 18,
+      "total_bytes": 2557222,
+      "median_bytes": 140737.0,
+      "p95_bytes": 160656,
+      "min_bytes": 118668,
+      "max_bytes": 160656
+    },
+    "printable_pdf_a4_bw": {
+      "count": 18,
+      "total_bytes": 10794759,
+      "median_bytes": 599430.0,
+      "p95_bytes": 743353,
+      "min_bytes": 468869,
+      "max_bytes": 743353
+    },
+    "printable_pdf_letter_bw": {
+      "count": 18,
+      "total_bytes": 10794437,
+      "median_bytes": 599412.5,
+      "p95_bytes": 743335,
+      "min_bytes": 468851,
+      "max_bytes": 743335
+    },
+    "printable_webp_bw": {
+      "count": 18,
+      "total_bytes": 6095578,
+      "median_bytes": 340601.0,
+      "p95_bytes": 529282,
+      "min_bytes": 215710,
+      "max_bytes": 529282
+    }
+  },
+  "max_pdf_bytes": 743353,
+  "pdf_byte_limit": 1000000,
+  "content_count": 18,
+  "scale_projections": [
+    {
+      "items": 100000,
+      "active_derivative_bytes": 211634744444,
+      "kind": "linear_projection_only",
+      "raw_originals_revisions_and_backups_included": false
+    },
+    {
+      "items": 1000000,
+      "active_derivative_bytes": 2116347444444,
+      "kind": "linear_projection_only",
+      "raw_originals_revisions_and_backups_included": false
+    },
+    {
+      "items": 5000000,
+      "active_derivative_bytes": 10581737222222,
+      "kind": "linear_projection_only",
+      "raw_originals_revisions_and_backups_included": false
+    }
+  ]
+}

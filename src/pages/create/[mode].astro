@@ -1,0 +1,5 @@
+---
+import {env} from 'cloudflare:workers';import Layout from '../../layouts/Layout.astro';import Header from '../../components/Header.astro';import Creator from '../../components/Creator.astro';import {createCatalog} from '../../server/catalog';
+const mode=Astro.params.mode;if(!['text','photo'].includes(mode!))return Astro.redirect('/create/text/');const repo=createCatalog(env);const example=await repo.get(mode==='photo'?'playful-puppy':'woodland-friends');const ideas=(await repo.list({limit:4})).items.filter(i=>i.id!==example?.id).slice(0,3);
+---
+<Layout title={`${mode==='text'?'Text':'Photo'} to coloring page — JotColoring AI Builder`} noindex><Header variant={mode==='text'?'food':'full'}/><Creator mode={mode} example={example} ideas={ideas}/></Layout>

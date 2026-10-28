@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "jotcoloring-ai-free-gateway",
+  "account_id": "0dce4e45aa8f6fcab101ea9622db99f2",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-26",
+  "workers_dev": true,
+  "observability": {"enabled": false},
+  "ai": {"binding": "AI"},
+  "vars": {
+    "ACCOUNT_BILLING_PLAN": "workers_free",
+    "ENFORCED_ACCOUNT_ID": "0dce4e45aa8f6fcab101ea9622db99f2"
+  }
+}

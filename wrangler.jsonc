@@ -1,0 +1,215 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jotcoloring-web",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-10-26",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "APP_ENV": "local",
+    "AI_ENABLED": "false",
+    "PUBLIC_SITE_URL": "http://localhost:4321"
+  },
+  "d1_databases": [
+    {
+      "binding": "CATALOG_DB",
+      "database_name": "jotcoloring-local-catalog",
+      "database_id": "local-catalog",
+      "migrations_dir": "migrations/catalog"
+    },
+    {
+      "binding": "SEARCH_DB",
+      "database_name": "jotcoloring-local-search",
+      "database_id": "local-search",
+      "migrations_dir": "migrations/search"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ORIGINALS",
+      "bucket_name": "jotcoloring-local-originals"
+    },
+    {
+      "binding": "PUBLISHED",
+      "bucket_name": "jotcoloring-local-published"
+    },
+    {
+      "binding": "JOB_ASSETS",
+      "bucket_name": "jotcoloring-local-jobs"
+    },
+    {
+      "binding": "BACKUPS",
+      "bucket_name": "jotcoloring-local-backups"
+    }
+  ],
+  "account_id": "48c779c8eaa80234e0bb9d57f96e588b",
+  "env": {
+    "staging": {
+      "name": "jotcoloring-staging",
+      "workers_dev": true,
+      "preview_urls": false,
+      "vars": {
+        "APP_ENV": "staging",
+        "AI_ENABLED": "true",
+        "AI_BILLING_MODE": "free_only",
+        "AI_FREE_DAILY_NEURONS": "9000",
+        "AI_FREE_MAX_JOB_NEURONS": "300",
+        "AI_MAX_CONCURRENT_JOBS": "1",
+        "AI_PER_SESSION_DAILY_LIMIT": "3",
+        "AI_DAILY_BUDGET_USD": "0",
+        "AI_MONTHLY_BUDGET_USD": "0",
+        "PUBLIC_SITE_URL": "https://staging.jotcoloring.com",
+        "PRIVATE_INPUT_RETENTION_HOURS": "24",
+        "PRIVATE_RESULT_RETENTION_DAYS": "7",
+        "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
+        "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b"
+      },
+      "d1_databases": [
+        {
+          "binding": "CATALOG_DB",
+          "database_name": "jotcoloring-staging-catalog",
+          "database_id": "835240f5-90d7-4bf2-8a41-b67cc484fb4b",
+          "migrations_dir": "migrations/catalog"
+        },
+        {
+          "binding": "SEARCH_DB",
+          "database_name": "jotcoloring-staging-search",
+          "database_id": "1f4852c1-2b4d-4e80-99a3-f86be83858b6",
+          "migrations_dir": "migrations/search"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "ORIGINALS",
+          "bucket_name": "jotcoloring-staging-originals"
+        },
+        {
+          "binding": "PUBLISHED",
+          "bucket_name": "jotcoloring-staging-published"
+        },
+        {
+          "binding": "JOB_ASSETS",
+          "bucket_name": "jotcoloring-staging-jobs"
+        },
+        {
+          "binding": "BACKUPS",
+          "bucket_name": "jotcoloring-staging-backups"
+        }
+      ],
+      "queues": {
+        "producers": [
+          {
+            "binding": "INGEST_QUEUE",
+            "queue": "jotcoloring-staging-ingest"
+          },
+          {
+            "binding": "AI_QUEUE",
+            "queue": "jotcoloring-staging-ai"
+          }
+        ]
+      },
+      "limits": {
+        "cpu_ms": 1000
+      },
+      "routes": [
+        {
+          "pattern": "staging.jotcoloring.com",
+          "custom_domain": true,
+          "zone_id": "f719bb4d17d29abc414ab167ba2797e4"
+        }
+      ]
+    },
+    "production": {
+      "name": "jotcoloring-production",
+      "workers_dev": true,
+      "preview_urls": false,
+      "vars": {
+        "APP_ENV": "production",
+        "AI_ENABLED": "false",
+        "AI_BILLING_MODE": "free_only",
+        "AI_FREE_DAILY_NEURONS": "9000",
+        "AI_FREE_MAX_JOB_NEURONS": "300",
+        "AI_MAX_CONCURRENT_JOBS": "1",
+        "AI_PER_SESSION_DAILY_LIMIT": "3",
+        "AI_DAILY_BUDGET_USD": "0",
+        "AI_MONTHLY_BUDGET_USD": "0",
+        "PUBLIC_SITE_URL": "https://jotcoloring.com",
+        "PRIVATE_INPUT_RETENTION_HOURS": "24",
+        "PRIVATE_RESULT_RETENTION_DAYS": "7",
+        "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
+        "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b",
+        "ACCESS_TEAM_DOMAIN": "https://broken-term-6d26.cloudflareaccess.com",
+        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e"
+      },
+      "d1_databases": [
+        {
+          "binding": "CATALOG_DB",
+          "database_name": "jotcoloring-production-catalog",
+          "database_id": "d075722e-c698-4b6e-a5e4-f53ae5c9e411",
+          "migrations_dir": "migrations/catalog"
+        },
+        {
+          "binding": "SEARCH_DB",
+          "database_name": "jotcoloring-production-search",
+          "database_id": "59133e5c-f73a-42d2-8b8b-223720e8b6ec",
+          "migrations_dir": "migrations/search"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "ORIGINALS",
+          "bucket_name": "jotcoloring-production-originals"
+        },
+        {
+          "binding": "PUBLISHED",
+          "bucket_name": "jotcoloring-production-published"
+        },
+        {
+          "binding": "JOB_ASSETS",
+          "bucket_name": "jotcoloring-production-jobs"
+        },
+        {
+          "binding": "BACKUPS",
+          "bucket_name": "jotcoloring-production-backups"
+        }
+      ],
+      "queues": {
+        "producers": [
+          {
+            "binding": "INGEST_QUEUE",
+            "queue": "jotcoloring-production-ingest"
+          },
+          {
+            "binding": "AI_QUEUE",
+            "queue": "jotcoloring-production-ai"
+          }
+        ]
+      },
+      "limits": {
+        "cpu_ms": 1000
+      }
+    },
+    "preview": {
+      "name": "jotcoloring-preview",
+      "workers_dev": true,
+      "preview_urls": false,
+      "vars": {
+        "APP_ENV": "preview",
+        "AI_ENABLED": "false"
+      },
+      "d1_databases": [],
+      "r2_buckets": [],
+      "queues": {
+        "producers": []
+      }
+    }
+  }
+}

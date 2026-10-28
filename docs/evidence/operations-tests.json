@@ -1,0 +1,65 @@
+{
+  "recorded_at": "2026-10-28T11:04:04.819563+00:00",
+  "environment": "local Node24.19.0, Python, PGlite0.5.12; no remote traffic",
+  "results": [
+    {
+      "command": "node --import tsx --test tests/ops-postgres.test.ts tests/object-library.test.ts",
+      "passed": 7,
+      "failed": 0,
+      "scope": "500 vectors, semantic ear grouping, SQLite\u2192PostgreSQL checksum/Unicode/large integer/resume/corruption/conflict regression"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p ops_test.py -v",
+      "passed": 6,
+      "failed": 0,
+      "scope": "local byte backup+restore, corruption/symlink/path rejection, cost arithmetic and current-vs-target capacity gates; raw/private path and redacted-secret scan regression"
+    },
+    {
+      "command": "python3 scripts/ops/secret_scan.py --working-tree",
+      "passed": true,
+      "files_at_time_of_run": 140,
+      "scope": "candidate source files respecting ignore rules; not tracked Git proof; not a complete secret audit"
+    }
+  ],
+  "sha256": {
+    "tests/object-library.test.ts": "95523450d406ca869b41f94ce04a954c5a2d912fc4143f9c83317e9280f51ef7",
+    "tests/ops-postgres.test.ts": "03042e10b2a90d6d9c040399afe991c719e771e178bb74999742d1e0822b35af",
+    "tests/ops_test.py": "b2f06dc80c3591b081d2e31c74aa3c3d2cd88617ffc17452cf9ca4951f36ac85",
+    "src/studio/object-library.ts": "9a821a61886e4fc73d1989e08beacbae3b77451f893fb3617702a37cbca3d1a6",
+    "scripts/ops/postgres-transfer.ts": "5a07f8248f6eeffd19b6c3475d213e4f2d636c5d9f223186d8287e0d0a05b016",
+    "scripts/ops/postgres-schema.sql": "f3af6185b71b047d23c96359de009eafc022d07091c9780270ea54b02e514ebe",
+    "scripts/ops/catalog-transfer.py": "7d97cc961a1d6b945b5f573790d4058ddce6f48fd0c8ed52456464ebe98605f1",
+    "scripts/ops/backup.py": "044a68c958b021b6c445e0a915a2df020132ffee22b8a297b41ad005fb0eb08f",
+    "scripts/ops/capacity.py": "c49f7e7d23671c2559840a90064bf8853b72fbcd383ee338c37cce6306f8bdb3",
+    "scripts/ops/postgres-import.ts": "3b21e03aca41f0ef5afaabc07a17c3823a3c0a7ef733f3aff1ea00a8d7f2c4f2",
+    "scripts/ops/secret_scan.py": "a6056233a7868d4c2d776686caad487784e33606ddb66b6fd265915a107aea39",
+    "scripts/ops/restore-bootstrap.py": "bf321e09b94acfa0602c873ae8fe9992182e2a39eac6ff6c8bd198cec3e85ee2",
+    "scripts/ops/media-capacity.py": "5eab38ee9b269b2e00ddf751406ba57029013971a8054d15c2359100d9364f4e"
+  },
+  "browser_studio_tested_by_this_record": false,
+  "production_backup_restore_tested": false,
+  "additional_cli_checks": {
+    "measured_at": "2026-10-28T11:08:13.491242+00:00",
+    "dry_run": "PASS",
+    "local_apply": "PASS",
+    "same_snapshot_repeat": "PASS_already_complete",
+    "canonical_rows": 531,
+    "canonical_tables": 21,
+    "snapshot_sha256": "b16de0a2c4cc32eace5b67cfc822d1baaa4c956977a8ff5658026f148ab1ef6b",
+    "remote": false
+  },
+  "latest_candidate_scan": {
+    "files": 154,
+    "status": "PASS",
+    "tracked_scan": "NOT RUN pending Git index"
+  },
+  "final_responsive_bootstrap_restore": {
+    "status": "PASS",
+    "files": 184,
+    "contents": 18,
+    "derived_assets": 108,
+    "private_raw_sources": 18,
+    "local_seconds": 1.785,
+    "remote_restore": "NOT RUN"
+  }
+}

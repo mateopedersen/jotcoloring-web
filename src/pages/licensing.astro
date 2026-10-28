@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';
+const candidate=Astro.url.searchParams.get('image')||'';
+const image=/^[a-z0-9-]{1,160}$/.test(candidate)?candidate:'';
+const subject=image?`Commercial license request: ${image}`:'Commercial license request';
+const body=`Page: ${image?`https://jotcoloring.com/coloring/${image}/`:''}\nIntended use: \nAudience or distribution: \nQuantity: \nDuration: `;
+---
+<Layout title="Request an image license — JotColoring" description="Contact JotColoring for commercial image licensing." canonical="/licensing/"><Header variant="simple"/><main id="main" class="text-page"><h1>License a JotColoring image</h1><p>Personal and non-commercial educational use is free under our <a href="/license/">artwork license</a>. For commercial use, contact JotColoring for written permission before publishing.</p>{image&&<p>Selected image: <a href={`/coloring/${image}/`}>{image.replaceAll('-',' ')}</a></p>}<p>Send the image URL, your intended use, distribution, quantity and duration to <a href="mailto:jotcoloring@gmail.com">jotcoloring@gmail.com</a>. We will review the request and confirm the available rights and any license terms.</p><a class="button primary" href={`mailto:jotcoloring@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}>Email a license request</a><p>A request is not an issued license. No payment is collected on this page.</p></main></Layout>

@@ -1,0 +1,19 @@
+{
+  "measured_at": "2026-10-28T11:21:54.512Z",
+  "contents": 18,
+  "changed_roles": [
+    "home_half_color"
+  ],
+  "unchanged_derivatives": 90,
+  "unchanged_private_originals": 18,
+  "dimensions": [
+    400,
+    600
+  ],
+  "min_bytes": 118668,
+  "median_bytes": 140737,
+  "max_bytes": 160656,
+  "old_total_bytes": 34058148,
+  "new_total_bytes": 2557222,
+  "reduction_percent": 92.49159995428994
+}

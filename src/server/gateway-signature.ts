@@ -1,0 +1,5 @@
+export const GATEWAY_MODEL='@cf/black-forest-labs/flux-2-klein-4b';
+export async function gatewayDigest(body:Uint8Array){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',body as BufferSource))].map(b=>b.toString(16).padStart(2,'0')).join('');}
+export function signatureData(timestamp:string,id:string,model:string,maxNeurons:string,hash:string){return ['POST','/inference',timestamp,id,model,maxNeurons,hash].join('\n');}
+export async function gatewaySignature(secret:string,data:string){const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']);return [...new Uint8Array(await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(data)))].map(b=>b.toString(16).padStart(2,'0')).join('');}
+export async function verifyGatewaySignature(secret:string,data:string,signature:string){if(!/^[a-f0-9]{64}$/.test(signature))return false;const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['verify']);return crypto.subtle.verify('HMAC',key,Uint8Array.from(signature.match(/../g)!,x=>parseInt(x,16)),new TextEncoder().encode(data));}

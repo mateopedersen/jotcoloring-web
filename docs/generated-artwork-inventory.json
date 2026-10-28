@@ -1,0 +1,280 @@
+{
+  "created_on": "2026-10-28",
+  "method": "built-in image_gen",
+  "purpose": "New standalone coloring originals; not cropped from approved mockups and not presented as the mockup originals.",
+  "generation_base_prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: ",
+  "assets": [
+    {
+      "slug": "hibiscus-garden",
+      "source_path": "public/assets/originals/hibiscus-garden.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A large graceful hibiscus flower surrounded by detailed tropical leaves, small buds and daisies. Central flower dominates, naturally overlapping foliage framing all sides.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Large five-petal hibiscus with projecting stamens, buds, daisies, serrated leaves, palm frond and split tropical leaf. Black outlines with some fine pale vein strokes on white.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "0f107c4cd52f3e53374f51d9835480b857328829eee0779e3dfb0419fac2b2e8",
+      "bytes": 2151292,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "friendly-dragon",
+      "source_path": "public/assets/originals/friendly-dragon.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A friendly small dragon with elegant wings sitting in a flower garden in front of a storybook castle, rounded appealing face, decorated towers and distant trees.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Smiling small horned dragon with spread wings sits among flowers; many turreted castle towers and trees behind. Imagined creature, no real product or place.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "d886ce1ddc7a25a1d493f852a953ad4a8e223b2594eaed8bd5a9710720754216",
+      "bytes": 2612851,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "botanical-mandala",
+      "source_path": "public/assets/originals/botanical-mandala.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A perfectly centered round botanical mandala with repeating concentric petals, elegant leaves and tiny floral shapes, strong radial symmetry, filling most of the portrait page.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Vertically elongated radial floral mandala with concentric petals, leaves, small flowers and scalloped border; black contours, white interiors. Oval rather than a mathematically circular outline.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "7f35cd69af638e9be29addbe1b1873d8330d5e3b00045a946370c331ef4bd007",
+      "bytes": 2075077,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "winter-wishes",
+      "source_path": "public/assets/originals/winter-wishes.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A cheerful snowman wearing a knitted winter hat and scarf, wrapped gift boxes, evergreen branches, holly and hanging baubles, gentle snowflakes.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Snowman in pom-pom knit cap, striped patterned scarf and mittens, surrounded by wrapped presents, fir trees, holly, hanging baubles and snowflakes.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "d21fe4e48d9956f714f23ca58b2e0f25392a68e132686c25257c956735680635",
+      "bytes": 2594864,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "camper-adventure",
+      "source_path": "public/assets/originals/camper-adventure.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: An unbranded vintage-style rounded camper van in three-quarter front view parked by a beach, palm trees, surfboard leaning beside it, distant sea and clouds. Absolutely no manufacturer badge, logo, or text. Windows and wheels and doors should be coherent.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Unbadged rounded split-window camper van with roof surfboards and a leaning surfboard, parked on a tropical shore with palms and distant mountains. No manufacturer badge or lettering.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "0dfa5b1a49947f896168438a7a5aa1b91814f685e384c1c412282f356c73ab42",
+      "bytes": 2549984,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "space-explorer",
+      "source_path": "public/assets/originals/space-explorer.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A friendly astronaut floating in outer space among planets, stars, small moons and a ringed planet, detailed spacesuit with unmarked blank patches. No agencies, brands, lettering or flag.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Smiling young fictional astronaut floating with one hand extended, unmarked spacesuit, ringed planets, Earth-like globe, stars and rocks.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "71b8bb097dd94499d7257444785e3db97d49fcc7b5ffec72bca4aba0fa3299c8",
+      "bytes": 2337083,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "ocean-adventure",
+      "source_path": "public/assets/originals/ocean-adventure.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: An elegant sea turtle swimming underwater through coral and sea plants, small tropical fish nearby, delicate shell segments and clear enclosed flipper scales, bubbles above.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Sea turtle with segmented shell and flippers among small tropical fish, coral, seaweed and bubbles. White areas with black outlines; no colored region.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "292119d387606b50f7c2b2f24daa05402696be9e9bfa09f3e289ebb2a102f3de",
+      "bytes": 2461463,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "sweet-treats",
+      "source_path": "public/assets/originals/sweet-treats.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A delightful arrangement of three cupcakes with decorative swirled icing, whole strawberries and sliced strawberries, leaves and daisies, appealing varied frosting shapes, no text.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Three cupcakes with tall swirled frosting, strawberries, heart/circle decorations, daisies and leaves.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "9acc66a85ed98da46146c1fdf7d5bee9eebbdf23ed4d4a2f1c60309fe6308654",
+      "bytes": 2201741,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "dinosaur-valley",
+      "source_path": "public/assets/originals/dinosaur-valley.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A friendly long-neck dinosaur and smaller young dinosaur standing in a prehistoric valley, palm-like trees, layered mountains and big tropical leaves, peaceful storybook scene.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Large and small long-neck fictional dinosaurs among tropical leaves and palms with mountains and waterfall behind. No precise species claimed.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "db71bd171a8646e6bb3e38c2ee82890e47e120347280a0e179aa53c8e47a0b95",
+      "bytes": 2485005,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "cozy-bookshop",
+      "source_path": "public/assets/originals/cozy-bookshop.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: An enchanting small cozy bookshop exterior with arched wooden door, large windows containing neatly arranged books, shelves, climbing plants and flower pots, cobblestone path. NO lettering or signs, leave any shop sign blank.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Arched bookshop doorway between two book-filled display windows, blank hanging sign, climbing flowers, pots, lamps and cobbled path.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "0f66209be78a8e854081772372766f7965622d6f6d8ca025dff84c2a7422c6c1",
+      "bytes": 3100886,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "butterfly-garden",
+      "source_path": "public/assets/originals/butterfly-garden.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A large beautiful butterfly with open wings, clear decorative wing segments, surrounded by blooming daisies, hibiscus-like flowers, buds and graceful leaves. Butterfly centered and dominant.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Large open-wing butterfly with enclosed wing segments and dot border; hibiscus-like flowers, daisies, buds and leaves surrounding.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "a2e2f0a03796c7b913a785f26a0b53f8b368f9a96c9b27fef3a3495957279af3",
+      "bytes": 2429637,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "sleepy-kitten",
+      "source_path": "public/assets/originals/sleepy-kitten.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A fluffy kitten sleeping curled up with its head resting on paws, beside a ball of yarn in a flower garden, detailed leaves and daisies framing the small animal.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Fluffy kitten curled asleep beside a large yarn ball, daisies and foliage in front of a wooden garden fence.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "9d364cb95d4eb20330e7239e68fa6460e07fd9e2482ade808ebd343f3b864405",
+      "bytes": 2785812,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "gentle-deer",
+      "source_path": "public/assets/originals/gentle-deer.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A gentle spotted young deer resting in a woodland clearing with flowers, ferns and leafy branches; large kind eyes, coherent anatomy, delicate ears and clear spots.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Spotted fawn resting with legs folded amid daisies and ferns, with trees, rocks and stream behind.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "77039117ad41116b9ee91abe950d59fc6fe0177949e3790bf23204b8319ce84c",
+      "bytes": 2775790,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "little-hedgehog",
+      "source_path": "public/assets/originals/little-hedgehog.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A small friendly hedgehog with a rounded spiky back walking through fallen leaves, mushrooms and woodland flowers; appealing face, individual readable spikes.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Smiling round hedgehog with dense outlined spines walks among fallen leaves, acorns, mushrooms and flowers beside a fallen log.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "047c87d09d8bfbc175140a14d1462d869369fb7e12d76a2a3b527350d3891342",
+      "bytes": 2742348,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "woodland-owl",
+      "source_path": "public/assets/originals/woodland-owl.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A large charming owl perched on a branch in a woodland garden at night, decorative feather shapes, large clear eyes, crescent moon and stars, leafy flowering branches.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Large owl perched on a flowering branch under a crescent moon and stars; layered feather shapes, distant conifers and hills.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "dfca03208aa76a3a5bb20e119afd4a89dfbc28af394e09a1637f59eba836b183",
+      "bytes": 2533385,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "playful-puppy",
+      "source_path": "public/assets/originals/playful-puppy.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A cute floppy-eared puppy sitting in a flower garden with a small ball by its front paws, happy open mouth, detailed fluffy fur, daisies and leaves around it.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Seated floppy-eared puppy with open mouth and tongue, a ball at its paws, daisies, foliage and picket fence.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "648c62c2504de59ec294caa68e2bfa2864aab028291bd70e1101e488917aa8cc",
+      "bytes": 2718380,
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "slug": "farm-friends",
+      "source_path": "public/assets/originals/farm-friends.png",
+      "prompt": "Use case: illustration-story. Asset type: original printable coloring page for JotColoring, not UI or screenshot. Create one detailed professional coloring-book line illustration. Portrait image 1024 x 1536 pixels. Pure white background and crisp black contour lines only; absolutely no color, no grayscale shading, no black fills larger than eyes, no hatching, no gradients. Natural detailed forms, closed colorable regions, clean print-ready lines, comfortable white interiors. Composition centered and richly filled but readable, with thin white margin. No text, letters, signature, watermark, branding, frame, or UI. Subject: A friendly young cow standing in a meadow with daisies and leaves, wooden fence and a small barn in the distance; clear enclosed patches, gentle face and coherent four-legged anatomy.",
+      "source_type": "ai_generated",
+      "review": {
+        "pixels_received": true,
+        "observations": "Young cow with outlined coat patches stands among daisies in front of a wooden fence and barn.",
+        "visual_result": "PASS_subject_and_line_art",
+        "limitations": "Not identical to the missing original drawing inside the approved screen design; not a guarantee of every fill region being closed."
+      },
+      "source_sha256": "4e5448de0aab96ffdb4fa13c9a456f19c5c860921b40eaa60d2ec644f8502a2b",
+      "bytes": 2360367,
+      "width": 1024,
+      "height": 1536
+    }
+  ]
+}

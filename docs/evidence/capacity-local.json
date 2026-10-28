@@ -1,0 +1,512 @@
+{
+  "measured_at": "2026-10-28T11:24:36.891251+00:00",
+  "scope": "actual local SQLite allocation/indexes and retained review history;18content sample; fixed overhead dominates; no remote load or5m test",
+  "headroom_assumption": 1.3,
+  "databases": [
+    {
+      "role": "canonical",
+      "rows": 18,
+      "bytes": 532480,
+      "normal_index_bytes": 217088,
+      "pages": [
+        {
+          "name": "_cf_METADATA",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "age_content",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "ai_free_day",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "ai_free_reservation",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "asset",
+          "bytes": 45056,
+          "pages": 11
+        },
+        {
+          "name": "asset_content",
+          "bytes": 12288,
+          "pages": 3
+        },
+        {
+          "name": "asset_review",
+          "bytes": 65536,
+          "pages": 16
+        },
+        {
+          "name": "audit_event",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "capacity_snapshot",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "category",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "category_content",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "category_count",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content",
+          "bytes": 24576,
+          "pages": 6
+        },
+        {
+          "name": "content_age",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_category",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_difficulty",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_published_date",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_published_score",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_published_title",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "content_revision",
+          "bytes": 77824,
+          "pages": 19
+        },
+        {
+          "name": "content_tag",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "creator_budget",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "creator_job",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "creator_owner",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "creator_upload",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "d1_migrations",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "import_item",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "import_job",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "outbox_event",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "outbox_pending",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "processed_event",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "request_limit",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "request_limit_expiry",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sitemap_entry",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sitemap_visibility_ordinal",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "slug_redirect",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_ai_free_reservation_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_asset_1",
+          "bytes": 12288,
+          "pages": 3
+        },
+        {
+          "name": "sqlite_autoindex_asset_2",
+          "bytes": 12288,
+          "pages": 3
+        },
+        {
+          "name": "sqlite_autoindex_asset_review_1",
+          "bytes": 36864,
+          "pages": 9
+        },
+        {
+          "name": "sqlite_autoindex_capacity_snapshot_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_category_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_category_count_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_2",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_age_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_category_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_revision_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_content_tag_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_creator_job_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_creator_job_2",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_creator_upload_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_d1_migrations_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_import_item_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_import_job_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_import_job_2",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_outbox_event_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_processed_event_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_request_limit_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_sitemap_entry_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_slug_redirect_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_schema",
+          "bytes": 20480,
+          "pages": 5
+        },
+        {
+          "name": "sqlite_sequence",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "tag_content",
+          "bytes": 4096,
+          "pages": 1
+        }
+      ],
+      "projections": [
+        {
+          "rows_measured": 18,
+          "bytes_measured": 532480,
+          "bytes_per_row_including_indexes": 29582.222222222223,
+          "target_rows": 100000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 3845688889,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 0.3846,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 5.3e-05,
+          "target_projection_action": "SPACE_PROJECTION_ONLY",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        },
+        {
+          "rows_measured": 18,
+          "bytes_measured": 532480,
+          "bytes_per_row_including_indexes": 29582.222222222223,
+          "target_rows": 1000000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 38456888889,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 3.8457,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 5.3e-05,
+          "target_projection_action": "MIGRATE_BEFORE_TARGET_IMPORT",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        },
+        {
+          "rows_measured": 18,
+          "bytes_measured": 532480,
+          "bytes_per_row_including_indexes": 29582.222222222223,
+          "target_rows": 5000000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 192284444444,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 19.2284,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 5.3e-05,
+          "target_projection_action": "MIGRATE_BEFORE_TARGET_IMPORT",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        }
+      ]
+    },
+    {
+      "role": "search",
+      "rows": 18,
+      "bytes": 69632,
+      "normal_index_bytes": 24576,
+      "pages": [
+        {
+          "name": "_cf_METADATA",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "d1_migrations",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_date",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_document",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_fts_config",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_fts_data",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_fts_docsize",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_fts_idx",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_popular",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_title",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "search_visibility",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_d1_migrations_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_autoindex_search_document_1",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_schema",
+          "bytes": 4096,
+          "pages": 1
+        },
+        {
+          "name": "sqlite_sequence",
+          "bytes": 4096,
+          "pages": 1
+        }
+      ],
+      "projections": [
+        {
+          "rows_measured": 18,
+          "bytes_measured": 69632,
+          "bytes_per_row_including_indexes": 3868.4444444444443,
+          "target_rows": 100000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 502897778,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 0.0503,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 7e-06,
+          "target_projection_action": "SPACE_PROJECTION_ONLY",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        },
+        {
+          "rows_measured": 18,
+          "bytes_measured": 69632,
+          "bytes_per_row_including_indexes": 3868.4444444444443,
+          "target_rows": 1000000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 5028977778,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 0.5029,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 7e-06,
+          "target_projection_action": "SPACE_PROJECTION_ONLY",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        },
+        {
+          "rows_measured": 18,
+          "bytes_measured": 69632,
+          "bytes_per_row_including_indexes": 3868.4444444444443,
+          "target_rows": 5000000,
+          "headroom_multiplier": 1.3,
+          "projected_bytes": 25144888889,
+          "limit_bytes_assumption": 10000000000,
+          "projected_limit_ratio": 2.5145,
+          "capacity_gate": "CURRENT_STORAGE_BELOW_THRESHOLDS",
+          "current_limit_ratio": 7e-06,
+          "target_projection_action": "MIGRATE_BEFORE_TARGET_IMPORT",
+          "five_million_load_test": "NOT RUN",
+          "scope": "local SQLite storage projection; no D1 latency, concurrency, or traffic claim"
+        }
+      ]
+    }
+  ]
+}

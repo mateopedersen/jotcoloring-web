@@ -1,0 +1,398 @@
+{
+  "template_only": false,
+  "application_tests_executed": true,
+  "requirements": [
+    {
+      "id": "SRC-01",
+      "requirement": "Actual ten approved PNG screens inspected and inventoried",
+      "primary_document_prefix": "02",
+      "acceptance_gate": "G0",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DES-01",
+      "requirement": "Home split and explicit private AI Color preview preserved; catalog B&W",
+      "primary_document_prefix": "02",
+      "acceptance_gate": "G0",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DES-02",
+      "requirement": "Catalog/download originals remain B&W",
+      "primary_document_prefix": "02",
+      "acceptance_gate": "G2",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DES-03",
+      "requirement": "User colored export remains user output",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "REP-01",
+      "requirement": "Verified public repo without secrets/art archive",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G1",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DEP-01",
+      "requirement": "Single deploy authority and checks gate",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G1",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DEP-02",
+      "requirement": "Preview/staging cannot write production state",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G1",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DEP-03",
+      "requirement": "Canonical domain and media TLS",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G8",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DAT-01",
+      "requirement": "Canonical D1 plus separate rebuildable search",
+      "primary_document_prefix": "03",
+      "acceptance_gate": "G7",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DAT-02",
+      "requirement": "Supported atomic update plus outbox and version conflict",
+      "primary_document_prefix": "06",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "DAT-03",
+      "requirement": "Actual lossless export/import and migration rehearsal",
+      "primary_document_prefix": "03",
+      "acceptance_gate": "G7",
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/postgres-rehearsal.json",
+        "docs/data-migration-runbook.md",
+        "tests/ops-postgres.test.ts"
+      ],
+      "scope": "local PostgreSQL18.6 engine only; production Hyperdrive cutover NOT RUN"
+    },
+    {
+      "id": "DAT-04",
+      "requirement": "5m capacity proof distinguished from projections",
+      "primary_document_prefix": "10",
+      "acceptance_gate": "G7",
+      "status": "PASS",
+      "evidence": [
+        "docs/evidence/capacity-local.json",
+        "docs/capacity-report.md"
+      ],
+      "scope": "Reporting distinction only;5m load test NOT RUN"
+    },
+    {
+      "id": "CAT-01",
+      "requirement": "Real category search filter pagination",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G2",
+      "status": "NOT RUN",
+      "evidence": [
+        "docs/evidence/search-acceptance.json"
+      ],
+      "scope": "50 local search/filter cases passed; complete public browser pagination gate remains NOT RUN"
+    },
+    {
+      "id": "CAT-02",
+      "requirement": "Correct 404 redirects and publication filtering",
+      "primary_document_prefix": "08",
+      "acceptance_gate": "G2",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "MED-01",
+      "requirement": "Private/published isolation and immutable revisions",
+      "primary_document_prefix": "06",
+      "acceptance_gate": "G2",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "MED-02",
+      "requirement": "Real validated PDF/WEBP formats and print sizes",
+      "primary_document_prefix": "06",
+      "acceptance_gate": "G2",
+      "status": "NOT RUN",
+      "evidence": [
+        "docs/evidence/media-final.json",
+        "docs/evidence/studio-brand-export.json"
+      ],
+      "scope": "Local108 derivatives and18 two-page exports verified; production response/browser acceptance remains NOT RUN"
+    },
+    {
+      "id": "MED-03",
+      "requirement": "Production cross-origin Canvas export",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EDT-01",
+      "requirement": "Brush eraser fill palette history transforms",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EDT-02",
+      "requirement": "Touch/zoom/pan correctness and bounded memory",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EDT-03",
+      "requirement": "Versioned IndexedDB drafts and meaningful failures",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EDT-04",
+      "requirement": "WEBP/PDF export without modifying original",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G3",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "ADM-01",
+      "requirement": "Admin UI plus API plus alternate host protected",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "ADM-02",
+      "requirement": "CRUD taxonomy versioned publish/archive",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "IMP-01",
+      "requirement": "Dry-run resume partial errors and no duplicate jobs",
+      "primary_document_prefix": "06",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "JOB-01",
+      "requirement": "Out of order retry DLQ reconciliation",
+      "primary_document_prefix": "06",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-01",
+      "requirement": "Real text generation provider chain",
+      "primary_document_prefix": "07",
+      "acceptance_gate": "G5",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-02",
+      "requirement": "Real photo to line-art chain",
+      "primary_document_prefix": "07",
+      "acceptance_gate": "G5",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-03",
+      "requirement": "Per-owner private inputs outputs and retention",
+      "primary_document_prefix": "07",
+      "acceptance_gate": "G5",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-04",
+      "requirement": "Atomic quota/reservation and timeout reconciliation",
+      "primary_document_prefix": "07",
+      "acceptance_gate": "G5",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "SEC-01",
+      "requirement": "Upload validation CSP escaping parameterized SQL",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G4",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "SEO-01",
+      "requirement": "Crawlable HTML canonical sitemap partitioning",
+      "primary_document_prefix": "08",
+      "acceptance_gate": "G6",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "PER-01",
+      "requirement": "No studio bundle on catalog and measured budgets",
+      "primary_document_prefix": "08",
+      "acceptance_gate": "G6",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "A11-01",
+      "requirement": "Keyboard focus responsive touch targets",
+      "primary_document_prefix": "04",
+      "acceptance_gate": "G6",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "OPS-01",
+      "requirement": "Restore rehearsal and compatible rollback",
+      "primary_document_prefix": "05",
+      "acceptance_gate": "G8",
+      "status": "NOT RUN",
+      "evidence": [
+        "docs/evidence/operations-tests.json",
+        "docs/evidence/postgres-rehearsal.json",
+        "docs/evidence/bootstrap-restore.json"
+      ],
+      "scope": "Actual184file bootstrap and two SQLite DBs restored locally; PostgreSQL snapshot restore passed; Cloudflare runtime restore remains NOT RUN"
+    },
+    {
+      "id": "OPS-02",
+      "requirement": "Cost model alarms and actual expensive-job stop",
+      "primary_document_prefix": "10",
+      "acceptance_gate": "G7",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "HND-01",
+      "requirement": "True URLs versions evidence and operator guide",
+      "primary_document_prefix": "13",
+      "acceptance_gate": "G8",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "VIS-01",
+      "requirement": "All ten routes/states match approved visual sources",
+      "primary_document_prefix": "21",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "FMT-01",
+      "requirement": "PDF and real WEBP downloads/exports",
+      "primary_document_prefix": "19",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "CAT-03",
+      "requirement": "Lazy Quick preview selection and race control",
+      "primary_document_prefix": "18",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "CAT-04",
+      "requirement": "Favorites and My artwork persist locally",
+      "primary_document_prefix": "18",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-05",
+      "requirement": "All source style/weight/detail/shape/simplify controls affect generation",
+      "primary_document_prefix": "19",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "AI-06",
+      "requirement": "Aligned private Line art/Color preview with accessible splitter",
+      "primary_document_prefix": "19",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EXP-01",
+      "requirement": "Filename/paper/orientation and four format+outline cases",
+      "primary_document_prefix": "19",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "MOB-01",
+      "requirement": "Two-column home and four-item bottom navigation",
+      "primary_document_prefix": "20",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "MOB-02",
+      "requirement": "Four-tool studio, palette, Layers accordion and correct footer",
+      "primary_document_prefix": "20",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    },
+    {
+      "id": "EDT-05",
+      "requirement": "Hue/opacity/eyedropper/keep-outlines/layer controls work",
+      "primary_document_prefix": "20",
+      "acceptance_gate": "VISUAL_AND_FUNCTIONAL",
+      "status": "NOT RUN",
+      "evidence": []
+    }
+  ],
+  "source_review_executed": false,
+  "last_updated": "2026-10-28",
+  "note": "Scoped local evidence is recorded per requirement. NOT RUN remains for gates without complete actual evidence; package claims are not inherited."
+}

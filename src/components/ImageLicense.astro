@@ -1,0 +1,7 @@
+---
+import {env} from 'cloudflare:workers';
+import {imageLicenseSchema} from '../ui/image-license';
+const {item,assets=[item.lineArtUrl]}=Astro.props;
+const schema=assets.filter(Boolean).map((asset:string)=>imageLicenseSchema(item,env.PUBLIC_SITE_URL||Astro.url.origin,asset));
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g,'\\u003c')}/>

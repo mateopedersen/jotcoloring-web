@@ -1,0 +1,231 @@
+{
+  "updated_on": "2026-10-28",
+  "initial_publication": "NOT RUN",
+  "five_million_capacity": "NOT RUN",
+  "ai_provider_text": "NOT RUN",
+  "ai_provider_photo": "NOT RUN",
+  "screens": [
+    {
+      "screen": 1,
+      "source_file": "01_anasayfa.png",
+      "source_sha256": "066730a2d6a6f4b7ca4d5b444545b7071a0381294f50a0c0f8d03454fe112340",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "homepage-default",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 2,
+      "source_file": "02_tum_boyama_sayfalari.png",
+      "source_sha256": "8a2f7261a616949bf75340dbe8b1aaa07060ffe9827be9c05c4ff400796c7a76",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/coloring-pages/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "catalog-default",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 3,
+      "source_file": "03_hayvanlar_kategorisi.png",
+      "source_sha256": "a7e0e02bee22fcb7d152b2ec58c844d3a93db6a35ce269c42b88ef73e8158b1e",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/coloring-pages/animals/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "animals-selected-first",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 4,
+      "source_file": "04_cizim_detay_indirme.png",
+      "source_sha256": "4f2c8632d821ea509e274d9db64ebf9070411942a95c501c101d3f4e7a277716",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/coloring/woodland-friends/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "woodland-detail",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 5,
+      "source_file": "05_ai_builder_metinden.png",
+      "source_sha256": "4fe0b3dc1ddcb73fc2be284a03d97449c4935d24dd9453acacb188c4aad82029",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/create/text/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "text-example-detailed-medium-balanced-portrait",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 6,
+      "source_file": "06_ai_builder_fotograftan.png",
+      "source_sha256": "fca3ffa49a6b47a217c901a5bcf206c610909dc4eac57b0e34ba676014a2a1f2",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/create/photo/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "photo-example-balanced-medium-simplify",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 7,
+      "source_file": "07_masaustu_studyo.png",
+      "source_sha256": "3ac75bc5b3bb61b643feb8a3ccc6e264588d3a28d208d05eb8cc14f17cffa41c",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/studio/?page=jc-woodland-friends",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "studio-real-paint-fixture",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 8,
+      "source_file": "08_boyanmis_resim_indirme.png",
+      "source_sha256": "a186e15b15c7bad66d05fc01dc8751bfff53e413eb8067d7e3fb5ccd4849252e",
+      "source_pixel_dimensions": [
+        1448,
+        1086
+      ],
+      "actual_route": "/studio/download/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "studio-export-real-project-pdf-a4-portrait",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 9,
+      "source_file": "09_mobil_anasayfa.png",
+      "source_sha256": "80453ee7c3f2fe27e24fc3478e80d38fc1e6de7f8b8d2b0cdca04b9f0979726d",
+      "source_pixel_dimensions": [
+        838,
+        1877
+      ],
+      "actual_route": "/",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "mobile-home",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    },
+    {
+      "screen": 10,
+      "source_file": "10_mobil_studyo.png",
+      "source_sha256": "50c05a88011a9045113538ad9ae2d1cda2bde98f8f941ed145dda533d2962cdc",
+      "source_pixel_dimensions": [
+        941,
+        1672
+      ],
+      "actual_route": "/studio/?page=jc-woodland-friends",
+      "commit": null,
+      "browser": null,
+      "viewport_css": null,
+      "device_scale_factor": null,
+      "fixture_id": "mobile-studio-real-paint",
+      "screenshot_path": null,
+      "observed_differences": [],
+      "severity": null,
+      "remediation": null,
+      "visual_result": "NOT RUN",
+      "functional_result": "NOT RUN"
+    }
+  ],
+  "narrow_viewports_required": [
+    360,
+    390,
+    430
+  ],
+  "other_viewports_required": [
+    768,
+    1280,
+    1448
+  ],
+  "pdf_max_bytes": 1000000,
+  "webp_policy": "Actual WEBP MIME; sharp linework and minimal useful bytes; full-resolution printable separate from thumbnails."
+}

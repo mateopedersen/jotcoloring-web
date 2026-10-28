@@ -1,0 +1,1364 @@
+{
+  "measured_at": "2026-10-28T10:41:59.395Z",
+  "environment": "local Miniflare/workerd D1; real seeded catalog; no remote traffic",
+  "content_count": 18,
+  "search_document_count": 18,
+  "cases": 50,
+  "samples_per_case": 3,
+  "samples": 150,
+  "passed": 50,
+  "failed": 0,
+  "performance": {
+    "p50_ms": 20.397,
+    "p95_ms": 53.502,
+    "p99_ms": 110.97,
+    "scope": "Sequential local adapter wall clock including real FTS, hydration and local RPC; not production network latency or load test"
+  },
+  "index_consistency": {
+    "stale_content_ids": [],
+    "lag_time_ms": null,
+    "note": "Source versions compared at read time; queue end-to-end elapsed lag was not measured by this read-only acceptance."
+  },
+  "limitations": [
+    "Expectations authored from18 visually reviewed seed drawings. No external human relevance panel has reviewed this engineering query set.",
+    "Turkish input is supported as text; automatic translation, synonyms, typo tolerance and language stemming are not implemented.",
+    "Not a100k/1m/5m capacity or concurrent remote traffic test."
+  ],
+  "results": [
+    {
+      "id": "Q01",
+      "query": {
+        "q": "fox"
+      },
+      "expected": [
+        "woodland-friends"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "woodland-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        97.723,
+        74.666,
+        33.393
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 90,
+        "rows_written": 0,
+        "d1_duration_ms": 5
+      }
+    },
+    {
+      "id": "Q02",
+      "query": {
+        "q": "rabbit"
+      },
+      "expected": [
+        "woodland-friends"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "woodland-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        48.753,
+        39.342,
+        30.754
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 90,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q03",
+      "query": {
+        "q": "hibiscus"
+      },
+      "expected": [
+        "hibiscus-garden"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "hibiscus-garden"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        42.732,
+        38.382,
+        27.691
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 6
+      }
+    },
+    {
+      "id": "Q04",
+      "query": {
+        "q": "dragon"
+      },
+      "expected": [
+        "friendly-dragon"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "friendly-dragon"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        27.248,
+        26.026,
+        19.89
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q05",
+      "query": {
+        "q": "castle"
+      },
+      "expected": [
+        "friendly-dragon"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "friendly-dragon"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        20.803,
+        23.858,
+        110.97
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q06",
+      "query": {
+        "q": "mandala"
+      },
+      "expected": [
+        "botanical-mandala"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "botanical-mandala"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        88.735,
+        43.658,
+        48.147
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q07",
+      "query": {
+        "q": "snowman"
+      },
+      "expected": [
+        "winter-wishes"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "winter-wishes"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        36.341,
+        53.502,
+        38.92
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q08",
+      "query": {
+        "q": "Christmas"
+      },
+      "expected": [
+        "winter-wishes"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "winter-wishes"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        29.63,
+        18.771,
+        24.631
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q09",
+      "query": {
+        "q": "camper"
+      },
+      "expected": [
+        "camper-adventure"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "camper-adventure"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        25.783,
+        24.058,
+        20.651
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 81,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q10",
+      "query": {
+        "q": "van"
+      },
+      "expected": [
+        "camper-adventure"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "camper-adventure"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        21.032,
+        21.712,
+        22.962
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 81,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q11",
+      "query": {
+        "q": "astronaut"
+      },
+      "expected": [
+        "space-explorer"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "space-explorer"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        25.754,
+        29.529,
+        34.348
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q12",
+      "query": {
+        "q": "planets"
+      },
+      "expected": [
+        "space-explorer"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "space-explorer"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        41.346,
+        20.885,
+        16.783
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 78,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q13",
+      "query": {
+        "q": "turtle"
+      },
+      "expected": [
+        "ocean-adventure"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "ocean-adventure"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        25.131,
+        26.26,
+        26.92
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 99,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q14",
+      "query": {
+        "q": "coral"
+      },
+      "expected": [
+        "ocean-adventure"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "ocean-adventure"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        17.873,
+        21.724,
+        17.548
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 99,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q15",
+      "query": {
+        "q": "cupcake"
+      },
+      "expected": [
+        "sweet-treats"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "sweet-treats"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        16.731,
+        16.915,
+        16.644
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q16",
+      "query": {
+        "q": "dessert"
+      },
+      "expected": [
+        "sweet-treats"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "sweet-treats"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        16.782,
+        19.427,
+        17.205
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q17",
+      "query": {
+        "q": "dinosaur"
+      },
+      "expected": [
+        "dinosaur-valley"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "dinosaur-valley"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        15.728,
+        20.472,
+        25.806
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q18",
+      "query": {
+        "q": "prehistoric"
+      },
+      "expected": [
+        "dinosaur-valley"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "dinosaur-valley"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        14.825,
+        14.302,
+        16.205
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q19",
+      "query": {
+        "q": "bookshop"
+      },
+      "expected": [
+        "cozy-bookshop"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "cozy-bookshop"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        17.204,
+        15.157,
+        20.397
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 81,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q20",
+      "query": {
+        "q": "books"
+      },
+      "expected": [
+        "cozy-bookshop"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "cozy-bookshop"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        17.317,
+        17.98,
+        21.564
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 81,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q21",
+      "query": {
+        "q": "butterfly"
+      },
+      "expected": [
+        "butterfly-garden"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "butterfly-garden"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        18.748,
+        18.166,
+        20.873
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q22",
+      "query": {
+        "q": "wings"
+      },
+      "expected": [
+        "butterfly-garden"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "butterfly-garden"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        37.66,
+        25.361,
+        15.342
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q23",
+      "query": {
+        "q": "kitten"
+      },
+      "expected": [
+        "sleepy-kitten"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "sleepy-kitten"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        20.037,
+        16.91,
+        18.706
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q24",
+      "query": {
+        "q": "cat"
+      },
+      "expected": [
+        "sleepy-kitten"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "sleepy-kitten"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        17.967,
+        16.946,
+        18.059
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q25",
+      "query": {
+        "q": "fawn"
+      },
+      "expected": [
+        "gentle-deer"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "gentle-deer"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        48.483,
+        60.967,
+        26.695
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q26",
+      "query": {
+        "q": "deer"
+      },
+      "expected": [
+        "gentle-deer"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "gentle-deer"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        24.232,
+        20.814,
+        24.062
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q27",
+      "query": {
+        "q": "hedgehog"
+      },
+      "expected": [
+        "little-hedgehog"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "little-hedgehog"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        21.715,
+        31.06,
+        20.088
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q28",
+      "query": {
+        "q": "mushrooms"
+      },
+      "expected": [
+        "little-hedgehog"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "little-hedgehog"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        16.379,
+        17.454,
+        15.453
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q29",
+      "query": {
+        "q": "owl"
+      },
+      "expected": [
+        "woodland-owl"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "woodland-owl"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        16.606,
+        17.342,
+        24.516
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q30",
+      "query": {
+        "q": "moon"
+      },
+      "expected": [
+        "woodland-owl"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "woodland-owl"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        173.662,
+        15.457,
+        14.991
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q31",
+      "query": {
+        "q": "puppy"
+      },
+      "expected": [
+        "playful-puppy"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "playful-puppy"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        14.865,
+        16.961,
+        20.144
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q32",
+      "query": {
+        "q": "dog"
+      },
+      "expected": [
+        "playful-puppy"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "playful-puppy"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        16.51,
+        15.512,
+        17.343
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 87,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q33",
+      "query": {
+        "q": "cow"
+      },
+      "expected": [
+        "farm-friends"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "farm-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        18.973,
+        17.442,
+        15.909
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q34",
+      "query": {
+        "q": "barn"
+      },
+      "expected": [
+        "farm-friends"
+      ],
+      "reason": "Subject, visible object, or reviewed tag used by a reader.",
+      "status": "PASS",
+      "actual": [
+        "farm-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        18.295,
+        17.898,
+        18.419
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 84,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q35",
+      "query": {
+        "q": "flowers"
+      },
+      "expected": [
+        "woodland-friends",
+        "hibiscus-garden",
+        "friendly-dragon",
+        "botanical-mandala",
+        "cozy-bookshop",
+        "butterfly-garden"
+      ],
+      "reason": "Common subject across title, category and tags.",
+      "status": "PASS",
+      "actual": [
+        "botanical-mandala",
+        "butterfly-garden",
+        "cozy-bookshop",
+        "friendly-dragon",
+        "hibiscus-garden",
+        "woodland-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        20.766,
+        22.01,
+        37.352
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 609,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q36",
+      "query": {
+        "q": "woodland"
+      },
+      "expected": [
+        "woodland-friends",
+        "gentle-deer",
+        "little-hedgehog",
+        "woodland-owl"
+      ],
+      "reason": "Category search includes four woodland animals.",
+      "status": "PASS",
+      "actual": [
+        "gentle-deer",
+        "little-hedgehog",
+        "woodland-friends",
+        "woodland-owl"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        41.761,
+        23.86,
+        16.363
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 435,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q37",
+      "query": {
+        "q": "animals"
+      },
+      "expected": [
+        "woodland-friends",
+        "ocean-adventure",
+        "dinosaur-valley",
+        "butterfly-garden",
+        "sleepy-kitten",
+        "gentle-deer",
+        "little-hedgehog",
+        "woodland-owl",
+        "playful-puppy",
+        "farm-friends"
+      ],
+      "reason": "Broad main-category query.",
+      "status": "PASS",
+      "actual": [
+        "butterfly-garden",
+        "dinosaur-valley",
+        "farm-friends",
+        "gentle-deer",
+        "little-hedgehog",
+        "ocean-adventure",
+        "playful-puppy",
+        "sleepy-kitten",
+        "woodland-friends",
+        "woodland-owl"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        33.51,
+        34.716,
+        32.511
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 1020,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q38",
+      "query": {
+        "q": "  FOX   RABBIT "
+      },
+      "expected": [
+        "woodland-friends"
+      ],
+      "reason": "Case, whitespace normalization and AND terms.",
+      "status": "PASS",
+      "actual": [
+        "woodland-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        34.997,
+        28.205,
+        19.716
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 90,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q39",
+      "query": {
+        "q": "garden"
+      },
+      "expected": [
+        "hibiscus-garden",
+        "butterfly-garden",
+        "sleepy-kitten",
+        "playful-puppy"
+      ],
+      "reason": "Common title/tag query with multiple results.",
+      "status": "PASS",
+      "actual": [
+        "butterfly-garden",
+        "hibiscus-garden",
+        "playful-puppy",
+        "sleepy-kitten"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        28.095,
+        44.864,
+        43.574
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 429,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q40",
+      "query": {
+        "q": "daisies"
+      },
+      "expected": [
+        "playful-puppy",
+        "farm-friends"
+      ],
+      "reason": "Specific reviewed tag in two drawings.",
+      "status": "PASS",
+      "actual": [
+        "farm-friends",
+        "playful-puppy"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        71.708,
+        38.474,
+        34.177
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 201,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q41",
+      "query": {
+        "q": "flowers",
+        "category": "fantasy"
+      },
+      "expected": [
+        "friendly-dragon",
+        "cozy-bookshop"
+      ],
+      "reason": "Text plus main category filter.",
+      "status": "PASS",
+      "actual": [
+        "cozy-bookshop",
+        "friendly-dragon"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        22.404,
+        32.355,
+        23.771
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 279,
+        "rows_written": 0,
+        "d1_duration_ms": 2
+      }
+    },
+    {
+      "id": "Q42",
+      "query": {
+        "q": "ocean",
+        "category": "animals"
+      },
+      "expected": [
+        "ocean-adventure"
+      ],
+      "reason": "Secondary main category membership remains searchable.",
+      "status": "PASS",
+      "actual": [
+        "ocean-adventure"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        21.421,
+        19.563,
+        25.335
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 105,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q43",
+      "query": {
+        "q": "garden",
+        "category": "flowers"
+      },
+      "expected": [
+        "hibiscus-garden",
+        "butterfly-garden"
+      ],
+      "reason": "Text plus flower category narrows garden results.",
+      "status": "PASS",
+      "actual": [
+        "butterfly-garden",
+        "hibiscus-garden"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        21.19,
+        19.127,
+        14.79
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 243,
+        "rows_written": 0,
+        "d1_duration_ms": 3
+      }
+    },
+    {
+      "id": "Q44",
+      "query": {
+        "q": "cat",
+        "category": "vehicles"
+      },
+      "expected": [],
+      "reason": "Valid query with incompatible category returns zero.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        4.857,
+        4.274,
+        4.813
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 27,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q45",
+      "query": {
+        "q": "xylophone"
+      },
+      "expected": [],
+      "reason": "Unrepresented subject returns zero.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        3.589,
+        10.319,
+        5.395
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 3,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q46",
+      "query": {
+        "q": "tilki"
+      },
+      "expected": [],
+      "reason": "Turkish translation is not implemented; English fox is not implicitly translated.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        4.122,
+        4.072,
+        4.572
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 3,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q47",
+      "query": {
+        "q": "çiçek"
+      },
+      "expected": [],
+      "reason": "Turkish characters are accepted safely; no unsupported translation promise.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        4.787,
+        4.723,
+        3.69
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 3,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    },
+    {
+      "id": "Q48",
+      "query": {
+        "q": "FOX",
+        "age": [
+          "adults"
+        ]
+      },
+      "expected": [
+        "woodland-friends"
+      ],
+      "reason": "Case-insensitive English with age filter.",
+      "status": "PASS",
+      "actual": [
+        "woodland-friends"
+      ],
+      "stable": true,
+      "elapsed_ms": [
+        13.656,
+        17.701,
+        15.347
+      ],
+      "metrics": {
+        "statements": 21,
+        "rows_read": 96,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q49",
+      "query": {
+        "q": "flowers",
+        "age": [
+          "kids"
+        ]
+      },
+      "expected": [],
+      "reason": "All current artwork is tagged teens/adults, not kids.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        4.417,
+        4.869,
+        5.163
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 147,
+        "rows_written": 0,
+        "d1_duration_ms": 0
+      }
+    },
+    {
+      "id": "Q50",
+      "query": {
+        "q": "dragon",
+        "difficulty": [
+          "easy"
+        ]
+      },
+      "expected": [],
+      "reason": "Current dragon is detailed; easy filter excludes it.",
+      "status": "PASS",
+      "actual": [],
+      "stable": true,
+      "elapsed_ms": [
+        6.125,
+        5.319,
+        4.972
+      ],
+      "metrics": {
+        "statements": 6,
+        "rows_read": 15,
+        "rows_written": 0,
+        "d1_duration_ms": 1
+      }
+    }
+  ]
+}

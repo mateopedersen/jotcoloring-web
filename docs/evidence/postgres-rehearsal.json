@@ -1,0 +1,827 @@
+{
+  "measured_at": "2026-10-28T11:23:56.232Z",
+  "engine": "PGlite PostgreSQL WASM, isolated local filesystem",
+  "package_version": "0.5.12",
+  "source_kind": "actual local D1/SQLite seeded catalog snapshot",
+  "snapshot_sha256": "34a515b83dc4fb903be465b2fd0de63c7c21cc939fe138a5bca9d7edf8dfb956",
+  "production_hyperdrive_tested": false,
+  "remote_database_created": false,
+  "load_5m_tested": false,
+  "checks": [
+    {
+      "name": "Simulated interruption after committed bounded batches",
+      "status": "PASS"
+    },
+    {
+      "name": "Interrupted import resumes to completion",
+      "status": "PASS",
+      "detail": {
+        "batches": 98,
+        "rows": 643
+      }
+    },
+    {
+      "name": "Same snapshot reimport is idempotent",
+      "status": "PASS"
+    },
+    {
+      "name": "Every canonical table count and full-row checksum matches",
+      "status": "PASS",
+      "detail": [
+        {
+          "table": "category",
+          "rows": 15,
+          "expected_rows": 15,
+          "sha256": "3077e963cb741046c8e55476500d300c9e317f4955169359296e44e3ff94761d",
+          "expected_sha256": "3077e963cb741046c8e55476500d300c9e317f4955169359296e44e3ff94761d",
+          "status": "PASS"
+        },
+        {
+          "table": "content",
+          "rows": 18,
+          "expected_rows": 18,
+          "sha256": "ced953c7e30da026eaa023db2b4d7414ee8cdf406ee432917d82fc2657b7695f",
+          "expected_sha256": "ced953c7e30da026eaa023db2b4d7414ee8cdf406ee432917d82fc2657b7695f",
+          "status": "PASS"
+        },
+        {
+          "table": "content_revision",
+          "rows": 18,
+          "expected_rows": 18,
+          "sha256": "0925b9269310c1a5a3ec3fb97f0bedc154cc46478c08ddf2736c28b07ab0ff69",
+          "expected_sha256": "0925b9269310c1a5a3ec3fb97f0bedc154cc46478c08ddf2736c28b07ab0ff69",
+          "status": "PASS"
+        },
+        {
+          "table": "content_category",
+          "rows": 32,
+          "expected_rows": 32,
+          "sha256": "5259d7d465e378078c6affbadd65f9d0d0e043c950b82d2bf8ff8647a6d44114",
+          "expected_sha256": "5259d7d465e378078c6affbadd65f9d0d0e043c950b82d2bf8ff8647a6d44114",
+          "status": "PASS"
+        },
+        {
+          "table": "content_tag",
+          "rows": 80,
+          "expected_rows": 80,
+          "sha256": "5fa49b5d7f967f30f3d2a2db31e0e0a3909a18fe275d210fcb927e0e98cff88c",
+          "expected_sha256": "5fa49b5d7f967f30f3d2a2db31e0e0a3909a18fe275d210fcb927e0e98cff88c",
+          "status": "PASS"
+        },
+        {
+          "table": "content_age",
+          "rows": 36,
+          "expected_rows": 36,
+          "sha256": "03b7f248bf86e2832ddfc3a91ecc89b647f90ba0f8cccf9604da22096d6288d5",
+          "expected_sha256": "03b7f248bf86e2832ddfc3a91ecc89b647f90ba0f8cccf9604da22096d6288d5",
+          "status": "PASS"
+        },
+        {
+          "table": "asset",
+          "rows": 108,
+          "expected_rows": 108,
+          "sha256": "9a3cffbaf1ea1ad95e4703708c0e8a28ef13c272733dc6ef6fb9bb5cec026925",
+          "expected_sha256": "9a3cffbaf1ea1ad95e4703708c0e8a28ef13c272733dc6ef6fb9bb5cec026925",
+          "status": "PASS"
+        },
+        {
+          "table": "asset_review",
+          "rows": 299,
+          "expected_rows": 299,
+          "sha256": "d644064a17b8da732ca72491dd2cbdb508767238aa09926020783bdf765aafb0",
+          "expected_sha256": "d644064a17b8da732ca72491dd2cbdb508767238aa09926020783bdf765aafb0",
+          "status": "PASS"
+        },
+        {
+          "table": "slug_redirect",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "import_job",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "import_item",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "outbox_event",
+          "rows": 18,
+          "expected_rows": 18,
+          "sha256": "d8346ea98fbd7cd4b40b2d47cda192c47cd14cddec94e82f688bd61656743f11",
+          "expected_sha256": "d8346ea98fbd7cd4b40b2d47cda192c47cd14cddec94e82f688bd61656743f11",
+          "status": "PASS"
+        },
+        {
+          "table": "processed_event",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "audit_event",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "category_count",
+          "rows": 15,
+          "expected_rows": 15,
+          "sha256": "b0f98368fb27ff4e4590f632777c122b6e6d5109072493323015b97cc7e52023",
+          "expected_sha256": "b0f98368fb27ff4e4590f632777c122b6e6d5109072493323015b97cc7e52023",
+          "status": "PASS"
+        },
+        {
+          "table": "creator_job",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "creator_upload",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "capacity_snapshot",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "request_limit",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        },
+        {
+          "table": "sitemap_entry",
+          "rows": 18,
+          "expected_rows": 18,
+          "sha256": "be7eb1d8fb9139955c2f1f2001cebd64300f1fa12ab325fb86ed3e73df9e096e",
+          "expected_sha256": "be7eb1d8fb9139955c2f1f2001cebd64300f1fa12ab325fb86ed3e73df9e096e",
+          "status": "PASS"
+        },
+        {
+          "table": "ai_free_reservation",
+          "rows": 0,
+          "expected_rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "50 predefined queries match D1 expected results",
+      "status": "PASS",
+      "detail": [
+        {
+          "id": "Q01",
+          "q": "fox",
+          "expected": [
+            "woodland-friends"
+          ],
+          "actual": [
+            "woodland-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q02",
+          "q": "rabbit",
+          "expected": [
+            "woodland-friends"
+          ],
+          "actual": [
+            "woodland-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q03",
+          "q": "hibiscus",
+          "expected": [
+            "hibiscus-garden"
+          ],
+          "actual": [
+            "hibiscus-garden"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q04",
+          "q": "dragon",
+          "expected": [
+            "friendly-dragon"
+          ],
+          "actual": [
+            "friendly-dragon"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q05",
+          "q": "castle",
+          "expected": [
+            "friendly-dragon"
+          ],
+          "actual": [
+            "friendly-dragon"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q06",
+          "q": "mandala",
+          "expected": [
+            "botanical-mandala"
+          ],
+          "actual": [
+            "botanical-mandala"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q07",
+          "q": "snowman",
+          "expected": [
+            "winter-wishes"
+          ],
+          "actual": [
+            "winter-wishes"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q08",
+          "q": "Christmas",
+          "expected": [
+            "winter-wishes"
+          ],
+          "actual": [
+            "winter-wishes"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q09",
+          "q": "camper",
+          "expected": [
+            "camper-adventure"
+          ],
+          "actual": [
+            "camper-adventure"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q10",
+          "q": "van",
+          "expected": [
+            "camper-adventure"
+          ],
+          "actual": [
+            "camper-adventure"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q11",
+          "q": "astronaut",
+          "expected": [
+            "space-explorer"
+          ],
+          "actual": [
+            "space-explorer"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q12",
+          "q": "planets",
+          "expected": [
+            "space-explorer"
+          ],
+          "actual": [
+            "space-explorer"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q13",
+          "q": "turtle",
+          "expected": [
+            "ocean-adventure"
+          ],
+          "actual": [
+            "ocean-adventure"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q14",
+          "q": "coral",
+          "expected": [
+            "ocean-adventure"
+          ],
+          "actual": [
+            "ocean-adventure"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q15",
+          "q": "cupcake",
+          "expected": [
+            "sweet-treats"
+          ],
+          "actual": [
+            "sweet-treats"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q16",
+          "q": "dessert",
+          "expected": [
+            "sweet-treats"
+          ],
+          "actual": [
+            "sweet-treats"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q17",
+          "q": "dinosaur",
+          "expected": [
+            "dinosaur-valley"
+          ],
+          "actual": [
+            "dinosaur-valley"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q18",
+          "q": "prehistoric",
+          "expected": [
+            "dinosaur-valley"
+          ],
+          "actual": [
+            "dinosaur-valley"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q19",
+          "q": "bookshop",
+          "expected": [
+            "cozy-bookshop"
+          ],
+          "actual": [
+            "cozy-bookshop"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q20",
+          "q": "books",
+          "expected": [
+            "cozy-bookshop"
+          ],
+          "actual": [
+            "cozy-bookshop"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q21",
+          "q": "butterfly",
+          "expected": [
+            "butterfly-garden"
+          ],
+          "actual": [
+            "butterfly-garden"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q22",
+          "q": "wings",
+          "expected": [
+            "butterfly-garden"
+          ],
+          "actual": [
+            "butterfly-garden"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q23",
+          "q": "kitten",
+          "expected": [
+            "sleepy-kitten"
+          ],
+          "actual": [
+            "sleepy-kitten"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q24",
+          "q": "cat",
+          "expected": [
+            "sleepy-kitten"
+          ],
+          "actual": [
+            "sleepy-kitten"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q25",
+          "q": "fawn",
+          "expected": [
+            "gentle-deer"
+          ],
+          "actual": [
+            "gentle-deer"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q26",
+          "q": "deer",
+          "expected": [
+            "gentle-deer"
+          ],
+          "actual": [
+            "gentle-deer"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q27",
+          "q": "hedgehog",
+          "expected": [
+            "little-hedgehog"
+          ],
+          "actual": [
+            "little-hedgehog"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q28",
+          "q": "mushrooms",
+          "expected": [
+            "little-hedgehog"
+          ],
+          "actual": [
+            "little-hedgehog"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q29",
+          "q": "owl",
+          "expected": [
+            "woodland-owl"
+          ],
+          "actual": [
+            "woodland-owl"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q30",
+          "q": "moon",
+          "expected": [
+            "woodland-owl"
+          ],
+          "actual": [
+            "woodland-owl"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q31",
+          "q": "puppy",
+          "expected": [
+            "playful-puppy"
+          ],
+          "actual": [
+            "playful-puppy"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q32",
+          "q": "dog",
+          "expected": [
+            "playful-puppy"
+          ],
+          "actual": [
+            "playful-puppy"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q33",
+          "q": "cow",
+          "expected": [
+            "farm-friends"
+          ],
+          "actual": [
+            "farm-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q34",
+          "q": "barn",
+          "expected": [
+            "farm-friends"
+          ],
+          "actual": [
+            "farm-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q35",
+          "q": "flowers",
+          "expected": [
+            "botanical-mandala",
+            "butterfly-garden",
+            "cozy-bookshop",
+            "friendly-dragon",
+            "hibiscus-garden",
+            "woodland-friends"
+          ],
+          "actual": [
+            "botanical-mandala",
+            "butterfly-garden",
+            "cozy-bookshop",
+            "friendly-dragon",
+            "hibiscus-garden",
+            "woodland-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q36",
+          "q": "woodland",
+          "expected": [
+            "gentle-deer",
+            "little-hedgehog",
+            "woodland-friends",
+            "woodland-owl"
+          ],
+          "actual": [
+            "gentle-deer",
+            "little-hedgehog",
+            "woodland-friends",
+            "woodland-owl"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q37",
+          "q": "animals",
+          "expected": [
+            "butterfly-garden",
+            "dinosaur-valley",
+            "farm-friends",
+            "gentle-deer",
+            "little-hedgehog",
+            "ocean-adventure",
+            "playful-puppy",
+            "sleepy-kitten",
+            "woodland-friends",
+            "woodland-owl"
+          ],
+          "actual": [
+            "butterfly-garden",
+            "dinosaur-valley",
+            "farm-friends",
+            "gentle-deer",
+            "little-hedgehog",
+            "ocean-adventure",
+            "playful-puppy",
+            "sleepy-kitten",
+            "woodland-friends",
+            "woodland-owl"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q38",
+          "q": "  FOX   RABBIT ",
+          "expected": [
+            "woodland-friends"
+          ],
+          "actual": [
+            "woodland-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q39",
+          "q": "garden",
+          "expected": [
+            "butterfly-garden",
+            "hibiscus-garden",
+            "playful-puppy",
+            "sleepy-kitten"
+          ],
+          "actual": [
+            "butterfly-garden",
+            "hibiscus-garden",
+            "playful-puppy",
+            "sleepy-kitten"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q40",
+          "q": "daisies",
+          "expected": [
+            "farm-friends",
+            "playful-puppy"
+          ],
+          "actual": [
+            "farm-friends",
+            "playful-puppy"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q41",
+          "q": "flowers",
+          "expected": [
+            "cozy-bookshop",
+            "friendly-dragon"
+          ],
+          "actual": [
+            "cozy-bookshop",
+            "friendly-dragon"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q42",
+          "q": "ocean",
+          "expected": [
+            "ocean-adventure"
+          ],
+          "actual": [
+            "ocean-adventure"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q43",
+          "q": "garden",
+          "expected": [
+            "butterfly-garden",
+            "hibiscus-garden"
+          ],
+          "actual": [
+            "butterfly-garden",
+            "hibiscus-garden"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q44",
+          "q": "cat",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        },
+        {
+          "id": "Q45",
+          "q": "xylophone",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        },
+        {
+          "id": "Q46",
+          "q": "tilki",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        },
+        {
+          "id": "Q47",
+          "q": "çiçek",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        },
+        {
+          "id": "Q48",
+          "q": "FOX",
+          "expected": [
+            "woodland-friends"
+          ],
+          "actual": [
+            "woodland-friends"
+          ],
+          "status": "PASS"
+        },
+        {
+          "id": "Q49",
+          "q": "flowers",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        },
+        {
+          "id": "Q50",
+          "q": "dragon",
+          "expected": [],
+          "actual": [],
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "Lookup by immutable id and slug",
+      "status": "PASS"
+    },
+    {
+      "name": "Category relation query",
+      "status": "PASS"
+    },
+    {
+      "name": "All published content resolves four required verified active asset roles",
+      "status": "PASS"
+    },
+    {
+      "name": "New version and slug replay atomically publishes",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact repeated event has no second effect",
+      "status": "PASS"
+    },
+    {
+      "name": "New slug and old redirect are present",
+      "status": "PASS"
+    },
+    {
+      "name": "Archive tombstone replays",
+      "status": "PASS"
+    },
+    {
+      "name": "Archived content excluded from search",
+      "status": "PASS"
+    },
+    {
+      "name": "Late old publication cannot revive archive",
+      "status": "PASS"
+    },
+    {
+      "name": "Event id with different payload is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent restore reproduces exact pre-replay snapshot",
+      "status": "PASS"
+    }
+  ],
+  "postgresql_version": "PostgreSQL 18.6 (PGlite 0.5.12) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit",
+  "rollback_scope": "Independent restore proves the pre-replay snapshot boundary only. Replaying later PostgreSQL writes back into D1 and production cutover are NOT RUN.",
+  "overall": "PASS"
+}

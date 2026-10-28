@@ -1,0 +1,24 @@
+{
+  "measured_at": "2026-10-28T11:23:54.043830+00:00",
+  "status": "PASS",
+  "environment": "isolated local filesystem + SQLite, actual prepared source/derivative bytes",
+  "contents": 18,
+  "derived_assets": 108,
+  "private_raw_sources": 18,
+  "restored_search_documents": 18,
+  "files": 184,
+  "checks": [
+    "Every staged and restored byte/checksum verified",
+    "Both fresh databases migrate and restore SQL",
+    "All active asset keys/hash/bytes join restored files",
+    "All published content has four required verified active roles",
+    "Restored FTS fox query matches expected ID",
+    "Raw source assets remain private in the plan"
+  ],
+  "rto_local_seconds": 1.785,
+  "snapshot_generated_at": "2026-10-28T11:21:30.640Z",
+  "cloudflare_remote_restore": "NOT RUN",
+  "r2_api_metadata_cors_restore": "NOT RUN",
+  "production_rto_rpo": "NOT RUN",
+  "snapshot_manifest_sha256": "44e3f849798e3bd9e5e86ce2ee9717ebfa9b2297d7faea577cebd4e810ca51e9"
+}

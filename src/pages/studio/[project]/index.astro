@@ -1,0 +1,6 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Studio from '../../../components/Studio.astro';
+export const prerender = false;
+---
+<Layout title="My artwork · Studio · JotColoring" noindex={true}><Studio projectId={Astro.params.project} /></Layout>

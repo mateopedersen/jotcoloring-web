@@ -1,0 +1,9 @@
+const wrap=(body:string)=>`<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="#292d34" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">${body}</g></svg>`;
+export const toolIcons:Record<string,string>={
+  brush:wrap('<path d="M18 29 35 5C38 1 44 5 41 9L24 33Z" fill="#ff771d"/><path d="m21 26 6 5-5 7-7-5z" fill="#abbac4"/><path d="M18 33c-9-2-7 9-14 10 7 3 17 1 18-7Z" fill="#75411e"/><path d="m38 6-14 20" stroke="#ffd59c" stroke-width="2.4"/><path d="M15 36c-4 1-3 4-5 5" stroke="#c99351"/>'),
+  fill:wrap('<path d="M10 16h28l-3 26H13Z" fill="#dae6ee"/><ellipse cx="24" cy="16" rx="14" ry="6" fill="#ff981f"/><ellipse cx="24" cy="14" rx="14" ry="5" fill="#ff7b18"/><path d="M12 17v12c0 4 5 4 5 0v-8c0-3 5-3 5 0v4c0 4 5 4 5 0v-5c0-3 5-3 5 0v5c0 4 5 4 5 0v-8" fill="#ff981f"/><path d="M37 16c13 4 8 16-2 16"/><path d="M18 35v5" stroke="#fff" stroke-width="3"/>'),
+  eraser:wrap('<path d="m7 29 22-24c2-2 5-2 7 0l9 8c2 2 2 5 0 7L23 44H17L7 35c-2-2-2-4 0-6Z" fill="#ff7f9e"/><path d="m7 29 10-11 17 15-11 11H17L7 35c-2-2-2-4 0-6Z" fill="#ddebf0"/><path d="m9 31 10 9" stroke="#fff" stroke-width="3"/><path d="m31 8 10 9" stroke="#ffc8d8" stroke-width="3"/>'),
+  picker:wrap('<path d="m11 32 17-17 6 6-17 17-9 3z" fill="#dcebf1"/><path d="m27 11 10 10-4 4-10-10z" fill="#7a858c"/><path d="m29 13 7-8a5 5 0 0 1 7 7l-8 7z" fill="#ff8221"/><path d="m16 29 11-11" stroke="#fff" stroke-width="2.5"/><path d="m8 41-3 3"/>'),
+  move:wrap('<path d="M11 25V13c0-4 5-4 5 0v10V7c0-4 5-4 5 0v16V5c0-4 5-4 5 0v18V9c0-4 5-4 5 0v18l5-7c3-4 7-1 5 3L31 42c-4 6-14 6-18 1L4 31c-3-4 1-8 4-4l3 4Z" fill="#ffc979"/><path d="M15 34c2-6 8-8 14-7" stroke="#ed9b39"/>'),
+  zoom:wrap('<circle cx="20" cy="19" r="13" fill="#fff"/><path d="m30 30 12 12" stroke-width="4"/><path d="M14 19h12m-6-6v12" stroke-width="2.3"/>')
+};

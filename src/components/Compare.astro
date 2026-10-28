@@ -1,0 +1,4 @@
+---
+const {line,color,alt='',interactive=true}=Astro.props;
+---
+<div class:list={['compare',{'static-compare':!interactive}]} style="--split:50%"><img class="line" src={line} alt={alt} loading="lazy" width="1024" height="1536"/>{color&&<><img class="color" src={color} alt="" loading="lazy" width="1024" height="1536" aria-hidden="true"/><span class="compare-divider" aria-hidden="true">{interactive&&<b>‹ ›</b>}</span>{interactive&&<input aria-label="Compare line art and color preview" type="range" min="0" max="100" value="50"/>}</>}</div>

@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-28T11:00:20.002Z",
+  "suite": "18 real sources, painted stroke, two-page branded PDF A4 portrait",
+  "failed": 0,
+  "results": [
+    {
+      "filename": "botanical-mandala.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 723543,
+      "pass": true
+    },
+    {
+      "filename": "butterfly-garden.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 866657,
+      "pass": true
+    },
+    {
+      "filename": "camper-adventure.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 922901,
+      "pass": true
+    },
+    {
+      "filename": "cozy-bookshop.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 974343,
+      "pass": true
+    },
+    {
+      "filename": "dinosaur-valley.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 914046,
+      "pass": true
+    },
+    {
+      "filename": "farm-friends.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 872946,
+      "pass": true
+    },
+    {
+      "filename": "friendly-dragon.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 984281,
+      "pass": true
+    },
+    {
+      "filename": "gentle-deer.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 916843,
+      "pass": true
+    },
+    {
+      "filename": "hibiscus-garden.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 754808,
+      "pass": true
+    },
+    {
+      "filename": "little-hedgehog.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 886284,
+      "pass": true
+    },
+    {
+      "filename": "ocean-adventure.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 934004,
+      "pass": true
+    },
+    {
+      "filename": "playful-puppy.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 992439,
+      "pass": true
+    },
+    {
+      "filename": "sleepy-kitten.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 993750,
+      "pass": true
+    },
+    {
+      "filename": "space-explorer.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 830733,
+      "pass": true
+    },
+    {
+      "filename": "sweet-treats.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 792034,
+      "pass": true
+    },
+    {
+      "filename": "winter-wishes.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 947188,
+      "pass": true
+    },
+    {
+      "filename": "woodland-friends.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 961527,
+      "pass": true
+    },
+    {
+      "filename": "woodland-owl.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 932692,
+      "pass": true
+    }
+  ],
+  "producer": "studio agent export test; report inspected by operations",
+  "scope_note": "Local export against18 actual sources; browser file-save and production CORS are not proved by this report."
+}

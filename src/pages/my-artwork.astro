@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import MyArtwork from '../components/MyArtwork.astro';
+export const prerender = false;
+---
+<Layout title="My artwork & favorites · JotColoring" noindex={true}><Header /><MyArtwork /></Layout>

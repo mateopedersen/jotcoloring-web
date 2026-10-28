@@ -1,0 +1,246 @@
+{
+  "method": "imagegen edit of checksum-bound original coloring illustration",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "visual_review": "All eighteen outputs opened and visually inspected. Subject, scene, framing and color coverage reviewed. Pixel-exact contour alignment is not proven by generated edits.",
+  "runtime_ai_proof": false,
+  "base_prompt": "Use case: precise-object-edit. Edit target: provided original black-and-white coloring illustration. Color only the enclosed white regions of THIS EXACT drawing. Keep every black contour, fine line, object position, silhouette, framing, margin, aspect ratio and crop absolutely unchanged. Preserve the source canvas dimensions 1024 x 1536. Do not redraw, add, remove, move, reinterpret, simplify or crop anything. This will be aligned pixel-for-pixel over the source in a comparison slider, so geometry must remain identical. Fully colored professional coloring-book preview with vivid but tasteful marker colors and gentle color-only gradients; black linework remains on top. No text, watermark, UI, split line or partial uncolored half. Palette: ",
+  "entries": [
+    {
+      "slug": "woodland-friends",
+      "palette": "Fox vivid orange with cream chest, rabbit light warm brown, rich green foliage, flowers pink orange yellow and white, berries deep purple, tree warm brown.",
+      "original_sha256": "0d51b5169123c5c45101a14b9d5ac5d05edfc0e592a1e9d332646baf3a40cfb6",
+      "color_sha256": "15e978cb9de4ed9668c4498fe6c15f919cd89c74c3f0b28f3eadcf032b2ffd81",
+      "color_bytes": 3594818,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/woodland-friends.png",
+      "color_path": "public/assets/colors/woodland-friends.png"
+    },
+    {
+      "slug": "hibiscus-garden",
+      "palette": "Vivid coral orange pink hibiscus, sunny yellow stamens, lush green leaves, white daisies with yellow centers.",
+      "original_sha256": "0f107c4cd52f3e53374f51d9835480b857328829eee0779e3dfb0419fac2b2e8",
+      "color_sha256": "0a06bd697845438251fab2d55087ee7894019e59370497c6d9ff0ee9f9ea6dec",
+      "color_bytes": 2772300,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/hibiscus-garden.png",
+      "color_path": "public/assets/colors/hibiscus-garden.png"
+    },
+    {
+      "slug": "friendly-dragon",
+      "palette": "Lavender and pale lilac dragon with purple wings, flowers yellow pink white, rich green foliage, light blue sky, warm cream castle.",
+      "original_sha256": "d886ce1ddc7a25a1d493f852a953ad4a8e223b2594eaed8bd5a9710720754216",
+      "color_sha256": "fbba0f5f9fc9f83beeb86413de2e37f304c9faa9a457e3f8e852b46f4e45ea3f",
+      "color_bytes": 3218012,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/friendly-dragon.png",
+      "color_path": "public/assets/colors/friendly-dragon.png"
+    },
+    {
+      "slug": "botanical-mandala",
+      "palette": "Turquoise, orange, golden yellow, royal blue, emerald green and magenta petals and leaves arranged harmoniously. White outside the mandala.",
+      "original_sha256": "7f35cd69af638e9be29addbe1b1873d8330d5e3b00045a946370c331ef4bd007",
+      "color_sha256": "a27e051a87cbceb606215b41a9cae395902668940a2f50779c03b2e69d2877cb",
+      "color_bytes": 2301131,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/botanical-mandala.png",
+      "color_path": "public/assets/colors/botanical-mandala.png"
+    },
+    {
+      "slug": "winter-wishes",
+      "palette": "White snowman, warm red hat and red-striped scarf, green evergreen branches, red and gold presents, bright festive red green gold baubles, pale blue snowy background.",
+      "original_sha256": "d21fe4e48d9956f714f23ca58b2e0f25392a68e132686c25257c956735680635",
+      "color_sha256": "29482f1c97805bf2593104fc1efdb5fec36ec1bf4f1eed8e36e483f26e78d48e",
+      "color_bytes": 2986192,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/winter-wishes.png",
+      "color_path": "public/assets/colors/winter-wishes.png"
+    },
+    {
+      "slug": "camper-adventure",
+      "palette": "Turquoise and cream camper van, deep green palms, golden sand, blue ocean, coral and orange surfboards, gentle sunset yellow sun. No badge or lettering.",
+      "original_sha256": "0dfa5b1a49947f896168438a7a5aa1b91814f685e384c1c412282f356c73ab42",
+      "color_sha256": "d59752d053df40de076c29e4b07cf599e582f7c550dd5d7306c42b91c7a38ab6",
+      "color_bytes": 3151066,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/camper-adventure.png",
+      "color_path": "public/assets/colors/camper-adventure.png"
+    },
+    {
+      "slug": "space-explorer",
+      "palette": "White and pale gray spacesuit with orange details, deep navy space, vibrant yellow orange pink and blue planets, blue green Earth-like globe, warm natural skin and brown hair.",
+      "original_sha256": "71b8bb097dd94499d7257444785e3db97d49fcc7b5ffec72bca4aba0fa3299c8",
+      "color_sha256": "047b7eb17d7bd32373877d8b697c72ad6507071099621e7f77a7de7909c31fd8",
+      "color_bytes": 2970232,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/space-explorer.png",
+      "color_path": "public/assets/colors/space-explorer.png"
+    },
+    {
+      "slug": "ocean-adventure",
+      "palette": "Olive green and golden sea turtle with turquoise highlights, clear blue underwater background, colorful orange and yellow tropical fish, coral in pink orange violet, green seaweed.",
+      "original_sha256": "292119d387606b50f7c2b2f24daa05402696be9e9bfa09f3e289ebb2a102f3de",
+      "color_sha256": "fda18c7d97852f197745d3e69a07c03d8b77585b00aa9696208699a3ca273cbc",
+      "color_bytes": 3249471,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/ocean-adventure.png",
+      "color_path": "public/assets/colors/ocean-adventure.png"
+    },
+    {
+      "slug": "sweet-treats",
+      "palette": "Pink strawberry and cream yellow icing, red strawberries with green leaves, golden cupcake cases, white daisies with golden centers, cheerful pastel details.",
+      "original_sha256": "9acc66a85ed98da46146c1fdf7d5bee9eebbdf23ed4d4a2f1c60309fe6308654",
+      "color_sha256": "16d0d653eb2e26c4df92157b311561bd31e42ad56561679f693b2c7361ee383f",
+      "color_bytes": 2786801,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/sweet-treats.png",
+      "color_path": "public/assets/colors/sweet-treats.png"
+    },
+    {
+      "slug": "dinosaur-valley",
+      "palette": "Friendly green long-neck dinosaurs with soft yellow bellies, lush tropical green plants, blue stream and waterfall, blue and mauve mountains, pale blue sky.",
+      "original_sha256": "db71bd171a8646e6bb3e38c2ee82890e47e120347280a0e179aa53c8e47a0b95",
+      "color_sha256": "b2f49ef2a231710d83800b15874f1a90ad6e2c4755285dc572e79925cd1198fb",
+      "color_bytes": 3329553,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/dinosaur-valley.png",
+      "color_path": "public/assets/colors/dinosaur-valley.png"
+    },
+    {
+      "slug": "cozy-bookshop",
+      "palette": "Warm honey wood door and window frames, cream stone wall, green vines, pink purple and yellow flowers, colorful book spines, warm glowing lanterns. Hanging sign stays blank.",
+      "original_sha256": "0f66209be78a8e854081772372766f7965622d6f6d8ca025dff84c2a7422c6c1",
+      "color_sha256": "e92b7a63969b5deb95c35fb7982d6e6d596ae3eae8ccf784f43ebcd457f31f87",
+      "color_bytes": 3572153,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/cozy-bookshop.png",
+      "color_path": "public/assets/colors/cozy-bookshop.png"
+    },
+    {
+      "slug": "butterfly-garden",
+      "palette": "Butterfly rich golden orange and yellow wing interiors with deep black unchanged outlines, pink and orange hibiscus, white daisies with gold centers, bright green leaves.",
+      "original_sha256": "a2e2f0a03796c7b913a785f26a0b53f8b368f9a96c9b27fef3a3495957279af3",
+      "color_sha256": "0e2cd003f17ab255bc38d1e90e83299ec94758eb9378ea4c7399aefe87ab9eda",
+      "color_bytes": 2933974,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/butterfly-garden.png",
+      "color_path": "public/assets/colors/butterfly-garden.png"
+    },
+    {
+      "slug": "sleepy-kitten",
+      "palette": "Warm ginger kitten with cream muzzle, sage and golden surroundings, lavender and pink small flowers.",
+      "original_sha256": "9d364cb95d4eb20330e7239e68fa6460e07fd9e2482ade808ebd343f3b864405",
+      "color_sha256": "3ad6c53168408b55d2914171fc8149930ef30ded238502e544e4c10083c0a83d",
+      "color_bytes": 3540236,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/sleepy-kitten.png",
+      "color_path": "public/assets/colors/sleepy-kitten.png"
+    },
+    {
+      "slug": "gentle-deer",
+      "palette": "Warm chestnut deer with cream fur markings, natural emerald and sage forest leaves, colorful small wildflowers.",
+      "original_sha256": "77039117ad41116b9ee91abe950d59fc6fe0177949e3790bf23204b8319ce84c",
+      "color_sha256": "869b561765db44bf8dd2582bad30f7fb0ef412e6af0accf7ee5274a89aea7281",
+      "color_bytes": 3668285,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/gentle-deer.png",
+      "color_path": "public/assets/colors/gentle-deer.png"
+    },
+    {
+      "slug": "little-hedgehog",
+      "palette": "Soft chestnut and cocoa hedgehog, cream face and paws, rich autumn amber and sage leaves, cheerful rose accents.",
+      "original_sha256": "047c87d09d8bfbc175140a14d1462d869369fb7e12d76a2a3b527350d3891342",
+      "color_sha256": "1a5fa75e63490374810c6afede4c8bfb1d6466b854c6015e8e68574659f98c40",
+      "color_bytes": 3243527,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/little-hedgehog.png",
+      "color_path": "public/assets/colors/little-hedgehog.png"
+    },
+    {
+      "slug": "woodland-owl",
+      "palette": "Warm tawny brown and amber owl with cream face, emerald and sage leaves, bright small flowers, warm wooden branches.",
+      "original_sha256": "dfca03208aa76a3a5bb20e119afd4a89dfbc28af394e09a1637f59eba836b183",
+      "color_sha256": "0e4d7e106d48c824ef9ea6a933573390a48a8edef771ad4bcccfbe454e62de50",
+      "color_bytes": 3268607,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/woodland-owl.png",
+      "color_path": "public/assets/colors/woodland-owl.png"
+    },
+    {
+      "slug": "playful-puppy",
+      "palette": "Friendly golden brown puppy with cream muzzle and paws, green lawn and foliage, vivid playful red and teal accessories and colorful flowers.",
+      "original_sha256": "648c62c2504de59ec294caa68e2bfa2864aab028291bd70e1101e488917aa8cc",
+      "color_sha256": "29771b6ce032f6d69c8c10874d410ff8f37825e4384b4a9e63e0f0265c33cf8c",
+      "color_bytes": 3426772,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/playful-puppy.png",
+      "color_path": "public/assets/colors/playful-puppy.png"
+    },
+    {
+      "slug": "farm-friends",
+      "palette": "Natural warm cheerful farm-animal colors: golden and cocoa fur, cream and white markings, bright barn reds, emerald grass and sage plants, clear blue sky.",
+      "original_sha256": "4e5448de0aab96ffdb4fa13c9a456f19c5c860921b40eaa60d2ec644f8502a2b",
+      "color_sha256": "634593925055f6bab3d540198f24c7fddd5117b2fd70e5f6a211b0db0d7d8010",
+      "color_bytes": 3083711,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "original_path": "public/assets/originals/farm-friends.png",
+      "color_path": "public/assets/colors/farm-friends.png"
+    }
+  ]
+}

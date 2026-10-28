@@ -1,0 +1,2 @@
+import type {APIRoute} from 'astro';import {env} from 'cloudflare:workers';
+export const GET:APIRoute=({url})=>new Response(env.APP_ENV==='production'?`User-agent: *\nAllow: /\nDisallow: /api/\nAllow: /api/media/\nAllow: /api/download/\nDisallow: /admin/\nDisallow: /studio/\nDisallow: /create/\nDisallow: /my-artwork/\nDisallow: /*?\nSitemap: ${env.PUBLIC_SITE_URL||url.origin}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public,max-age=300'}});

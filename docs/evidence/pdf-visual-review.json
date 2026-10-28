@@ -1,0 +1,190 @@
+{
+  "recorded_at": "2026-10-28T11:26:55.536606+00:00",
+  "producer": "backend agent Poppler render and visual inspection",
+  "scope": "All36 actual A4/Letter PDFs;18-page contact sheet for each paper plus full-size woodland sample",
+  "observations": "Artwork remains above orange bottom-right footer; no overlap or clipping observed. PDF bytes unchanged by responsive-home optimization.",
+  "max_pdf_bytes": 743353,
+  "artifact_storage": "local private QA artifacts; source PNG archive not committed",
+  "rendered_pages": [
+    {
+      "slug": "botanical-mandala",
+      "paper": "A4",
+      "image": "media/pdf-proof/botanical-mandala-a4.png"
+    },
+    {
+      "slug": "botanical-mandala",
+      "paper": "Letter",
+      "image": "media/pdf-proof/botanical-mandala-letter.png"
+    },
+    {
+      "slug": "butterfly-garden",
+      "paper": "A4",
+      "image": "media/pdf-proof/butterfly-garden-a4.png"
+    },
+    {
+      "slug": "butterfly-garden",
+      "paper": "Letter",
+      "image": "media/pdf-proof/butterfly-garden-letter.png"
+    },
+    {
+      "slug": "camper-adventure",
+      "paper": "A4",
+      "image": "media/pdf-proof/camper-adventure-a4.png"
+    },
+    {
+      "slug": "camper-adventure",
+      "paper": "Letter",
+      "image": "media/pdf-proof/camper-adventure-letter.png"
+    },
+    {
+      "slug": "cozy-bookshop",
+      "paper": "A4",
+      "image": "media/pdf-proof/cozy-bookshop-a4.png"
+    },
+    {
+      "slug": "cozy-bookshop",
+      "paper": "Letter",
+      "image": "media/pdf-proof/cozy-bookshop-letter.png"
+    },
+    {
+      "slug": "dinosaur-valley",
+      "paper": "A4",
+      "image": "media/pdf-proof/dinosaur-valley-a4.png"
+    },
+    {
+      "slug": "dinosaur-valley",
+      "paper": "Letter",
+      "image": "media/pdf-proof/dinosaur-valley-letter.png"
+    },
+    {
+      "slug": "farm-friends",
+      "paper": "A4",
+      "image": "media/pdf-proof/farm-friends-a4.png"
+    },
+    {
+      "slug": "farm-friends",
+      "paper": "Letter",
+      "image": "media/pdf-proof/farm-friends-letter.png"
+    },
+    {
+      "slug": "friendly-dragon",
+      "paper": "A4",
+      "image": "media/pdf-proof/friendly-dragon-a4.png"
+    },
+    {
+      "slug": "friendly-dragon",
+      "paper": "Letter",
+      "image": "media/pdf-proof/friendly-dragon-letter.png"
+    },
+    {
+      "slug": "gentle-deer",
+      "paper": "A4",
+      "image": "media/pdf-proof/gentle-deer-a4.png"
+    },
+    {
+      "slug": "gentle-deer",
+      "paper": "Letter",
+      "image": "media/pdf-proof/gentle-deer-letter.png"
+    },
+    {
+      "slug": "hibiscus-garden",
+      "paper": "A4",
+      "image": "media/pdf-proof/hibiscus-garden-a4.png"
+    },
+    {
+      "slug": "hibiscus-garden",
+      "paper": "Letter",
+      "image": "media/pdf-proof/hibiscus-garden-letter.png"
+    },
+    {
+      "slug": "little-hedgehog",
+      "paper": "A4",
+      "image": "media/pdf-proof/little-hedgehog-a4.png"
+    },
+    {
+      "slug": "little-hedgehog",
+      "paper": "Letter",
+      "image": "media/pdf-proof/little-hedgehog-letter.png"
+    },
+    {
+      "slug": "ocean-adventure",
+      "paper": "A4",
+      "image": "media/pdf-proof/ocean-adventure-a4.png"
+    },
+    {
+      "slug": "ocean-adventure",
+      "paper": "Letter",
+      "image": "media/pdf-proof/ocean-adventure-letter.png"
+    },
+    {
+      "slug": "playful-puppy",
+      "paper": "A4",
+      "image": "media/pdf-proof/playful-puppy-a4.png"
+    },
+    {
+      "slug": "playful-puppy",
+      "paper": "Letter",
+      "image": "media/pdf-proof/playful-puppy-letter.png"
+    },
+    {
+      "slug": "sleepy-kitten",
+      "paper": "A4",
+      "image": "media/pdf-proof/sleepy-kitten-a4.png"
+    },
+    {
+      "slug": "sleepy-kitten",
+      "paper": "Letter",
+      "image": "media/pdf-proof/sleepy-kitten-letter.png"
+    },
+    {
+      "slug": "space-explorer",
+      "paper": "A4",
+      "image": "media/pdf-proof/space-explorer-a4.png"
+    },
+    {
+      "slug": "space-explorer",
+      "paper": "Letter",
+      "image": "media/pdf-proof/space-explorer-letter.png"
+    },
+    {
+      "slug": "sweet-treats",
+      "paper": "A4",
+      "image": "media/pdf-proof/sweet-treats-a4.png"
+    },
+    {
+      "slug": "sweet-treats",
+      "paper": "Letter",
+      "image": "media/pdf-proof/sweet-treats-letter.png"
+    },
+    {
+      "slug": "winter-wishes",
+      "paper": "A4",
+      "image": "media/pdf-proof/winter-wishes-a4.png"
+    },
+    {
+      "slug": "winter-wishes",
+      "paper": "Letter",
+      "image": "media/pdf-proof/winter-wishes-letter.png"
+    },
+    {
+      "slug": "woodland-friends",
+      "paper": "A4",
+      "image": "media/pdf-proof/woodland-friends-a4.png"
+    },
+    {
+      "slug": "woodland-friends",
+      "paper": "Letter",
+      "image": "media/pdf-proof/woodland-friends-letter.png"
+    },
+    {
+      "slug": "woodland-owl",
+      "paper": "A4",
+      "image": "media/pdf-proof/woodland-owl-a4.png"
+    },
+    {
+      "slug": "woodland-owl",
+      "paper": "Letter",
+      "image": "media/pdf-proof/woodland-owl-letter.png"
+    }
+  ]
+}

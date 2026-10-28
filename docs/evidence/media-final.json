@@ -1,0 +1,1958 @@
+{
+  "measured_at": "2026-10-28T11:21:30.380Z",
+  "environment": "local prepared actual media",
+  "provider_generation_tested": false,
+  "brand_policy": "jotcoloring-orange-footer-v1",
+  "grayscale_scope": "Drawing area only; orange trademark is limited to a dedicated white footer",
+  "contents": 18,
+  "assets": 108,
+  "pdfs": 36,
+  "max_pdf_bytes": 743353,
+  "home_color": 18,
+  "entries": [
+    {
+      "id": "jc-botanical-mandala",
+      "role": "catalog_thumb_bw",
+      "bytes": 121706,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-botanical-mandala",
+      "role": "catalog_preview_bw",
+      "bytes": 202584,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2642,
+      "brand_mean_error": 5.8748435544430535,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-botanical-mandala",
+      "role": "printable_webp_bw",
+      "bytes": 215710,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3373,
+      "brand_mean_error": 5.530928259616177,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-botanical-mandala",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 468869,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-botanical-mandala",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 468851,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-botanical-mandala",
+      "role": "home_half_color",
+      "bytes": 118668,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 249,
+      "footer_colored_pixels": 285,
+      "brand_mean_error": 0.7632575757575758,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "catalog_thumb_bw",
+      "bytes": 139982,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "catalog_preview_bw",
+      "bytes": 256166,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2640,
+      "brand_mean_error": 5.839226115978306,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "printable_webp_bw",
+      "bytes": 276790,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3371,
+      "brand_mean_error": 5.4711308788402935,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 560642,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 560624,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-butterfly-garden",
+      "role": "home_half_color",
+      "bytes": 141360,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 250,
+      "footer_colored_pixels": 317,
+      "brand_mean_error": 0.6445075757575758,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "catalog_thumb_bw",
+      "bytes": 148086,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "catalog_preview_bw",
+      "bytes": 324458,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2651,
+      "brand_mean_error": 5.727419691280768,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "printable_webp_bw",
+      "bytes": 347072,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3293,
+      "brand_mean_error": 5.344946874227823,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 589419,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 589402,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-camper-adventure",
+      "role": "home_half_color",
+      "bytes": 122276,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 227,
+      "footer_colored_pixels": 330,
+      "brand_mean_error": 1.0109848484848485,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "catalog_thumb_bw",
+      "bytes": 178954,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "catalog_preview_bw",
+      "bytes": 437398,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2640,
+      "brand_mean_error": 5.6694305381727155,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "printable_webp_bw",
+      "bytes": 529282,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3306,
+      "brand_mean_error": 5.127831315377646,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 737453,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 737436,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-cozy-bookshop",
+      "role": "home_half_color",
+      "bytes": 153940,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 231,
+      "footer_colored_pixels": 329,
+      "brand_mean_error": 1.1240530303030303,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "catalog_thumb_bw",
+      "bytes": 144918,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "catalog_preview_bw",
+      "bytes": 274128,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2657,
+      "brand_mean_error": 5.807884856070087,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "printable_webp_bw",
+      "bytes": 329660,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3293,
+      "brand_mean_error": 5.319413557367597,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 588581,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 588563,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-dinosaur-valley",
+      "role": "home_half_color",
+      "bytes": 140114,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 222,
+      "footer_colored_pixels": 312,
+      "brand_mean_error": 0.9731060606060606,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "catalog_thumb_bw",
+      "bytes": 141456,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "catalog_preview_bw",
+      "bytes": 259388,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2650,
+      "brand_mean_error": 5.797090112640801,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "printable_webp_bw",
+      "bytes": 279752,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3380,
+      "brand_mean_error": 5.527551272547566,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 556063,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 556045,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-farm-friends",
+      "role": "home_half_color",
+      "bytes": 141562,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 241,
+      "footer_colored_pixels": 342,
+      "brand_mean_error": 0.5333333333333333,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "catalog_thumb_bw",
+      "bytes": 153130,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "catalog_preview_bw",
+      "bytes": 302552,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2655,
+      "brand_mean_error": 5.837400917813934,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "printable_webp_bw",
+      "bytes": 360468,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3287,
+      "brand_mean_error": 5.314553990610329,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 624551,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 624534,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-friendly-dragon",
+      "role": "home_half_color",
+      "bytes": 136866,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 229,
+      "footer_colored_pixels": 340,
+      "brand_mean_error": 0.734469696969697,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "catalog_thumb_bw",
+      "bytes": 157720,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "catalog_preview_bw",
+      "bytes": 322588,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2654,
+      "brand_mean_error": 5.798654568210263,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "printable_webp_bw",
+      "bytes": 388246,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3312,
+      "brand_mean_error": 5.2903797051313735,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 655601,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 655581,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-gentle-deer",
+      "role": "home_half_color",
+      "bytes": 154504,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 239,
+      "footer_colored_pixels": 330,
+      "brand_mean_error": 0.5409090909090909,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "catalog_thumb_bw",
+      "bytes": 127812,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "catalog_preview_bw",
+      "bytes": 188690,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2656,
+      "brand_mean_error": 6.010481852315395,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "printable_webp_bw",
+      "bytes": 224336,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3374,
+      "brand_mean_error": 5.5439008318919365,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 494508,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 494490,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-hibiscus-garden",
+      "role": "home_half_color",
+      "bytes": 135772,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 238,
+      "footer_colored_pixels": 295,
+      "brand_mean_error": 0.48200757575757575,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "catalog_thumb_bw",
+      "bytes": 156310,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "catalog_preview_bw",
+      "bytes": 312366,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2655,
+      "brand_mean_error": 5.778994576554026,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "printable_webp_bw",
+      "bytes": 373496,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3290,
+      "brand_mean_error": 5.3617494440326166,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 645317,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 645300,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-little-hedgehog",
+      "role": "home_half_color",
+      "bytes": 149856,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 235,
+      "footer_colored_pixels": 314,
+      "brand_mean_error": 0.8867424242424242,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "catalog_thumb_bw",
+      "bytes": 145144,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "catalog_preview_bw",
+      "bytes": 276182,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2654,
+      "brand_mean_error": 5.836097204839382,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "printable_webp_bw",
+      "bytes": 330110,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3298,
+      "brand_mean_error": 5.330079894572111,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 604161,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 604142,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-ocean-adventure",
+      "role": "home_half_color",
+      "bytes": 137472,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 251,
+      "footer_colored_pixels": 317,
+      "brand_mean_error": 1.005871212121212,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "catalog_thumb_bw",
+      "bytes": 154734,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "catalog_preview_bw",
+      "bytes": 302694,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2656,
+      "brand_mean_error": 5.853306216103463,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "printable_webp_bw",
+      "bytes": 365366,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3290,
+      "brand_mean_error": 5.33222139856684,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 632539,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 632522,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-playful-puppy",
+      "role": "home_half_color",
+      "bytes": 153874,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 235,
+      "footer_colored_pixels": 330,
+      "brand_mean_error": 0.6049242424242425,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "catalog_thumb_bw",
+      "bytes": 157132,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "catalog_preview_bw",
+      "bytes": 307796,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2655,
+      "brand_mean_error": 5.7709637046307884,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "printable_webp_bw",
+      "bytes": 369486,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3286,
+      "brand_mean_error": 5.32876204595997,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 640209,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 640190,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-sleepy-kitten",
+      "role": "home_half_color",
+      "bytes": 158478,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 238,
+      "footer_colored_pixels": 340,
+      "brand_mean_error": 0.6882575757575757,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "catalog_thumb_bw",
+      "bytes": 135694,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "catalog_preview_bw",
+      "bytes": 222836,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2658,
+      "brand_mean_error": 6.042709637046308,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "printable_webp_bw",
+      "bytes": 262758,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3372,
+      "brand_mean_error": 5.467012601927354,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 537961,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 537943,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-space-explorer",
+      "role": "home_half_color",
+      "bytes": 135806,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 249,
+      "footer_colored_pixels": 317,
+      "brand_mean_error": 1.5357954545454546,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "catalog_thumb_bw",
+      "bytes": 130932,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "catalog_preview_bw",
+      "bytes": 204098,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2665,
+      "brand_mean_error": 6.040571547768043,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "printable_webp_bw",
+      "bytes": 242364,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3394,
+      "brand_mean_error": 5.5114899925871015,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 516672,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 516654,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-sweet-treats",
+      "role": "home_half_color",
+      "bytes": 135458,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 247,
+      "footer_colored_pixels": 330,
+      "brand_mean_error": 0.38579545454545455,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "catalog_thumb_bw",
+      "bytes": 150238,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "catalog_preview_bw",
+      "bytes": 290190,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2657,
+      "brand_mean_error": 5.86790780141844,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "printable_webp_bw",
+      "bytes": 346772,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3290,
+      "brand_mean_error": 5.339510748702743,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 598653,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 598636,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-winter-wishes",
+      "role": "home_half_color",
+      "bytes": 138222,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 242,
+      "footer_colored_pixels": 317,
+      "brand_mean_error": 0.9518939393939394,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "catalog_thumb_bw",
+      "bytes": 172592,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "catalog_preview_bw",
+      "bytes": 426022,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2649,
+      "brand_mean_error": 5.697695035460993,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "printable_webp_bw",
+      "bytes": 519480,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3301,
+      "brand_mean_error": 5.125566263075529,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 743353,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 743335,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-woodland-friends",
+      "role": "home_half_color",
+      "bytes": 160656,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 241,
+      "footer_colored_pixels": 340,
+      "brand_mean_error": 0.8225378787878788,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "catalog_thumb_bw",
+      "bytes": 148016,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 0,
+      "footer_colored_pixels": 341,
+      "brand_mean_error": 0,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "catalog_preview_bw",
+      "bytes": 277566,
+      "width": 900,
+      "height": 1350,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 2658,
+      "brand_mean_error": 5.845588235294118,
+      "footer": {
+        "x": 0,
+        "y": 1300,
+        "width": 900,
+        "height": 50
+      },
+      "artwork": {
+        "x": 16,
+        "y": 0,
+        "width": 867,
+        "height": 1300
+      }
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "printable_webp_bw",
+      "bytes": 334430,
+      "width": 1024,
+      "height": 1536,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 1,
+      "footer_colored_pixels": 3295,
+      "brand_mean_error": 5.324231941355737,
+      "footer": {
+        "x": 0,
+        "y": 1480,
+        "width": 1024,
+        "height": 56
+      },
+      "artwork": {
+        "x": 18,
+        "y": 0,
+        "width": 987,
+        "height": 1480
+      }
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "printable_pdf_a4_bw",
+      "bytes": 600207,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "printable_pdf_letter_bw",
+      "bytes": 600189,
+      "pages": 1,
+      "artwork_grayscale": true,
+      "brand_version": "jotcoloring-orange-footer-v1"
+    },
+    {
+      "id": "jc-woodland-owl",
+      "role": "home_half_color",
+      "bytes": 142338,
+      "width": 400,
+      "height": 600,
+      "brand_version": "jotcoloring-orange-footer-v1",
+      "artwork_max_chroma": 228,
+      "footer_colored_pixels": 331,
+      "brand_mean_error": 0.7795454545454545,
+      "footer": {
+        "x": 0,
+        "y": 578,
+        "width": 400,
+        "height": 22
+      },
+      "artwork": {
+        "x": 7,
+        "y": 0,
+        "width": 385,
+        "height": 578
+      }
+    }
+  ]
+}
