@@ -1,0 +1,119 @@
+{
+  "recorded_at": "2026-10-28T13:15:22.855820+00:00",
+  "status": "LOCAL_REVIEW_READY_REMOTE_NOT_RUN",
+  "baseline_commit": "1ab244fe20e3cd2329a4e6764f59bbf948034c50",
+  "changes_committed": false,
+  "changes_pushed": false,
+  "cloudflare_tokens_created": false,
+  "github_secrets_written": false,
+  "workers_builds_disabled_by_this_task": false,
+  "new_github_workflow_executed": false,
+  "scoped_token_deployment_tested": false,
+  "tests": [
+    {
+      "name": "release resource/branch/artifact regression",
+      "passed": 3,
+      "failed": 0,
+      "command": "node --import tsx --test tests/ops-release.test.ts",
+      "coverage": [
+        "selected environment resource IDs",
+        "wrong gateway/model/neuron caps/direct AI fallback rejected",
+        "PR/fork/wrong branch/no token rejected",
+        "artifact byte/commit/lock/environment and symlink checks"
+      ]
+    },
+    {
+      "name": "Astro project check including scripts",
+      "status": "PASS",
+      "files": 120,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 1,
+      "hint": "Existing studio beforeunload returnValue deprecation"
+    },
+    {
+      "name": "staging jobs Wrangler compile only",
+      "status": "PASS",
+      "wrangler": "4.153.0",
+      "dry_run": true,
+      "published": false
+    },
+    {
+      "name": "workflow YAML parse",
+      "status": "PASS",
+      "scope": "Ruby standard YAML parser; GitHub server validation remains NOT RUN"
+    },
+    {
+      "name": "actual production build config release plan",
+      "status": "PASS",
+      "mode": "REVIEW_PLAN_ONLY",
+      "workers": [
+        "jotcoloring-production-jobs",
+        "jotcoloring-production"
+      ]
+    },
+    {
+      "name": "candidate source secret pattern scan",
+      "status": "PASS",
+      "files": 187,
+      "scope": "Working-tree candidates including untracked draft; not comprehensive secret audit"
+    },
+    {
+      "name": "git diff whitespace check",
+      "status": "PASS"
+    }
+  ],
+  "publication_design": {
+    "workflow": "Verify",
+    "verification_job": "verify",
+    "publish_job": "deploy",
+    "push_branches": [
+      "main",
+      "staging"
+    ],
+    "pr_has_cf_secrets": false,
+    "activation_variable": "JOTCOLORING_DEPLOY_ENABLED",
+    "activation_value": "true",
+    "secret_names": [
+      "JOT_CF_STAGING_DEPLOY_TOKEN",
+      "JOT_CF_PRODUCTION_DEPLOY_TOKEN"
+    ],
+    "release_order": [
+      "jobs",
+      "web"
+    ],
+    "db_migrations": false,
+    "workers_builds_publication": false,
+    "concurrency": "One active run per environment; running push deployments are not cancelled; stale branch SHA refused",
+    "free_ai_boundary": {
+      "gateway": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
+      "model": "@cf/black-forest-labs/flux-2-klein-4b",
+      "daily_neurons_max": 9000,
+      "per_job_neurons": 300,
+      "direct_ai_binding": false,
+      "paid_budget_usd": 0
+    }
+  },
+  "sources": [
+    "https://developers.cloudflare.com/workers/ci-cd/builds/configuration/",
+    "https://developers.cloudflare.com/workers/authorization/",
+    "https://developers.cloudflare.com/workers/authorization/workers/",
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/contexts",
+    "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
+  ],
+  "sha256": {
+    ".github/workflows/verify.yml": "97d9d45d9d477ce176126eb0df92c866217af7be09beeb66c84264bbc9321da0",
+    "scripts/ops/deploy-release.ts": "c4c1fa531347115531bb1ce73696ee727822db794e93fe2cd79389a8c8fbfad8",
+    "tests/ops-release.test.ts": "77bd1b7378292ce4740dddf2ad4b94d637fbfcf012ab6a5145f9a701205ca065",
+    "docs/CI_DEPLOYMENT_DECISION.md": "bce8e295b1dff4c054d9786d4c8447c7275e284370c62e467c040f45260083ed"
+  },
+  "remaining": [
+    "Operator/user review of exact account-owned token scope before token creation and GitHub storage",
+    "Confirm no Workers Builds production/staging publication trigger remains",
+    "Configure GitHub environment branch restrictions and two secrets",
+    "Enable repository activation variable only after setup",
+    "Run actual staging then production push and record deployment version/commit/smoke mapping",
+    "Verify scoped token queue consumer reconciliation; do not silently broaden permissions on failure"
+  ],
+  "updated_at": "2026-10-28T13:22:26.630758+00:00"
+}

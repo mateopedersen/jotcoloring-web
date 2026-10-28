@@ -9,7 +9,7 @@
 | Tutarlılık | D1 conditional write/batch ve outbox; R2+D1 atomik işlem iddiası yok. Sürüm/idempotency ve uzlaştırma gerekli. |
 | Kapsamlı medya ayrımı | Private ORIGINALS, private JOB_ASSETS, approved PUBLISHED, ayrı izinli BACKUPS. Public prefix güvenlik sınırı değildir. |
 | Medya limitleri | Her PDF toplam <=1.000.000 byte. WEBP baskı kayıpsız; küçük responsive önizlemeler ayrı. Gerçek MIME ve bytes manifestten. Kullanıcı onayıyla turuncu marka yalnız ayrı sağ alt beyaz footer alanındadır; çizim alanı siyah-beyaz kalır. |
-| Yayın otoritesi | Hedef Workers Builds; gerçek Git bağlantısı doğrulanmadan kuruldu sayılmaz; Actions sadece kontrol. Kurulumda manuel bootstrap varsa ayrıca kaydedilir ve çift otomatik deploy bırakılmaz. |
+| Yayın otoritesi | İncelenen alternatif GitHub Actions tek yayın yolu; Workers Builds user-token sınırı nedeniyle account-owned dar tokenlarla uyuşmuyor. CI_DEPLOYMENT_DECISION.md. Remote etkinleştirme ve ilk otomatik deploy henüz doğrulanmadı; iki otomatik yayın kanalı bırakılmaz. |
 | AI | Gerçek provider ve private job akışı; eksik bütçe/model/binding kapalı hata. Örnek resim gerçek kullanıcı sonucu sayılmaz. |
 | Büyüme | Mevcut Workers Paid hesapta D1 DB başına 10 GB teknik sınır. Gerçek table+index ölçümü; %60/%70/%80 proje eşikleri. PostgreSQL+Hyperdrive hedefi ayrı sağlayıcı maliyeti/erişimi gerektirir ve şu anda yetkilendirilmemiştir. |
 | Kaynak tasarım | On ekran referans; bağımsız font/logo/baskı originals arşivde yok. Yeniden hazırlanan varlıklar envanterli; tam ekran PNG uygulama yerine kullanılmaz. |

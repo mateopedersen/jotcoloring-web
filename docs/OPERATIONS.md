@@ -39,9 +39,9 @@ Metadata durumunu değiştirmek yeni kategori/detail erişimini kapatır; uzun s
 
 ## Yayın ve değişiklikler
 
-Hedeflenen tek otomatik yayın otoritesi Workers Builds'tür; gerçek Git bağlantısı ve ilk başarılı yayın `PROJECT_STATE.md` üzerinden doğrulanır. GitHub `Verify / verify` işi typecheck, birim testleri, operasyon testleri, sır taraması ve build çalıştırır; deploy tokenı içermez. Ana dal korumasında bu kontrolün tam adı kullanılmalıdır. Workers Builds build komutu da aynı kapıları çalıştırmalıdır; yalnız GitHub kontrolüyle yetinilmez.
+İncelenen yeni yayın kararı GitHub Actions'ın tek otomatik yayın yolu olmasıdır. Workers Builds'in mevcut user-token sınırı, tek Worker kapsamı için gereken account-owned token modeliyle uyuşmuyor. Gerekçe, iki somut token kapsamı ve etkinleştirme adımları `CI_DEPLOYMENT_DECISION.md` içindedir. Bu yerel taslak henüz otomatik yayın kurulduğu anlamına gelmez; Workers Builds yayın tetikleyicilerinin kapatılması, dar tokenların onaylı saklanması ve ilk gerçek staging/production run ayrıca doğrulanır.
 
-Önerilen build komutu: `pnpm check && pnpm test && python3 -m unittest discover -s tests -p ops_test.py && python3 scripts/ops/secret_scan.py && pnpm build`. Üretim komutu `pnpm exec wrangler deploy`; branch preview `pnpm exec wrangler preview`. Gerçek yapılandırma hesapta doğrulanmalıdır. Üretim migrasyonunu her PR build'ine eklemeyin.
+Mevcut `Verify / verify` kontrol kapısı korunur. Typecheck, bütün testler, Python operasyon kontrolü, tracked sır taraması, ortam build'i ve jobs dry-run aynı workflow'dadır. Yayın job'ı yalnız main/staging push, başarılı verify, doğru upstream repo ve `JOTCOLORING_DEPLOY_ENABLED=true` ile çalışır. Aynı commit artifact'i hash'lenir; token yalnız son yayın adımında vardır. Önce jobs, sonra web açık hedef isimleriyle yayımlanır. Workflow'a production migration veya içerik aktarımı eklenmez.
 
 Preview için ayrı D1/R2/Queue isimleri kullanılır. Preview Queue tüketemez; staging Worker tüketir. Preview cron ayrı çalışmaz. Staging kuyruğu üzerinden test yapmak üretim kuyruğuna mesaj gönderme yetkisi değildir. Preview/AI varsayılanları üretim bütçesini devralmaz. Güvenilmeyen fork PR koduna production secrets verilmez.
 

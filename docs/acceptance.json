@@ -1,6 +1,7 @@
 {
   "updated_on": "2026-10-28",
-  "initial_publication": "NOT RUN",
+  "initial_publication": "PASS — production HTTP acceptance; browser/visual acceptance remains separate",
+  "production_http_evidence": "evidence/production-http.json",
   "five_million_capacity": "NOT RUN",
   "ai_provider_text": "NOT RUN",
   "ai_provider_photo": "NOT RUN",

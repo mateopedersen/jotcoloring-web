@@ -1,13 +1,18 @@
 name: Verify
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   pull_request:
 permissions:
   contents: read
 concurrency:
-  group: verify-${{ github.ref }}
-  cancel-in-progress: true
+  group: jotcoloring-${{ github.event_name == 'push' && github.ref_name == 'main' && 'production' || github.event_name == 'push' && github.ref_name == 'staging' && 'staging' || format('pr-{0}', github.event.pull_request.number) }}
+  # A running jobs→web release must not be interrupted by the next push.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+env:
+  JOT_DEPLOY_ENV: ${{ github.event_name == 'push' && github.ref_name == 'main' && 'production' || github.event_name == 'push' && github.ref_name == 'staging' && 'staging' || 'local' }}
+  WRANGLER_SEND_METRICS: 'false'
+  WRANGLER_LOG_PATH: .local/ci-wrangler.log
 jobs:
   verify:
     name: verify
@@ -29,5 +34,72 @@ jobs:
       - run: pnpm test
       - run: python3 -m unittest discover -s tests -p 'ops_test.py' -v
       - run: python3 scripts/ops/secret_scan.py
-      - run: pnpm build
-      # Publication belongs only to Workers Builds. Fork PRs receive no secrets.
+      - name: Build the checked environment without deployment credentials
+        shell: bash
+        run: |
+          if [ "$JOT_DEPLOY_ENV" = local ]; then
+            pnpm build
+          else
+            pnpm run "build:$JOT_DEPLOY_ENV"
+          fi
+      - name: Compile background jobs without publishing
+        shell: bash
+        run: |
+          jobs_environment="$JOT_DEPLOY_ENV"
+          if [ "$jobs_environment" = local ]; then jobs_environment=staging; fi
+          pnpm exec wrangler deploy --config workers/jobs/wrangler.jsonc --env "$jobs_environment" --name "jotcoloring-$jobs_environment-jobs" --dry-run --outdir .local/ci-jobs-dry-run
+      - name: Validate exact release targets and bind the artifact to this commit
+        if: github.event_name == 'push'
+        run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV" --prepare
+      - name: Save the verified build for this same workflow run
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: jotcoloring-${{ github.sha }}-${{ github.ref_name }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 3
+          # Astro's client/.assetsignore is part of the hashed artifact.
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy reviewed environment
+    needs: verify
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'mateopedersen/jotcoloring-web' &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging') &&
+      vars.JOTCOLORING_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+      url: ${{ github.ref_name == 'main' && 'https://jotcoloring.com' || 'https://staging.jotcoloring.com' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: jotcoloring-${{ github.sha }}-${{ github.ref_name }}
+          path: dist/
+      - name: Recheck artifact hashes and explicit environment targets
+        run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV"
+      # Secrets are absent from dependency installation, tests and builds.
+      # Selecting a secret NAME avoids falling back to staging if production is empty.
+      - name: Publish jobs, then web, using only this environment's token
+        env:
+          CLOUDFLARE_ACCOUNT_ID: '48c779c8eaa80234e0bb9d57f96e588b'
+          CLOUDFLARE_API_TOKEN: ${{ secrets[github.ref_name == 'main' && 'JOT_CF_PRODUCTION_DEPLOY_TOKEN' || 'JOT_CF_STAGING_DEPLOY_TOKEN'] }}
+        run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV" --apply
+      # Sole automatic publisher: do not enable Workers Builds deploy triggers.
+      # No D1 migrations, content imports, AI gateway deploys or resource creation.

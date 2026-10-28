@@ -71,7 +71,9 @@
         "PRIVATE_INPUT_RETENTION_HOURS": "24",
         "PRIVATE_RESULT_RETENTION_DAYS": "7",
         "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
-        "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b"
+        "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b",
+        "ACCESS_TEAM_DOMAIN": "https://broken-term-6d26.cloudflareaccess.com",
+        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e"
       },
       "d1_databases": [
         {
