@@ -1,0 +1,70 @@
+{
+  "measured_at": "2026-10-28T13:51:01.073Z",
+  "scope": "Actual Wrangler4.153.0 dry-run multipart metadata parity; no remote publish or credential use",
+  "remote_publish_tested": false,
+  "results": [
+    {
+      "status": "PASS",
+      "worker": "jotcoloring-staging-jobs",
+      "environment": "staging",
+      "wrangler": "4.153.0",
+      "published": false,
+      "bindings": 22,
+      "queue_bindings": [
+        {
+          "name": "INGEST_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-staging-ingest"
+        },
+        {
+          "name": "AI_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-staging-ai"
+        }
+      ],
+      "keeps_existing_secrets": true
+    },
+    {
+      "status": "PASS",
+      "worker": "jotcoloring-production-jobs",
+      "environment": "production",
+      "wrangler": "4.153.0",
+      "published": false,
+      "bindings": 22,
+      "queue_bindings": [
+        {
+          "name": "INGEST_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-production-ingest"
+        },
+        {
+          "name": "AI_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-production-ai"
+        }
+      ],
+      "keeps_existing_secrets": true
+    },
+    {
+      "status": "PASS",
+      "worker": "jotcoloring-production",
+      "environment": "production",
+      "wrangler": "4.153.0",
+      "published": false,
+      "bindings": 25,
+      "queue_bindings": [
+        {
+          "name": "INGEST_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-production-ingest"
+        },
+        {
+          "name": "AI_QUEUE",
+          "type": "queue",
+          "queue_name": "jotcoloring-production-ai"
+        }
+      ],
+      "keeps_existing_secrets": true
+    }
+  ]
+}

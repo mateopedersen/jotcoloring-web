@@ -1,0 +1,201 @@
+{
+  "recorded_at": "2026-10-28T14:00:10.221243+00:00",
+  "status": "LOCAL_VERSION_ONLY_FIX_VERIFIED_REMOTE_NOT_RUN",
+  "baseline_commit": "34d0da9d0eeb55ecd1bd633e916e84911cb53105",
+  "fix_committed": false,
+  "fix_pushed": false,
+  "fix_remote_published": false,
+  "token_permissions_broadened": false,
+  "previous_actual_attempt": {
+    "source": "root operator report of actual GitHub Actions run",
+    "url": "https://github.com/mateopedersen/jotcoloring-web/actions/runs/40696610833/attempts/2",
+    "environment": "staging",
+    "verify": "PASS",
+    "jobs_upload": "PASS",
+    "complete_publication": "FAIL",
+    "failure_operation": "GET /accounts/{account_id}/queues during consumer reconciliation",
+    "cloudflare_code": 10000,
+    "web_step": "NOT RUN",
+    "jobs_activation_state": "Not independently inferred from upload success; inspect deployed version before claiming rollback or unchanged jobs runtime"
+  },
+  "approved_setup": {
+    "source": "root operator report following user approval",
+    "two_account_owned_worker_editor_tokens": true,
+    "separate_branch_restricted_github_environments": true,
+    "encrypted_environment_secrets": true,
+    "repository_activation": true,
+    "credential_values_recorded": false
+  },
+  "implementation": {
+    "upload": "wrangler versions upload with checked temporary config",
+    "queue_bindings": "Exact API-native name/type/queue_name metadata; values preserved",
+    "automatic_provision": false,
+    "automatic_resource_creation": false,
+    "consumer_cron_route_updates": false,
+    "version_selection": "One NDJSON version-upload schema1 record matching exact Worker and UUID; no latest lookup",
+    "activation": "Exact uploaded UUID@100% through minimal config",
+    "readback": "GET exact deployment ID; one matching uploaded UUID at100%; author metadata excluded",
+    "public_logs": "Sanitized API error codes and Worker/version/deployment/commit receipts only",
+    "gate": "Original environment/resource/AI constraints, artifact hashes, trusted push branch and latest commit guard retained",
+    "grouping_preflight": "Workers-scoped GET preserves reviewed grouping or no grouping; unexpected labels stop before upload",
+    "failure_traceability": "Confirmed upload UUID and accepted activation deployment UUID are emitted as sanitized state receipts before final readback; incomplete activation remains explicitly unconfirmed"
+  },
+  "tests": [
+    {
+      "name": "release/unit/protocol suite",
+      "passed": 10,
+      "failed": 0,
+      "command": "node --import tsx --test tests/ops-release.test.ts tests/ops-worker-version-release.test.ts tests/ops-wrangler-version.test.ts"
+    },
+    {
+      "name": "actual pinned Wrangler commands to local fake API",
+      "status": "PASS",
+      "real_cloudflare_requests": 0,
+      "dummy_credentials_only": true,
+      "writes": [
+        "POST Worker /versions",
+        "POST Worker /deployments"
+      ],
+      "queue_r2_d1_metadata_calls": 0,
+      "route_schedule_calls": 0,
+      "settings_writes": 0,
+      "worker_groupings_tested": [
+        "grouped",
+        "ungrouped"
+      ]
+    },
+    {
+      "name": "actual multipart bundle metadata parity",
+      "status": "PASS",
+      "workers": [
+        "jotcoloring-staging-jobs",
+        "jotcoloring-production-jobs",
+        "jotcoloring-production"
+      ],
+      "binding_counts": [
+        22,
+        22,
+        25
+      ],
+      "existing_secrets_inherited": true,
+      "evidence": "version-bundle-rehearsal.json",
+      "staging_web_note": "Staging web is not the current local build; the same comparison runs for actual environment web in CI prepare."
+    },
+    {
+      "name": "Astro check",
+      "status": "PASS",
+      "files": 123,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 1,
+      "hint": "Existing beforeunload returnValue deprecation"
+    },
+    {
+      "name": "candidate secret pattern scan",
+      "status": "PASS",
+      "files": 194,
+      "complete_secret_audit": false
+    },
+    {
+      "name": "git diff whitespace check",
+      "status": "PASS"
+    }
+  ],
+  "local_findings_resolved": [
+    "Plain versions upload still performs account queue lookup with normal queue config. Exact native queue metadata avoids lookup without changing runtime bindings.",
+    "Pinned Wrangler automatic provisioning defaults true. Explicit false flags removed optional account R2 metadata requests; strict local protocol test verifies no such requests."
+  ],
+  "wrangler_version": "4.153.0",
+  "wrangler_cli_sha256": "18dbf242b542e171c993d68cc41a4e58bc4f533392fc91b71e29ffeee7bf6c0c",
+  "sha256": {
+    ".github/workflows/verify.yml": "55b43a242075613b382785290be587e2f476a6874a2be44881eb2f82d72f45f1",
+    "scripts/ops/deploy-release.ts": "38709a02db22822fdd959316f4bf31f65b6d169eb216c224a001e74928592380",
+    "scripts/ops/worker-version-release.ts": "f0247ce2947bfce2385be12f4ba45443524c38c19e84d3ee584c232015fa5966",
+    "tests/ops-release.test.ts": "77bd1b7378292ce4740dddf2ad4b94d637fbfcf012ab6a5145f9a701205ca065",
+    "tests/ops-worker-version-release.test.ts": "e94547062f175f48bb16e98d72b71ee26422814e5515eab794eb35d0c9148a23",
+    "tests/ops-wrangler-version.test.ts": "b06fa8be81a1e9d8bae324203fe1a8f808626709156f6b6de9aef3f62cc869a9",
+    "docs/CI_DEPLOYMENT_DECISION.md": "a6f152c3b9ab9f707338747c9c286fa495187ec56c21ee0a7f57c14f76cb3f51"
+  },
+  "sources": [
+    "https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload",
+    "https://developers.cloudflare.com/workers/wrangler/commands/workers/#triggers-deploy",
+    "https://developers.cloudflare.com/workers/wrangler/system-environment-variables/",
+    "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/versions/methods/create/",
+    "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/create/",
+    "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/get/"
+  ],
+  "remaining": [
+    "Root review and commit/push of the correction",
+    "Actual staging version-only run with existing scoped token, followed by exact version/commit smoke",
+    "Only after staging passes, production run and version/commit smoke",
+    "Maintain Workers Builds publication disabled; do not add token scopes to work around unexpected endpoint access"
+  ],
+  "updated_at": "2026-10-28T14:05:14.089054+00:00",
+  "independent_review": {
+    "recorded_at": "2026-10-28T14:09:51.083Z",
+    "status": "NO_BLOCKING_CODE_FINDINGS; LIVE_SCOPED_SERVICE_PREFLIGHT_PASS",
+    "scope": "Read final publisher, gates, workflow and tests; four actual HTTPS GETs with already-approved environment-specific account-owned tokens; no code changes, deployment, commit or push",
+    "remote_publish_tested": false,
+    "requests": 4,
+    "methods": [
+      "GET"
+    ],
+    "token_values_recorded": false,
+    "email_or_full_response_recorded": false,
+    "results": [
+      {
+        "worker": "jotcoloring-staging",
+        "http_status": 200,
+        "success": true,
+        "script_present": true,
+        "script_tag_present": true,
+        "reserved_grouping_tags": [],
+        "helper_result": "PASS ungrouped"
+      },
+      {
+        "worker": "jotcoloring-staging-jobs",
+        "http_status": 200,
+        "success": true,
+        "script_present": true,
+        "script_tag_present": true,
+        "reserved_grouping_tags": [
+          "cf:service=jotcoloring-jobs-local",
+          "cf:environment=staging"
+        ],
+        "helper_result": "PASS grouped"
+      },
+      {
+        "worker": "jotcoloring-production",
+        "http_status": 200,
+        "success": true,
+        "script_present": true,
+        "script_tag_present": true,
+        "reserved_grouping_tags": [],
+        "helper_result": "PASS ungrouped"
+      },
+      {
+        "worker": "jotcoloring-production-jobs",
+        "http_status": 200,
+        "success": true,
+        "script_present": true,
+        "script_tag_present": true,
+        "reserved_grouping_tags": [
+          "cf:service=jotcoloring-jobs-local",
+          "cf:environment=production"
+        ],
+        "helper_result": "PASS grouped"
+      }
+    ],
+    "evaluated_helper": "serviceGrouping from scripts/ops/worker-version-release.ts, using each actual response in memory",
+    "conclusion": "Existing narrow tokens can read the exact service metadata required by the preflight, and all four live groupings match the generated config selection. Existing branch/artifact/environment gates, exact UUID activation and failure handling remain intact.",
+    "limits": [
+      "Revised version upload and activation remain remote NOT RUN; service GET success alone does not prove the full publication chain.",
+      "Earlier local tests and multipart parity results were reviewed, not rerun during this read-only review."
+    ],
+    "reviewed_sha256": {
+      "scripts/ops/worker-version-release.ts": "f0247ce2947bfce2385be12f4ba45443524c38c19e84d3ee584c232015fa5966",
+      "scripts/ops/deploy-release.ts": "38709a02db22822fdd959316f4bf31f65b6d169eb216c224a001e74928592380",
+      ".github/workflows/verify.yml": "55b43a242075613b382785290be587e2f476a6874a2be44881eb2f82d72f45f1"
+    }
+  }
+}

@@ -4,7 +4,7 @@
 
 | Kaynak | Kimlik / ad | Durum |
 | --- | --- | --- |
-| GitHub repo | mateopedersen/jotcoloring-web | Public repo oluşturuldu; 1ab244f Verify yeşil (root bildirimi); yeni Actions deploy taslağı remote kabulü ayrı |
+| GitHub repo | mateopedersen/jotcoloring-web | Public; ilk scoped-token staging run40696610833/attempt2 Verify+jobs upload PASS, queue10000 FAIL; version-only düzeltmenin remote kabulü ayrı |
 | Ana Cloudflare hesap | 48c779c8eaa80234e0bb9d57f96e588b | Mevcut Workers Paid/R2; başka projelerin aboneliği değiştirilmez |
 | jotcoloring.com zone | jotcoloring.com | Free tercihi; Pro yükseltmesi yok |
 | Staging canonical D1 | jotcoloring-staging-catalog / 835240f5-90d7-4bf2-8a41-b67cc484fb4b | Oluşturuldu |

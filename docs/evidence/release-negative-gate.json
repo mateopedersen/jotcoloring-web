@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-10-28T14:00:45.625838+00:00",
+  "status": "PASS_EXPECTED_FAILURE",
+  "pull_request": "https://github.com/mateopedersen/jotcoloring-web/pull/1",
+  "workflow_run": "https://github.com/mateopedersen/jotcoloring-web/actions/runs/40701183996",
+  "verify": "FAILURE (intentional test)",
+  "deploy": "SKIPPED",
+  "mergeStateStatus": "BLOCKED",
+  "main_required_check": {
+    "context": "verify",
+    "app_id": 15368,
+    "strict": true,
+    "admins_enforced": true,
+    "pull_request_required": true,
+    "force_push": false,
+    "deletion": false
+  },
+  "merged": false,
+  "secrets_available_to_pr": false
+}
