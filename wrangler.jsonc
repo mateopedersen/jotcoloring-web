@@ -195,7 +195,17 @@
       },
       "limits": {
         "cpu_ms": 1000
-      }
+      },
+      "routes": [
+        {
+          "pattern": "jotcoloring.com/*",
+          "zone_id": "f719bb4d17d29abc414ab167ba2797e4"
+        },
+        {
+          "pattern": "www.jotcoloring.com/*",
+          "zone_id": "f719bb4d17d29abc414ab167ba2797e4"
+        }
+      ]
     },
     "preview": {
       "name": "jotcoloring-preview",

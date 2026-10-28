@@ -13,7 +13,7 @@ export async function exportArtwork(art:HTMLCanvasElement,outline:HTMLCanvasElem
   if(options.format==='webp'){
     status('Encoding WEBP at the original canvas resolution…');const colored=await canvasBlob(art,'image/webp',.9);
     if(!options.outline)return {blob:colored,name:`${name}.webp`,width:art.width,height:art.height};
-    const original=await canvasBlob(outline,'image/webp',.94);const {zipSync}=await import('fflate');const bytes=zipSync({[`${name}-colored.webp`]:new Uint8Array(await colored.arrayBuffer()),[`${name}-outline.webp`]:new Uint8Array(await original.arrayBuffer())},{level:0});
+    const original=await canvasBlob(outline,'image/webp',.94);const {zipSync}=await import('fflate');const bytes=zipSync({'colored.webp':new Uint8Array(await colored.arrayBuffer()),'outline.webp':new Uint8Array(await original.arrayBuffer())},{level:0});
     return {blob:new Blob([bytes as BlobPart],{type:'application/zip'}),name:`${name}.zip`,width:art.width,height:art.height};
   }
   const original=options.outline?grayscaleOutline(outline):undefined;

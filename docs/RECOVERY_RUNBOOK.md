@@ -1,6 +1,6 @@
 # Kurtarma ve rollback
 
-Tarih: 28 Ekim 2026. Yerel checksum/izole dosya restore testi yapıldı; staging/production provası ve RTO/RPO **NOT RUN**. Kod rollback'i D1/R2/KV veya kuyruk durumunu geri almaz.
+Tarih: 28 Ekim 2026. Yerel checksum/izole dosya restore testi ve gerçek staging D1→private R2→izole D1 zinciri doğrulandı. Üç temsilî R2 dosyası da private hedefe geri alındı. Production restore, tam uygulama cutover ve RTO/RPO **NOT RUN**. Kod rollback'i D1/R2/KV veya kuyruk durumunu geri almaz.
 
 | Olay | İlk durdurma | Kurtarma kaynağı ve yetki | Doğrulama |
 | --- | --- | --- | --- |
@@ -27,3 +27,45 @@ python3 scripts/ops/restore-bootstrap.py PRIVATE/deployment-data .local/new-rest
 ```
 
 Komut var olan hedefi kullanmaz, Cloudflare'a bağlanmaz ve gerçek kaynağı değiştirmez. Bu süre production RTO değildir. R2 API metadata/CORS/custom-domain kuralları, retention ve bulutta ayrı ortam restore henüz bu testin kapsamında değildir. Production RPO için ayrıca çalışan backup sıklığı ve son başarılı snapshot zamanı gerekir.
+
+## Gerçek D1 → private R2 → yeni izole D1 provası
+
+`scripts/ops/cloud-backup-restore.ts` bu zinciri uygular. Gerçek staging provası 28 Ekim 2026'da tamamlandı; sonuç ve bulunan/düzeltilen sorunlar `evidence/cloud-restore-staging.json` içindedir. Varsayılan komut yalnız plan gösterir; kimlik bilgisi okumaz ve ağ isteği yapmaz:
+
+```sh
+pnpm exec tsx scripts/ops/cloud-backup-restore.ts --environment staging
+```
+
+Gerçek çalışma için önce kaynak ortam ve benzersiz deneme adı belirlenir. Kimlik bilgisi `CLOUDFLARE_API_TOKEN` üzerinden güvenli ortamda veya mevcut Wrangler oturum dosyası yolu üzerinden verilir; token komut argümanına yazılmaz. Aşağıdaki `--apply` komutu yeni backup nesneleri ve yeni izole veritabanı oluşturur. Mevcut staging/production verisine import yapmaz:
+
+```sh
+pnpm exec tsx scripts/ops/cloud-backup-restore.ts \
+  --environment staging \
+  --new-restore-name jotcoloring-restore-staging-20261028-first \
+  --wrangler-auth-file "$JOTCOLORING_WRANGLER_AUTH_FILE" \
+  --apply
+```
+
+Adı her yeni denemede değiştirin. Araç var olan R2 anahtarını kullanmaz; var olan D1 kimliğini serbest hedef olarak kabul eden seçenek içermez. Yeni oluşturduğu kimliği dört aktif D1 kimliğiyle karşılaştırır ve import öncesi hedefin boş olduğunu doğrular. Bir hata olursa hedef ve kanıt korunur; otomatik silme veya aktif binding değişikliği yapılmaz. `--resume-empty-target` yalnız aynı görevde oluşturulmuş ve özel başarısızlık kaydında bulunan hedefi yeniden deneyebilir; ad/kimlik/boşluk hem iş başında hem import öncesinde yeniden doğrulanır. Dolu hedefe tekrar import yapılmaz. Aktarım tamamlanmışsa yalnız `cloud-restore-verify.ts --run PRIVATE_RUN_DIRECTORY --wrangler-auth-file AUTH_FILE` ile salt okunur doğrulama yapılır.
+
+D1 export kısa süre kaynak okumalarını durdurabilir; önce staging'de yürütün ve üretimde uygun işlem aralığı belirleyin. Export tamamlanana kadar API düzenli sorgulanır. Geçici imzalı URL bir saat geçerlidir; URL ve auth değerleri loga yazılmaz. SQL geçici bellekten yerel doğrulamaya verilir. Bu davranış [D1 export API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/export/) ve [D1 import API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/import/) sözleşmelerine dayanır. SQL dosyası D1 uyumu için transaction sarmalayıcıları olmadan, bütün tablo tanımları veriden önce, üst kayıtlar bağlı kayıtlardan önce ve tetikleyiciler bütün veriden sonra hazırlanır; [Cloudflare import/export rehberi](https://developers.cloudflare.com/d1/best-practices/import-export-data/) bu sınırlamaları açıklar. Gerçek prova yalnız FK ertelemesinin yeterli olmadığını gösterdi; veri sırası düzeltildi.
+
+Kalıcı katalog yedeği özel AI istemlerini, yüklenen fotoğrafların sahiplik bilgilerini veya süreli iş sonuçlarını saklamaz. `creator_job`, `creator_upload`, `ai_free_reservation` tablo şemaları korunur, bu üç tablonun satırları kalıcı snapshot'tan çıkarılır; çıkarılan satır sayıları manifestte kaydedilir. Kaynak SQL'in orijinal hash'i ile filtrelenmiş SQL'in hash'i ayrıdır. Kaynak SQL diske yazılmaz. Geri yüklenmiş bir ortamda AI, sağlayıcı kotası ve güncel rezervasyon durumu uzlaştırılmadan açılmaz. Bu kasıtlı dışlama kullanıcı AI işlerini geri getirme garantisi vermez.
+
+Araç BACKUPS için r2.dev ve custom domain erişiminin kapalı olduğunu doğrular. SQL ve manifest, ortam/DB/deneme/hash anahtarına yüklenip R2'den tekrar okunur; byte ve SHA-256 eşleşmeden hedef D1 oluşturulmaz. Import, R2'den okunan SQL'i kullanır. Ardından bütün kalıcı tablo satırlarının sıralı hash'i, sayımlar, kolonlar, indeks/tetikleyici envanteri, yabancı anahtarlar ve yayımlanmış aktif revision/asset ilişkileri karşılaştırılır. Tam sayılar metne çevrilerek JavaScript hassasiyet kaybı önlenir.
+
+Özel kanıt `.local/cloud-backup/<deneme>/verification.json` içindedir. SQL ve tablo ayrıntıları public repo'ya konmaz. Paylaşılacak sonuç yalnız durum, ortam, yeni hedef kimliği, sayımlar/hash'ler, başlangıç/bitiş ve kapsamdan oluşmalıdır. Script 50 MB SQL ve toplam 100 bin satır üstünde durur; bu mevcut küçük katalog için güvenli prova aracıdır, 5 milyon içerik geçiş aracı değildir.
+
+Yerel hazırlık doğrulandı: gerçek 18 içerik/108 asset SQL'i süzülüp ikinci boş SQLite'a `foreign_keys=ON` ile geri yüklendi; 21 tablo şeması korundu. Private AI satır dışlama ve yanlış hedef/erişim durumu guard testleri de geçti. Kanıt `evidence/cloud-backup-preflight.json`.
+
+Gerçek staging sonucu: 21 canonical tablo + migration defteri, toplam 498 saklanan satır ve 46 şema nesnesi yeni izole D1'de doğrulandı. Bütün satır/tablo hash'leri, yabancı anahtarlar, aktif revision/asset ilişkileri ve AUTOINCREMENT sayaçları eşleşti. Outbox watermark 18. Üç private AI işinin, bir upload'ın ve üç rezervasyonun satırları kalıcı yedekten kasıtlı dışlandı. İlk FK hatasında hedef boş kaldığı doğrulandıktan sonra aynı izole hedef kullanıldı. Sonraki verifier farkı veride değildi: metne dönüştürülen sıra numarasının alias'ı alfabetik sıralanıyordu; özgün sayısal kolonla sıralama düzeltildi ve dolu hedefe tekrar yazmadan bütün tablo eşitliği geçti. Gzip JSON manifest için kontrol açılmış gerçek byte'lar üzerinden yapıldı. İlk başarısızlıklar silinmedi.
+
+İzole hedef `jotcoloring-restore-staging-20261028-first` / `d4b6745a-86eb-4fce-bcc0-79609c7faae0`; Worker'a bağlanmadı. Son salt okunur doğrulama 51 istekte 9,34 saniye sürdü; bu süre olaydan hizmet dönüşüne kadar geçen RTO değildir.
+
+## Temsilî R2 medya geri yükleme
+
+`scripts/ops/cloud-media-restore.ts --run YYYYMMDD-unique` varsayılan plan üretir. Mevcut manifestteki woodland PDF, baskı WEBP ve özgün PNG için private BACKUPS kaynağını kullanır. `--apply --wrangler-auth-file AUTH_FILE` ancak incelenmiş planı çalıştırır; private staging ORIGINALS altında `restore-drill/<run>/...` dışında yazamaz. Her iki bucket'ın public domain erişimini kontrol eder, var olan hedef anahtarını reddeder, MIME/magic/byte/SHA-256 kaynak ve readback eşitliğini zorunlu tutar. DB, public medya ve bucket politikası değişmez.
+
+28 Ekim 2026 gerçek denemesi PASS: PDF 743.353 byte, WEBP 519.480 byte, raw PNG 3.155.582 byte; toplam 4.418.415 byte üç private nesneye geri alındı. 16 istek ve 14,169 saniye ölçüldü. Hedef `jotcoloring-staging-originals/restore-drill/20261028-first/`; silinmedi. Bu üç örneğin kurtarılması tüm medya arşivinin, public CORS/TLS ayarlarının veya production RTO/RPO'nun doğrulandığı anlamına gelmez.
+
+Bu zincir canonical metadata'yı geri yükler. R2 medya nesnelerinin ayrı immutable yedeğini temiz bir private hedefe geri alma, key/hash/byte eşleştirmesi, yeni FTS projection oluşturma ve uygulama üzerinden indirme/stüdyo kabulü ayrıca gerekir. Uygulama doğrulanmadan izole hedef production'a bağlanmaz. İşlem süresi yalnız deneme süresidir; production RTO/RPO olarak sunulmaz.

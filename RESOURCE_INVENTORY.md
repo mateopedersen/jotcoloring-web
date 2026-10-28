@@ -9,12 +9,13 @@
 | jotcoloring.com zone | jotcoloring.com | Free tercihi; Pro yükseltmesi yok |
 | Staging canonical D1 | jotcoloring-staging-catalog / 835240f5-90d7-4bf2-8a41-b67cc484fb4b | Oluşturuldu |
 | Staging search D1 | jotcoloring-staging-search / 1f4852c1-2b4d-4e80-99a3-f86be83858b6 | Oluşturuldu |
-| Production canonical D1 | jotcoloring-production-catalog / d075722e-c698-4b6e-a5e4-f53ae5c9e411 | Oluşturuldu |
-| Production search D1 | jotcoloring-production-search / 59133e5c-f73a-42d2-8b8b-223720e8b6ec | Oluşturuldu |
-| Staging Worker | https://jotcoloring-staging.melihozcanapple.workers.dev | Gerçek HTTPS:18 content/108 asset/54 download/50 search PASS; custom staging domain bekleniyor |
+| Production canonical D1 | jotcoloring-production-catalog / d075722e-c698-4b6e-a5e4-f53ae5c9e411 |18 content/108 asset bootstrap import edildi (root araç bildirimi) |
+| Production search D1 | jotcoloring-production-search / 59133e5c-f73a-42d2-8b8b-223720e8b6ec |18 search document import edildi (root araç bildirimi) |
+| Staging Worker | https://jotcoloring-staging.melihozcanapple.workers.dev | Gerçek HTTPS:18 content/108 asset/54 download/50 search PASS; https://staging.jotcoloring.com canonical/robots/sitemap hedefli5 GET PASS |
+| İzole staging restore D1 | jotcoloring-restore-staging-20261028-first / d4b6745a-86eb-4fce-bcc0-79609c7faae0 | Gerçek R2 snapshot'tan restore/parity PASS; hiçbir Worker binding'ine eklenmedi; korunuyor |
 | Production Access application | 48b38ce8-2867-4b8b-9a4d-51da967e7672 | Root oluşturdu; owner-only policy, canlı giriş/alternate-host kabulü ayrı |
 | Ücretsiz AI hesap | 0dce4e45aa8f6fcab101ea9622db99f2 | Ücretli modele geçiş yetkisi yok |
-| Free AI gateway | jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev | Dağıtıldı; inference kabulü bu kayıtta NOT RUN |
+| Free AI gateway | jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev | Dağıtıldı; bir gerçek ücretsiz text inference+indirme+görsel kontrol PASS; photo/browser/production ayrıca doğrulanır |
 
 Her bir `staging` ve `production` ortamı için ayrı dört R2 bucket oluşturuldu:
 
@@ -29,4 +30,6 @@ Ayrı altı queue: `jotcoloring-staging-ingest`, `jotcoloring-staging-ai`, `jotc
 
 Staging R2 yükleyici418 nesneyi doğruladı (private originals ve backups dahil; root araç kanıtı). Staging remote D1 başlangıçta boş kontrol edildi ve18 content/108 asset ile başlatıldı; public HTTP bütün active byte'ları ayrıca doğruladı. Production Access kapsamı `/admin` ve `/api/admin`; team issuer `broken-term-6d26`. E-posta adresi veya kimlik bilgisi bu public belgede tutulmaz.
 
-Bekleyen gerçek değerler: production URL ve deploy sürümü, staging custom domain routing, media domain TLS/CORS, Workers Builds bağlantısı ve canlı yetkili admin giriş kanıtı. Bunlar uydurulmaz; doğrulanmış araç çıktısından eklenir. Kimlik doğrulama secret'ları yalnız güvenli hesap/ortam kanallarında tutulur, rapora veya repo'ya yazılmaz.
+Bekleyen gerçek değerler: production URL ve deploy sürümü, media domain TLS/CORS, Workers Builds bağlantısı ve canlı yetkili admin giriş kanıtı. Bunlar uydurulmaz; doğrulanmış araç çıktısından eklenir. Kimlik doğrulama secret'ları yalnız güvenli hesap/ortam kanallarında tutulur, rapora veya repo'ya yazılmaz.
+
+Ek kurtarma denemesi: staging BACKUPS'ta ilk ve düzeltilmiş SQL/manifest snapshot'ları korunur. Staging ORIGINALS içinde yalnız `restore-drill/20261028-first/` altında3 temsilî PDF/WEBP/raw nesne oluşturuldu; toplam4.418.415byte. Public bucket veya mevcut immutable key üstüne yazılmadı.

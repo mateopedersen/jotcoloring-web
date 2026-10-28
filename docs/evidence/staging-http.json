@@ -82,7 +82,11 @@
     },
     {
       "name": "Advertised staging sitemap host is reachable",
-      "status": "FAIL"
+      "status": "PASS"
+    },
+    {
+      "name": "Bound staging domain canonical/robots/sitemap consistency",
+      "status": "PASS"
     }
   ],
   "search": [
@@ -863,7 +867,7 @@
     {
       "id": "Q47",
       "query": {
-        "q": "\u00e7i\u00e7ek"
+        "q": "çiçek"
       },
       "expected": [],
       "actual": [],
@@ -5124,9 +5128,7 @@
       "elapsed_ms": 62.526
     }
   ],
-  "warnings": [
-    "Sitemap advertises staging.jotcoloring.com, which did not resolve/reach successfully from this client; all Workers.dev sitemap paths were checked."
-  ],
+  "warnings": [],
   "health": {
     "status": 200,
     "headers": {
@@ -5264,8 +5266,10 @@
     ]
   },
   "advertised_staging_domain": {
-    "status": "UNREACHABLE",
-    "tested": true
+    "status": 200,
+    "tested": true,
+    "measured_at": "2026-10-28T11:50:10.753Z",
+    "origin": "https://staging.jotcoloring.com"
   },
   "network_latency": {
     "samples": 50,
@@ -5274,8 +5278,8 @@
     "p99_ms": 394.052,
     "scope": "One sequential HTTPS request per search case, mixed cache state, full response read; one client, no concurrency/RPS/load/capacity guarantee"
   },
-  "overall": "FAIL",
-  "request_count": 251,
+  "overall": "PASS",
+  "request_count": 256,
   "received_body_bytes": 66044425,
   "finished_at": "2026-10-28T11:35:51.292Z",
   "focused_followup": {
@@ -5307,6 +5311,105 @@
       }
     ]
   },
-  "request_count_scope": "247 main same-origin GETs,1 advertised-host attempt,3 focused follow-ups; excludes initial manual preflight",
-  "received_body_bytes_scope": "Initial247same-origin requests only; focused follow-up bodies were consumed but not included in this byte total"
+  "request_count_scope": "247 main same-origin GETs,1 advertised-host attempt,3 focused follow-ups; excludes initial manual preflight;5targeted custom-domain checks",
+  "received_body_bytes_scope": "Initial247same-origin requests only; focused follow-up bodies were consumed but not included in this byte total",
+  "custom_domain_followup": {
+    "measured_at": "2026-10-28T11:50:10.752Z",
+    "origin": "https://staging.jotcoloring.com",
+    "status": "PASS",
+    "checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "type": "text/html",
+        "noindex": "noindex,nofollow",
+        "location": null,
+        "canonical": [
+          "https://staging.jotcoloring.com/"
+        ],
+        "sitemap_locations": [],
+        "elapsed_ms": 496.622
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "type": "text/plain; charset=utf-8",
+        "noindex": "noindex,nofollow",
+        "location": null,
+        "canonical": [],
+        "sitemap_locations": [],
+        "robots": "User-agent: *\nDisallow: /\n",
+        "elapsed_ms": 60.527
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "type": "application/xml; charset=utf-8",
+        "noindex": "noindex,nofollow",
+        "location": null,
+        "canonical": [],
+        "sitemap_locations": [
+          "https://staging.jotcoloring.com/sitemaps/static.xml",
+          "https://staging.jotcoloring.com/sitemaps/1.xml"
+        ],
+        "elapsed_ms": 356.465
+      },
+      {
+        "path": "/sitemaps/static.xml",
+        "status": 200,
+        "type": "application/xml; charset=utf-8",
+        "noindex": "noindex,nofollow",
+        "location": null,
+        "canonical": [],
+        "sitemap_locations": [
+          "https://staging.jotcoloring.com/",
+          "https://staging.jotcoloring.com/coloring-pages/",
+          "https://staging.jotcoloring.com/about/",
+          "https://staging.jotcoloring.com/privacy/",
+          "https://staging.jotcoloring.com/terms/",
+          "https://staging.jotcoloring.com/coloring-pages/animals/",
+          "https://staging.jotcoloring.com/coloring-pages/dinosaurs/",
+          "https://staging.jotcoloring.com/coloring-pages/fantasy/",
+          "https://staging.jotcoloring.com/coloring-pages/flowers/",
+          "https://staging.jotcoloring.com/coloring-pages/food/",
+          "https://staging.jotcoloring.com/coloring-pages/holidays/",
+          "https://staging.jotcoloring.com/coloring-pages/mandalas/",
+          "https://staging.jotcoloring.com/coloring-pages/ocean/",
+          "https://staging.jotcoloring.com/coloring-pages/space/",
+          "https://staging.jotcoloring.com/coloring-pages/vehicles/"
+        ],
+        "elapsed_ms": 70.952
+      },
+      {
+        "path": "/sitemaps/1.xml",
+        "status": 200,
+        "type": "application/xml; charset=utf-8",
+        "noindex": "noindex,nofollow",
+        "location": null,
+        "canonical": [],
+        "sitemap_locations": [
+          "https://staging.jotcoloring.com/coloring/botanical-mandala/",
+          "https://staging.jotcoloring.com/coloring/butterfly-garden/",
+          "https://staging.jotcoloring.com/coloring/camper-adventure/",
+          "https://staging.jotcoloring.com/coloring/cozy-bookshop/",
+          "https://staging.jotcoloring.com/coloring/dinosaur-valley/",
+          "https://staging.jotcoloring.com/coloring/farm-friends/",
+          "https://staging.jotcoloring.com/coloring/friendly-dragon/",
+          "https://staging.jotcoloring.com/coloring/gentle-deer/",
+          "https://staging.jotcoloring.com/coloring/hibiscus-garden/",
+          "https://staging.jotcoloring.com/coloring/little-hedgehog/",
+          "https://staging.jotcoloring.com/coloring/ocean-adventure/",
+          "https://staging.jotcoloring.com/coloring/playful-puppy/",
+          "https://staging.jotcoloring.com/coloring/sleepy-kitten/",
+          "https://staging.jotcoloring.com/coloring/space-explorer/",
+          "https://staging.jotcoloring.com/coloring/sweet-treats/",
+          "https://staging.jotcoloring.com/coloring/winter-wishes/",
+          "https://staging.jotcoloring.com/coloring/woodland-friends/",
+          "https://staging.jotcoloring.com/coloring/woodland-owl/"
+        ],
+        "elapsed_ms": 76.337
+      }
+    ],
+    "scope": "Five targeted read-only requests after custom-domain binding; original108asset/54download suite was not repeated"
+  }
 }

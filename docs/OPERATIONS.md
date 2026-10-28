@@ -53,6 +53,8 @@ Yedek kapsamı canonical D1 normal tabloları, immutable R2 kaynak/türevleri ve
 
 Canonical yedekte `sitemap_entry`, `request_limit` ve `ai_free_reservation` dahil21 tablo vardır. Kullanıcıya özel AI giriş/sonuçları kalıcı katalog yedeğine eklenmez. Backend yayın öncesi private BACKUPS koruması ve bootstrap bundle hazırlığı uygulanırken, başarılı R2 restore provası ayrıca kanıtlanmalıdır.
 
+Gerçek uzak D1 export, private BACKUPS'a checksum doğrulanmış aktarım ve yeni izole D1'e restore aracı `scripts/ops/cloud-backup-restore.ts` içinde hazırdır. Varsayılan yalnız plan üretir; `--apply` yeni nesneler ve yeni restore DB oluşturur. Gerçek staging zinciri PASS; `evidence/cloud-restore-staging.json` ilk bulunan/düzeltilen sorunları da korur. Production cutover/RTO/RPO bu sonuçtan çıkarılmaz. Ayrıntılı komut ve güvenli uygulama sırası `RECOVERY_RUNBOOK.md` içindedir. Kalıcı uzak snapshot özel `creator_job`, `creator_upload`, `ai_free_reservation` satırlarını dışlar, tablo şemalarını korur; bu nedenle AI açılmadan güncel kota durumu ayrıca uzlaştırılmalıdır. Yerel aktarım provası bütün canonical tabloları test edebilir; bu kalıcı private-data retention yetkisi değildir.
+
 ```sh
 python3 scripts/ops/backup.py create /private/export /private/snapshot \
   --environment staging --commit ACTUAL_COMMIT --schema-version 0001

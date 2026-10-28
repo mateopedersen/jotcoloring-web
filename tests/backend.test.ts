@@ -63,3 +63,30 @@ test('provider failures retain only safe codes and never automatically repeat un
  const {env,db}=setup();const {createGeneration,runGeneration,generationStatus}=await import('../src/server/ai');let calls=0;Object.assign(env,{AI_ENABLED:'true',AI_BILLING_MODE:'free_only',AI_FREE_DAILY_NEURONS:'9000',AI_FREE_MAX_JOB_NEURONS:'1000',AI_MAX_CONCURRENT_JOBS:'1',AI_PER_SESSION_DAILY_LIMIT:'2',AI_MODEL_ID:'@cf/black-forest-labs/flux-2-klein-4b',AI_FREE_ONLY_GATEWAY:{fetch:async()=>{calls++;return new Response(JSON.stringify({error:'PROVIDER_5035',inference_attempted:true}),{status:503})}},AI_QUEUE:{send:async()=>{}},JOB_ASSETS:{},SESSION_SIGNING_SECRET:'s'.repeat(40)});
  const job=await createGeneration(env,'diagnostic-owner',{mode:'text',prompt:'A rabbit',style:'simple',line_weight:'bold',detail_level:20,page_shape:'portrait',simplify_background:true},'diagnostic-test-one');await runGeneration(env,job.job_id);await runGeneration(env,job.job_id);assert.equal(calls,1);const status=await generationStatus(env,'diagnostic-owner',job.job_id);assert.equal(status.state,'billing_unknown');assert.equal(status.error_code,'FREE_GATEWAY_PROVIDER_5035');assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM ai_free_reservation').first<{n:number}>())?.n,1);
 });
+
+test('gateway preserves attempted inference when a provider error stream breaks',async()=>{
+ const {default:gateway}=await import('../workers/free-ai/index');
+ const {gatewayDigest,gatewaySignature,signatureData,GATEWAY_MODEL}=await import('../src/server/gateway-signature');
+ const secret='s'.repeat(40),form=new FormData();form.set('prompt','A black ink rabbit outline on white');form.set('width','1024');form.set('height','1536');
+ const encoded=new Response(form),bytes=new Uint8Array(await encoded.arrayBuffer()),timestamp=String(Date.now()),id=crypto.randomUUID();
+ const headers={'Content-Type':encoded.headers.get('content-type')!,'X-Request-Timestamp':timestamp,'Idempotency-Key':id,'X-AI-Model':GATEWAY_MODEL,'X-Max-Neurons':'300','X-Request-Signature':await gatewaySignature(secret,signatureData(timestamp,id,GATEWAY_MODEL,'300',await gatewayDigest(bytes)))};
+ let calls=0;
+ const env={AI_FREE_GATEWAY_SECRET:secret,ACCOUNT_BILLING_PLAN:'workers_free',ENFORCED_ACCOUNT_ID:'0dce4e45aa8f6fcab101ea9622db99f2',AI:{run:async()=>{calls++;return new Response(new ReadableStream({pull(controller){controller.error(new Error('private request data must not escape'))}}),{status:503,headers:{'Content-Type':'application/json'}})}}};
+ const response=await gateway.fetch(new Request('https://gateway.test/inference',{method:'POST',headers,body:bytes}),env);
+ assert.equal(calls,1);assert.equal(response.status,502);assert.deepEqual(await response.json(),{error:'GATEWAY_PROCESSING_ERROR',inference_attempted:true});
+});
+
+test('free gateway distinguishes timeout and decode failures without retry or private error echo',async()=>{
+ const {freeOnlyInference,FREE_GATEWAY_TIMEOUT_MS}=await import('../src/server/free-ai');assert.equal(FREE_GATEWAY_TIMEOUT_MS,300_000);
+ const {env,db}=setup();let calls=0;
+ Object.assign(env,{AI_ENABLED:'true',AI_BILLING_MODE:'free_only',AI_FREE_DAILY_NEURONS:'9000',AI_FREE_MAX_JOB_NEURONS:'300',AI_MAX_CONCURRENT_JOBS:'1',AI_PER_SESSION_DAILY_LIMIT:'2',AI_MODEL_ID:'@cf/black-forest-labs/flux-2-klein-4b',AI_QUEUE:{send:async()=>{}},JOB_ASSETS:{},SESSION_SIGNING_SECRET:'s'.repeat(40),AI_FREE_ONLY_GATEWAY:{fetch:async()=>{calls++;throw new DOMException('private payload must not escape','TimeoutError')}}});
+ const {createGeneration}=await import('../src/server/ai');const job=await createGeneration(env,'transport-test-owner',{mode:'text',prompt:'A rabbit',style:'simple',line_weight:'bold',detail_level:20,page_shape:'portrait',simplify_background:true},'transport-test-one');
+ const infer=()=>freeOnlyInference(env,'@cf/black-forest-labs/flux-2-klein-4b',job.job_id,new Response('fixture').body!,'multipart/form-data; boundary=test');
+ await assert.rejects(infer(),error=>error instanceof AppError&&error.code==='FREE_GATEWAY_TIMEOUT'&&error.fields?.inference_attempted==='unknown'&&!error.message.includes('private'));
+ assert.equal(calls,1);
+ env.AI_FREE_ONLY_GATEWAY={fetch:async()=>{calls++;return new Response('not json',{headers:{'X-Zero-Charge-Enforced':'true','X-Provider-Receipt':'test-receipt'}})}};
+ await assert.rejects(infer(),error=>error instanceof AppError&&error.code==='FREE_GATEWAY_RESPONSE_INVALID'&&error.fields?.inference_attempted==='true');
+ assert.equal(calls,2);assert.equal((await db.prepare('SELECT provider_receipt FROM ai_free_reservation WHERE job_id=?').bind(job.job_id).first<{provider_receipt:string}>())?.provider_receipt,'test-receipt');
+ env.AI_FREE_ONLY_GATEWAY={fetch:async()=>new Response('{}')};
+ await assert.rejects(infer(),error=>error instanceof AppError&&error.code==='FREE_GATEWAY_RECEIPT_MISSING'&&error.fields?.inference_attempted==='unknown');
+});

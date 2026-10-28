@@ -24,7 +24,7 @@
   "sha256": {
     "tests/object-library.test.ts": "95523450d406ca869b41f94ce04a954c5a2d912fc4143f9c83317e9280f51ef7",
     "tests/ops-postgres.test.ts": "03042e10b2a90d6d9c040399afe991c719e771e178bb74999742d1e0822b35af",
-    "tests/ops_test.py": "b2f06dc80c3591b081d2e31c74aa3c3d2cd88617ffc17452cf9ca4951f36ac85",
+    "tests/ops_test.py": "21ace0896ec30fb0ea24d49fe3c95d8fa617555d77e153817837b8d3a05e8afd",
     "src/studio/object-library.ts": "9a821a61886e4fc73d1989e08beacbae3b77451f893fb3617702a37cbca3d1a6",
     "scripts/ops/postgres-transfer.ts": "5a07f8248f6eeffd19b6c3475d213e4f2d636c5d9f223186d8287e0d0a05b016",
     "scripts/ops/postgres-schema.sql": "f3af6185b71b047d23c96359de009eafc022d07091c9780270ea54b02e514ebe",
@@ -34,7 +34,16 @@
     "scripts/ops/postgres-import.ts": "3b21e03aca41f0ef5afaabc07a17c3823a3c0a7ef733f3aff1ea00a8d7f2c4f2",
     "scripts/ops/secret_scan.py": "a6056233a7868d4c2d776686caad487784e33606ddb66b6fd265915a107aea39",
     "scripts/ops/restore-bootstrap.py": "bf321e09b94acfa0602c873ae8fe9992182e2a39eac6ff6c8bd198cec3e85ee2",
-    "scripts/ops/media-capacity.py": "5eab38ee9b269b2e00ddf751406ba57029013971a8054d15c2359100d9364f4e"
+    "scripts/ops/media-capacity.py": "5eab38ee9b269b2e00ddf751406ba57029013971a8054d15c2359100d9364f4e",
+    "tests/ops-cloud-backup.test.ts": "4a4e7466b986adcdf658ab0c30c0dba0f22d7c00383c89fe2be169f96f3edec2",
+    "tests/ops-script-policy.test.ts": "d16b161b699f844eb157d65b14eeed95a85488493ee9b2d7543256e0a6316793",
+    "scripts/ops/cloud-backup-restore.ts": "2efbc8e92cac39230554891278cc58be4d6e9c63c84fe7047711c7de53ce0913",
+    "scripts/ops/prepare-d1-snapshot.py": "98f8a91eb444f9ed49d13282745ebbb1922498680322a364b6f1c79b733aad42",
+    "scripts/ops/script-policy.ts": "5d9afc4131974368552c8a52a53b235df25f0695163380602549bb4fdaa213cc",
+    "scripts/ops/script-policy-http.ts": "ad7b40b7b1bcc7db6e2822c4cc0c4055938b5c38ebf3273e3ec570af3c8c914d",
+    "scripts/ops/cloud-restore-verifier.ts": "17e88b55d72f69240aa8f3db338f6d82a6b969a431f069b4973750def437e400",
+    "scripts/ops/cloud-restore-verify.ts": "1d1f60ff4393fde21669c94cde2b1aeadec96820823e60c1680ebc869ff56c0b",
+    "scripts/ops/cloud-media-restore.ts": "1166cd73dc7914332ecad86dc620bc3132097d326aaee04eb5505c367cf13384"
   },
   "browser_studio_tested_by_this_record": false,
   "production_backup_restore_tested": false,
@@ -49,7 +58,7 @@
     "remote": false
   },
   "latest_candidate_scan": {
-    "files": 154,
+    "files": 177,
     "status": "PASS",
     "tracked_scan": "NOT RUN pending Git index"
   },
@@ -61,5 +70,22 @@
     "private_raw_sources": 18,
     "local_seconds": 1.785,
     "remote_restore": "NOT RUN"
+  },
+  "latest_supplement": {
+    "measured_at": "2026-10-28T12:21:30.655697+00:00",
+    "python_ops": {
+      "passed": 7,
+      "failed": 0
+    },
+    "typescript_new_ops_guards": {
+      "passed": 6,
+      "failed": 0
+    },
+    "typescript_noemit": "PASS after remote-compatible order and verifier fixes",
+    "actual_18_content_snapshot_preparation": "PASS_LOCAL_ONLY",
+    "remote_cloud_backup_restore": "PASS_STAGING_SCOPED_RESTORE; see cloud-restore-staging.json",
+    "focused_staging_script_policy": "PASS six pages + six modules,12 read-only GETs",
+    "integer_sequence_above_javascript_safe_range": "PASS 9007199254740995 preserved after row deletion and restore",
+    "astro_check": "PASS final pnpm check:114files,0errors,0warnings,1existing controller beforeunload hint"
   }
 }

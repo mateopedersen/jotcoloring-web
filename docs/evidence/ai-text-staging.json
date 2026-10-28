@@ -1,0 +1,55 @@
+{
+  "measured_at": "2026-10-28T11:58:01.108Z",
+  "origin": "https://jotcoloring-staging.melihozcanapple.workers.dev",
+  "status": "PASS_ONE_ACTUAL_TEXT_JOB",
+  "source_evidence": "Backend agent actual staging API+provider test and opened pixels",
+  "outputs": {
+    "webp": {
+      "bytes": 235788,
+      "sha256": "b2deab750422ad70fc0cac5ef7c17910abee536b04c66b0fc3ec04ff5a1db4a5"
+    },
+    "color": {
+      "bytes": 329490,
+      "sha256": "5b885a3f4d45627bdecf0347583c2c24e04fc52f8aae8977552c49f8a6612a02"
+    },
+    "pdf": {
+      "bytes": 165521,
+      "sha256": "7fcf525c394c0189519bb8f527b8cd03e19506b72b092847fe1d1e8aadd6a577"
+    }
+  },
+  "isolation_checks": [
+    {
+      "check": "origin protection",
+      "result": 403
+    },
+    {
+      "check": "owner isolation",
+      "result": "pass"
+    },
+    {
+      "check": "completed job cancellation denied",
+      "result": 409
+    },
+    {
+      "check": "session rate limit",
+      "result": "pass"
+    }
+  ],
+  "visual_review": {
+    "reviewed_at": "2026-10-28T11:58:40.733Z",
+    "observations": [
+      "The output shows a smiling seated rabbit beside one large flower on an empty white background, matching the submitted text.",
+      "The blank WEBP and rendered A4 PDF contain clear black outlines and white coloring areas.",
+      "The orange JotColoring trademark is visible at bottom right, separated from the drawing by white margin.",
+      "The color preview follows the same rabbit and flower contours, using pastel region fills.",
+      "The PDF is a complete single portrait page without visible clipping or footer overlap."
+    ],
+    "limitations": [
+      "This is one actual provider text-generation sample, not a broad quality benchmark.",
+      "Color preview is deterministic region colorization of the actual line art, not a separate AI color-generation request."
+    ]
+  },
+  "photo_inference": "NOT YET VERIFIED in this record",
+  "browser_creation_flow": "NOT VERIFIED by this API record",
+  "production_inference": "NOT RUN"
+}

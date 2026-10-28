@@ -287,13 +287,14 @@
       "requirement": "Restore rehearsal and compatible rollback",
       "primary_document_prefix": "05",
       "acceptance_gate": "G8",
-      "status": "NOT RUN",
+      "status": "PARTIAL",
       "evidence": [
         "docs/evidence/operations-tests.json",
         "docs/evidence/postgres-rehearsal.json",
-        "docs/evidence/bootstrap-restore.json"
+        "docs/evidence/bootstrap-restore.json",
+        "docs/evidence/cloud-restore-staging.json"
       ],
-      "scope": "Actual184file bootstrap and two SQLite DBs restored locally; PostgreSQL snapshot restore passed; Cloudflare runtime restore remains NOT RUN"
+      "scope": "Actual local184file bootstrap + twoSQLite and PostgreSQL restore PASS. Actual staging canonicalD1 -> privateR2 -> new isolatedD1:21canonical tables+migration ledger,498rows,46schema objects,full row/tableSHA,FK,active asset and sequence parity PASS. Three representative privateR2media objects restore PASS. Compatible production rollback,FTS rebuild,complete media restoration and RTO/RPO remain NOT RUN."
     },
     {
       "id": "OPS-02",
@@ -393,6 +394,6 @@
     }
   ],
   "source_review_executed": false,
-  "last_updated": "2026-10-28",
+  "last_updated": "2026-10-28T12:20:04.908296+00:00",
   "note": "Scoped local evidence is recorded per requirement. NOT RUN remains for gates without complete actual evidence; package claims are not inherited."
 }

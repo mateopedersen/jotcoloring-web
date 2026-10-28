@@ -20,18 +20,19 @@ export default {async fetch(request:Request,env:GatewayEnv){
  if(env.ACCOUNT_BILLING_PLAN!=='workers_free'||!/^\w{32}$/.test(env.ENFORCED_ACCOUNT_ID||'')||!env.AI_FREE_GATEWAY_SECRET||env.AI_FREE_GATEWAY_SECRET.length<32||!env.AI)return json({error:'FREE_ONLY_NOT_CONFIGURED'},503);
  const timestamp=request.headers.get('X-Request-Timestamp')||'',id=request.headers.get('Idempotency-Key')||'',model=request.headers.get('X-AI-Model')||'',cap=request.headers.get('X-Max-Neurons')||'',signature=request.headers.get('X-Request-Signature')||'';
  if(!/^\d{13}$/.test(timestamp)||Math.abs(Date.now()-Number(timestamp))>60000||!/^[0-9a-f-]{36}$/.test(id)||model!==GATEWAY_MODEL||!/^\d{3,5}$/.test(cap)||Number(cap)<300||Number(cap)>10000)return json({error:'UNAUTHORIZED'},401);
+ let inferenceAttempted=false;
  try{const bytes=await boundedBody(request),data=signatureData(timestamp,id,model,cap,await gatewayDigest(bytes));if(!await verifyGatewaySignature(env.AI_FREE_GATEWAY_SECRET,data,signature))return json({error:'UNAUTHORIZED'},401);
  const contentType=request.headers.get('Content-Type')||'';if(!contentType.startsWith('multipart/form-data;'))return json({error:'INVALID_INPUT'},422);
  const form=await new Response(bytes,{headers:{'Content-Type':contentType}}).formData();const allowed=new Set(['prompt','width','height','input_image_0']);for(const k of form.keys())if(!allowed.has(k)||form.getAll(k).length!==1)return json({error:'INVALID_INPUT'},422);
  const prompt=form.get('prompt'),width=String(form.get('width')),height=String(form.get('height'));if(typeof prompt!=='string'||prompt.length<10||prompt.length>3000||!['1024x1024','1024x1536','1536x1024'].includes(width+'x'+height))return json({error:'INVALID_INPUT'},422);
  const image=form.get('input_image_0');if(image){if(typeof image==='string'||image.type!=='image/png'||image.size>1_400_000)return json({error:'INVALID_PHOTO'},422);const b=new Uint8Array(await image.arrayBuffer());if(b.length<24||![137,80,78,71,13,10,26,10].every((x,i)=>b[i]===x))return json({error:'INVALID_PHOTO'},422);const view=new DataView(b.buffer,b.byteOffset,b.byteLength),w=view.getUint32(16),h=view.getUint32(20);if(w<1||h<1||w>=512||h>=512)return json({error:'INVALID_PHOTO'},422);}
  // No retries: unknown provider outcome is reconciled by the main job ledger.
- const encoded=new Response(form);let result:Response;try{result=await env.AI.run(GATEWAY_MODEL,{multipart:{body:encoded.body,contentType:encoded.headers.get('content-type')}},{returnRawResponse:true}) as Response}catch(error){return json({error:safeProviderFailure(error),inference_attempted:true},503)}
+ const encoded=new Response(form);let result:Response;try{inferenceAttempted=true;result=await env.AI.run(GATEWAY_MODEL,{multipart:{body:encoded.body,contentType:encoded.headers.get('content-type')}},{returnRawResponse:true}) as Response}catch(error){return json({error:safeProviderFailure(error),inference_attempted:true},503)}
  if(!(result instanceof Response))return json({error:'INVALID_PROVIDER_OUTPUT',inference_attempted:true},502);
  if(!result.ok)return json({error:await providerErrorCode(result),inference_attempted:true},503);
  if(!result.body||!result.headers.get('content-type')?.includes('application/json')||Number(result.headers.get('content-length')||'0')>12_000_100)return json({error:'INVALID_PROVIDER_OUTPUT',inference_attempted:true},502);
  // Forward the byte stream without parsing/stringifying megabytes of base64 on
  // the Workers Free CPU allowance. The private jobs worker validates the result.
  return new Response(result.body,{status:200,headers:{'Content-Type':'application/json','Cache-Control':'private,no-store','X-Content-Type-Options':'nosniff','X-Zero-Charge-Enforced':'true','X-Provider-Receipt':'free-account:'+env.ENFORCED_ACCOUNT_ID+':'+id}});
- }catch{return json({error:'GATEWAY_INPUT_ERROR',inference_attempted:false},422);}
+ }catch{return json({error:inferenceAttempted?'GATEWAY_PROCESSING_ERROR':'GATEWAY_INPUT_ERROR',inference_attempted:inferenceAttempted},inferenceAttempted?502:422);}
 }};

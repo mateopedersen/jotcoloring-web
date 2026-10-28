@@ -1,0 +1,200 @@
+{
+  "recorded_at": "2026-10-28T12:19:06.110621+00:00",
+  "status": "PASS_STAGING_SCOPED_RESTORE",
+  "scope": "Actual staging canonical D1 export -> private R2 immutable SQL/manifest -> newly created isolated D1; three representative private R2 asset restores",
+  "source_database": "835240f5-90d7-4bf2-8a41-b67cc484fb4b",
+  "isolated_restore_database": {
+    "id": "d4b6745a-86eb-4fce-bcc0-79609c7faae0",
+    "name": "jotcoloring-restore-staging-20261028-first"
+  },
+  "source_writes": false,
+  "public_asset_writes": false,
+  "worker_binding_changes": false,
+  "deletions": false,
+  "database": {
+    "source_export_sha256": "700e87cafc2ae3884d5bd27e4e121392459fb73f2c439d702025d7d04d14729f",
+    "sql_sha256": "ed7235f29b65416a66d854ce98880f43207bc962ea5f4d2cd93f0f065a1587eb",
+    "sql_bytes": 176150,
+    "backup_manifest_sha256": "6b155e5a10230915f9ca0b4dde0b83b5acb882a5896957d98f863a49c62b19ef",
+    "canonical_tables": 21,
+    "migration_tables": 1,
+    "retained_rows_including_migration_ledger": 498,
+    "schema_objects": 46,
+    "tables": {
+      "ai_free_reservation": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "asset": {
+        "rows": 108,
+        "sha256": "9a3cffbaf1ea1ad95e4703708c0e8a28ef13c272733dc6ef6fb9bb5cec026925"
+      },
+      "asset_review": {
+        "rows": 108,
+        "sha256": "8765d60b32b698fc5aaaef64b42a1da9379ed4f5e9520b194fc22b7816f88e75"
+      },
+      "audit_event": {
+        "rows": 2,
+        "sha256": "b8477c6b53878f2332e5f0e770ca55e8b930ae59bf4ee86e3ec827de6913bef0"
+      },
+      "capacity_snapshot": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "category": {
+        "rows": 15,
+        "sha256": "3077e963cb741046c8e55476500d300c9e317f4955169359296e44e3ff94761d"
+      },
+      "category_count": {
+        "rows": 15,
+        "sha256": "b0f98368fb27ff4e4590f632777c122b6e6d5109072493323015b97cc7e52023"
+      },
+      "content": {
+        "rows": 18,
+        "sha256": "5af49255efc3f4b563d3151ad8f0d5dcd29b993dccff509f23670ed6bfbc5ac9"
+      },
+      "content_age": {
+        "rows": 36,
+        "sha256": "03b7f248bf86e2832ddfc3a91ecc89b647f90ba0f8cccf9604da22096d6288d5"
+      },
+      "content_category": {
+        "rows": 32,
+        "sha256": "5259d7d465e378078c6affbadd65f9d0d0e043c950b82d2bf8ff8647a6d44114"
+      },
+      "content_revision": {
+        "rows": 18,
+        "sha256": "76c1f1185cd590153459ee1045e65f6393738086ff26b769fb23eeb67d291c29"
+      },
+      "content_tag": {
+        "rows": 80,
+        "sha256": "5fa49b5d7f967f30f3d2a2db31e0e0a3909a18fe275d210fcb927e0e98cff88c"
+      },
+      "creator_job": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "creator_upload": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "d1_migrations": {
+        "rows": 5,
+        "sha256": "4a4b714f2022e5598b3600c598b1307e70a71d6ed8bba3bf9d9c6780bb6e2ead"
+      },
+      "import_item": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "import_job": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outbox_event": {
+        "rows": 18,
+        "sha256": "8b9d55869aa4e29ab176340bef8fc375dd164a0d2f90d18e8601f15536d4abe9"
+      },
+      "processed_event": {
+        "rows": 18,
+        "sha256": "265a48047123df9770ec37212d1c6d386896e7762797fd30ca6333cfb92b0485"
+      },
+      "request_limit": {
+        "rows": 7,
+        "sha256": "52da095ba4794300f0d33e09ee69112fc33cc28838db647a99d0594f5793b5ff"
+      },
+      "sitemap_entry": {
+        "rows": 18,
+        "sha256": "c07f26d0aca68e438405e57ac155ee651e8e5e8c9692627cf39accb739d5b41c"
+      },
+      "slug_redirect": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "foreign_keys": "PASS",
+    "active_revision_assets": "PASS",
+    "autoincrement_sequences": "PASS",
+    "outbox_watermark": "18",
+    "excluded_private_rows": {
+      "ai_free_reservation": 3,
+      "creator_upload": 1,
+      "creator_job": 3
+    },
+    "final_read_only_verification": {
+      "started_at": "2026-10-28T12:17:02.032Z",
+      "finished_at": "2026-10-28T12:17:11.372Z",
+      "elapsed_seconds": 9.34,
+      "requests": 51
+    },
+    "backup_content_encoding_observation": "JSON manifest was gzip encoded without Content-Length; decoded bytes and SHA were verified exactly"
+  },
+  "media": {
+    "source_bucket": "jotcoloring-staging-backups",
+    "target_bucket": "jotcoloring-staging-originals",
+    "target_prefix": "restore-drill/20261028-first/",
+    "private_domain_checks": "PASS",
+    "objects": [
+      {
+        "content_id": "jc-woodland-friends",
+        "role": "printable_webp_bw",
+        "mime": "image/webp",
+        "bytes": 519480,
+        "sha256": "04ad3556ac03ce480571362c42b27dbdf51d5ddd446b2e2ade61cbc6e5fdbddd",
+        "status": "PASS"
+      },
+      {
+        "content_id": "jc-woodland-friends",
+        "role": "printable_pdf_a4_bw",
+        "mime": "application/pdf",
+        "bytes": 743353,
+        "sha256": "ccebb34276650e7fb6a1686c6fd9f2d0372e4c520b95d0a2c5d7447b12fdd7f6",
+        "status": "PASS"
+      },
+      {
+        "content_id": "jc-woodland-friends",
+        "role": "source_original",
+        "mime": "image/png",
+        "bytes": 3155582,
+        "sha256": "0d51b5169123c5c45101a14b9d5ac5d05edfc0e592a1e9d332646baf3a40cfb6",
+        "status": "PASS"
+      }
+    ],
+    "total_bytes": 4418415,
+    "started_at": "2026-10-28T12:14:22.740Z",
+    "finished_at": "2026-10-28T12:14:36.909Z",
+    "elapsed_seconds": 14.169,
+    "requests": 16,
+    "current_manifest_sha256_at_evidence_recording": "128c3518ff81c6c48847e242aaa4872c102e28b73f66560bb7a345269693de7e"
+  },
+  "found_and_fixed": [
+    {
+      "stage": "initial SQL import",
+      "status": "FOUND_AND_FIXED",
+      "started_at": "2026-10-28T12:08:00.098Z",
+      "elapsed_seconds": 13.355,
+      "finding": "D1 import rejected alphabetic child-before-parent data ordering with FOREIGN KEY constraint failure; empty target confirmed after rollback",
+      "fix": "Emit all tables before rows, parent-first canonical row order, and triggers after rows; foreign_keys=ON local rehearsal without transaction wrapper passed before retry"
+    },
+    {
+      "stage": "initial row parity verifier",
+      "status": "FOUND_AND_FIXED",
+      "started_at": "2026-10-28T12:11:41.113Z",
+      "elapsed_seconds": 19.856,
+      "finding": "CAST integer primary key AS TEXT shadowed ORDER BY alias, yielding lexicographic1,10,...,2 ordering; actual18outbox rows were unchanged",
+      "fix": "Qualify original table primary keys for ordering and pagination; exact expected outbox SHA reproduced before final read-only verification; numeric1,2,10,11 regression added"
+    },
+    {
+      "stage": "read-only JSON backup header check",
+      "status": "FOUND_AND_FIXED",
+      "finding": "Compressed JSON response omitted Content-Length; strict header equality rejected a correct object",
+      "fix": "Verify decoded body bytes and SHA against immutable manifest; preserve reported encoding separately"
+    }
+  ],
+  "limitations": [
+    "No production RTO/RPO or full disaster recovery time measured",
+    "FTS projection rebuild and Worker cutover were not run on the isolated restore target",
+    "R2 recovery exercised3representative objects; it was not a restore of all126original+derived media objects",
+    "Private AI job/upload/reservation rows intentionally excluded; restore does not recover user AI work or reset live quotas",
+    "No public media domain/CORS/browser-delivery acceptance from this private REST test",
+    "Isolated restore database remains unbound and preserved; no automatic cleanup"
+  ]
+}

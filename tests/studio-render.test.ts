@@ -67,8 +67,9 @@ test('full resolution WEBP and outline ZIP contain painted pixels and immutable 
   const single=await exportArtwork(art,outline,options,()=>{});assert.equal(single.name,'My painted page.webp');assert.equal(single.blob.type,'image/webp');
   const image=await loadImage(Buffer.from(await single.blob.arrayBuffer()));assert.equal(image.width,1024);assert.equal(image.height,1536);
   const decoded=createCanvas(1024,1536);decoded.getContext('2d').drawImage(image,0,0);const red=pixel(decoded,250,300);assert.ok(red[0]>220&&red[1]<60&&red[2]<80);
-  const zip=await exportArtwork(art,outline,{...options,outline:true},()=>{});assert.equal(zip.name,'My painted page.zip');const files=unzipSync(new Uint8Array(await zip.blob.arrayBuffer()));assert.deepEqual(Object.keys(files).sort(),['My painted page-colored.webp','My painted page-outline.webp']);
-  const lineImage=await loadImage(Buffer.from(files['My painted page-outline.webp']));decoded.getContext('2d').drawImage(lineImage,0,0);const white=pixel(decoded,250,300);assert.ok(white[0]>250&&white[1]>250&&white[2]>250);
+  const zip=await exportArtwork(art,outline,{...options,outline:true},()=>{});assert.equal(zip.name,'My painted page.zip');const files=unzipSync(new Uint8Array(await zip.blob.arrayBuffer()));assert.deepEqual(Object.keys(files).sort(),['colored.webp','outline.webp']);
+  const paintedImage=await loadImage(Buffer.from(files['colored.webp']));decoded.getContext('2d').drawImage(paintedImage,0,0);const zippedRed=pixel(decoded,250,300);assert.ok(zippedRed[0]>220&&zippedRed[1]<60&&zippedRed[2]<80);
+  const lineImage=await loadImage(Buffer.from(files['outline.webp']));decoded.getContext('2d').drawImage(lineImage,0,0);const white=pixel(decoded,250,300);assert.ok(white[0]>250&&white[1]>250&&white[2]>250);
 });
 
 test('actual 1024 × 1536 artwork exports all eight one/two-page PDF combinations under 1 MB',async()=>{

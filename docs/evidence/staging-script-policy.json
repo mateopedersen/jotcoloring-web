@@ -1,0 +1,150 @@
+{
+  "measured_at": "2026-10-28T11:57:26.012Z",
+  "origin": "https://staging.jotcoloring.com",
+  "scope": "Read-only six-page script/CSP compatibility and direct module response check; no browser interaction, media or load claim",
+  "routes": [
+    {
+      "path": "/coloring-pages/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 8,
+      "same_origin_modules": [
+        "/_astro/_...category_.astro_astro_type_script_index_0_lang.Durh4okE.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    },
+    {
+      "path": "/create/text/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 0,
+      "same_origin_modules": [
+        "/_astro/Creator.astro_astro_type_script_index_0_lang.BcbhKwL_.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    },
+    {
+      "path": "/create/photo/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 0,
+      "same_origin_modules": [
+        "/_astro/Creator.astro_astro_type_script_index_0_lang.BcbhKwL_.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    },
+    {
+      "path": "/coloring/woodland-friends/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 4,
+      "same_origin_modules": [
+        "/_astro/_slug_.astro_astro_type_script_index_0_lang.dk8YcEfn.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    },
+    {
+      "path": "/my-artwork/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 0,
+      "same_origin_modules": [
+        "/_astro/MyArtwork.astro_astro_type_script_index_0_lang.BbiPLzTu.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    },
+    {
+      "path": "/studio/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "script_directive": "script-src 'self' 'wasm-unsafe-eval'",
+      "status": "PASS",
+      "inline_executable": 0,
+      "data_scripts": 0,
+      "same_origin_modules": [
+        "/_astro/Studio.astro_astro_type_script_index_0_lang.Be62GQ84.js",
+        "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js"
+      ],
+      "external_executable": [],
+      "ignored_cloudflare_beacons": 0,
+      "problems": []
+    }
+  ],
+  "modules": [
+    {
+      "path": "/_astro/_...category_.astro_astro_type_script_index_0_lang.Durh4okE.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 2004,
+      "status": "PASS"
+    },
+    {
+      "path": "/_astro/Layout.astro_astro_type_script_index_0_lang.BBiKTeZB.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 29,
+      "status": "PASS"
+    },
+    {
+      "path": "/_astro/Creator.astro_astro_type_script_index_0_lang.BcbhKwL_.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 5675,
+      "status": "PASS"
+    },
+    {
+      "path": "/_astro/_slug_.astro_astro_type_script_index_0_lang.dk8YcEfn.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 957,
+      "status": "PASS"
+    },
+    {
+      "path": "/_astro/MyArtwork.astro_astro_type_script_index_0_lang.BbiPLzTu.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 2886,
+      "status": "PASS"
+    },
+    {
+      "path": "/_astro/Studio.astro_astro_type_script_index_0_lang.Be62GQ84.js",
+      "http_status": 200,
+      "content_type": "text/javascript",
+      "bytes": 25691,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "request_count": 12,
+  "finished_at": "2026-10-28T11:57:27.714Z"
+}

@@ -1,0 +1,29 @@
+{
+  "measured_at": "2026-10-28T12:07:03.076171+00:00",
+  "status": "PASS_LOCAL_ONLY",
+  "remote_export_r2_restore": "NOT RUN",
+  "actual_prepared_bundle": {
+    "content": 18,
+    "asset": 108
+  },
+  "source": "previously verified isolated responsive bootstrap SQLite",
+  "sql_sha256": "c54bd7d1daa742be24a4741a5e2118dd09fab9fde92b3244104a76d82724377e",
+  "sql_bytes": 171569,
+  "canonical_tables": 21,
+  "excluded_private_rows": {
+    "ai_free_reservation": 0,
+    "creator_upload": 0,
+    "creator_job": 0
+  },
+  "checks": [
+    "Prepared actual18-content108-asset SQL through in-memory sanitizer",
+    "Restored sanitized SQL into a second empty SQLite",
+    "Foreign keys and actual record counts verified",
+    "No remote requests or mutations",
+    "Restored with foreign_keys=ON, all schemas before data, triggers after data",
+    "All AUTOINCREMENT high-water marks preserved exactly"
+  ],
+  "script_sha256": {
+    "scripts/ops/prepare-d1-snapshot.py": "4dbf43d190004e3821f78925f0761f1cb63cb9b1cd17881203b3b88bff6ceeca"
+  }
+}
