@@ -1,0 +1,38 @@
+JotColoring product language — American English
+
+Write for someone choosing, printing, or coloring a page. Use familiar words,
+short instructions, active verbs, and friendly encouragement. Keep playful brand
+lines such as “Pick a page. Make it yours.” but avoid a slogan where a clear action
+or explanation is needed. Name the action: Search Pages, Download PDF, Image,
+Open Coloring Studio, Save, Share, and Back up library.
+
+Use color, coloring, favorite, center, gray, organize, canceled, and license.
+Use kids, teens, and adults in context; do not use 18+ for drawing difficulty.
+“Photo to Coloring Page” names the tool; “turn a photo into a coloring page”
+explains the task. Use “coloring pages for adults,” not ambiguous adult-content
+labels. Prefer sentence case for general UI; preserve accepted artwork titles.
+Use singular topic modifiers: animal coloring page, flower coloring pages,
+holiday coloring pages. Navigation category names remain plural where natural.
+
+Describe visible artwork specifically. Do not infer unseen details from a title,
+filename, or prompt. Keep headings, alt text, descriptions, social cards, and
+search identity consistent through the shared content resolvers. Refresh
+source-bound reviews when the image changes. Do not pad copy with keywords,
+repeat a generic download sentence under every image, or promise rankings.
+
+Image is the public button label; the actual extension and MIME remain truthful.
+Current catalog PDFs use A4. American English does not authorize relabeling them
+as Letter. Use en-US number/date formatting where a locale is specified. Keep
+file bytes, limits, checksums, URLs, IDs, API states, and search synonyms unchanged
+when editing prose. Internal state “cancelled” and accepted query “colouring”
+are compatibility values, not public spelling errors.
+
+Explain local saves plainly. Do not imply account sync, automatic public posting,
+paid AI access, guaranteed photo likeness, guaranteed age suitability, or legal
+rights beyond the implemented service. Legal meaning, permission terms, and
+privacy behavior require careful separate review; a language edit must not
+silently alter them. Avoid developer-only environment names in everyday help.
+
+After copy changes, regenerate affected social covers; verify titles/descriptions,
+links, and open dialogs, then check layout at 320/390/768/1024/1440 CSS pixels.
+The style rules apply to new pages and imports as well as existing content.

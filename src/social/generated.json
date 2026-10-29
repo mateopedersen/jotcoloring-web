@@ -49,11 +49,11 @@
     "description": "Turn your idea into a coloring-page adventure."
   },
   "artwork": {
-    "src": "/og/pages/artwork-f3d2d3039dda994a.png",
+    "src": "/og/pages/artwork-c8d27e527f42ce9f.png",
     "alt": "JotColoring your creative corner share image: Your colors. Your collections. Featuring Fox And Rabbit In Wildflowers, Hibiscus And Tropical Leaves, Butterfly And Garden Flowers.",
-    "sha256": "f3d2d3039dda994aeeede9d6101d3c02a9ed9f25b14fa9f0f6f7af9be1f6d345",
+    "sha256": "c8d27e527f42ce9fdb3d341bc5e5af6ce2135e88b0f236cf90bde3241fffddfe",
     "title": "Your colors. Your collections.",
-    "description": "Keep your favorite pages, organize boards and return to your saved artwork."
+    "description": "Keep your favorite pages, organize boards, and return to your saved artwork."
   },
   "printing": {
     "src": "/og/pages/printing-51860d39f7a8b9de.png",
@@ -91,9 +91,9 @@
     "description": "Tell us about your project and the artwork you would like permission to use."
   },
   "help": {
-    "src": "/og/pages/help-8b00bfe3478c2c43.png",
-    "alt": "JotColoring your creative support space share image: JotColoring Help Center. Featuring Fox And Rabbit In Wildflowers.",
-    "sha256": "8b00bfe3478c2c437c4ad94cead30c19c03308042d12dc90696586fa23ae5eda",
+    "src": "/og/pages/help-8fb4f7b12c648b7b.png",
+    "alt": "JotColoring help when you need it share image: JotColoring Help Center. Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "8fb4f7b12c648b7b97cc3a5fb595c6b404c46191dbb460e1b42279d231960bf5",
     "title": "JotColoring Help Center.",
     "description": "Find your next step with downloads, Studio, saves and coloring tools."
   },
@@ -105,10 +105,10 @@
     "description": "A closer look at coloring pages, files, tools and your creative space."
   },
   "contact": {
-    "src": "/og/pages/contact-e6c47dc4fac23a73.png",
-    "alt": "JotColoring get in touch share image: Let’s make the next step clearer. Featuring Strawberry Cupcakes And Daisies.",
-    "sha256": "e6c47dc4fac23a731759140bf8a08bb1dd5107c4f2807116718feb9859c921c7",
-    "title": "Let’s make the next step clearer.",
+    "src": "/og/pages/contact-7091915f6724256e.png",
+    "alt": "JotColoring get in touch share image: Contact JotColoring. Featuring Strawberry Cupcakes And Daisies.",
+    "sha256": "7091915f6724256e536154af942d57f5b71a0299b7fd4096c15fed00ac89de69",
+    "title": "Contact JotColoring.",
     "description": "Questions, feedback or a licensing idea? Here is how to reach JotColoring."
   },
   "privacy": {
@@ -224,46 +224,46 @@
     "description": "Explore dinosaurs drawings to print or color online."
   },
   "animals-woodland": {
-    "src": "/og/pages/animals-woodland-e718ae3973f7eb11.png",
+    "src": "/og/pages/animals-woodland-d6e12b3e67bfd5bc.png",
     "alt": "JotColoring animal coloring collection share image: Woodland coloring pages. Featuring Fox And Rabbit In Wildflowers, Hedgehog With Mushrooms, Fawn In A Woodland Garden.",
-    "sha256": "e718ae3973f7eb11293bd0c1840b4503ed7607a8409412fdfa4d358f70e96081",
+    "sha256": "d6e12b3e67bfd5bceb49a684e47621e9121331614e02a53a0fb32fdc65218490",
     "title": "Woodland coloring pages.",
-    "description": "Find a woodland drawing to download or color in Studio."
+    "description": "Explore woodland coloring pages to download or color online."
   },
   "animals-pets": {
-    "src": "/og/pages/animals-pets-882796892508dd21.png",
+    "src": "/og/pages/animals-pets-33f236d6b8fe4bb7.png",
     "alt": "JotColoring animal coloring collection share image: Pet coloring pages. Featuring Sleeping Kitten With Yarn, Puppy With A Ball And Daisies.",
-    "sha256": "882796892508dd2154fe5492ddec90aff7d91bd219d2c4cd133f12588c1dd6c9",
+    "sha256": "33f236d6b8fe4bb7ae12ea1e58cfc0f6e03a84c79bbf12e55519910228d30287",
     "title": "Pet coloring pages.",
-    "description": "Find a pets drawing to download or color in Studio."
+    "description": "Explore pet coloring pages to download or color online."
   },
   "animals-farm-animals": {
-    "src": "/og/pages/animals-farm-animals-610e506707837622.png",
+    "src": "/og/pages/animals-farm-animals-2363afb9d94afa79.png",
     "alt": "JotColoring animal coloring collection share image: Farm Animal coloring pages. Featuring Calf By The Barn.",
-    "sha256": "610e50670783762269ca444784222a9fa99bc09964e9daf15199847fea3f68c8",
+    "sha256": "2363afb9d94afa796bb64c2724cb04ae4c6d8ab9f635394a421a43403bf1fe96",
     "title": "Farm Animal coloring pages.",
-    "description": "Find a farm animals drawing to download or color in Studio."
+    "description": "Explore farm animal coloring pages to download or color online."
   },
   "animals-ocean-life": {
-    "src": "/og/pages/animals-ocean-life-86c82106aa5aa009.png",
+    "src": "/og/pages/animals-ocean-life-6b587b7e20d30060.png",
     "alt": "JotColoring animal coloring collection share image: Ocean Life coloring pages. Featuring Sea Turtle And Coral Reef.",
-    "sha256": "86c82106aa5aa0090b5a3f1e51eeaeff01b170450b4f55528b41fad8f3f36d80",
+    "sha256": "6b587b7e20d300608dc992607ece31c70886ff74d8ee9dc6a4d5b40c32341ce6",
     "title": "Ocean Life coloring pages.",
-    "description": "Find a ocean life drawing to download or color in Studio."
+    "description": "Explore ocean life coloring pages to download or color online."
   },
   "animals-birds": {
-    "src": "/og/pages/animals-birds-058fca64d3dc5427.png",
+    "src": "/og/pages/animals-birds-329697d089e88644.png",
     "alt": "JotColoring animal coloring collection share image: Bird coloring pages. Featuring Owl Under A Crescent Moon.",
-    "sha256": "058fca64d3dc542772ff37d871078b6e526939ab7d4c9a2cf378572cbe3afad8",
+    "sha256": "329697d089e886446fae9f225f4361ac490eb713e391828001c797a29a902553",
     "title": "Bird coloring pages.",
-    "description": "Find a birds drawing to download or color in Studio."
+    "description": "Explore bird coloring pages to download or color online."
   },
   "animals-dinosaurs": {
-    "src": "/og/pages/animals-dinosaurs-2954f0b9ffb98591.png",
+    "src": "/og/pages/animals-dinosaurs-c1a7014f1b24f7cb.png",
     "alt": "JotColoring animal coloring collection share image: Dinosaur coloring pages. Featuring Long-Necked Dinosaurs In A Valley.",
-    "sha256": "2954f0b9ffb9859189a29023a10939eeea86300a84ae3a2241c85da59dfe5832",
+    "sha256": "c1a7014f1b24f7cbc11b747e6c6ebd464dcd219faae4345d0cc15eeacdf11914",
     "title": "Dinosaur coloring pages.",
-    "description": "Find a dinosaurs drawing to download or color in Studio."
+    "description": "Explore dinosaur coloring pages to download or color online."
   },
   "age-3-5": {
     "src": "/og/pages/age-3-5-4381196354617480.png",
@@ -301,9 +301,9 @@
     "description": "Settle into fine lines, small spaces and intricate patterns."
   },
   "coloring-woodland-friends": {
-    "src": "/og/coloring/coloring-woodland-friends-972b03df777ebf6d.png",
-    "alt": "JotColoring animals coloring page share image: Fox And Rabbit In Wildflowers Featuring Fox And Rabbit In Wildflowers.",
-    "sha256": "972b03df777ebf6de34733d3ff36cda4f5b7b095765f12628b728e7cb7bff97d",
+    "src": "/og/coloring/coloring-woodland-friends-0a459c58ef302dab.png",
+    "alt": "JotColoring animal coloring page share image: Fox And Rabbit In Wildflowers Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "0a459c58ef302dab15ea91126b1e8eeb9b13a83d65a23e2d271bca2a626013f1",
     "title": "Fox And Rabbit In Wildflowers",
     "description": "A fox and rabbit sit together on a log, framed by wildflowers, berries, and leafy branches. Fine fur lines contrast with the larger petals and leaves."
   },
@@ -315,9 +315,9 @@
     "description": "Flowering vines surround an arched bookshop doorway and windows filled with books. Potted plants and a cobblestone path complete the detailed storefront."
   },
   "coloring-butterfly-garden": {
-    "src": "/og/coloring/coloring-butterfly-garden-44fe59477acfd11c.png",
-    "alt": "JotColoring flowers coloring page share image: Butterfly And Garden Flowers Featuring Butterfly And Garden Flowers.",
-    "sha256": "44fe59477acfd11c874544d92896950e16e453f56a8b07ded20cf92448366f3a",
+    "src": "/og/coloring/coloring-butterfly-garden-098f25566444cc78.png",
+    "alt": "JotColoring flower coloring page share image: Butterfly And Garden Flowers Featuring Butterfly And Garden Flowers.",
+    "sha256": "098f25566444cc780afd5780b5da1543987b1401f167c7180b6788f9a99f6a69",
     "title": "Butterfly And Garden Flowers",
     "description": "A large butterfly spreads its patterned wings among hibiscus blooms, daisies, and pointed leaves. The wing sections offer room to repeat colors or try contrasting shades."
   },
@@ -343,58 +343,58 @@
     "description": "Three cupcakes have swirls of frosting topped with strawberries and flowers. Sliced berries, daisies, and leaves fill the spaces between the desserts."
   },
   "coloring-botanical-mandala": {
-    "src": "/og/coloring/coloring-botanical-mandala-1cee856f7df35d40.png",
-    "alt": "JotColoring mandalas coloring page share image: Floral Leaf Mandala Featuring Floral Leaf Mandala.",
-    "sha256": "1cee856f7df35d406c77f52c61cb379e0566f76f1487f759af725d274600840c",
+    "src": "/og/coloring/coloring-botanical-mandala-475539e7d574fcf6.png",
+    "alt": "JotColoring mandala coloring page share image: Floral Leaf Mandala Featuring Floral Leaf Mandala.",
+    "sha256": "475539e7d574fcf691855e2533ec8e2ae1619b58373f7176cd1a17d2be418f98",
     "title": "Floral Leaf Mandala",
     "description": "Layered petals radiate from a small central flower into repeating leaves, blossoms, and bead-like details. The symmetrical pattern offers many small sections for a limited or repeating palette."
   },
   "coloring-woodland-owl": {
-    "src": "/og/coloring/coloring-woodland-owl-baefa896c412661c.png",
-    "alt": "JotColoring animals coloring page share image: Owl Under A Crescent Moon Featuring Owl Under A Crescent Moon.",
-    "sha256": "baefa896c412661ceb957f5c772a2efb73a4426d608ded3c41d8b46b0d9784ab",
+    "src": "/og/coloring/coloring-woodland-owl-5b36e5a7ceefb57a.png",
+    "alt": "JotColoring animal coloring page share image: Owl Under A Crescent Moon Featuring Owl Under A Crescent Moon.",
+    "sha256": "5b36e5a7ceefb57a223901155c11cde14e5fc9ea82eff4ddd2b94d5ed8e036da",
     "title": "Owl Under A Crescent Moon",
     "description": "A wide-eyed owl perches on a branch beneath a crescent moon and stars. Overlapping feathers, flowers, and a distant woodland create a detailed nighttime setting."
   },
   "coloring-winter-wishes": {
-    "src": "/og/coloring/coloring-winter-wishes-33e010b6d7ce8f6c.png",
-    "alt": "JotColoring holidays coloring page share image: Snowman With Gifts And Ornaments Featuring Snowman With Gifts And Ornaments.",
-    "sha256": "33e010b6d7ce8f6c871fc1dd900a3b1d2198762e2d287fe585f53a5969f5743d",
+    "src": "/og/coloring/coloring-winter-wishes-180aff9e6d4010a5.png",
+    "alt": "JotColoring holiday coloring page share image: Snowman With Gifts And Ornaments Featuring Snowman With Gifts And Ornaments.",
+    "sha256": "180aff9e6d4010a5aab2f6f19e34ba42698e2b1a1ad112dc6dd1c25496df73e8",
     "title": "Snowman With Gifts And Ornaments",
     "description": "A smiling snowman wears a knit hat, scarf, and patterned mittens beside wrapped gifts. Hanging ornaments, snowflakes, and evergreen branches frame the winter scene."
   },
   "coloring-sleepy-kitten": {
-    "src": "/og/coloring/coloring-sleepy-kitten-d23630a78b83163a.png",
-    "alt": "JotColoring animals coloring page share image: Sleeping Kitten With Yarn Featuring Sleeping Kitten With Yarn.",
-    "sha256": "d23630a78b83163a3c8c038887600621d37bbf51d1065a488bece66044357c5f",
+    "src": "/og/coloring/coloring-sleepy-kitten-7f7492e6eed61a9f.png",
+    "alt": "JotColoring animal coloring page share image: Sleeping Kitten With Yarn Featuring Sleeping Kitten With Yarn.",
+    "sha256": "7f7492e6eed61a9fecd6e9df92852f820b5b989be786d84d56198309d201ab22",
     "title": "Sleeping Kitten With Yarn",
     "description": "A kitten curls up beside a ball of yarn in a flower-filled garden. Daisies, leafy stems, and a wooden fence surround its resting spot."
   },
   "coloring-playful-puppy": {
-    "src": "/og/coloring/coloring-playful-puppy-2d8ed7ca5e4700e6.png",
-    "alt": "JotColoring animals coloring page share image: Puppy With A Ball And Daisies Featuring Puppy With A Ball And Daisies.",
-    "sha256": "2d8ed7ca5e4700e6c116465b2692be24d21c330fd65bed366d3ef310bb294844",
+    "src": "/og/coloring/coloring-playful-puppy-aef3d8571282240d.png",
+    "alt": "JotColoring animal coloring page share image: Puppy With A Ball And Daisies Featuring Puppy With A Ball And Daisies.",
+    "sha256": "aef3d8571282240d624dc8abe02dc960c296f4cf27c31330b070c5a6aaf49fc9",
     "title": "Puppy With A Ball And Daisies",
     "description": "A fluffy, floppy-eared puppy sits with its tongue out and a ball beside one paw. Tall daisies and grass frame the playful garden scene."
   },
   "coloring-little-hedgehog": {
-    "src": "/og/coloring/coloring-little-hedgehog-8b618d0daeea4663.png",
-    "alt": "JotColoring animals coloring page share image: Hedgehog With Mushrooms Featuring Hedgehog With Mushrooms.",
-    "sha256": "8b618d0daeea4663dbcd7cf8de1115b8b93410874f6c7f6cd28a066b70825b7c",
+    "src": "/og/coloring/coloring-little-hedgehog-ef91eb9b29c01259.png",
+    "alt": "JotColoring animal coloring page share image: Hedgehog With Mushrooms Featuring Hedgehog With Mushrooms.",
+    "sha256": "ef91eb9b29c01259283ad0166b6827ed1f487b46e748b862dfd3b905378e3fbf",
     "title": "Hedgehog With Mushrooms",
     "description": "A small hedgehog stands on a leafy woodland floor beside a spotted mushroom. Its pointed spines contrast with broad leaves, flowers, and a fallen log."
   },
   "coloring-hibiscus-garden": {
-    "src": "/og/coloring/coloring-hibiscus-garden-d9bae28dd84ba053.png",
-    "alt": "JotColoring flowers coloring page share image: Hibiscus And Tropical Leaves Featuring Hibiscus And Tropical Leaves.",
-    "sha256": "d9bae28dd84ba053e52c75c71739d39d5f4fdc3142e964e2538c5d37c44c4aed",
+    "src": "/og/coloring/coloring-hibiscus-garden-b3bc2e9c44800d24.png",
+    "alt": "JotColoring flower coloring page share image: Hibiscus And Tropical Leaves Featuring Hibiscus And Tropical Leaves.",
+    "sha256": "b3bc2e9c44800d249be6ecac274f5391bd96a50fc012149688206839be2dee79",
     "title": "Hibiscus And Tropical Leaves",
     "description": "One large hibiscus bloom is surrounded by smaller flowers, buds, and tropical foliage. Broad petals, a detailed flower center, and split leaves create a mix of open and intricate spaces."
   },
   "coloring-gentle-deer": {
-    "src": "/og/coloring/coloring-gentle-deer-d5403a1ef7f9875c.png",
-    "alt": "JotColoring animals coloring page share image: Fawn In A Woodland Garden Featuring Fawn In A Woodland Garden.",
-    "sha256": "d5403a1ef7f9875c7e07c41e3e072e7781774a01ef15d50a53e4d68b3f821450",
+    "src": "/og/coloring/coloring-gentle-deer-57107d16006a4ac1.png",
+    "alt": "JotColoring animal coloring page share image: Fawn In A Woodland Garden Featuring Fawn In A Woodland Garden.",
+    "sha256": "57107d16006a4ac19a1b74621fc01a263e1d7237d3a926d3cff9dcabff40a622",
     "title": "Fawn In A Woodland Garden",
     "description": "A spotted fawn rests beneath leafy branches beside a stream. Flowers, ferns, rocks, and distant evergreen trees surround its curled body."
   },
@@ -406,23 +406,23 @@
     "description": "A young winged dragon sits on a garden path in front of a turreted castle. Large wing panels and belly sections sit alongside smaller scales, flowers, and stonework."
   },
   "coloring-farm-friends": {
-    "src": "/og/coloring/coloring-farm-friends-fd288fa2087f5ed7.png",
-    "alt": "JotColoring animals coloring page share image: Calf By The Barn Featuring Calf By The Barn.",
-    "sha256": "fd288fa2087f5ed76722f7de77210981aea225c3d03e4130c6584ac98448a02e",
+    "src": "/og/coloring/coloring-farm-friends-56b088911f8738f0.png",
+    "alt": "JotColoring animal coloring page share image: Calf By The Barn Featuring Calf By The Barn.",
+    "sha256": "56b088911f8738f0f6e9b33ad41e2cb563e95aef89d621940326b620ca1eccc0",
     "title": "Calf By The Barn",
     "description": "A young cow stands among daisies beside a wooden fence and barn. Its outlined coat patches and broad body offer a clear starting point before the smaller farm details."
   },
   "coloring-dinosaur-valley": {
-    "src": "/og/coloring/coloring-dinosaur-valley-0c0842d89a779b04.png",
-    "alt": "JotColoring dinosaurs coloring page share image: Long-Necked Dinosaurs In A Valley Featuring Long-Necked Dinosaurs In A Valley.",
-    "sha256": "0c0842d89a779b04b23be95d3f08f11c71c0a05a887f6ca2eb1cbd2e6f037add",
+    "src": "/og/coloring/coloring-dinosaur-valley-3f39c32ae84e609b.png",
+    "alt": "JotColoring dinosaur coloring page share image: Long-Necked Dinosaurs In A Valley Featuring Long-Necked Dinosaurs In A Valley.",
+    "sha256": "3f39c32ae84e609b6c2282440d8898a24dfd214a516d44232a026043e7f9d5ad",
     "title": "Long-Necked Dinosaurs In A Valley",
     "description": "Two long-necked dinosaurs stand among palms and broad prehistoric leaves. Mountains and a waterfall fill the background behind the larger dinosaur and its smaller companion."
   },
   "coloring-camper-adventure": {
-    "src": "/og/coloring/coloring-camper-adventure-746ca325f4805dd4.png",
-    "alt": "JotColoring vehicles coloring page share image: Camper Van At The Beach Featuring Camper Van At The Beach.",
-    "sha256": "746ca325f4805dd417948a75e8d78536047cd66e5650e55f435892a6b545f244",
+    "src": "/og/coloring/coloring-camper-adventure-4c81e2f150186353.png",
+    "alt": "JotColoring vehicle coloring page share image: Camper Van At The Beach Featuring Camper Van At The Beach.",
+    "sha256": "4c81e2f150186353d371a6d1db0b8ec4cb78db6e14203644395b544329f898ff",
     "title": "Camper Van At The Beach",
     "description": "A rounded camper van is parked beside surfboards on a palm-lined beach. Roof-mounted boards, coastal mountains, and a low sun add detail to the seaside scene."
   }
