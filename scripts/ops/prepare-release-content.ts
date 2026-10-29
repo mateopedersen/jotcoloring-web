@@ -24,7 +24,7 @@ const rm=JSON.parse(remote.manifest_json) as Manifest;
 const localLine=lm.assets.find(a=>a.role==='printable_webp_bw')!,remoteLine=rm.assets.find(a=>a.role==='printable_webp_bw')!;
 if(localLine.sha256!==remoteLine.sha256&&!(environment==='staging'&&process.argv.includes('--promote-reviewed-local')))throw new Error('Remote/local source pixels differ: '+row.slug);
 const m:Manifest={...lm,provenance:rm.provenance,import_action:'update',expected_version:remote.latest_version,idempotency_key:`release-20261029-${row.id}-v${remote.latest_version+1}`,assets:[]};
-m.age_recommendation=JSON.parse(await fs.readFile(`.local/age-vision/assessments/${AGE_VERSION}-${localLine.sha256}.json`,'utf8'));m.age_groups=[ageBand(m.age_recommendation!.band)!.group];
+m.age_recommendation=JSON.parse(await fs.readFile(`.local/age-vision/assessments/${AGE_VERSION}-${localLine.sha256}-branded.json`,'utf8'));m.age_groups=[ageBand(m.age_recommendation!.band)!.group];
 const idMap=new Map(lm.assets.map(a=>[a.asset_id,`${row.id}-r${remote.latest_version+1}-${a.role}`]));
 const dir=`${root}/${row.slug}`;await fs.mkdir(dir,{recursive:true,mode:0o700});const files:Record<string,string>={},reviews=[];
 for(const a of lm.assets){

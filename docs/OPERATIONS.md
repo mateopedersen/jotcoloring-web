@@ -1,22 +1,21 @@
 # JotColoring işletim kılavuzu
 
-Güncelleme: 28 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Workers ve R2 kullanılacak; yalnız domain zone Free kalacak, Pro alınmayacak.** Paylaşılan abonelikler değiştirilmez. Ücretli AI bütçesi0 kalır; ayrı ücretsiz AI hesabındaki gateway ve yerel neuron rezervasyonu kullanılır; iki gerçek production işi ve kota sınırları ayrı raporlanır. Bu belge kurulu kaynakların kanıtı değildir. Gerçek URL, kaynak ve kabul durumu `PROJECT_STATE.md`, `RESOURCE_INVENTORY.md` ve `acceptance.json` içindedir. Ürün arayüzü İngilizce; işletim açıklamaları Türkçedir.
+Güncelleme: 30 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Workers ve R2 kullanılacak; yalnız domain zone Free kalacak, Pro alınmayacak.** Paylaşılan abonelikler değiştirilmez. Ücretli AI bütçesi0 kalır; ayrı ücretsiz AI hesabındaki gateway ve yerel neuron rezervasyonu kullanılır; iki gerçek production işi ve kota sınırları ayrı raporlanır. Bu belge kurulu kaynakların kanıtı değildir. Gerçek URL, kaynak ve kabul durumu `PROJECT_STATE.md`, `RESOURCE_INVENTORY.md` ve `acceptance.json` içindedir. Ürün arayüzü İngilizce; işletim açıklamaları Türkçedir.
 
 ## İçerik hazırlama
 
 Özgün çizim dosyasını kullanın; tasarım ekranından küçük görsel kırpmayın. Başlık, açıklama ve alternatif metni gerçekten görünen konuya göre yazın. `content_id` sabittir; dosya değiştiğinde yeni revision ve yeni checksum gerekir. Çizim alanı siyah-beyazdır. Son kullanıcı yönlendirmesiyle PDF/WEBP sağ alt ayrı beyaz footer alanında turuncu JotColoring™ taşır; bu kontrollü marka alanı çizimin renk doğrulamasından ayrı incelenir. Renkli ana sayfa önizlemeleri ayrı `home_half_color` rolündedir. Kullanıcının AI işi veya stüdyo projesi otomatik katalog yayını değildir.
 
-Yerel hazırlama aracı `scripts/data/prepare-media.ts`, ayrı küçük WEBP, detay WEBP, tam çözünürlüklü kalite kontrollü baskı WEBP ve A4/Letter PDF üretir. Bütün PDF dosyaları **1.000.000 byte veya daha küçük** olmalıdır. İki sayfalı kişisel PDF de aynı toplam sınıra tabidir. Dosya boyutu kalite kontrolünden bağımsız değildir: önizlemeleri gerçek ekranda, baskı PDF'sini çizgiler ve kırpılma bakımından kontrol edin. Baskı WEBP tam çözünürlüğünü korur; kabul edilebilir piksel farkıyla daha küçük sürüm seçilir veya kayıpsız sürüme dönülür. Kartlarda ölçüsüne uygun küçük türev kullanılır. Büyük dosyaya yalnız uzantı değiştirerek WEBP/PDF adı verilmez.
+Yerel hazırlama aracı `scripts/data/prepare-media.ts`, ayrı küçük WEBP, detay WEBP, tam çözünürlüklü kalite kontrollü baskı WEBP ve A4 PDF üretir (yeni dosyalarda Letter seçeneği yoktur). Bütün PDF dosyaları **1.000.000 byte veya daha küçük** olmalıdır. İki sayfalı kişisel PDF de aynı toplam sınıra tabidir. Dosya boyutu kalite kontrolünden bağımsız değildir: önizlemeleri gerçek ekranda, baskı PDF'sini çizgiler ve kırpılma bakımından kontrol edin. Baskı WEBP tam çözünürlüğünü korur; kabul edilebilir piksel farkıyla daha küçük sürüm seçilir veya kayıpsız sürüme dönülür. Kartlarda ölçüsüne uygun küçük türev kullanılır. Büyük dosyaya yalnız uzantı değiştirerek WEBP/PDF adı verilmez.
 
 ```sh
 pnpm exec tsx scripts/data/prepare-media.ts \
   --input /absolute/path/line-art.png \
   --id jc-woodland-friends --slug woodland-friends \
-  --title 'Woodland friends' \
+  --title 'Woodland Friends' \
   --description 'A fox and a rabbit among woodland flowers.' \
   --alt 'A fox and rabbit surrounded by flowers and leaves.' \
-  --categories animals,woodland --tags fox,rabbit \
-  --ages teens,adults --difficulty detailed \
+  --categories auto --tags fox,rabbit \
   --source-type user_owned --rights-status documented \
   --rights-reference 'Owner reviewed source and commercial usage rights.' \
   --secret-file /absolute/path/private/secrets.json --environment staging \
@@ -24,6 +23,14 @@ pnpm exec tsx scripts/data/prepare-media.ts \
 ```
 
 Komut çıktı klasöründe `manifest.json`, `reviews.json`, `files.json` ve türevler oluşturur. Bu klasör private kalır. İncelenen kaynak dosyanın hash'i değişirse önceki görsel inceleme geçersizdir. Kaynak, hak durumu ve açıklamaları doldurmadan üretim yayını yapmayın. `example_only` veya `test_only` kayıt üretimde yayınlanamaz.
+
+### Görselden yaş ve kategori önerisi
+
+Hazırlama komutu yaş ve konu analizini gerçek çizim pikselleri üzerinde yerel olarak çalıştırır; dosya adı ve başlık bu karara girmez. `--ages` ve `--difficulty` ile yaş dayatılmamalıdır; hazırlama aracı bunları artık kullanmaz. EXIF yönü düzeltilir, beyaz kâğıt payları normalize edilir ve resmin tamamı modele verilir. `jot-age-vision-3.0.1`, kapalı alanların genişliği, çizgi yoğunluğu ve görsel model skorlarını birlikte değerlendirir. Açık ama basit bir çizim sırf kapalı alan bulunamadığı için yetişkin kategorisine itilmez. Yaş önerileri başlangıç noktasıdır; gelişimsel değerlendirme veya minimum kullanım yaşı değildir.
+
+`--categories auto` mevcut katalog konuları ve hayvan alt konuları için öneriyi uygular. Benzer iki konu, güçlü arka plan veya katalog dışında bir konu saptanırsa otomatik atama durur; özel çıktı klasöründeki `category-analysis.json` incelenir. Özgün resmi açarak doğru konuyu kontrol edin, ardından `--categories animals,woodland --category-review 'A fox and rabbit are the main subjects, surrounded by woodland plants.'` gibi somut bir inceleme notuyla hazırlamayı tekrarlayın. Örnek notu görülmeyen resimlere kopyalamayın. Skorlar olasılık ya da doğruluk yüzdesi değildir. Model bir nesneyi gözden kaçırabilir; belirgin skor tek başına kusursuz tanıma kanıtı değildir.
+
+`category-review.json` seçilen konuları, kaynak checksum'ını ve varsa inceleme notunu özel olarak saklar. Tamamlanmış `manifest.json` içeren bir klasörün üstüne yazılmaz; yeni sürüm için yeni çıktı klasörü seçin. Başarısız kategori kontrolü mevcut bir paketi sessizce kullanmaz. Yönetimde hazırlanan dosyalar seçildiğinde yaş ve kategori özeti gösterilir. Eski model sürümü veya değişen kaynak pikselleri yeniden hazırlama gerektirir; fotoğraflı ve markalı kaynak analizleri ayrı önbellek anahtarları kullanır. Görsel veya model sürümü değişince eski karar kullanılmaz.
 
 ## Yönetimden aktarım ve yayın
 

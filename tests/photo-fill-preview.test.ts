@@ -1,0 +1,9 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createFillPreview,previewPoint} from '../src/photo/fill-preview';
+import {outlineRGBA} from '../src/photo/outline';
+import type {ContourResult} from '../src/photo/contours';
+function page(){const width=30,height=30,mask=new Uint8Array(width*height);for(let n=5;n<=24;n++){mask[5*width+n]=mask[24*width+n]=mask[n*width+5]=mask[n*width+24]=1;}return {width,height,mask,inkPixels:76,regions:1,method:'direct'} as ContourResult;}
+test('fill stays inside the actual outline and never changes downloadable pixels',()=>{const result=page(),blank=outlineRGBA(result),preview=createFillPreview(result);const fill=preview.fill(10,10,'#ef8e36');assert.equal(fill.pixels,324);assert.equal(fill.touchesEdge,false);const pixels=preview.pixels();assert.deepEqual(Array.from(pixels.slice((10*30+10)*4,(10*30+10)*4+3)),[239,142,54]);assert.equal(pixels[0],255);assert.equal(pixels[(5*30+10)*4],0);assert.deepEqual(outlineRGBA(result),blank);assert.ok(preview.undo());assert.deepEqual(preview.pixels(),blank);assert.equal(preview.undo(),false);});
+test('open areas are reported, rejected line clicks preserve undo, and clear restores the original',()=>{const result=page(),preview=createFillPreview(result);assert.ok(preview.fill(1,1,'#ff7700').touchesEdge);assert.equal(preview.fill(5,10,'#000000').pixels,0);assert.ok(preview.undo());preview.fill(10,10,'#abcdef');preview.clear();assert.deepEqual(preview.pixels(),outlineRGBA(result));assert.throws(()=>preview.fill(NaN,1,'#ffffff'));});
+test('pointer coordinates account for contained portrait and landscape previews',()=>{const rect={left:10,top:20,width:600,height:400};assert.equal(previewPoint(20,30,rect,300,600),null);assert.deepEqual(previewPoint(310,220,rect,300,600),{x:150,y:300});assert.deepEqual(previewPoint(310,220,rect,600,300),{x:300,y:150});assert.equal(previewPoint(310,25,rect,600,300),null);});
