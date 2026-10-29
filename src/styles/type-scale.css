@@ -1,0 +1,63 @@
+/* Avenir-first typography, sized for comfortable reading across the site. */
+:root { font-size: 16px; }
+body:is(.home-v3,.site-v3) { font-size: 16px; }
+
+@media (min-width: 701px) {
+  .home-v3 .hv-hero h1 { font-size: clamp(50px,4.7vw,76px); }
+  .home-v3 .hv-discovery-title h2,
+  .home-v3 .hv-section-heading h2 { font-size: 29px; }
+  .home-v3 .jc-gallery-copy h2 { font-size: clamp(29px,2.5vw,38px); }
+}
+
+@media (min-width: 1200px) {
+  .jc-header .jc-main-nav a,
+  .jc-header .hv-studio-nav { font-size: 14px; }
+}
+@media (min-width: 821px) and (max-width: 1199px) {
+  .jc-header .jc-main-nav a,
+  .jc-header .hv-studio-nav { font-size: 11px; }
+}
+
+.home-v3 .hv-hero-description { font-size: 18px; line-height: 1.72; }
+.home-v3 .jc-search-shell input { font-size: 16px; }
+.home-v3 .jc-search-submit { font-size: 14px; }
+.home-v3 .hv-search-suggestions > a { font-size: 13px; }
+.home-v3 .jc-hero-benefits > span { font-size: 13px; }
+.home-v3 .jc-hero-benefits small { font-size: 11px; }
+.home-v3 .jc-gallery-copy > p:not(.hv-kicker) { font-size: 15px; line-height: 1.65; }
+.home-v3 .jc-gallery-tabs strong { font-size: 13px; }
+.home-v3 .jc-gallery-tabs small { font-size: 11px; }
+.home-v3 .hv-gallery-end { font-size: 14px; }
+.home-v3 .hc-downloads a { font-size: 13px; }
+
+.site-v3 .detail-description,
+.site-v3 .iv-category-intro,
+.site-v3 .artwork-intro { font-size: 17px; line-height: 1.75; }
+.site-v3 .studio-cta { font-size: 17px; }
+.site-v3 .iv-card .art-title { font-size: 18px; }
+.site-v3 .iv-card .iv-card-category { font-size: 12px; }
+
+.jc-footer-nav > a { font-size: 14px; }
+.jc-footer-nav-title p { font-size: 12px; }
+.jc-footer-brand > p { font-size: 15px; }
+.jc-footer-license p,
+.jc-footer-license > a { font-size: 13px; }
+.jc-footer-bottom { font-size: 12px; }
+
+@media (max-width: 700px) {
+  :root { font-size: 15px; }
+  body:is(.home-v3,.site-v3) { font-size: 15px; }
+  .home-v3 .hv-hero-description { font-size: 16px; }
+  .home-v3 .jc-search-shell input { font-size: 16px; }
+  .home-v3 .jc-search-submit { font-size: 13px; }
+  .home-v3 .jc-hero-benefits > span { font-size: 12px; }
+  .home-v3 .jc-hero-benefits small { font-size: 10px; }
+  .home-v3 .jc-gallery-copy > p:not(.hv-kicker) { font-size: 14px; }
+  .home-v3 .hc-downloads a { font-size: 12px; }
+  .site-v3 .detail-description,
+  .site-v3 .iv-category-intro,
+  .site-v3 .artwork-intro { font-size: 16px; }
+  .site-v3 .iv-card .art-title { font-size: 16px; }
+  .jc-footer-nav > a { font-size: 14px; }
+  .jc-footer-bottom { font-size: 12px; }
+}
