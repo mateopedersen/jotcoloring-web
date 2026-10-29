@@ -1,3 +1,4 @@
+import {validAgeAssessment,ageLabel} from '../age/model';
 import type {Asset,Manifest} from '../server/types';
 
 type SignedReview={review:{role:string;sha256:string;bytes:number;mime:string};signature:string};
@@ -16,6 +17,10 @@ function one(files:File[],name:string){const found=files.filter(f=>f.name===name
 export function setupPreparedImport(report:(e:unknown)=>void){
   const button=document.querySelector<HTMLButtonElement>('#prepared-submit');
   if(!button)return;
+  const fileInput=document.querySelector<HTMLInputElement>('#prepared-files')!;
+  const analysis=document.createElement('p');analysis.setAttribute('role','status');analysis.id='prepared-analysis';fileInput.after(analysis);
+  let selection=0;
+  fileInput.addEventListener('change',async()=>{const ticket=++selection;analysis.textContent='';try{const file=Array.from(fileInput.files||[]).find(f=>f.name==='manifest.json');if(!file)return;if(file.size>256000)throw new Error('The manifest is too large.');const manifest=JSON.parse(await file.text()) as Manifest;if(ticket!==selection)return;const age=manifest.age_recommendation,source=manifest.assets?.find(a=>a.role==='printable_webp_bw');if(!validAgeAssessment(age,source?.sha256))throw new Error('Prepare this image with the current visual analysis before uploading.');const category=age.category_analysis;analysis.textContent=`${ageLabel(age.band)}. Image suggests: ${category.category_ids.join(', ')||'a topic outside the current automatic catalog'}. Selected: ${manifest.category_ids.join(', ')}.${category.review_required?' Check the selected category against the original image.':''}`;}catch(error){if(ticket===selection)analysis.textContent=error instanceof Error?error.message:'The image analysis could not be read.';}});
   button.addEventListener('click',async()=>{
     const status=document.querySelector<HTMLElement>('#prepared-status')!;
     button.disabled=true;
@@ -30,6 +35,7 @@ export function setupPreparedImport(report:(e:unknown)=>void){
       const manifest=JSON.parse(new TextDecoder().decode(manifestBytes)) as Manifest;
       const reviews=JSON.parse(await reviewsFile.text()) as SignedReview[];
       if(!manifest||!Array.isArray(manifest.assets)||!manifest.assets.length||manifest.assets.length>30||!Array.isArray(reviews))throw new Error('The prepared manifest or reviews file is invalid.');
+      if(!validAgeAssessment(manifest.age_recommendation,manifest.assets.find(a=>a.role==='printable_webp_bw')?.sha256))throw new Error('A current image-bound age and category analysis is required. Prepare the files again before uploading.');
       const sourceHash=await digest(await source.arrayBuffer());
       if(!manifest.provenance?.reference?.includes(sourceHash))throw new Error('The selected original does not match the source checksum in the manifest.');
       const extensions:Record<string,string>={'image/webp':'webp','image/png':'png','image/avif':'avif','application/pdf':'pdf'};

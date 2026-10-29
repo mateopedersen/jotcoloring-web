@@ -1,0 +1,223 @@
+{
+  "date": "2026-10-30",
+  "status": "local validation; deployment verified separately",
+  "age_version": "jot-age-vision-3.0.1",
+  "photo_version": "jot-photo-drawing-3.1",
+  "unit_tests": {
+    "passed": 231,
+    "failed": 0
+  },
+  "operations_tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "typecheck_errors": 0,
+  "photo_comparisons": {
+    "cases": 8,
+    "distinct_source_photos": 6,
+    "transformed_cases": 2,
+    "visual_review_completed": true,
+    "model_weights_changed": false,
+    "method": "Same cached neural predictions, before/after postprocessing comparison; fresh browser inference checked separately.",
+    "repairs_per_case": [
+      19,
+      24,
+      23,
+      8,
+      14,
+      21,
+      28,
+      22
+    ],
+    "limitations": "Short supported contour repairs. No universal likeness or successful-fill percentage was measured. Private photos are not included."
+  },
+  "browser_local": {
+    "coffee_conversion_seconds": 5.5,
+    "fill_preview_enclosed_area": true,
+    "pdf_bytes": 56995
+  },
+  "category_results": {
+    "auto_selected": 15,
+    "requires_review": 3,
+    "items": [
+      {
+        "id": "jc-woodland-friends",
+        "source_sha256": "6a21fb0e05f1f160ec6be091f933e0ae3173bc733239cc314b9f22a0d212c948",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "animals",
+          "woodland"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-cozy-bookshop",
+        "source_sha256": "b5388c9a7ddd4dd71f43b668e8c20936f0c5c12405be949ff200b05d468e6c7e",
+        "recommended_age": "13-17",
+        "suggested_categories": [
+          "flowers"
+        ],
+        "needs_category_review": true
+      },
+      {
+        "id": "jc-butterfly-garden",
+        "source_sha256": "196ab89eb0b643514ca747732d54e551fb86e126bd0d008238051ea6428370ca",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "animals"
+        ],
+        "needs_category_review": true
+      },
+      {
+        "id": "jc-ocean-adventure",
+        "source_sha256": "0e64ee5e5a265c6db41cc7f9f3d3d333f5e076df0c07451e18ad9e3051e6f1cd",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "ocean",
+          "animals",
+          "ocean-life"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-space-explorer",
+        "source_sha256": "7324243815e10067342f2c63e0104a6004b5f513b409a25def25823d51bbc255",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "space"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-sweet-treats",
+        "source_sha256": "9b3e0995b31d600badff3f5c2ab24de27175c06ca4a1485e901a81232f5af6ed",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "food"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-botanical-mandala",
+        "source_sha256": "eb8530b7183eb74dcc35431e7dc3bd19fdbabe55d5df044f5148372a11084a7f",
+        "recommended_age": "adults",
+        "suggested_categories": [
+          "mandalas"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-woodland-owl",
+        "source_sha256": "50c6e7d5f1e1b0f251432b8ea51b6df25b816796beada5868a094202eb6bb087",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "animals",
+          "birds"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-winter-wishes",
+        "source_sha256": "6667a45119f9472d1220daf979e90528e9b0e71900eb0bae19a7aa52896ee202",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "holidays"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-sleepy-kitten",
+        "source_sha256": "6f1f20ffa9a3e361ed4c3ee9d4928799bd3ff2e6e8d3c94af154ae16563c286e",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "animals",
+          "pets"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-playful-puppy",
+        "source_sha256": "2aecc991a142e3c02e99e0564aeb9e05affea73537aeb7624d03aaf08e4d038a",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "animals",
+          "pets"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-little-hedgehog",
+        "source_sha256": "11aa1855a8c8c5538ef378ebdd3a8b091440e8e957303b83be9d56cf842a86a5",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "animals",
+          "woodland"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-hibiscus-garden",
+        "source_sha256": "60c9c7dc03156760b298886dc0bd2dd5c31363d580ab4907ad26286abff81a18",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "flowers"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-gentle-deer",
+        "source_sha256": "bf4837b59f5863f00ccd54129864770419272a86ca9b48427c916f9ab4679d47",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "animals",
+          "woodland"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-friendly-dragon",
+        "source_sha256": "09fe582d69da92238919433ffd1b4d47611f001adc51947d4295847dcbbe7bdd",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "fantasy"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-farm-friends",
+        "source_sha256": "82afe0d56d985e1f452abd0fe7741e9b5643f417690b1cef7d8ba950dfe69502",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "animals",
+          "farm-animals"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-dinosaur-valley",
+        "source_sha256": "6c75db97daf198f2666bd32943542424ef5e0a24476f182951e70d606eb99825",
+        "recommended_age": "6-8",
+        "suggested_categories": [
+          "dinosaurs",
+          "animals"
+        ],
+        "needs_category_review": false
+      },
+      {
+        "id": "jc-camper-adventure",
+        "source_sha256": "fd8fea241971375967280c2fb91528be74820b23c4b224d3877462d8bfe2855a",
+        "recommended_age": "9-12",
+        "suggested_categories": [
+          "vehicles"
+        ],
+        "needs_category_review": true
+      }
+    ],
+    "limitations": "Current catalog has 18 drawings, not an independent generalization benchmark. Age bands estimate drawing difficulty, not child development. CLIP similarity is not calibrated probability."
+  },
+  "sources": [
+    "https://github.com/carolineec/informative-drawings",
+    "https://carolineec.github.io/informative_drawings/",
+    "https://huggingface.co/docs/transformers/model_doc/clip"
+  ]
+}

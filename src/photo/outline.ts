@@ -1,4 +1,4 @@
-export const PHOTO_ALGORITHM='jot-photo-drawing-3.0';
+export const PHOTO_ALGORITHM='jot-photo-drawing-3.1';
 export const MAX_PHOTO_PIXELS=32_000_000;
 export const MAX_WORK_PIXELS=2_400_000;
 export const MAX_PHOTO_BYTES=20_000_000;
