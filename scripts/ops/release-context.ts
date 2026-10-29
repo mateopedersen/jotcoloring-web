@@ -25,7 +25,7 @@ class RemoteBucket implements Bucket{
    // Published and backup read-backs always make a fresh remote request.
    if(this.name.endsWith('-originals')&&this.cacheBytes+bytes.length<=64_000_000){this.cache.set(key,entry);this.cacheBytes+=bytes.length;}
   }
-  const {bytes,etag,mime}=entry;return{key,size:bytes.length,etag,httpMetadata:{contentType:mime},body:new Blob([bytes]).stream(),arrayBuffer:async()=>bytes.slice().buffer,text:async()=>new TextDecoder().decode(bytes)};
+  const {bytes,etag,mime}=entry;return{key,size:bytes.length,etag,httpMetadata:{contentType:mime},body:new Blob([new Uint8Array(bytes)]).stream(),arrayBuffer:async()=>bytes.slice().buffer,text:async()=>new TextDecoder().decode(bytes)};
  }
  async head(key:string){return this.get(key);}
  async put(key:string,value:ReadableStream|ArrayBuffer|Uint8Array|string,options:any={}){
