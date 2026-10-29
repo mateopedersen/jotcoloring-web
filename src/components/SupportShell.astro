@@ -11,7 +11,7 @@ const links=[['About','/about/','about'],['Artwork license','/license/','license
 ---
 <Layout title={`${title} — JotColoring`} description={description} noindex={noindex}><Header/>
  <main id="main" class:list={['support-page',`support-${kind}`]}>
-  <nav class="support-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>{title}</span></nav>
+  <nav class="support-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></nav>
   <header class="support-hero"><div><p class="support-kicker">{eyebrow}</p><h1>{title}<span class="support-title-dot">.</span></h1><p class="support-lead">{description}</p><slot name="hero"/></div><slot name="visual"><SupportArt kind={kind}/></slot></header>
   <nav class="support-tabs" aria-label="Resources">{links.map(([label,href,icon])=><a href={href} aria-current={Astro.url.pathname===href?'page':undefined}><FooterIcon name={icon}/><b>{label}</b><span class="support-arrow" aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a>)}</nav>
   <slot/>

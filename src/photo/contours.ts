@@ -1,7 +1,7 @@
 import {MAX_WORK_PIXELS, validateSettings, type OutlineSettings, type OutlineResult} from './outline';
 
 export interface EdgeMap {data:Float32Array;width:number;height:number}
-export type PhotoMethod='smart'|'drawing'|'direct';
+export type PhotoMethod='smart'|'faithful'|'drawing'|'direct';
 export interface ContourResult extends OutlineResult {method:PhotoMethod;regions:number}
 
 /** Recover underexposed contours with one bounded, global gain; never move or invent pixels. */

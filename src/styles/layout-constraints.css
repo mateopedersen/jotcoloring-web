@@ -1,0 +1,62 @@
+/* Content-driven layout: these constraints apply to future catalog entries too.
+   Do not hide body overflow to conceal layout problems. */
+:where(h1,h2,h3,h4,p,figcaption,blockquote,dd) { overflow-wrap: anywhere; }
+:where(main,section,article,aside,nav,form,fieldset) { min-inline-size: 0; }
+:where(button,summary,.button,.support-button) { max-inline-size: 100%; }
+:where(button,.button,.support-button) > :where(span,b,strong) { min-inline-size: 0; }
+:where(.breadcrumbs,.support-breadcrumb,.export-breadcrumb) > * { min-inline-size: 0; overflow-wrap: anywhere; }
+:where(svg.jc-direction-icon) { flex-shrink: 0; }
+:where(.support-arrow,.jc-file-arrow,.hc-title-arrow,.iv-card-title-arrow) { flex-shrink: 0; }
+
+/* A longer title must not shift the download row out of line with its neighbors. */
+:is(.home-v3,.site-v3) :is(.hc-card,.iv-card) { display: flex; flex-direction: column; }
+:is(.home-v3,.site-v3) :is(.hc-info,.iv-card .art-info) {
+  display: flex; flex-direction: column; flex: 1; min-inline-size: 0;
+}
+:is(.home-v3,.site-v3) :is(.hc-info,.iv-card .art-info) > .jc-file-actions {
+  margin-block-start: auto; padding-block-start: 14px;
+}
+:is(.hc-title,.iv-card .art-title) { overflow-wrap: anywhere; }
+.jc-age-links :is(strong,small) { overflow-wrap: anywhere; }
+@media (max-width: 360px) {
+  .jc-age-links { grid-template-columns: minmax(0,1fr); }
+  .jc-age-links > a:last-child { justify-content: flex-start; }
+  .jc-age-links > a:last-child > span { flex: 1; }
+  .jc-age-links small { font-size: 11px; }
+  .admin-main h1 { font-size: clamp(28px,9vw,38px); letter-spacing: -.03em; }
+}
+/* The decorative orbit stays inside its stage, including 320 px phones. */
+@media (max-width: 600px) {
+  .home-v3 .hv-stage-orbit { inset-inline: 22px; transform: rotate(-4deg); }
+}
+
+/* Reserve a readable text column; flex:1 alone can squeeze it to a few letters. */
+.jc-footer-license { display: grid; grid-template-columns: 48px minmax(0,1fr) auto; }
+.jc-footer-license > div { min-inline-size: 0; }
+@media (max-width: 700px) {
+ .jc-footer-license { grid-template-columns: 48px minmax(0,1fr); }
+ .jc-footer-license > a { grid-column: 2; margin-inline-start: 0; white-space: normal; }
+}
+@media (max-width: 480px) {
+ .jc-footer-grid { grid-template-columns: minmax(0,1fr); }
+ .jc-footer-nav > a { min-height: 44px; }
+}
+@media (max-width: 700px) {
+ .site-v3 .iv-category-note { display:grid; grid-template-columns:30px minmax(0,1fr); align-items:start; }
+ .site-v3 .iv-category-note > a { grid-column:2; margin-inline-start:0; justify-self:start; }
+ .site-v3 .iv-category-note p { font-size:13px; }
+ .jc-studio .studio-header { display:grid; grid-template-columns:30px minmax(0,1fr) auto; height:auto; min-height:88px; }
+ .jc-studio .studio-project { grid-column:1/-1; grid-row:2; border:0; padding:4px 0; display:block; white-space:nowrap; max-height:none; font-size:14px; }
+ .jc-studio .studio-project strong { display:block; overflow:hidden; text-overflow:ellipsis; }
+ .jc-studio .studio-logo { width:min(150px,100%); }
+}
+@media (max-width: 400px) {
+ .site-v3 .creator-result .ideas-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
+ .site-v3 .creator-result .ideas-grid span { font-size:14px; line-height:1.4; padding:8px; }
+}
+@media (min-width: 601px) and (max-width: 1100px) {
+ .home-v3 .hv-stage-orbit { inset-inline:24px; transform:rotate(-4deg); }
+}
+@media (min-width: 951px) and (max-width: 1199px) {
+ .home-v3 .hv-discovery-layout { grid-template-columns:220px minmax(0,1fr); }
+}

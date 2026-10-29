@@ -1,4 +1,4 @@
-export const AGE_VERSION='jot-age-vision-1.1.1';
+export const AGE_VERSION='jot-age-vision-2.0.0';
 export const VISION_MODEL='Xenova/clip-vit-base-patch32';
 export const VISION_REVISION='6b7c523703ae26e39be4b03774966f8571c7f523';
 export const AGE_BANDS=[
@@ -9,7 +9,7 @@ export const AGE_BANDS=[
  {id:'adults',label:'Adults',short:'Adults',title:'A deeper kind of coloring break.',description:'Settle into fine lines, small spaces and intricate patterns.',min:18,max:null,group:'adults',color:'#a86648'}
 ] as const;
 export type AgeBand=typeof AGE_BANDS[number]['id'];
-export interface ImageDetailMetrics {width:number;height:number;inkRatio:number;edgeDensity:number;regions:number;smallRegionRatio:number;medianRegionRatio:number;largestRegionRatio:number;largeAreaShare:number;smallAreaShare:number}
+export interface ImageDetailMetrics {width:number;height:number;inkRatio:number;edgeDensity:number;regions:number;smallRegionRatio:number;medianRegionRatio:number;largestRegionRatio:number;largeAreaShare:number;smallAreaShare:number;wideAreaShare:number;usableAreaShare:number;medianWidthRatio:number}
 export interface AgeAssessment {version:typeof AGE_VERSION;source_sha256:string;model:typeof VISION_MODEL;model_revision:typeof VISION_REVISION;band:AgeBand;score:number;metrics:ImageDetailMetrics;visual_scores:number[];subjects:Array<{label:string;score:number}>;analyzed_at:string}
 export const DETAIL_LABELS=[
  'a preschool coloring page with a few large simple shapes and very little decoration',
@@ -23,14 +23,18 @@ const clamp=(v:number)=>Math.max(0,Math.min(1,v));
 export function bandForScore(score:number):AgeBand{if(!Number.isFinite(score)||score<0||score>100)throw new Error('Invalid detail score.');return score<23?'3-5':score<42?'6-8':score<62?'9-12':score<80?'13-17':'adults';}
 export function recommendAge(metrics:ImageDetailMetrics,visualScores:readonly number[]){
  if(visualScores.length!==5||visualScores.some(s=>!Number.isFinite(s)||s<0)||visualScores.reduce((a,b)=>a+b,0)<=0)throw new Error('A real visual classification is required.');
- const pixel=25*clamp((metrics.inkRatio-.015)/.27)+18*clamp(Math.log2(1+metrics.regions)/Math.log2(801))+12*metrics.smallRegionRatio+20*metrics.smallAreaShare+25*clamp((metrics.edgeDensity-.015)/.24);
+ // Count fine detail by its share of the paintable area. Hundreds of tiny fur
+ // marks should not outweigh a few broad body shapes, wherever they sit.
  const total=visualScores.reduce((a,b)=>a+b,0),visual=visualScores.reduce((n,s,i)=>n+s/total*i*25,0);
- // Broad central coloring spaces matter more than optional tiny background decoration.
- const accessible=32*clamp(metrics.largestRegionRatio/.16)+22*clamp(metrics.largeAreaShare/.6);
- let value=pixel*.9+visual*.1-accessible;
- // Reserve advanced recommendations for pages dominated by small coloring spaces.
- if(metrics.largeAreaShare<.08&&metrics.largestRegionRatio<.012&&metrics.smallAreaShare>.45&&metrics.regions>180)value=Math.max(value,80+12*clamp(metrics.inkRatio/.3));
- if(metrics.regions>80||metrics.inkRatio>.12||metrics.edgeDensity>.14)value=Math.max(23,value);
+ const density=15*clamp(Math.log2(1+metrics.regions)/Math.log2(801));
+ const fineSpaces=25*metrics.smallAreaShare+20*clamp((.03-metrics.medianWidthRatio)/.025);
+ const ink=12*clamp(metrics.inkRatio/.3);
+ const accessible=16*metrics.wideAreaShare+15*clamp(metrics.largestRegionRatio/.12);
+ let value=10+density+fineSpaces+ink+visual*.12-accessible;
+ // Only uniformly intricate pages reach the adult band automatically. A large
+ // central or off-center subject prevents decorative backgrounds from doing so.
+ if(metrics.wideAreaShare<.18&&metrics.largeAreaShare<.03&&metrics.smallAreaShare>.45&&metrics.regions>180)value=Math.max(value,82+10*clamp(metrics.smallAreaShare));
+ if(metrics.regions>80||metrics.smallAreaShare>.2)value=Math.max(23,value);
  const score=Math.round(Math.max(0,Math.min(100,value))*100)/100;
  return{score,band:bandForScore(score)};
 }
@@ -45,19 +49,23 @@ export function analyzeDetailPixels(rgb:Uint8Array,width:number,height:number):I
  for(let y=minY;y<=maxY;y++)for(let x=minX;x<=maxX;x++){const i=y*width+x;if(x<maxX&&ink[i]!==ink[i+1])transitions++;if(y<maxY&&ink[i]!==ink[i+width])transitions++;}
  // Seal single-pixel antialias gaps before measuring enclosed coloring spaces.
  const blocked=new Uint8Array(ink);for(let y=1;y<height-1;y++)for(let x=1;x<width-1;x++){const i=y*width+x;if(ink[i]||ink[i-1]&&ink[i+1]||ink[i-width]&&ink[i+width])blocked[i]=1;}
- const seen=new Uint8Array(n),queue=new Uint32Array(n),areas:number[]=[],salient:number[]=[];
- for(let start=0;start<n;start++){if(blocked[start]||seen[start])continue;let head=0,tail=1,touches=false,central=0;queue[0]=start;seen[start]=1;
-  while(head<tail){const i=queue[head++],x=i%width,y=Math.floor(i/width);if(x===0||x===width-1||y===0||y===height-1)touches=true;if(x>minX+boxWidth*.2&&x<maxX-boxWidth*.2&&y>minY+boxHeight*.15&&y<maxY-boxHeight*.15)central++;for(const j of [x>0?i-1:-1,x<width-1?i+1:-1,y>0?i-width:-1,y<height-1?i+width:-1])if(j>=0&&!seen[j]&&!blocked[j]){seen[j]=1;queue[tail++]=j;}}
-  if(!touches&&tail>=Math.max(12,area*.00015)){areas.push(tail/area);if(central/tail>=.5)salient.push(tail/area);}
+ const seen=new Uint8Array(n),queue=new Uint32Array(n),areas:number[]=[],wideAreas:number[]=[],widths:Array<{width:number;area:number}>=[];
+ // Distance to the nearest outline measures room for a crayon, not just cell area.
+ const distance=new Float32Array(n);for(let y=0;y<height;y++)for(let x=0;x<width;x++){const i=y*width+x;distance[i]=blocked[i]?0:Math.min(x?distance[i-1]+1:1,y?distance[i-width]+1:1);}
+ for(let y=height-1;y>=0;y--)for(let x=width-1;x>=0;x--){const i=y*width+x;if(!blocked[i])distance[i]=Math.min(distance[i],x+1<width?distance[i+1]+1:1,y+1<height?distance[i+width]+1:1);}
+ const shortSide=Math.min(boxWidth,boxHeight);
+ for(let start=0;start<n;start++){if(blocked[start]||seen[start])continue;let head=0,tail=1,touches=false,wide=0,widthSum=0;queue[0]=start;seen[start]=1;
+  while(head<tail){const i=queue[head++],x=i%width,y=Math.floor(i/width);if(x===0||x===width-1||y===0||y===height-1)touches=true;if(distance[i]>=shortSide*.012)wide++;widthSum+=distance[i]*2/shortSide;for(const j of [x>0?i-1:-1,x<width-1?i+1:-1,y>0?i-width:-1,y<height-1?i+width:-1])if(j>=0&&!seen[j]&&!blocked[j]){seen[j]=1;queue[tail++]=j;}}
+  if(!touches&&tail>=Math.max(12,area*.00015)){areas.push(tail/area);widths.push({width:widthSum/tail,area:tail/area});if(wide/tail>=.18&&tail/area>=.003)wideAreas.push(tail/area);}
  }
- const enclosed=areas.reduce((a,b)=>a+b,0);areas.sort((a,b)=>a-b);return{width,height,inkRatio:count/area,edgeDensity:transitions/area,regions:areas.length,smallRegionRatio:areas.length?areas.filter(a=>a<.0015).length/areas.length:0,medianRegionRatio:areas.length?areas[Math.floor(areas.length/2)]:1,largestRegionRatio:salient.length?Math.max(...salient):0,largeAreaShare:enclosed?salient.filter(a=>a>=.015).reduce((a,b)=>a+b,0)/enclosed:0,smallAreaShare:enclosed?areas.filter(a=>a<.0015).reduce((a,b)=>a+b,0)/enclosed:0};
+ const enclosed=areas.reduce((a,b)=>a+b,0);widths.sort((a,b)=>a.width-b.width);let medianWidth=0,cumulative=0;for(const r of widths){cumulative+=r.area;if(cumulative>=enclosed/2){medianWidth=r.width;break;}}areas.sort((a,b)=>a-b);return{width,height,inkRatio:count/area,edgeDensity:transitions/area,regions:areas.length,smallRegionRatio:areas.length?areas.filter(a=>a<.0015).length/areas.length:0,medianRegionRatio:areas.length?areas[Math.floor(areas.length/2)]:1,largestRegionRatio:areas.length?Math.max(...areas):0,largeAreaShare:enclosed?areas.filter(a=>a>=.015).reduce((a,b)=>a+b,0)/enclosed:0,wideAreaShare:enclosed?wideAreas.reduce((a,b)=>a+b,0)/enclosed:0,usableAreaShare:enclosed,medianWidthRatio:medianWidth,smallAreaShare:enclosed?areas.filter(a=>a<.0015).reduce((a,b)=>a+b,0)/enclosed:0};
 }
 export function ageBand(id:unknown){return AGE_BANDS.find(b=>b.id===id);}
 export function ageLabel(id:AgeBand){return id==='adults'?'Recommended for adults':`Recommended ages ${ageBand(id)!.short}`;}
 export function validAgeAssessment(value:unknown,sourceSHA?:string):value is AgeAssessment{
  if(!value||typeof value!=='object')return false;const v=value as AgeAssessment,m=v.metrics;
  if(v.version!==AGE_VERSION||v.model!==VISION_MODEL||v.model_revision!==VISION_REVISION||!ageBand(v.band)||!/^[a-f0-9]{64}$/.test(v.source_sha256)||sourceSHA&&v.source_sha256!==sourceSHA||!m||!Number.isInteger(m.width)||!Number.isInteger(m.height)||m.width<32||m.height<32||m.width*m.height>1000000)return false;
- for(const k of ['inkRatio','edgeDensity','smallRegionRatio','medianRegionRatio','largestRegionRatio','largeAreaShare','smallAreaShare'] as const)if(!Number.isFinite(m[k])||m[k]<0||m[k]>(k==='edgeDensity'?2:1))return false;
+ for(const k of ['inkRatio','edgeDensity','smallRegionRatio','medianRegionRatio','largestRegionRatio','largeAreaShare','smallAreaShare','wideAreaShare','usableAreaShare','medianWidthRatio'] as const)if(!Number.isFinite(m[k])||m[k]<0||m[k]>(k==='edgeDensity'?2:1))return false;
  if(!Number.isInteger(m.regions)||m.regions<0||m.regions>100000||!Array.isArray(v.visual_scores)||!Array.isArray(v.subjects)||v.subjects.length<1||v.subjects.length>3||v.subjects.some(s=>!SUBJECT_LABELS.includes(s.label as typeof SUBJECT_LABELS[number])||!Number.isFinite(s.score)||s.score<0||s.score>1)||!Number.isFinite(Date.parse(v.analyzed_at)))return false;
  try{const expected=recommendAge(m,v.visual_scores);return v.band===expected.band&&v.score===expected.score;}catch{return false;}
 }

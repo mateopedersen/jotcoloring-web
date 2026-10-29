@@ -12,3 +12,6 @@ export const categories = [
 ];
 export const animalCategories=[{id:'woodland',name:'Woodland',icon:'🐿️',sample:'woodland-friends'},{id:'pets',name:'Pets',icon:'🐱',sample:'sleepy-kitten'},{id:'farm-animals',name:'Farm animals',icon:'🐄',sample:'farm-friends'},{id:'ocean-life',name:'Ocean life',icon:'🐢',sample:'ocean-adventure'},{id:'birds',name:'Birds',icon:'🐦',sample:'woodland-owl'},{id:'dinosaurs',name:'Dinosaurs',icon:'🦕',sample:'dinosaur-valley'}];
 export const hrefCategory=(id:string)=>`/coloring-pages/${id}/`;
+
+/** Natural US-English modifiers for page headings; navigation keeps plural labels. */
+export const coloringTopic=(id:string)=>({animals:'Animal',flowers:'Flower',fantasy:'Fantasy',mandalas:'Mandala',holidays:'Holiday',vehicles:'Vehicle',space:'Space',ocean:'Ocean',food:'Food',dinosaurs:'Dinosaur',woodland:'Woodland',pets:'Pet','farm-animals':'Farm Animal','ocean-life':'Ocean Life',birds:'Bird'} as Record<string,string>)[id]||id;

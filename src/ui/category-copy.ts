@@ -9,7 +9,7 @@ export const categoryCopy:Record<string,{intro:string;note:string}>={
  space:{intro:'Join a smiling astronaut among ringed planets, stars and drifting space rocks. This imaginary space scene is ready for a galaxy of color, from a bright suit to the tiniest distant star.',note:'Try a dark sky with bright planets, or invent a galaxy in colors that do not exist on Earth.'},
  ocean:{intro:'Swim past coral, seaweed and small tropical fish with a sea turtle as your guide. Bring the underwater details to life in ocean blues, coral pinks or a palette all your own.',note:'Pick the turtle first, then choose colors for the surrounding reef to make your underwater scene feel connected.'},
  food:{intro:'Swirled cupcakes, berries and playful sweet treats fill this little collection. Experiment with frosting colors, fruit shades and decorative details for a page that looks good enough to imagine tasting.',note:'Mix soft frosting shades with brighter berries, or design a completely make-believe dessert.'},
- dinosaurs:{intro:'Travel back to a prehistoric valley with a long-necked dinosaur, leafy plants and distant peaks. Give the giant a gentle green, a brilliant orange or any color your imagination suggests.',note:'The dinosaur is an illustrated prehistoric scene. Its colors are yours to imagine.'},
+ dinosaurs:{intro:'Travel back to a prehistoric valley with two long-necked dinosaurs, leafy plants, a waterfall, and distant peaks. Give the dinosaurs a gentle green, a brilliant orange or any color your imagination suggests.',note:'These dinosaurs are part of an imaginary prehistoric scene. Their colors are yours to choose.'},
 };
 export const animalCopy:Record<string,string>={
  woodland:'Find a fox and rabbit among woodland flowers, a resting fawn, a leafy hedgehog scene and an owl beneath the moon. Explore the small details that make each forest scene different.',
@@ -17,5 +17,5 @@ export const animalCopy:Record<string,string>={
  'farm-animals':'Meet a young cow beside a fence and barn, surrounded by daisies. Color its patches, the flowers and the little farm details in a palette of your choice.',
  'ocean-life':'Follow a sea turtle through a reef with small tropical fish and flowing seaweed. Explore the underwater outlines before choosing your ocean colors.',
  birds:'An owl perches on a flowering branch under a crescent moon. Take your time with the feathers, blossoms and starry details.',
- dinosaurs:'A long-necked dinosaur stands among prehistoric plants and distant mountains. Add color to a peaceful imaginary valley from long ago.',
+ dinosaurs:'Two long-necked dinosaurs stand among prehistoric plants, a waterfall, and distant mountains. Add color to a peaceful imaginary valley from long ago.',
 };

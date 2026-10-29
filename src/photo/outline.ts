@@ -1,10 +1,10 @@
-export const PHOTO_ALGORITHM='jot-photo-contours-2.0';
+export const PHOTO_ALGORITHM='jot-photo-drawing-3.0';
 export const MAX_PHOTO_PIXELS=32_000_000;
 export const MAX_WORK_PIXELS=2_400_000;
 export const MAX_PHOTO_BYTES=20_000_000;
 export interface OutlineSettings{detail:number;smoothing:number;weight:'fine'|'medium'|'bold';closeGaps:boolean}
-export const DEFAULT_SETTINGS:OutlineSettings={detail:55,smoothing:65,weight:'medium',closeGaps:true};
-export interface OutlineResult{mask:Uint8Array;width:number;height:number;inkPixels:number;threshold:number}
+export const DEFAULT_SETTINGS:OutlineSettings={detail:55,smoothing:45,weight:'medium',closeGaps:true};
+export interface OutlineResult{gray?:Uint8Array;mask:Uint8Array;width:number;height:number;inkPixels:number;threshold:number}
 export function validateSettings(s:OutlineSettings){if(!s||!Number.isFinite(s.detail)||s.detail<0||s.detail>100||!Number.isFinite(s.smoothing)||s.smoothing<0||s.smoothing>100||!['fine','medium','bold'].includes(s.weight)||typeof s.closeGaps!=='boolean')throw new Error('Choose valid outline settings.');}
 /** Deterministic, source-pixel coordinates throughout: no crop, synthesis or warping. */
 export function photoOutline(rgba:Uint8ClampedArray,width:number,height:number,settings:OutlineSettings=DEFAULT_SETTINGS):OutlineResult{
@@ -41,3 +41,11 @@ export function photoOutline(rgba:Uint8ClampedArray,width:number,height:number,s
 }
 export function maskRGBA(mask:Uint8Array,width:number,height:number){if(mask.length!==width*height)throw new Error('Invalid outline mask.');const raw=new Uint8ClampedArray(mask.length*4);for(let i=0;i<mask.length;i++){const v=mask[i]?0:255;raw[i*4]=raw[i*4+1]=raw[i*4+2]=v;raw[i*4+3]=255;}return raw;}
 export function workingDimensions(width:number,height:number){if(!Number.isInteger(width)||!Number.isInteger(height)||width<64||height<64||width*height>MAX_PHOTO_PIXELS)throw new Error('Choose a photo between 64 pixels and 32 megapixels.');const ratio=Math.min(1,2400/Math.max(width,height),Math.sqrt(MAX_WORK_PIXELS/(width*height))),w=Math.floor(width*ratio),h=Math.floor(height*ratio);if(w<32||h<32)throw new Error('This photo is too narrow to create clear outlines. Choose a less extreme aspect ratio.');return{width:w,height:h};}
+
+/** Display the same anti-aliased linework in preview, exports, and Studio. */
+export function outlineRGBA(result:OutlineResult){
+ if(!result.gray)return maskRGBA(result.mask,result.width,result.height);
+ if(result.gray.length!==result.width*result.height)throw new Error('Invalid drawing pixels.');
+ const raw=new Uint8ClampedArray(result.gray.length*4);
+ for(let i=0;i<result.gray.length;i++){raw[i*4]=raw[i*4+1]=raw[i*4+2]=result.gray[i];raw[i*4+3]=255;}return raw;
+}
