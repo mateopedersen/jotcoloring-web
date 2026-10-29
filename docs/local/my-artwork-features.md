@@ -179,4 +179,3 @@ Evidence: `tests/artwork-library.test.ts` covers metadata history, search, scope
 152. Import projects with new IDs without overwriting existing artwork.
 153. Import boards with new IDs.
 154. Retain already-saved favorite pages when importing.
-

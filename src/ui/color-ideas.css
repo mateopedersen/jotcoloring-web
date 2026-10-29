@@ -7,4 +7,3 @@
 .jc-ideas-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .jc-ideas-actions :is(button,a){justify-content:center;min-height:44px;min-width:0;line-height:1.5}
 .jc-ideas-actions>a{grid-column:1/-1;justify-content:space-between}
-
