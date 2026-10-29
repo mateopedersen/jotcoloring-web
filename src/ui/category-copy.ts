@@ -1,0 +1,21 @@
+/** Short introductions tied to the subjects available in the JotColoring collection. */
+export const categoryCopy:Record<string,{intro:string;note:string}>={
+ animals:{intro:'Meet a sleepy kitten, a playful puppy and woodland friends among flowers and leaves. Find a favorite creature, explore the animal themes below, and give every little detail a color of your own.',note:'Start with an animal you love, or use Quick preview to take a closer look before choosing your page.'},
+ flowers:{intro:'Explore a broad hibiscus bloom and a butterfly nestled among garden flowers. Petals, buds and leafy details leave plenty of room for soft shades, bold contrasts and your own garden palette.',note:'Try a single color family for the petals, then bring the leaves to life in a different shade.'},
+ fantasy:{intro:'Step into a storybook world with a friendly winged dragon and a cozy little bookshop. Garden details, castle towers and inviting windows make each scene a place to invent your own colors.',note:'Use a favorite story as inspiration, or give this imaginary world a completely unexpected palette.'},
+ mandalas:{intro:'Follow the petals, leaves and repeating shapes of a botanical mandala. Work from the center outward, repeat a favorite color, or change the pattern as you go.',note:'A small palette can bring the repeating details together. There is no need to finish the whole page in one sitting.'},
+ holidays:{intro:'A bundled-up snowman, wrapped presents and fir branches set the scene for a winter coloring break. Bring a little warmth to the snowy details with colors that feel festive to you.',note:'Print a page for a quiet seasonal activity, or color it in Studio and save your finished picture.'},
+ vehicles:{intro:'Head for the coast with a rounded camper van, surfboards and a palm-lined shore. Color the camper in a favorite shade and imagine where this little road trip will go next.',note:'The camper and the beach offer two different palettes to play with: bright travel colors and softer coastal shades.'},
+ space:{intro:'Join a smiling astronaut among ringed planets, stars and drifting space rocks. This imaginary space scene is ready for a galaxy of color, from a bright suit to the tiniest distant star.',note:'Try a dark sky with bright planets, or invent a galaxy in colors that do not exist on Earth.'},
+ ocean:{intro:'Swim past coral, seaweed and small tropical fish with a sea turtle as your guide. Bring the underwater details to life in ocean blues, coral pinks or a palette all your own.',note:'Pick the turtle first, then choose colors for the surrounding reef to make your underwater scene feel connected.'},
+ food:{intro:'Swirled cupcakes, berries and playful sweet treats fill this little collection. Experiment with frosting colors, fruit shades and decorative details for a page that looks good enough to imagine tasting.',note:'Mix soft frosting shades with brighter berries, or design a completely make-believe dessert.'},
+ dinosaurs:{intro:'Travel back to a prehistoric valley with a long-necked dinosaur, leafy plants and distant peaks. Give the giant a gentle green, a brilliant orange or any color your imagination suggests.',note:'The dinosaur is an illustrated prehistoric scene. Its colors are yours to imagine.'},
+};
+export const animalCopy:Record<string,string>={
+ woodland:'Find a fox and rabbit among woodland flowers, a resting fawn, a leafy hedgehog scene and an owl beneath the moon. Explore the small details that make each forest scene different.',
+ pets:'A sleepy kitten with a ball of yarn and a floppy-eared puppy with a ball are ready for your colors. Choose a cozy pet scene and make its garden setting your own.',
+ 'farm-animals':'Meet a young cow beside a fence and barn, surrounded by daisies. Color its patches, the flowers and the little farm details in a palette of your choice.',
+ 'ocean-life':'Follow a sea turtle through a reef with small tropical fish and flowing seaweed. Explore the underwater outlines before choosing your ocean colors.',
+ birds:'An owl perches on a flowering branch under a crescent moon. Take your time with the feathers, blossoms and starry details.',
+ dinosaurs:'A long-necked dinosaur stands among prehistoric plants and distant mountains. Add color to a peaceful imaginary valley from long ago.',
+};

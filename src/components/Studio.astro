@@ -1,6 +1,9 @@
 ---
+import ArrowIcon from '../components/ArrowIcon.astro';
 import '../studio/studio.css';
-import {toolIcons} from '../studio/tool-icons';
+import {toolIcon} from '../studio/tool-icons';
+import ActionIcon from './ActionIcon.astro';
+import Icon from './HomeIcon.astro';
 const { projectId = '' } = Astro.props;
 const tools = [['brush','🖌️','Brush'],['fill','🪣','Fill'],['eraser','🧼','Eraser'],['picker','🖊️','Eyedropper'],['move','✋','Move'],['zoom','⌕','Zoom']];
 const desktopColors=['#ff711c','#ffca34','#ef293d','#f996bc','#a749c3','#2d6cca','#126d39','#63b83d','#0fb1ad','#efd2b4','#8f512e','#7a909e'];
@@ -8,29 +11,29 @@ const mobileColors=['#ff711c','#ffd342','#ffedc3','#ed3744','#f997bd','#659f54',
 ---
 <main id="main" class="jc-studio" data-project-id={projectId}>
   <header class="studio-header">
-    <a class="studio-back" href="/my-artwork/" aria-label="Back to My artwork">←</a>
-    <a class="studio-logo" href="/" aria-label="JotColoring home"><img src="/logo.svg" alt="jotcoloring" width="300" height="58" /></a>
+    <a class="studio-back" href="/my-artwork/" aria-label="Back to My artwork"><ArrowIcon kind="left" size={18}/></a>
+    <a class="studio-logo" href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" alt="jotcoloring" width="300" height="58" /></a>
     <div class="studio-project"><span>Studio&nbsp; /&nbsp; </span><strong data-project-title>Loading artwork…</strong></div>
     <span class="save-state desktop-save-state" data-save-state role="status">Loading</span>
-    <a href="/my-artwork/" class="studio-button desktop-only">▧&nbsp; My artwork</a>
-    <button type="button" data-save class="studio-button pale desktop-only">▣&nbsp; Save</button>
-    <button type="button" data-download="pdf" class="studio-button primary header-download">⇩&nbsp; Download</button>
+    <a href="/my-artwork/" class="studio-button desktop-only"><Icon name="grid" size={18}/>My artwork</a>
+    <button type="button" data-save class="studio-button pale desktop-only"><Icon name="save" size={18}/>Save</button>
+    <button type="button" data-download="pdf" class="studio-button primary header-download"><Icon name="download" size={18}/>Download</button>
   </header>
   <div class="studio-message" data-message role="status" aria-live="polite">Opening the original line art…</div>
   <section class="studio-layout" aria-label="Coloring studio">
     <div class="studio-tools desktop-tools" role="toolbar" aria-label="Drawing tools">
-      {tools.map(([id,,label])=><button type="button" data-tool={id} aria-label={label} title={label} aria-pressed={id==='brush'}><span set:html={toolIcons[id]} /></button>)}
+      {tools.map(([id,,label])=><button type="button" data-tool={id} aria-label={label} title={label} aria-pressed={id==='brush'}><span set:html={toolIcon(id)} /></button>)}
     </div>
     <section class="studio-workspace">
       <div class="canvas-stage" data-stage><canvas data-canvas aria-label="Your artwork canvas. Use the tools to color, or add text using Canvas settings." tabindex="0"></canvas><span class="brush-cursor" data-cursor aria-hidden="true"></span></div>
       <div class="canvas-toolbar" role="toolbar" aria-label="Canvas history and view">
-        <div class="history-group"><button data-history="undo" type="button" aria-label="Undo" title="Undo (Ctrl/⌘ Z)" disabled>↶<span>Undo</span></button><button data-history="redo" type="button" aria-label="Redo" title="Redo (Ctrl/⌘ Shift Z)" disabled>↷<span>Redo</span></button></div>
-        <div class="zoom-group"><button type="button" data-zoom="out" aria-label="Zoom out">−</button><output data-zoom-value>100%</output><button type="button" data-zoom="in" aria-label="Zoom in">+</button></div>
-        <button type="button" data-fit>⛶&nbsp; Fit</button><span class="save-state mobile-save-state" data-save-state>Loading</span>
+        <div class="history-group"><button data-history="undo" type="button" aria-label="Undo" title="Undo (Ctrl/⌘ Z)" disabled><Icon name="undo" size={21}/><span>Undo</span></button><button data-history="redo" type="button" aria-label="Redo" title="Redo (Ctrl/⌘ Shift Z)" disabled><Icon name="redo" size={21}/><span>Redo</span></button></div>
+        <div class="zoom-group"><button type="button" data-zoom="out" aria-label="Zoom out"><Icon name="minus" size={19}/></button><output data-zoom-value>100%</output><button type="button" data-zoom="in" aria-label="Zoom in"><Icon name="plus" size={19}/></button></div>
+        <button type="button" data-fit><Icon name="expand" size={18}/><span>Fit</span></button><span class="save-state mobile-save-state" data-save-state>Loading</span>
       </div>
     </section>
     <section class="mobile-tools" role="toolbar" aria-label="Drawing tools">
-      {[tools[1],tools[0],tools[2],tools[4]].map(([id,,label])=><button type="button" data-tool={id} aria-pressed={id==='brush'}><span set:html={toolIcons[id]} />{label}</button>)}
+      {[tools[1],tools[0],tools[2],tools[4]].map(([id,,label])=><button type="button" data-tool={id} aria-pressed={id==='brush'}><span set:html={toolIcon(id)} />{label}</button>)}
     </section>
     <aside class="studio-settings">
       <h1>Make it yours</h1>
@@ -62,11 +65,11 @@ const mobileColors=['#ff711c','#ffd342','#ffedc3','#ed3744','#f997bd','#659f54',
       </div>
       <div class="size-outline-row"><label class="setting-row size-control">Brush size <output data-size-value>24</output><input data-size type="range" min="1" max="120" value="24" /></label><label class="setting-row opacity-control">Opacity <output data-opacity-value>100%</output><input data-opacity type="range" min="1" max="100" value="100" /></label><label class="outline-toggle"><span><strong>Keep outlines</strong><small>Preserve the line art while coloring.</small></span><input type="checkbox" data-outlines checked /><span class="switch" aria-hidden="true"></span></label></div>
       <section class="layers-section"><button type="button" class="layers-heading" data-layers-toggle aria-expanded="false" aria-controls="studio-layers"><span>▱&nbsp; Layers</span><span class="mobile-only">⌄</span></button><div id="studio-layers" class="layer-content"><div data-layers></div><button type="button" data-add-layer class="studio-button add-layer">+ Add paint layer</button></div></section>
-      <div class="studio-export-actions"><h2>Download artwork</h2><button type="button" class="studio-button primary mobile-only save-artwork" data-download="pdf">⇩&nbsp; Save artwork</button><button type="button" class="studio-button" data-download="pdf">▤&nbsp; PDF</button><button type="button" class="studio-button" data-download="webp">▧&nbsp; WEBP</button></div>
+      <div class="studio-export-actions"><h2>Download artwork</h2><button type="button" class="studio-button primary mobile-only save-artwork" data-download="pdf">⇩&nbsp; Save artwork</button><button type="button" class="studio-button" data-download="pdf"><ActionIcon name="pdf" size={30}/>PDF</button><button type="button" class="studio-button" data-download="webp"><ActionIcon name="webp" size={30}/>Image</button></div>
       <button type="button" class="mobile-settings-button studio-button" data-mobile-settings>More settings & text</button>
     </aside>
   </section>
-  <dialog class="studio-modal" data-object-dialog><div class="studio-modal-head"><div><h2>Add an object</h2><p>500 region-based designs · 25 base subjects with 20 ornament variants each.</p></div><button type="button" data-close-objects aria-label="Close object library">✕</button></div><div class="object-search"><label>Find an object<input type="search" data-object-search placeholder="Try fox, flower, vehicle…" /></label><label>Category<select data-object-category><option value="">All categories</option></select></label></div><p class="object-results-status" data-object-results role="status"></p><div class="object-library-grid" data-object-grid></div><div class="object-pagination"><button type="button" data-object-page="previous">← Previous</button><span data-object-page-label></span><button type="button" data-object-page="next">Next →</button></div></dialog>
-  <dialog class="studio-modal pdf-modal" data-pdf-dialog><div class="studio-modal-head"><div><h2>Import a coloring PDF</h2><p>Open a black-and-white page. It stays on this device.</p></div><button type="button" data-close-pdf aria-label="Close PDF import">✕</button></div><label class="pdf-file-label">Choose PDF<input type="file" data-pdf-file accept="application/pdf,.pdf" /></label><p class="setting-hint">Up to 20 MB and 100 pages. PDF layers are flattened to a locked outline; choose closed areas with Fill or group areas manually. Password-protected and active PDFs are rejected.</p><label class="pdf-page-picker" hidden data-pdf-page-label>Page<select data-pdf-page></select></label><p data-pdf-status role="status" aria-live="polite"></p><img data-pdf-preview alt="Selected PDF page preview" hidden /><button type="button" class="studio-button primary" data-import-pdf disabled>Open this page in Studio</button></dialog>
+  <dialog class="studio-modal" data-object-dialog><div class="studio-modal-head"><div><h2>Add an object</h2><p>500 region-based designs · 25 base subjects with 20 ornament variants each.</p></div><button type="button" data-close-objects aria-label="Close object library"><Icon name="close" size={20}/></button></div><div class="object-search"><label>Find an object<input type="search" data-object-search placeholder="Try fox, flower, vehicle…" /></label><label>Category<select data-object-category><option value="">All categories</option></select></label></div><p class="object-results-status" data-object-results role="status"></p><div class="object-library-grid" data-object-grid></div><div class="object-pagination"><button type="button" data-object-page="previous"><ArrowIcon kind="left" size={18}/> Previous</button><span data-object-page-label></span><button type="button" data-object-page="next">Next <ArrowIcon kind="right" size={18}/></button></div></dialog>
+  <dialog class="studio-modal pdf-modal" data-pdf-dialog><div class="studio-modal-head"><div><h2>Import a coloring PDF</h2><p>Open a black-and-white page. It stays on this device.</p></div><button type="button" data-close-pdf aria-label="Close PDF import"><Icon name="close" size={20}/></button></div><label class="pdf-file-label">Choose PDF<input type="file" data-pdf-file accept="application/pdf,.pdf" /></label><p class="setting-hint">Up to 20 MB and 100 pages. PDF layers are flattened to a locked outline; choose closed areas with Fill or group areas manually. Password-protected and active PDFs are rejected.</p><label class="pdf-page-picker" hidden data-pdf-page-label>Page<select data-pdf-page></select></label><p data-pdf-status role="status" aria-live="polite"></p><img data-pdf-preview alt="Selected PDF page preview" hidden /><button type="button" class="studio-button primary" data-import-pdf disabled>Open this page in Studio</button></dialog>
 </main>
 <script>import { mountStudio } from '../studio/controller'; mountStudio();</script>

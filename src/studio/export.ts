@@ -25,6 +25,6 @@ export async function exportArtwork(art:HTMLCanvasElement,outline:HTMLCanvasElem
     const bytes=await buildPdf(images,options.paper,options.orientation);
     if(bytes.byteLength<=MAX_PDF_BYTES)return {blob:new Blob([enforcePdfLimit(bytes) as BlobPart],{type:'application/pdf'}),name:`${name}.pdf`,width:art.width,height:art.height};
   }
-  throw new Error('This artwork cannot fit in a clear PDF under 1 MB at its current resolution. Download WEBP or simplify the artwork. No oversized PDF was created.');
+  throw new Error('This artwork cannot fit in a clear PDF under 1 MB at its current resolution. Download Image (WEBP) or simplify the artwork. No oversized PDF was created.');
 }
 export function downloadBlob(blob:Blob,name:string){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60_000);}

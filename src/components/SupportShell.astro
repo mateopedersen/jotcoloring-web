@@ -1,0 +1,26 @@
+---
+import ArrowIcon from '../components/ArrowIcon.astro';
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import SupportArt from './SupportArt.astro';
+import FooterIcon from './FooterIcon.astro';
+import '../styles/support.css';
+interface Props {title:string;description:string;eyebrow?:string;kind?:'license'|'help'|'privacy'|'about'|'notfound';noindex?:boolean;}
+const {title,description,eyebrow='A LITTLE CLARITY, MORE CREATIVITY',kind='license',noindex=false}=Astro.props;
+const links=[['About','/about/','about'],['Artwork license','/license/','license'],['Commercial licensing','/licensing/','document'],['Help center','/help/','help'],['FAQ','/faq/','faq']];
+---
+<Layout title={`${title} — JotColoring`} description={description} noindex={noindex}><Header/>
+ <main id="main" class:list={['support-page',`support-${kind}`]}>
+  <nav class="support-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>{title}</span></nav>
+  <header class="support-hero"><div><p class="support-kicker">{eyebrow}</p><h1>{title}<span class="support-title-dot">.</span></h1><p class="support-lead">{description}</p><slot name="hero"/></div><slot name="visual"><SupportArt kind={kind}/></slot></header>
+  <nav class="support-tabs" aria-label="Resources">{links.map(([label,href,icon])=><a href={href} aria-current={Astro.url.pathname===href?'page':undefined}><FooterIcon name={icon}/><b>{label}</b><span class="support-arrow" aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a>)}</nav>
+  <slot/>
+  <aside class="support-contact"><div><span class="support-kicker">LET’S MAKE IT CLEAR</span><h2>A question we haven’t answered?</h2><p>Tell us which page or feature you are using. We’ll help you find the next step.</p></div><a class="support-button" href="/contact/">Contact JotColoring <span aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a></aside>
+ </main>
+</Layout>
+<script>
+ for(const nav of document.querySelectorAll<HTMLElement>('.support-tabs')){
+  let width=0;const position=()=>{if(width===nav.clientWidth)return;width=nav.clientWidth;const selected=nav.querySelector<HTMLElement>('[aria-current]');if(selected&&nav.scrollWidth>width){const r=selected.getBoundingClientRect(),n=nav.getBoundingClientRect();nav.scrollLeft+=r.left-n.left-(width-r.width)/2;}};
+  const observer=new ResizeObserver(position);observer.observe(nav);position();window.addEventListener('pagehide',()=>observer.disconnect(),{once:true});
+ }
+</script>

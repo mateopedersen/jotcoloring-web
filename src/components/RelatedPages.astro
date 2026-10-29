@@ -1,0 +1,35 @@
+---
+import type {Content} from '../server/types';
+import {relatedView,selectRelated,type RelatedResult} from '../content/related';
+import Card from './Card.astro';
+import CreativeIcon from './CreativeIcon.astro';
+import CategoryIcon from './CategoryIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
+import SearchIcon from './SearchIcon.astro';
+import {artworkText} from '../ui/artwork-text';
+import '../styles/related.css';
+const {item,result}=Astro.props as {item:Content;result:RelatedResult};
+const view=relatedView(Astro.url.searchParams.get('related')),matches=selectRelated(result,view);
+const labels={best:'Best matches',theme:`More ${result.theme} pages`,detail:'Similar detail',collection:'In this collection'};
+const intros={best:`Follow the subjects and details you enjoyed in ${item.title}. These pages share a theme, subject or collection.`,theme:`Explore shared subjects and ${result.theme} themes. A different scene, with something familiar to color.`,detail:'Find related subjects with a similar level of drawing detail. Recommended ages are a guide; everyone can color at their own pace.',collection:`Stay in the ${item.categoryName.toLowerCase()} collection and discover another page to make your own.`};
+const counts={best:result.matches.length,theme:result.matches.filter(m=>m.sameTheme).length,detail:result.matches.filter(m=>m.similarDetail).length,collection:result.matches.filter(m=>m.sameCollection).length};
+---
+<section id="more-like-this" class="jc-related" data-related-view={view} aria-labelledby="related-title">
+ <header class="jc-related-heading"><div><p class="hv-kicker">KEEP YOUR CURIOSITY COLORFUL</p><h2 id="related-title">More like this<span>.</span></h2><p>Another page that feels like you. Follow a favorite subject, find a familiar theme or settle into the details.</p></div><a class="jc-related-collection" href={`/coloring-pages/${item.category}/`}><CategoryIcon name={item.category} size={54}/><span><small>KEEP EXPLORING</small><b>{item.categoryName} coloring pages</b></span><ArrowIcon size={20}/></a></header>
+ <nav class="jc-related-tabs" aria-label="Related coloring page options">{(['best','theme','detail','collection'] as const).map((key,index)=><a href={`?related=${key}#more-like-this`} data-related-link={key} aria-current={view===key?'true':undefined}>{index===0?<SearchIcon size={34}/>:<CreativeIcon name={['all','all','mandalas','artwork'][index]} size={34}/>}<span>{labels[key]}</span><b>{Math.min(8,counts[key])}{counts[key]>8?'+':''}</b></a>)}</nav>
+ <div class="jc-related-status" role="status" aria-live="polite" data-related-status></div>
+ <div class="jc-related-results"><div class="jc-related-intro"><h3 tabindex="-1" data-related-focus>{labels[view]}</h3><p>{intros[view]}</p></div>
+ {matches.length?<div class:list={["jc-related-grid",[3,6].includes(matches.length)&&"jc-related-grid-six"]}>{matches.map(match=><Card item={match.item} showCategory showDescription matchReasons={match.reasons}/>)}</div>:<div class="jc-related-empty"><CreativeIcon name="all" size={72}/><div><h3>{view==='best'?'A new theme worth exploring.':'A little more room to discover.'}</h3><p>{view==='best'?'There are no close matches in the current collection yet. Try the pages below for a different creative direction.':'No related pages match this option yet. Try Best matches or explore the full collection.'}</p></div><a href={view==='best'?'/coloring-pages/':'?related=best#more-like-this'} data-related-link={view==='best'?undefined:'best'}><span>{view==='best'?'Explore all pages':'See best matches'}</span><ArrowIcon size={19}/></a></div>}
+ </div>
+ {matches.length<4&&result.explore.length>0&&<div class="jc-related-discover"><div><CreativeIcon name="studio" size={43}/><span><h3>More to explore</h3><p>A different subject for your next coloring break.</p></span><a href="/coloring-pages/">All coloring pages<ArrowIcon size={18}/></a></div><div class="jc-related-grid">{result.explore.map(candidate=><Card item={candidate} showCategory showDescription/>)}</div></div>}
+ <footer class="jc-related-foot"><CreativeIcon name="printer" size={35}/><span>Clean outlines, ready for your colors.</span><b>Print a PDF · Save an Image · Color in Studio</b></footer>
+ {result.collection&&<section id="explore-this-collection" class="jc-explore-collection" aria-labelledby="explore-collection-title">
+  <h3 id="explore-collection-title">Explore this collection</h3>
+  <a class="jc-explore-card" href={result.collection.href}>
+   <span class="jc-explore-thumbnails" aria-hidden="true">{result.collection.previews.length?result.collection.previews.map(preview=><span class="jc-explore-thumbnail" data-image-title={artworkText(preview).title} data-image-description={artworkText(preview).description}><img src={preview.thumbnail} alt={artworkText(preview).alt} width="96" height="112" loading="lazy"/></span>):<CategoryIcon name={result.collection.id} size={72}/>}</span>
+   <span class="jc-explore-copy"><strong>View all {result.collection.name} coloring pages</strong><span>{result.collection.total!==null&&<b>{result.collection.total.toLocaleString('en-US')} {result.collection.total===1?'coloring page':'coloring pages'}<i aria-hidden="true">·</i></b>}Ready to print or color online</span></span>
+   <span class="jc-explore-arrow" aria-hidden="true"><ArrowIcon size={24}/></span>
+  </a>
+ </section>}
+</section>
+<script>import {mountRelatedPages} from '../ui/related-pages';mountRelatedPages();</script>

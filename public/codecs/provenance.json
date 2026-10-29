@@ -1,0 +1,11 @@
+{
+  "package": "@cf-wasm/photon",
+  "version": "0.4.0",
+  "source": "https://www.npmjs.com/package/@cf-wasm/photon/v/0.4.0",
+  "repository": "https://github.com/fineshopdesign/cf-wasm/tree/main/packages/photon",
+  "license": "Apache-2.0",
+  "file": "photon-0.4.0.wasm",
+  "bytes": 1566855,
+  "sha256": "f477b87cbea0445c65fc7e580e89050190600379fcd44821cec67403483872b1",
+  "purpose": "On-demand browser lossless WEBP encoding; no image upload"
+}

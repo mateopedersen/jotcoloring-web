@@ -1,0 +1,22 @@
+---
+import type {CollectionDiscovery} from '../content/collection-matching';
+import {scopedCollectionURL} from '../content/collection-matching';
+import type {CatalogQuery} from '../server/types';
+import ArrowIcon from './ArrowIcon.astro';
+import CategoryIcon from './CategoryIcon.astro';
+import SearchIcon from './SearchIcon.astro';
+import {displayTitle} from '../ui/titles';
+import {artworkText} from '../ui/artwork-text';
+import '../styles/related-collections.css';
+const {result,query}=Astro.props as {result:CollectionDiscovery;query:CatalogQuery};
+const scoped=!!query.q||!!query.recommended_age||!!query.age?.length||!!query.difficulty?.length;
+const labels={'narrower':'Explore a theme','broader':'The wider collection','shared-pages':'A shared creative world','shared-subject':'Similar subjects','browse':'Your next creative break'};
+---
+{(result.matches.length>0||result.topics?.length)&&<section id="related-collections" class="jc-collections" aria-labelledby="related-collections-title">
+ <header><div><p class="hv-kicker">FOLLOW WHAT YOU LOVE</p><h2 id="related-collections-title">{result.mode==='browse'?'Find your next collection.':result.matches.length?'Related coloring collections.':'More ways to explore this theme.'}</h2><p>{query.q?`Follow the subjects behind “${query.q}” and find a page that feels right for you.`:result.mode==='browse'?'A little wildlife, a little wonder, a whole lot to color. Choose a collection and make it your own.':'Stay with the subjects you enjoy. These collections share a theme, a subject or pages from this creative world.'}</p></div><span class="jc-collections-emblem" aria-hidden="true"><SearchIcon size={69}/><i/><i/></span></header>
+ {result.matches.length>0&&<div class="jc-collections-grid">{result.matches.map(match=><article class="jc-collection-card" data-collection-id={match.collection.id} data-relation={match.relation}>
+  <a class="jc-collection-pictures" href={scopedCollectionURL(match.collection,query)} aria-label={`Explore ${match.collection.name} coloring pages`}><span class="jc-collection-scene" aria-hidden="true">{match.previews.map((item,index)=><span class:list={['jc-collection-paper',`jc-collection-paper-${index}`]} data-image-title={artworkText(item).title} data-image-description={artworkText(item).description}><img src={item.thumbnail} alt={artworkText(item).alt} width="210" height="290" loading="lazy"/></span>)}</span><span class="jc-collection-icon"><CategoryIcon name={match.collection.icon} size={53}/></span><span class="jc-collection-badge">{labels[match.relation]}</span></a>
+  <div class="jc-collection-copy"><a class="jc-collection-title" href={scopedCollectionURL(match.collection,query)}><h3>{match.collection.name}</h3><span aria-hidden="true"><ArrowIcon size={20}/></span></a><p>{match.reason}</p><div class="jc-collection-meta"><strong>{match.collection.total.toLocaleString('en-US')} {scoped?'matching ':''}{match.collection.total===1?'page':'pages'}</strong><span>Print or color online</span></div></div>
+ </article>)}</div>}
+ {result.topics?.length&&<nav class="jc-collection-topics" aria-label="Related subject searches"><span><SearchIcon size={27}/><b>{result.mode==='browse'?'Try a favorite subject':'Keep exploring by subject'}</b></span><div>{result.topics.map(topic=><a href={topic.href}><span>{displayTitle(topic.label)}</span><ArrowIcon size={16}/></a>)}</div></nav>}
+</section>}

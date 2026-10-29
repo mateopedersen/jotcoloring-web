@@ -1,0 +1,2 @@
+import {colorIdeaPixels,referencePalette,moodPalettes} from './color-ideas-model';
+self.onmessage=(event:MessageEvent)=>{const {raw,width,height,mood,id}=event.data;try{const source=new Uint8ClampedArray(raw),result=colorIdeaPixels(source,width,height,mood),palettes=moodPalettes(referencePalette(source,width,height));self.postMessage({id,pixels:result.pixels.buffer,palettes},{transfer:[result.pixels.buffer]});}catch(error){self.postMessage({id,error:error instanceof Error?error.message:'Preview could not be prepared.'});}};

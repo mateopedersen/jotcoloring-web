@@ -17,13 +17,15 @@
     "build:staging": "CLOUDFLARE_ENV=staging astro build",
     "build:production": "CLOUDFLARE_ENV=production astro build",
     "deploy:staging": "pnpm build:staging && node scripts/ops/deploy.mjs staging --apply",
-    "deploy:production": "pnpm build:production && node scripts/ops/deploy.mjs production --apply"
+    "deploy:production": "pnpm build:production && node scripts/ops/deploy.mjs production --apply",
+    "age:catalog": "node --import tsx scripts/data/assess-local-catalog.ts",
+    "og:local": "node --import tsx scripts/social/build.ts --local-only --apply-content"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.4.2",
     "@cf-wasm/photon": "0.4.0",
-    "@fontsource/inter": "5.3.0",
-    "@fontsource/nunito-sans": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@huggingface/transformers": "3.8.1",
     "astro": "7.4.2",
     "fflate": "0.8.3",
     "jose": "6.2.13",

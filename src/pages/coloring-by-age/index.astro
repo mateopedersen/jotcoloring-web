@@ -1,0 +1,12 @@
+---
+import {env} from 'cloudflare:workers';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import AgeNavigation from '../../components/AgeNavigation.astro';
+import AgeIcon from '../../components/AgeIcon.astro';
+import Card from '../../components/Card.astro';
+import {createCatalog} from '../../server/catalog';
+import type {Env} from '../../server/types';
+const pages=await createCatalog(env as unknown as Env).list({limit:8});
+---
+<Layout title="Coloring pages by age — JotColoring" description="Explore coloring pages by recommended age, from broad coloring spaces to intricate patterns for adults."><Header/><main id="main" class="jc-age-page"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Coloring by age</span></nav><section class="jc-age-hero"><AgeIcon band="6-8" size={112}/><div><p class="hv-kicker">YOUR PACE. YOUR COLORS.</p><h1>Find your coloring comfort zone.</h1><p>From big, open shapes to tiny details worth taking your time with. Explore a recommended age, then choose the subject and level of detail that feel right for you.</p></div></section><AgeNavigation/><div class="hv-section-heading"><div><p class="hv-kicker">A LITTLE INSPIRATION</p><h2>See what catches your eye.</h2></div></div><div class="catalog-grid">{pages.items.map(item=><Card item={item} showCategory/>)}</div><p class="jc-age-page-note">Recommendations describe drawing detail and the size of the coloring spaces. They are a starting point: interests, experience and the help available can make a difference.</p></main></Layout>
