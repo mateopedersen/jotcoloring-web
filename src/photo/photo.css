@@ -13,3 +13,5 @@
 .jc-photo-converter .jc-photo-presets button,.jc-photo-converter .jc-photo-weight label>span{font-size:12px}
 .jc-photo-converter .jc-photo-gap small{font-size:11px;color:#8b795b}
 @media(max-width:580px){.jc-photo-converter .jc-photo-presets button{font-size:11px}.jc-photo-converter .jc-photo-file-note{font-size:11px}.jc-photo-converter .jc-photo-range-ends{font-size:11px}.jc-photo-converter .jc-photo-preview-tabs button{font-size:11px}.jc-photo-converter .jc-photo-source-info{font-size:11px}}
+
+.jc-photo-engine{margin:0 0 22px;border:1px solid #e7d6c5;border-radius:12px;padding:12px 14px;background:#fffaf4}.jc-photo-engine summary{cursor:pointer;font-size:13px;font-weight:750;color:#714c35;min-height:25px}.jc-photo-engine label{display:block;font-size:12px;font-weight:700;margin:14px 0 7px}.jc-photo-engine select{width:100%;min-height:44px;font:inherit;font-size:13px}.jc-photo-engine p{font-size:12px;line-height:1.7;color:#645347;margin:10px 0 0}.jc-photo-region-note{font-size:13px;font-weight:650;line-height:1.65;color:#48663e;background:#f5f8ef;border-radius:10px;padding:11px 14px;margin:12px 0}.jc-photo-region-note:empty{display:none}

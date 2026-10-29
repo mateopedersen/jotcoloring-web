@@ -1,9 +1,9 @@
-export const PHOTO_ALGORITHM='jot-photo-contours-1.1';
+export const PHOTO_ALGORITHM='jot-photo-contours-2.0';
 export const MAX_PHOTO_PIXELS=32_000_000;
 export const MAX_WORK_PIXELS=2_400_000;
 export const MAX_PHOTO_BYTES=20_000_000;
 export interface OutlineSettings{detail:number;smoothing:number;weight:'fine'|'medium'|'bold';closeGaps:boolean}
-export const DEFAULT_SETTINGS:OutlineSettings={detail:45,smoothing:65,weight:'fine',closeGaps:true};
+export const DEFAULT_SETTINGS:OutlineSettings={detail:55,smoothing:65,weight:'medium',closeGaps:true};
 export interface OutlineResult{mask:Uint8Array;width:number;height:number;inkPixels:number;threshold:number}
 export function validateSettings(s:OutlineSettings){if(!s||!Number.isFinite(s.detail)||s.detail<0||s.detail>100||!Number.isFinite(s.smoothing)||s.smoothing<0||s.smoothing>100||!['fine','medium','bold'].includes(s.weight)||typeof s.closeGaps!=='boolean')throw new Error('Choose valid outline settings.');}
 /** Deterministic, source-pixel coordinates throughout: no crop, synthesis or warping. */
