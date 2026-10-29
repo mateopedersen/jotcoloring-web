@@ -10,7 +10,7 @@ const mf=localStorage();try{
  const rows=await db.prepare("SELECT c.id,c.slug,c.active_version,r.manifest_json FROM content c JOIN content_revision r ON r.content_id=c.id AND r.version=c.active_version WHERE c.status='published'").all<any>();
  const prepared=[];
  for(const entry of review.items){const row=rows.results.find(r=>r.slug===entry.slug);if(!row)throw new Error('Reviewed page is missing: '+entry.slug);const m=JSON.parse(row.manifest_json) as Manifest,source=m.assets.find(a=>a.role==='printable_webp_bw');if(!source||source.sha256!==entry.source_sha256)throw new Error('Image changed; review the replacement: '+entry.slug);
- const age=JSON.parse(await fs.readFile(`.local/age-vision/assessments/${AGE_VERSION}-${source.sha256}.json`,'utf8'));if(!validAgeAssessment(age,source.sha256))throw new Error('Current pixel analysis required.');
+ const age=JSON.parse(await fs.readFile(`.local/age-vision/assessments/${AGE_VERSION}-${source.sha256}-branded.json`,'utf8'));if(!validAgeAssessment(age,source.sha256))throw new Error('Current pixel analysis required.');
  for(const key of ['title','description','alt_text'])if(typeof entry[key]!=='string'||!entry[key].trim())throw new Error('Reviewed copy is incomplete.');
  m.title=entry.title;m.description=entry.description;m.alt_text=entry.alt_text;m.tags=[...new Set([...m.tags,...entry.tags])];m.age_recommendation=age;m.age_groups=[ageBand(age.band)!.group];
  // Easy means a broadly open page, not simply a children's recommendation.

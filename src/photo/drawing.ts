@@ -1,3 +1,4 @@
+import {repairDrawingGaps} from './repair';
 import {MAX_WORK_PIXELS,validateSettings,type OutlineSettings} from './outline';
 import {coloringBoundaries} from './regions';
 import {photoExposureGain,countColoringRegions,type ContourResult} from './contours';
@@ -73,10 +74,11 @@ function sample(gray:Float32Array,w:number,h:number,x:number,y:number){
  * responses turns small facial features into polygons, so we never do that here. */
 export function finishDrawing(map:DrawingMap,width:number,height:number,settings:OutlineSettings,source?:Uint8ClampedArray):ContourResult{
  validateSettings(settings);drawingDimensions(width,height);if(map.gray.length!==map.width*map.height)throw new Error('Invalid drawing map.');
+ const repaired=settings.closeGaps?repairDrawingGaps(map.gray,map.width,map.height):{gray:map.gray,repaired:0};
  const gray=new Uint8Array(width*height),mask=new Uint8Array(width*height),evidence=new Float32Array(width*height);
- const floor=.015-settings.detail*.00012,gamma=settings.weight==='fine'?.64:.5,gain=settings.weight==='fine'?1.45:1.6;
+ const floor=settings.detail<55?.0084+(55-settings.detail)*.00065:Math.max(.0015,.0084-(settings.detail-55)*.00015),gamma=settings.weight==='fine'?.64:.5,gain=settings.weight==='fine'?1.45:1.6;
  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
-  let value=sample(map.gray,map.width,map.height,(x+.5)*map.width/width-.5,(y+.5)*map.height/height-.5);
+  let value=sample(repaired.gray,map.width,map.height,(x+.5)*map.width/width-.5,(y+.5)*map.height/height-.5);
   if(!Number.isFinite(value)||value<0||value>1)throw new Error('Invalid drawing output.');
   const i=y*width+x,ink=Math.max(0,1-value-floor);evidence[i]=ink;gray[i]=Math.round(255*(1-Math.min(1,Math.pow(ink,gamma)*gain)));mask[i]=gray[i]<155?1:0;
  }
@@ -96,7 +98,7 @@ export function finishDrawing(map:DrawingMap,width:number,height:number,settings
  }
  let inkPixels=0;for(let i=0;i<mask.length;i++){mask[i]=gray[i]<155?1:0;inkPixels+=mask[i];}
  if(inkPixels<16)throw new Error('No clear outlines were found. Try a sharper photo or choose Direct trace.');
- return {mask,gray,width,height,inkPixels,threshold:155,method:'faithful',regions:countColoringRegions(mask,width,height)};
+ return {mask,gray,width,height,inkPixels,threshold:155,method:'faithful',repairedGaps:repaired.repaired,regions:countColoringRegions(mask,width,height)};
 }
 
 /** Bridge only opposing stroke endpoints, at most two missing pixels, and only

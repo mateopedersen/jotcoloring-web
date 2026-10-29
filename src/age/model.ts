@@ -1,4 +1,5 @@
-export const AGE_VERSION='jot-age-vision-2.0.0';
+import {validCategoryAnalysis,type CategoryAnalysis} from './categories';
+export const AGE_VERSION='jot-age-vision-3.0.1';
 export const VISION_MODEL='Xenova/clip-vit-base-patch32';
 export const VISION_REVISION='6b7c523703ae26e39be4b03774966f8571c7f523';
 export const AGE_BANDS=[
@@ -10,7 +11,7 @@ export const AGE_BANDS=[
 ] as const;
 export type AgeBand=typeof AGE_BANDS[number]['id'];
 export interface ImageDetailMetrics {width:number;height:number;inkRatio:number;edgeDensity:number;regions:number;smallRegionRatio:number;medianRegionRatio:number;largestRegionRatio:number;largeAreaShare:number;smallAreaShare:number;wideAreaShare:number;usableAreaShare:number;medianWidthRatio:number}
-export interface AgeAssessment {version:typeof AGE_VERSION;source_sha256:string;model:typeof VISION_MODEL;model_revision:typeof VISION_REVISION;band:AgeBand;score:number;metrics:ImageDetailMetrics;visual_scores:number[];subjects:Array<{label:string;score:number}>;analyzed_at:string}
+export interface AgeAssessment {input_mode:'branded'|'plain';category_analysis:CategoryAnalysis;version:typeof AGE_VERSION;source_sha256:string;model:typeof VISION_MODEL;model_revision:typeof VISION_REVISION;band:AgeBand;score:number;metrics:ImageDetailMetrics;visual_scores:number[];subjects:Array<{label:string;score:number}>;analyzed_at:string}
 export const DETAIL_LABELS=[
  'a preschool coloring page with a few large simple shapes and very little decoration',
  'a children’s coloring page with a large cartoon character and some small background decorations',
@@ -27,10 +28,14 @@ export function recommendAge(metrics:ImageDetailMetrics,visualScores:readonly nu
  // marks should not outweigh a few broad body shapes, wherever they sit.
  const total=visualScores.reduce((a,b)=>a+b,0),visual=visualScores.reduce((n,s,i)=>n+s/total*i*25,0);
  const density=15*clamp(Math.log2(1+metrics.regions)/Math.log2(801));
- const fineSpaces=25*metrics.smallAreaShare+20*clamp((.03-metrics.medianWidthRatio)/.025);
+ const enclosedEvidence=clamp(metrics.usableAreaShare/.12);
+ const fineSpaces=(25*metrics.smallAreaShare+20*clamp((.03-metrics.medianWidthRatio)/.025))*enclosedEvidence;
+ // A simple open outline is not complex just because it has no closed cells.
+ // When cells are open, actual edge density supplies the missing evidence.
+ const openDetail=35*clamp(metrics.edgeDensity/.2)*(1-enclosedEvidence);
  const ink=12*clamp(metrics.inkRatio/.3);
  const accessible=16*metrics.wideAreaShare+15*clamp(metrics.largestRegionRatio/.12);
- let value=10+density+fineSpaces+ink+visual*.12-accessible;
+ let value=10+density+fineSpaces+openDetail+ink+visual*.12-accessible;
  // Only uniformly intricate pages reach the adult band automatically. A large
  // central or off-center subject prevents decorative backgrounds from doing so.
  if(metrics.wideAreaShare<.18&&metrics.largeAreaShare<.03&&metrics.smallAreaShare>.45&&metrics.regions>180)value=Math.max(value,82+10*clamp(metrics.smallAreaShare));
@@ -64,7 +69,7 @@ export function ageBand(id:unknown){return AGE_BANDS.find(b=>b.id===id);}
 export function ageLabel(id:AgeBand){return id==='adults'?'Recommended for adults':`Recommended ages ${ageBand(id)!.short}`;}
 export function validAgeAssessment(value:unknown,sourceSHA?:string):value is AgeAssessment{
  if(!value||typeof value!=='object')return false;const v=value as AgeAssessment,m=v.metrics;
- if(v.version!==AGE_VERSION||v.model!==VISION_MODEL||v.model_revision!==VISION_REVISION||!ageBand(v.band)||!/^[a-f0-9]{64}$/.test(v.source_sha256)||sourceSHA&&v.source_sha256!==sourceSHA||!m||!Number.isInteger(m.width)||!Number.isInteger(m.height)||m.width<32||m.height<32||m.width*m.height>1000000)return false;
+ if(!['branded','plain'].includes(v.input_mode)||!validCategoryAnalysis(v.category_analysis)||v.version!==AGE_VERSION||v.model!==VISION_MODEL||v.model_revision!==VISION_REVISION||!ageBand(v.band)||!/^[a-f0-9]{64}$/.test(v.source_sha256)||sourceSHA&&v.source_sha256!==sourceSHA||!m||!Number.isInteger(m.width)||!Number.isInteger(m.height)||m.width<32||m.height<32||m.width*m.height>1000000)return false;
  for(const k of ['inkRatio','edgeDensity','smallRegionRatio','medianRegionRatio','largestRegionRatio','largeAreaShare','smallAreaShare','wideAreaShare','usableAreaShare','medianWidthRatio'] as const)if(!Number.isFinite(m[k])||m[k]<0||m[k]>(k==='edgeDensity'?2:1))return false;
  if(!Number.isInteger(m.regions)||m.regions<0||m.regions>100000||!Array.isArray(v.visual_scores)||!Array.isArray(v.subjects)||v.subjects.length<1||v.subjects.length>3||v.subjects.some(s=>!SUBJECT_LABELS.includes(s.label as typeof SUBJECT_LABELS[number])||!Number.isFinite(s.score)||s.score<0||s.score>1)||!Number.isFinite(Date.parse(v.analyzed_at)))return false;
  try{const expected=recommendAge(m,v.visual_scores);return v.band===expected.band&&v.score===expected.score;}catch{return false;}
