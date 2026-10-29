@@ -15,7 +15,7 @@ const links=[['About','/about/','about'],['Artwork license','/license/','license
   <header class="support-hero"><div><p class="support-kicker">{eyebrow}</p><h1>{title}<span class="support-title-dot">.</span></h1><p class="support-lead">{description}</p><slot name="hero"/></div><slot name="visual"><SupportArt kind={kind}/></slot></header>
   <nav class="support-tabs" aria-label="Resources">{links.map(([label,href,icon])=><a href={href} aria-current={Astro.url.pathname===href?'page':undefined}><FooterIcon name={icon}/><b>{label}</b><span class="support-arrow" aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a>)}</nav>
   <slot/>
-  <aside class="support-contact"><div><span class="support-kicker">LET’S MAKE IT CLEAR</span><h2>A question we haven’t answered?</h2><p>Tell us which page or feature you are using. We’ll help you find the next step.</p></div><a class="support-button" href="/contact/">Contact JotColoring <span aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a></aside>
+  <aside class="support-contact"><div><span class="support-kicker">LET’S MAKE IT CLEAR</span><h2>Still have a question?</h2><p>Tell us which page or feature you are using. We’ll help you find the next step.</p></div><a class="support-button" href="/contact/">Contact JotColoring <span aria-hidden="true"><ArrowIcon kind="diagonal" size={18}/></span></a></aside>
  </main>
 </Layout>
 <script>
