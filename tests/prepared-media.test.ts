@@ -1,3 +1,4 @@
+import {validAgeAssessment} from '../src/age/model';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,readFile,rm,writeFile} from 'node:fs/promises';
@@ -6,6 +7,8 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import sharp from 'sharp';
 import {reviewSignature} from '../src/server/assets';
+import {pngBinding} from '../src/social/png';
+import {socialBinding} from '../src/social/model';
 
 test('prepared media stays unverified until rights are documented and signed for the chosen environment',async()=>{
   const dir=await mkdtemp(path.join(tmpdir(),'jot-prepared-'));
@@ -22,6 +25,6 @@ test('prepared media stays unverified until rights are documented and signed for
     const manifest=JSON.parse(await readFile(path.join(output,'manifest.json'),'utf8'));
     assert.equal(manifest.requested_status,'ready_for_review');assert.equal(manifest.provenance.rights_status,'unverified');assert.equal(manifest.provenance.source_type,'user_owned');assert.match(manifest.provenance.reference,/Rights review pending/);
     const reviews=JSON.parse(await readFile(path.join(output,'reviews.json'),'utf8'));
-    assert.equal(reviews.length,5);for(const item of reviews)assert.equal(item.signature,await reviewSignature(item.review,secret));
+    assert.equal(reviews.length,5);const og=manifest.assets.find((a:any)=>a.role==='social_og'),line=manifest.assets.find((a:any)=>a.role==='printable_webp_bw');assert.equal(og.source_asset_id,line.asset_id);assert.equal(og.mime,'image/png');assert.equal(og.black_and_white_verified,false);assert.deepEqual(pngBinding(await readFile(path.join(output,'social_og.png'))),socialBinding({...manifest,recommendedAge:manifest.age_recommendation.band,sourceSHA256:line.sha256}));assert.equal(manifest.assets.some((a:any)=>a.role==='printable_pdf_letter_bw'),false);assert.equal(validAgeAssessment(manifest.age_recommendation,manifest.assets.find((a:any)=>a.role==='printable_webp_bw').sha256),true);assert.equal(manifest.age_recommendation.band,'3-5');for(const item of reviews)assert.equal(item.signature,await reviewSignature(item.review,secret));
   }finally{await rm(dir,{recursive:true,force:true});}
 });

@@ -7,8 +7,9 @@ are decimal strings so IDs/counters survive JavaScript's integer precision limit
 """
 import argparse, datetime, hashlib, json, pathlib, sqlite3
 
-TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation']
-SCHEMA = 'jotcoloring-catalog-transfer/1'
+LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation']
+TABLES = LEGACY_TABLES + ['age_recommendation']
+SCHEMA = 'jotcoloring-catalog-transfer/2'
 def canonical(value):
     return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'))
 def export_catalog(source, destination):
@@ -19,15 +20,17 @@ def export_catalog(source, destination):
     db.execute('PRAGMA query_only=ON'); db.execute('BEGIN')
     try:
         actual={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name<>'d1_migrations'")}
-        if actual!=set(TABLES): raise ValueError('Canonical schema changed: '+str(sorted(actual.symmetric_difference(TABLES))))
+        tables = TABLES if actual==set(TABLES) else LEGACY_TABLES if actual==set(LEGACY_TABLES) else None
+        if tables is None: raise ValueError('Canonical schema changed: '+str(sorted(actual.symmetric_difference(TABLES))))
+        schema = SCHEMA if tables==TABLES else 'jotcoloring-catalog-transfer/1'
         if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok': raise ValueError('SQLite integrity check failed')
         if db.execute('PRAGMA foreign_key_check').fetchone() is not None: raise ValueError('Source has broken foreign keys')
         watermark=str(db.execute('SELECT COALESCE(MAX(seq),0) FROM outbox_event').fetchone()[0])
         stats={}; total=0
         with destination.open('x',encoding='utf8',newline='\n') as out:
             def line(value): out.write(canonical(value)+'\n')
-            line({'kind':'header','schema':SCHEMA,'created_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_kind':'local SQLite consistent read transaction','outbox_watermark':watermark,'integer_encoding':'decimal-string','tables':TABLES})
-            for table in TABLES:
+            line({'kind':'header','schema':schema,'created_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_kind':'local SQLite consistent read transaction','outbox_watermark':watermark,'integer_encoding':'decimal-string','tables':tables})
+            for table in tables:
                 info=list(db.execute('PRAGMA table_info("'+table+'")'))
                 columns=[{'name':r[1],'type':r[2],'primary_position':r[5]} for r in info]
                 count=db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0]

@@ -1,4 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';
+import PolicyPage from '../components/PolicyPage.astro';
+import {policies} from '../content/policies';
 ---
-<Layout title="Privacy — JotColoring"><Header variant="simple"/><main id="main" class="text-page"><h1>Privacy</h1><p>Studio drawings, imported PDFs and favorites are stored locally in your browser. JotColoring does not automatically upload your studio projects. Clearing browser data can remove these local saves.</p><h2>AI generation</h2><p>When enabled, AI generation sends your prompt or chosen photo to Cloudflare Workers AI. Photos and generation results are private to your browser session. Uploaded photos expire after 24 hours; generated results expire after 7 days. Export a result you want to keep.</p><h2>Operating the service</h2><p>Cloudflare handles requests, storage, security and operational logs. The application does not add advertising trackers. Do not submit sensitive personal information in prompts or photos. Contact JotColoring at <a href="mailto:jotcoloring@gmail.com">jotcoloring@gmail.com</a> for privacy questions or requests.</p></main></Layout>
+<PolicyPage policy={policies['privacy']}/>

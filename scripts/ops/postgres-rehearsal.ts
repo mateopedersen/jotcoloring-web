@@ -33,9 +33,10 @@ try{
  check('All published content resolves four required verified active asset roles',missingActive.length===0);
  const watermark=BigInt(resumed.snapshot.outbox_watermark),nextVersion=String(BigInt(content.latest_version!)+1n),oldSlug=content.slug!;
  const newContent={...content,slug:oldSlug+'-migration-replay',title:'Woodland friends migration replay',latest_version:nextVersion,active_version:nextVersion,updated_at:new Date().toISOString()};
- const related:ContentEvent['related']={};for(const table of ['content_category','content_tag','content_age'])related[table]=records[table].filter(r=>r.content_id===content.id).map(r=>({...r}));
+ const related:ContentEvent['related']={};for(const table of ['content_category','content_tag','content_age','age_recommendation'])related[table]=(records[table]||[]).filter(r=>r.content_id===content.id).map(r=>({...r}));
  const categoryIds=new Set(related.content_category.map(r=>r.category_id));related.category=records.category.filter(r=>categoryIds.has(r.id));
  related.asset=records.asset.filter(r=>r.content_id===content.id&&r.content_version===content.active_version).map(r=>({...r,asset_id:r.asset_id+'-migration-replay',content_version:nextVersion}));
+ related.age_recommendation=(records.age_recommendation||[]).filter(r=>r.content_id===content.id&&r.content_version===content.active_version).map(r=>({...r,content_version:nextVersion}));
  related.content_revision=records.content_revision.filter(r=>r.content_id===content.id&&r.version===content.active_version).map(r=>{const manifest=JSON.parse(r.manifest_json!);manifest.version=Number(nextVersion);manifest.title=newContent.title;manifest.slug=newContent.slug;const json=canonical(manifest);return {...r,version:nextVersion,manifest_json:json,manifest_sha256:sha(json)};});
  related.slug_redirect=[{old_slug:oldSlug,content_id:content.id,created_at:newContent.updated_at}];
  const published:ContentEvent={event_id:'local-migration-publish-2',seq:String(watermark+1n),content_id:content.id!,version:nextVersion,event_type:'published',content:newContent,related};

@@ -1,0 +1,101 @@
+[
+  {
+    "file": "boards.webp",
+    "width": 530,
+    "height": 574,
+    "bytes": 12844,
+    "sha256": "a832cb4822029fe2ea6214c5c8298684f124a590240c5e1cad4c18dd118d1ba7",
+    "source": "/my-artwork/ (unsaved example board form)",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "download.webp",
+    "width": 1120,
+    "height": 837,
+    "bytes": 116272,
+    "sha256": "efa156405e0898807966674194ae2aae0120d00a68b469ad7d54935ddda4407c",
+    "source": "/coloring/woodland-friends/ (PDF window)",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "page.webp",
+    "width": 1230,
+    "height": 908,
+    "bytes": 209794,
+    "sha256": "27b1c946c578dbea72e5e47dfa805db22d8b2ca5d7355c1273e3b7c715616c70",
+    "source": "/coloring/woodland-friends/",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "photo.webp",
+    "width": 1274,
+    "height": 1357,
+    "bytes": 109222,
+    "sha256": "7ffcaf0e5a5193258b61ce13ea5e68b011a737875606dacfe9afc191de6b55c7",
+    "source": "/create/photo/",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "print-details.webp",
+    "width": 504,
+    "height": 706,
+    "bytes": 28834,
+    "sha256": "2050c16cb5e796239f90a6904bba97c78e27531ce0726a15ec0b182619830b1e",
+    "source": "/coloring/woodland-friends/ (PDF file details)",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "search-start.webp",
+    "width": 1280,
+    "height": 995,
+    "bytes": 98814,
+    "sha256": "23412e45d98bd8afebd4f24c08deba00828a76c43bc3ba3bfb6d636dd58c66d6",
+    "source": "/coloring-pages/?q=fox",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "search.webp",
+    "width": 1054,
+    "height": 1174,
+    "bytes": 45368,
+    "sha256": "826d6f7dd79a41ad3762de72677d3c6ce18f23abaa93e92b185dac3dd6a21eb6",
+    "source": "/coloring-pages/?q=fox#catalog-results",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "share.webp",
+    "width": 1080,
+    "height": 514,
+    "bytes": 19592,
+    "sha256": "cef4c25313f8166e245d71dd1a1d1a30fe807b31c49715ac3dc347732f01a804",
+    "source": "/coloring/woodland-friends/ (share window)",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "studio-save.webp",
+    "width": 355,
+    "height": 1035,
+    "bytes": 25804,
+    "sha256": "f819aedfa7e94c5b14dbaddb18cccf7dd77697deb41234a13d64ff7898a92693",
+    "source": "Crop of the actual Studio screenshot",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "studio-tools.webp",
+    "width": 1280,
+    "height": 910,
+    "bytes": 222310,
+    "sha256": "9dd3653f2a47a525e0b2b458c7e1b43f04fa821f4cc2a3cb8b3d3e8e9bbd406b",
+    "source": "Crop of the actual Studio screenshot",
+    "captureEnvironment": "working local JotColoring"
+  },
+  {
+    "file": "studio.webp",
+    "width": 1280,
+    "height": 1469,
+    "bytes": 335574,
+    "sha256": "c8c58154ac38b92c8ce732d9cda87a62473109b72ea4b286d37f7e0fbb829e72",
+    "source": "/studio/ (local Woodland Friends demo)",
+    "captureEnvironment": "working local JotColoring"
+  }
+]

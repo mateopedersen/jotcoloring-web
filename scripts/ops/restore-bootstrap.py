@@ -36,8 +36,8 @@ def run(plan_dir,destination):
             if row['public_key'] is not None:raise ValueError('Raw source incorrectly public')
             key='raw/'+row['private_key'];raw+=1
         else:
-            if row['role'] not in ['catalog_thumb_bw','catalog_preview_bw','printable_webp_bw','printable_pdf_a4_bw','printable_pdf_letter_bw','home_half_color']:raise ValueError('Unknown derivative role')
-            key='objects/sha256/'+row['sha256']+'/'+row['role']+('.pdf' if row['mime']=='application/pdf' else '.webp');derived+=1
+            if row['role'] not in ['catalog_thumb_bw','catalog_preview_bw','printable_webp_bw','printable_pdf_a4_bw','printable_pdf_letter_bw','home_half_color','color_inspiration','social_og']:raise ValueError('Unknown derivative role')
+            key='objects/sha256/'+row['sha256']+'/'+row['role']+('.pdf' if row['mime']=='application/pdf' else '.png' if row['mime']=='image/png' else '.webp');derived+=1
         copy(source,key)
         for ref in [row['private_key'],row['public_key']]:
             if ref:keys[ref]=key

@@ -1,0 +1,21 @@
+---
+import type {Content} from '../server/types';
+import Compare from './Compare.astro';
+import ActionIcon from './ActionIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
+import {galleryPromoSpans} from '../ui/gallery-promos';
+import '../styles/gallery-promos.css';
+const {items,count}=Astro.props as {items:Content[];count:number};
+const item=items.find(i=>i.home_color)||items[0],spans=galleryPromoSpans(count,4);
+---
+{item&&<>
+ <article class="jc-gallery-promo jc-gallery-inspiration" data-gallery-promo style={`grid-column:span ${spans[0]}`}>
+  <div class="jc-promo-inner"><div class="jc-promo-visual"><Compare line={item.thumbnail} color={item.home_color} alt={item.alt||item.description}/><span class="jc-promo-art-label">SLIDE. IMAGINE. MAKE IT YOURS.</span><span class="jc-promo-tool" aria-hidden="true"><ActionIcon name="brush" size={53}/></span></div>
+  <div class="jc-promo-copy"><p class="jc-promo-kicker">A SPARK OF INSPIRATION</p><h3>What if you tried<br/><em>a little color?</em></h3><p>A fresh palette can change the whole picture. See color ideas for {item.title} and find your own way to play.</p><div class="jc-promo-swatches" aria-label="A warm, playful color palette"><i style="--swatch:#ef8746"/><i style="--swatch:#f4c46d"/><i style="--swatch:#8ca673"/><i style="--swatch:#79b4bb"/><i style="--swatch:#b39ac7"/></div><a href={`/coloring/${item.slug}/#color-ideas`}>See Color Ideas <span aria-hidden="true"><ArrowIcon size={19}/></span></a></div></div>
+ </article>
+ <article class="jc-gallery-promo jc-gallery-notebook" data-gallery-promo style={`grid-column:span ${spans[1]}`}>
+  <div class="jc-promo-inner"><div class="jc-promo-visual jc-promo-papers" aria-hidden="true">{items.slice(0,3).map((page,i)=><div class={`jc-promo-paper jc-promo-paper-${i}`}><img src={page.thumbnail} alt="" loading="lazy" width="220" height="330"/></div>)}<span class="jc-promo-heart"><ActionIcon name="heart" size={74}/></span><span class="jc-promo-paper-tab">YOUR CREATIVE CORNER</span></div>
+  <div class="jc-promo-copy"><p class="jc-promo-kicker">KEEP THE PAGES YOU LOVE</p><h3>A little collection.<br/><em>All your own.</em></h3><p>Save favorites, organize boards and come back to the artwork you’ve been coloring. Your collection stays in this browser.</p><div class="jc-promo-notes"><span>Favorites</span><span>Boards</span><span>Saved artwork</span></div><a href="/my-artwork/">Open My Artwork <span aria-hidden="true"><ArrowIcon size={19}/></span></a></div></div>
+ </article>
+</>}
+<script>import {mountGalleryPromos} from '../ui/gallery-promos';mountGalleryPromos();</script>

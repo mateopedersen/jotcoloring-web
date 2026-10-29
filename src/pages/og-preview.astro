@@ -1,0 +1,12 @@
+---
+import {env} from 'cloudflare:workers';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import GuideScreenshot from '../components/GuideScreenshot.astro';
+import GuideViewer from '../components/GuideViewer.astro';
+import generated from '../social/generated.json';
+if(env.APP_ENV!=='local')return new Response(null,{status:404});
+const cards=Object.entries(generated);
+---
+<Layout title="Share image gallery — JotColoring local review" noindex><Header/><main id="main" class="hv-container og-review"><p class="hv-kicker">LOCAL DESIGN REVIEW</p><h1>A little color, shared beautifully.</h1><p>Every page has its own social cover. Choose any image to inspect the actual 1200 × 630 PNG.</p><nav><a href="#page-covers">Website pages</a><a href="#coloring-covers">Coloring pages</a></nav>{[false,true].map(detail=><section id={detail?'coloring-covers':'page-covers'}><h2>{detail?'Your coloring collection':'The website, page by page'}</h2><div class="og-review-grid">{cards.filter(([key])=>key.startsWith('coloring-')===detail).map(([key,card])=><div><GuideScreenshot src={card.src} title={card.title} alt={card.alt} width={1200} height={630} caption={key.replaceAll('-',' ')}/></div>)}</div></section>)}</main><GuideViewer/></Layout>
+<style>.og-review{padding-block:45px}.og-review h1{font-size:clamp(30px,4vw,52px);line-height:1.15;margin:16px 0}.og-review>p{max-width:700px;font-size:17px;line-height:1.7}.og-review nav{display:flex;gap:20px;margin:30px 0}.og-review nav a{padding:12px 20px;border:1px solid #e8c9aa;border-radius:15px;background:#fff4e5;font-weight:800;color:#a34c25}.og-review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.og-review section{margin:45px 0}.og-review .walk-screen img{aspect-ratio:1200/630;object-fit:contain}.og-review .walk-screen-bar b{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}@media(max-width:700px){.og-review-grid{grid-template-columns:minmax(0,1fr)}.og-review nav{flex-wrap:wrap}}</style>

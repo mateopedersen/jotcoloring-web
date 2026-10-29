@@ -2,3 +2,8 @@ allowBuilds:
   esbuild: true
   workerd: true
   sharp: true
+  onnxruntime-node: true
+  protobufjs: false
+
+overrides:
+  "@huggingface/transformers>sharp": "0.35.5"

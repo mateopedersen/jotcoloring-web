@@ -43,3 +43,8 @@ CREATE TABLE IF NOT EXISTS migration_event(event_id TEXT PRIMARY KEY,content_id 
 CREATE TABLE IF NOT EXISTS search_projection(id TEXT PRIMARY KEY REFERENCES content(id) DEFERRABLE INITIALLY DEFERRED,source_version BIGINT NOT NULL,visibility TEXT NOT NULL,locale TEXT NOT NULL,title TEXT NOT NULL,tags TEXT NOT NULL,categories TEXT NOT NULL,category_ids TEXT[] NOT NULL,age_groups TEXT[] NOT NULL,difficulty TEXT,published_at TEXT,sort_score BIGINT NOT NULL DEFAULT 0,document TSVECTOR GENERATED ALWAYS AS (setweight(to_tsvector('simple'::regconfig,title),'A') || setweight(to_tsvector('simple'::regconfig,tags),'B') || setweight(to_tsvector('simple'::regconfig,categories),'C')) STORED);
 CREATE INDEX IF NOT EXISTS search_projection_gin ON search_projection USING GIN(document);
 CREATE INDEX IF NOT EXISTS search_projection_visibility ON search_projection(visibility,sort_score DESC,id DESC);
+
+CREATE TABLE IF NOT EXISTS age_recommendation(content_id TEXT PRIMARY KEY REFERENCES content(id) DEFERRABLE INITIALLY DEFERRED,content_version BIGINT NOT NULL CHECK(content_version>0),source_sha256 TEXT NOT NULL CHECK(length(source_sha256)=64),band TEXT NOT NULL CHECK(band IN ('3-5','6-8','9-12','13-17','adults')),score_hundredths BIGINT NOT NULL CHECK(score_hundredths BETWEEN 0 AND 10000),method_version TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS age_recommendation_band ON age_recommendation(band,content_id);
+ALTER TABLE search_projection ADD COLUMN IF NOT EXISTS recommended_age TEXT;
+CREATE INDEX IF NOT EXISTS search_recommended_age ON search_projection(visibility,recommended_age,id);

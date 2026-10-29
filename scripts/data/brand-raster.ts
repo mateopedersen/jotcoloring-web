@@ -9,15 +9,18 @@ export async function brandedColorWebP(input:Uint8Array,width:number,height:numb
  * losslessly, with no chroma subsampling that could bleed artwork into the footer.
  * Decoder QA verifies the footer geometry, clean white band and orange wordmark.
  */
-export async function brandedColorCardWebP(input:Uint8Array,width:number,height:number){
+export async function brandedColorCardWebP(input:Uint8Array,width:number,height:number,maxBytes=250_000,maxMeanError=12){
  const source=await brandedRaster(input,width,height,false);
  const palette=await sharp(source).png({palette:true,colours:256,dither:0,effort:10}).toBuffer();
  const bytes=await sharp(palette).webp({lossless:true,effort:6}).toBuffer();
  const {data,info}=await sharp(bytes).toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
  const original=await sharp(source).toColourspace('srgb').removeAlpha().raw().toBuffer();
  let absoluteError=0;for(let i=0;i<original.length;i++)absoluteError+=Math.abs(original[i]-data[i]);
- if(absoluteError/original.length>12)throw new Error('Color card palette exceeded its visual error limit.');
+ if(absoluteError/original.length>maxMeanError)throw new Error('Color card palette exceeded its visual error limit.');
  const {verifyBrandedRaster}=await import('../../src/server/branding');verifyBrandedRaster(data,width,height,info.channels,false);
- if(bytes.length>250_000)throw new Error('Responsive color card exceeds 250,000 bytes; inspect before publication.');
+ if(bytes.length>maxBytes)throw new Error(`Color derivative exceeds ${maxBytes} bytes; inspect before publication.`);
  return bytes;
 }
+
+/** Larger inspiration previews retain crisp line work with bounded palette error. */
+export async function brandedColorInspirationWebP(input:Uint8Array,width:number,height:number){return brandedColorCardWebP(input,width,height,900_000,4.5);}

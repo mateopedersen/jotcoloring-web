@@ -33,3 +33,13 @@ export async function toggleFavorite(favorite: Omit<Favorite,'savedAt'>) {
   const db=await database();
   return new Promise<boolean>((resolve,reject)=>{const tx=db.transaction('favorites','readwrite');const s=tx.objectStore('favorites');const req=s.get(favorite.id);let added=false;req.onsuccess=()=>{if(req.result)s.delete(favorite.id);else{added=true;s.put({...favorite,savedAt:Date.now()});}};tx.oncomplete=()=>resolve(added);tx.onerror=tx.onabort=()=>reject(new Error('Favorites could not be saved on this device.'));});
 }
+
+/** Change a name against the latest record without replacing newer canvas edits. */
+export async function renameSavedItem(kind:'project'|'favorite',id:string,title:string){
+ const db=await database();return new Promise<void>((resolve,reject)=>{const tx=db.transaction(kind==='project'?'projects':'favorites','readwrite'),store=tx.objectStore(kind==='project'?'projects':'favorites'),req=store.get(id);req.onsuccess=()=>{const value=req.result;if(!value){tx.abort();return;}value.title=title.trim().slice(0,120);store.put(value);};tx.oncomplete=()=>resolve();tx.onerror=tx.onabort=()=>reject(new Error('The artwork name could not be changed. Reload and try again.'));});
+}
+export async function deleteFavorite(id:string){await transact('favorites','readwrite',s=>s.delete(id));}
+/** Imported IDs are new: add() fails atomically instead of overwriting existing work. */
+export async function addImportedItems(projects:Project[],favorites:Favorite[]){
+ const db=await database();return new Promise<void>((resolve,reject)=>{const tx=db.transaction(['projects','favorites'],'readwrite');for(const p of projects)tx.objectStore('projects').add(p);for(const f of favorites)tx.objectStore('favorites').add(f);tx.oncomplete=()=>resolve();tx.onabort=tx.onerror=()=>reject(new Error('The import could not be saved. Existing artwork was not replaced.'));});
+}

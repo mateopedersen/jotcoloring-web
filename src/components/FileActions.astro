@@ -1,0 +1,15 @@
+---
+import ActionIcon from './ActionIcon.astro';
+import Icon from './HomeIcon.astro';
+import type {Content} from '../server/types';
+interface Props {item:Content;variant?:'card'|'home'|'preview'|'detail'}
+const {item,variant='card'}=Astro.props;
+const size=(n:number|undefined)=>n?n>=1000000?`${(n/1000000).toFixed(2)} MB`:`${Math.ceil(n/1000)} KB`:'';
+---
+{variant==='detail'?<div class="iv-download-list jc-file-actions jc-file-actions--detail">
+ <a class="iv-download" href={item.downloads.pdf} download={`${item.slug}.pdf`} data-download-id={item.id} data-file-format="pdf" aria-label={`Download ${item.title} PDF`}><ActionIcon name="pdf" size={44}/><span class="jc-file-copy"><strong>PDF</strong><small>A4 · ready to print</small></span><span class="jc-file-end"><span class="jc-file-arrow" aria-hidden="true"><Icon name="download" size={19}/></span>{item.downloadMetadata?.pdfBytes&&<b>{size(item.downloadMetadata.pdfBytes)}</b>}</span></a>
+ <a class="iv-download" href={item.downloads.webp} download={`${item.slug}.webp`} data-download-id={item.id} data-file-format="webp" aria-label={`Download ${item.title} Image`}><ActionIcon name="webp" size={44}/><span class="jc-file-copy"><strong>Image</strong><small>High-resolution outline</small></span><span class="jc-file-end"><span class="jc-file-arrow" aria-hidden="true"><Icon name="download" size={19}/></span>{item.downloadMetadata?.webpBytes&&<b>{size(item.downloadMetadata.webpBytes)}</b>}</span></a>
+</div>:<div class:list={['jc-file-actions',`jc-file-actions--${variant}`,variant==='home'?'hc-downloads':variant==='preview'?'quick-downloads':'card-bottom']}>
+ {variant==='card'?<div class="format-links"><a href={item.downloads.pdf} download={`${item.slug}.pdf`} data-download-id={item.id} data-file-format="pdf" aria-label={`Download ${item.title} PDF`}><ActionIcon name="pdf"/>PDF</a><a href={item.downloads.webp} download={`${item.slug}.webp`} data-download-id={item.id} data-file-format="webp" aria-label={`Download ${item.title} Image`}><ActionIcon name="webp"/>Image</a></div>:<><a class:list={[variant==='preview'&&'button secondary']} href={item.downloads.pdf} download={`${item.slug}.pdf`} data-download-id={item.id} data-file-format="pdf" aria-label={`Download ${item.title} PDF`}><ActionIcon name="pdf"/>PDF</a><a class:list={[variant==='preview'&&'button secondary']} href={item.downloads.webp} download={`${item.slug}.webp`} data-download-id={item.id} data-file-format="webp" aria-label={`Download ${item.title} Image`}><ActionIcon name="webp"/>Image</a></>}
+ {variant!=='preview'&&<a class:list={['jc-studio-action',variant==='home'?'hc-color':'iv-card-color']} href={`/studio/?page=${encodeURIComponent(item.id)}`} aria-label={`Color ${item.title} in Studio`}><ActionIcon name="brush" size={25}/><span>Color in Studio</span></a>}
+</div>}

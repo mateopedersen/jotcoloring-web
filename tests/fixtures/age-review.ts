@@ -1,0 +1,3 @@
+/** Explicit model stub for import protocol tests; this is not a visual-review record. */
+import {AGE_VERSION,VISION_MODEL,VISION_REVISION,recommendAge,type AgeAssessment} from '../../src/age/model';
+export function syntheticAgeReview(sha:string):AgeAssessment{const metrics={width:64,height:64,inkRatio:.05,edgeDensity:.025,regions:1,smallRegionRatio:0,medianRegionRatio:.6,largestRegionRatio:.6,largeAreaShare:1,smallAreaShare:0},visual_scores=[1,0,0,0,0];return{version:AGE_VERSION,source_sha256:sha,model:VISION_MODEL,model_revision:VISION_REVISION,...recommendAge(metrics,visual_scores),metrics,visual_scores,subjects:[{label:'animals',score:1}],analyzed_at:'2026-10-29T12:00:00.000Z'};}

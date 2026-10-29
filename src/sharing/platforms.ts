@@ -1,0 +1,70 @@
+export type PlatformGroup='Social'|'Messaging'|'Creative'|'Communities'|'Publishing';
+export type ShareIntent='pinterest'|'facebook'|'whatsapp'|'x'|'telegram'|'linkedin'|'reddit'|'bluesky'|'threads'|'tumblr';
+export interface SharePlatform {id:string;name:string;group:PlatformGroup;home:string;color:string;icon?:string;initials?:string;intent?:ShareIntent;note?:string;aliases?:string}
+/** Homepages are handoffs, not invented posting APIs. No remote SDKs or tracking pixels. */
+export const SHARE_PLATFORMS:readonly SharePlatform[]=[
+ {id:'pinterest',name:'Pinterest',group:'Social',home:'https://www.pinterest.com/',color:'#BD081C',icon:'pinterest',intent:'pinterest'},
+ {id:'facebook',name:'Facebook',group:'Social',home:'https://www.facebook.com/',color:'#0866FF',icon:'facebook',intent:'facebook'},
+ {id:'whatsapp',name:'WhatsApp',group:'Messaging',home:'https://www.whatsapp.com/',color:'#128C52',icon:'whatsapp',intent:'whatsapp'},
+ {id:'x',name:'X',aliases:'Twitter',group:'Social',home:'https://x.com/',color:'#151820',icon:'x',intent:'x'},
+ {id:'telegram',name:'Telegram',group:'Messaging',home:'https://telegram.org/',color:'#1686B5',icon:'telegram',intent:'telegram'},
+ {id:'linkedin',name:'LinkedIn',group:'Social',home:'https://www.linkedin.com/',color:'#0A66C2',initials:'in',intent:'linkedin'},
+ {id:'reddit',name:'Reddit',group:'Communities',home:'https://www.reddit.com/',color:'#D93900',icon:'reddit',intent:'reddit'},
+ {id:'bluesky',name:'Bluesky',group:'Social',home:'https://bsky.app/',color:'#0876E3',icon:'bluesky',intent:'bluesky'},
+ {id:'threads',name:'Threads',group:'Social',home:'https://www.threads.com/',color:'#181818',icon:'threads',intent:'threads'},
+ {id:'instagram',name:'Instagram',group:'Social',home:'https://www.instagram.com/',color:'#C62672',icon:'instagram',note:'Save the PNG, then upload it to a post or Story. Paste your caption; a Story link sticker can link back to the page.'},
+ {id:'tiktok',name:'TikTok',group:'Social',home:'https://www.tiktok.com/',color:'#171A22',icon:'tiktok',note:'Save the PNG and use it in a photo post or your own coloring video. Paste the caption in TikTok.'},
+ {id:'tumblr',name:'Tumblr',group:'Publishing',home:'https://www.tumblr.com/',color:'#36465D',icon:'tumblr',intent:'tumblr'},
+ {id:'mastodon',name:'Mastodon',group:'Social',home:'https://joinmastodon.org/servers',color:'#6364FF',icon:'mastodon',note:'Open your own Mastodon server, start a post and paste the caption and link. Attach the PNG if you like.'},
+ {id:'snapchat',name:'Snapchat',group:'Messaging',home:'https://www.snapchat.com/',color:'#FFFC00',icon:'snapchat',note:'Save the PNG to your device, then add it from your camera roll in Snapchat.'},
+ {id:'youtube',name:'YouTube',group:'Social',home:'https://www.youtube.com/',color:'#DD1515',icon:'youtube',note:'Use the PNG in your own coloring video, or an image post if your channel supports posts. Add the page link to your description.'},
+ {id:'discord',name:'Discord',group:'Communities',home:'https://discord.com/app',color:'#5865F2',icon:'discord'},
+ {id:'signal',name:'Signal',group:'Messaging',home:'https://signal.org/',color:'#3B45FD',icon:'signal',note:'Use Share image to apps on your device, or paste the caption and attach the saved PNG in a Signal chat.'},
+ {id:'messenger',name:'Messenger',group:'Messaging',home:'https://www.messenger.com/',color:'#0866FF',icon:'messenger'},
+ {id:'line',name:'LINE',group:'Messaging',home:'https://line.me/',color:'#008A20',icon:'line'},
+ {id:'wechat',name:'WeChat',group:'Messaging',home:'https://www.wechat.com/',color:'#087E40',icon:'wechat',note:'Use your device share menu or attach the saved PNG in WeChat. Paste your caption in a chat or Moments.'},
+ {id:'viber',name:'Viber',group:'Messaging',home:'https://www.viber.com/',color:'#7360F2',icon:'viber'},
+ {id:'vk',name:'VK',group:'Social',home:'https://vk.com/',color:'#0077FF',icon:'vk'},
+ {id:'ok',name:'Odnoklassniki',group:'Social',home:'https://ok.ru/',color:'#BD6400',icon:'odnoklassniki',aliases:'OK'},
+ {id:'weibo',name:'Weibo',group:'Social',home:'https://weibo.com/',color:'#D51428',icon:'sinaweibo'},
+ {id:'qq',name:'QQ',group:'Messaging',home:'https://im.qq.com/',color:'#1681AE',icon:'qq'},
+ {id:'qzone',name:'Qzone',group:'Social',home:'https://qzone.qq.com/',color:'#F5C700',icon:'qzone'},
+ {id:'douban',name:'Douban',group:'Communities',home:'https://www.douban.com/',color:'#267D35',initials:'豆'},
+ {id:'rednote',name:'Rednote',group:'Social',home:'https://www.xiaohongshu.com/',color:'#DB2141',icon:'xiaohongshu',aliases:'Xiaohongshu 小红书'},
+ {id:'bilibili',name:'Bilibili',group:'Communities',home:'https://www.bilibili.com/',color:'#087FA9',icon:'bilibili'},
+ {id:'zhihu',name:'Zhihu',group:'Communities',home:'https://www.zhihu.com/',color:'#0084FF',icon:'zhihu'},
+ {id:'tieba',name:'Baidu Tieba',group:'Communities',home:'https://tieba.baidu.com/',color:'#2932E1',icon:'baidu'},
+ {id:'kakaotalk',name:'KakaoTalk',group:'Messaging',home:'https://www.kakaocorp.com/page/service/service/KakaoTalk',color:'#FFCD00',icon:'kakaotalk'},
+ {id:'kakaostory',name:'KakaoStory',group:'Social',home:'https://story.kakao.com/',color:'#F1C600',initials:'Ks'},
+ {id:'band',name:'BAND',group:'Communities',home:'https://band.us/',color:'#137D41',initials:'B'},
+ {id:'navercafe',name:'Naver Cafe',group:'Communities',home:'https://cafe.naver.com/',color:'#008C45',icon:'naver'},
+ {id:'naverblog',name:'Naver Blog',group:'Publishing',home:'https://blog.naver.com/',color:'#008C45',icon:'naver'},
+ {id:'ameba',name:'Ameba',group:'Publishing',home:'https://ameblo.jp/',color:'#2D8C3C',icon:'ameba'},
+ {id:'mixi',name:'mixi',group:'Social',home:'https://mixi.jp/',color:'#B77920',initials:'m'},
+ {id:'pixiv',name:'pixiv',group:'Creative',home:'https://www.pixiv.net/',color:'#0080C9',icon:'pixiv',note:'Share your own colored version where the community rules allow it. Credit JotColoring and link to the original page.'},
+ {id:'artstation',name:'ArtStation',group:'Creative',home:'https://www.artstation.com/',color:'#087DA7',icon:'artstation'},
+ {id:'deviantart',name:'DeviantArt',group:'Creative',home:'https://www.deviantart.com/',color:'#087F3A',icon:'deviantart'},
+ {id:'behance',name:'Behance',group:'Creative',home:'https://www.behance.net/',color:'#1769FF',icon:'behance'},
+ {id:'dribbble',name:'Dribbble',group:'Creative',home:'https://dribbble.com/',color:'#C83469',icon:'dribbble'},
+ {id:'cara',name:'Cara',group:'Creative',home:'https://cara.app/',color:'#302E49',initials:'Ca'},
+ {id:'vero',name:'VERO',group:'Social',home:'https://vero.co/',color:'#176C6A',initials:'V'},
+ {id:'mewe',name:'MeWe',group:'Social',home:'https://mewe.com/',color:'#17377F',icon:'mewe'},
+ {id:'minds',name:'Minds',group:'Social',home:'https://www.minds.com/',color:'#E9BE26',initials:'M'},
+ {id:'nextdoor',name:'Nextdoor',group:'Communities',home:'https://nextdoor.com/',color:'#407D00',icon:'nextdoor'},
+ {id:'quora',name:'Quora',group:'Communities',home:'https://www.quora.com/',color:'#B92B27',icon:'quora'},
+ {id:'medium',name:'Medium',group:'Publishing',home:'https://medium.com/',color:'#181818',icon:'medium'},
+ {id:'wordpress',name:'WordPress',group:'Publishing',home:'https://wordpress.com/',color:'#21759B',icon:'wordpress'},
+ {id:'blogger',name:'Blogger',group:'Publishing',home:'https://www.blogger.com/',color:'#CF4710',icon:'blogger'},
+ {id:'flipboard',name:'Flipboard',group:'Publishing',home:'https://flipboard.com/',color:'#C92228',icon:'flipboard'},
+ {id:'lemon8',name:'Lemon8',group:'Social',home:'https://www.lemon8-app.com/',color:'#EFE52D',initials:'L8'},
+ {id:'flickr',name:'Flickr',group:'Creative',home:'https://www.flickr.com/',color:'#0063DC',icon:'flickr',note:'Upload the saved PNG or your own colored version, add your caption and link to the original JotColoring page. Keep the credit and follow the artwork license.'},
+ {id:'substack',name:'Substack',group:'Publishing',home:'https://substack.com/',color:'#D85712',icon:'substack'},
+ {id:'lemmy',name:'Lemmy',group:'Communities',home:'https://join-lemmy.org/instances',color:'#315B63',icon:'lemmy',note:'Open your Lemmy instance, choose an appropriate community and make a link post with the coloring page URL.'},
+ {id:'pixelfed',name:'Pixelfed',group:'Creative',home:'https://pixelfed.org/servers',color:'#8A47BD',icon:'pixelfed',note:'Open your Pixelfed server and upload the saved PNG. Add your caption and credit link.'}
+];
+export const SHARE_GROUPS=['Social','Messaging','Creative','Communities','Publishing'] as const;
+export function platformMatches(platform:SharePlatform,query:string,group:string='all'){
+ const terms=query.normalize('NFKC').toLocaleLowerCase('en-US').trim().split(/\s+/).filter(Boolean);
+ const haystack=`${platform.name} ${platform.aliases||''} ${platform.group}`.normalize('NFKC').toLocaleLowerCase('en-US');
+ return (group==='all'||platform.group===group)&&terms.every(term=>haystack.includes(term));
+}
