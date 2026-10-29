@@ -1,0 +1,2 @@
+import {photoOutline,type OutlineSettings} from './outline';
+self.onmessage=(event:MessageEvent<{id:number;raw:ArrayBuffer;width:number;height:number;settings:OutlineSettings}>)=>{const {id,raw,width,height,settings}=event.data;try{const result=photoOutline(new Uint8ClampedArray(raw),width,height,settings);self.postMessage({id,...result}, {transfer:[result.mask.buffer]});}catch(error){self.postMessage({id,error:error instanceof Error?error.message:'The outlines could not be prepared.'});}};

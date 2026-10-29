@@ -1,0 +1,11 @@
+---
+import {env} from 'cloudflare:workers';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import {createCatalog} from '../../server/catalog';
+import {formatChoice} from '../../downloads/model';
+const repo=createCatalog(env),item=await repo.get(Astro.params.slug!);
+if(!item)return Astro.rewrite('/404/');
+const format=formatChoice(Astro.url.searchParams.get('format'));
+---
+<Layout title={`Download ${item.title} — JotColoring`} description={item.description} noindex canonical={`/coloring/${item.slug}/`} downloadItem={item} downloadFormat={format}><Header active={item.category}/></Layout>

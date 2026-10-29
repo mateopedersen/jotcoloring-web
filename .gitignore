@@ -28,6 +28,8 @@ exports/
 coverage/
 playwright-report/
 test-results/
+# Local inspection artifacts and downloaded test files are not public app assets.
+outputs/
 browser-profile/
 cookies.json
 storage-state.json

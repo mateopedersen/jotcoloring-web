@@ -1,0 +1,17 @@
+---
+import SupportShell from '../components/SupportShell.astro';
+import GuideScreenshot from '../components/GuideScreenshot.astro';
+import GuideViewer from '../components/GuideViewer.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+import FooterIcon from '../components/FooterIcon.astro';
+import {HOW_TO_STEPS} from '../content/how-to';
+---
+<SupportShell title="How to use JotColoring" description="From your first search to a page full of color. Follow the real screens, learn the controls, and make a little creative space of your own." kind="help" eyebrow="A REAL LOOK AT YOUR CREATIVE TOOLS">
+ <div slot="hero" class="support-actions"><a class="support-button" href="#search">Start the walkthrough<ArrowIcon size={18}/></a><a class="support-button secondary" href="/coloring-pages/">Explore the pages<ArrowIcon size={18}/></a></div>
+ <GuideScreenshot slot="visual" hero src="/guides/walkthrough/page.webp" title="A page to make your own" alt={HOW_TO_STEPS[1].alt} caption="Captured in the working JotColoring site." width={1230} height={908}/>
+ <section class="walk-intro"><div><h2>See it. Try it. Make it yours.</h2><p>These are screenshots of the actual tools, with a collection drawing as the example. Tap any screen to enlarge it. Follow every step, or jump straight to the part you need.</p></div><FooterIcon name="studio" size={65}/></section>
+ <nav class="walk-jump" aria-label="How to use JotColoring sections">{HOW_TO_STEPS.map((step,i)=><a href={`#${step.id}`}><b>0{i+1}</b><span>{step.short}</span><ArrowIcon size={17}/></a>)}</nav>
+ {HOW_TO_STEPS.map((step,i)=><section id={step.id} class="walk-step"><div class="walk-step-copy"><span class="walk-step-no">0{i+1}</span><h2>{step.title}</h2><p>{step.intro}</p><ol>{step.steps.map(text=><li>{text}</li>)}</ol><div class="walk-tip"><FooterIcon name="help" size={26}/><span>{step.tip}</span></div><a class="support-button" href={step.href}>{step.action}<ArrowIcon size={19}/></a></div><GuideScreenshot src={`/guides/walkthrough/${step.image}.webp`} full={'full' in step?`/guides/walkthrough/${step.full}.webp`:undefined} title={step.screen} alt={step.alt} caption={step.caption} width={step.width} height={step.height}/></section>)}
+ <section class="walk-two"><article><FooterIcon name="help"/><h2>A small snag?</h2><ul><li>No results? Try a broader word or remove a filter.</li><li>No file? Check browser downloads or device Files.</li><li>A fill spread? Undo and adjust tolerance or close gaps.</li><li>A project is missing? Return to the same browser and device, or import a backup.</li></ul><a href="/help/">Open the Help Center<ArrowIcon size={18}/></a></article><article><FooterIcon name="license"/><h2>A few good things to remember.</h2><ul><li>Catalog files stay blank; inspiration previews are separate.</li><li>Projects and boards stay on this device unless you export or share them.</li><li>Keep the JotColoring credit on supplied pages.</li><li>Personal and non-commercial educational use follows the Artwork license; business use needs separate permission.</li></ul><a href="/license/">Read the Artwork license<ArrowIcon size={18}/></a></article></section>
+ <GuideViewer/>
+</SupportShell>

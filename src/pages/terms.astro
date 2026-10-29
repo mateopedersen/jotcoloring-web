@@ -1,4 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';
+import PolicyPage from '../components/PolicyPage.astro';
+import {policies} from '../content/policies';
 ---
-<Layout title="Use of JotColoring"><Header variant="simple"/><main id="main" class="text-page"><h1>Use of JotColoring</h1><p>Use the studio to create, color and export your own artwork. Only upload images and documents you have permission to use. Do not upload unlawful material or someone else’s private information without permission.</p><h2>Collection files</h2><p>Personal and non-commercial educational use is free. Commercial use requires prior written permission under the <a href="/license/">artwork license</a>. Contact <a href="mailto:jotcoloring@gmail.com">jotcoloring@gmail.com</a> for licensing.</p><p>Each published item has source and rights information in its content record. Publishing the application’s source code does not grant an open-source license to every artwork or reference design.</p><h2>Local saves</h2><p>Projects are stored on your device. Keep your own downloaded copies: browser storage can be cleared or become unavailable. AI results can contain mistakes and should be reviewed before use.</p></main></Layout>
+<PolicyPage policy={policies['terms']}/>

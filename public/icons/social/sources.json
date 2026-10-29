@@ -1,0 +1,557 @@
+{
+  "package": "simple-icons",
+  "version": "16.36.0",
+  "license": "CC0-1.0",
+  "note": "Marks identify third-party services; no endorsement. Branded shapes are used unmodified. Services without a vendored mark use a text badge.",
+  "icons": {
+    "ameba": {
+      "file": "icons/ameba.svg",
+      "sha256": "dd9d59bdafb89bba4562f95e47826085615573c62b038488703d81d7d6512e26",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/ameba.svg",
+      "metadata": {
+        "title": "Ameba",
+        "hex": "2D8C3C",
+        "source": "https://ameblo.jp",
+        "aliases": {
+          "aka": [
+            "Ameba Blog",
+            "Ameblo"
+          ],
+          "loc": {
+            "ja-JP": "アメブロ"
+          }
+        }
+      }
+    },
+    "artstation": {
+      "file": "icons/artstation.svg",
+      "sha256": "a3052a4aa50373ffdd67f199e5a48b1d4172108289eacab676027091283c81b8",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/artstation.svg",
+      "metadata": {
+        "title": "ArtStation",
+        "hex": "13AFF0",
+        "source": "https://www.artstation.com/about/logo"
+      }
+    },
+    "baidu": {
+      "file": "icons/baidu.svg",
+      "sha256": "e2eeaca4c5273ecff775ee4b357091678a7587b2d606190f8e5b7dce4d93a781",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/baidu.svg",
+      "metadata": {
+        "title": "Baidu",
+        "hex": "2932E1",
+        "source": "https://www.baidu.com"
+      }
+    },
+    "behance": {
+      "file": "icons/behance.svg",
+      "sha256": "dec87682675f3c005dd98700294d5101b641a093f8ba7916df7d327e083f1be0",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/behance.svg",
+      "metadata": {
+        "title": "Behance",
+        "hex": "1769FF",
+        "source": "https://www.behance.net"
+      }
+    },
+    "bilibili": {
+      "file": "icons/bilibili.svg",
+      "sha256": "0b31005ccf765a9d37be2c42f1d36e44572ccadb088250626d9905ae5d4f3d21",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/bilibili.svg",
+      "metadata": {
+        "title": "Bilibili",
+        "hex": "00A1D6",
+        "source": "https://www.bilibili.com"
+      }
+    },
+    "blogger": {
+      "file": "icons/blogger.svg",
+      "sha256": "83251734676e8e59686a5747082993efe8167183d77c535e7992c8a39869641f",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/blogger.svg",
+      "metadata": {
+        "title": "Blogger",
+        "hex": "FF5722",
+        "source": "https://www.blogger.com"
+      }
+    },
+    "bluesky": {
+      "file": "icons/bluesky.svg",
+      "sha256": "49752973164fbbf4464fbb4776f011c1eff207e5d7ad9254e031af025814eb75",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/bluesky.svg",
+      "metadata": {
+        "title": "Bluesky",
+        "hex": "1185FE",
+        "source": "https://bsky.social/about/blog/press-faq",
+        "guidelines": "https://bsky.social/about/blog/press-faq",
+        "aliases": {
+          "aka": [
+            "bsky"
+          ]
+        }
+      }
+    },
+    "deviantart": {
+      "file": "icons/deviantart.svg",
+      "sha256": "fe199601bd44f5d1c7ad3ca5ee9112ee4652e3656d5f184aa0a9298c697b6b71",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/deviantart.svg",
+      "metadata": {
+        "title": "DeviantArt",
+        "hex": "05CC47",
+        "source": "https://help.deviantart.com/21"
+      }
+    },
+    "discord": {
+      "file": "icons/discord.svg",
+      "sha256": "1d364b72c9eaf1fe37d17ca88cd8fb541308dc0f3b09e2ab3b824f380b3493d5",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/discord.svg",
+      "metadata": {
+        "title": "Discord",
+        "hex": "5865F2",
+        "source": "https://discord.com/branding",
+        "guidelines": "https://discord.com/branding"
+      }
+    },
+    "dribbble": {
+      "file": "icons/dribbble.svg",
+      "sha256": "5779a646c6d72f76c07d8a6d87fda783dee55c32f7657857649454dc4f696a43",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/dribbble.svg",
+      "metadata": {
+        "title": "Dribbble",
+        "hex": "EA4C89",
+        "source": "https://dribbble.com/branding"
+      }
+    },
+    "facebook": {
+      "file": "icons/facebook.svg",
+      "sha256": "b06d18d844ed621b89faffb1a33440cc0ec4f1ffea9f36191f50db19a47c59a6",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/facebook.svg",
+      "metadata": {
+        "title": "Facebook",
+        "hex": "0866FF",
+        "source": "https://about.meta.com/brand/resources/facebook/logo",
+        "guidelines": "https://about.meta.com/brand/resources/facebook/logo"
+      }
+    },
+    "flipboard": {
+      "file": "icons/flipboard.svg",
+      "sha256": "4228e16faf25b9c3eb1fd0ab0dfd37d7f04019a6fc999b46ecd3e93c5cc2ddb6",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/flipboard.svg",
+      "metadata": {
+        "title": "Flipboard",
+        "hex": "E12828",
+        "source": "https://about.flipboard.com/brand-guidelines"
+      }
+    },
+    "instagram": {
+      "file": "icons/instagram.svg",
+      "sha256": "f53af2d1fc5292ba1433b5c1faf50005ce6a997fa302d1816989929f379a59dc",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/instagram.svg",
+      "metadata": {
+        "title": "Instagram",
+        "hex": "FF0069",
+        "source": "https://about.meta.com/brand/resources/instagram",
+        "guidelines": "https://about.meta.com/brand/resources/instagram"
+      }
+    },
+    "kakaotalk": {
+      "file": "icons/kakaotalk.svg",
+      "sha256": "667df35f97be224c0afff6c6f49fd8373c25fc408772137e9eba03f24bde3664",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/kakaotalk.svg",
+      "metadata": {
+        "title": "KakaoTalk",
+        "hex": "FFCD00",
+        "source": "https://commons.wikimedia.org/wiki/File:KakaoTalk_logo.svg",
+        "aliases": {
+          "loc": {
+            "ko-KR": "카카오톡"
+          }
+        }
+      }
+    },
+    "lemmy": {
+      "file": "icons/lemmy.svg",
+      "sha256": "f9d182f4a03a579ba8fce21fbb200a40e3d761c915cce6a743fa4600a1feee45",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/lemmy.svg",
+      "metadata": {
+        "title": "Lemmy",
+        "hex": "000000",
+        "source": "https://join-lemmy.org",
+        "license": {
+          "type": "custom",
+          "url": "https://github.com/LemmyNet/lemmy/blob/main/LICENSE"
+        }
+      }
+    },
+    "line": {
+      "file": "icons/line.svg",
+      "sha256": "b62430462354f95914536d7205128647d5563cdb805bc9aca000300aaed816c8",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/line.svg",
+      "metadata": {
+        "title": "LINE",
+        "hex": "00C300",
+        "source": "https://line.me/en/logo",
+        "guidelines": "https://line.me/en/logo",
+        "aliases": {
+          "loc": {
+            "ja-JP": "ライン",
+            "ko-KR": "라인"
+          }
+        }
+      }
+    },
+    "mastodon": {
+      "file": "icons/mastodon.svg",
+      "sha256": "b27197d1e47e19f31a80bf5d08b3dc9a8d073083436215f672e8e1016178cbe4",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/mastodon.svg",
+      "metadata": {
+        "title": "Mastodon",
+        "hex": "6364FF",
+        "source": "https://github.com/mastodon/mastodon/blob/7ccf7a73f1c47a8c03712c39f7c591e837cf6d08/app/javascript/images/logo-symbol-icon.svg",
+        "guidelines": "https://joinmastodon.org/branding"
+      }
+    },
+    "medium": {
+      "file": "icons/medium.svg",
+      "sha256": "411fbe8f2b7d631db8ac0a18b0e248639413fb8c263a71ed8bc9934049b6a7d1",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/medium.svg",
+      "metadata": {
+        "title": "Medium",
+        "hex": "000000",
+        "source": "https://medium.design/logos-and-brand-guidelines-f1a01a733592",
+        "guidelines": "https://medium.design/logos-and-brand-guidelines-f1a01a733592"
+      }
+    },
+    "messenger": {
+      "file": "icons/messenger.svg",
+      "sha256": "a52aadd9f7602aebfe4d01e2b249963e136fc996edfa2b78b037ad7e1a400e71",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/messenger.svg",
+      "metadata": {
+        "title": "Messenger",
+        "hex": "0866FF",
+        "source": "https://about.meta.com/brand/resources/facebook/messenger-icon",
+        "guidelines": "https://about.meta.com/brand/resources/facebook/messenger-icon"
+      }
+    },
+    "mewe": {
+      "file": "icons/mewe.svg",
+      "sha256": "abdbfd41097e9427172324c5b5c4c4ed4922db7221cbe0438705eafe38721761",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/mewe.svg",
+      "metadata": {
+        "title": "MeWe",
+        "hex": "17377F",
+        "source": "https://mewe.com"
+      }
+    },
+    "naver": {
+      "file": "icons/naver.svg",
+      "sha256": "6c8125ff3908b12e0d0e0dd56bfeaa90013547a0124f7e34e2b149ba474150a8",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/naver.svg",
+      "metadata": {
+        "title": "Naver",
+        "hex": "03C75A",
+        "source": "https://developers.naver.com/docs/login/bi/bi.md",
+        "guidelines": "https://developers.naver.com/docs/login/bi/bi.md",
+        "aliases": {
+          "loc": {
+            "ja-JP": "ネイバー",
+            "ko-KR": "네이버"
+          }
+        }
+      }
+    },
+    "nextdoor": {
+      "file": "icons/nextdoor.svg",
+      "sha256": "4961caf5cf56a7400541a77c9d8cc401533fa544be11cc0fe26aa44cbd643a10",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/nextdoor.svg",
+      "metadata": {
+        "title": "Nextdoor",
+        "hex": "8ED500",
+        "source": "https://about.nextdoor.com/us-media/"
+      }
+    },
+    "odnoklassniki": {
+      "file": "icons/odnoklassniki.svg",
+      "sha256": "8c8724f011e6ac7cd9757add2ef151fa4c534aa84f08706b2cd748e288d13fab",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/odnoklassniki.svg",
+      "metadata": {
+        "title": "Odnoklassniki",
+        "hex": "EE8208",
+        "source": "https://insideok.ru/brandbook"
+      }
+    },
+    "pinterest": {
+      "file": "icons/pinterest.svg",
+      "sha256": "d0736c4b1390f895ed9bc156cc887d3bd65c5b66258c00ad07888e9ec7d729ad",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/pinterest.svg",
+      "metadata": {
+        "title": "Pinterest",
+        "hex": "BD081C",
+        "source": "https://business.pinterest.com/en/brand-guidelines",
+        "guidelines": "https://business.pinterest.com/en/brand-guidelines"
+      }
+    },
+    "pixelfed": {
+      "file": "icons/pixelfed.svg",
+      "sha256": "e5a7fe7a6c69ce7f283082a83626be777719231f9631752a87316b0c5ae653a6",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/pixelfed.svg",
+      "metadata": {
+        "title": "Pixelfed",
+        "hex": "6366F1",
+        "source": "https://pixelfed.org"
+      }
+    },
+    "pixiv": {
+      "file": "icons/pixiv.svg",
+      "sha256": "28c10a21f1ed08fd12e517a561b84c75bd362685f8700e40adc29c0fd15011eb",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/pixiv.svg",
+      "metadata": {
+        "title": "pixiv",
+        "hex": "0096FA",
+        "source": "https://policies.pixiv.net/en.html#brand",
+        "guidelines": "https://policies.pixiv.net/en.html#brand"
+      }
+    },
+    "qq": {
+      "file": "icons/qq.svg",
+      "sha256": "3c94e923013fe13a5194c84d9a44e2d62225a7ea3537f3ad95a3cb72fdae1383",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/qq.svg",
+      "metadata": {
+        "title": "QQ",
+        "hex": "1EBAFC",
+        "source": "https://en.wikipedia.org/wiki/File:Tencent_QQ.svg",
+        "guidelines": "https://qq.design/brand/BrandDesign/Logo"
+      }
+    },
+    "quora": {
+      "file": "icons/quora.svg",
+      "sha256": "d380e190c067ac735a62e69d41fa578d68895c1de51d3fe1a448ed204bb88d51",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/quora.svg",
+      "metadata": {
+        "title": "Quora",
+        "hex": "B92B27",
+        "source": "https://www.quora.com"
+      }
+    },
+    "qzone": {
+      "file": "icons/qzone.svg",
+      "sha256": "c50f4085871efe3afcb71e2924adf7ffff3f16f2c5d890db0bec70af21a070ca",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/qzone.svg",
+      "metadata": {
+        "title": "Qzone",
+        "hex": "FECE00",
+        "source": "https://qzone.qq.com"
+      }
+    },
+    "reddit": {
+      "file": "icons/reddit.svg",
+      "sha256": "00e5008d56567543cf956561e61d5bf9bf629f520c7488a4d9a00164c29dd8ba",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/reddit.svg",
+      "metadata": {
+        "title": "Reddit",
+        "hex": "FF4500",
+        "source": "https://www.redditinc.com/brand",
+        "guidelines": "https://www.redditinc.com/brand"
+      }
+    },
+    "signal": {
+      "file": "icons/signal.svg",
+      "sha256": "391f46b8feaef281a44dfdf40035d9a4546ded17d2c3eb88d6614762779f1930",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/signal.svg",
+      "metadata": {
+        "title": "Signal",
+        "hex": "3B45FD",
+        "source": "https://signal.org/brand",
+        "guidelines": "https://signal.org/brand"
+      }
+    },
+    "sinaweibo": {
+      "file": "icons/sinaweibo.svg",
+      "sha256": "44facf47c6bfa06c312c28acda6aa2ed404ef7f68c2897c8f33ad51b6ba94059",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/sinaweibo.svg",
+      "metadata": {
+        "title": "Sina Weibo",
+        "hex": "E6162D",
+        "source": "https://en.wikipedia.org/wiki/Sina_Weibo"
+      }
+    },
+    "snapchat": {
+      "file": "icons/snapchat.svg",
+      "sha256": "fbbc31c5544954fbf7525dddbc0d3e79990bb89461f54a94917b6dffc2c5130e",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/snapchat.svg",
+      "metadata": {
+        "title": "Snapchat",
+        "hex": "FFFC00",
+        "source": "https://www.snapchat.com/brand-guidelines",
+        "guidelines": "https://www.snapchat.com/brand-guidelines"
+      }
+    },
+    "substack": {
+      "file": "icons/substack.svg",
+      "sha256": "2ccf1b8fcdda9a8073e5bcfbb57c1a99e114eba05a8d274ba7b2ed05d19b302a",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/substack.svg",
+      "metadata": {
+        "title": "Substack",
+        "hex": "FF6719",
+        "source": "https://on.substack.com"
+      }
+    },
+    "telegram": {
+      "file": "icons/telegram.svg",
+      "sha256": "147fd8f8923e7e5f463fe98c0eb9913bead6b2ae59935728cda141002ec8a7c9",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/telegram.svg",
+      "metadata": {
+        "title": "Telegram",
+        "hex": "26A5E4",
+        "source": "https://telegram.org/tour/screenshots"
+      }
+    },
+    "threads": {
+      "file": "icons/threads.svg",
+      "sha256": "3511f687f9a5713a3700130627f8d3611fb4cd54d3a9757071c93652c7fe16e8",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/threads.svg",
+      "metadata": {
+        "title": "Threads",
+        "hex": "000000",
+        "source": "https://www.meta.com/brand/resources/instagram/threads",
+        "guidelines": "https://www.meta.com/brand/resources/instagram/threads"
+      }
+    },
+    "tiktok": {
+      "file": "icons/tiktok.svg",
+      "sha256": "6f54ac8d325faacea8935bdc44cbed60206a6b408641799e5fea1cba7c1a0af7",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/tiktok.svg",
+      "metadata": {
+        "title": "TikTok",
+        "hex": "000000",
+        "source": "https://tiktok.com"
+      }
+    },
+    "tumblr": {
+      "file": "icons/tumblr.svg",
+      "sha256": "25c6d78e5606fab85d0d3a8424108be7ddd70bee872cb9cff472568107a34bfc",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/tumblr.svg",
+      "metadata": {
+        "title": "Tumblr",
+        "hex": "36465D",
+        "source": "https://www.tumblr.com/logo",
+        "guidelines": "https://www.tumblr.com/logo"
+      }
+    },
+    "viber": {
+      "file": "icons/viber.svg",
+      "sha256": "2cc123deda743aeb31e3a9cba6bdd73bee79475704dfba9cf0c7b46023095914",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/viber.svg",
+      "metadata": {
+        "title": "Viber",
+        "hex": "7360F2",
+        "source": "https://www.viber.com/brand-center",
+        "guidelines": "https://www.viber.com/brand-center"
+      }
+    },
+    "vk": {
+      "file": "icons/vk.svg",
+      "sha256": "2d8fae863c9fdf5937f49326708dcf6cff0f5617ee67b502776b426bbe2cace8",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/vk.svg",
+      "metadata": {
+        "title": "VK",
+        "hex": "0077FF",
+        "source": "https://vk.com/brand",
+        "guidelines": "https://vk.com/brand"
+      }
+    },
+    "wechat": {
+      "file": "icons/wechat.svg",
+      "sha256": "74b48b3d315337ce79cb644933b5f975e19996f564fcc4138ed67d45674c43ca",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/wechat.svg",
+      "metadata": {
+        "title": "WeChat",
+        "hex": "07C160",
+        "source": "https://wechat.design/tool/brand",
+        "guidelines": "https://wechat.design/brand/main-brand"
+      }
+    },
+    "whatsapp": {
+      "file": "icons/whatsapp.svg",
+      "sha256": "8fb209a53a61618c3483594b3e070481a35575d6aaecbe00a6fe386670c8fb1c",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/whatsapp.svg",
+      "metadata": {
+        "title": "WhatsApp",
+        "hex": "25D366",
+        "source": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand",
+        "guidelines": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand"
+      }
+    },
+    "wordpress": {
+      "file": "icons/wordpress.svg",
+      "sha256": "8877151b8978c3c961d16659ba28603a4015872e79fbbb770d09b68b0da8a4ff",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/wordpress.svg",
+      "metadata": {
+        "title": "WordPress",
+        "hex": "21759B",
+        "source": "https://wordpress.org/about/logos",
+        "guidelines": "https://wordpressfoundation.org/trademark-policy"
+      }
+    },
+    "x": {
+      "file": "icons/x.svg",
+      "sha256": "693e68863eceb8dc9f72e2acd386ab9c20a10858dab2c076212f7084cb7a32fe",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/x.svg",
+      "metadata": {
+        "title": "X",
+        "hex": "000000",
+        "source": "https://x.com",
+        "guidelines": "https://about.x.com/en/who-we-are/brand-toolkit",
+        "aliases": {
+          "aka": [
+            "Twitter"
+          ]
+        }
+      }
+    },
+    "xiaohongshu": {
+      "file": "icons/xiaohongshu.svg",
+      "sha256": "847cacc807f5c236031a7477381daa67fd829d89f3f80c16a547ff2efe050794",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/xiaohongshu.svg",
+      "metadata": {
+        "title": "Xiaohongshu",
+        "hex": "FF2442",
+        "source": "https://pro.xiaohongshu.com",
+        "aliases": {
+          "loc": {
+            "zh-CN": "小红书"
+          }
+        }
+      }
+    },
+    "youtube": {
+      "file": "icons/youtube.svg",
+      "sha256": "5038808acbbc4e6edda16cbeb1cc6dec80e4e4ee4e227e039c41229fa222aa8c",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/youtube.svg",
+      "metadata": {
+        "title": "YouTube",
+        "hex": "FF0000",
+        "source": "https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors",
+        "guidelines": "https://www.youtube.com/howyoutubeworks/resources/brand-resources/#logos-icons-and-colors"
+      }
+    },
+    "zhihu": {
+      "file": "icons/zhihu.svg",
+      "sha256": "3c8d91d4f30d220a8655f17aa4e119f5be8c0d66f5fcf939aecaed8699c628ce",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/zhihu.svg",
+      "metadata": {
+        "title": "Zhihu",
+        "hex": "0084FF",
+        "source": "https://www.zhihu.com"
+      }
+    },
+    "flickr": {
+      "file": "icons/flickr.svg",
+      "sha256": "88891e95110e1af8e601a4df35211d07ee90b061903998df252f537e4a214fbd",
+      "upstream": "https://raw.githubusercontent.com/simple-icons/simple-icons/16.36.0/icons/flickr.svg",
+      "metadata": {
+        "title": "Flickr",
+        "hex": "0063DC",
+        "source": "https://www.flickr.com"
+      }
+    }
+  }
+}

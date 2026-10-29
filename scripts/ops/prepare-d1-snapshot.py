@@ -26,9 +26,10 @@ def prepare(source, destination):
     try:
         db.executescript(source.decode('utf8'))
         actual={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
-        if actual-set(transfer.TABLES)-{'d1_migrations'} or set(transfer.TABLES)-actual:raise ValueError('Unexpected canonical schema; review before export')
+        table_order=transfer.TABLES if 'age_recommendation' in actual else transfer.LEGACY_TABLES
+        if actual-set(table_order)-{'d1_migrations'} or set(table_order)-actual:raise ValueError('Unexpected canonical schema; review before export')
         if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or db.execute('PRAGMA foreign_key_check').fetchone():raise ValueError('Source SQL integrity or foreign-key failure')
-        original_counts={table:db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0] for table in transfer.TABLES}
+        original_counts={table:db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0] for table in table_order}
         if sum(original_counts.values())>100000:raise ValueError('Snapshot exceeds reviewed 100k-row rehearsal bound')
         # Do not retain private prompts/photo ownership beyond their original retention.
         for table in EPHEMERAL:db.execute('DELETE FROM "'+table+'"')
@@ -43,7 +44,7 @@ def prepare(source, destination):
         if any(not line.startswith(('CREATE INDEX','CREATE UNIQUE INDEX','CREATE TRIGGER')) for line in rest):raise ValueError('Unexpected SQL dump statement')
         # D1 may commit import batches independently, so defer_foreign_keys alone
         # is insufficient. Parent rows must precede dependent rows as well.
-        data_order=['d1_migrations']+transfer.TABLES+['sqlite_sequence']
+        data_order=['d1_migrations']+table_order+['sqlite_sequence']
         def row_order(line):
             match=re.match(r'(?:INSERT INTO|DELETE FROM)\s+["`\[]?([a-z_][a-z0-9_]*)',line)
             if not match or match[1] not in data_order:raise ValueError('Unexpected data table in dump')

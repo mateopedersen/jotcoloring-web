@@ -1,0 +1,10 @@
+---
+import Icon from './HomeIcon.astro';
+interface Props {src:string;full?:string;title:string;alt:string;caption:string;width:number;height:number;hero?:boolean;}
+const {src,full=src,title,alt,caption,width,height,hero=false}=Astro.props;
+---
+<figure class:list={['walk-screen',hero&&'walk-screen-hero']}>
+ <div class="walk-screen-bar"><span aria-hidden="true"><i/><i/><i/></span><b>JotColoring · {title}</b><Icon name="check" size={16}/></div>
+ <button type="button" data-screen-preview data-screen-full={full} data-screen-title={title} data-screen-caption={caption} aria-haspopup="dialog" aria-controls="walkthrough-viewer" aria-label={`Enlarge screenshot: ${title}`}><img src={src} alt={alt} width={width} height={height} loading={hero?'eager':'lazy'}/><span class="walk-screen-enlarge"><Icon name="expand" size={18}/>Take a closer look</span></button>
+ <figcaption><span class="walk-real-dot" aria-hidden="true"/> {caption}</figcaption>
+</figure>

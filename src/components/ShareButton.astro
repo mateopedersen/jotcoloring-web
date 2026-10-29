@@ -1,0 +1,6 @@
+---
+import ShareArt from './ShareArt.astro';
+const {item,variant='card'}=Astro.props as {item:{id:string;title:string;slug:string};variant?:'card'|'detail'};
+---
+<button type="button" class:list={['jc-share-trigger',`jc-share-trigger--${variant}`]} data-share-coloring={item.id} aria-label={`Share ${item.title}`} aria-haspopup="dialog" aria-controls="jc-share-dialog" title={`Share ${item.title}`}><ShareArt size={variant==='card'?34:38}/><span>Share</span></button>
+<noscript><a href={`mailto:?subject=${encodeURIComponent(item.title+' coloring page')}&body=${encodeURIComponent('https://jotcoloring.com/coloring/'+item.slug+'/')}`}>Share by email</a></noscript>

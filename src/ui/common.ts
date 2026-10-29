@@ -1,3 +1,4 @@
+import {initSearchSuggestions} from './search-suggestions';
 /** Shared controls are delegated so local hot updates and lazy images remain usable. */
 const updateComparison=(input:HTMLInputElement)=>{const value=Math.max(0,Math.min(100,Number(input.value)));input.closest<HTMLElement>('.compare')?.style.setProperty('--split',`${value}%`);input.setAttribute('aria-valuetext',`${value}% color preview`);};
 document.addEventListener('input',event=>{const input=event.target;if(input instanceof HTMLInputElement&&input.matches('.compare input'))updateComparison(input);});
@@ -12,6 +13,21 @@ function retryCurrentMedia(image:HTMLImageElement){if(image.dataset.mediaRetried
 document.addEventListener('error',event=>{if(!(event.target instanceof HTMLImageElement))return;const comparison=event.target.closest('.compare');if(comparison)comparison.querySelectorAll<HTMLImageElement>('img').forEach(retryCurrentMedia);else retryCurrentMedia(event.target);},true);
 const retryBrokenImages=()=>{for(const image of document.images)if(image.complete&&image.naturalWidth===0)retryCurrentMedia(image);};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',retryBrokenImages,{once:true});else retryBrokenImages();
-document.addEventListener('click',event=>{const target=event.target;if(!(target instanceof Element))return;const menu=document.querySelector<HTMLDialogElement>('#mobile-menu');if(target.closest('.hamburger')){menu?.showModal();document.querySelector('.hamburger')?.setAttribute('aria-expanded','true');}if(target.closest('#mobile-menu [data-close-dialog]'))menu?.close();});
-document.addEventListener('close',event=>{if(event.target instanceof HTMLDialogElement&&event.target.id==='mobile-menu')document.querySelector('.hamburger')?.setAttribute('aria-expanded','false');},true);
-export function toast(message:string){const t=document.querySelector<HTMLElement>('#toast');if(t){t.textContent=message;t.hidden=false;setTimeout(()=>t.hidden=true,4500);}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initSearchSuggestions,{once:true});else initSearchSuggestions();
+
+let menuOpener:HTMLButtonElement|undefined;
+document.addEventListener('click',event=>{
+ const target=event.target;if(!(target instanceof Element))return;
+ const menu=document.querySelector<HTMLDialogElement>('#mobile-menu');
+ const opener=target.closest<HTMLButtonElement>('.hamburger');
+ if(opener&&menu){menuOpener=opener;if(!menu.open)menu.showModal();opener.setAttribute('aria-expanded','true');}
+ if(target.closest('#mobile-menu [data-close-dialog]'))menu?.close();
+ if(menu?.open&&target===menu){const rect=menu.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)menu.close();}
+});
+document.addEventListener('close',event=>{
+ if(!(event.target instanceof HTMLDialogElement)||event.target.id!=='mobile-menu')return;
+ document.querySelector('.hamburger')?.setAttribute('aria-expanded','false');
+ if(menuOpener?.isConnected)menuOpener.focus({preventScroll:true});
+},true);
+let toastTimer:ReturnType<typeof setTimeout>|undefined;
+export function toast(message:string){const element=document.querySelector<HTMLElement>('#toast');if(!element)return;clearTimeout(toastTimer);element.textContent=message;element.hidden=false;toastTimer=setTimeout(()=>element.hidden=true,4500);}

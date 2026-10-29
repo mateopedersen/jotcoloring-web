@@ -8,7 +8,8 @@ export type DataRow = Record<string,Cell>;
 interface Column {name:string;type:string;primary_position:number}
 interface Table {name:string;columns:Column[];row_count:number;sha256:string}
 export interface Snapshot {schema:string;file_sha256:string;outbox_watermark:string;tables:Table[];rows:number}
-export const TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation'];
+const LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation'];
+export const TABLES=[...LEGACY_TABLES,'age_recommendation'];
 export const canonical=(value:unknown):string=>JSON.stringify(value,(_key,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a<b?-1:a>b?1:0)):v);
 export const sha=(value:string)=>createHash('sha256').update(value).digest('hex');
 const ident=(value:string)=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw new Error('Unsafe SQL identifier');return '"'+value+'"';};
@@ -19,9 +20,9 @@ export async function inspectSnapshot(file:string):Promise<Snapshot>{
  const finish=()=>{if(current){current.sha256=digest.digest('hex');if(current.row_count!==actual)throw new Error('Table count mismatch: '+current.name);}};
  for await(const {number,value:v} of lines(file)){
   if(footer)throw new Error('Data after snapshot footer');
-  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(v.schema!=='jotcoloring-catalog-transfer/1'||canonical(v.tables)!==canonical(TABLES)||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
+  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(!['jotcoloring-catalog-transfer/1','jotcoloring-catalog-transfer/2'].includes(v.schema)||canonical(v.tables)!==canonical(v.schema==='jotcoloring-catalog-transfer/1'?LEGACY_TABLES:TABLES)||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
   else if(v.kind==='table'){
-   if(!header||v.table!==TABLES[tables.length])throw new Error('Unexpected table order');finish();
+   if(!header||v.table!==header.tables[tables.length])throw new Error('Unexpected table order');finish();
    if(!Number.isSafeInteger(v.row_count)||v.row_count<0||!Array.isArray(v.columns))throw new Error('Invalid table metadata');
    const columns=v.columns as Column[];for(const c of columns){ident(c.name);if(!['TEXT','INTEGER'].includes(c.type)||!Number.isSafeInteger(c.primary_position)||c.primary_position<0)throw new Error('Invalid column metadata');}
    if(new Set(columns.map(c=>c.name)).size!==columns.length||!columns.some(c=>c.primary_position))throw new Error('Invalid primary key');
@@ -32,7 +33,7 @@ export async function inspectSnapshot(file:string):Promise<Snapshot>{
   }else if(v.kind==='footer'){finish();footer=v;}
   else throw new Error('Unknown snapshot line');
  }
- if(!header||!footer||tables.length!==TABLES.length)throw new Error('Incomplete snapshot');
+ if(!header||!footer||tables.length!==header.tables.length)throw new Error('Incomplete snapshot');
  for(const t of tables)if(footer.tables?.[t.name]?.rows!==t.row_count||footer.tables?.[t.name]?.sha256!==t.sha256)throw new Error('Table checksum mismatch: '+t.name);
  const rows=tables.reduce((n,t)=>n+t.row_count,0);if(rows!==footer.rows||footer.outbox_watermark!==header.outbox_watermark)throw new Error('Footer mismatch');
  return{schema:header.schema,file_sha256:await fileHash(file),outbox_watermark:header.outbox_watermark,tables,rows};
@@ -79,19 +80,20 @@ export async function compareSnapshot(db:Pg,snapshot:Snapshot){
 }
 export async function rebuildSearch(db:Pg,ids?:string[]){
  let after='';while(true){const selected=ids?ids:(await db.query<{id:string}>('SELECT id FROM content WHERE id>$1 ORDER BY id LIMIT 256',[after])).rows.map(r=>r.id);if(!selected.length)break;
- await db.query(`INSERT INTO search_projection(id,source_version,visibility,locale,title,tags,categories,category_ids,age_groups,difficulty,published_at,sort_score)
+ await db.query(`INSERT INTO search_projection(id,source_version,visibility,locale,title,tags,categories,category_ids,age_groups,difficulty,published_at,sort_score,recommended_age)
  SELECT c.id,c.latest_version,c.status,c.locale,c.title,
  COALESCE((SELECT string_agg(t.tag,' ' ORDER BY t.tag) FROM content_tag t WHERE t.content_id=c.id),''),
  COALESCE((SELECT string_agg(cat.id||' '||cat.name,' ' ORDER BY cat.id) FROM content_category cc JOIN category cat ON cat.id=cc.category_id WHERE cc.content_id=c.id),''),
  ARRAY(SELECT cc.category_id FROM content_category cc WHERE cc.content_id=c.id ORDER BY cc.position,cc.category_id),
- ARRAY(SELECT a.age FROM content_age a WHERE a.content_id=c.id ORDER BY a.age),c.difficulty,c.published_at,c.sort_score
- FROM content c WHERE c.id=ANY($1::text[]) ON CONFLICT(id) DO UPDATE SET source_version=EXCLUDED.source_version,visibility=EXCLUDED.visibility,locale=EXCLUDED.locale,title=EXCLUDED.title,tags=EXCLUDED.tags,categories=EXCLUDED.categories,category_ids=EXCLUDED.category_ids,age_groups=EXCLUDED.age_groups,difficulty=EXCLUDED.difficulty,published_at=EXCLUDED.published_at,sort_score=EXCLUDED.sort_score WHERE EXCLUDED.source_version>=search_projection.source_version`,[selected]);if(ids)break;after=selected[selected.length-1];}
+ ARRAY(SELECT a.age FROM content_age a WHERE a.content_id=c.id ORDER BY a.age),c.difficulty,c.published_at,c.sort_score,
+ (SELECT ar.band FROM age_recommendation ar JOIN asset a ON a.content_id=ar.content_id AND a.content_version=ar.content_version AND a.role='printable_webp_bw' AND a.sha256=ar.source_sha256 WHERE ar.content_id=c.id AND ar.content_version=c.active_version)
+ FROM content c WHERE c.id=ANY($1::text[]) ON CONFLICT(id) DO UPDATE SET source_version=EXCLUDED.source_version,visibility=EXCLUDED.visibility,locale=EXCLUDED.locale,title=EXCLUDED.title,tags=EXCLUDED.tags,categories=EXCLUDED.categories,category_ids=EXCLUDED.category_ids,age_groups=EXCLUDED.age_groups,difficulty=EXCLUDED.difficulty,published_at=EXCLUDED.published_at,sort_score=EXCLUDED.sort_score,recommended_age=EXCLUDED.recommended_age WHERE EXCLUDED.source_version>=search_projection.source_version`,[selected]);if(ids)break;after=selected[selected.length-1];}
 }
-export async function searchPostgres(db:Pg,query:{q?:string;category?:string;subcategory?:string;age?:string[];difficulty?:string[];sort?:string}){
+export async function searchPostgres(db:Pg,query:{q?:string;category?:string;subcategory?:string;age?:string[];recommended_age?:string;difficulty?:string[];sort?:string}){
  const words=(query.q||'').normalize('NFKC').trim().slice(0,160).split(/[^\p{L}\p{N}]+/u).filter(Boolean).slice(0,12);
  if(!words.length)return[];const expression=words.map(word=>`'${word}':*`).join(' & '),params:unknown[]=[expression];const where=["p.visibility='published'", "p.document @@ to_tsquery('simple',$1)"];
  for(const category of [query.category,query.subcategory])if(category){params.push(category);where.push(`$${params.length}=ANY(p.category_ids)`);}
- if(query.age?.length){params.push(query.age);where.push(`p.age_groups&&$${params.length}::text[]`);}if(query.difficulty?.length){params.push(query.difficulty);where.push(`p.difficulty=ANY($${params.length}::text[])`);}
+ if(query.recommended_age){params.push(query.recommended_age);where.push(`p.recommended_age=$${params.length}`);}if(query.age?.length){params.push(query.age);where.push(`p.age_groups&&$${params.length}::text[]`);}if(query.difficulty?.length){params.push(query.difficulty);where.push(`p.difficulty=ANY($${params.length}::text[])`);}
  const sort=query.sort==='title'?'lower(p.title) ASC,p.id ASC':query.sort==='newest'?'p.published_at DESC,p.id DESC':'p.sort_score DESC,p.id DESC';
  return(await db.query<{id:string;slug:string}>(`SELECT p.id,c.slug FROM search_projection p JOIN content c ON c.id=p.id WHERE ${where.join(' AND ')} ORDER BY ${sort} LIMIT 48`,params)).rows;
 }
@@ -109,14 +111,14 @@ export async function applyContentEvent(db:Pg,snapshot:Snapshot,event:ContentEve
    if(canonical(found)!==canonical(event.content))throw new Error('Same-version content payload conflict');disposition='covered-by-snapshot';
   }
   else {
-   for(const [table,rows] of Object.entries(event.related)){if(!['category','content_revision','asset','content_category','content_tag','content_age','slug_redirect'].includes(table))throw new Error('Unsupported event relation');for(const row of rows){validateRow(get(table),row);if(table!=='category'&&row.content_id!==event.content_id)throw new Error('Cross-content event row');}}
+   for(const [table,rows] of Object.entries(event.related)){if(!['category','content_revision','asset','content_category','content_tag','content_age','age_recommendation','slug_redirect'].includes(table))throw new Error('Unsupported event relation');for(const row of rows){validateRow(get(table),row);if(table!=='category'&&row.content_id!==event.content_id)throw new Error('Cross-content event row');}}
    const assets=event.related.asset||[];
    if(event.event_type==='published')for(const role of ['catalog_thumb_bw','catalog_preview_bw','printable_webp_bw','printable_pdf_a4_bw'])if(!assets.some(a=>a.role===role&&a.content_version===event.content.active_version&&a.verified==='1'))throw new Error('Published event missing active verified asset '+role);
    for(const row of event.related.category||[])await writeRow(tx,get('category'),row);
    await writeRow(tx,get('content'),event.content,true);
    const oldCategories=new Set((await tx.query<{category_id:string}>('SELECT category_id FROM content_category WHERE content_id=$1',[event.content_id])).rows.map(r=>r.category_id));
-   for(const table of ['content_category','content_tag','content_age'])await tx.query(`DELETE FROM ${ident(table)} WHERE content_id=$1`,[event.content_id]);
-   for(const table of ['content_revision','asset','content_category','content_tag','content_age','slug_redirect'])for(const row of event.related[table]||[])await writeRow(tx,get(table),row,true);
+   for(const table of ['content_category','content_tag','content_age','age_recommendation'])await tx.query(`DELETE FROM ${ident(table)} WHERE content_id=$1`,[event.content_id]);
+   for(const table of ['content_revision','asset','content_category','content_tag','content_age','age_recommendation','slug_redirect'])for(const row of event.related[table]||[])await writeRow(tx,get(table),row,true);
    await tx.query('INSERT INTO sitemap_entry(content_id,slug,updated_at,visibility) VALUES($1,$2,$3,$4) ON CONFLICT(content_id) DO UPDATE SET slug=EXCLUDED.slug,updated_at=EXCLUDED.updated_at,visibility=EXCLUDED.visibility',[event.content_id,event.content.slug,event.content.updated_at,event.content.status]);
    const newCategories=new Set((event.related.content_category||[]).map(r=>r.category_id!));
    for(const categoryId of new Set([...oldCategories,...newCategories])){const delta=(event.event_type==='published'&&newCategories.has(categoryId)?1:0)-(existing?.status==='published'&&oldCategories.has(categoryId)?1:0);if(delta)await tx.query('INSERT INTO category_count(category_id,published_count) VALUES($1,GREATEST(0,$2::bigint)) ON CONFLICT(category_id) DO UPDATE SET published_count=GREATEST(0,category_count.published_count+$2::bigint)',[categoryId,delta]);}

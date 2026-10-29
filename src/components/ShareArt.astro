@@ -1,0 +1,16 @@
+---
+const {size=64}=Astro.props;
+const id=`share-${crypto.randomUUID()}`;
+---
+<svg class="jc-share-art" width={size} height={size} viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false">
+ <defs><linearGradient id={`${id}-base`} x1="18" y1="6" x2="77" y2="85" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe9bd"/><stop offset=".48" stop-color="#ffac59"/><stop offset="1" stop-color="#d66424"/></linearGradient><linearGradient id={`${id}-node`} x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffef6"/><stop offset=".5" stop-color="#fff6e6"/><stop offset="1" stop-color="#e6bc91"/></linearGradient></defs>
+ <ellipse cx="48" cy="86" rx="31" ry="5" fill="#7b3e24" opacity=".17"/>
+ <rect x="12" y="12" width="72" height="73" rx="23" fill="#ae4b21"/>
+ <rect x="10" y="7" width="76" height="74" rx="24" fill={`url(#${id}-base)`} stroke="#d3763b" stroke-width="1.5"/>
+ <path d="M22 25q3-10 17-10h22" stroke="#fff8e1" stroke-width="4" opacity=".8" stroke-linecap="round"/>
+ <path d="m34 47 29-18M34 49l29 18" stroke="#a64e24" stroke-width="6" stroke-linecap="round" opacity=".3"/>
+ <path d="m33 44 29-17M33 46l29 17" stroke="#fff7e5" stroke-width="5" stroke-linecap="round"/>
+ <g fill={`url(#${id}-node)`} stroke="#b85d29" stroke-width="1.4"><circle cx="31" cy="45" r="10"/><circle cx="64" cy="25" r="10"/><circle cx="64" cy="65" r="10"/></g>
+ <g stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M26 41q2-3 6-3M59 21q2-3 6-3M59 61q2-3 6-3"/></g>
+ <path d="m79 7 2-5 2 5 5 2-5 2-2 5-2-5-5-2Z" fill="#f7b758" stroke="#fff1c9" stroke-width="1"/>
+</svg>

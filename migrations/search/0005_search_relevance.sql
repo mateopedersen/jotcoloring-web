@@ -1,0 +1,12 @@
+ALTER TABLE search_document ADD COLUMN description TEXT NOT NULL DEFAULT '';
+ALTER TABLE search_document ADD COLUMN alt_text TEXT NOT NULL DEFAULT '';
+DROP TRIGGER search_ai;
+DROP TRIGGER search_ad;
+DROP TRIGGER search_au;
+DROP TABLE search_fts;
+CREATE VIRTUAL TABLE search_fts USING fts5(id UNINDEXED,title,tags,categories,description,alt_text,content='search_document',content_rowid='rowid',tokenize='unicode61 remove_diacritics 2');
+CREATE TRIGGER search_ai AFTER INSERT ON search_document BEGIN INSERT INTO search_fts(rowid,id,title,tags,categories,description,alt_text) VALUES(new.rowid,new.id,new.title,new.tags,new.categories,new.description,new.alt_text); END;
+CREATE TRIGGER search_ad AFTER DELETE ON search_document BEGIN INSERT INTO search_fts(search_fts,rowid,id,title,tags,categories,description,alt_text) VALUES('delete',old.rowid,old.id,old.title,old.tags,old.categories,old.description,old.alt_text); END;
+CREATE TRIGGER search_au AFTER UPDATE ON search_document BEGIN INSERT INTO search_fts(search_fts,rowid,id,title,tags,categories,description,alt_text) VALUES('delete',old.rowid,old.id,old.title,old.tags,old.categories,old.description,old.alt_text); INSERT INTO search_fts(rowid,id,title,tags,categories,description,alt_text) VALUES(new.rowid,new.id,new.title,new.tags,new.categories,new.description,new.alt_text); END;
+INSERT INTO search_fts(search_fts) VALUES('rebuild');
+CREATE VIRTUAL TABLE search_terms USING fts5vocab(search_fts,'row');

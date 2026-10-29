@@ -1,0 +1,11 @@
+---
+import {AGE_BANDS,type AgeBand} from '../age/model';
+import AgeIcon from './AgeIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
+import '../age/age.css';
+const {compact=false,active=undefined}=Astro.props as {compact?:boolean;active?:AgeBand};
+---
+<section class:list={['jc-age-navigation',compact&&'jc-age-navigation--compact']} aria-label="Browse by recommended age">
+ <div class="jc-age-navigation-heading"><div><p>A LITTLE OR A LOT OF DETAIL</p><h2>A page for every stage.</h2><span>Find the level of detail that feels right for you.</span></div><a href="/coloring-by-age/">Explore by age<ArrowIcon kind="right" size={18}/></a></div>
+ <nav class="jc-age-links" aria-label="Recommended ages">{AGE_BANDS.map(band=><a href={`/coloring-by-age/${band.id}/`} aria-current={active===band.id?'page':undefined}><AgeIcon band={band.id} size={compact?48:64}/><span><strong>{band.label}</strong><small>{band.id==='3-5'?'Big, simple spaces':band.id==='6-8'?'A few more details':band.id==='9-12'?'More to discover':band.id==='13-17'?'Creative challenges':'Intricate & relaxing'}</small></span><ArrowIcon kind="right" size={16}/></a>)}</nav>
+</section>

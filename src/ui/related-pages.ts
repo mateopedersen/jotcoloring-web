@@ -1,0 +1,11 @@
+import {relatedView} from '../content/related';
+import {LatestRequest} from './latest-request';
+export function mountRelatedPages(){
+ const pagePath=location.pathname,requests=new LatestRequest();let host=document.querySelector<HTMLElement>('#more-like-this');if(!host)return;
+ async function navigate(url:URL,push:boolean){const selected=relatedView(url.searchParams.get('related')),current=host!;current.setAttribute('aria-busy','true');const status=current.querySelector<HTMLElement>('[data-related-status]')!;status.textContent='Finding your next coloring page…';
+  await requests.run(async signal=>{const response=await fetch(url,{signal,headers:{Accept:'text/html'}});if(!response.ok)throw new Error();const html=new DOMParser().parseFromString(await response.text(),'text/html'),section=html.querySelector<HTMLElement>('#more-like-this');if(!section||section.dataset.relatedView!==selected)throw new Error();section.querySelectorAll('script').forEach(s=>s.remove());return section;},section=>{current.replaceWith(section);host=section;if(push)history.pushState({jotRelated:true},'',url);section.querySelector<HTMLElement>('[data-related-focus]')?.focus({preventScroll:true});section.querySelector<HTMLElement>('[data-related-status]')!.textContent='Related coloring pages updated.';},()=>{status.replaceChildren(document.createTextNode('Could not update the suggestions. '));const retry=document.createElement('a');retry.href=url.href;retry.textContent='Reload this option';status.append(retry);},()=>host?.removeAttribute('aria-busy'));
+ }
+ document.addEventListener('click',event=>{const link=event.target instanceof Element?event.target.closest<HTMLAnchorElement>('#more-like-this [data-related-link]'):null;if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;const url=new URL(link.href);if(url.origin!==location.origin||url.pathname!==location.pathname)return;event.preventDefault();void navigate(url,true);});
+ window.addEventListener('popstate',()=>{if(location.pathname===pagePath&&host?.dataset.relatedView!==relatedView(new URL(location.href).searchParams.get('related')))void navigate(new URL(location.href),false);});
+ window.addEventListener('pagehide',()=>requests.cancel());
+}
