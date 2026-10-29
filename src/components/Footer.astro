@@ -16,13 +16,13 @@ const columns=[
   <div class="jc-footer-grid">
    <div class="jc-footer-brand">
     <a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="254" height="80" alt="JotColoring"/></a>
-    <p>A little space to slow down, get creative, and make something your own.</p>
+    <p>Free coloring pages, creative tools, and a little time to make something your own.</p>
     <div class="jc-footer-brand-art" aria-hidden="true"><CategoryIcon name="flowers" size={44}/><CategoryIcon name="animals" size={44}/><ActionIcon name="brush" size={44}/><span>Made for<br/><b>colorful moments</b></span></div>
     <a class="jc-footer-explore" href="/coloring-pages/"><CategoryIcon name="all" size={36}/><span>Find your next page<small>Explore the collection</small></span><Icon name="arrow" size={16}/></a>
    </div>
    {columns.map(column=><nav class="jc-footer-nav" aria-label={column.label}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{column.label}</h2><p>{column.description}</p></span></div>{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon}/><span>{label}</span><Icon name="arrow" size={13}/></a>)}</nav>)}
   </div>
-  <div class="jc-footer-license"><span class="jc-footer-license-art"><ActionIcon name="heart" size={39}/></span><div><strong>Made for your creative moments.</strong><p>Free for personal and non-commercial educational use. Commercial use requires permission.</p></div><a href="/license/">Explore the license <Icon name="arrow" size={16}/></a></div>
+  <div class="jc-footer-license"><span class="jc-footer-license-art"><ActionIcon name="heart" size={39}/></span><div><strong>Print, color, and enjoy.</strong><p>Free for personal and non-commercial educational use. Commercial use requires permission.</p></div><a href="/license/">Read the artwork license <Icon name="arrow" size={16}/></a></div>
   <div class="jc-footer-bottom"><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span><nav aria-label="Legal and management links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/cookies/">Cookies</a><button type="button" data-storage-settings>Cookie settings</button><a href="/accessibility/">Accessibility</a><a href="/admin/">Manage content</a></nav></div>
  </div>
 </footer>
