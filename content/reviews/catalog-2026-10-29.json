@@ -1,0 +1,266 @@
+{
+  "reviewed_at": "2026-10-29",
+  "basis": "Actual source WEBP pixels inspected in three six-image review sheets. These records apply only to the recorded image checksums; they are not a review of future uploads.",
+  "items": [
+    {
+      "slug": "woodland-friends",
+      "source_sha256": "6a21fb0e05f1f160ec6be091f933e0ae3173bc733239cc314b9f22a0d212c948",
+      "title": "Fox and Rabbit in Wildflowers",
+      "description": "A fox and rabbit sit together on a log, framed by wildflowers, berries, and leafy branches. Fine fur lines contrast with the larger petals and leaves.",
+      "alt_text": "Fox and rabbit on a log surrounded by wildflowers, berries, leaves, and mushrooms.",
+      "tags": [
+        "fox",
+        "rabbit",
+        "woodland",
+        "wildflowers",
+        "mushrooms"
+      ]
+    },
+    {
+      "slug": "cozy-bookshop",
+      "source_sha256": "b5388c9a7ddd4dd71f43b668e8c20936f0c5c12405be949ff200b05d468e6c7e",
+      "title": "Flower-Covered Bookshop",
+      "description": "Flowering vines surround an arched bookshop doorway and windows filled with books. Potted plants and a cobblestone path complete the detailed storefront.",
+      "alt_text": "Bookshop with an arched doorway, books in the windows, flowering vines, and a cobblestone path.",
+      "tags": [
+        "bookshop",
+        "bookstore",
+        "books",
+        "flowers",
+        "architecture"
+      ]
+    },
+    {
+      "slug": "butterfly-garden",
+      "source_sha256": "196ab89eb0b643514ca747732d54e551fb86e126bd0d008238051ea6428370ca",
+      "title": "Butterfly and Garden Flowers",
+      "description": "A large butterfly spreads its patterned wings among hibiscus blooms, daisies, and pointed leaves. The wing sections offer room to repeat colors or try contrasting shades.",
+      "alt_text": "Butterfly with patterned wings among hibiscus flowers, daisies, and leaves.",
+      "tags": [
+        "butterfly",
+        "insect",
+        "flowers",
+        "hibiscus",
+        "garden"
+      ]
+    },
+    {
+      "slug": "ocean-adventure",
+      "source_sha256": "0e64ee5e5a265c6db41cc7f9f3d3d333f5e076df0c07451e18ad9e3051e6f1cd",
+      "title": "Sea Turtle and Coral Reef",
+      "description": "A sea turtle swims above a reef with striped fish, seaweed, and branching coral. Its patterned shell and scaled flippers bring extra detail to the underwater scene.",
+      "alt_text": "Sea turtle swimming with striped fish above coral, seaweed, and reef plants.",
+      "tags": [
+        "sea turtle",
+        "turtle",
+        "ocean",
+        "coral reef",
+        "fish",
+        "underwater"
+      ]
+    },
+    {
+      "slug": "space-explorer",
+      "source_sha256": "7324243815e10067342f2c63e0104a6004b5f513b409a25def25823d51bbc255",
+      "title": "Astronaut Among the Planets",
+      "description": "A smiling cartoon astronaut reaches forward while floating among planets, stars, and space rocks. A ringed planet and a distant spiral galaxy surround the spacesuit.",
+      "alt_text": "Cartoon astronaut floating among planets, stars, space rocks, and a spiral galaxy.",
+      "tags": [
+        "astronaut",
+        "space",
+        "planets",
+        "stars",
+        "galaxy"
+      ]
+    },
+    {
+      "slug": "sweet-treats",
+      "source_sha256": "9b3e0995b31d600badff3f5c2ab24de27175c06ca4a1485e901a81232f5af6ed",
+      "title": "Strawberry Cupcakes and Daisies",
+      "description": "Three cupcakes have swirls of frosting topped with strawberries and flowers. Sliced berries, daisies, and leaves fill the spaces between the desserts.",
+      "alt_text": "Three frosted cupcakes with strawberries, daisies, and leaves.",
+      "tags": [
+        "cupcakes",
+        "strawberries",
+        "dessert",
+        "frosting",
+        "daisies"
+      ]
+    },
+    {
+      "slug": "botanical-mandala",
+      "source_sha256": "eb8530b7183eb74dcc35431e7dc3bd19fdbabe55d5df044f5148372a11084a7f",
+      "title": "Floral Leaf Mandala",
+      "description": "Layered petals radiate from a small central flower into repeating leaves, blossoms, and bead-like details. The symmetrical pattern offers many small sections for a limited or repeating palette.",
+      "alt_text": "Symmetrical floral mandala with layered petals, pointed leaves, and small repeating blossoms.",
+      "tags": [
+        "mandala",
+        "floral",
+        "leaves",
+        "pattern",
+        "symmetry"
+      ]
+    },
+    {
+      "slug": "woodland-owl",
+      "source_sha256": "50c6e7d5f1e1b0f251432b8ea51b6df25b816796beada5868a094202eb6bb087",
+      "title": "Owl Under a Crescent Moon",
+      "description": "A wide-eyed owl perches on a branch beneath a crescent moon and stars. Overlapping feathers, flowers, and a distant woodland create a detailed nighttime setting.",
+      "alt_text": "Wide-eyed owl on a flowering branch beneath a crescent moon and stars.",
+      "tags": [
+        "owl",
+        "bird",
+        "moon",
+        "stars",
+        "woodland",
+        "flowers"
+      ]
+    },
+    {
+      "slug": "winter-wishes",
+      "source_sha256": "6667a45119f9472d1220daf979e90528e9b0e71900eb0bae19a7aa52896ee202",
+      "title": "Snowman with Gifts and Ornaments",
+      "description": "A smiling snowman wears a knit hat, scarf, and patterned mittens beside wrapped gifts. Hanging ornaments, snowflakes, and evergreen branches frame the winter scene.",
+      "alt_text": "Snowman in a knit hat and scarf with mittens, wrapped gifts, hanging ornaments, and snowflakes.",
+      "tags": [
+        "snowman",
+        "winter",
+        "Christmas",
+        "gifts",
+        "ornaments",
+        "snowflakes"
+      ]
+    },
+    {
+      "slug": "sleepy-kitten",
+      "source_sha256": "6f1f20ffa9a3e361ed4c3ee9d4928799bd3ff2e6e8d3c94af154ae16563c286e",
+      "title": "Sleeping Kitten with Yarn",
+      "description": "A kitten curls up beside a ball of yarn in a flower-filled garden. Daisies, leafy stems, and a wooden fence surround its resting spot.",
+      "alt_text": "Sleeping kitten curled beside a ball of yarn among daisies, leaves, and a wooden fence.",
+      "tags": [
+        "kitten",
+        "cat",
+        "sleeping",
+        "yarn",
+        "pets",
+        "daisies"
+      ]
+    },
+    {
+      "slug": "playful-puppy",
+      "source_sha256": "2aecc991a142e3c02e99e0564aeb9e05affea73537aeb7624d03aaf08e4d038a",
+      "title": "Puppy with a Ball and Daisies",
+      "description": "A fluffy, floppy-eared puppy sits with its tongue out and a ball beside one paw. Tall daisies and grass frame the playful garden scene.",
+      "alt_text": "Floppy-eared puppy sitting beside a ball among daisies and grass.",
+      "tags": [
+        "puppy",
+        "dog",
+        "ball",
+        "pets",
+        "daisies"
+      ]
+    },
+    {
+      "slug": "little-hedgehog",
+      "source_sha256": "11aa1855a8c8c5538ef378ebdd3a8b091440e8e957303b83be9d56cf842a86a5",
+      "title": "Hedgehog with Mushrooms",
+      "description": "A small hedgehog stands on a leafy woodland floor beside a spotted mushroom. Its pointed spines contrast with broad leaves, flowers, and a fallen log.",
+      "alt_text": "Hedgehog beside a spotted mushroom, with broad leaves, flowers, and a fallen log.",
+      "tags": [
+        "hedgehog",
+        "woodland",
+        "mushroom",
+        "leaves",
+        "flowers"
+      ]
+    },
+    {
+      "slug": "hibiscus-garden",
+      "source_sha256": "60c9c7dc03156760b298886dc0bd2dd5c31363d580ab4907ad26286abff81a18",
+      "title": "Hibiscus and Tropical Leaves",
+      "description": "One large hibiscus bloom is surrounded by smaller flowers, buds, and tropical foliage. Broad petals, a detailed flower center, and split leaves create a mix of open and intricate spaces.",
+      "alt_text": "Large hibiscus flower with buds, daisies, palm fronds, and split tropical leaves.",
+      "tags": [
+        "hibiscus",
+        "tropical",
+        "flower",
+        "leaves",
+        "botanical"
+      ]
+    },
+    {
+      "slug": "gentle-deer",
+      "source_sha256": "bf4837b59f5863f00ccd54129864770419272a86ca9b48427c916f9ab4679d47",
+      "title": "Fawn in a Woodland Garden",
+      "description": "A spotted fawn rests beneath leafy branches beside a stream. Flowers, ferns, rocks, and distant evergreen trees surround its curled body.",
+      "alt_text": "Spotted fawn resting among flowers and ferns beneath a tree, with a stream behind it.",
+      "tags": [
+        "fawn",
+        "deer",
+        "woodland",
+        "flowers",
+        "stream",
+        "fern"
+      ]
+    },
+    {
+      "slug": "friendly-dragon",
+      "source_sha256": "09fe582d69da92238919433ffd1b4d47611f001adc51947d4295847dcbbe7bdd",
+      "title": "Dragon by a Fairytale Castle",
+      "description": "A young winged dragon sits on a garden path in front of a turreted castle. Large wing panels and belly sections sit alongside smaller scales, flowers, and stonework.",
+      "alt_text": "Friendly winged dragon on a flower-lined path in front of a turreted fairytale castle.",
+      "tags": [
+        "dragon",
+        "castle",
+        "fantasy",
+        "wings",
+        "flowers",
+        "fairytale"
+      ]
+    },
+    {
+      "slug": "farm-friends",
+      "source_sha256": "82afe0d56d985e1f452abd0fe7741e9b5643f417690b1cef7d8ba950dfe69502",
+      "title": "Calf by the Barn",
+      "description": "A young cow stands among daisies beside a wooden fence and barn. Its outlined coat patches and broad body offer a clear starting point before the smaller farm details.",
+      "alt_text": "Young cow with outlined coat patches among daisies beside a wooden fence and barn.",
+      "tags": [
+        "calf",
+        "cow",
+        "farm",
+        "barn",
+        "daisies"
+      ]
+    },
+    {
+      "slug": "dinosaur-valley",
+      "source_sha256": "6c75db97daf198f2666bd32943542424ef5e0a24476f182951e70d606eb99825",
+      "title": "Long-Necked Dinosaurs in a Valley",
+      "description": "Two long-necked dinosaurs stand among palms and broad prehistoric leaves. Mountains and a waterfall fill the background behind the larger dinosaur and its smaller companion.",
+      "alt_text": "Two long-necked dinosaurs among palms and prehistoric plants, with mountains and a waterfall behind them.",
+      "tags": [
+        "dinosaurs",
+        "long neck",
+        "prehistoric",
+        "valley",
+        "waterfall",
+        "palms"
+      ]
+    },
+    {
+      "slug": "camper-adventure",
+      "source_sha256": "fd8fea241971375967280c2fb91528be74820b23c4b224d3877462d8bfe2855a",
+      "title": "Camper Van at the Beach",
+      "description": "A rounded camper van is parked beside surfboards on a palm-lined beach. Roof-mounted boards, coastal mountains, and a low sun add detail to the seaside scene.",
+      "alt_text": "Rounded camper van with surfboards on a beach beneath palm trees, with coastal mountains and a low sun.",
+      "tags": [
+        "camper van",
+        "van",
+        "beach",
+        "surfboards",
+        "travel",
+        "palms"
+      ]
+    }
+  ]
+}

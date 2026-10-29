@@ -18,8 +18,9 @@ test('prepared media stays unverified until rights are documented and signed for
     const source=path.join(dir,'source.png'),secretFile=path.join(dir,'secrets.json');
     await writeFile(source,await sharp(pixels,{raw:{width:128,height:128,channels:1}}).png().toBuffer());
     const secret='s'.repeat(40);await writeFile(secretFile,JSON.stringify({staging:{MEDIA_VALIDATION_SECRET:secret}}));
-    const common=['--import','tsx','scripts/data/prepare-media.ts','--input',source,'--id','jc-test-prepared','--slug','test-prepared','--title','Test','--categories','animals','--secret-file',secretFile,'--environment','staging'];
+    const common=['--import','tsx','scripts/data/prepare-media.ts','--input',source,'--id','jc-test-prepared','--slug','test-prepared','--title','Square Outline','--description','A single square with a wide open center.','--alt','Black square outline on white.','--categories','animals','--secret-file',secretFile,'--environment','staging'];
     const run=(args:string[])=>spawnSync(process.execPath,[...common,...args],{encoding:'utf8',env:{...process.env,MEDIA_VALIDATION_SECRET:''}});
+    const missingAlt=spawnSync(process.execPath,[...common.filter((v,i,a)=>v!=='--alt'&&a[i-1]!=='--alt'),'--output',path.join(dir,'missing-copy')],{encoding:'utf8'});assert.notEqual(missingAlt.status,0);assert.match(missingAlt.stderr,/Required --alt/);
     const rejected=run(['--output',path.join(dir,'rejected'),'--rights-status','documented']);assert.notEqual(rejected.status,0);
     const output=path.join(dir,'prepared'),result=run(['--output',output]);assert.equal(result.status,0,result.stderr);
     const manifest=JSON.parse(await readFile(path.join(output,'manifest.json'),'utf8'));

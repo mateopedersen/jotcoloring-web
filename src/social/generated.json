@@ -1,30 +1,30 @@
 {
   "home": {
-    "src": "/og/pages/home-e463c39cf2bc6008.png",
-    "alt": "JotColoring a little color. a lot of happy. share image: Bring a little color to your day. Featuring Woodland Friends, Sweet Treats.",
-    "sha256": "e463c39cf2bc600856f251ad9ca8677acfe1faaf19076f87666ee09310a28200",
-    "title": "Bring a little color to your day.",
-    "description": "Beautiful coloring pages. A creative moment that is all yours."
+    "src": "/og/pages/home-ced8ba095276b167.png",
+    "alt": "JotColoring printable & online coloring share image: Free coloring pages for kids & adults. Featuring Fox And Rabbit In Wildflowers, Strawberry Cupcakes And Daisies.",
+    "sha256": "ced8ba095276b16741a55aa6c519e96be2417a78d2cbede20a805a8273ef001a",
+    "title": "Free coloring pages for kids & adults.",
+    "description": "Find a favorite theme, print a page, or add your colors online."
   },
   "collection": {
-    "src": "/og/pages/collection-003f146d5d015245.png",
-    "alt": "JotColoring the coloring collection share image: So many pages. So many possibilities. Featuring Woodland Friends, Hibiscus Garden, Dinosaur Valley.",
-    "sha256": "003f146d5d0152455e06d4b816135353131b9beb841fb2470832021c8a08d593",
-    "title": "So many pages. So many possibilities.",
-    "description": "Find a drawing that speaks to you. Your next masterpiece starts here."
+    "src": "/og/pages/collection-95c674a053ae8d89.png",
+    "alt": "JotColoring the coloring collection share image: Find your next coloring page. Featuring Fox And Rabbit In Wildflowers, Hibiscus And Tropical Leaves, Long-Necked Dinosaurs In A Valley.",
+    "sha256": "95c674a053ae8d898b8ca1ab3c370d7f83a41c617202665d40f2227087ad560c",
+    "title": "Find your next coloring page.",
+    "description": "Explore animals, flowers, fantasy scenes, and more. Download or color online."
   },
   "ages": {
-    "src": "/og/pages/ages-d51e81509a7652fd.png",
-    "alt": "JotColoring a page for every stage share image: A little detail. A lot to discover. Featuring Friendly Dragon.",
-    "sha256": "d51e81509a7652fdf5664ac1674b2f70b411f9f6147081a2a7ce47858158e938",
-    "title": "A little detail. A lot to discover.",
+    "src": "/og/pages/ages-a76b5f341da3896b.png",
+    "alt": "JotColoring a page for every stage share image: Coloring pages by age. Featuring Dragon By A Fairytale Castle.",
+    "sha256": "a76b5f341da3896b9a2a19f87159dc92054e0adfe0ba6bfd10204276479a1242",
+    "title": "Coloring pages by age.",
     "description": "Explore coloring pages by recommended age and drawing detail."
   },
   "studio": {
-    "src": "/og/pages/studio-bf84df4d5bbba26b.png",
-    "alt": "JotColoring your colors. your way. share image: Your own little coloring studio. Featuring the actual your colors. your way. tools.",
-    "sha256": "bf84df4d5bbba26bb06c786ced21e9d86700b94235508a09a8d2d785aba2639a",
-    "title": "Your own little coloring studio.",
+    "src": "/og/pages/studio-c2cc7779e2e5dd6f.png",
+    "alt": "JotColoring your colors. your way. share image: Color online in JotColoring Studio. Featuring the actual your colors. your way. tools.",
+    "sha256": "c2cc7779e2e5dd6fd7d7d2dba7803ea307f9640dccc16bb0a6b89ad8f18e9128",
+    "title": "Color online in JotColoring Studio.",
     "description": "Fill a space. Make a mark. Keep the original lines."
   },
   "studio-export": {
@@ -35,106 +35,106 @@
     "description": "Take your finished colors with you as a PDF or image."
   },
   "photo": {
-    "src": "/og/pages/photo-d64c970fea1b44d8.png",
-    "alt": "JotColoring from photo to coloring page share image: Keep the moment. Make it a coloring page. Featuring the actual from photo to coloring page tools.",
-    "sha256": "d64c970fea1b44d8d91c4ff257bdfe02d4ee68f95b7106872d42e9ddbadd684e",
-    "title": "Keep the moment. Make it a coloring page.",
-    "description": "Turn visible contours into an outline, then add colors of your own."
+    "src": "/og/pages/photo-c5e7834f85386eb4.png",
+    "alt": "JotColoring from photo to coloring page share image: Turn a photo into a coloring page. Featuring the actual from photo to coloring page tools.",
+    "sha256": "c5e7834f85386eb4a47468fd98f37ac22ec430f416108555adc13124001e643f",
+    "title": "Turn a photo into a coloring page.",
+    "description": "Create an outline from your photo, adjust the detail, and download your page."
   },
   "ai": {
-    "src": "/og/pages/ai-5f3c934289a7363a.png",
-    "alt": "JotColoring imagination starts with an idea share image: Dream it. Make a page. Color it. Featuring Friendly Dragon, Cozy Bookshop.",
-    "sha256": "5f3c934289a7363a27037d26b8b0512faf9d29e8242b4d4d84527fdc175ee0ae",
-    "title": "Dream it. Make a page. Color it.",
+    "src": "/og/pages/ai-200522984ec4795c.png",
+    "alt": "JotColoring imagination starts with an idea share image: Create a coloring page with AI. Featuring Dragon By A Fairytale Castle, Flower-Covered Bookshop.",
+    "sha256": "200522984ec4795ccd6158507e3140eac69e7159827c68d7930214fc647636a7",
+    "title": "Create a coloring page with AI.",
     "description": "Turn your idea into a coloring-page adventure."
   },
   "artwork": {
     "src": "/og/pages/artwork-f3d2d3039dda994a.png",
-    "alt": "JotColoring your creative corner share image: Your colors. Your collections. Featuring Woodland Friends, Hibiscus Garden, Butterfly Garden.",
+    "alt": "JotColoring your creative corner share image: Your colors. Your collections. Featuring Fox And Rabbit In Wildflowers, Hibiscus And Tropical Leaves, Butterfly And Garden Flowers.",
     "sha256": "f3d2d3039dda994aeeede9d6101d3c02a9ed9f25b14fa9f0f6f7af9be1f6d345",
     "title": "Your colors. Your collections.",
     "description": "Keep your favorite pages, organize boards and return to your saved artwork."
   },
   "printing": {
-    "src": "/og/pages/printing-bc9a15f6c695449b.png",
-    "alt": "JotColoring from screen to pencil & paper share image: Print a little creativity. Featuring the actual from screen to pencil & paper tools.",
-    "sha256": "bc9a15f6c695449b11b90cc23a0a5e5e740755376a9e4ff5b6ade108b709a029",
-    "title": "Print a little creativity.",
+    "src": "/og/pages/printing-51860d39f7a8b9de.png",
+    "alt": "JotColoring from screen to pencil & paper share image: How to print coloring pages. Featuring the actual from screen to pencil & paper tools.",
+    "sha256": "51860d39f7a8b9ded1ed1024972608a8383fd04f061dfbc94d82b8f8558b4437",
+    "title": "How to print coloring pages.",
     "description": "The right file, the right paper and a clear path to your first print."
   },
   "how-to": {
-    "src": "/og/pages/how-to-447b999406daf184.png",
-    "alt": "JotColoring how to use jotcoloring share image: Your first page, made your way. Featuring the actual how to use jotcoloring tools.",
-    "sha256": "447b999406daf184b153cadbbf5c12212f9988ab782068221c7a9d5aaf0a5b2e",
-    "title": "Your first page, made your way.",
+    "src": "/og/pages/how-to-27e8fe0b4e8e3296.png",
+    "alt": "JotColoring how to use jotcoloring share image: How to use JotColoring. Featuring the actual how to use jotcoloring tools.",
+    "sha256": "27e8fe0b4e8e32961b907c143f89cc893565d132c73742008926fd07f7d4f290",
+    "title": "How to use JotColoring.",
     "description": "Search, download, color and save. Follow the real tools step by step."
   },
   "about": {
-    "src": "/og/pages/about-2f2871c820645197.png",
-    "alt": "JotColoring a little space for creativity share image: A little color goes a long way. Featuring Butterfly Garden.",
-    "sha256": "2f2871c82064519748d7caa8236ead44f36b37dbfa159ac633031bea1b8a592b",
-    "title": "A little color goes a long way.",
+    "src": "/og/pages/about-e9f1daccc02aba48.png",
+    "alt": "JotColoring a little space for creativity share image: About JotColoring. Featuring Butterfly And Garden Flowers.",
+    "sha256": "e9f1daccc02aba481fe11d43e4bfeade81876adee526e278ecad224a2e39d414",
+    "title": "About JotColoring.",
     "description": "Why we made JotColoring, and the creative moments you can find here."
   },
   "license": {
     "src": "/og/pages/license-9cd2f7d2332e73b5.png",
-    "alt": "JotColoring the artwork license share image: Clear permission. More room to create. Featuring Hibiscus Garden.",
+    "alt": "JotColoring the artwork license share image: Clear permission. More room to create. Featuring Hibiscus And Tropical Leaves.",
     "sha256": "9cd2f7d2332e73b57503441d5261269d1292350424982f7aa095c2ab7aa04d34",
     "title": "Clear permission. More room to create.",
     "description": "Personal and classroom coloring, with commercial permission by request."
   },
   "licensing": {
     "src": "/og/pages/licensing-cf253187c47374af.png",
-    "alt": "JotColoring commercial licensing share image: A bigger idea? Let’s talk. Featuring Cozy Bookshop.",
+    "alt": "JotColoring commercial licensing share image: A bigger idea? Let’s talk. Featuring Flower-Covered Bookshop.",
     "sha256": "cf253187c47374af190682998ad7429e2214894c0dd459dd17c25d11d0bee766",
     "title": "A bigger idea? Let’s talk.",
     "description": "Tell us about your project and the artwork you would like permission to use."
   },
   "help": {
-    "src": "/og/pages/help-6d9ba4469756a9fa.png",
-    "alt": "JotColoring your creative support space share image: A little help goes a long way. Featuring Woodland Friends.",
-    "sha256": "6d9ba4469756a9fad4f0d4f68aa1e654982b16ec98ee0a0154f238512284024b",
-    "title": "A little help goes a long way.",
+    "src": "/og/pages/help-8b00bfe3478c2c43.png",
+    "alt": "JotColoring your creative support space share image: JotColoring Help Center. Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "8b00bfe3478c2c437c4ad94cead30c19c03308042d12dc90696586fa23ae5eda",
+    "title": "JotColoring Help Center.",
     "description": "Find your next step with downloads, Studio, saves and coloring tools."
   },
   "faq": {
     "src": "/og/pages/faq-98c33bd876b5eedc.png",
-    "alt": "JotColoring frequently asked questions share image: Good questions. Clear answers. Featuring Little Hedgehog.",
+    "alt": "JotColoring frequently asked questions share image: Good questions. Clear answers. Featuring Hedgehog With Mushrooms.",
     "sha256": "98c33bd876b5eedce40f1085d622326ad1a312d33fdf6b4c6046cca02c920769",
     "title": "Good questions. Clear answers.",
     "description": "A closer look at coloring pages, files, tools and your creative space."
   },
   "contact": {
     "src": "/og/pages/contact-e6c47dc4fac23a73.png",
-    "alt": "JotColoring get in touch share image: Let’s make the next step clearer. Featuring Sweet Treats.",
+    "alt": "JotColoring get in touch share image: Let’s make the next step clearer. Featuring Strawberry Cupcakes And Daisies.",
     "sha256": "e6c47dc4fac23a731759140bf8a08bb1dd5107c4f2807116718feb9859c921c7",
     "title": "Let’s make the next step clearer.",
     "description": "Questions, feedback or a licensing idea? Here is how to reach JotColoring."
   },
   "privacy": {
-    "src": "/og/pages/privacy-252dc0fe14ff3069.png",
-    "alt": "JotColoring your privacy, in the picture share image: Your creativity. Your space. Featuring Woodland Friends.",
-    "sha256": "252dc0fe14ff306952b50ae680001e8b124f55759fabf044402b7a13d229190f",
-    "title": "Your creativity. Your space.",
+    "src": "/og/pages/privacy-1e51c052623b6b64.png",
+    "alt": "JotColoring your privacy, in the picture share image: Your privacy at JotColoring. Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "1e51c052623b6b642b58d45731dbd80ad10bd91a3978bc61fe733f51d7d7755a",
+    "title": "Your privacy at JotColoring.",
     "description": "Understand local saves, uploads and the choices around your information."
   },
   "terms": {
     "src": "/og/pages/terms-3dbbf521cc696600.png",
-    "alt": "JotColoring the terms of using jotcoloring share image: Simple terms. Clear expectations. Featuring Botanical Mandala.",
+    "alt": "JotColoring the terms of using jotcoloring share image: Simple terms. Clear expectations. Featuring Floral Leaf Mandala.",
     "sha256": "3dbbf521cc69660086b5667e24a0d5dbca0f81e3ee5c771fa43e6d7500f047dc",
     "title": "Simple terms. Clear expectations.",
     "description": "Understand how the site, creative tools and supplied artwork may be used."
   },
   "cookies": {
-    "src": "/og/pages/cookies-8c95474eb6fac34d.png",
-    "alt": "JotColoring a few essentials. more clarity. share image: Your creative space, explained. Featuring Hibiscus Garden.",
-    "sha256": "8c95474eb6fac34dc9c6d39b68e6570eea87940788415f21f6d6cd4f5802326f",
-    "title": "Your creative space, explained.",
+    "src": "/og/pages/cookies-78e27c1309b7ae69.png",
+    "alt": "JotColoring a few essentials. more clarity. share image: Cookies & browser storage. Featuring Hibiscus And Tropical Leaves.",
+    "sha256": "78e27c1309b7ae69313eb82964a8f34f590d005143a9a606e1fad923d341cc69",
+    "title": "Cookies & browser storage.",
     "description": "Cookies, browser storage and the work you choose to keep."
   },
   "accessibility": {
     "src": "/og/pages/accessibility-f357899b9f2d3068.png",
-    "alt": "JotColoring more ways to find your color share image: A creative space with you in mind. Featuring Butterfly Garden.",
+    "alt": "JotColoring more ways to find your color share image: A creative space with you in mind. Featuring Butterfly And Garden Flowers.",
     "sha256": "f357899b9f2d3068d9d2c53f76212a6313f2c7166ba2d39b48d3afc885609b33",
     "title": "A creative space with you in mind.",
     "description": "Explore keyboard controls, readable tools and the limits we explain openly."
@@ -148,282 +148,282 @@
   },
   "admin": {
     "src": "/og/pages/admin-268e594545616267.png",
-    "alt": "JotColoring jotcoloring management share image: A well-kept creative collection. Featuring Botanical Mandala.",
+    "alt": "JotColoring jotcoloring management share image: A well-kept creative collection. Featuring Floral Leaf Mandala.",
     "sha256": "268e594545616267ec00a9842f286df9fa815b5cc044f38b4227d3ca12d5f066",
     "title": "A well-kept creative collection.",
     "description": "The authorized workspace for content, files, publishing and recovery."
   },
   "category-animals": {
-    "src": "/og/pages/category-animals-1a2d81a734c2c4e3.png",
-    "alt": "JotColoring animals coloring pages share image: Wild little worlds, waiting for color. Featuring Woodland Friends, Woodland Owl, Sleepy Kitten.",
-    "sha256": "1a2d81a734c2c4e3ea500d9d94cb1797f66fbc7e5d6cf8e5e68dbec5e3c713e7",
-    "title": "Wild little worlds, waiting for color.",
-    "description": "Meet woodland friends, favorite pets and creatures to make your own."
+    "src": "/og/pages/category-animals-cfd656a6727ae876.png",
+    "alt": "JotColoring printable coloring pages share image: Animal coloring pages. Featuring Fox And Rabbit In Wildflowers, Owl Under A Crescent Moon, Sleeping Kitten With Yarn.",
+    "sha256": "cfd656a6727ae876c9408eddc51c74738be5f03a834c739c9ec7f6d1ce892ac2",
+    "title": "Animal coloring pages.",
+    "description": "Explore animals drawings to print or color online."
   },
   "category-flowers": {
-    "src": "/og/pages/category-flowers-3a50f6f8d96015fa.png",
-    "alt": "JotColoring flowers coloring pages share image: Let your imagination bloom. Featuring Butterfly Garden, Hibiscus Garden.",
-    "sha256": "3a50f6f8d96015fa5e66d09052f756f1b3ae702ad65d3bf5556f911c5a620ed9",
-    "title": "Let your imagination bloom.",
-    "description": "Explore the flowers collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-flowers-0b92bab2b2d7a12c.png",
+    "alt": "JotColoring printable coloring pages share image: Flower coloring pages. Featuring Butterfly And Garden Flowers, Hibiscus And Tropical Leaves.",
+    "sha256": "0b92bab2b2d7a12c241bcfb90f19b13428d6574ff005c2ce95fad688cbe72190",
+    "title": "Flower coloring pages.",
+    "description": "Explore flowers drawings to print or color online."
   },
   "category-fantasy": {
-    "src": "/og/pages/category-fantasy-836ed822e2630936.png",
-    "alt": "JotColoring fantasy coloring pages share image: A little magic, made by you. Featuring Cozy Bookshop, Friendly Dragon.",
-    "sha256": "836ed822e26309367b1fefc8d71b3c600fe64bd0e972461e1932c0f2868c3518",
-    "title": "A little magic, made by you.",
-    "description": "Explore the fantasy collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-fantasy-51a6f78a8a2b30b3.png",
+    "alt": "JotColoring printable coloring pages share image: Fantasy coloring pages. Featuring Flower-Covered Bookshop, Dragon By A Fairytale Castle.",
+    "sha256": "51a6f78a8a2b30b3bc71900f007ac89b3e7fa2d9ec40187add043ae4bb6d3887",
+    "title": "Fantasy coloring pages.",
+    "description": "Explore fantasy drawings to print or color online."
   },
   "category-mandalas": {
-    "src": "/og/pages/category-mandalas-b0b411e58b5210d6.png",
-    "alt": "JotColoring mandalas coloring pages share image: Find your calm, one pattern at a time. Featuring Botanical Mandala.",
-    "sha256": "b0b411e58b5210d67125dbebcccb0a558f7165ff12cceaa06ce37276a7eab855",
-    "title": "Find your calm, one pattern at a time.",
-    "description": "Explore the mandalas collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-mandalas-f55d2e4b7e8293a2.png",
+    "alt": "JotColoring printable coloring pages share image: Mandala coloring pages. Featuring Floral Leaf Mandala.",
+    "sha256": "f55d2e4b7e8293a2d90be511f4de1e7727fb67dfe5255285c9138bfc97cbd1c8",
+    "title": "Mandala coloring pages.",
+    "description": "Explore mandalas drawings to print or color online."
   },
   "category-holidays": {
-    "src": "/og/pages/category-holidays-1991ad8ca5653ebe.png",
-    "alt": "JotColoring holidays coloring pages share image: Make the season a little brighter. Featuring Winter Wishes.",
-    "sha256": "1991ad8ca5653ebe872f499a259d6345104e0c6f8099048e8aa05a5f26416dbd",
-    "title": "Make the season a little brighter.",
-    "description": "Explore the holidays collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-holidays-bc00c3f4a06f583b.png",
+    "alt": "JotColoring printable coloring pages share image: Holiday coloring pages. Featuring Snowman With Gifts And Ornaments.",
+    "sha256": "bc00c3f4a06f583bb09cc214ea25ff52c1c623ff5100301c2271fc2b8c240fbc",
+    "title": "Holiday coloring pages.",
+    "description": "Explore holidays drawings to print or color online."
   },
   "category-vehicles": {
-    "src": "/og/pages/category-vehicles-6b96fa014981c46f.png",
-    "alt": "JotColoring vehicles coloring pages share image: Your next colorful adventure. Featuring Camper Adventure.",
-    "sha256": "6b96fa014981c46f696312adc1bafbbb949241d8c8485fba558aa67eb71095f7",
-    "title": "Your next colorful adventure.",
-    "description": "Explore the vehicles collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-vehicles-93bc83539e8d720f.png",
+    "alt": "JotColoring printable coloring pages share image: Vehicle coloring pages. Featuring Camper Van At The Beach.",
+    "sha256": "93bc83539e8d720f2df37bbdcd0ee8265e94167483aaf8291b26f116e7918cf7",
+    "title": "Vehicle coloring pages.",
+    "description": "Explore vehicles drawings to print or color online."
   },
   "category-space": {
-    "src": "/og/pages/category-space-928175ce7fd72fee.png",
-    "alt": "JotColoring space coloring pages share image: A whole universe of possibility. Featuring Space Explorer.",
-    "sha256": "928175ce7fd72fee2ce95e9d5299782429ed05207a99bb8e7df5c7e6818a456d",
-    "title": "A whole universe of possibility.",
-    "description": "Explore the space collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-space-acfe975f2706de45.png",
+    "alt": "JotColoring printable coloring pages share image: Space coloring pages. Featuring Astronaut Among The Planets.",
+    "sha256": "acfe975f2706de4552104d0e2d1100f675d5d1195071cb27cee35556f601ddd3",
+    "title": "Space coloring pages.",
+    "description": "Explore space drawings to print or color online."
   },
   "category-ocean": {
-    "src": "/og/pages/category-ocean-d93eab64e06e6ef3.png",
-    "alt": "JotColoring ocean coloring pages share image: Dive into a little creativity. Featuring Ocean Adventure.",
-    "sha256": "d93eab64e06e6ef39fefed17daceae9271bbe6c41251f692fa6b4c722ed4b6c0",
-    "title": "Dive into a little creativity.",
-    "description": "Explore the ocean collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-ocean-369f247fe9d93c44.png",
+    "alt": "JotColoring printable coloring pages share image: Ocean coloring pages. Featuring Sea Turtle And Coral Reef.",
+    "sha256": "369f247fe9d93c44cffffb47c1138ca2b19f1a19b371cdb7235682c5b8860c82",
+    "title": "Ocean coloring pages.",
+    "description": "Explore ocean drawings to print or color online."
   },
   "category-food": {
-    "src": "/og/pages/category-food-74b17943af6ed20f.png",
-    "alt": "JotColoring food coloring pages share image: A sweet little coloring break. Featuring Sweet Treats.",
-    "sha256": "74b17943af6ed20f603a563f057df8116b7525b23636f48c1d5ef223b2e1dede",
-    "title": "A sweet little coloring break.",
-    "description": "Explore the food collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-food-eba51070ba00efa3.png",
+    "alt": "JotColoring printable coloring pages share image: Food coloring pages. Featuring Strawberry Cupcakes And Daisies.",
+    "sha256": "eba51070ba00efa351afb8e01371870c584c5f7f26eefd4db91e2995ac06cfe4",
+    "title": "Food coloring pages.",
+    "description": "Explore food drawings to print or color online."
   },
   "category-dinosaurs": {
-    "src": "/og/pages/category-dinosaurs-14f45c4cd379b62d.png",
-    "alt": "JotColoring dinosaurs coloring pages share image: Big adventures. Little moments. Featuring Dinosaur Valley.",
-    "sha256": "14f45c4cd379b62d9737c1ae1a6de9aa4ec096550d66499976c3a42322ab4dc1",
-    "title": "Big adventures. Little moments.",
-    "description": "Explore the dinosaurs collection. Pick a page and give it your own colors."
+    "src": "/og/pages/category-dinosaurs-0fbcf81fc569ae16.png",
+    "alt": "JotColoring printable coloring pages share image: Dinosaur coloring pages. Featuring Long-Necked Dinosaurs In A Valley.",
+    "sha256": "0fbcf81fc569ae16687f4d244c5f3dce062458c76d113c3f68ce91ae53cb304d",
+    "title": "Dinosaur coloring pages.",
+    "description": "Explore dinosaurs drawings to print or color online."
   },
   "animals-woodland": {
-    "src": "/og/pages/animals-woodland-c2bd20ab04996bf3.png",
-    "alt": "JotColoring woodland coloring pages share image: Follow your woodland curiosity. Featuring Woodland Friends, Little Hedgehog, Gentle Deer.",
-    "sha256": "c2bd20ab04996bf34a9a66e8f0ac8d269d7b978159eab6f0a6e6f8f205383859",
-    "title": "Follow your woodland curiosity.",
-    "description": "A closer look at the woodland animal collection."
+    "src": "/og/pages/animals-woodland-e718ae3973f7eb11.png",
+    "alt": "JotColoring animal coloring collection share image: Woodland coloring pages. Featuring Fox And Rabbit In Wildflowers, Hedgehog With Mushrooms, Fawn In A Woodland Garden.",
+    "sha256": "e718ae3973f7eb11293bd0c1840b4503ed7607a8409412fdfa4d358f70e96081",
+    "title": "Woodland coloring pages.",
+    "description": "Find a woodland drawing to download or color in Studio."
   },
   "animals-pets": {
-    "src": "/og/pages/animals-pets-5c237eb678158ac8.png",
-    "alt": "JotColoring pets coloring pages share image: Your favorite little companions. Featuring Sleepy Kitten, Playful Puppy.",
-    "sha256": "5c237eb678158ac80c88b466e70d289e35984947add996e7bca1fed2186d0a0b",
-    "title": "Your favorite little companions.",
-    "description": "A closer look at the pets animal collection."
+    "src": "/og/pages/animals-pets-882796892508dd21.png",
+    "alt": "JotColoring animal coloring collection share image: Pet coloring pages. Featuring Sleeping Kitten With Yarn, Puppy With A Ball And Daisies.",
+    "sha256": "882796892508dd2154fe5492ddec90aff7d91bd219d2c4cd133f12588c1dd6c9",
+    "title": "Pet coloring pages.",
+    "description": "Find a pets drawing to download or color in Studio."
   },
   "animals-farm-animals": {
-    "src": "/og/pages/animals-farm-animals-3c0a02fbb21805e6.png",
-    "alt": "JotColoring farm animals coloring pages share image: A friendly day on the farm. Featuring Farm Friends.",
-    "sha256": "3c0a02fbb21805e66f7b568bd2850c290382dfebb2a23248104ff85d544cb6e3",
-    "title": "A friendly day on the farm.",
-    "description": "A closer look at the farm animals animal collection."
+    "src": "/og/pages/animals-farm-animals-610e506707837622.png",
+    "alt": "JotColoring animal coloring collection share image: Farm Animal coloring pages. Featuring Calf By The Barn.",
+    "sha256": "610e50670783762269ca444784222a9fa99bc09964e9daf15199847fea3f68c8",
+    "title": "Farm Animal coloring pages.",
+    "description": "Find a farm animals drawing to download or color in Studio."
   },
   "animals-ocean-life": {
-    "src": "/og/pages/animals-ocean-life-12954275dedda813.png",
-    "alt": "JotColoring ocean life coloring pages share image: Color a world beneath the waves. Featuring Ocean Adventure.",
-    "sha256": "12954275dedda81370e2b0a9e6be0d2bab7b616d8206c2740da7ed59ff5f8ae3",
-    "title": "Color a world beneath the waves.",
-    "description": "A closer look at the ocean life animal collection."
+    "src": "/og/pages/animals-ocean-life-86c82106aa5aa009.png",
+    "alt": "JotColoring animal coloring collection share image: Ocean Life coloring pages. Featuring Sea Turtle And Coral Reef.",
+    "sha256": "86c82106aa5aa0090b5a3f1e51eeaeff01b170450b4f55528b41fad8f3f36d80",
+    "title": "Ocean Life coloring pages.",
+    "description": "Find a ocean life drawing to download or color in Studio."
   },
   "animals-birds": {
-    "src": "/og/pages/animals-birds-6b3e3229be7fba2e.png",
-    "alt": "JotColoring birds coloring pages share image: Let your colors take flight. Featuring Woodland Owl.",
-    "sha256": "6b3e3229be7fba2ee0322b37f2dde4e64f2208b1a83cca85128e91602cc5d0c8",
-    "title": "Let your colors take flight.",
-    "description": "A closer look at the birds animal collection."
+    "src": "/og/pages/animals-birds-058fca64d3dc5427.png",
+    "alt": "JotColoring animal coloring collection share image: Bird coloring pages. Featuring Owl Under A Crescent Moon.",
+    "sha256": "058fca64d3dc542772ff37d871078b6e526939ab7d4c9a2cf378572cbe3afad8",
+    "title": "Bird coloring pages.",
+    "description": "Find a birds drawing to download or color in Studio."
   },
   "animals-dinosaurs": {
-    "src": "/og/pages/animals-dinosaurs-9a4644fbdfb864d1.png",
-    "alt": "JotColoring dinosaurs coloring pages share image: Make room for a prehistoric adventure. Featuring Dinosaur Valley.",
-    "sha256": "9a4644fbdfb864d1df44dcb41255a2bf6c6193b4a63b5575e3654f47b54561f3",
-    "title": "Make room for a prehistoric adventure.",
-    "description": "A closer look at the dinosaurs animal collection."
+    "src": "/og/pages/animals-dinosaurs-2954f0b9ffb98591.png",
+    "alt": "JotColoring animal coloring collection share image: Dinosaur coloring pages. Featuring Long-Necked Dinosaurs In A Valley.",
+    "sha256": "2954f0b9ffb9859189a29023a10939eeea86300a84ae3a2241c85da59dfe5832",
+    "title": "Dinosaur coloring pages.",
+    "description": "Find a dinosaurs drawing to download or color in Studio."
   },
   "age-3-5": {
-    "src": "/og/pages/age-3-5-bcc5c8097e2364b9.png",
-    "alt": "JotColoring ages 3–5 share image: Big spaces. Little discoveries. ",
-    "sha256": "bcc5c8097e2364b9399ea4ee4a8f594fe1cc5084c2b01ccf2bb8b8274b0b59b3",
-    "title": "Big spaces. Little discoveries.",
+    "src": "/og/pages/age-3-5-4381196354617480.png",
+    "alt": "JotColoring browse by recommended age share image: Coloring pages for ages 3–5. ",
+    "sha256": "4381196354617480865d9f17a2f8072ce0363ac1686c7c8fa119a0501f66cce2",
+    "title": "Coloring pages for ages 3–5.",
     "description": "Start with broad coloring spaces and fewer details."
   },
   "age-6-8": {
-    "src": "/og/pages/age-6-8-bc437130c17a8a88.png",
-    "alt": "JotColoring ages 6–8 share image: A little more to explore. Featuring Sleepy Kitten.",
-    "sha256": "bc437130c17a8a889658ba159b2928759315b6ec4320a37c03e544ac6c98b2ef",
-    "title": "A little more to explore.",
+    "src": "/og/pages/age-6-8-dacc15f482b2d3b3.png",
+    "alt": "JotColoring browse by recommended age share image: Coloring pages for ages 6–8. Featuring Snowman With Gifts And Ornaments.",
+    "sha256": "dacc15f482b2d3b3d987e12af0cb13cd70643484abddb2168ceffbe11ec319e9",
+    "title": "Coloring pages for ages 6–8.",
     "description": "Build a colorful scene with manageable details."
   },
   "age-9-12": {
-    "src": "/og/pages/age-9-12-3f3aa0b30961f1ae.png",
-    "alt": "JotColoring ages 9–12 share image: Let the details draw you in. Featuring Woodland Friends.",
-    "sha256": "3f3aa0b30961f1aeb7b16e82c223f826eeba679bd157dfbdc9d074225d45d96c",
-    "title": "Let the details draw you in.",
+    "src": "/og/pages/age-9-12-621c537b3b83af5a.png",
+    "alt": "JotColoring browse by recommended age share image: Coloring pages for ages 9–12. Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "621c537b3b83af5ae7d821332d47713ace22867b63a3d54293ca8311be93685e",
+    "title": "Coloring pages for ages 9–12.",
     "description": "Explore richer scenes, patterns and smaller spaces."
   },
   "age-13-17": {
-    "src": "/og/pages/age-13-17-e71e435616a0cd9b.png",
-    "alt": "JotColoring ages 13–17 share image: Make room for your own style. Featuring Cozy Bookshop.",
-    "sha256": "e71e435616a0cd9b4fc1c3b99c389999d1bcea9b161134d53ff0c383b0f018a9",
-    "title": "Make room for your own style.",
+    "src": "/og/pages/age-13-17-d855f41cdbb3caef.png",
+    "alt": "JotColoring browse by recommended age share image: Coloring pages for ages 13–17. Featuring Flower-Covered Bookshop.",
+    "sha256": "d855f41cdbb3caef92eacda1456f07526253219222a9388c0c33036af57c86e5",
+    "title": "Coloring pages for ages 13–17.",
     "description": "Spend time on layered scenes and intricate details."
   },
   "age-adults": {
-    "src": "/og/pages/age-adults-bf0e23f4fa65f69b.png",
-    "alt": "JotColoring adults share image: A deeper kind of coloring break. Featuring Botanical Mandala.",
-    "sha256": "bf0e23f4fa65f69b73226d12dec003c5a83e16200cffbc3e3af07c45017dfd2f",
-    "title": "A deeper kind of coloring break.",
+    "src": "/og/pages/age-adults-5b603b93d58f84e6.png",
+    "alt": "JotColoring browse by recommended age share image: Coloring pages for adults. Featuring Floral Leaf Mandala.",
+    "sha256": "5b603b93d58f84e6ba104be5fca4f3a85ce2cb08167544130b312377c031f5fe",
+    "title": "Coloring pages for adults.",
     "description": "Settle into fine lines, small spaces and intricate patterns."
   },
   "coloring-woodland-friends": {
-    "src": "/og/coloring/coloring-woodland-friends-712ce47bbecabac1.png",
-    "alt": "JotColoring animals coloring page share image: Woodland Friends Featuring Woodland Friends.",
-    "sha256": "712ce47bbecabac19d575c2dd1b1eb10ecf094aad340908bc282936984df1930",
-    "title": "Woodland Friends",
-    "description": "A fox and a rabbit rest together among woodland flowers, berries and leafy branches."
+    "src": "/og/coloring/coloring-woodland-friends-972b03df777ebf6d.png",
+    "alt": "JotColoring animals coloring page share image: Fox And Rabbit In Wildflowers Featuring Fox And Rabbit In Wildflowers.",
+    "sha256": "972b03df777ebf6de34733d3ff36cda4f5b7b095765f12628b728e7cb7bff97d",
+    "title": "Fox And Rabbit In Wildflowers",
+    "description": "A fox and rabbit sit together on a log, framed by wildflowers, berries, and leafy branches. Fine fur lines contrast with the larger petals and leaves."
   },
   "coloring-cozy-bookshop": {
-    "src": "/og/coloring/coloring-cozy-bookshop-89d6f6ac21c6fcf4.png",
-    "alt": "JotColoring fantasy coloring page share image: Cozy Bookshop Featuring Cozy Bookshop.",
-    "sha256": "89d6f6ac21c6fcf47041f8dd54ec09864cc1b721e707dea8319b2bc8d8358b73",
-    "title": "Cozy Bookshop",
-    "description": "An inviting storybook bookshop has full display windows and potted flowers around its entrance."
+    "src": "/og/coloring/coloring-cozy-bookshop-8cbcb8264a8db988.png",
+    "alt": "JotColoring fantasy coloring page share image: Flower-Covered Bookshop Featuring Flower-Covered Bookshop.",
+    "sha256": "8cbcb8264a8db98891f602d1f1f0cf2c76589b19d7daf217e95e54028ebcaffe",
+    "title": "Flower-Covered Bookshop",
+    "description": "Flowering vines surround an arched bookshop doorway and windows filled with books. Potted plants and a cobblestone path complete the detailed storefront."
   },
   "coloring-butterfly-garden": {
-    "src": "/og/coloring/coloring-butterfly-garden-743009a8af4bd5af.png",
-    "alt": "JotColoring flowers coloring page share image: Butterfly Garden Featuring Butterfly Garden.",
-    "sha256": "743009a8af4bd5af3aea7404d6c2d500c3a13620ee525d70d805aeb42b342ae0",
-    "title": "Butterfly Garden",
-    "description": "A butterfly spreads its patterned wings among daisies, buds and hibiscus-like flowers."
+    "src": "/og/coloring/coloring-butterfly-garden-44fe59477acfd11c.png",
+    "alt": "JotColoring flowers coloring page share image: Butterfly And Garden Flowers Featuring Butterfly And Garden Flowers.",
+    "sha256": "44fe59477acfd11c874544d92896950e16e453f56a8b07ded20cf92448366f3a",
+    "title": "Butterfly And Garden Flowers",
+    "description": "A large butterfly spreads its patterned wings among hibiscus blooms, daisies, and pointed leaves. The wing sections offer room to repeat colors or try contrasting shades."
   },
   "coloring-ocean-adventure": {
-    "src": "/og/coloring/coloring-ocean-adventure-434724a1a751ea1a.png",
-    "alt": "JotColoring ocean coloring page share image: Ocean Adventure Featuring Ocean Adventure.",
-    "sha256": "434724a1a751ea1a566fa89d34f2e182650d9a2fd1688cd3d4a76f80b3a72084",
-    "title": "Ocean Adventure",
-    "description": "A sea turtle swims through coral and seaweed alongside small tropical fish."
+    "src": "/og/coloring/coloring-ocean-adventure-4e2c5beb04f9f1fc.png",
+    "alt": "JotColoring ocean coloring page share image: Sea Turtle And Coral Reef Featuring Sea Turtle And Coral Reef.",
+    "sha256": "4e2c5beb04f9f1fc966d6a065a3b02ec1d4b8855d6de2dd6230d939c8be356ab",
+    "title": "Sea Turtle And Coral Reef",
+    "description": "A sea turtle swims above a reef with striped fish, seaweed, and branching coral. Its patterned shell and scaled flippers bring extra detail to the underwater scene."
   },
   "coloring-space-explorer": {
-    "src": "/og/coloring/coloring-space-explorer-1c21aea1c7f1b934.png",
-    "alt": "JotColoring space coloring page share image: Space Explorer Featuring Space Explorer.",
-    "sha256": "1c21aea1c7f1b934b7ec191b32a7f1a564a9b452feea6a83e2ae5dcd479af72d",
-    "title": "Space Explorer",
-    "description": "A smiling fictional astronaut floats among ringed planets, stars and small space rocks."
+    "src": "/og/coloring/coloring-space-explorer-bcd545a24c4b2f02.png",
+    "alt": "JotColoring space coloring page share image: Astronaut Among The Planets Featuring Astronaut Among The Planets.",
+    "sha256": "bcd545a24c4b2f02acd5531bf597f22c03bfb1df61fa7bcd2807e10eb786e871",
+    "title": "Astronaut Among The Planets",
+    "description": "A smiling cartoon astronaut reaches forward while floating among planets, stars, and space rocks. A ringed planet and a distant spiral galaxy surround the spacesuit."
   },
   "coloring-sweet-treats": {
-    "src": "/og/coloring/coloring-sweet-treats-5f176292e17459f9.png",
-    "alt": "JotColoring food coloring page share image: Sweet Treats Featuring Sweet Treats.",
-    "sha256": "5f176292e17459f988751682330efb30b938ae40cb1de0e45e4d24c6a48d704a",
-    "title": "Sweet Treats",
-    "description": "Swirled cupcakes, berries and sweets fill a playful dessert arrangement."
+    "src": "/og/coloring/coloring-sweet-treats-9c822c057ab3d4f2.png",
+    "alt": "JotColoring food coloring page share image: Strawberry Cupcakes And Daisies Featuring Strawberry Cupcakes And Daisies.",
+    "sha256": "9c822c057ab3d4f20997c3716a1fe63d7f3e127775c561826b2d80570571c637",
+    "title": "Strawberry Cupcakes And Daisies",
+    "description": "Three cupcakes have swirls of frosting topped with strawberries and flowers. Sliced berries, daisies, and leaves fill the spaces between the desserts."
   },
   "coloring-botanical-mandala": {
-    "src": "/og/coloring/coloring-botanical-mandala-e666cd9f891771c0.png",
-    "alt": "JotColoring mandalas coloring page share image: Botanical Mandala Featuring Botanical Mandala.",
-    "sha256": "e666cd9f891771c0526ae0068d767c2b9762d81628b4a089ddd9373086b67e5e",
-    "title": "Botanical Mandala",
-    "description": "Concentric petals, leaves and tiny flowers form an elongated botanical mandala."
+    "src": "/og/coloring/coloring-botanical-mandala-1cee856f7df35d40.png",
+    "alt": "JotColoring mandalas coloring page share image: Floral Leaf Mandala Featuring Floral Leaf Mandala.",
+    "sha256": "1cee856f7df35d406c77f52c61cb379e0566f76f1487f759af725d274600840c",
+    "title": "Floral Leaf Mandala",
+    "description": "Layered petals radiate from a small central flower into repeating leaves, blossoms, and bead-like details. The symmetrical pattern offers many small sections for a limited or repeating palette."
   },
   "coloring-woodland-owl": {
-    "src": "/og/coloring/coloring-woodland-owl-d7444830b70441b1.png",
-    "alt": "JotColoring animals coloring page share image: Woodland Owl Featuring Woodland Owl.",
-    "sha256": "d7444830b70441b10a3b93a40557a60b20bb1816fcb2b7df6b637bf77a0982f4",
-    "title": "Woodland Owl",
-    "description": "An owl perches on a flowering branch beneath a crescent moon and stars."
+    "src": "/og/coloring/coloring-woodland-owl-baefa896c412661c.png",
+    "alt": "JotColoring animals coloring page share image: Owl Under A Crescent Moon Featuring Owl Under A Crescent Moon.",
+    "sha256": "baefa896c412661ceb957f5c772a2efb73a4426d608ded3c41d8b46b0d9784ab",
+    "title": "Owl Under A Crescent Moon",
+    "description": "A wide-eyed owl perches on a branch beneath a crescent moon and stars. Overlapping feathers, flowers, and a distant woodland create a detailed nighttime setting."
   },
   "coloring-winter-wishes": {
-    "src": "/og/coloring/coloring-winter-wishes-1ccf2034bef768ff.png",
-    "alt": "JotColoring holidays coloring page share image: Winter Wishes Featuring Winter Wishes.",
-    "sha256": "1ccf2034bef768ff46618eaa40bf7118c6e57c704dcd884a9934e0a940519d9d",
-    "title": "Winter Wishes",
-    "description": "A snowman in a knitted cap and scarf stands among presents, fir branches and hanging baubles."
+    "src": "/og/coloring/coloring-winter-wishes-33e010b6d7ce8f6c.png",
+    "alt": "JotColoring holidays coloring page share image: Snowman With Gifts And Ornaments Featuring Snowman With Gifts And Ornaments.",
+    "sha256": "33e010b6d7ce8f6c871fc1dd900a3b1d2198762e2d287fe585f53a5969f5743d",
+    "title": "Snowman With Gifts And Ornaments",
+    "description": "A smiling snowman wears a knit hat, scarf, and patterned mittens beside wrapped gifts. Hanging ornaments, snowflakes, and evergreen branches frame the winter scene."
   },
   "coloring-sleepy-kitten": {
-    "src": "/og/coloring/coloring-sleepy-kitten-d4b5ee1ff0168903.png",
-    "alt": "JotColoring animals coloring page share image: Sleepy Kitten Featuring Sleepy Kitten.",
-    "sha256": "d4b5ee1ff0168903931b2b35eee2c8b7872fa70dbad556f9165a9895b26b49e3",
-    "title": "Sleepy Kitten",
-    "description": "A fluffy kitten sleeps beside a ball of yarn among daisies and garden foliage."
+    "src": "/og/coloring/coloring-sleepy-kitten-d23630a78b83163a.png",
+    "alt": "JotColoring animals coloring page share image: Sleeping Kitten With Yarn Featuring Sleeping Kitten With Yarn.",
+    "sha256": "d23630a78b83163a3c8c038887600621d37bbf51d1065a488bece66044357c5f",
+    "title": "Sleeping Kitten With Yarn",
+    "description": "A kitten curls up beside a ball of yarn in a flower-filled garden. Daisies, leafy stems, and a wooden fence surround its resting spot."
   },
   "coloring-playful-puppy": {
-    "src": "/og/coloring/coloring-playful-puppy-7f0a22d1b2d5fbd2.png",
-    "alt": "JotColoring animals coloring page share image: Playful Puppy Featuring Playful Puppy.",
-    "sha256": "7f0a22d1b2d5fbd21d6304d872966e73bd380da465bea654f56cfb0ea6723cb3",
-    "title": "Playful Puppy",
-    "description": "A floppy-eared puppy sits with a ball at its paws in a garden of daisies."
+    "src": "/og/coloring/coloring-playful-puppy-2d8ed7ca5e4700e6.png",
+    "alt": "JotColoring animals coloring page share image: Puppy With A Ball And Daisies Featuring Puppy With A Ball And Daisies.",
+    "sha256": "2d8ed7ca5e4700e6c116465b2692be24d21c330fd65bed366d3ef310bb294844",
+    "title": "Puppy With A Ball And Daisies",
+    "description": "A fluffy, floppy-eared puppy sits with its tongue out and a ball beside one paw. Tall daisies and grass frame the playful garden scene."
   },
   "coloring-little-hedgehog": {
-    "src": "/og/coloring/coloring-little-hedgehog-1188e86d3e218f1d.png",
-    "alt": "JotColoring animals coloring page share image: Little Hedgehog Featuring Little Hedgehog.",
-    "sha256": "1188e86d3e218f1d83e14a782f4c96f7b0b5292f4503c2aaceac33e970eb1b9b",
-    "title": "Little Hedgehog",
-    "description": "A round hedgehog walks among fallen leaves, acorns and mushrooms beside a log."
+    "src": "/og/coloring/coloring-little-hedgehog-8b618d0daeea4663.png",
+    "alt": "JotColoring animals coloring page share image: Hedgehog With Mushrooms Featuring Hedgehog With Mushrooms.",
+    "sha256": "8b618d0daeea4663dbcd7cf8de1115b8b93410874f6c7f6cd28a066b70825b7c",
+    "title": "Hedgehog With Mushrooms",
+    "description": "A small hedgehog stands on a leafy woodland floor beside a spotted mushroom. Its pointed spines contrast with broad leaves, flowers, and a fallen log."
   },
   "coloring-hibiscus-garden": {
-    "src": "/og/coloring/coloring-hibiscus-garden-f2cadb3b05189db8.png",
-    "alt": "JotColoring flowers coloring page share image: Hibiscus Garden Featuring Hibiscus Garden.",
-    "sha256": "f2cadb3b05189db8fa0efc9ff2635fea0437a1357512a760ed608d8d79694947",
-    "title": "Hibiscus Garden",
-    "description": "A broad hibiscus flower opens among buds, daisies and tropical leaves."
+    "src": "/og/coloring/coloring-hibiscus-garden-d9bae28dd84ba053.png",
+    "alt": "JotColoring flowers coloring page share image: Hibiscus And Tropical Leaves Featuring Hibiscus And Tropical Leaves.",
+    "sha256": "d9bae28dd84ba053e52c75c71739d39d5f4fdc3142e964e2538c5d37c44c4aed",
+    "title": "Hibiscus And Tropical Leaves",
+    "description": "One large hibiscus bloom is surrounded by smaller flowers, buds, and tropical foliage. Broad petals, a detailed flower center, and split leaves create a mix of open and intricate spaces."
   },
   "coloring-gentle-deer": {
-    "src": "/og/coloring/coloring-gentle-deer-70943a573f34cfbd.png",
-    "alt": "JotColoring animals coloring page share image: Gentle Deer Featuring Gentle Deer.",
-    "sha256": "70943a573f34cfbd3ce9c537d2ee2253cb2d71e413c1efec3bd721d2a74d25d8",
-    "title": "Gentle Deer",
-    "description": "A spotted fawn rests among daisies and ferns with a woodland stream behind it."
+    "src": "/og/coloring/coloring-gentle-deer-d5403a1ef7f9875c.png",
+    "alt": "JotColoring animals coloring page share image: Fawn In A Woodland Garden Featuring Fawn In A Woodland Garden.",
+    "sha256": "d5403a1ef7f9875c7e07c41e3e072e7781774a01ef15d50a53e4d68b3f821450",
+    "title": "Fawn In A Woodland Garden",
+    "description": "A spotted fawn rests beneath leafy branches beside a stream. Flowers, ferns, rocks, and distant evergreen trees surround its curled body."
   },
   "coloring-friendly-dragon": {
-    "src": "/og/coloring/coloring-friendly-dragon-9d3a0889686385ed.png",
-    "alt": "JotColoring fantasy coloring page share image: Friendly Dragon Featuring Friendly Dragon.",
-    "sha256": "9d3a0889686385ed3883efdb4b9104c5dacbeeb039c515e5db190bf9b5db90d7",
-    "title": "Friendly Dragon",
-    "description": "A smiling winged dragon sits in a flower garden in front of a turreted storybook castle."
+    "src": "/og/coloring/coloring-friendly-dragon-da6eb0a8b1dc8c04.png",
+    "alt": "JotColoring fantasy coloring page share image: Dragon By A Fairytale Castle Featuring Dragon By A Fairytale Castle.",
+    "sha256": "da6eb0a8b1dc8c047cf62eb93e6c9e0822ecd89a041ea66ed63b6e1a21a6dee4",
+    "title": "Dragon By A Fairytale Castle",
+    "description": "A young winged dragon sits on a garden path in front of a turreted castle. Large wing panels and belly sections sit alongside smaller scales, flowers, and stonework."
   },
   "coloring-farm-friends": {
-    "src": "/og/coloring/coloring-farm-friends-d7120445f5335793.png",
-    "alt": "JotColoring animals coloring page share image: Farm Friends Featuring Farm Friends.",
-    "sha256": "d7120445f53357931c5788025034eeba4696dde5033c0c22452a97ca3a92be66",
-    "title": "Farm Friends",
-    "description": "A young cow with outlined coat patches stands among daisies beside a fence and barn."
+    "src": "/og/coloring/coloring-farm-friends-fd288fa2087f5ed7.png",
+    "alt": "JotColoring animals coloring page share image: Calf By The Barn Featuring Calf By The Barn.",
+    "sha256": "fd288fa2087f5ed76722f7de77210981aea225c3d03e4130c6584ac98448a02e",
+    "title": "Calf By The Barn",
+    "description": "A young cow stands among daisies beside a wooden fence and barn. Its outlined coat patches and broad body offer a clear starting point before the smaller farm details."
   },
   "coloring-dinosaur-valley": {
-    "src": "/og/coloring/coloring-dinosaur-valley-d75082f6fcabe2bb.png",
-    "alt": "JotColoring dinosaurs coloring page share image: Dinosaur Valley Featuring Dinosaur Valley.",
-    "sha256": "d75082f6fcabe2bb93dcb7240d1ad90b42108810bfaf51d55316c57bacbde1a3",
-    "title": "Dinosaur Valley",
-    "description": "A long-necked dinosaur stands among prehistoric plants beneath distant mountain peaks."
+    "src": "/og/coloring/coloring-dinosaur-valley-0c0842d89a779b04.png",
+    "alt": "JotColoring dinosaurs coloring page share image: Long-Necked Dinosaurs In A Valley Featuring Long-Necked Dinosaurs In A Valley.",
+    "sha256": "0c0842d89a779b04b23be95d3f08f11c71c0a05a887f6ca2eb1cbd2e6f037add",
+    "title": "Long-Necked Dinosaurs In A Valley",
+    "description": "Two long-necked dinosaurs stand among palms and broad prehistoric leaves. Mountains and a waterfall fill the background behind the larger dinosaur and its smaller companion."
   },
   "coloring-camper-adventure": {
-    "src": "/og/coloring/coloring-camper-adventure-5743b8a0474075ed.png",
-    "alt": "JotColoring vehicles coloring page share image: Camper Adventure Featuring Camper Adventure.",
-    "sha256": "5743b8a0474075ed4ed74f843b8c014667bd9641998030b285a4f9251ba4ff87",
-    "title": "Camper Adventure",
-    "description": "An unbadged rounded camper van and surfboards sit beside a tropical shore lined with palms."
+    "src": "/og/coloring/coloring-camper-adventure-746ca325f4805dd4.png",
+    "alt": "JotColoring vehicles coloring page share image: Camper Van At The Beach Featuring Camper Van At The Beach.",
+    "sha256": "746ca325f4805dd417948a75e8d78536047cd66e5650e55f435892a6b545f244",
+    "title": "Camper Van At The Beach",
+    "description": "A rounded camper van is parked beside surfboards on a palm-lined beach. Roof-mounted boards, coastal mountains, and a low sun add detail to the seaside scene."
   }
 }
