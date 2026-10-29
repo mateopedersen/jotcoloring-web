@@ -54,6 +54,15 @@
  .site-v3 .creator-result .ideas-grid { grid-template-columns:minmax(0,1fr); gap:14px; }
  .site-v3 .creator-result .ideas-grid span { font-size:14px; line-height:1.4; padding:8px; }
 }
+/* Generated files have preparation labels as well as sizes. Give those labels
+   a full text column on phones, including the six-format photo export dialog. */
+.jc-download-screen .jc-dl-format > .jc-dl-option-icon { flex:0 0 40px; }
+.jc-download-screen .jc-dl-format > b { display:block; visibility:hidden; width:18px; text-align:center; }
+.jc-download-screen .jc-dl-format[aria-current=true] > b { visibility:visible; }
+@media (max-width: 420px) {
+ .jc-download-screen .jc-dl-formats { grid-template-columns:minmax(0,1fr); }
+ .jc-download-screen .jc-dl-format small { font-size:11px; line-height:1.5; }
+}
 @media (min-width: 601px) and (max-width: 1100px) {
  .home-v3 .hv-stage-orbit { inset-inline:24px; transform:rotate(-4deg); }
 }
