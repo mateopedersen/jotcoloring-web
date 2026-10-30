@@ -1,8 +1,8 @@
 ---
-import icons from '../sharing/brand-icons.json';
+import catalog from '../sharing/brand-catalog.json';
 import type {SharePlatform} from '../sharing/platforms';
 const {platform}=Astro.props as {platform:SharePlatform};
-const icon=platform.icon?(icons as Record<string,{path:string;viewBox:string}>)[platform.icon]:undefined;
+const icon=platform.icon&&catalog.ids.includes(platform.icon)?platform.icon:undefined;
 const light=['snapchat','qzone','kakaotalk','kakaostory','minds','lemon8'].includes(platform.id);
 ---
-<span class="jc-social-mark" style={`--social-color:${platform.color};--social-ink:${light?'#242328':'#fff'}`} aria-hidden="true">{icon?<svg viewBox={icon.viewBox} width="26" height="26" fill="currentColor" focusable="false"><path d={icon.path}/></svg>:<b>{platform.initials||platform.name.slice(0,2)}</b>}</span>
+<span class="jc-social-mark" style={`--social-color:${platform.color};--social-ink:${light?'#242328':'#fff'}`} aria-hidden="true">{icon?<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" focusable="false"><use href={`${catalog.url}#${icon}`}/></svg>:<b>{platform.initials||platform.name.slice(0,2)}</b>}</span>

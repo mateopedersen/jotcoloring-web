@@ -1,7 +1,7 @@
 import {zipSync,strToU8} from 'fflate';
 import {brandFooterLayout,brandFooterRGBA} from '../server/branding';
 import {buildPdf,enforcePdfLimit} from '../studio/export-core';
-import {canvasBlob} from '../studio/render';
+import {canvasBlob} from '../ui/canvas';
 import {outlineRGBA,PHOTO_ALGORITHM,type OutlineResult} from './outline';
 export type PhotoFormat='pdf'|'webp'|'png'|'jpeg'|'svg'|'docx';
 export const PHOTO_FORMATS=[

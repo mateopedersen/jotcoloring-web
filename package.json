@@ -19,7 +19,8 @@
     "deploy:staging": "pnpm build:staging && node scripts/ops/deploy.mjs staging --apply",
     "deploy:production": "pnpm build:production && node scripts/ops/deploy.mjs production --apply",
     "age:catalog": "node --import tsx scripts/data/assess-local-catalog.ts",
-    "og:local": "node --import tsx scripts/social/build.ts --local-only --apply-content"
+    "og:local": "node --import tsx scripts/social/build.ts --local-only --apply-content",
+    "perf:budget": "node scripts/qa/bundle-budget.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.4.2",
