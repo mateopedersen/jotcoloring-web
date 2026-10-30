@@ -11,3 +11,6 @@
 
 /models/photo/teed-biped-7-9f7e3406.onnx
   Cache-Control: public, max-age=31536000, immutable
+
+/illustrations/studio-tools-0bde2ff165fc.svg
+  Cache-Control: public, max-age=31536000, immutable
