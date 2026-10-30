@@ -7,16 +7,17 @@ import {createHash} from 'node:crypto';
 const file=process.argv[2];if(!file)throw new Error('Provide a saved public catalog JSON response.');
 const catalog=JSON.parse(await fs.readFile(file,'utf8'));
 const bucket='jotcoloring-production-published',account='48c779c8eaa80234e0bb9d57f96e588b';
-const roles={thumbnail:'catalog_thumb_bw',preview:'catalog_preview_bw',home_color:'home_half_color',color_reference:'color_inspiration',lineArtUrl:'printable_webp_bw'};
+const roles={thumbnail:'catalog_thumb_bw',preview:'catalog_preview_bw',home_color:'home_half_color',color_reference:'color_inspiration',lineArtUrl:'printable_webp_bw',social_image:'social_og'};
 const plan=[];
 for(const item of catalog.items||[]){
  if(!/^jc-[a-z0-9-]+$/.test(item.id)||!Number.isSafeInteger(item.version)||item.version<1)throw new Error('Unrecognized published item.');
  for(const [field,role]of Object.entries({...roles,pdf:'printable_pdf_a4_bw'})){
+  if(process.argv.includes('--social-only')&&field!=='social_image')continue;
   const source=field==='pdf'?item.downloads?.pdf:item[field];if(!source)continue;
   const url=new URL(source,'https://jotcoloring.com'),hash=url.searchParams.get('v');
-  if(url.origin!=='https://jotcoloring.com'||!url.pathname.startsWith('/api/')||!/^[a-f0-9]{24}$/.test(hash||''))throw new Error('Catalog contains an unexpected file URL.');
-  const mime=field==='pdf'?'application/pdf':'image/webp';
-  plan.push({key:`published/${item.id}/${item.version}/${role}-${hash}.${field==='pdf'?'pdf':'webp'}`,hash,mime});
+  if(url.origin!=='https://jotcoloring.com'||!url.pathname.startsWith(field==='social_image'?'/og/coloring/':'/api/')||!/^[a-f0-9]{24}$/.test(hash||''))throw new Error('Catalog contains an unexpected file URL.');
+  const ext=field==='pdf'?'pdf':field==='social_image'?'png':'webp',mime=field==='pdf'?'application/pdf':`image/${ext}`;
+  plan.push({key:`published/${item.id}/${item.version}/${role}-${hash}.${ext}`,hash,mime});
  }
 }
 if(!plan.length)throw new Error('No published files selected.');
