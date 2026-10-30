@@ -1,0 +1,23 @@
+---
+import HomeCard from './HomeCard.astro';
+import type {Content} from '../server/types';
+const {items=[]}=Astro.props as {items:Content[]};
+---
+{items.length>0&&<div class="home-gallery-closing" aria-label="More coloring pages from different collections">{items.map(item=><HomeCard item={item}/>)}</div>}
+<style>
+.home-gallery-closing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.home-gallery-closing :global(.hc-card){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:330px;border-color:#ead9ca;border-radius:19px;background:linear-gradient(140deg,#fff,#fffaf4);box-shadow:0 4px 0 #ecdfd3,0 12px 24px #69452e06}
+.home-gallery-closing :global(.hc-picture){padding:10px 0 10px 10px;background:transparent;min-width:0}
+.home-gallery-closing :global(.compare){height:100%;min-height:300px;aspect-ratio:auto;border:1px solid #f0e6de;background:#fff;border-radius:12px}
+.home-gallery-closing :global(.compare img){object-fit:contain;object-position:center}
+.home-gallery-closing :global(.hc-info){display:flex;flex-direction:column;justify-content:center;min-width:0;padding:18px 13px}
+.home-gallery-closing :global(.hc-title){font-size:19px;line-height:1.25;margin-top:7px;min-height:0;gap:7px}
+.home-gallery-closing :global(.hc-title-arrow){width:28px;height:28px;flex:none}
+.home-gallery-closing :global(.hc-card-meta){margin-top:13px;font-size:12px;line-height:1.65;-webkit-line-clamp:3}
+.home-gallery-closing :global(.hc-downloads){margin-top:15px;padding-top:12px;gap:6px}
+.home-gallery-closing :global(.hc-downloads a){min-width:0;gap:4px;padding-inline:5px;font-size:11px}
+.home-gallery-closing :global(.hc-downloads .jc-action-icon){width:27px;height:30px}
+.home-gallery-closing :global(.hc-color){grid-column:1/-1}
+@media(max-width:1180px){.home-gallery-closing{grid-template-columns:minmax(0,1fr)}.home-gallery-closing :global(.hc-card){grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}.home-gallery-closing :global(.hc-info){padding:22px}.home-gallery-closing :global(.hc-title){font-size:22px}.home-gallery-closing :global(.hc-card-meta){font-size:13px}.home-gallery-closing :global(.hc-downloads a){font-size:12px;padding:8px}.home-gallery-closing :global(.hc-downloads .jc-action-icon){width:34px;height:36px}}
+@media(max-width:520px){.home-gallery-closing{gap:19px}.home-gallery-closing :global(.hc-card){display:block}.home-gallery-closing :global(.hc-picture){padding:10px 10px 0}.home-gallery-closing :global(.compare){height:330px;min-height:0}.home-gallery-closing :global(.hc-info){padding:18px}.home-gallery-closing :global(.hc-title){font-size:23px}.home-gallery-closing :global(.hc-card-meta){margin-top:12px;-webkit-line-clamp:3}.home-gallery-closing :global(.hc-downloads a){font-size:12px}}
+</style>
