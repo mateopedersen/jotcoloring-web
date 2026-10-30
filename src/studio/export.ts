@@ -45,7 +45,7 @@ export async function exportArtwork(art:HTMLCanvasElement,outline:HTMLCanvasElem
   }
   throw new Error('The PDF could not be prepared below 1 MB. Choose PNG or WEBP to keep your full-resolution artwork.');
 }
-export function downloadBlob(blob:Blob,name:string){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60_000);}
+export {downloadBlob} from '../ui/download';
 
 export async function exportAllArtwork(art:HTMLCanvasElement,outline:HTMLCanvasElement,filename:string,status:(s:string)=>void){
  const files:Record<string,Uint8Array>={};let total=0;for(const format of STUDIO_FORMATS){status(`Preparing ${format.label} for your download pack…`);const result=await exportArtwork(art,outline,{format:format.id,outline:false,paper:'a4',orientation:art.width>art.height?'landscape':'portrait',filename},status);const bytes=new Uint8Array(await result.blob.arrayBuffer());total+=bytes.length;if(total>64_000_000)throw new Error('This pack is too large. Download the formats individually.');files[result.name]=bytes;}const{zipSync}=await import('fflate');return{blob:new Blob([zipSync(files,{level:1}) as BlobPart],{type:'application/zip'}),name:safeFilename(filename)+'-all-formats.zip',width:art.width,height:art.height};

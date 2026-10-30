@@ -154,3 +154,12 @@ test('difficulty-scoped collection discovery handles ten categories within D1 co
  const prepare=db.prepare.bind(db);db.prepare=(sql:string)=>{assert.ok(sql.split(' UNION ALL ').length<=5,'query exceeds D1 compound SELECT bound');return prepare(sql);};
  const repo=new D1CatalogRepository(env,db),query={difficulty:['hard']},page=await repo.list(query),related=await repo.relatedCollections(query,page);assert.equal(page.total,10);assert.equal(related.matches.length,10);assert.ok(related.matches.every(m=>m.collection.total===1));
 });
+
+test('sample page batches preserve input order, ID precedence and publication visibility within six reads',async()=>{
+ const {db,env}=setup();
+ for(const [id,slug,status] of [['one','first','published'],['two','second','published'],['draft','draft-page','draft'],['first','id-wins','published']])await db.prepare('INSERT INTO content(id,slug,title,status,active_version,latest_version,provenance_json) VALUES(?,?,?,?,1,1,?)').bind(id,slug,id,status,'{}').run();
+ const original=db.prepare.bind(db);let reads=0;db.prepare=(sql:string)=>{if(/^SELECT/i.test(sql))reads++;return original(sql)};
+ const repo=new D1CatalogRepository(env,db);const result=await repo.getMany(['second','missing','one','draft','second','first']);
+ assert.deepEqual(result.map(x=>x?.id||null),['two',null,'one',null,'two','first']);assert.ok(reads<=6,`Sample lookup used ${reads} reads`);
+ const before=reads;assert.deepEqual(await repo.getMany([]),[]);assert.equal(reads,before);await assert.rejects(()=>repo.getMany(Array(41).fill('one')),AppError);
+});

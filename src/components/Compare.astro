@@ -1,5 +1,5 @@
 ---
 import GlyphIcon from './GlyphIcon.astro';
-const {line,color,alt='',interactive=true}=Astro.props;
+const {line,color,alt='',interactive=true,eager=false,priority=false}=Astro.props;
 ---
-<div class:list={['compare',{'static-compare':!interactive}]} style="--split:50%"><img class="line" src={line} alt={alt} loading="lazy" width="1024" height="1536"/>{color&&<><img class="color" src={color} alt="" loading="lazy" width="1024" height="1536" aria-hidden="true"/><span class="compare-divider" aria-hidden="true">{interactive&&<b><GlyphIcon name="compare" size={22}/></b>}</span>{interactive&&<input aria-label="Compare line art and color preview" type="range" min="0" max="100" value="50"/>}</>}</div>
+<div class:list={['compare',{'static-compare':!interactive}]} style="--split:50%"><img class="line" src={line} alt={alt} loading={eager?'eager':'lazy'} decoding="async" fetchpriority={priority?'high':undefined} width="1024" height="1536"/>{color&&<><img class="color" src={color} alt="" loading={eager?'eager':'lazy'} decoding="async" fetchpriority={priority?'high':undefined} width="1024" height="1536" aria-hidden="true"/><span class="compare-divider" aria-hidden="true">{interactive&&<b><GlyphIcon name="compare" size={22}/></b>}</span>{interactive&&<input aria-label="Compare line art and color preview" type="range" min="0" max="100" value="50"/>}</>}</div>
