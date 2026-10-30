@@ -14,7 +14,7 @@ const text=artworkText(item);
 ---
 <article class="hc-card" data-content-id={item.id}>
  <ImageLicense item={item} assets={[item.thumbnail,item.home_color]}/>
- <div class="hc-picture" data-image-title={text.title} data-image-description={text.description}><Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/><CategoryLabel category={item.category} label={item.categoryName} overlay/><DifficultyBadge item={item} overlay/><ShareButton item={item}/></div>
+ <div class="hc-picture" data-image-title={text.title} data-image-description={text.description}><Compare line={item.thumbnail} color={item.home_color} lineSrcset={item.thumbnailSrcset} colorSrcset={item.homeColorSrcset} alt={text.alt}/><CategoryLabel category={item.category} label={item.categoryName} overlay/><DifficultyBadge item={item} overlay/><ShareButton item={item}/></div>
  <div class="hc-info"><AgeBadge item={item}/><p class="hc-card-meta hc-card-summary">{artworkSummary(item)}</p><a class="hc-title" href={`/coloring/${item.slug}/`}><span>{item.title}</span><span class="hc-title-arrow" aria-hidden="true"><Icon name="arrow" size={20}/></span></a>
  <FileActions item={item} variant="home"/></div>
 </article>

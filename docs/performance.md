@@ -11,6 +11,9 @@ The performance release keeps the existing design, routes, assets, storage bindi
 - Above-the-fold comparisons are eager; the primary hero receives high priority and its exact catalog URL is preloaded in the document head, before the navigation markup. Lower animal-theme images and quick preview remain lazy. Image dimensions are retained.
 - Detail pages preload their verified preview URL. The small, self-hosted Latin font subset is also discovered directly from the head, so fallback-font rendering does not wait for the stylesheet dependency chain. The existing Avenir-first font stack is preserved.
 - Content-addressed illustrations and checksum-verified model URLs have immutable browser caching. Changing their bytes requires a new URL.
+- New media preparations include 240-pixel card copies and a 600-pixel detail preview. Responsive `srcset` selects the appropriate verified file; zoom requests a larger candidate. The original print image and PDF stay unchanged. Compact black-and-white copies preserve every dark/light boundary at the coloring engine's threshold and the exact logo band, with mean pixel error limited to 1.5. Color copies retain the existing decoder and brand checks.
+
+The existing 18-item catalog uses a finite checksum-bound registry for display copies. `scripts/ops/sync-responsive-assets.ts staging` first checks every source against the current public record and its full accepted SHA-256. `--apply` adds only smaller immutable objects to that environment's published R2 bucket, then reads each object back and checks its checksum. It does not update catalog metadata or replace an existing object. Only after every read-back passes is the registry eligible for deployment. Repeat for production before deploying that registry there. New imports use their normal responsive roles; replacing legacy source pixels invalidates its old registry lookup.
 
 ## Public response cache
 

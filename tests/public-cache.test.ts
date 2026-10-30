@@ -21,6 +21,9 @@ test('only published route families qualify; private tools, writes, cookies and 
  for(const options of [{method:'POST'},{headers:{Authorization:'Bearer private'}},{headers:{Cookie:'session=private'}},{headers:{'cf-access-jwt-assertion':'private'}},{headers:{Range:'bytes=1-2'}}] as RequestInit[])assert.equal(publicCachePolicy(new Request('https://jot.test/',options)),undefined);
  for(const path of ['/','/about/','/coloring-pages/animals/farm-animals/','/coloring-by-age/6-8/','/api/catalog?q=fox','/api/media/content-one/catalog_thumb_bw?v='+'a'.repeat(24)])assert.ok(publicCachePolicy(new Request('https://jot.test'+path)),path);
  assert.equal(publicCachePolicy(new Request('https://jot.test/api/media/content-one/catalog_thumb_bw')),undefined);
+ assert.ok(publicCachePolicy(new Request('https://jot.test/api/media/content-one/catalog_thumb_bw?v='+'a'.repeat(24)+'&display=240')));
+ for(const suffix of ['&display=9999','&display=240&private=1'])assert.equal(publicCachePolicy(new Request('https://jot.test/api/media/content-one/catalog_thumb_bw?v='+'a'.repeat(24)+suffix)),undefined);
+ assert.equal(publicCachePolicy(new Request('https://jot.test/api/download/content-one/webp?v='+'a'.repeat(24)+'&display=240')),undefined);
 });
 test('cache keys separate release, country, environment and query while HEAD shares GET storage',()=>{
  const request=new Request('https://jot.test/?sort=newest&q=fox');Object.assign(request,{cf:{country:'US'}});
