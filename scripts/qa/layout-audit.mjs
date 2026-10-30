@@ -42,13 +42,20 @@ export function measureLayout() {
     row.push(Math.round(actions.bottom)); rows.set(key, row);
   }
   const misalignedRows = [...rows.values()].filter(row => row.length > 1 && Math.max(...row) - Math.min(...row) > 3);
+  const homeRows = new Map();
+  for (const card of document.querySelectorAll('.hv-gallery>.hc-card')) {
+    const title=card.querySelector('.hc-title'); if (!title || !visible(card)) continue;
+    const key=Math.round(card.getBoundingClientRect().top), row=homeRows.get(key)||[];
+    row.push(Math.round(title.getBoundingClientRect().top)); homeRows.set(key,row);
+  }
+  const misalignedHomeTitles=[...homeRows.values()].filter(row=>row.length>1&&Math.max(...row)-Math.min(...row)>3);
   const missingAlt = [...document.images].filter(e => !e.hasAttribute('alt')).length;
   const brokenImages = [...document.images].filter(e => e.complete && !e.naturalWidth && e.currentSrc).length;
   const pageOverflow = document.documentElement.scrollWidth > innerWidth + 2;
   return { viewport: innerWidth, pageOverflow, overflow, clippedText, arrows, narrowText,
-    misalignedRows, missingAlt, brokenImages,
+    misalignedRows, misalignedHomeTitles, missingAlt, brokenImages,
     pass: !pageOverflow && !overflow.length && !clippedText.length && !arrows.length &&
-      !narrowText.length && !misalignedRows.length && !missingAlt && !brokenImages };
+      !narrowText.length && !misalignedRows.length && !misalignedHomeTitles.length && !missingAlt && !brokenImages };
 }
 
 /** Check visible control labels and alignment inside actual action groups.
