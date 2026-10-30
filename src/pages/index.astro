@@ -53,6 +53,7 @@ const discoveryIdeas=[['Foxes','fox','foxes'],['Cats','cat','cats'],['Dogs','dog
 const tabs=[{id:'trending',label:'Featured pages',hint:'A little of everything'},{id:'newest',label:'Just added',hint:'Fresh inspiration'},{id:'easy',label:'Easy coloring',hint:'Bigger spaces'},{id:'detailed',label:'Detailed designs',hint:'More to discover'}];
 ---
 <Layout bodyClass="home-v3" title="Free Printable Coloring Pages for Kids & Adults | JotColoring" description="Explore free printable coloring pages for kids and adults. Download a PDF or image, color online, or turn your own photo into a coloring page.">
+ <Fragment slot="head">{featured.items[0]?.thumbnail&&<link rel="preload" as="image" href={featured.items[0].thumbnail} fetchpriority="high"/>}</Fragment>
  <Header home/>
  <main id="main">
   <section class="hv-hero hv-container" aria-labelledby="home-title"><div class="hv-hero-copy"><h1 id="home-title">Free printable <br/><span>coloring<svg viewBox="0 0 385 16" fill="none" aria-hidden="true"><path d="M3 11C111 1 258 0 381 6M49 15c106-7 211-9 296-5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span> pages.</h1><p class="hv-hero-description">Find animals, flowers, fantasy scenes, and more to color. Download a free PDF, print your favorite page, or add colors in our online studio.</p><SearchForm variant="hero"/><HeroQuickLinks/></div>

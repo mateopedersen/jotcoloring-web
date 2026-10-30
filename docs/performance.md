@@ -8,7 +8,8 @@ The performance release keeps the existing design, routes, assets, storage bindi
 - PDF generation remains a dynamic import. An explicit PDF bundle group separates the bundler runtime from the large PDF library, preventing that library from entering initial tool dependency graphs.
 - Photo conversion uses lightweight canvas primitives. My Artwork loads painting composition when needed, and file saving no longer imports the Studio renderer.
 - Default homepage featured items reuse its existing catalog result. Animal theme covers and the page cover share a bounded, indexed batch lookup and one hydration pass. A collection cover comes from its own published content with a verified thumbnail; an empty collection uses a category illustration. Publication and archival change the cache epoch, so the next request can use the updated selection.
-- Above-the-fold comparisons are eager; the primary hero receives high priority. Lower animal-theme images and quick preview remain lazy. Image dimensions are retained.
+- Above-the-fold comparisons are eager; the primary hero receives high priority and its exact catalog URL is preloaded in the document head, before the navigation markup. Lower animal-theme images and quick preview remain lazy. Image dimensions are retained.
+- Detail pages preload their verified preview URL. The small, self-hosted Latin font subset is also discovered directly from the head, so fallback-font rendering does not wait for the stylesheet dependency chain. The existing Avenir-first font stack is preserved.
 - Content-addressed illustrations and checksum-verified model URLs have immutable browser caching. Changing their bytes requires a new URL.
 
 ## Public response cache

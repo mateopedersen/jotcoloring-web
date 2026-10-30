@@ -12,3 +12,4 @@ body .creator-mode-tabs a.active :is(strong,small){color:#843916!important}
 body :is(.aw-new-board-copy strong,.aw-pin-open,.aw-pin-open>span){color:var(--accessible-accent)!important}
 body .studio-button.primary{background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
 body .jc-share-image-button{background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
+body .iv-cover-caption{color:#704323}
