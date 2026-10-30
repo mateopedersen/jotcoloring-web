@@ -1,0 +1,5 @@
+---
+import {glyphs} from '../icons/glyphs';
+const {name,size=20,...rest}=Astro.props;
+---
+<svg class="jc-glyph" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" {...rest}><path d={glyphs[name]||glyphs.info}/></svg>

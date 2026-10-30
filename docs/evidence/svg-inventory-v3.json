@@ -1,0 +1,5076 @@
+{
+  "version": "svg-system-3",
+  "sprite": "/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+  "bytes": 156120,
+  "gzipBytes": 16695,
+  "counts": {
+    "illustrations": 84,
+    "pageScenes": 7,
+    "functionalGlyphs": 38,
+    "directionArrows": 4,
+    "socialBrandMarks": 48,
+    "colorableObjects": 500,
+    "sourceFiles": 30
+  },
+  "entries": [
+    {
+      "id": "animals",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Animals · red fox"
+    },
+    {
+      "id": "flowers",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Flowers · garden dahlia"
+    },
+    {
+      "id": "mandalas",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Mandalas · layered rosette"
+    },
+    {
+      "id": "all",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "All coloring pages"
+    },
+    {
+      "id": "fantasy",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Fantasy · storybook castle"
+    },
+    {
+      "id": "holidays",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Holidays · decorated evergreen"
+    },
+    {
+      "id": "vehicles",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Vehicles · camper van"
+    },
+    {
+      "id": "space",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Space · ringed planet"
+    },
+    {
+      "id": "ocean",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Ocean · clownfish"
+    },
+    {
+      "id": "food",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Food · frosted cupcake"
+    },
+    {
+      "id": "dinosaurs",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Dinosaurs · long-necked dinosaur"
+    },
+    {
+      "id": "woodland",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Woodland · oak tree"
+    },
+    {
+      "id": "pets",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Pets · puppy"
+    },
+    {
+      "id": "farm-animals",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Farm animals · cow"
+    },
+    {
+      "id": "birds",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Birds · garden songbird"
+    },
+    {
+      "id": "brush",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Brush · wood handle and metal ferrule"
+    },
+    {
+      "id": "edit",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Rename · drawing pencil"
+    },
+    {
+      "id": "studio",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Coloring Studio · artist palette"
+    },
+    {
+      "id": "photo",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Photo to Coloring Page · camera"
+    },
+    {
+      "id": "image",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Image · framed landscape"
+    },
+    {
+      "id": "heart",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Favorites · sculpted heart"
+    },
+    {
+      "id": "heart-filled",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Saved favorite · coral heart"
+    },
+    {
+      "id": "ai",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Create with AI · idea and pencil"
+    },
+    {
+      "id": "kids",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Kids · wax crayons"
+    },
+    {
+      "id": "artwork",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "My artwork · pinned drawings"
+    },
+    {
+      "id": "boards",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Boards · pinned drawings"
+    },
+    {
+      "id": "printer",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Printing guide · desktop printer"
+    },
+    {
+      "id": "file-pdf",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "PDF file"
+    },
+    {
+      "id": "file-png",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "PNG file"
+    },
+    {
+      "id": "file-jpeg",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "JPG file"
+    },
+    {
+      "id": "file-webp",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "IMG file"
+    },
+    {
+      "id": "file-svg",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "SVG file"
+    },
+    {
+      "id": "file-docx",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "DOCX file"
+    },
+    {
+      "id": "pdf",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "PDF document"
+    },
+    {
+      "id": "license",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Artwork license · permission seal"
+    },
+    {
+      "id": "help",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Help · question bubble"
+    },
+    {
+      "id": "faq",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "FAQ · conversation bubbles"
+    },
+    {
+      "id": "mail",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Contact · envelope"
+    },
+    {
+      "id": "about",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "About JotColoring · open coloring book"
+    },
+    {
+      "id": "search",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Search · magnifying glass"
+    },
+    {
+      "id": "zoom",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Zoom · magnifying glass"
+    },
+    {
+      "id": "fill",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Fill · paint bucket"
+    },
+    {
+      "id": "eraser",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Erase · artist eraser"
+    },
+    {
+      "id": "picker",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Pick a color · glass eyedropper"
+    },
+    {
+      "id": "move",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Move canvas · open hand"
+    },
+    {
+      "id": "eye",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Quick view · eye"
+    },
+    {
+      "id": "notes",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Notes, tags and rating · notebook"
+    },
+    {
+      "id": "folder",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Move to a board · folder"
+    },
+    {
+      "id": "star",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Star artwork · gold star"
+    },
+    {
+      "id": "share",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Share · connected nodes"
+    },
+    {
+      "id": "link",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Copy page link · linked rings"
+    },
+    {
+      "id": "copy",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Copy details · duplicate documents"
+    },
+    {
+      "id": "duplicate",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Duplicate artwork · two drawings"
+    },
+    {
+      "id": "download",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Download · arrow into tray"
+    },
+    {
+      "id": "upload",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Import · arrow from tray"
+    },
+    {
+      "id": "up",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Move earlier · up arrow"
+    },
+    {
+      "id": "down",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Move later · down arrow"
+    },
+    {
+      "id": "backup",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Editable backup · storage drive"
+    },
+    {
+      "id": "archive",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Archive · storage box"
+    },
+    {
+      "id": "trash",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Trash · wastebasket"
+    },
+    {
+      "id": "clock",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recently saved · clock"
+    },
+    {
+      "id": "tag",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Tags · paper label"
+    },
+    {
+      "id": "settings",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Settings · precision gear"
+    },
+    {
+      "id": "filter",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Filters · funnel"
+    },
+    {
+      "id": "lock",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Privacy · padlock"
+    },
+    {
+      "id": "select",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Select artwork · checked card"
+    },
+    {
+      "id": "check",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Saved · check seal"
+    },
+    {
+      "id": "layers",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Layers · stacked sheets"
+    },
+    {
+      "id": "projects",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Projects · layered artwork"
+    },
+    {
+      "id": "pin",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Pin to top · pushpin"
+    },
+    {
+      "id": "grid",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Grid view"
+    },
+    {
+      "id": "list",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "List view"
+    },
+    {
+      "id": "masonry",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Masonry view"
+    },
+    {
+      "id": "info",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Information"
+    },
+    {
+      "id": "undo",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Undo"
+    },
+    {
+      "id": "redo",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Redo"
+    },
+    {
+      "id": "refresh",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Refresh · two rotating arrows"
+    },
+    {
+      "id": "save",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Save · project disk"
+    },
+    {
+      "id": "age-3-5",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recommended age · 3–5"
+    },
+    {
+      "id": "age-6-8",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recommended age · 6–8"
+    },
+    {
+      "id": "age-9-12",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recommended age · 9–12"
+    },
+    {
+      "id": "age-13-17",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recommended age · 13–17"
+    },
+    {
+      "id": "age-adults",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Recommended age · Adults"
+    },
+    {
+      "id": "privacy",
+      "kind": "illustration",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "Privacy · protective shield"
+    },
+    {
+      "id": "scene-about",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "scene-license",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "scene-help",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "scene-privacy",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "scene-notfound",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "scene-cookies",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 320 280"
+    },
+    {
+      "id": "scene-photo",
+      "kind": "scene",
+      "source": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "status": "redrawn",
+      "description": "0 0 420 320"
+    },
+    {
+      "id": "save",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "link",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "share",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "copy",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "mail",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "arrow-up-right",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "search",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "arrow",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "heart",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "brush",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "spark",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "grid",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "download",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "file",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "check",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "menu",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "close",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "layers",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "sun",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "home",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "chevron",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "photo",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "plus",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "minus",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "undo",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "redo",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "expand",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "info",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "more",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "up",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "down",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "lock",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "privacy",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "settings",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "select",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "compare",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "refresh",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "star",
+      "kind": "functional glyph",
+      "source": "src/icons/glyphs.ts",
+      "status": "standardized",
+      "description": "Small controls: one stroke, currentColor, fixed 24-unit canvas"
+    },
+    {
+      "id": "arrow-diagonal",
+      "kind": "direction",
+      "source": "src/components/ArrowIcon.astro",
+      "status": "redrawn",
+      "description": "One clear arrow path; bounded stroke and fixed size"
+    },
+    {
+      "id": "arrow-right",
+      "kind": "direction",
+      "source": "src/components/ArrowIcon.astro",
+      "status": "redrawn",
+      "description": "One clear arrow path; bounded stroke and fixed size"
+    },
+    {
+      "id": "arrow-left",
+      "kind": "direction",
+      "source": "src/components/ArrowIcon.astro",
+      "status": "redrawn",
+      "description": "One clear arrow path; bounded stroke and fixed size"
+    },
+    {
+      "id": "arrow-up",
+      "kind": "direction",
+      "source": "src/components/ArrowIcon.astro",
+      "status": "redrawn",
+      "description": "One clear arrow path; bounded stroke and fixed size"
+    },
+    {
+      "id": "ameba",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "artstation",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "baidu",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "behance",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "bilibili",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "blogger",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "bluesky",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "deviantart",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "discord",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "dribbble",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "facebook",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "flipboard",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "instagram",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "kakaotalk",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "lemmy",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "line",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "mastodon",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "medium",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "messenger",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "mewe",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "naver",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "nextdoor",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "odnoklassniki",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "pinterest",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "pixelfed",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "pixiv",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "qq",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "quora",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "qzone",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "reddit",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "signal",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "sinaweibo",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "snapchat",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "substack",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "telegram",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "threads",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "tiktok",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "tumblr",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "viber",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "vk",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "wechat",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "whatsapp",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "wordpress",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "x",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "xiaohongshu",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "youtube",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "zhihu",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "flickr",
+      "kind": "social platform mark",
+      "source": "src/sharing/brand-icons.json",
+      "status": "brand geometry preserved; frame refined",
+      "description": "Recognizable platform glyph; license retained"
+    },
+    {
+      "id": "cat-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cat-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "puppy-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fox-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rabbit-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bear-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "owl-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "fish-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "turtle-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "butterfly-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "bird-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "daisy-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "tulip-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rose-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sunflower-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cactus-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "car-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "camper-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "train-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "sailboat-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "airplane-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "rocket-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "planet-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "cupcake-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "apple-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-hearts-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-hearts-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-hearts-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-hearts-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-stars-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-stars-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-stars-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-stars-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-dots-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-dots-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-dots-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-dots-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-diamonds-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-diamonds-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-diamonds-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-diamonds-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-flowers-single",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-flowers-pair",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-flowers-trio",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "ice-cream-flowers-cluster",
+      "kind": "colorable Studio object",
+      "source": "src/studio/object-library.ts",
+      "status": "preserved intentionally",
+      "description": "Monochrome editable drawing, not a decorative UI icon"
+    },
+    {
+      "id": "src/components/LostColoringArt.astro",
+      "kind": "standalone or inline SVG",
+      "source": "src/components/LostColoringArt.astro",
+      "status": "refined; color interaction preserved",
+      "description": "Interactive 404 fox drawing and its new pencil"
+    },
+    {
+      "id": "public/style-simple.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/style-simple.svg",
+      "status": "redrawn",
+      "description": "Simple line-style example"
+    },
+    {
+      "id": "public/style-cute.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/style-cute.svg",
+      "status": "redrawn",
+      "description": "Cute line-style example"
+    },
+    {
+      "id": "public/icons/select-chevron.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/icons/select-chevron.svg",
+      "status": "reviewed; deliberately crisp at 14px",
+      "description": "Select arrow"
+    },
+    {
+      "id": "public/favicon-3d.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/favicon-3d.svg",
+      "status": "brand preserved",
+      "description": "Approved J pencil brand favicon"
+    },
+    {
+      "id": "public/favicon.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/favicon.svg",
+      "status": "retained for old links",
+      "description": "Unused legacy favicon"
+    },
+    {
+      "id": "public/logo.svg",
+      "kind": "standalone or inline SVG",
+      "source": "public/logo.svg",
+      "status": "retained for old links",
+      "description": "Unused legacy vector wordmark; current site uses approved logo-3d.webp"
+    },
+    {
+      "id": "src/photo/files.ts",
+      "kind": "standalone or inline SVG",
+      "source": "src/photo/files.ts",
+      "status": "photo fidelity preserved",
+      "description": "SVG exports generated from the uploaded image"
+    },
+    {
+      "id": "src/pages/index.astro",
+      "kind": "standalone or inline SVG",
+      "source": "src/pages/index.astro",
+      "status": "reviewed decorative accents",
+      "description": "Hand-drawn underline, curved annotation arrow and sparkle"
+    },
+    {
+      "id": "src/components/PhotoConverter.astro",
+      "kind": "standalone or inline SVG",
+      "source": "src/components/PhotoConverter.astro",
+      "status": "preserved functional preview",
+      "description": "Three line-width sample strokes"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "public/favicon-3d.svg",
+      "bytes": 827,
+      "sha256": "a44c92d1d69163808cac4fc6fbc7be9c35796aab061d0256779632e9f38df01a",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 207,
+      "sha256": "db24924841b70f6c30a7bb37f607f17627262315a4118cd0e17cad37ca8c7cea",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "public/icons/select-chevron.svg",
+      "bytes": 207,
+      "sha256": "66dc69009bdc17f7f7393c3e4847acc894d5525e0b8dcf090ae43e8ff9882d43",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "public/illustrations/artwork-actions.svg",
+      "bytes": 26087,
+      "sha256": "08f40b44580561d0a3d8dc84a24e9e43927d6db972141265ef4ad707c592d602",
+      "inlineSvgCount": 1,
+      "symbolCount": 18
+    },
+    {
+      "path": "public/illustrations/category-3d.svg",
+      "bytes": 46542,
+      "sha256": "7cd7f192e6bbda68085afe57c5c35f132376e0647785d6f21edca8305d2b9e2e",
+      "inlineSvgCount": 1,
+      "symbolCount": 15
+    },
+    {
+      "path": "public/illustrations/creative-tools-v2.svg",
+      "bytes": 53993,
+      "sha256": "eca9db9c52372cfda1f3b609c0334148add57b443c096f9576871974e77188f1",
+      "inlineSvgCount": 1,
+      "symbolCount": 17
+    },
+    {
+      "path": "public/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+      "bytes": 156120,
+      "sha256": "9e038d0adfc6d136a5c9e04ca00d300ff9e11c0bb858f19fa0f5e281017613a4",
+      "inlineSvgCount": 1,
+      "symbolCount": 91
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 844,
+      "sha256": "2841c2eda07a9a8088695ceaac229cbe443767d4dc3c7a0652cb7573067e5ea5",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "public/style-cute.svg",
+      "bytes": 2593,
+      "sha256": "2c516e7adff3628aff652f9863ab32f895e118005afa63b3df66187a50ed280a",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "public/style-simple.svg",
+      "bytes": 2349,
+      "sha256": "f5bd2c01685b5104300aabcae675ace79f686d4d3e3351f239e591b913217787",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "scripts/data/build-brand-logo.ts",
+      "bytes": 1173,
+      "sha256": "81b391be47b14a97986b02bec73cf74d18dab1ec5526c8ca49feb9777dddffef",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "scripts/data/build-brand-mask.ts",
+      "bytes": 1133,
+      "sha256": "2859503a25d0b9608e801466cbcb069d774307ec6e690fac7b632a67d1e15c96",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "scripts/icons/inventory.ts",
+      "bytes": 4967,
+      "sha256": "6bfd9247fdc90cb612bfb50ec478e278c6e2956ba059097d624a01285545116b",
+      "inlineSvgCount": 2,
+      "symbolCount": 2
+    },
+    {
+      "path": "scripts/social/render.ts",
+      "bytes": 13959,
+      "sha256": "24d47c3cd9ff6840c8162c9272de24542928808ac8943afa22a6d955b59c0b2e",
+      "inlineSvgCount": 7,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/ActionIcon.astro",
+      "bytes": 656,
+      "sha256": "c13b7d39686ea4935ab36f5ae589546feb60117cda38420ef3598791de8280a3",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/ArrowIcon.astro",
+      "bytes": 494,
+      "sha256": "1800b966e91a05667cf3a1c97a14b423170a88562a9030d839fb2f534bc541b4",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/GlyphIcon.astro",
+      "bytes": 350,
+      "sha256": "2f5d38821dfb2f8a7da62ef2775b6fe6739cbd304cbf4d9956ebaa225446a89e",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/HomeIcon.astro",
+      "bytes": 732,
+      "sha256": "0a0c53b111f4957c6a06698362d8ca2815c5a4ced39aafe824467d0be9a55bcd",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/LostColoringArt.astro",
+      "bytes": 3779,
+      "sha256": "f68919737a5592383833ed6ff6855981590ab46e1af9a7c958649c125b00c6fb",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/PhotoConverter.astro",
+      "bytes": 10200,
+      "sha256": "bde7d3dace02542128c9b1dc79fe24d2592dadca8c8ed55d64b37c66a9816799",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/SceneArt.astro",
+      "bytes": 529,
+      "sha256": "39c1404b5f9bc606ec0954286302420de29ccbd5679333664df78ccf6b4ab6d2",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/SocialMark.astro",
+      "bytes": 690,
+      "sha256": "b8d9ac2df63ecd3d32ea53f577cc9aeb62c0f8e77af5b937f9090dfbec69d238",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/components/VectorIcon.astro",
+      "bytes": 466,
+      "sha256": "2b4c2e60407bd4a04473f3bb5a9d393978f5e4759f938e1e522b9e6776512d2c",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/downloads/model.ts",
+      "bytes": 7697,
+      "sha256": "51a7b3d5154212e2317c1b8a1626ba2c081b1e421e2505f9baa55790d0f2e4b0",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/icons/registry.ts",
+      "bytes": 1368,
+      "sha256": "7888c47d1a612098d0678ad39194eac73034b8237947ba1e3d47abc06e9fd274",
+      "inlineSvgCount": 2,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/icons/render.ts",
+      "bytes": 745,
+      "sha256": "81a8560b88534ecc34e14f36aa78d80b1ebc4a35ae8a811730488131d313c521",
+      "inlineSvgCount": 2,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/pages/index.astro",
+      "bytes": 11401,
+      "sha256": "a7c3ddcacb03a78c8d6fabfa74de6bd9e9a2a7d39c676188f954e6a4aecfa0b9",
+      "inlineSvgCount": 3,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/photo/files.ts",
+      "bytes": 12572,
+      "sha256": "1f5d51426c76bf09ff1d54e22e1dca5338c86a2fb347ca59d5d78ee7335608bf",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/studio/objects.ts",
+      "bytes": 2879,
+      "sha256": "50cd3baa52545df51af050653df9262653decdc9faf4189d08b88faa95b7cda3",
+      "inlineSvgCount": 1,
+      "symbolCount": 0
+    },
+    {
+      "path": "src/ui/search-suggestions.ts",
+      "bytes": 8098,
+      "sha256": "4e892a4632be863261b7ac5b9998938eee1086f1073d0a54d4db1057b17c1006",
+      "inlineSvgCount": 0,
+      "symbolCount": 0
+    }
+  ],
+  "compatibilitySheets": [
+    "creative-tools-v2.svg",
+    "category-3d.svg",
+    "artwork-actions.svg"
+  ],
+  "notes": [
+    "The approved logo and social trademarks retain their identities.",
+    "The 500 Studio objects and image-derived SVG exports remain colorable; decorative gradients are not applied to them.",
+    "An inventory and automated geometry checks do not assert photorealism or error-free behavior on every browser."
+  ]
+}

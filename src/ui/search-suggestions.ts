@@ -1,3 +1,4 @@
+import {illustrationHref,ICON_VIEWBOX} from '../icons/registry';
 import type {SearchMatch} from '../search/intent';
 import {categories} from './categories';
 import {LatestRequest} from './latest-request';
@@ -20,7 +21,7 @@ export function initSearchSuggestions(){
    for(const [index,item] of items.entries()){
     const link=document.createElement('a');link.href=item.href;link.id=`${list.id}-${index}`;link.setAttribute('role','option');link.setAttribute('aria-selected','false');link.tabIndex=-1;link.className='jc-search-option';link.dataset.suggestionKind=item.kind;
     if(item.thumbnail){const image=document.createElement('img');image.src=item.thumbnail;image.alt='';image.width=48;image.height=48;link.append(image);}
-    else if(item.category){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'),use=document.createElementNS('http://www.w3.org/2000/svg','use');svg.setAttribute('viewBox','0 0 96 96');svg.setAttribute('aria-hidden','true');use.setAttribute('href',`/illustrations/category-3d.svg#${item.category}`);svg.append(use);link.append(svg);}
+    else if(item.category){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'),use=document.createElementNS('http://www.w3.org/2000/svg','use');svg.setAttribute('viewBox',ICON_VIEWBOX);svg.setAttribute('aria-hidden','true');use.setAttribute('href',illustrationHref(item.category));svg.append(use);link.append(svg);}
     else {const blank=document.createElement('span');blank.className='jc-search-placeholder';blank.setAttribute('aria-hidden','true');link.append(blank);}
     const text=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=item.title;detail.textContent=item.detail;text.append(title,detail);if(item.description){const description=document.createElement('span');description.className='jc-search-description';description.textContent=item.description;text.append(description);}link.append(text);options.push(link);
    }
