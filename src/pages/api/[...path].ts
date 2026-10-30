@@ -13,7 +13,7 @@ import {configurationReadiness} from '../../server/readiness';
 import {rateLimit,verifyTurnstile} from '../../server/limits';
 import {aiConfiguration,uploadPhoto,createGeneration,generationStatus,generationResult,cancelGeneration} from '../../server/ai';
 export const prerender=false;
-export const ALL:APIRoute=async ({request,params})=>{const env=runtimeEnv as unknown as Env;const parts=(params.path||'').split('/').filter(Boolean);const method=request.method;try{
+export const ALL:APIRoute=async ({request,params})=>{const env=runtimeEnv as unknown as Env;const parts=(params.path||'').split('/').filter(Boolean);const method=request.method==='HEAD'&&['catalog','search','categories','content','media','download'].includes(parts[0])?'GET':request.method;try{
  if(env.APP_ENV==='preview'&&(parts[0]==='admin'||!['GET','HEAD','OPTIONS'].includes(method)))throw new AppError('PREVIEW_READ_ONLY','Preview deployments are read-only.',403);
  if(parts[0]==='health'&&method==='GET'){const r=configurationReadiness(env);return json({status:r.publicReady&&!r.invalidEnabledFeature?'available':'setup_required',generation:r.aiReady?'available':'configuration_required'},r.publicReady&&!r.invalidEnabledFeature?200:503);}
  if((parts[0]==='catalog'||parts[0]==='search')&&parts.length===1&&method==='GET'){const page=await createCatalog(env).list(parseCatalogQuery(new URL(request.url).searchParams));return json(page,200,{'Cache-Control':'public,max-age=30,s-maxage=60'});}

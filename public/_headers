@@ -1,0 +1,13 @@
+# Content-addressed illustrations keep their URL only while bytes are unchanged.
+/illustrations/social-brands-be7e690bf726.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/illustrations/jotcoloring-icons-9e038d0adfc6.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+
+/models/photo/informative-drawing-544fb9a4.onnx
+  Cache-Control: public, max-age=31536000, immutable
+
+/models/photo/teed-biped-7-9f7e3406.onnx
+  Cache-Control: public, max-age=31536000, immutable

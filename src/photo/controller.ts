@@ -3,7 +3,7 @@ import {type ContourResult} from './contours';
 import {validatePhotoFile} from './input';
 import {PHOTO_FORMATS,exportPhoto,photoPageSize,type PhotoFormat} from './files';
 import {openLocalDownloads} from '../downloads/controller';
-import {canvasBlob} from '../studio/render';
+import {canvasBlob} from '../ui/canvas';
 import {createFillPreview,previewPoint} from './fill-preview';
 export function mountPhotoConverter(){
  const root=document.querySelector<HTMLElement>('[data-photo-converter]');if(!root||root.dataset.ready)return;root.dataset.ready='true';
