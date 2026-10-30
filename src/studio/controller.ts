@@ -148,7 +148,7 @@ export async function mountStudio(){
   let starterLoading:Promise<ReturnType<typeof import('./starter-controller')['mountStarterPages']>>|undefined;
   async function openLibrary(){
     try{
-      starterLoading??=import('./starter-controller').then(({mountStarterPages})=>mountStarterPages({root,save:persist,open:async p=>{advanced?.cancel();await saveProject(p);location.href=`/studio/${p.id}/`;},message}));
+      starterLoading??=import('./starter-controller').then(({mountStarterPages})=>mountStarterPages({root:root!,save:persist,open:async p=>{advanced?.cancel();await saveProject(p);location.href=`/studio/${p.id}/`;},message}));
       await (await starterLoading).open();
     }catch(error){starterLoading=undefined;message(error instanceof Error?error.message:'The page library could not load. Please try again.',true);}
   }
