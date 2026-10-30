@@ -1,3 +1,4 @@
+import {textLayout} from './lettering';
 import {makeCanvas} from '../ui/canvas';
 export {makeCanvas,loadSource,canvasBlob} from '../ui/canvas';
 import type { Project, PaintLayer,TextObject } from './model';
@@ -25,4 +26,8 @@ export function compose(project:Project,mask:HTMLCanvasElement,target?:HTMLCanva
 }
 export function outlineCanvas(project:Project,mask:HTMLCanvasElement){const canvas=makeCanvas(project.source.width,project.source.height),c=canvas.getContext('2d')!;c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(mask,0,0);return brandedCanvas(canvas);}
 
-export function drawTextObject(c:CanvasRenderingContext2D,text:TextObject){if(!text.visible)return;c.save();c.translate(text.x,text.y);c.rotate(text.rotation*Math.PI/180);c.scale(text.scale,text.scale);c.fillStyle=text.color;c.font=`${text.italic?'italic ':''}${text.weight||600} ${text.size}px ${text.font||'sans-serif'}`;c.textAlign=text.align;c.textBaseline='top';text.text.split('\n').forEach((line,i)=>{if(text.outline){c.strokeStyle=text.color;c.lineWidth=Math.max(1,text.size/35);c.strokeText(line,0,i*text.size*1.25);}else c.fillText(line,0,i*text.size*1.25);});c.restore();}
+export function drawTextObject(c:CanvasRenderingContext2D,text:TextObject){
+ if(!text.visible)return;c.save();c.translate(text.x,text.y);c.rotate(text.rotation*Math.PI/180);c.scale(text.scale,text.scale);c.fillStyle=text.color;c.strokeStyle=text.color;c.lineWidth=text.outlineWidth??Math.max(1,text.size/35);c.lineJoin='round';c.font=`${text.italic?'italic ':''}${text.weight||600} ${text.size}px ${text.font||'sans-serif'}`;c.textAlign=text.align;c.textBaseline='top';
+ if(text.shadow){c.shadowColor=text.shadow.color;c.shadowOffsetX=text.shadow.x;c.shadowOffsetY=text.shadow.y;c.shadowBlur=text.shadow.blur;}
+ text.text.split('\n').forEach((line,i)=>{const y=i*text.size*(text.lineHeight??1.25);if(text.letterSpacing||text.curve){for(const p of textLayout(c,text,line)){c.save();c.translate(p.x,p.y+y);c.rotate(p.angle);c.textAlign='center';if(text.outline)c.strokeText(p.char,0,0);else c.fillText(p.char,0,0);c.restore();}}else if(text.outline)c.strokeText(line,0,y);else c.fillText(line,0,y);});c.restore();
+}

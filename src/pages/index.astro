@@ -22,6 +22,7 @@ import {categories} from '../ui/categories';
 import {createCatalog} from '../server/catalog';
 import type {Env,CatalogQuery} from '../server/types';
 import '../styles/home-v3.css';
+import '../styles/home-rhythm.css';
 const repo=createCatalog(env as unknown as Env);
 const requestedTab=Astro.url.searchParams.get('popular')||'trending';
 const popularTab=['trending','newest','easy','detailed'].includes(requestedTab)?requestedTab:'trending';

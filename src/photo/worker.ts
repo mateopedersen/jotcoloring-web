@@ -1,3 +1,4 @@
+import {refineDrawingMap} from './refine';
 import {photoOutline,validateSettings,type OutlineSettings} from './outline';
 import {preserveLineDrawing,countColoringRegions} from './contours';
 import {finishDrawing,type DrawingMap} from './drawing';
@@ -15,7 +16,8 @@ self.onmessage=async(event:MessageEvent<{id:number;source:number;raw:ArrayBuffer
     cached={source,width,height,smoothing:settings.smoothing,map};
    }
    self.postMessage({id,progress:'Preparing clear print strokes and checking enclosed coloring areas…'});
-   result=finishDrawing(cached.map,width,height,settings,pixels);
+   const refined=refineDrawingMap(cached.map,pixels,width,height,settings);
+   result=finishDrawing(refined,width,height,settings,pixels);
   }
   const transfer:ArrayBuffer[]=[result.mask.buffer as ArrayBuffer];if(result.gray)transfer.push(result.gray.buffer as ArrayBuffer);
   self.postMessage({id,...result},{transfer});
