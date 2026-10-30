@@ -4,6 +4,7 @@ import Compare from './Compare.astro';
 import ImageLicense from './ImageLicense.astro';
 import Icon from './HomeIcon.astro';
 import FileActions from './FileActions.astro';
+import DifficultyBadge from './DifficultyBadge.astro';
 import AgeBadge from './AgeBadge.astro';
 import ShareButton from './ShareButton.astro';
 import type {Content} from '../server/types';
@@ -12,7 +13,7 @@ const text=artworkText(item);
 ---
 <article class="hc-card" data-content-id={item.id}>
  <ImageLicense item={item} assets={[item.thumbnail,item.home_color]}/>
- <div class="hc-picture" data-image-title={text.title} data-image-description={text.description}><Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/><span class="hc-category">{item.categoryName}</span><ShareButton item={item}/></div>
+ <div class="hc-picture" data-image-title={text.title} data-image-description={text.description}><Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/><span class="hc-category">{item.categoryName}</span><DifficultyBadge item={item} overlay/><ShareButton item={item}/></div>
  <div class="hc-info"><AgeBadge item={item}/><p class="hc-card-meta">{text.description}</p><a class="hc-title" href={`/coloring/${item.slug}/`}><span>{item.title}</span><span class="hc-title-arrow" aria-hidden="true"><Icon name="arrow" size={20}/></span></a>
  <FileActions item={item} variant="home"/></div>
 </article>

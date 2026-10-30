@@ -44,8 +44,9 @@ export function recommendAge(metrics:ImageDetailMetrics,visualScores:readonly nu
  return{score,band:bandForScore(score)};
 }
 /** Actual decoded pixels only. No filenames, titles, tags or declared ages are inputs. */
-export function analyzeDetailPixels(rgb:Uint8Array,width:number,height:number):ImageDetailMetrics{
+export function analyzeDetailPixels(rgb:Uint8Array,width:number,height:number,options:{minimumRegionPixels?:number;minimumRegionRatio?:number}={}):ImageDetailMetrics{
  if(!Number.isInteger(width)||!Number.isInteger(height)||width<32||height<32||width*height>1000000||rgb.length!==width*height*3)throw new Error('Use a decoded RGB image between 32 px and one megapixel.');
+ const minimumRegionPixels=options.minimumRegionPixels??12,minimumRegionRatio=options.minimumRegionRatio??.00015;if(!Number.isInteger(minimumRegionPixels)||minimumRegionPixels<4||minimumRegionPixels>1000||!Number.isFinite(minimumRegionRatio)||minimumRegionRatio<0||minimumRegionRatio>.01)throw new Error('Invalid detail analysis thresholds.');
  const n=width*height,ink=new Uint8Array(n);let count=0,transitions=0,minX=width,minY=height,maxX=0,maxY=0;
  for(let i=0;i<n;i++){const p=i*3,v=.2126*rgb[p]+.7152*rgb[p+1]+.0722*rgb[p+2];if(v<185){ink[i]=1;count++;const x=i%width,y=Math.floor(i/width);minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}}
  if(count<12||count/n>.85)throw new Error('The image must contain a visible coloring outline on a light background.');
@@ -61,7 +62,7 @@ export function analyzeDetailPixels(rgb:Uint8Array,width:number,height:number):I
  const shortSide=Math.min(boxWidth,boxHeight);
  for(let start=0;start<n;start++){if(blocked[start]||seen[start])continue;let head=0,tail=1,touches=false,wide=0,widthSum=0;queue[0]=start;seen[start]=1;
   while(head<tail){const i=queue[head++],x=i%width,y=Math.floor(i/width);if(x===0||x===width-1||y===0||y===height-1)touches=true;if(distance[i]>=shortSide*.012)wide++;widthSum+=distance[i]*2/shortSide;for(const j of [x>0?i-1:-1,x<width-1?i+1:-1,y>0?i-width:-1,y<height-1?i+width:-1])if(j>=0&&!seen[j]&&!blocked[j]){seen[j]=1;queue[tail++]=j;}}
-  if(!touches&&tail>=Math.max(12,area*.00015)){areas.push(tail/area);widths.push({width:widthSum/tail,area:tail/area});if(wide/tail>=.18&&tail/area>=.003)wideAreas.push(tail/area);}
+  if(!touches&&tail>=Math.max(minimumRegionPixels,area*minimumRegionRatio)){areas.push(tail/area);widths.push({width:widthSum/tail,area:tail/area});if(wide/tail>=.18&&tail/area>=.003)wideAreas.push(tail/area);}
  }
  const enclosed=areas.reduce((a,b)=>a+b,0);widths.sort((a,b)=>a.width-b.width);let medianWidth=0,cumulative=0;for(const r of widths){cumulative+=r.area;if(cumulative>=enclosed/2){medianWidth=r.width;break;}}areas.sort((a,b)=>a-b);return{width,height,inkRatio:count/area,edgeDensity:transitions/area,regions:areas.length,smallRegionRatio:areas.length?areas.filter(a=>a<.0015).length/areas.length:0,medianRegionRatio:areas.length?areas[Math.floor(areas.length/2)]:1,largestRegionRatio:areas.length?Math.max(...areas):0,largeAreaShare:enclosed?areas.filter(a=>a>=.015).reduce((a,b)=>a+b,0)/enclosed:0,wideAreaShare:enclosed?wideAreas.reduce((a,b)=>a+b,0)/enclosed:0,usableAreaShare:enclosed,medianWidthRatio:medianWidth,smallAreaShare:enclosed?areas.filter(a=>a<.0015).reduce((a,b)=>a+b,0)/enclosed:0};
 }

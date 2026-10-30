@@ -1,5 +1,5 @@
 /** Shared lexical intent. No network, paid model or inferred facts about unseen images. */
-export const SEARCH_VERSION='jot-search-2';
+export const SEARCH_VERSION='jot-search-2-detail4';
 const groups=[['cat','cats','kitten','kittens','kitty','kitties'],['dog','dogs','puppy','puppies','pup'],['rabbit','rabbits','bunny','bunnies'],['fox','foxes'],['deer','fawn','fawns'],['bird','birds'],['owl','owls'],['hedgehog','hedgehogs'],['flower','flowers','floral','bloom','blooms'],['dinosaur','dinosaurs','dino','dinos'],['car','cars','automobile','automobiles'],['camper','campers','campervan','van','vans'],['ocean','underwater','marine'],['turtle','turtles'],['fish','fishes'],['space','outerspace'],['astronaut','astronauts'],['planet','planets'],['mandala','mandalas'],['butterfly','butterflies'],['cupcake','cupcakes'],['dessert','desserts','sweets'],['snowman','snowmen'],['christmas','xmas'],['woodland','forest'],['bookshop','bookstore'],['color','colour']];
 const aliases=new Map(groups.flatMap(group=>group.map(term=>[term,group] as const)));
 const filler=new Set(['a','an','the','of','and','for','with','to','please','find','show','me','some','free','printable','printables','coloring','colouring','page','pages','sheet','sheets','picture','pictures','cute']);
@@ -10,7 +10,7 @@ export function parseSearchIntent(value:string){let remaining=value.toLowerCase(
  remaining=remaining.replace(/^(adults?|kids|children|teens?|teenagers)(?=\s+colou?ring|\s*$)/,(_,group:string)=>{ages.push(/adult/.test(group)?'adults':/teen/.test(group)?'teens':'kids');return' ';});
  const byAge=(first:number,last=first)=>{for(const [id,min,max] of [['3-5',3,5],['6-8',6,8],['9-12',9,12],['13-17',13,17],['adults',18,120]] as const)if(first<=max&&last>=min)bands.push(id);};
  remaining=remaining.replace(/\bages?\s+(\d{1,2})(?:\s*[-–]\s*(\d{1,2}))?\b/g,(_,a:string,b:string)=>{byAge(Number(a),Number(b||a));return' ';}).replace(/\b(\d{1,2})[ -]+year[ -]+olds?\b/g,(_,a:string)=>{byAge(Number(a));return' ';});
- remaining=remaining.replace(/\b(easy|simple|detailed|intricate)\b/g,(_,level:string)=>{difficulty.push(['easy','simple'].includes(level)?'easy':'detailed');return' ';});
+ remaining=remaining.replace(/\b(very hard|medium|hard|easy|simple|detailed|intricate)\b/g,(_,level:string)=>{difficulty.push(level==='very hard'?'very-hard':['medium','hard'].includes(level)?level:['easy','simple'].includes(level)?'easy':'detailed');return' ';});
  return{words:intentWords(remaining),ages:[...new Set(ages)],bands:[...new Set(bands)],difficulty:[...new Set(difficulty)]};
 }
 export function equivalents(word:string){return aliases.get(word)||[word];}
