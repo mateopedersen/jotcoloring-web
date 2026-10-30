@@ -1,0 +1,14 @@
+/* Shared high-contrast surfaces. Keep every gradient stop readable, including
+   narrow-screen labels and future cards that reuse these components. */
+:root{--accessible-accent:#82421f;--accessible-button-top:#a9451b;--accessible-button-bottom:#893016}
+body :is(.jc-search-submit,.creative-main-action,.takeaway-primary,.jc-guide-action,.support-button:not(.secondary),.contact-start,.aw-primary,.generate-button,.jc-dl-save,.jc-lost-actions>a:first-child){background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
+body :is(.support-tabs a[aria-current],.jc-related-tabs a[aria-current]){background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
+body .jc-related-tabs a[aria-current]>b{background:#00000020;color:#fff}
+body :is(.support-button:not(.secondary),.generate-button,.creative-main-action,.jc-dl-save)>:is(span,b,strong){color:#fff!important}
+body :is(.jc-main-nav a[aria-current],.hv-mobile-bottom a[aria-current],.iv-back-categories,.pagination a.active){color:#8c381b!important}
+body :is(.jc-gallery-copy h2>span,.jc-gallery-choice-title>span,.explore-eyebrow,.support-kicker,.support-card-number,.walk-jump a>b,.aw-eyebrow,.aw-hero h1>span,.jc-photo-eyebrow,.jc-photo-section-title>span,.jc-photo-tips article>span,.jc-photo-hero-art b,.jc-collections .hv-kicker,.jc-guide-tab-number){color:var(--accessible-accent)!important}
+body :is(.jc-guide-screenbar>span,.jc-photo-minor-actions button,.jc-photo-formats small,.jc-color-ideas-open small,.jc-age-recommendation-main p,.jc-age-recommendation-main span,.jc-related-foot>span,.jc-explore-copy>span,.jc-explore-copy b,.jc-dl-guide a){color:#704322!important}
+body .creator-mode-tabs a.active :is(strong,small){color:#843916!important}
+body :is(.aw-new-board-copy strong,.aw-pin-open,.aw-pin-open>span){color:var(--accessible-accent)!important}
+body .studio-button.primary{background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
+body .jc-share-image-button{background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
