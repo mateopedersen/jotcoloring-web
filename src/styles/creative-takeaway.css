@@ -1,0 +1,58 @@
+.create-playground .creative-takeaway.creative-takeaway--centered {
+  display: grid; grid-template-columns: minmax(0,1fr); justify-items: center;
+  gap: 24px; padding: 42px 30px 46px; margin-top: 28px;
+  border: 1px solid #e8c6a9; border-radius: 28px;
+  background: radial-gradient(ellipse at 50% 0%,#ffe0bb65,transparent 66%),linear-gradient(145deg,#fffdf8,#fff1e0);
+  box-shadow: inset 0 1px #fff,0 5px 0 #f0e0cf;
+  text-align: center;
+}
+.creative-takeaway--centered .creative-takeaway-art {
+  display: grid; place-items: center; width: 98px; height: 98px;
+  border: 1px solid #e8c3a4; border-radius: 25px;
+  background: linear-gradient(145deg,#fff,#ffead6);
+  box-shadow: inset 0 2px #fff,0 5px 0 #e7c7aa,0 12px 22px #b46a2910;
+}
+.creative-takeaway--centered .creative-takeaway-art > svg { width: 74px; height: 74px; }
+.creative-takeaway--centered .creative-takeaway-copy { min-width: 0; max-width: 790px; }
+.create-playground .creative-takeaway-copy h3 {
+  font-size: clamp(30px,3.3vw,42px); font-weight: 850; line-height: 1.15;
+  letter-spacing: -1px; margin: 0 0 16px; color: #000;
+}
+.create-playground .creative-takeaway-copy p {
+  margin: 0; font-size: 19px; font-weight: 600; line-height: 1.65; color: #000;
+}
+.creative-takeaway--centered .creative-takeaway-actions {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
+  gap: 14px; width: 100%; margin-top: 4px;
+}
+.create-playground .creative-takeaway-actions > a {
+  display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+  min-width: 240px; max-width: 100%; min-height: 62px; padding: 15px 24px;
+  font-size: 17px; font-weight: 800; line-height: 1.4; text-decoration: none;
+  border: 1px solid #d5aa86; border-radius: 16px;
+}
+.creative-takeaway-actions > .takeaway-primary {
+  color: #fff; background: linear-gradient(130deg,#d75d25,#b44720);
+  box-shadow: inset 0 1px #ffffff50,0 4px 0 #943e1f;
+}
+.creative-takeaway-actions > .takeaway-secondary {
+  color: #a34b25; background: #fffdf8;
+  box-shadow: inset 0 1px #fff,0 4px 0 #e5cbb5;
+}
+.creative-takeaway-actions > a > svg { width: 22px; height: 22px; flex: none; }
+.creative-takeaway-actions > a:hover { transform: translateY(-2px); }
+.creative-takeaway-actions > a:focus-visible { outline: 3px solid #bd582c; outline-offset: 4px; }
+@container (max-width:540px) {
+  .create-playground .creative-takeaway.creative-takeaway--centered {
+    padding: 30px 20px 34px; gap: 22px; border-radius: 24px;
+  }
+  .creative-takeaway--centered .creative-takeaway-art { width: 82px; height: 82px; border-radius: 22px; }
+  .creative-takeaway--centered .creative-takeaway-art > svg { width: 62px; height: 62px; }
+  .create-playground .creative-takeaway-copy h3 { font-size: 30px; letter-spacing: -.7px; }
+  .create-playground .creative-takeaway-copy p { font-size: 17px; line-height: 1.6; }
+  .creative-takeaway--centered .creative-takeaway-actions { flex-direction: column; gap: 14px; }
+  .create-playground .creative-takeaway-actions > a { width: 100%; min-width: 0; min-height: 60px; padding: 15px 12px; font-size: 16px; gap: 10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .creative-takeaway-actions > a:hover { transform: none; }
+}

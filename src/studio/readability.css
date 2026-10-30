@@ -1,0 +1,16 @@
+/* Tool captions are compact, while instructions and form controls remain full size. */
+body.studio-shell .studio-v4 { font-size:15px; font-weight:550; }
+body.studio-shell .studio-v4 :is(.studio-button,.studio-file,.setting-row,.brush-numeric,.check-row) { font-size:14px; line-height:1.45; }
+body.studio-shell .studio-v4 :is(.setting-hint,.studio-modal p,.library-intro,.library-results-status) { font-size:14px; font-weight:550; line-height:1.65; }
+body.studio-shell .studio-v4 :is(.studio-settings label,.studio-modal label,.studio-settings input,.studio-settings select,.studio-modal input,.studio-modal select) { font-size:14px; line-height:1.5; }
+body.studio-shell .studio-v4 :is(.settings-panel h3,.studio-detail summary) { font-size:16px; font-weight:750; }
+body.studio-shell .studio-v4 .studio-tools button { font-size:var(--type-compact-size)!important; }
+body.studio-shell .studio-v4 :is(.library-card-open strong,.library-preview-levels button) { font-size:14px; line-height:1.4; }
+body.studio-shell .studio-v4 :is(.library-card-level,.studio-bottom-note,.save-state) { font-size:var(--type-compact-size); }
+body.studio-shell .studio-v4 .studio-format-grid small { font-size:14px; line-height:1.5; }
+body.studio-shell .studio-v4 .rail-help { min-height:74px; height:auto; padding:9px 3px; gap:4px; flex-shrink:0; }
+body.studio-shell .studio-v4 .rail-help>span:first-child { flex-shrink:0; }
+@media(max-width:700px){
+  body.studio-shell .studio-v4 .studio-header>.studio-button { font-size:var(--type-compact-size); }
+  body.studio-shell .studio-v4 .canvas-toolbar .inspector-toggle { font-size:var(--type-compact-size)!important; }
+}

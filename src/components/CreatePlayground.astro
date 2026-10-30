@@ -3,13 +3,14 @@ import VectorIcon from './VectorIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import CreativeFeatureCards from './CreativeFeatureCards.astro';
 import '../styles/create-playground.css';
+import '../styles/creative-takeaway.css';
 const {contained=false}=Astro.props;
 ---
 <section class:list={['create-playground',!contained&&'hv-container']} aria-labelledby="creative-paths-title">
- <header class="creative-paths-heading"><div><p class="hv-kicker">A LITTLE IDEA. A WHOLE LOT OF POSSIBILITIES.</p><h2 id="creative-paths-title">Where will your colors take you?</h2></div><p>Start with a page, a favorite photo, or an idea that’s all your own.</p></header>
+ <header class="creative-paths-heading"><div><p class="hv-kicker">A LITTLE IDEA. A WHOLE LOT OF POSSIBILITIES.</p><h2 id="creative-paths-title">Where will your colors take you?</h2></div></header>
  <div class="creative-paths-grid">
   <article class="creative-desk-card"><div class="creative-desk-copy"><span class="creative-path-label"><VectorIcon name="studio" size={35}/>YOUR ONLINE COLORING DESK</span><h3>A little tap.<br/><em>A lot of color.</em></h3><p>Fill a tiny detail. Try a textured brush. Give your next big idea a little room to play.</p><div class="creative-feature-pills"><span><VectorIcon name="fill" size={22}/>Tap to fill</span><span><VectorIcon name="brush" size={22}/>Find your brush</span><span><VectorIcon name="layers" size={22}/>Keep your layers</span></div><a class="creative-main-action" href="/studio/"><VectorIcon name="brush" size={29}/><span>Open Coloring Studio</span><b><ArrowIcon size={19}/></b></a><small>10,000 Studio starters · Easy mode · Save your progress</small></div><a class="creative-real-screen" href="/studio/" aria-label="Try the coloring workspace shown here"><div class="creative-screen-bar"><span><i/><i/><i/></span><strong>Your creative corner</strong><VectorIcon name="privacy" size={20}/></div><img src="/guides/studio-workspace-v4.webp" alt="The working JotColoring Studio with a colored page, painting tools, color palette, layers and download controls." width="1440" height="950" loading="lazy"/><div class="creative-screen-note"><VectorIcon name="studio" size={33}/><span>Your page. Your colors.<small>A real look inside Studio.</small></span><ArrowIcon size={22}/></div></a></article>
   <CreativeFeatureCards/>
  </div>
- <div class="creative-takeaway"><VectorIcon name="download" size={35}/><span><strong>Keep the colors you create.</strong><small>Download your Studio artwork as PNG, SVG, JPG, JPEG, Word, PDF, or WEBP.</small></span><a href="/how-to-use/">Take a quick tour <ArrowIcon size={18}/></a></div>
+ <div class="creative-takeaway creative-takeaway--centered"><div class="creative-takeaway-art" aria-hidden="true"><VectorIcon name="download" size={74}/></div><div class="creative-takeaway-copy"><h3>Keep the colors you create.</h3><p>Download your Studio artwork as PNG, SVG, JPG, JPEG, Word, PDF, or WEBP.</p></div><div class="creative-takeaway-actions"><a class="takeaway-primary" href="/studio/">Open Coloring Studio <ArrowIcon size={22}/></a><a class="takeaway-secondary" href="/how-to-use/">Take a Quick Tour <ArrowIcon size={22}/></a></div></div>
 </section>

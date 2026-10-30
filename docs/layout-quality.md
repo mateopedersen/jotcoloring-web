@@ -25,3 +25,9 @@ Use 320 px for the complete current route list in both the system font and the M
 For Studio, check all seven tabs, both states of the brush-size disclosure, the library, element picker and all seven export-format tiles. Check a short landscape viewport as well as portrait. Controls must not cover the canvas when their drawer is closed. The drawing tool rail fits in two rows on narrow phones and one row in landscape; it is not an intentional horizontal scroller. Brush controls start collapsed on compact screens and stay expanded on desktop.
 
 Astro component styles do not automatically select SVG roots rendered inside another component. Use an explicit `:global(svg)` selector within the component's own class scope for those SVG children; do not rely on a scoped selector that silently misses them.
+
+## Readable text in future components
+
+Use the shared tokens in `type-scale.css`: `--type-body-size` (16 px), `--type-control-size` (15 px), and `--type-note-size` (14 px). Reserve `--type-compact-size` (13 px) for short Studio tool labels and compact status readouts. Do not shrink normal descriptions, file details, age recommendations or form instructions to 8–12 px to make a layout fit. Allow rows to wrap or change the grid instead.
+
+Keep normal text at weight 550 or above, labels around 650–750, and preserve the existing Avenir/Manrope font stack. Use dark text for secondary instructions; only disabled controls and hidden hover hints should be deliberately faded. Check long labels with both the system font and the Manrope fallback before accepting a new layout.

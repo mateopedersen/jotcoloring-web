@@ -1,0 +1,11 @@
+---
+import ActionIcon from './ActionIcon.astro';
+import FooterIcon from './FooterIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
+import '../styles/category-browse.css';
+---
+<ul class="iv-category-facts" aria-label="Downloads, coloring tools, and usage">
+ <li><span class="iv-fact-symbol" aria-hidden="true"><ActionIcon name="pdf" size={36}/></span><span>PDF &amp; Image downloads</span></li>
+ <li><span class="iv-fact-symbol" aria-hidden="true"><ActionIcon name="brush" size={36}/></span><span>Color online</span></li>
+ <li><a href="/license/"><span class="iv-fact-symbol" aria-hidden="true"><FooterIcon name="nav-license" size={36}/></span><span>Free personal &amp; classroom use</span><ArrowIcon size={20}/></a></li>
+</ul>

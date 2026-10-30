@@ -8,6 +8,7 @@ export const PALETTES = [
   {name:'Sunset',colors:['#f6d17a','#ed985b','#db674c','#ad4d6f','#705287','#343b6c']},
   {name:'Earth & clay',colors:['#b56340','#d08a64','#d9b795','#94a47b','#546b55','#4e4037']},
   {name:'Winter lights',colors:['#b84745','#d7b15f','#326a56','#92b5ac','#6887a8','#dedde9']},
+  {name:'Drawing box',colors:['#ed334b','#ff8b34','#f8cf37','#4ba866','#367bc1','#9454ae','#171717','#ffffff']},
   {name:'Bold basics',colors:['#ed334b','#ff8b34','#f8cf37','#4ba866','#367bc1','#9454ae']},
 ] as const;
 export function harmonies(color:string,mode='analogous'){

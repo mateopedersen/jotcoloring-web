@@ -1,9 +1,17 @@
 /* Avenir-first typography, sized for comfortable reading across the site. */
+:root {
+  --type-body-size: 16px;
+  --type-control-size: 15px;
+  --type-note-size: 14px;
+  --type-compact-size: 13px;
+  --type-body-weight: 550;
+}
 :root { --ink: #000; --text: #000; --muted: #000; font-size: 16px; }
 body:is(.home-v3,.site-v3) {
   --hv-ink: #000;
   --hv-muted: #000;
   font-size: 16px;
+  font-weight: var(--type-body-weight);
   color: var(--hv-ink);
 }
 .jc-header .jc-main-nav a { color: var(--text-ink, #000); }
@@ -28,54 +36,83 @@ body.site-v3 .detail-description { color: var(--text-ink, #000); }
 }
 @media (min-width: 821px) and (max-width: 1199px) {
   .jc-header .jc-main-nav a,
-  .jc-header .hv-studio-nav { font-size: 11px; }
+  .jc-header .hv-studio-nav { font-size:var(--type-note-size); }
 }
 
 .home-v3 .hv-hero-description { font-size: 18px; line-height: 1.72; }
 .home-v3 .jc-search-shell input { font-size: 16px; }
 .home-v3 .jc-search-submit { font-size: 14px; }
-.home-v3 .hv-search-suggestions > a { font-size: 13px; }
-.home-v3 .jc-hero-benefits > span { font-size: 13px; }
-.home-v3 .jc-hero-benefits small { font-size: 11px; }
+.home-v3 .hv-search-suggestions > a { font-size:var(--type-note-size); }
+.home-v3 .jc-hero-benefits > span { font-size:var(--type-note-size); }
+.home-v3 .jc-hero-benefits small { font-size:var(--type-note-size); }
 .home-v3 .jc-gallery-copy > p:not(.hv-kicker) { font-size: 15px; line-height: 1.65; }
-.home-v3 .jc-gallery-tabs strong { font-size: 13px; }
-.home-v3 .jc-gallery-tabs small { font-size: 11px; }
+.home-v3 .jc-gallery-tabs strong { font-size:var(--type-note-size); }
+.home-v3 .jc-gallery-tabs small { font-size:var(--type-note-size); }
 .home-v3 .hv-gallery-end { font-size: 14px; }
-.home-v3 .hc-downloads a { font-size: 13px; }
+.home-v3 .hc-downloads a { font-size:var(--type-note-size); }
 
 .site-v3 .detail-description,
 .site-v3 .iv-category-intro,
 .site-v3 .artwork-intro { font-size: 17px; line-height: 1.75; }
 .site-v3 .studio-cta { font-size: 17px; }
 .site-v3 .iv-card .art-title { font-size: 18px; }
-.site-v3 .iv-card .iv-card-category { font-size: 12px; }
+.site-v3 .iv-card .iv-card-category { font-size:var(--type-note-size); }
 
 .jc-footer-nav > a { font-size: 14px; }
-.jc-footer-nav-title p { font-size: 12px; }
+.jc-footer-nav-title p { font-size:var(--type-note-size); }
 .jc-footer-brand > p { font-size: 15px; }
 .jc-footer-license p,
-.jc-footer-license > a { font-size: 13px; }
-.jc-footer-bottom { font-size: 12px; }
+.jc-footer-license > a { font-size:var(--type-note-size); }
+.jc-footer-bottom { font-size:var(--type-note-size); }
 
 @media (max-width: 700px) {
-  :root { font-size: 15px; }
-  body:is(.home-v3,.site-v3) { font-size: 15px; }
+  :root { font-size: 16px; }
+  body:is(.home-v3,.site-v3) { font-size: 16px; }
   .home-v3 .hv-hero-description { font-size: 16px; }
   .home-v3 .jc-search-shell input { font-size: 16px; }
-  .home-v3 .jc-search-submit { font-size: 13px; }
-  .home-v3 .jc-hero-benefits > span { font-size: 12px; }
-  .home-v3 .jc-hero-benefits small { font-size: 10px; }
+  .home-v3 .jc-search-submit { font-size:var(--type-note-size); }
+  .home-v3 .jc-hero-benefits > span { font-size:var(--type-note-size); }
+  .home-v3 .jc-hero-benefits small { font-size:var(--type-note-size); }
   .home-v3 .jc-gallery-copy > p:not(.hv-kicker) { font-size: 14px; }
-  .home-v3 .hc-downloads a { font-size: 12px; }
+  .home-v3 .hc-downloads a { font-size:var(--type-note-size); }
   .site-v3 .detail-description,
   .site-v3 .iv-category-intro,
   .site-v3 .artwork-intro { font-size: 16px; }
   .site-v3 .iv-card .art-title { font-size: 16px; }
   .jc-footer-nav > a { font-size: 14px; }
-  .jc-footer-bottom { font-size: 12px; }
+  .jc-footer-bottom { font-size:var(--type-note-size); }
 }
 
 /* Shared neutral text token: preserve colored accents and light-on-dark actions. */
 :root { --text-ink: #000; --text: #000; --ink: #000; --muted: #000; }
 
 body:is(.home-v3,.site-v3) { --hv-ink: #000; --hv-muted: #000; }
+
+/* Body copy stays distinct from headings; small text uses the shared note token. */
+html body:is(.home-v3,.site-v3) :is(
+  .support-card p,.support-contact p,.support-faq-answer,.support-prose p,.support-prose li,
+  .walk-copy p,.walk-tip p,.aw-hero p:not(.aw-eyebrow),.aw-empty p,
+  .jc-dl-description,.jc-dl-guide p,.jc-lost-drawing p,.jc-guide-copy>p:not(.jc-guide-step-label)
+) { font-size:var(--type-body-size); font-weight:var(--type-body-weight); line-height:1.75; }
+html body.home-v3 .hc-card-meta { font-size:15px; font-weight:550; line-height:1.65; min-height:4.95em; }
+html body.site-v3 .jc-card-description { font-size:15px; font-weight:550; line-height:1.65; }
+html body:is(.home-v3,.site-v3) :is(
+  .support-toc a,.support-form label,.aw-sidebar nav>button,.aw-side-link,.aw-controls>button,
+  .jc-dl-choose,.jc-dl-details summary,.jc-age-navigation-heading>a
+) { font-size:var(--type-control-size); font-weight:650; line-height:1.5; }
+html body:is(.home-v3,.site-v3) :is(.jc-age-links strong,.difficulty-levels strong) { font-size:16px; font-weight:750; line-height:1.35; }
+html body:is(.home-v3,.site-v3) :is(.jc-age-links small,.difficulty-levels small) { font-size:var(--type-note-size); font-weight:550; line-height:1.55; }
+html body:is(.home-v3,.site-v3) :is(
+  .jc-discovery-ideas summary span,.jc-guide-step-label>span,.jc-guide-next,
+  .iv-preview-label,.iv-preview-note,.quick-preview .badges .badge,.quick-preview .quick-downloads .button,
+  .detail-copy .hv-kicker,.iv-detail-ai small,.iv-detail-ai strong,
+  .jc-dl-heading p,.jc-dl-heading>div>span,.jc-dl-preview figcaption,.jc-dl-kicker,
+  .jc-dl-selected>p,.jc-dl-details,.jc-dl-permission,.jc-dl-card-footer,.jc-dl-ad-space>span,
+  .jc-photo-hero-art>span,.jc-storage-copy p,.aw-pin-badges>span
+) { color:#64432d; }
+html body:is(.home-v3,.site-v3) .jc-footer-signature>span { font-size:var(--type-note-size); font-weight:550; }
+html body:is(.home-v3,.site-v3) .jc-footer-closing { font-size:17px; }
+html body:is(.home-v3,.site-v3) main small { font-size:var(--type-note-size); font-weight:550; line-height:1.55; }
+@media(max-width:700px){
+  html body.home-v3 .hc-card-meta { font-size:var(--type-note-size); }
+}

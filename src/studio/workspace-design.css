@@ -1,0 +1,91 @@
+/* A clear drawing desk: grouped tools, a usable canvas, and a readable inspector. */
+body.studio-shell .studio-v4 { --studio-line:#e7dace; --studio-orange:#bd4e24; --studio-tint:#fff1df; background:#f6f1e9; }
+body.studio-shell .studio-v4 .studio-header { background:#fffdf9; border-bottom-color:#e6d4c3; }
+body.studio-shell .studio-v4 .workspace-open-library { background:#c45225; border-color:#a74420; color:#fff; box-shadow:0 2px 0 #9f421f; min-height:46px; font-size:14px; padding:8px 12px; }
+body.studio-shell .studio-v4 .workspace-open-library>svg { flex:none; width:28px; height:28px; }
+body.studio-shell .studio-v4 .studio-workspace { background:#f6f2eb; }
+body.studio-shell .studio-v4 .canvas-stage { border-color:#dcd0c1; background-color:#eee7dd; background-image:radial-gradient(#cfbfae 1px,transparent 1px); background-size:20px 20px; }
+body.studio-shell .studio-v4 .workspace-topline { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+body.studio-shell .studio-v4 .workspace-topline>div:first-child { flex:1 1 150px; min-width:0; }
+body.studio-shell .studio-v4 .workspace-topline strong { font-size:15px; font-weight:750; }
+body.studio-shell .studio-v4 .workspace-hint { font-size:13px; line-height:1.5; }
+body.studio-shell .studio-v4 .workspace-colors { display:flex; flex-wrap:wrap; align-items:center; gap:10px; min-height:52px; padding:8px 12px; border:1px solid #e4d5c5; border-radius:13px; background:#fffdf8; }
+body.studio-shell .studio-v4 .workspace-colors>span { font-size:14px; font-weight:700; color:#60452e; }
+body.studio-shell .studio-v4 .workspace-colors>div { flex-wrap:wrap; gap:8px; }
+body.studio-shell .studio-v4 .workspace-colors button { width:34px; height:34px; min-width:34px; min-height:34px; }
+body.studio-shell .studio-v4 .inspector-heading { padding:19px 18px 15px; background:#fffaf2; border-bottom:1px solid #ebddce; }
+body.studio-shell .studio-v4 .inspector-heading h1 { font-size:25px; font-weight:750; line-height:1.2; letter-spacing:-.025em; }
+body.studio-shell .studio-v4 .inspector-heading>span { display:block; margin-top:6px; font-size:14px; line-height:1.5; }
+body.studio-shell .studio-v4 .settings-tabs { display:flex; flex-wrap:wrap; gap:6px; padding:12px; background:#fffdf9; }
+body.studio-shell .studio-v4 .settings-tabs button { flex:1 1 calc(25% - 6px); min-width:58px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-height:64px; padding:6px 3px; border:1px solid #ecdfd1; border-radius:11px; background:#fff; font-size:13px!important; line-height:1.3; overflow-wrap:normal; word-break:normal; }
+body.studio-shell .studio-v4 .settings-tabs button>svg { flex:none; width:27px; height:27px; }
+body.studio-shell .studio-v4 .settings-tabs button[aria-selected=true] { border-color:#ca7c43; background:#fff0db; color:#9b421f; box-shadow:0 2px 0 #e7c5a4; }
+body.studio-shell .studio-v4 .section-label h2 { font-size:21px; font-weight:750; }
+body.studio-shell .studio-v4 .studio-field-label { display:block; font-size:15px; font-weight:700; margin:20px 0 8px; }
+body.studio-shell .studio-v4 .active-color-row { display:grid; grid-template-columns:60px minmax(0,1fr) 42px; align-items:end; gap:9px; padding:12px; border:1px solid #e6d4c0; border-radius:14px; background:#fff8ee; margin-bottom:18px; }
+body.studio-shell .studio-v4 .active-color-row label { margin:0; min-width:0; font-size:13px; font-weight:650; }
+body.studio-shell .studio-v4 .active-color-row input { margin:7px 0 0; min-height:44px; width:100%; font-size:15px; }
+body.studio-shell .studio-v4 .active-color-row .exact-color input { padding:3px; height:44px; }
+body.studio-shell .studio-v4 .active-color-row>.studio-button { padding:6px; min-height:44px; }
+body.studio-shell .studio-v4 .inspector-bottom { padding:0; background:#fff8ec; border-top:1px solid #ddc4aa; max-height:330px; overflow-y:auto; }
+body.studio-shell .studio-v4 .inspector-bottom>summary { display:flex; justify-content:space-between; align-items:center; min-height:50px; padding:12px 17px; gap:10px; font-size:15px; font-weight:750; list-style:none; cursor:pointer; }
+body.studio-shell .studio-v4 .inspector-bottom>summary::-webkit-details-marker { display:none; }
+body.studio-shell .studio-v4 .inspector-bottom>summary::after { content:'+'; font-size:22px; }
+body.studio-shell .studio-v4 .inspector-bottom[open]>summary::after { content:'−'; }
+body.studio-shell .studio-v4 .brush-settings-fields { padding:0 16px 15px; }
+body.studio-shell .studio-v4 .quick-sizes { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
+body.studio-shell .studio-v4 .quick-sizes button { min-width:0; padding:6px 2px; min-height:46px; font-size:12px; }
+
+@media(min-width:769px) and (min-height:541px){
+ body.studio-shell .studio-v4 .studio-layout { grid-template-columns:140px minmax(0,1fr) 350px; }
+ body.studio-shell .studio-v4.left-handed .studio-layout { grid-template-columns:350px minmax(0,1fr) 140px; }
+ body.studio-shell .studio-v4 .studio-header { height:82px; padding:11px 18px; gap:14px; }
+ body.studio-shell .studio-v4 .studio-logo img { width:220px; height:58px; object-fit:contain; }
+ body.studio-shell .studio-v4 .studio-tool-rail { padding:16px 10px; gap:0; background:#fffaf3; }
+ body.studio-shell .studio-v4 .studio-rail-title { font-size:12px; margin-bottom:15px; color:#805433; }
+ body.studio-shell .studio-v4 .studio-tools { display:block; }
+ body.studio-shell .studio-v4 .studio-tool-group { margin:0 0 16px; }
+ body.studio-shell .studio-v4 .studio-tool-group h2 { font-size:12px; font-weight:750; letter-spacing:.065em; text-transform:uppercase; color:#765238; line-height:1.4; margin:0 0 8px; }
+ body.studio-shell .studio-v4 .studio-tool-group>div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+ body.studio-shell .studio-v4 .studio-tools button { min-height:66px; padding:6px 3px; border:1px solid #e9dac8; border-radius:12px; background:#fff; font-size:13px!important; line-height:1.3; gap:4px; }
+ body.studio-shell .studio-v4 .studio-tools button[aria-pressed=true] { border-color:#c8793c; background:#ffedd5; color:#8c3f1d; box-shadow:0 2px 0 #e3bc96; }
+ body.studio-shell .studio-v4 .studio-tools .jc-studio-tool-icon { width:32px; height:32px; }
+ body.studio-shell .studio-v4 .studio-tool-group>div>button:last-child:nth-child(odd) { grid-column:1/-1; flex-direction:row; min-height:50px; gap:8px; }
+ body.studio-shell .studio-v4 .rail-help { flex-direction:row; align-items:center; justify-content:center; min-height:48px; margin-top:auto; padding:8px 4px; gap:6px; font-size:13px; background:#fff; border:1px solid #e5d3c0; border-radius:11px; }
+ body.studio-shell .studio-v4 .rail-help .jc-studio-tool-icon { width:24px; height:24px; }
+ body.studio-shell .studio-v4.easy-mode .studio-tool-group:nth-child(2) { display:none; }
+ body.studio-shell .studio-v4 .canvas-toolbar { display:flex; flex-wrap:wrap; gap:10px; padding:9px; border-color:#e1cfbc; }
+ body.studio-shell .studio-v4 .canvas-toolbar button { font-size:13px; min-height:38px; }
+ body.studio-shell .studio-v4.focus-mode .studio-layout { grid-template-columns:minmax(0,1fr); }
+ body.studio-shell .studio-v4.focus-mode :is(.studio-tool-rail,.studio-settings) { display:none; }
+}
+@media(min-width:769px) and (max-width:1100px) and (min-height:541px){
+ body.studio-shell .studio-v4 .studio-layout { grid-template-columns:122px minmax(0,1fr) 300px; }
+ body.studio-shell .studio-v4.left-handed .studio-layout { grid-template-columns:300px minmax(0,1fr) 122px; }
+ body.studio-shell .studio-v4 .studio-logo img { width:175px; }
+ body.studio-shell .studio-v4 .studio-header { gap:9px; padding-inline:12px; }
+ body.studio-shell .studio-v4.focus-mode .studio-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:768px),(max-width:900px) and (max-height:540px){
+ body.studio-shell .studio-v4 .studio-tool-group,body.studio-shell .studio-v4 .studio-tool-group>div { display:contents; }
+ body.studio-shell .studio-v4 .studio-tool-group h2 { display:none; }
+ body.studio-shell .studio-v4 .workspace-topline { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:7px; }
+ body.studio-shell .studio-v4 .workspace-topline>div:first-child { grid-column:1/-1; grid-row:2; }
+ body.studio-shell .studio-v4 .workspace-hint { display:none; }
+ body.studio-shell .studio-v4 .workspace-topline strong { font-size:13px; }
+ body.studio-shell .studio-v4 .workspace-open-library { justify-content:center; min-width:0; min-height:43px; padding:6px; gap:5px; font-size:13px; }
+ body.studio-shell .studio-v4 .workspace-open-library>svg { width:24px; height:24px; }
+ body.studio-shell .studio-v4 .workspace-view-buttons { gap:5px; }
+ body.studio-shell .studio-v4 .workspace-view-buttons .studio-button { min-height:43px; padding:6px; gap:4px; font-size:12px; }
+ body.studio-shell .studio-v4 .workspace-view-buttons .studio-button>svg { width:18px; height:18px; }
+ body.studio-shell .studio-v4 .workspace-colors { padding:6px 8px; min-height:44px; gap:8px; }
+ body.studio-shell .studio-v4 .workspace-colors>span { font-size:12px; }
+ body.studio-shell .studio-v4 .workspace-colors button { width:28px; height:28px; min-width:28px; min-height:28px; }
+ body.studio-shell .studio-v4 .workspace-colors>div { gap:5px; }
+ body.studio-shell .studio-v4 .inspector-heading { display:none; }
+ body.studio-shell .studio-v4 .settings-tabs { padding:8px; gap:5px; }
+ body.studio-shell .studio-v4 .settings-tabs button { min-height:59px; }
+ body.studio-shell .studio-v4 .inspector-bottom { max-height:32dvh; }
+}
+/* The full-screen editor must not inherit the public site's reading-width cap. */
+body.studio-shell{max-width:none;border:0}
