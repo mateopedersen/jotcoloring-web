@@ -33,6 +33,8 @@ Before release: 305 application tests, seven operations tests, type checking, pr
 
 Read-only layout and control probes passed on 23 representative routes at 320, 390, 768, and 1440 CSS pixels: 92 route/viewport combinations. This covers the shared page families and the new contact/drawing routes. These probes do not establish correctness on every physical device.
 
+A final wide-screen review removed the public site's 1,800-pixel body cap from the full-screen Studio. Studio layout/control probes also passed at 320, 390, 768, 1024, 1440, and 2560 pixels, with the canvas workspace using the full available window width.
+
 Browser checks exercised drawing, rainbow strokes, undo/redo, save, library opening, and an actual seven-format ZIP export. Exported PNG, SVG, JPG, JPEG, DOCX, PDF, and WEBP files were inspected; the test PDF was 24,633 bytes. The contact form loaded inline with the selected topic. Physical tablet pen/touch input has not been tested on hardware; the in-app browser does not expose touch injection.
 
 Eighty-one generated OG objects were uploaded and read back with matching checksums. Repeated CDN GET requests produced HIT. Capacity for millions of catalog items is an architectural target, not a load-test result. Existing bounded search, queued ingestion, content hashes, and direct CDN media delivery must be monitored with real traffic; the current catalog is not evidence of million-item performance.

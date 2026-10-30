@@ -87,3 +87,5 @@ body.studio-shell .studio-v4 .quick-sizes button { min-width:0; padding:6px 2px;
  body.studio-shell .studio-v4 .settings-tabs button { min-height:59px; }
  body.studio-shell .studio-v4 .inspector-bottom { max-height:32dvh; }
 }
+/* The full-screen editor must not inherit the public site's reading-width cap. */
+body.studio-shell{max-width:none;border:0}
