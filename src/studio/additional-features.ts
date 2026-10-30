@@ -57,7 +57,7 @@ export const ADDITIONAL_FEATURES=[
  ['mirror-view','Mirror the workspace','Review proportions in a mirrored view; painting follows the view.'],
  ['thirds-guide','Rule of thirds guide','Use composition guides that stay out of downloads.'],
  ['rotate-download','Rotate a download','Export at 0°, 90°, 180°, or 270°.'],
- ['starter-search','Find a Studio starter','Search 1,000 scene compositions by subject and scene.'],
+ ['starter-search','Find a Studio starter','Search 10,000 compositions by subject, layout, and detail.'],
  ['starter-detail','Starter detail filter','Choose Easy, Medium, Hard, or Very Hard compositions.'],
- ['starter-category','Starter subject filter','Browse animals, plants, vehicles, space, and food.'],
+ ['starter-category','Starter subject filter','Browse 25 collections, including animals, architecture, music, and patterns.'],
 ] as const;

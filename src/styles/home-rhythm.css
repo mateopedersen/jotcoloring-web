@@ -1,0 +1,17 @@
+/* Shared rhythm for the homepage, including sparse filtered galleries. */
+.home-v3{--home-section-gap:32px}
+.home-v3 .hv-hero{padding-block:38px 36px}
+.home-v3 .hv-discovery-layout{align-items:start;padding-bottom:24px;gap:24px}
+.home-v3 .taxonomy-directory{margin-block:var(--home-section-gap);padding:26px}
+.home-v3 .create-playground{padding-block:20px 24px}
+.home-v3 .jc-coloring-guide{margin-block:28px 40px}
+.home-v3 .creative-paths-heading{margin-bottom:20px}
+.home-v3 .creative-paths-grid{gap:18px}
+.home-v3 .creative-takeaway{margin-top:16px}
+.home-v3 .hv-gallery{align-items:stretch;gap:18px}
+.home-v3 .hv-gallery>.hc-card{min-width:0}
+.home-v3 .hv-gallery .hc-info{display:flex;flex-direction:column}
+.home-v3 .hv-gallery .hc-downloads{margin-top:auto}
+@media(min-width:1101px){.home-v3 .hv-discovery-nav{position:sticky;top:18px;max-height:calc(100svh - 36px);overflow:auto;scrollbar-width:thin;scrollbar-color:#d8b89b transparent;padding-right:10px;overscroll-behavior:contain}.home-v3 .hv-discovery-nav nav>a{margin-bottom:6px}.home-v3 .hv-gallery:has(>.hc-card:last-child:nth-child(4n + 1))>.hc-card:last-child{grid-column:span 4;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.home-v3 .hv-gallery:has(>.hc-card:last-child:nth-child(4n + 2))>.hc-card:nth-last-child(-n+2){grid-column:span 2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.home-v3 .hv-gallery:has(>.hc-card:last-child:nth-child(4n + 3))>.hc-card:nth-last-child(1){grid-column:span 2}.home-v3 .hv-gallery>.hc-card[style]{min-width:0}}
+@media(min-width:701px) and (max-width:1100px){.home-v3 .hv-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.home-v3 .hv-gallery>.hc-card:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.home-v3{--home-section-gap:22px}.home-v3 .hv-hero{padding-block:24px}.home-v3 .hv-discovery-layout{padding-bottom:8px}.home-v3 .taxonomy-directory{padding:20px 16px}.home-v3 .create-playground{padding-block:12px 20px}.home-v3 .jc-coloring-guide{margin-block:22px 28px}.home-v3 .creative-paths-grid{gap:16px}.home-v3 .hv-gallery{gap:13px}.home-v3 .hv-gallery>.hc-card:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}

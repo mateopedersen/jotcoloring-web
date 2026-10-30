@@ -13,7 +13,6 @@ const columns=[
 ---
 <footer class="hv-footer jc-footer" aria-label="Site footer">
  <div class="hv-container jc-footer-inner">
-  <div class="jc-footer-topline"><span><span class="jc-footer-dot"></span> A LITTLE COLOR GOES A LONG WAY</span><a href="#top">Back to top <span aria-hidden="true"><ArrowIcon kind="up" size={18}/></span></a></div>
   <div class="jc-footer-grid">
    <div class="jc-footer-brand">
     <a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="254" height="80" alt="JotColoring"/></a>
@@ -23,6 +22,6 @@ const columns=[
    </div>
    {columns.map(column=><nav class="jc-footer-nav" aria-label={column.label}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{column.label}</h2><p>{column.description}</p></span></div><div class="jc-footer-nav-links">{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon} size={44}/><span class="jc-footer-link-label">{label}</span><span class="jc-footer-link-arrow" aria-hidden="true"><ArrowIcon kind="right" size={18}/></span></a>)}</div></nav>)}
   </div>
-  <div class="jc-footer-bottom"><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div>
+  <div class="jc-footer-bottom"><div class="jc-footer-signature"><a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="176" height="56" alt="JotColoring" loading="lazy"/></a><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div><p class="jc-footer-closing">A little imagination. A world of color.</p><a class="jc-footer-backtop" href="#top" aria-label="Back to top" title="Back to top"><span class="jc-footer-backtop-label">Back to top</span><span class="jc-footer-backtop-icon" aria-hidden="true"><ArrowIcon kind="up" size={20}/></span></a></div>
  </div>
 </footer>

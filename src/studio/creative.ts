@@ -18,7 +18,7 @@ export function symmetryPoints(point:Point,mode:Symmetry='none',width:number,hei
   if(mode==='horizontal')return [point,{...point,x:width-point.x}];
   if(mode==='vertical')return [point,{...point,y:height-point.y}];
   if(mode==='both')return [point,{...point,x:width-point.x},{...point,y:height-point.y},{...point,x:width-point.x,y:height-point.y}];
-  const count=mode==='radial-4'?4:mode==='radial-8'?8:1;
+  const count=mode==='radial-4'?4:mode==='radial-8'?8:mode==='radial-12'?12:mode==='radial-16'?16:1;
   return Array.from({length:count},(_,i)=>{const a=i*2*Math.PI/count,x=point.x-width/2,y=point.y-height/2;return {...point,x:width/2+x*Math.cos(a)-y*Math.sin(a),y:height/2+x*Math.sin(a)+y*Math.cos(a)};});
 }
 export function smoothPoint(last:Point,next:Point,amount:number):Point{const t=1-Math.min(.9,Math.max(0,amount));return {...next,x:last.x+(next.x-last.x)*t,y:last.y+(next.y-last.y)*t};}
@@ -35,6 +35,9 @@ export function paintStyle(c:CanvasRenderingContext2D,color:string,effect:PaintE
   if(effect.type==='radial'){const g=c.createRadialGradient(b.x+b.width/2,b.y+b.height/2,0,b.x+b.width/2,b.y+b.height/2,Math.max(b.width,b.height)/2);g.addColorStop(0,color);g.addColorStop(1,effect.secondary);return g;}
   const tile=document.createElement('canvas'),s=Math.max(6,Math.min(120,effect.spacing));tile.width=tile.height=s;const t=tile.getContext('2d')!;t.fillStyle=effect.secondary;t.fillRect(0,0,s,s);t.fillStyle=color;
   if(effect.type==='dots'){t.beginPath();t.arc(s/2,s/2,s/5,0,Math.PI*2);t.fill();}
+  else if(effect.type==='weave'){t.fillRect(0,0,s/3,s);t.fillRect(0,s/3,s,s/3);t.globalAlpha=.35;t.fillStyle=effect.secondary;t.fillRect(0,s/3,s/3,s/3);}
+  else if(effect.type==='bricks'){t.strokeStyle=color;t.lineWidth=Math.max(1,s/14);t.strokeRect(0,0,s,s/2);t.beginPath();t.moveTo(s/2,s/2);t.lineTo(s/2,s);t.stroke();}
+  else if(effect.type==='scales'){t.strokeStyle=color;t.lineWidth=Math.max(1,s/12);for(const [x,y] of [[0,0],[s,0],[s/2,s/2]]){t.beginPath();t.arc(x,y,s/2,0,Math.PI);t.stroke();}}
   else if(effect.type==='checks'){t.fillRect(0,0,s/2,s/2);t.fillRect(s/2,s/2,s/2,s/2);}
   else{t.strokeStyle=color;t.lineWidth=s/3;for(let i=-1;i<2;i++){t.beginPath();t.moveTo(i*s,0);t.lineTo((i+1)*s,s);t.stroke();}}
   return c.createPattern(tile,'repeat')||color;
