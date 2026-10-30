@@ -1,13 +1,13 @@
 .iv-card-picture{position:relative}
-.site-v3 .jc-share-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border:1px solid #e7c4a6;border-radius:14px;background:linear-gradient(160deg,#fffefd,#fff1df);box-shadow:inset 0 2px 0 #fff,0 3px 0 #e5c4a6,0 5px 12px #69451d16;color:#813b1e;font-weight:800;font-size:14px;padding:5px 14px;transition:transform .16s,box-shadow .16s}
-.site-v3 .jc-share-trigger:hover{color:#a84113;border-color:#d38a53;transform:translateY(-2px);box-shadow:inset 0 2px 0 #fff,0 4px 0 #e5c4a6,0 8px 18px #69451d22}
-.site-v3 .jc-share-trigger--card{position:absolute;top:14px;right:14px;z-index:3;min-width:47px;height:47px;padding:3px;border-radius:15px}
+.jc-share-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border:1px solid #e7c4a6;border-radius:14px;background:linear-gradient(160deg,#fffefd,#fff1df);box-shadow:inset 0 2px 0 #fff,0 3px 0 #e5c4a6,0 5px 12px #69451d16;color:#813b1e;font-weight:800;font-size:14px;padding:5px 14px;transition:transform .16s,box-shadow .16s}
+.jc-share-trigger:hover{color:#a84113;border-color:#d38a53;transform:translateY(-2px);box-shadow:inset 0 2px 0 #fff,0 4px 0 #e5c4a6,0 8px 18px #69451d22}
+.jc-share-trigger--card{position:absolute;top:14px;right:14px;z-index:3;min-width:47px;height:47px;padding:3px;border-radius:15px}
 .jc-share-trigger--card>span{position:absolute;right:calc(100% + 7px);padding:5px 9px;border-radius:8px;background:#fff;color:#703e23;box-shadow:0 2px 12px #4d352026;pointer-events:none;opacity:0;transition:opacity .15s}
 .jc-share-trigger--card:is(:hover,:focus-visible)>span{opacity:1}
 .jc-share-trigger .jc-share-art{flex:none;pointer-events:none}
 .iv-save-share{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch;margin-top:16px}
 .site-v3 .iv-save-share .favorite{margin:0;font-size:14px;color:var(--text-ink, #000);padding:8px 13px;min-height:54px}
 .site-v3 .iv-save-share .favorite b{font-weight:750}
-@media(max-width:600px){.site-v3 .iv-save-share{gap:8px}.site-v3 .iv-save-share .favorite{font-size:12px}.site-v3 .jc-share-trigger--detail{padding:5px 10px;font-size:13px}}
+@media(max-width:600px){.site-v3 .iv-save-share{gap:8px}.site-v3 .iv-save-share .favorite{font-size:12px}.jc-share-trigger--detail{padding:5px 10px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.jc-share-trigger,.jc-share-trigger *{transition:none!important;transform:none!important}}
 @media print{.jc-share-trigger{display:none!important}}

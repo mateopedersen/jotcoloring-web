@@ -11,18 +11,18 @@ space|Space|Space|space|planets, astronauts, rockets and outer space|Explore a u
  ocean|Ocean|Ocean|ocean|marine creatures, coral reefs and underwater ocean scenes|Life beneath the waves|marine,underwater,sea
 food|Food|Food|food|food, fruit, vegetables, desserts or drinks|Color something delicious|food,cooking
  dinosaurs|Dinosaurs|Dinosaur|dinosaurs|prehistoric dinosaurs and pterosaurs|Prehistoric adventures|dinosaur,prehistoric
-nature|Nature|Nature|woodland|landscapes, trees, mountains, forests and natural scenery|Explore the great outdoors|landscape,scenery,outdoors
-buildings|Buildings & Places|Building|fantasy|buildings, architecture, houses, shops and streets|Homes, streets and places|building,architecture,house
-people|People|People|kids|people, portraits, families, friends and everyday human activities|Faces, families and friends|person,human,family
-education|Learning|Learning|about|alphabet letters, numbers, classroom objects or educational worksheets|Letters, numbers and discoveries|educational,alphabet,learning
-sports|Sports|Sports|star|sports equipment, athletes and sporting activities|Ready, set, color|sport,athletics
-objects|Everyday Objects|Everyday Object|boards|household objects, tools, toys or furniture|Find beauty in everyday things|object,household
-music|Music|Music|notes|musical instruments, musicians and music notation|Bring a little rhythm to the page|musical,instrument
-fashion|Fashion|Fashion|brush|clothing, shoes, hats, jewelry and accessories|Patterns and personal style|clothing,clothes,accessory
-robots|Robots|Robot|settings|robots and mechanical robot characters|Friendly machines and inventions|robot,robotic
-seasons|Seasons & Weather|Season & Weather|holidays|weather, seasonal scenery, rain, snow or sunshine|A new season of color|weather,season
-celebrations|Celebrations|Celebration|star|birthdays, parties, weddings and non-holiday celebrations|Make a colorful occasion|party,celebration,birthday
-art-patterns|Art & Patterns|Art & Pattern|studio|abstract patterns, decorative motifs and art supplies|Lines, shapes and creative patterns|abstract,pattern,art`;
+nature|Nature|Nature|nature|landscapes, trees, mountains, forests and natural scenery|Explore the great outdoors|landscape,scenery,outdoors
+buildings|Buildings & Places|Building|buildings|buildings, architecture, houses, shops and streets|Homes, streets and places|building,architecture,house
+people|People|People|people|people, portraits, families, friends and everyday human activities|Faces, families and friends|person,human,family
+education|Learning|Learning|education|alphabet letters, numbers, classroom objects or educational worksheets|Letters, numbers and discoveries|educational,alphabet,learning
+sports|Sports|Sports|sports|sports equipment, athletes and sporting activities|Ready, set, color|sport,athletics
+objects|Everyday Objects|Everyday Object|objects|household objects, tools, toys or furniture|Find beauty in everyday things|object,household
+music|Music|Music|music|musical instruments, musicians and music notation|Bring a little rhythm to the page|musical,instrument
+fashion|Fashion|Fashion|fashion|clothing, shoes, hats, jewelry and accessories|Patterns and personal style|clothing,clothes,accessory
+robots|Robots|Robot|robots|robots and mechanical robot characters|Friendly machines and inventions|robot,robotic
+seasons|Seasons & Weather|Season & Weather|seasons|weather, seasonal scenery, rain, snow or sunshine|A new season of color|weather,season
+celebrations|Celebrations|Celebration|celebrations|birthdays, parties, weddings and non-holiday celebrations|Make a colorful occasion|party,celebration,birthday
+art-patterns|Art & Patterns|Art & Pattern|art-patterns|abstract patterns, decorative motifs and art supplies|Lines, shapes and creative patterns|abstract,pattern,art`;
 const children=`woodland|Woodland|animals|foxes, deer, hedgehogs, squirrels and woodland wildlife|forest animals
 pets|Pets|animals|pet cats, dogs, puppies, kittens or pet rabbits|pet
 farm-animals|Farm Animals|animals|cows, sheep, pigs, goats, horses and farmyard animals|farm animal
@@ -116,8 +116,9 @@ weddings|Weddings|celebrations|wedding couples, rings and wedding celebrations|w
  geometric-patterns|Geometric Patterns|art-patterns|repeating geometric shapes and abstract patterns without radial mandala symmetry|geometric,abstract
 art-supplies|Art Supplies|art-patterns|paintbrushes, pencils, palettes and art materials|art supply,pencil`;
 const samples:Record<string,string>={animals:'woodland-friends',flowers:'hibiscus-garden',fantasy:'friendly-dragon',mandalas:'botanical-mandala',holidays:'winter-wishes',vehicles:'camper-adventure',space:'space-explorer',ocean:'ocean-adventure',food:'sweet-treats',dinosaurs:'dinosaur-valley',woodland:'woodland-friends',pets:'sleepy-kitten','farm-animals':'farm-friends','ocean-life':'ocean-adventure',birds:'woodland-owl'};
+const subjectIcons=new Set(['woodland','pets','farm-animals','birds','insects','butterflies','jungle-animals','safari-animals','reptiles','polar-animals','cats','dogs','ocean-life','sea-turtles','dragons']);
 const top=roots.trim().split('\n').map(row=>{const [id,name,topic,icon,visual,intro,aliases]=row.trim().split('|');return{id,name,topic,parent:null,visual,icon,sample:samples[id]||'',intro,aliases:aliases.split(',')} as ColoringCategory});
-export const COLORING_TAXONOMY:readonly ColoringCategory[]=[...top,...children.trim().split('\n').map(row=>{const [id,name,parent,visual,aliases]=row.trim().split('|'),root=top.find(x=>x.id===parent)!;return{id,name,topic:name,parent,visual,icon:root.icon,sample:samples[id]||'',intro:`Explore ${name.toLowerCase()} coloring pages. Choose a PDF or image to print, or add your own colors in Studio.`,aliases:aliases.split(',')} as ColoringCategory})];
+export const COLORING_TAXONOMY:readonly ColoringCategory[]=[...top,...children.trim().split('\n').map(row=>{const [id,name,parent,visual,aliases]=row.trim().split('|'),root=top.find(x=>x.id===parent)!;return{id,name,topic:name,parent,visual,icon:subjectIcons.has(id)?id:root.icon,sample:samples[id]||'',intro:`Explore ${name.toLowerCase()} coloring pages. Choose a PDF or image to print, or add your own colors in Studio.`,aliases:aliases.split(',')} as ColoringCategory})];
 export const ROOT_CATEGORIES=COLORING_TAXONOMY.filter(c=>!c.parent);
 const byId=new Map(COLORING_TAXONOMY.map(c=>[c.id,c]));
 export function categoryById(id:string){return byId.get(id);}

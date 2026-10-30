@@ -57,7 +57,7 @@ export function measureLayout() {
 export function measureControls() {
   const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden],.sr-only,[aria-hidden=true],dialog:not([open])');};
   const identify=e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'svg',text:e.textContent.trim().replace(/\s+/g,' ').slice(0,85)});
-  const labels=[...document.querySelectorAll('.jc-footer-link-label,.support-tabs>a>b,.jc-file-copy,.aw-preview-actions button>span:last-child,.aw-dialog-secondary button>span:last-child,.jc-photo-formats strong,.jc-photo-formats small,.jc-dl-format>span,.jc-age-links>a>span,.settings-tabs button')].filter(visible);
+  const labels=[...document.querySelectorAll('.jc-footer-link-label,.support-tabs>a>b,.jc-file-copy,.aw-preview-actions button>span:last-child,.aw-dialog-secondary button>span:last-child,.jc-photo-formats strong,.jc-photo-formats small,.jc-dl-format>span,.jc-age-links>a>span,.settings-tabs button,.cf-cta>span:first-child,.jc-category-label>span,.aw-new-board-copy')].filter(visible);
   const escapingLabels=[];
   for(const label of labels){const control=label.closest('a,button,label');if(!control||!visible(control))continue;const range=document.createRange();range.selectNodeContents(label);const r=range.getBoundingClientRect(),p=control.getBoundingClientRect();if(r.width&&r.height&&(r.left<p.left-2||r.right>p.right+2||r.top<p.top-2||r.bottom>p.bottom+2))escapingLabels.push(identify(label));}
   const selectors='.support-tabs,.support-actions,.support-link-grid,.support-link-cards,.support-contact-rail,.jc-file-actions .format-links,.jc-gallery-tabs,.jc-footer-nav-links,.aw-controls,.aw-preview-actions,.aw-dialog-secondary,.settings-tabs,.difficulty-levels,.starter-pagination,.aw-toolbar,.aw-hero-actions,.studio-format-grid,.jc-photo-formats,.jc-dl-formats,.iv-filter-bar,.jc-age-links';
@@ -72,5 +72,18 @@ export function measureControls() {
     for(const row of rows)if(row.length>1&&Math.max(...row.map(x=>x.r.height))-Math.min(...row.map(x=>x.r.height))>3)unevenRows.push({group:parent.className,heights:row.map(x=>Math.round(x.r.height))});
   }
   for(const group of document.querySelectorAll('.jc-footer-nav-links')){if(!visible(group))continue;const parent=group.parentElement,s=getComputedStyle(parent),available=parent.clientWidth-(+s.paddingLeft.replace('px',''))-(+s.paddingRight.replace('px',''));if(available-group.getBoundingClientRect().width>3)underfilledGroups.push({group:group.className,available:Math.round(available),width:Math.round(group.getBoundingClientRect().width)});}
+  // Overlay controls must not occupy the same corner on new cards or new categories.
+  for(const picture of document.querySelectorAll('.hc-picture,.iv-card-picture')){
+    const controls=[...picture.querySelectorAll('.jc-category-label--overlay,.jc-detail-badge-overlay,.jc-share-trigger--card')].filter(visible);
+    for(let i=0;i<controls.length;i++)for(let j=i+1;j<controls.length;j++){
+      const a=controls[i].getBoundingClientRect(),b=controls[j].getBoundingClientRect();
+      if(Math.min(a.right,b.right)-Math.max(a.left,b.left)>2&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2)overlaps.push({group:picture.className,a:identify(controls[i]),b:identify(controls[j])});
+    }
+  }
+  // An empty library uses the whole row, rather than reserving blank board columns.
+  for(const grid of document.querySelectorAll('.aw-boards-grid')){
+    const children=[...grid.children].filter(visible);
+    if(children.length===1&&children[0].matches('.aw-new-board')&&grid.clientWidth-children[0].getBoundingClientRect().width>4)underfilledGroups.push({group:grid.className,available:grid.clientWidth,width:Math.round(children[0].getBoundingClientRect().width)});
+  }
   return{viewport:innerWidth,escapingLabels,overlaps,unevenRows,underfilledGroups,groups,pass:!escapingLabels.length&&!overlaps.length&&!unevenRows.length&&!underfilledGroups.length};
 }
