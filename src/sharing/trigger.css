@@ -6,7 +6,7 @@
 .jc-share-trigger--card:is(:hover,:focus-visible)>span{opacity:1}
 .jc-share-trigger .jc-share-art{flex:none;pointer-events:none}
 .iv-save-share{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch;margin-top:16px}
-.site-v3 .iv-save-share .favorite{margin:0;font-size:14px;color:#665147;padding:8px 13px;min-height:54px}
+.site-v3 .iv-save-share .favorite{margin:0;font-size:14px;color:var(--text-ink, #000);padding:8px 13px;min-height:54px}
 .site-v3 .iv-save-share .favorite b{font-weight:750}
 @media(max-width:600px){.site-v3 .iv-save-share{gap:8px}.site-v3 .iv-save-share .favorite{font-size:12px}.site-v3 .jc-share-trigger--detail{padding:5px 10px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.jc-share-trigger,.jc-share-trigger *{transition:none!important;transform:none!important}}

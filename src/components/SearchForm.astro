@@ -1,11 +1,12 @@
 ---
+import {ROOT_CATEGORIES} from '../taxonomy/catalog';
 import SearchIcon from './SearchIcon.astro';
 import Icon from './HomeIcon.astro';
 interface Props {variant?:'hero'|'header';value?:string;idPrefix?:string;action?:string;recommendedAge?:string}
 const {variant='header',value='',idPrefix,action='/coloring-pages/',recommendedAge}=Astro.props;
 const inputId=idPrefix?`${idPrefix}-search`:variant==='hero'?'home-search':'site-search',listId=`${inputId}-suggestions`;
 ---
-<form class:list={['jc-search-shell',variant==='hero'?'hv-search':'jc-header-search']} action={action} method="get" role="search" data-search-form data-recommended-age={recommendedAge}>
+<form class:list={['jc-search-shell',variant==='hero'?'hv-search':'jc-header-search']} action={action} method="get" role="search" data-search-form data-category-options={JSON.stringify(ROOT_CATEGORIES.map(({id,name})=>({id,name})))} data-recommended-age={recommendedAge}>
  <SearchIcon size={variant==='hero'?48:38}/><label class="sr-only" for={inputId}>Search coloring pages</label>
  <input id={inputId} name="q" type="search" value={value} maxlength="160" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="search" enterkeyhint="search" placeholder={variant==='hero'?'What would you love to color?':'Search coloring pages...'}/>
  <button type="button" class="jc-search-clear" data-search-clear aria-label="Clear search" hidden><Icon name="close" size={17}/></button>

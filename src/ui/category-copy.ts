@@ -1,3 +1,4 @@
+import {ROOT_CATEGORIES} from '../taxonomy/catalog';
 /** Short introductions tied to the subjects available in the JotColoring collection. */
 export const categoryCopy:Record<string,{intro:string;note:string}>={
  animals:{intro:'Meet a sleepy kitten, a playful puppy and woodland friends among flowers and leaves. Find a favorite creature, explore the animal themes below, and give every little detail a color of your own.',note:'Start with an animal you love, or use Quick preview to take a closer look before choosing your page.'},
@@ -19,3 +20,5 @@ export const animalCopy:Record<string,string>={
  birds:'An owl perches on a flowering branch under a crescent moon. Take your time with the feathers, blossoms and starry details.',
  dinosaurs:'Two long-necked dinosaurs stand among prehistoric plants, a waterfall, and distant mountains. Add color to a peaceful imaginary valley from long ago.',
 };
+
+for(const c of ROOT_CATEGORIES)if(!categoryCopy[c.id])categoryCopy[c.id]={intro:`${c.intro}. Browse ${c.name.toLowerCase()} coloring pages by theme, recommended age, or detail level. Download a PDF or image, or color online in Studio.`,note:'Choose a detail level that feels right for you. Save a favorite page or open it in Studio to try your colors.'};

@@ -1,4 +1,6 @@
 ---
+import CategoryDirectory from '../../components/CategoryDirectory.astro';
+import {categoryById,childCategories} from '../../taxonomy/catalog';
 import DifficultyNavigation from '../../components/DifficultyNavigation.astro';
 import {DIFFICULTY_LEVELS,difficultyLabel} from '../../age/difficulty';
 import CreatePlayground from '../../components/CreatePlayground.astro';
@@ -23,8 +25,9 @@ import type {Env,CatalogPage,CatalogQuery} from '../../server/types';
 const repo=createCatalog(env as unknown as Env);
 const parts=(Astro.params.category||'').split('/').filter(Boolean);
 const category=parts[0]||'',subcategory=parts[1]||'',animal=category==='animals';
-const categoryInfo=categories.find(c=>c.id===category),subInfo=animalCategories.find(c=>c.id===subcategory);
-if((category&&!categoryInfo)||parts.length>2||(subcategory&&(!animal||!subInfo)))return Astro.rewrite('/404/');
+const categoryInfo=categories.find(c=>c.id===category),subInfo=childCategories(category).find(c=>c.id===subcategory)||(category==='animals'&&subcategory==='dinosaurs'?categoryById('dinosaurs'):undefined);
+if((category&&!categoryInfo)||parts.length>2||(subcategory&&(!subInfo)))return Astro.rewrite('/404/');
+if(category&&!subcategory&&categoryById(category)?.parent)return Astro.redirect('/coloring-pages/'+categoryById(category)!.parent+'/'+category+'/',301);
 const chosenCategory=Astro.url.searchParams.get('category');
 if(chosenCategory!==null&&chosenCategory!==category&&(!chosenCategory||categories.some(c=>c.id===chosenCategory))){const next=selectFilterURL(Astro.url.href,'category',[chosenCategory]);return Astro.redirect(next.pathname+next.search+next.hash,302);}
 const clearFilters=clearFilterURL(Astro.url.href);
@@ -32,13 +35,13 @@ const params=new URLSearchParams(Astro.url.search);if(category)params.set('categ
 let error='';let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
 try{query=parseCatalogQuery(params);result=await repo.list(query)}catch(e){error=e instanceof Error?e.message:'The catalog could not be loaded.';Astro.response.status=400;}
 const sampleKeys=animalCategories.map(c=>c.sample);
-const coverKey=categoryInfo?.sample||'friendly-dragon';
-const samplePages=await repo.getMany(animal?[...sampleKeys,coverKey]:[coverKey]);
-const samples=animal?samplePages.slice(0,sampleKeys.length):[];
+const coverKey=(subInfo||categoryInfo)?.sample||(!category?'friendly-dragon':'');
+const samplePages=await repo.getMany(animal?[...sampleKeys.slice(0,39),coverKey]:coverKey?[coverKey]:[]);
+const samples=animal?samplePages.slice(0,-1):[];
 const selected=result.items[0];
 const cover=samplePages.at(-1);
 const heading=query.q?`Coloring pages for “${query.q}”`:subcategory?`${coloringTopic(subInfo!.id)} coloring pages`:categoryInfo?`${coloringTopic(categoryInfo.id)} coloring pages`:'Free printable coloring pages';
-const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':subcategory?animalCopy[subcategory]:categoryInfo?categoryCopy[category].intro:'Browse animal, flower, fantasy, and seasonal coloring pages. Choose a free black-and-white PDF or image to print, or color the page online in Studio.';
+const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':subcategory?(animalCopy[subcategory]||subInfo!.intro):categoryInfo?categoryCopy[category].intro:'Browse animal, flower, fantasy, and seasonal coloring pages. Choose a free black-and-white PDF or image to print, or color the page online in Studio.';
 const pageHref=(page:number)=>{const p=new URLSearchParams(Astro.url.search);p.set('page',String(page));return `${Astro.url.pathname}?${p}#catalog-results`};
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
 const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
@@ -49,6 +52,7 @@ const relatedCollections=!error?await repo.relatedCollections(query,result):unde
 <Layout title={`${heading}${paginationTitle} — JotColoring`} description={intro} canonical={canonical} noindex={filtered||!result.total||!!error}><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><Icon name="chevron" size={12}/>{categoryInfo?<><a href="/coloring-pages/">Coloring pages</a><Icon name="chevron" size={12}/><a href={`/coloring-pages/${category}/`}>{categoryInfo.name}</a>{subInfo&&<><Icon name="chevron" size={12}/><span aria-current="page">{subInfo.name}</span></>}</>:<span aria-current="page">Coloring pages</span>}</nav>
 <section class="iv-category-hero"><div><p class="hv-kicker">{categoryInfo?'A LITTLE WORLD TO MAKE YOUR OWN':'THE JOTCOLORING COLLECTION'}</p><h1>{query.q?heading:displayTitle(heading)}</h1><p class="iv-category-intro">{intro}</p><div class="iv-category-facts"><span><Icon name="file" size={15}/>PDF & Image downloads</span><span><Icon name="brush" size={15}/>Color online</span><a href="/license/">Free personal & classroom use <Icon name="arrow" size={14}/></a></div></div><div class="iv-category-art" aria-hidden="true"><span class="iv-cover-orbit"></span>{cover&&<img src={cover.thumbnail} alt="" width="300" height="300" decoding="async" fetchpriority="high"/>}<span class="iv-cover-badge"><CategoryIcon name={category||'all'} size={32}/></span><span class="iv-cover-caption">Your next canvas.<Icon name="brush" size={14}/></span></div></section>
+<CategoryDirectory counts={await repo.categories()} parent={category||undefined}/>
 <div class="browse-shell iv-browse-shell"><Sidebar animal={animal} category={category} active={subcategory} age={query.age||[]} difficulty={query.difficulty||[]}/><section class:list={['main-content','iv-catalog-main',animal&&'animals-page']}><DifficultyNavigation active={query.difficulty} category={category}/><AgeNavigation compact active={query.recommended_age}/>
 {animal&&<div class="iv-themes"><div class="iv-small-heading"><h2>Follow your favorite creatures</h2><span>Explore an animal theme</span></div><div class="subcategory-strip">{animalCategories.map((c,i)=><a class:list={[subcategory===c.id&&'is-active']} href={`/coloring-pages/animals/${c.id}/`}>{samples[i]&&<img loading="lazy" decoding="async" src={samples[i]!.thumbnail} alt={samples[i]!.alt} width="180" height="150"/>}<strong>{c.name}</strong></a>)}</div></div>}
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
