@@ -11,6 +11,5 @@ export function imageLicenseSchema(item:Content,origin:string,asset=item.lineArt
   encodingFormat:'image/webp',...(asset===item.lineArtUrl?{width:item.width,height:item.height}:{}),
   license:absolute('/license/'),acquireLicensePage:absolute(`/licensing/?image=${encodeURIComponent(item.slug)}`),
   creditText:'JotColoring',creator:{'@type':'Organization',name:'JotColoring',url:absolute('/')},
-  copyrightNotice:'JotColoring. Personal and educational use permitted; commercial use requires written permission.',
-  digitalSourceType:'https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia'};
+  copyrightNotice:'JotColoring. Personal and educational use permitted; commercial use requires written permission.'};
 }

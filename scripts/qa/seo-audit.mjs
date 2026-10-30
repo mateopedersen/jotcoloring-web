@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+// Read-only audit of actual sitemap entries; run against staging or production.
+const origin=process.argv[2],limit=Number(process.argv[3]||500);
+assert.ok(['https://jotcoloring.com','https://staging.jotcoloring.com','http://localhost:4322'].includes(origin));
+assert.ok(Number.isInteger(limit)&&limit>0&&limit<=5000);
+const unescape=s=>s.replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&quot;','"').replaceAll('&#39;',"'");
+const attr=(tag,name)=>unescape((tag.match(new RegExp('\\b'+name+'="([^"]*)"','i'))||[])[1]||'');
+async function text(url){const r=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!r.ok)throw new Error(`${r.status} ${url}`);return r.text()}
+const robots=await text(origin+'/robots.txt'),index=await text(origin+'/sitemap.xml');
+const segments=[...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>new URL(unescape(x[1])).pathname);
+const entries=[],images=[];
+for(const path of segments){const xml=await text(origin+path);for(const block of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)){const loc=block[1].match(/<loc>([^<]+)<\/loc>/)?.[1];if(loc)entries.push(new URL(unescape(loc)).pathname);for(const image of block[1].matchAll(/<image:loc>([^<]+)<\/image:loc>/g))images.push(unescape(image[1]));}if(entries.length>=limit)break;}
+const paths=[...new Set(entries)].slice(0,limit),report=[];let next=0;
+await Promise.all(Array.from({length:3},async()=>{while(next<paths.length){const path=paths[next++];try{const response=await fetch(origin+path,{redirect:'follow',signal:AbortSignal.timeout(30000)}),html=await response.text(),tags=[...html.matchAll(/<(?:meta|link)\b[^>]*>/gi)].map(x=>x[0]),meta=name=>attr(tags.find(t=>attr(t,'name').toLowerCase()===name)||'','content'),og=property=>attr(tags.find(t=>attr(t,'property').toLowerCase()===property)||'','content'),canonical=attr(tags.find(t=>attr(t,'rel').toLowerCase()==='canonical')||'','href'),title=unescape((html.match(/<title>([\s\S]*?)<\/title>/i)||[])[1]||'').trim();const issues=[];if(response.status!==200)issues.push('HTTP '+response.status);if(!title)issues.push('missing title');if(!meta('description'))issues.push('missing description');if(!canonical||new URL(canonical).pathname!==path)issues.push('canonical mismatch');if(/noindex/i.test(meta('robots'))||(origin==='https://jotcoloring.com'&&/noindex/i.test(response.headers.get('x-robots-tag')||'')))issues.push('noindex');if(!/<h1(?:\s|>)/i.test(html))issues.push('missing h1');if(!og('og:image'))issues.push('missing og:image');report.push({path,title,description:meta('description'),issues});}catch(e){report.push({path,issues:[String(e)]});}}}));
+const duplicates=(field)=>{const map=new Map();for(const r of report)if(r[field]){const k=r[field].toLowerCase();map.set(k,[...(map.get(k)||[]),r.path]);}return [...map.values()].filter(v=>v.length>1)};
+const checkedImages=[];for(const image of [...new Set(images)].slice(0,50)){try{const r=await fetch(image,{method:'HEAD',signal:AbortSignal.timeout(15000)});checkedImages.push({url:image,status:r.status,type:r.headers.get('content-type')});}catch(e){checkedImages.push({url:image,status:0,error:String(e)});}}
+console.log(JSON.stringify({origin,robotsAllows:!/Disallow:\s*\/\s*$/m.test(robots),sitemapSegments:segments.length,pages:report.length,imageEntries:images.length,brokenImages:checkedImages.filter(x=>x.status!==200||!x.type?.startsWith('image/')),issues:report.filter(x=>x.issues.length),duplicateTitles:duplicates('title'),duplicateDescriptions:duplicates('description')},null,2));
