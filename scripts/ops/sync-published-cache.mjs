@@ -23,7 +23,7 @@ if(!plan.length)throw new Error('No published files selected.');
 if(!process.argv.includes('--apply')){console.log(JSON.stringify({mode:'plan',bucket,files:plan.length}));process.exit(0);}
 const auth=await fs.readFile(process.env.JOT_WRANGLER_AUTH_FILE||'','utf8');
 const token=auth.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1],expiry=auth.match(/^expiration_time\s*=\s*"([^"]+)"/m)?.[1];
-if(!token||Date.parse(expiry||'')<=Date.now())throw new Error('A current authorized Wrangler session is required.');
+if(!token||!Number.isFinite(Date.parse(expiry||''))||Date.parse(expiry)<=Date.now())throw new Error('A current authorized Wrangler session is required.');
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 let next=0,verified=0;
 async function run(){
@@ -32,8 +32,9 @@ async function run(){
   if(!old.ok)throw new Error(`Existing object read failed: ${entry.key} (${old.status})`);
   const bytes=new Uint8Array(await old.arrayBuffer()),sha=digest(bytes);
   if(!sha.startsWith(entry.hash)||(entry.mime==='application/pdf'&&bytes.length>1_000_000))throw new Error('Published bytes failed validation: '+entry.key);
-  const headers={Authorization:`Bearer ${token}`,'Content-Type':entry.mime,'Cache-Control':'public,max-age=31536000,immutable'};
-  if(old.headers.get('content-disposition'))headers['Content-Disposition']=old.headers.get('content-disposition');
+  // The management API adds its own attachment header. It is not the object's
+  // original metadata and must not make public preview images download-only.
+  const headers={Authorization:`Bearer ${token}`,'Content-Type':entry.mime,'Cache-Control':'public,max-age=31536000,immutable','Content-Disposition':'inline'};
   for(const [key,value]of old.headers)if(key.startsWith('x-amz-meta-'))headers[key]=value;
   const put=await fetch(url,{method:'PUT',headers,body:bytes,signal:AbortSignal.timeout(30000)});
   if(!put.ok)throw new Error(`Metadata update failed (${put.status})`);
