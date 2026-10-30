@@ -14,9 +14,11 @@ import StorageNotice from '../components/StorageNotice.astro';
 import DownloadScreen from '../components/DownloadScreen.astro';
 import ShareDialog from '../components/ShareDialog.astro';
 import {pageSchema} from '../seo/page';
+import {searchTitle} from '../seo/title';
 import {socialOrigin,socialMetadata} from '../social/meta';
 
-const {title='Free Printable Coloring Pages | JotColoring',description='Find printable coloring pages to download or color online in JotColoring Studio.',noindex=false,canonical=Astro.url.pathname,bodyClass='site-v3',socialItem=undefined,downloadItem=undefined,downloadFormat='pdf'} = Astro.props;
+const {title:rawTitle='Free Printable Coloring Pages | JotColoring',description='Find printable coloring pages to download or color online in JotColoring Studio.',noindex=false,canonical=Astro.url.pathname,bodyClass='site-v3',socialItem=undefined,downloadItem=undefined,downloadFormat='pdf'} = Astro.props;
+const title=searchTitle(rawTitle);
 const origin=socialOrigin(Astro.url.origin,env.PUBLIC_SITE_URL,env.APP_ENV);
 const social=socialMetadata(Astro.url.pathname,Astro.response.status||200,origin,socialItem||downloadItem,env.APP_ENV==='production'?env.PUBLIC_MEDIA_BASE_URL:undefined);
 const pageURL=new URL(canonical,origin).href;
