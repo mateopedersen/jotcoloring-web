@@ -15,3 +15,13 @@ For each release:
 5. Run `pnpm check`, `pnpm test`, operations tests, the secret scan, a production build and `pnpm perf:budget` before publishing. Verify the actual deployed release afterward.
 
 Local audit results and screenshots belong in ignored `outputs/` folders. Report the measured routes and widths, and distinguish browser emulation from physical-device testing.
+
+## Check the controls themselves
+
+Run `measureMobileControls()` as well as the two original probes. A page with no horizontal scrollbar can still have clipped button labels, misplaced SVGs or an action group that requires sideways scrolling. Decorative SVGs marked `aria-hidden` still occupy visual space and must be measured. Ignore genuinely hidden tooltip text and closed disclosures, then open those disclosures and inspect their visible controls separately.
+
+Use 320 px for the complete current route list in both the system font and the Manrope fallback. In local development only, append `__qa_font=fallback` to a page URL to force the fallback font without changing the production typography. Repeat representative templates at 360, 390, 430 and 768 px, and verify desktop layouts. The development font switch is disabled in production builds.
+
+For Studio, check all seven tabs, both states of the brush-size disclosure, the library, element picker and all seven export-format tiles. Check a short landscape viewport as well as portrait. Controls must not cover the canvas when their drawer is closed. The drawing tool rail fits in two rows on narrow phones and one row in landscape; it is not an intentional horizontal scroller. Brush controls start collapsed on compact screens and stay expanded on desktop.
+
+Astro component styles do not automatically select SVG roots rendered inside another component. Use an explicit `:global(svg)` selector within the component's own class scope for those SVG children; do not rely on a scoped selector that silently misses them.
