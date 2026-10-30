@@ -2,7 +2,7 @@
  display:inline-flex; align-items:center; gap:6px; width:fit-content; max-width:100%; min-height:34px;
  padding:3px 9px 3px 5px; border:1px solid #ead7c4; border-radius:10px;
  background:#fffdf9f5; color:#593b29; box-shadow:0 2px 5px #54382209;
- font-size:12px; font-weight:750; line-height:1.3; text-decoration:none;
+ font-size:var(--type-note-size); font-weight:750; line-height:1.3; text-decoration:none;
  letter-spacing:0; text-transform:none;
 }
 .jc-category-label>svg { flex:none; width:28px; height:28px; display:block; padding:0; background:none; border:0; }
@@ -10,4 +10,4 @@
 .jc-category-label:hover { background:#fff0df; border-color:#dca97f; color:#963f1b; }
 .jc-category-label--overlay { position:absolute; left:13px; bottom:10px; z-index:2; max-width:calc(100% - 26px); }
 .jc-category-label.iv-card-category { display:inline-flex; letter-spacing:0; text-transform:none; margin:0; }
-@media(max-width:600px){.jc-category-label{font-size:11px;min-height:32px;gap:5px;padding-right:8px}.jc-category-label>svg{width:25px;height:25px}.jc-category-label--overlay{left:10px;bottom:8px;max-width:calc(100% - 20px)}}
+@media(max-width:600px){.jc-category-label{font-size:var(--type-note-size);min-height:32px;gap:5px;padding-right:8px}.jc-category-label>svg{width:25px;height:25px}.jc-category-label--overlay{left:10px;bottom:8px;max-width:calc(100% - 20px)}}

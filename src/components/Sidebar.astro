@@ -3,6 +3,7 @@ import {DIFFICULTY_LEVELS} from '../age/difficulty';
 import {categories,animalCategories} from '../ui/categories';
 import CategoryIcon from './CategoryIcon.astro';
 import Icon from './HomeIcon.astro';
+import '../styles/category-browse.css';
 const {animal=false,active='',category='',age=[],difficulty=[]}=Astro.props;
 ---
 <aside class="sidebar iv-sidebar"><p class="hv-kicker">FIND YOUR INSPIRATION</p><h2>{animal?'Animal adventures':'Explore the collection'}</h2>

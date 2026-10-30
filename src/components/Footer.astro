@@ -1,25 +1,16 @@
 ---
 import ArrowIcon from '../components/ArrowIcon.astro';
-import Icon from './HomeIcon.astro';
-import ActionIcon from './ActionIcon.astro';
-import CategoryIcon from './CategoryIcon.astro';
 import FooterIcon from './FooterIcon.astro';
 import '../styles/footer.css';
 const columns=[
- {label:'Explore',description:'Find something you love',icon:'nav-explore',items:[['All coloring pages','/coloring-pages/','nav-all-pages'],['Animals','/coloring-pages/animals/','animals'],['Flowers','/coloring-pages/flowers/','flowers'],['Browse by age','/coloring-by-age/','nav-age'],['Coloring pages for kids','/coloring-pages/?age=kids','nav-kids'],['Coloring pages for adults','/coloring-by-age/adults/','nav-adults']]},
- {label:'Create',description:'Make it your own',icon:'nav-create',items:[['Coloring Studio','/studio/','nav-studio'],['Photo to Coloring Page','/create/photo/','nav-photo'],['Create with AI','/create/text/','nav-ai'],['My artwork & favorites','/my-artwork/','nav-artwork'],['Printing guide','/printing-guide/','nav-print'],['How to use JotColoring','/how-to-use/','nav-how-to']]},
- {label:'Good to know',description:'Here when you need us',icon:'nav-information',items:[['About JotColoring','/about/','nav-about'],['Artwork license','/license/','nav-license'],['Commercial licensing','/licensing/','nav-commercial'],['Help center','/help/','nav-help'],['Frequently asked questions','/faq/','nav-faq'],['Contact us','/contact/','nav-contact']]}
+ {label:'Explore',description:'Find Something You Love',icon:'nav-explore',items:[['All Coloring Pages','/coloring-pages/','nav-all-pages'],['Animals','/coloring-pages/animals/','animals'],['Flowers','/coloring-pages/flowers/','flowers'],['Browse By Age','/coloring-by-age/','nav-age'],['Coloring Pages For Kids','/coloring-pages/?age=kids','nav-kids'],['Coloring Pages For Adults','/coloring-by-age/adults/','nav-adults']]},
+ {label:'Create',description:'Make It Your Own',icon:'nav-create',items:[['Coloring Studio','/studio/','nav-studio'],['Photo To Coloring Page','/create/photo/','nav-photo'],['Create With AI','/create/text/','nav-ai'],['My Artwork & Favorites','/my-artwork/','nav-artwork'],['Printing Guide','/printing-guide/','nav-print'],['How To Use JotColoring','/how-to-use/','nav-how-to']]},
+ {label:'Good To Know',description:'Here When You Need Us',icon:'nav-information',items:[['About JotColoring','/about/','nav-about'],['Artwork License','/license/','nav-license'],['Commercial Licensing','/licensing/','nav-commercial'],['Help Center','/help/','nav-help'],['Frequently Asked Questions','/faq/','nav-faq'],['Contact Us','/contact/','nav-contact']]}
 ];
 ---
 <footer class="hv-footer jc-footer" aria-label="Site footer">
  <div class="hv-container jc-footer-inner">
   <div class="jc-footer-grid">
-   <div class="jc-footer-brand">
-    <a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="254" height="80" alt="JotColoring"/></a>
-    <p>Free coloring pages, creative tools, and a little time to make something your own.</p>
-    <div class="jc-footer-brand-art" aria-hidden="true"><CategoryIcon name="flowers" size={44}/><CategoryIcon name="animals" size={44}/><ActionIcon name="brush" size={44}/><span>Made for<br/><b>colorful moments</b></span></div>
-    <a class="jc-footer-explore" href="/coloring-pages/"><CategoryIcon name="all" size={36}/><span>Find your next page<small>Explore the collection</small></span><Icon name="arrow" size={16}/></a>
-   </div>
    {columns.map(column=><nav class="jc-footer-nav" aria-label={column.label}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{column.label}</h2><p>{column.description}</p></span></div><div class="jc-footer-nav-links">{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon} size={44}/><span class="jc-footer-link-label">{label}</span><span class="jc-footer-link-arrow" aria-hidden="true"><ArrowIcon kind="right" size={18}/></span></a>)}</div></nav>)}
   </div>
   <div class="jc-footer-bottom"><div class="jc-footer-signature"><a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="176" height="56" alt="JotColoring" loading="lazy"/></a><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div><p class="jc-footer-closing">A little imagination. A world of color.</p><a class="jc-footer-backtop" href="#top" aria-label="Back to top" title="Back to top"><span class="jc-footer-backtop-label">Back to top</span><span class="jc-footer-backtop-icon" aria-hidden="true"><ArrowIcon kind="up" size={20}/></span></a></div>

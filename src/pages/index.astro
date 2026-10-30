@@ -1,5 +1,6 @@
 ---
 import CategoryDirectory from '../components/CategoryDirectory.astro';
+import HeroQuickLinks from '../components/HeroQuickLinks.astro';
 import DifficultyNavigation from '../components/DifficultyNavigation.astro';
 import CreatePlayground from '../components/CreatePlayground.astro';
 import AgeNavigation from '../components/AgeNavigation.astro';
@@ -23,6 +24,7 @@ import {createCatalog} from '../server/catalog';
 import type {Env,CatalogQuery} from '../server/types';
 import '../styles/home-v3.css';
 import '../styles/home-rhythm.css';
+import '../styles/category-discovery.css';
 const repo=createCatalog(env as unknown as Env);
 const requestedTab=Astro.url.searchParams.get('popular')||'trending';
 const popularTab=['trending','newest','easy','detailed'].includes(requestedTab)?requestedTab:'trending';
@@ -54,7 +56,7 @@ const tabs=[{id:'trending',label:'Featured pages',hint:'A little of everything'}
 <Layout bodyClass="home-v3" title="Free Printable Coloring Pages for Kids & Adults | JotColoring" description="Explore free printable coloring pages for kids and adults. Download a PDF or image, color online, or turn your own photo into a coloring page.">
  <Header home/>
  <main id="main">
-  <section class="hv-hero hv-container" aria-labelledby="home-title"><div class="hv-hero-copy"><h1 id="home-title">Free printable <br/><span>coloring<svg viewBox="0 0 385 16" fill="none" aria-hidden="true"><path d="M3 11C111 1 258 0 381 6M49 15c106-7 211-9 296-5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span> pages.</h1><p class="hv-hero-description">Find animals, flowers, fantasy scenes, and more to color. Download a free PDF, print your favorite page, or add colors in our online studio.</p><SearchForm variant="hero"/><div class="hv-search-suggestions jc-hero-ideas"><span>Browse a theme</span><a href="/coloring-pages/animals/"><CategoryIcon name="animals" size={32}/>Animals</a><a href="/coloring-pages/flowers/"><CategoryIcon name="flowers" size={32}/>Flowers</a><a href="/coloring-pages/fantasy/"><CategoryIcon name="fantasy" size={32}/>Fantasy</a></div><div class="hv-hero-benefits jc-hero-benefits"><span><ActionIcon name="pdf" size={32}/><span>Print at home<small>Ready when you are</small></span></span><span><ActionIcon name="brush" size={32}/><span>Color online<small>Make it your own</small></span></span><span><ActionIcon name="heart" size={32}/><span>Save favorites<small>Keep what you love</small></span></span></div></div>
+  <section class="hv-hero hv-container" aria-labelledby="home-title"><div class="hv-hero-copy"><h1 id="home-title">Free printable <br/><span>coloring<svg viewBox="0 0 385 16" fill="none" aria-hidden="true"><path d="M3 11C111 1 258 0 381 6M49 15c106-7 211-9 296-5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span> pages.</h1><p class="hv-hero-description">Find animals, flowers, fantasy scenes, and more to color. Download a free PDF, print your favorite page, or add colors in our online studio.</p><SearchForm variant="hero"/><HeroQuickLinks/></div>
    <div class="hv-art-stage"><span class="hv-stage-dots" aria-hidden="true"></span><div class="hv-stage-orbit" aria-hidden="true"></div><div class="hv-stage-caption"><span class="hv-stage-star">✳</span><span>Pick a page.<br/><b>Make it yours.</b></span></div>{featured.items.slice(0,3).map((item,i)=><article data-image-title={item.title} data-image-description={item.description} class={`hv-feature-art hv-feature-art-${i}`}><ImageLicense item={item} assets={[item.thumbnail,item.home_color]}/><Compare eager={i===0} priority={i===0} line={item.thumbnail} color={item.home_color} alt={item.alt||item.description||item.title}/><a class="hv-feature-title" href={`/coloring/${item.slug}/`}><b>{item.title}</b><Icon name="arrow" size={18}/></a></article>)}<div class="hv-stage-sticker"><Icon name="brush" size={21}/><span>YOUR COLORS.<br/><b>YOUR WORLD.</b></span></div><svg class="hv-stage-swoosh" viewBox="0 0 100 80" fill="none" aria-hidden="true"><path d="M4 5c50-4 88 17 60 40-12 9-26 6-15-4 10-9 32 6 41 33m-17-5 17 6 6-18" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </section>
 <DifficultyNavigation home/><div class="hv-container"><AgeNavigation/></div>

@@ -145,6 +145,7 @@
         "AI_DAILY_BUDGET_USD": "0",
         "AI_MONTHLY_BUDGET_USD": "0",
         "PUBLIC_SITE_URL": "https://jotcoloring.com",
+        "PUBLIC_MEDIA_BASE_URL": "https://assets.jotcoloring.com",
         "PRIVATE_INPUT_RETENTION_HOURS": "24",
         "PRIVATE_RESULT_RETENTION_DAYS": "7",
         "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
