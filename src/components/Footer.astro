@@ -6,9 +6,9 @@ import CategoryIcon from './CategoryIcon.astro';
 import FooterIcon from './FooterIcon.astro';
 import '../styles/footer.css';
 const columns=[
- {label:'Explore',description:'Find something you love',icon:'all',items:[['All coloring pages','/coloring-pages/','all'],['Animals','/coloring-pages/animals/','animals'],['Flowers','/coloring-pages/flowers/','flowers'],['Browse by age','/coloring-by-age/','kids'],['Coloring pages for kids','/coloring-pages/?age=kids','kids'],['Coloring pages for adults','/coloring-by-age/adults/','mandalas']]},
- {label:'Create',description:'Make it your own',icon:'brush',items:[['Coloring Studio','/studio/','brush'],['Photo to Coloring Page','/create/photo/','photo'],['Create with AI','/create/text/','magic'],['My artwork & favorites','/my-artwork/','heart'],['Printing guide','/printing-guide/','printer'],['How to use JotColoring','/how-to-use/','about']]},
- {label:'Good to know',description:'Here when you need us',icon:'document',items:[['About JotColoring','/about/','about'],['Artwork license','/license/','document'],['Commercial licensing','/licensing/','document'],['Help center','/help/','help'],['Frequently asked questions','/faq/','help'],['Contact us','/contact/','mail']]}
+ {label:'Explore',description:'Find something you love',icon:'nav-explore',items:[['All coloring pages','/coloring-pages/','nav-all-pages'],['Animals','/coloring-pages/animals/','animals'],['Flowers','/coloring-pages/flowers/','flowers'],['Browse by age','/coloring-by-age/','nav-age'],['Coloring pages for kids','/coloring-pages/?age=kids','nav-kids'],['Coloring pages for adults','/coloring-by-age/adults/','nav-adults']]},
+ {label:'Create',description:'Make it your own',icon:'nav-create',items:[['Coloring Studio','/studio/','nav-studio'],['Photo to Coloring Page','/create/photo/','nav-photo'],['Create with AI','/create/text/','nav-ai'],['My artwork & favorites','/my-artwork/','nav-artwork'],['Printing guide','/printing-guide/','nav-print'],['How to use JotColoring','/how-to-use/','nav-how-to']]},
+ {label:'Good to know',description:'Here when you need us',icon:'nav-information',items:[['About JotColoring','/about/','nav-about'],['Artwork license','/license/','nav-license'],['Commercial licensing','/licensing/','nav-commercial'],['Help center','/help/','nav-help'],['Frequently asked questions','/faq/','nav-faq'],['Contact us','/contact/','nav-contact']]}
 ];
 ---
 <footer class="hv-footer jc-footer" aria-label="Site footer">
@@ -23,7 +23,6 @@ const columns=[
    </div>
    {columns.map(column=><nav class="jc-footer-nav" aria-label={column.label}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{column.label}</h2><p>{column.description}</p></span></div><div class="jc-footer-nav-links">{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon} size={44}/><span class="jc-footer-link-label">{label}</span><span class="jc-footer-link-arrow" aria-hidden="true"><ArrowIcon kind="right" size={18}/></span></a>)}</div></nav>)}
   </div>
-  <div class="jc-footer-license"><span class="jc-footer-license-art"><ActionIcon name="heart" size={39}/></span><div><strong>Print, color, and enjoy.</strong><p>Free for personal and non-commercial educational use. Commercial use requires permission.</p></div><a href="/license/">Read the artwork license <Icon name="arrow" size={16}/></a></div>
-  <div class="jc-footer-bottom"><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span><nav aria-label="Legal and management links"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/cookies/">Cookies</a><button type="button" data-storage-settings>Cookie settings</button><a href="/accessibility/">Accessibility</a><a href="/admin/">Manage content</a></nav></div>
+  <div class="jc-footer-bottom"><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div>
  </div>
 </footer>

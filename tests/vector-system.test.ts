@@ -47,3 +47,10 @@ test('social image rendering uses the new icon registry and supports both illust
 });
 
 test('committed vectors match the editable drawing source',()=>{execFileSync('python3',['scripts/icons/build-svg-library.py','--check'],{stdio:'pipe'});});
+
+test('subject navigation renders distinct artwork instead of collapsing topics to one animal',async()=>{
+ const {ROOT_CATEGORIES,childCategories}=await import('../src/taxonomy/catalog');
+ for(const entries of [ROOT_CATEGORIES.map(c=>c.icon),childCategories('animals').map(c=>c.icon),catalog.icons.filter(c=>c.group==='Site navigation').map(c=>c.id)]){
+  const hashes=new Set<string>();for(const id of entries){const pixels=await sharp(Buffer.from(await iconDocument(id,48))).ensureAlpha().raw().toBuffer();hashes.add(createHash('sha256').update(pixels).digest('hex'));}assert.equal(hashes.size,entries.length,'Each subject needs its own visible silhouette');
+ }
+});

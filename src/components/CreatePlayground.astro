@@ -1,6 +1,7 @@
 ---
 import VectorIcon from './VectorIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
+import CreativeFeatureCards from './CreativeFeatureCards.astro';
 import '../styles/create-playground.css';
 const {contained=false}=Astro.props;
 ---
@@ -8,10 +9,7 @@ const {contained=false}=Astro.props;
  <header class="creative-paths-heading"><div><p class="hv-kicker">A LITTLE IDEA. A WHOLE LOT OF POSSIBILITIES.</p><h2 id="creative-paths-title">Where will your colors take you?</h2></div><p>Start with a page, a favorite photo, or an idea that’s all your own.</p></header>
  <div class="creative-paths-grid">
   <article class="creative-desk-card"><div class="creative-desk-copy"><span class="creative-path-label"><VectorIcon name="studio" size={35}/>YOUR ONLINE COLORING DESK</span><h3>A little tap.<br/><em>A lot of color.</em></h3><p>Fill a tiny detail. Try a textured brush. Give your next big idea a little room to play.</p><div class="creative-feature-pills"><span><VectorIcon name="fill" size={22}/>Tap to fill</span><span><VectorIcon name="brush" size={22}/>Find your brush</span><span><VectorIcon name="layers" size={22}/>Keep your layers</span></div><a class="creative-main-action" href="/studio/"><VectorIcon name="brush" size={29}/><span>Open Coloring Studio</span><b><ArrowIcon size={19}/></b></a><small>1,000 Studio starters · Easy mode · Save your progress</small></div><a class="creative-real-screen" href="/studio/" aria-label="Try the coloring workspace shown here"><div class="creative-screen-bar"><span><i/><i/><i/></span><strong>Your creative corner</strong><VectorIcon name="privacy" size={20}/></div><img src="/guides/studio-workspace-v4.webp" alt="The working JotColoring Studio with a colored page, painting tools, color palette, layers and download controls." width="1440" height="950" loading="lazy"/><div class="creative-screen-note"><VectorIcon name="studio" size={33}/><span>Your page. Your colors.<small>A real look inside Studio.</small></span><ArrowIcon size={22}/></div></a></article>
-  <div class="creative-other-paths">
-   <article class="creative-photo-card"><span class="creative-path-icon"><VectorIcon name="photo" size={96}/></span><div><span class="creative-path-label">FROM YOUR CAMERA ROLL</span><h3>Your photo.<br/>A new way to color.</h3><p>Turn a favorite moment into outlines, then add your own colors.</p><a href="/create/photo/">Photo to Coloring Page <b><ArrowIcon size={18}/></b></a><small>Private on your device</small></div></article>
-   <article class="creative-idea-card"><span class="creative-path-icon"><VectorIcon name="ai" size={91}/></span><div><span class="creative-path-label">LET YOUR IMAGINATION LEAD</span><h3>Dream it.<br/>Then color it.</h3><p>A dragon in a teacup? A garden on the moon? Start with a few words.</p><a href="/create/text/">Create a Coloring Page <b><ArrowIcon size={18}/></b></a><small>Made from your idea</small></div></article>
-  </div>
+  <CreativeFeatureCards/>
  </div>
  <div class="creative-takeaway"><VectorIcon name="download" size={35}/><span><strong>Keep the colors you create.</strong><small>Download your Studio artwork as PNG, SVG, JPG, JPEG, Word, PDF, or WEBP.</small></span><a href="/how-to-use/">Take a quick tour <ArrowIcon size={18}/></a></div>
 </section>

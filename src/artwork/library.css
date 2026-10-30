@@ -64,3 +64,10 @@
 /* Wrapped action labels share the same row height instead of centering shorter buttons. */
 .artwork-library .aw-controls{align-items:stretch;gap:8px}.artwork-library .aw-controls>button{min-height:44px;line-height:1.4}
 @media(max-width:600px){.artwork-library .aw-controls>button{min-height:52px}}
+.aw-new-board-copy{display:grid;gap:6px;min-width:0}
+.aw-new-board-copy strong{font-size:13px;line-height:1.4;overflow-wrap:anywhere}
+.aw-new-board-copy small{font-size:11px;font-weight:550;line-height:1.6;color:var(--text-ink,#000)}
+.aw-boards-grid[data-empty=true]{display:block}
+.aw-boards-grid[data-empty=true] .aw-new-board{display:flex;flex-direction:row;justify-content:flex-start;gap:15px;min-height:96px;width:100%;text-align:left;padding:18px 22px}
+.aw-boards-grid[data-empty=true] .aw-new-board>.aw-icon{flex:none}
+.aw-boards-section.is-empty .aw-section-title label{display:none}
