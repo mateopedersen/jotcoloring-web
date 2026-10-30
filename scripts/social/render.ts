@@ -1,3 +1,5 @@
+import {iconDocument} from '../../src/icons/render';
+import {ICON_SPRITE} from '../../src/icons/registry';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
@@ -17,8 +19,16 @@ function wrap(text:string,size:number,width:number,weight:number){const words=te
 export function fitCopy(text:string,options:{width:number;maxLines:number;maxSize:number;minSize:number;weight?:number}){const weight=options.weight||800;for(let size=options.maxSize;size>=options.minSize;size--){const lines=wrap(text,size,options.width,weight);if(lines.length<=options.maxLines)return{size,lines,truncated:false};}const lines=wrap(text,options.minSize,options.width,weight).slice(0,options.maxLines);let last=lines.at(-1)||'';while(last&&measureCopy(last+'…',options.minSize,weight)>options.width)last=Array.from(last).slice(0,-1).join('');lines[lines.length-1]=last+'…';return{size:options.minSize,lines,truncated:true};}
 const imageCache=new Map<string,string>();
 async function dataURI(bytes:Uint8Array,max=1100){const key=digest(bytes)+':'+max;let value=imageCache.get(key);if(!value){const png=await sharp(bytes,{limitInputPixels:25_000_000}).rotate().resize({width:max,withoutEnlargement:true}).png().toBuffer();value='data:image/png;base64,'+png.toString('base64');imageCache.set(key,value);}return value;}
-export async function siteIcon(name:string){const common=['all','animals','flowers','mandalas','kids','studio','photo','ai','artwork','printer','license','about','help','faq','mail'];const source=await fs.readFile(common.includes(name)?'public/illustrations/creative-tools-v2.svg':'public/illustrations/category-3d.svg','utf8'),symbol=common.includes(name)?name:['fantasy','holidays','vehicles','space','ocean','food','dinosaurs','woodland','pets','farm-animals','birds'].includes(name)?name:'all',box=common.includes(name)?128:96;const inner=source.replace(/^\s*<svg[^>]*>/,'').replace(/<\/svg>\s*$/,'');return sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 ${box} ${box}">${inner}<use href="#${symbol}"/></svg>`)).png().toBuffer();}
-export async function componentArt(file:'CookieArt'|'LostColoringArt'){let svg=await fs.readFile(`src/components/${file}.astro`,'utf8');svg=svg.slice(svg.indexOf('<svg'));svg=svg.replace(/\{`([^`]*)`\}/g,(_,value:string)=>'"'+value.replaceAll('${id}','og-'+file.toLowerCase())+'"').replaceAll('var(--fox-coat,#fff)','#fff').replaceAll('var(--leaf-color,#fff)','#fff');if(svg.includes('{'))throw new Error('Social illustration still has unresolved component code.');svg=svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" width="600" height="520" ');return sharp(Buffer.from(svg)).png().toBuffer();}
+export async function siteIcon(name:string){return sharp(Buffer.from(await iconDocument(name,360))).png().toBuffer();}
+export async function componentArt(file:'CookieArt'|'LostColoringArt'){
+ if(file==='CookieArt')return sharp(Buffer.from(await iconDocument('scene-cookies',600))).png().toBuffer();
+ let svg=await fs.readFile(`src/components/${file}.astro`,'utf8');svg=svg.slice(svg.indexOf('<svg'));
+ svg=svg.replace(/\{`([^`]*)`\}/g,(_,value:string)=>'"'+value.replaceAll('${id}','og-'+file.toLowerCase())+'"').replace(/\{illustrationHref\('edit'\)\}/g,'"#edit"').replace(/var\(--[a-z-]+,([^)]*)\)/g,'$1');
+ if(svg.includes('{'))throw new Error('Social illustration still has unresolved component code.');
+ const source=await fs.readFile('public'+ICON_SPRITE,'utf8'),inner=source.replace(/^\s*<svg[^>]*>/,'').replace(/<\/svg>\s*$/,'');
+ svg=svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" width="600" height="520" ').replace('><defs>','>'+inner+'<defs>');
+ return sharp(Buffer.from(svg)).png().toBuffer();
+}
 async function halfColor(art:SocialArtwork){if(!art.color)return dataURI(art.line);const line=await sharp(art.line).resize(480,720,{fit:'fill'}).png().toBuffer(),color=await sharp(art.color).resize(480,720,{fit:'fill'}).extract({left:0,top:0,width:240,height:720}).png().toBuffer();return dataURI(await sharp(line).composite([{input:color,left:0,top:0}]).png().toBuffer());}
 export async function renderSocial(spec:SocialSpec,assets:RenderAssets,binding:SocialBinding|{version:string;key:string;path:string}){
  prepareSocialFont();let next=0;const boxes:Array<{text:string;x:number;y:number;width:number;height:number;size:number;truncated?:boolean}>=[];

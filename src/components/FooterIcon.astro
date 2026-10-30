@@ -1,7 +1,7 @@
 ---
-import CreativeIcon from './CreativeIcon.astro';
-import ActionIcon from './ActionIcon.astro';
-const {name}=Astro.props;
+import VectorIcon from './VectorIcon.astro';
+interface Props {name:string;size?:number}
+const {name,size=40}=Astro.props;
 const aliases:Record<string,string>={brush:'studio',heart:'artwork',magic:'ai',document:'license'};
 ---
-<span class="jc-footer-link-icon" aria-hidden="true">{name==='pdf'?<ActionIcon name="pdf" size={40}/>:<CreativeIcon name={aliases[name]||name} size={40}/>}</span>
+<span class="jc-footer-link-icon" aria-hidden="true"><VectorIcon name={aliases[name]||name} size={size}/></span>
