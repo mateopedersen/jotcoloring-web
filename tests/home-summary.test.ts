@@ -4,7 +4,7 @@ import {artworkSummary,artworkText} from '../src/ui/artwork-text';
 test('home captions stay concise and work with both legacy and CDN source URLs',()=>{
  for(const [id,entry]of Object.entries(captions)){
   const item={id,title:entry.title,description:'The full detail description remains available.',alt:'The original text alternative.',lineArtUrl:`/api/media/${id}/printable_webp_bw?v=${entry.sourceHash}`};
-  assert.equal(artworkSummary(item),entry.summary);assert.ok(entry.summary.length<=80);assert.match(entry.summary,/[.!?]$/);
+  assert.equal(artworkSummary(item),entry.summary);assert.ok(entry.summary.length<=44);assert.match(entry.summary,/[.!?]$/);
   assert.equal(artworkSummary({...item,lineArtUrl:`https://assets.jotcoloring.com/published/${id}/6/printable_webp_bw-${entry.sourceHash}.webp`}),entry.summary);
   assert.equal(artworkText(item).description,item.description);assert.equal(artworkText(item).alt,item.alt);
  }

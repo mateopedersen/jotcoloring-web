@@ -14,7 +14,7 @@ export function artworkSummary(item:Pick<Content,'id'|'title'|'description'|'alt
  for(const source of [text.description,text.alt]){
   const first=source.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||source.trim();
   const clause=first.split(/[,;]|\s[—–]\s/)[0].trim();
-  for(const candidate of [first,clause])if(candidate.length<=88&&candidate.split(/\s+/).length<=15)return /[.!?]$/.test(candidate)?candidate:candidate+'.';
+  for(const candidate of [first,clause])if(candidate.length<=48&&candidate.split(/\s+/).length<=10)return /[.!?]$/.test(candidate)?candidate:candidate+'.';
  }
  return /[.!?]$/.test(text.title)?text.title:text.title+'.';
 }
