@@ -20,3 +20,5 @@ Layout fixes include a compact full-width empty-board prompt, a single-line nume
 The read-only probes check overflow, clipping, arrow containment, aligned action groups, missing image descriptions, loaded broken images, overlapping card controls and underfilled empty-board sections. Screenshots supplement these checks. These are emulated-browser observations, not a guarantee covering every physical device, future image or browser font.
 
 Local route results and screenshots are retained in ignored `outputs/layout-audit-20261030/`, `outputs/icons-local/` and `outputs/creative-features/`. Follow `docs/layout-quality.md` for subsequent content/layout changes. Deployment and live verification are recorded in the associated pull requests.
+
+Staging inspection also caught overlapping difficulty/share controls in 142-pixel related cards at a 390-pixel viewport. Compact cards now use a separate control row, chosen by the card's own width with a container query. The same overlay-intersection probe verifies the fix; production promotion waits for that corrected staging release.
