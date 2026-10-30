@@ -1,0 +1,226 @@
+/* Photo converter type hierarchy, shared by empty, processing and result states. */
+.jc-photo-converter {
+  --photo-body-size: 16px;
+  --photo-note-size: 14px;
+  --photo-caption-size: var(--type-note-size);
+  font-size: var(--photo-body-size);
+  line-height: 1.65;
+}
+
+.jc-photo-converter :is(button, input, select, output) { font-family: inherit; }
+.jc-photo-converter :is(h1, h2, h3, strong) { font-synthesis: none; }
+.jc-photo-converter .jc-photo-hero h1 {
+  font-size: clamp(36px, 4.1vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+  margin-bottom: 22px;
+}
+.jc-photo-converter .jc-photo-eyebrow {
+  font-size:var(--type-note-size);
+  font-weight: 750;
+  line-height: 1.55;
+  letter-spacing: .09em;
+}
+.jc-photo-converter .jc-photo-hero > div > p:not(.jc-photo-eyebrow) {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.7;
+  max-width: 64ch;
+}
+.jc-photo-converter .jc-photo-promises > span {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  color: #70462e;
+}
+.jc-photo-converter .jc-photo-hero-art > span { font-size:var(--type-note-size); font-weight: 650; }
+.jc-photo-converter .jc-photo-hero-art b { font-size:var(--type-note-size); font-weight: 750; }
+
+.jc-photo-converter .jc-photo-section-title > span:first-child {
+  width: 42px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 750;
+}
+.jc-photo-converter :is(.jc-photo-section-title p, .jc-photo-export-heading p) {
+  font-size:var(--type-note-size);
+  font-weight: 750;
+  line-height: 1.6;
+  letter-spacing: .075em;
+  color: #805035;
+}
+.jc-photo-converter :is(.jc-photo-section-title h2, .jc-photo-export-heading h2) {
+  font-size: clamp(24px, 2.05vw, 29px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-control-heading h3 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-control-heading p {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.jc-photo-converter .jc-photo-upload strong {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.jc-photo-converter .jc-photo-upload span:not(.jc-photo-replace) {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.jc-photo-converter .jc-photo-upload small {
+  font-size: var(--photo-caption-size);
+  font-weight: 550;
+  line-height: 1.55;
+}
+.jc-photo-converter .jc-photo-upload .jc-photo-replace {
+  font-size: var(--photo-note-size);
+  font-weight: 700;
+  line-height: 1.4;
+  min-height: 44px;
+}
+.jc-photo-converter :is(.jc-photo-source-info, .jc-photo-file-note, .jc-photo-fidelity-note p, .jc-photo-engine p) {
+  font-size: var(--photo-note-size);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-presets button {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  min-height: 52px;
+  padding: 10px 7px;
+}
+.jc-photo-converter :is(.jc-photo-range-label, .jc-photo-weight legend) {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-range-label output {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  min-width: 36px;
+  padding: 3px 7px;
+  font-variant-numeric: tabular-nums;
+}
+.jc-photo-converter .jc-photo-range-ends {
+  font-size: var(--photo-caption-size);
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-range-ends > span { min-width: 0; }
+.jc-photo-converter .jc-photo-range-ends > span:last-child { text-align: right; }
+.jc-photo-converter .jc-photo-weight label > span {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.jc-photo-converter .jc-photo-gap strong { font-size: 16px; font-weight: 700; line-height: 1.45; }
+.jc-photo-converter .jc-photo-gap small { font-size: var(--photo-note-size); font-weight: 500; line-height: 1.6; }
+.jc-photo-converter .jc-photo-engine summary { font-size: 16px; font-weight: 700; line-height: 1.5; }
+.jc-photo-converter .jc-photo-engine label { font-size: 14px; font-weight: 650; }
+.jc-photo-converter .jc-photo-engine select { font-size: 15px; min-height: 48px; }
+
+.jc-photo-converter :is(.jc-photo-primary, .jc-photo-studio) {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.01em;
+  min-height: 64px;
+}
+.jc-photo-converter .jc-photo-minor-actions button {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+  min-height: 44px;
+}
+.jc-photo-converter :is(.jc-photo-status, .jc-photo-export > [role=status], .jc-photo-region-note) {
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.65;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-preview-tabs button {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+  min-height: 48px;
+}
+.jc-photo-converter .jc-photo-ready { font-size:var(--type-note-size); font-weight: 650; line-height: 1.4; }
+.jc-photo-converter .jc-photo-result-empty h3 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.025em;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-result-empty p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-result-caption {
+  font-size: var(--photo-caption-size);
+  font-weight: 550;
+  line-height: 1.55;
+  color: var(--text-ink, #000);
+}
+.jc-photo-converter .jc-photo-fidelity-note strong { font-weight: 700; }
+.jc-photo-converter .jc-photo-formats strong { font-size: 18px; font-weight: 700; line-height: 1.3; }
+.jc-photo-converter .jc-photo-formats small {
+  font-size: var(--photo-caption-size);
+  font-weight: 500;
+  line-height: 1.55;
+}
+.jc-photo-converter .jc-photo-formats > label > span { min-height: 110px; }
+.jc-photo-converter button:disabled { opacity: .7; }
+.jc-photo-converter fieldset:disabled { opacity: .75; }
+
+.jc-photo-converter .jc-photo-fill-heading strong { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.jc-photo-converter .jc-photo-fill-heading span { font-size: 15px; line-height: 1.6; }
+.jc-photo-converter :is(.jc-photo-fill-controls button, .jc-photo-fill-controls label, .jc-photo-retouch-tools button) {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+  min-height: 46px;
+}
+.jc-photo-converter :is(.jc-photo-fill-tools p, .jc-photo-retouch p) { font-size: 15px; line-height: 1.65; }
+.jc-photo-converter .jc-photo-fill-tools small { font-size:var(--type-note-size); line-height: 1.6; }
+.jc-photo-converter .jc-photo-retouch summary { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.jc-photo-converter .jc-photo-retouch label { font-size: 15px; font-weight: 650; line-height: 1.45; }
+.jc-photo-converter .jc-photo-tips h2 { font-size: 28px; font-weight: 700; line-height: 1.25; letter-spacing: -.025em; }
+.jc-photo-converter .jc-photo-tips h3 { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.jc-photo-converter .jc-photo-tips article p { font-size: 16px; font-weight: 500; line-height: 1.7; }
+.jc-photo-converter .jc-photo-tips article > span { font-size: 26px; font-weight: 700; }
+.jc-photo-converter .jc-photo-previous { font-size: 15px; line-height: 1.65; }
+
+@media (max-width: 580px) {
+  .jc-photo-converter .jc-photo-hero h1 { font-size: clamp(32px, 7.8vw, 42px); line-height: 1.15; }
+  .jc-photo-converter .jc-photo-eyebrow { font-size:var(--type-note-size); letter-spacing: .06em; }
+  .jc-photo-converter .jc-photo-hero > div > p:not(.jc-photo-eyebrow) { font-size: 16px; line-height: 1.7; }
+  .jc-photo-converter .jc-photo-promises > span { font-size:var(--type-note-size); }
+  .jc-photo-converter .jc-photo-section-title { align-items: flex-start; }
+  .jc-photo-converter :is(.jc-photo-section-title p, .jc-photo-export-heading p) { font-size:var(--type-note-size); }
+  .jc-photo-converter :is(.jc-photo-section-title h2, .jc-photo-export-heading h2) { font-size: 24px; }
+  .jc-photo-converter .jc-photo-result-empty h3 { font-size: 25px; }
+  .jc-photo-converter .jc-photo-presets button { min-height: 56px; }
+  .jc-photo-converter .jc-photo-preview-tabs button { font-size: 14px; padding: 10px 5px; }
+  .jc-photo-converter .jc-photo-tips h2 { font-size: 26px; }
+}

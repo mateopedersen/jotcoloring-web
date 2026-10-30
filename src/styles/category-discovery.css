@@ -1,0 +1,126 @@
+/* Category navigation has its own type scale, independent of gallery captions. */
+.home-v3 .hv-discovery-nav nav {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 8px;
+  overflow: visible;
+}
+.home-v3 .hv-discovery-nav nav > a {
+  display: grid;
+  grid-template-columns: 64px minmax(0,1fr) 22px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  min-height: 104px;
+  margin: 0;
+  padding: 12px 10px;
+  text-align: left;
+  border-radius: 18px;
+}
+.home-v3 .hv-discovery-nav nav > a:hover {
+  background: #fff6ed;
+  border-color: #f0d4bd;
+  transform: none;
+}
+.home-v3 .hv-discovery-nav nav > a:focus-visible {
+  outline: 3px solid #bd582c;
+  outline-offset: 3px;
+}
+.home-v3 .hv-discovery-nav nav .hv-discovery-all {
+  margin: 0;
+  background: linear-gradient(135deg,#fff4e7,#ffead7);
+  border-color: #edc5a6;
+}
+.home-v3 .hv-discovery-nav nav .hv-category-symbol {
+  width: 64px;
+  height: 64px;
+  border-radius: 17px;
+}
+.home-v3 .hv-discovery-nav nav .hv-category-symbol > .category-3d {
+  width: 60px;
+  height: 60px;
+}
+.home-v3 .hv-discovery-nav nav > a > span:nth-child(2) { min-width: 0; }
+.home-v3 .hv-discovery-nav nav strong {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -.3px;
+  color: #000;
+  overflow-wrap: normal;
+}
+.home-v3 .hv-discovery-nav nav small {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 550;
+  line-height: 1.5;
+  color: #000;
+  overflow-wrap: normal;
+}
+.home-v3 .hv-discovery-nav nav > a > svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: #ac6440;
+  justify-self: end;
+}
+.home-v3 .jc-discovery-label {
+  font-size:var(--type-note-size);
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin-block: 24px 12px;
+  color: #a24e2c;
+}
+@media (min-width:1200px) {
+  .home-v3 .hv-discovery-layout.hv-container { grid-template-columns: 290px minmax(0,1fr); }
+}
+@media (min-width:951px) and (max-width:1199px) {
+  .home-v3 .hv-discovery-layout.hv-container { grid-template-columns: 270px minmax(0,1fr); }
+  .home-v3 .hv-discovery-nav nav > a { grid-template-columns: 58px minmax(0,1fr) 18px; gap: 10px; }
+  .home-v3 .hv-discovery-nav nav .hv-category-symbol { width: 58px; height: 58px; }
+  .home-v3 .hv-discovery-nav nav .hv-category-symbol > .category-3d { width: 55px; height: 55px; }
+  .home-v3 .hv-discovery-nav nav strong { font-size: 17px; }
+  .home-v3 .hv-discovery-nav nav small { font-size:var(--type-note-size); }
+}
+@media (max-width:950px) {
+  .home-v3 .hv-discovery-layout.hv-container { grid-template-columns: minmax(0,1fr); }
+  .home-v3 .hv-discovery-nav { position: static; max-height: none; overflow: visible; }
+  .home-v3 .hv-discovery-nav nav {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    margin: 0;
+    padding: 0;
+    gap: 12px;
+  }
+  .home-v3 .hv-discovery-nav nav > a { border-color: #f0e1d5; background: #fffdfb; }
+  .home-v3 .hv-discovery-nav nav > .hv-discovery-all { grid-column: 1/-1; }
+  .home-v3 .hv-discovery-nav nav[aria-label="Animal themes"] > a:last-child:nth-child(odd) { grid-column: 1/-1; }
+}
+@media (max-width:600px) {
+  .home-v3 .hv-discovery-nav nav > a {
+    grid-template-columns: minmax(0,1fr) 20px;
+    justify-items: start;
+    align-content: start;
+    min-height: 176px;
+    padding: 15px 13px;
+    gap: 12px 6px;
+  }
+  .home-v3 .hv-discovery-nav nav > a > .hv-category-symbol { grid-column: 1; grid-row: 1; }
+  .home-v3 .hv-discovery-nav nav > a > svg { grid-column: 2; grid-row: 1; align-self: center; }
+  .home-v3 .hv-discovery-nav nav > a > span:nth-child(2) { grid-column: 1/-1; grid-row: 2; }
+  .home-v3 .hv-discovery-nav nav strong { font-size: 18px; }
+  .home-v3 .hv-discovery-nav nav small { font-size:var(--type-note-size); line-height: 1.45; }
+  .home-v3 .hv-discovery-nav nav > .hv-discovery-all,
+  .home-v3 .hv-discovery-nav nav[aria-label="Animal themes"] > a:last-child:nth-child(odd) {
+    grid-template-columns: 64px minmax(0,1fr) 20px;
+    min-height: 100px;
+    align-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  .home-v3 .hv-discovery-nav nav > .hv-discovery-all > span:nth-child(2),
+  .home-v3 .hv-discovery-nav nav[aria-label="Animal themes"] > a:last-child:nth-child(odd) > span:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .home-v3 .hv-discovery-nav nav > .hv-discovery-all > svg,
+  .home-v3 .hv-discovery-nav nav[aria-label="Animal themes"] > a:last-child:nth-child(odd) > svg { grid-column: 3; }
+}

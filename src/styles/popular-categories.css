@@ -1,0 +1,89 @@
+/* Shared category shortcuts: artwork comes from the category identity resolver. */
+.site-v3 .iv-searchbar {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding-block: 18px;
+}
+.site-v3 .iv-searchbar > .jc-search-shell { width: 100%; min-width: 0; }
+.site-v3 .iv-searchbar .jc-popular-categories {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+.site-v3 .iv-searchbar .jc-popular-categories > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 66px;
+  padding: 10px 8px;
+  border: 1px solid #edddd0;
+  border-radius: 16px;
+  background: linear-gradient(155deg, #fff, #fffaf4);
+  box-shadow: inset 0 1px #fff, 0 3px 0 #f3e7dc;
+  color: var(--text-ink, #000);
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  transition: background .16s, border-color .16s, box-shadow .16s;
+}
+.site-v3 .jc-popular-categories > a > span:last-child { min-width: 0; }
+.site-v3 .jc-popular-category-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 50% 85%, #f3dac16b, transparent 65%);
+}
+.site-v3 .jc-popular-category-icon > svg { display: block; width: 38px; height: 38px; }
+.site-v3 .iv-searchbar .jc-popular-categories > a:hover {
+  background: #fff0df;
+  border-color: #e4b78f;
+  box-shadow: inset 0 1px #fff, 0 3px 0 #eac9ac;
+}
+.site-v3 .iv-searchbar .jc-popular-categories > a[aria-current] {
+  color: #a4431d;
+  background: linear-gradient(150deg, #fff4e7, #ffe5c8);
+  border-color: #d69b68;
+  box-shadow: inset 0 1px #fff, 0 3px 0 #dba77e;
+  text-decoration: none;
+}
+.site-v3 .iv-searchbar .jc-popular-categories > a:focus-visible {
+  outline: 3px solid #b45328;
+  outline-offset: 3px;
+}
+@media (max-width: 1350px) {
+  .site-v3 .iv-searchbar { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+}
+@media (max-width: 1000px) {
+  .site-v3 .iv-searchbar .jc-popular-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+}
+@media (max-width: 600px) {
+  .site-v3 .iv-searchbar { padding-block: 14px 17px; gap: 13px; }
+  .site-v3 .iv-searchbar .jc-popular-categories { gap: 8px; }
+  .site-v3 .iv-searchbar .jc-popular-categories > a {
+    flex-direction: column;
+    gap: 5px;
+    min-height: 91px;
+    padding: 9px 5px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+  .site-v3 .jc-popular-category-icon { width: 38px; height: 38px; }
+  .site-v3 .jc-popular-category-icon > svg { width: 36px; height: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-v3 .iv-searchbar .jc-popular-categories > a { transition: none; }
+}
+@media (forced-colors: active) {
+  .site-v3 .iv-searchbar .jc-popular-categories > a { border-color: ButtonText; }
+  .site-v3 .iv-searchbar .jc-popular-categories > a[aria-current] { outline: 2px solid Highlight; }
+}
