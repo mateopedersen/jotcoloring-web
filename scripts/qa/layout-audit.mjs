@@ -50,3 +50,27 @@ export function measureLayout() {
     pass: !pageOverflow && !overflow.length && !clippedText.length && !arrows.length &&
       !narrowText.length && !misalignedRows.length && !missingAlt && !brokenImages };
 }
+
+/** Check visible control labels and alignment inside actual action groups.
+ * Horizontal navigation scrollers and masonry galleries are intentional.
+ */
+export function measureControls() {
+  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden],.sr-only,[aria-hidden=true],dialog:not([open])');};
+  const identify=e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'svg',text:e.textContent.trim().replace(/\s+/g,' ').slice(0,85)});
+  const labels=[...document.querySelectorAll('.jc-footer-link-label,.support-tabs>a>b,.jc-file-copy,.aw-preview-actions button>span:last-child,.aw-dialog-secondary button>span:last-child,.jc-photo-formats strong,.jc-photo-formats small,.jc-dl-format>span,.jc-age-links>a>span,.settings-tabs button')].filter(visible);
+  const escapingLabels=[];
+  for(const label of labels){const control=label.closest('a,button,label');if(!control||!visible(control))continue;const range=document.createRange();range.selectNodeContents(label);const r=range.getBoundingClientRect(),p=control.getBoundingClientRect();if(r.width&&r.height&&(r.left<p.left-2||r.right>p.right+2||r.top<p.top-2||r.bottom>p.bottom+2))escapingLabels.push(identify(label));}
+  const selectors='.support-tabs,.support-actions,.support-link-grid,.support-link-cards,.support-contact-rail,.jc-file-actions .format-links,.jc-gallery-tabs,.jc-footer-nav-links,.aw-controls,.aw-preview-actions,.aw-dialog-secondary,.settings-tabs,.difficulty-levels,.starter-pagination,.aw-toolbar,.aw-hero-actions,.studio-format-grid,.jc-photo-formats,.jc-dl-formats,.iv-filter-bar,.jc-age-links';
+  const overlaps=[],unevenRows=[],underfilledGroups=[],groups=[];
+  for(const parent of document.querySelectorAll(selectors)){
+    if(!visible(parent))continue;const children=[...parent.children].filter(e=>visible(e)&&!['absolute','fixed'].includes(getComputedStyle(e).position));if(children.length<2)continue;
+    const style=getComputedStyle(parent),boxes=children.map(e=>({e,r:(e.matches('label')&&parent.matches('.studio-format-grid,.jc-photo-formats')?e.querySelector(':scope>span')||e:e).getBoundingClientRect()}));
+    groups.push({className:parent.className,gap:style.gap,children:children.length});
+    for(let i=0;i<boxes.length;i++)for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];if(Math.min(a.r.right,b.r.right)-Math.max(a.r.left,b.r.left)>2&&Math.min(a.r.bottom,b.r.bottom)-Math.max(a.r.top,b.r.top)>2)overlaps.push({group:parent.className,a:identify(a.e),b:identify(b.e)});}
+    if(style.display!=='grid'||/auto|scroll/.test(style.overflowX))continue;
+    const rows=[];for(const box of boxes){let row=rows.find(row=>Math.abs(row[0].r.top-box.r.top)<3);if(!row){row=[];rows.push(row)}row.push(box);}
+    for(const row of rows)if(row.length>1&&Math.max(...row.map(x=>x.r.height))-Math.min(...row.map(x=>x.r.height))>3)unevenRows.push({group:parent.className,heights:row.map(x=>Math.round(x.r.height))});
+  }
+  for(const group of document.querySelectorAll('.jc-footer-nav-links')){if(!visible(group))continue;const parent=group.parentElement,s=getComputedStyle(parent),available=parent.clientWidth-(+s.paddingLeft.replace('px',''))-(+s.paddingRight.replace('px',''));if(available-group.getBoundingClientRect().width>3)underfilledGroups.push({group:group.className,available:Math.round(available),width:Math.round(group.getBoundingClientRect().width)});}
+  return{viewport:innerWidth,escapingLabels,overlaps,unevenRows,underfilledGroups,groups,pass:!escapingLabels.length&&!overlaps.length&&!unevenRows.length&&!underfilledGroups.length};
+}

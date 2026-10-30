@@ -1,4 +1,4 @@
-import {categories,animalCategories} from '../ui/categories';
+import {COLORING_TAXONOMY,categoryPath} from '../taxonomy/catalog';
 import type {Content,CatalogQuery} from '../server/types';
 import {canonicalSubject,searchWords} from '../search/intent';
 export const COLLECTION_MATCH_VERSION='jot-collection-evidence-1';
@@ -20,8 +20,7 @@ export function subjectFocus(item:Pick<Content,'title'|'description'|'tags'>){
  return prominent;
 }
 export function collectionDefinitions(rows:Array<{id:string;name:string;parent_id:string|null;count:number}>):CollectionDefinition[]{
- const known=new Map(categories.map(c=>[c.id,{href:`/coloring-pages/${c.id}/`,icon:c.id}]));
- for(const c of animalCategories)if(!known.has(c.id))known.set(c.id,{href:`/coloring-pages/animals/${c.id}/`,icon:c.id==='ocean-life'?'ocean':c.id});
+ const known=new Map(COLORING_TAXONOMY.map(c=>[c.id,{href:categoryPath(c.id),icon:c.icon}]));
  return rows.filter(r=>known.has(r.id)&&r.count>0).map(r=>({id:r.id,name:r.name,parent:r.parent_id,href:known.get(r.id)!.href,icon:known.get(r.id)!.icon,total:r.count}));
 }
 export function rankCollections(query:CatalogQuery,source:Content[],candidates:Content[],definitions:CollectionDefinition[]):CollectionDiscovery{

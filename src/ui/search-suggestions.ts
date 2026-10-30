@@ -1,6 +1,5 @@
 import {illustrationHref,ICON_VIEWBOX} from '../icons/registry';
 import type {SearchMatch} from '../search/intent';
-import {categories} from './categories';
 import {LatestRequest} from './latest-request';
 import {buildSuggestions,type Suggestion} from './search-suggestions-model';
 
@@ -8,6 +7,7 @@ export function initSearchSuggestions(){
  const cache=new Map<string,{at:number;items:Suggestion[];total:number;match?:SearchMatch}>();
  for(const form of document.querySelectorAll<HTMLFormElement>('[data-search-form]')){
   if(form.dataset.searchReady)continue;
+  let categories:{id:string;name:string}[]=[];try{const options=JSON.parse(form.dataset.categoryOptions||'[]');if(Array.isArray(options))categories=options.filter(c=>c&&typeof c.id==='string'&&/^[a-z0-9-]+$/.test(c.id)&&typeof c.name==='string').slice(0,150);}catch{ /* Page search still works without optional category suggestions. */ }
   const input=form.querySelector<HTMLInputElement>('input[name=q]'),clear=form.querySelector<HTMLButtonElement>('[data-search-clear]'),panel=form.querySelector<HTMLElement>('[data-search-panel]'),list=panel?.querySelector<HTMLElement>('[role=listbox]'),status=panel?.querySelector<HTMLElement>('[data-search-status]');
   if(!input||!clear||!panel||!list||!status)continue;
   form.dataset.searchReady='true';input.setAttribute('role','combobox');input.setAttribute('aria-autocomplete','list');input.setAttribute('aria-controls',list.id);input.setAttribute('aria-expanded','false');input.setAttribute('aria-haspopup','listbox');

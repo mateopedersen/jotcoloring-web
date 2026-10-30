@@ -1,3 +1,4 @@
+import {validateCategorySelection} from '../taxonomy/analysis';
 import {difficultyForScore,DIFFICULTY_LEVELS} from '../age/difficulty';
 import {validAgeAssessment} from '../age/model';
 import type {Manifest} from './types';
@@ -8,7 +9,7 @@ export const MAX_PDF_BYTES=1_000_000;
 const object=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const str=(v:unknown,min:number,max:number)=>typeof v==='string'&&v.length>=min&&v.length<=max;
 const list=(v:unknown,max:number)=>Array.isArray(v)&&v.length<=max&&new Set(v).size===v.length;
-const fields=['difficulty_level','age_recommendation','schema_version','example_only','import_action','idempotency_key','expected_version','content_id','locale','slug','title','description','alt_text','requested_status','category_ids','tags','provenance','assets','age_groups','difficulty'];
+const fields=['category_selection','difficulty_level','age_recommendation','schema_version','example_only','import_action','idempotency_key','expected_version','content_id','locale','slug','title','description','alt_text','requested_status','category_ids','tags','provenance','assets','age_groups','difficulty'];
 export function safeObjectKey(key:string){return key.startsWith('incoming/')&&key.length<=1024&&!key.includes('..')&&!key.includes('\\')&&!key.includes('//')&&!/[\x00-\x1f\x7f%?#]/.test(key)&&!key.endsWith('/')}
 export function validateManifest(value:unknown,_production=false):Manifest{
  const errors:Record<string,string>={};if(!object(value))throw new AppError('VALIDATION_ERROR','Manifest must be an object.');const v=value;
@@ -37,5 +38,6 @@ export function validateManifest(value:unknown,_production=false):Manifest{
  if(Array.isArray(v.assets)){const reference=v.assets.find((a:any)=>a?.role==='color_inspiration');if(reference){const source=v.assets.find((a:any)=>a?.asset_id===reference.source_asset_id&&a?.role==='printable_webp_bw');if(!source||Math.abs(reference.width/reference.height-source.width/source.height)>.001)errors.assets='Color inspiration must reference the matching printable line-art asset with the same aspect ratio.';}}
  if(Array.isArray(v.assets)){const og=v.assets.find((a:any)=>a?.role==='social_og');if(og&&(og.mime!=='image/png'||og.width!==1200||og.height!==630||og.bytes>1_000_000||!v.assets.some((a:any)=>a?.role==='printable_webp_bw'&&a.asset_id===og.source_asset_id)))errors.assets='Social OG requires a source-bound 1200 × 630 PNG under 1 MB.';}
  if(v.age_recommendation!==undefined){const source=Array.isArray(v.assets)?v.assets.find((a:any)=>a?.role==='printable_webp_bw'):undefined;if(!source||!validAgeAssessment(v.age_recommendation,source.sha256))errors.age_recommendation='A valid, image-bound visual age analysis is required.';}
+ if(v.category_selection!==undefined){const age=v.age_recommendation as Manifest['age_recommendation'];if(!age||!validateCategorySelection(v.category_selection,age.category_analysis,age.source_sha256)||JSON.stringify((v.category_selection as any).category_ids)!==JSON.stringify(v.category_ids))errors.category_selection='Category selection must match the current image analysis, taxonomy and reviewed categories.';}
  if(Object.keys(errors).length)throw new AppError('VALIDATION_ERROR','Manifest validation failed.',422,errors);const assessment=v.age_recommendation as Manifest['age_recommendation'],level=assessment?difficultyForScore(assessment.score):undefined;if(v.difficulty_level!==undefined&&(!DIFFICULTY_LEVELS.some(d=>d.id===v.difficulty_level)||v.difficulty_level!==level))throw new AppError('VALIDATION_ERROR','Difficulty must match the current source-image analysis.',422);return {...v,difficulty:assessment?(level==='easy'?'easy':'detailed'):v.difficulty==='easy'?'easy':v.difficulty?'detailed':null,...(level?{difficulty_level:level}:{})} as unknown as Manifest;
 }

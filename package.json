@@ -20,7 +20,8 @@
     "deploy:production": "pnpm build:production && node scripts/ops/deploy.mjs production --apply",
     "age:catalog": "node --import tsx scripts/data/assess-local-catalog.ts",
     "og:local": "node --import tsx scripts/social/build.ts --local-only --apply-content",
-    "perf:budget": "node scripts/qa/bundle-budget.mjs"
+    "perf:budget": "node scripts/qa/bundle-budget.mjs",
+    "categories:batch": "node --import tsx scripts/data/categorize-batch.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.4.2",
