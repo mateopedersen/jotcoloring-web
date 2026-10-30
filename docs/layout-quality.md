@@ -24,6 +24,8 @@ Use 320 px for the complete current route list in both the system font and the M
 
 For Studio, check all seven tabs, both states of the brush-size disclosure, the library, element picker and all seven export-format tiles. Check a short landscape viewport as well as portrait. Controls must not cover the canvas when their drawer is closed. The drawing tool rail fits in two rows on narrow phones and one row in landscape; it is not an intentional horizontal scroller. Brush controls start collapsed on compact screens and stay expanded on desktop.
 
+The free drawing board's **All Tools** entry must remain visible on phones. The mobile probe also rejects a board where advanced panels are hidden and no visible entry point can reveal them. Enable All Tools and disable Easy mode before checking all seven inspector tabs; then recheck Easy mode separately.
+
 Astro component styles do not automatically select SVG roots rendered inside another component. Use an explicit `:global(svg)` selector within the component's own class scope for those SVG children; do not rely on a scoped selector that silently misses them.
 
 ## Readable text in future components

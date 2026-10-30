@@ -20,3 +20,14 @@ test('explicit aliases resolve known topics but ambiguous words never force a to
 test('disk queue resumes, deduplicates, guards leases and refuses stale source-result commits',()=>{const dir=mkdtempSync(join(tmpdir(),'jot-category-')),path=join(dir,'jobs.sqlite'),job={id:'example-page',file:'/test.png',sha256:'a'.repeat(64),branded:true};try{let q=new CategoryQueue(path);const key=q.enqueue(job);assert.equal(q.enqueue(job),key);const first=q.claim(0)!;assert.equal(q.claim(1),undefined);q.close();q=new CategoryQueue(path);const reclaimed=q.claim(600001)!;assert.equal(reclaimed.job_key,key);assert.equal(q.finish(key,first.token,{}),false);assert.ok(q.finish(key,reclaimed.token,{ready:true}));assert.equal(q.claim(700000),undefined);assert.equal(q.summary()[0].count,1);assert.notEqual(q.enqueue({...job,sha256:'b'.repeat(64)}),key);q.close();}finally{rmSync(dir,{recursive:true,force:true});}});
 
 test('a plain circle split into a few cells does not auto-publish as an intricate mandala',async()=>{const a=await classifyCategories(async labels=>{const i=labels.indexOf(COLORING_TAXONOMY.find(c=>c.id==='mandalas')!.visual);return oneHot(labels,i<0?labels.length-1:i);},{regions:8,inkRatio:.05,edgeDensity:.04});assert.equal(a.primary,'mandalas');assert.equal(a.review_required,true);assert.throws(()=>preparedCategorySelection(a,'a'.repeat(64)));});
+
+test('center crops cannot replace the whole-frame subject with background decoration',()=>{
+ const roots=categoryLabels('root'),animal=oneHot(roots,ROOT_CATEGORIES.findIndex(c=>c.id==='animals')),flower=oneHot(roots,ROOT_CATEGORIES.findIndex(c=>c.id==='flowers'));
+ const child=oneHot(categoryLabels('flowers'),0);
+ const a=decideCategories([{scope:'root',scores:[animal,animal,flower,flower,flower,flower]},{scope:'flowers',scores:[child,child]}]);
+ assert.equal(a.primary,'flowers');assert.equal(a.review_required,true);assert.throws(()=>preparedCategorySelection(a,'a'.repeat(64)));
+ // Old evidence is checked with its recorded rules, without rewriting live metadata.
+ const previous={...a,version:'jot-category-hierarchy-2.2.0',category_ids:['flowers',...categoryLineage(COLORING_TAXONOMY.find(c=>c.parent==='flowers')!.id)].filter((x,i,all)=>all.indexOf(x)===i),review_required:false,reason:'supported'};
+ assert.ok(isHierarchicalCategoryAnalysis(previous));
+ assert.equal(isHierarchicalCategoryAnalysis({...previous,version:a.version}),false);
+});

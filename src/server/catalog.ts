@@ -7,7 +7,7 @@ import {displayTitle} from '../ui/titles';
 import {collectionDefinitions,rankCollections,subjectFocus,collectionTopics,type CollectionDiscovery} from '../content/collection-matching';
 import {canonicalSubject} from '../search/intent';
 import {collectionScope} from './collection-scope';
-import {candidateTags,tagWeight,rankRelated,collectionOverview,type RelatedResult} from '../content/related';
+import {candidateTags,candidateTagWeight,rankRelated,collectionOverview,type RelatedResult} from '../content/related';
 export type {Content,CatalogPage,CatalogQuery} from './types';
 export interface CatalogRepository {list(query?:CatalogQuery):Promise<CatalogPage>;get(idOrSlug:string):Promise<Content|null>;getMany(keys:string[]):Promise<(Content|null)[]>;related(source:Content):Promise<RelatedResult>;relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>;categories():Promise<{id:string;name:string;parent_id:string|null;count:number}[]>;redirect(slug:string):Promise<string|null>}
 export interface SearchProvider {search(q:string,limit?:number,options?:CatalogQuery):Promise<{ids:string[];total:number;has_more:boolean;next_cursor:string|null;search_match?:SearchMatch}>;project(document:SearchDocument):Promise<void>}
@@ -85,7 +85,7 @@ export class D1CatalogRepository implements CatalogRepository{
  async related(source:Content):Promise<RelatedResult>{
  const tags=candidateTags(source),queries:Promise<{results:{id:string}[];weight:number}>[]=[];
  const window=(table:string,column:string,value:string,weight:number,size:number)=>{for(const direction of ['>','<='])queries.push(this.db.prepare(`SELECT ct.content_id AS id FROM ${table} ct JOIN content c ON c.id=ct.content_id WHERE ct.${column}=? AND ct.content_id ${direction} ? AND c.id<>? AND c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 ORDER BY ct.content_id ${direction==='>'?'ASC':'DESC'} LIMIT ?`).bind(value,source.id,source.id,size).all<{id:string}>().then(result=>({results:result.results,weight})));};
- for(const tag of tags)window('content_tag','tag',tag,tagWeight(tag),8);
+ for(const tag of tags)window('content_tag','tag',tag,candidateTagWeight(source,tag),8);
  for(const category of [source.subcategory,source.category].filter((v):v is string=>!!v))window('content_category','category_id',category,category===source.subcategory?12:3,20);
  const scores=new Map<string,number>();for(const result of await Promise.all(queries))for(const row of result.results)scores.set(row.id,(scores.get(row.id)||0)+result.weight);
  // Bounded indexed candidate retrieval, then one batch hydration; no full-catalog similarity scan.

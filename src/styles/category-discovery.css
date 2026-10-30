@@ -1,4 +1,5 @@
 /* Category navigation has its own type scale, independent of gallery captions. */
+.home-v3 .hv-discovery-nav{position:static;max-height:none;overflow:visible;padding-right:0;overscroll-behavior:auto}
 .home-v3 .hv-discovery-nav nav {
   display: grid;
   grid-template-columns: minmax(0,1fr);

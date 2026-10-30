@@ -103,6 +103,9 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: '48c779c8eaa80234e0bb9d57f96e588b'
           CLOUDFLARE_API_TOKEN: ${{ secrets[github.ref_name == 'main' && 'JOT_CF_PRODUCTION_DEPLOY_TOKEN' || 'JOT_CF_STAGING_DEPLOY_TOKEN'] }}
         run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV" --apply
+      - name: Verify public media and cached browser-download headers after production releases
+        if: env.JOT_DEPLOY_ENV == 'production'
+        run: node scripts/qa/public-media.mjs production
       # Sole automatic publisher: do not enable Workers Builds deploy triggers.
       # No queue management, cron/route updates, D1 migrations, content imports,
       # AI gateway deploys or resource creation. Existing triggers stay in place.

@@ -116,3 +116,8 @@ html body:is(.home-v3,.site-v3) main small { font-size:var(--type-note-size); fo
 @media(max-width:700px){
   html body.home-v3 .hc-card-meta { font-size:var(--type-note-size); }
 }
+html body.home-v3 .hc-card-meta.hc-card-summary{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;min-height:3.3em;font-size:15px;font-weight:600;line-height:1.65;text-wrap:pretty}
+/* Keep recommended-age labels and the card text below them aligned in a row. */
+@media(min-width:1101px){html body.home-v3 .hc-card .jc-age-badge{min-height:54px;align-items:center;padding-inline:4px;gap:3px}}
+@media(min-width:381px) and (max-width:700px){html body.home-v3 .hc-card-meta.hc-card-summary{min-height:4.95em}}
+.jc-header .jc-main-nav a>span{min-width:0;white-space:normal;line-height:1.2}
