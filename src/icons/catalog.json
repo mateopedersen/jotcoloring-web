@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+  "url": "/illustrations/jotcoloring-icons-687d54dcaa3b.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -89,13 +89,13 @@
     },
     {
       "id": "woodland",
-      "label": "Woodland · oak tree",
-      "group": "Categories"
+      "label": "Woodland · spotted fawn",
+      "group": "Subjects"
     },
     {
       "id": "pets",
-      "label": "Pets · puppy",
-      "group": "Categories"
+      "label": "Pets · kitten and puppy",
+      "group": "Subjects"
     },
     {
       "id": "farm-animals",
@@ -451,6 +451,236 @@
       "id": "privacy",
       "label": "Privacy · protective shield",
       "group": "Creative"
+    },
+    {
+      "id": "cats",
+      "label": "Cats · ginger kitten with green eyes",
+      "group": "Subjects"
+    },
+    {
+      "id": "dogs",
+      "label": "Dogs · floppy-eared puppy",
+      "group": "Subjects"
+    },
+    {
+      "id": "insects",
+      "label": "Insects · honeybee with glassy wings",
+      "group": "Subjects"
+    },
+    {
+      "id": "butterflies",
+      "label": "Butterflies · orange patterned wings",
+      "group": "Subjects"
+    },
+    {
+      "id": "jungle-animals",
+      "label": "Jungle animals · smiling monkey",
+      "group": "Subjects"
+    },
+    {
+      "id": "safari-animals",
+      "label": "Safari animals · lion with a full mane",
+      "group": "Subjects"
+    },
+    {
+      "id": "reptiles",
+      "label": "Reptiles · green chameleon with curled tail",
+      "group": "Subjects"
+    },
+    {
+      "id": "polar-animals",
+      "label": "Polar animals · penguin on blue ice",
+      "group": "Subjects"
+    },
+    {
+      "id": "ocean-life",
+      "label": "Ocean life · green sea turtle",
+      "group": "Subjects"
+    },
+    {
+      "id": "sea-turtles",
+      "label": "Turtles · flippers and patterned shell",
+      "group": "Subjects"
+    },
+    {
+      "id": "owls",
+      "label": "Owls · feathered purple owl",
+      "group": "Subjects"
+    },
+    {
+      "id": "dragons",
+      "label": "Dragons · green dragon with coral wings",
+      "group": "Subjects"
+    },
+    {
+      "id": "gardens",
+      "label": "Gardens · two blooms, terracotta pot and trowel",
+      "group": "Subjects"
+    },
+    {
+      "id": "snowmen",
+      "label": "Winter · snowman with a blue hat and coral scarf",
+      "group": "Subjects"
+    },
+    {
+      "id": "nature",
+      "label": "Nature · leafy oak tree",
+      "group": "Subjects"
+    },
+    {
+      "id": "buildings",
+      "label": "Buildings · house with windows, a door and chimney",
+      "group": "Subjects"
+    },
+    {
+      "id": "people",
+      "label": "People · two smiling people",
+      "group": "Subjects"
+    },
+    {
+      "id": "education",
+      "label": "Learning · alphabet books and a pencil",
+      "group": "Subjects"
+    },
+    {
+      "id": "sports",
+      "label": "Sports · soccer ball and basketball",
+      "group": "Subjects"
+    },
+    {
+      "id": "objects",
+      "label": "Everyday objects · colorful wooden blocks",
+      "group": "Subjects"
+    },
+    {
+      "id": "music",
+      "label": "Music · acoustic guitar with strings",
+      "group": "Subjects"
+    },
+    {
+      "id": "fashion",
+      "label": "Fashion · teal dress on a hanger",
+      "group": "Subjects"
+    },
+    {
+      "id": "robots",
+      "label": "Robots · smiling blue robot",
+      "group": "Subjects"
+    },
+    {
+      "id": "seasons",
+      "label": "Seasons & weather · sun, cloud, raindrops and leaf",
+      "group": "Subjects"
+    },
+    {
+      "id": "celebrations",
+      "label": "Celebrations · colorful party balloons",
+      "group": "Subjects"
+    },
+    {
+      "id": "art-patterns",
+      "label": "Art & patterns · colored geometric tiles and pencil",
+      "group": "Subjects"
+    },
+    {
+      "id": "foxes",
+      "label": "Foxes · red fox",
+      "group": "Subjects"
+    },
+    {
+      "id": "nav-explore",
+      "label": "Explore · three-dimensional compass",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-create",
+      "label": "Create · drawing tools and fresh paper",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-information",
+      "label": "Good to know · open guide and information seal",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-all-pages",
+      "label": "All coloring pages · illustrated page collection",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-age",
+      "label": "Browse by age · a progression of three age cards",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-kids",
+      "label": "Coloring for kids · kitten page and crayons",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-adults",
+      "label": "Coloring for adults · detailed pattern and pencil",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-studio",
+      "label": "Coloring Studio · painting desk with palette",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-photo",
+      "label": "Photo to Coloring Page · matching color and outline views",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-ai",
+      "label": "Create with AI · idea bulb, drawing sheet and pencil",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-artwork",
+      "label": "My artwork & favorites · saved art with a heart",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-print",
+      "label": "Printing guide · printer with a checked print",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-how-to",
+      "label": "How to use JotColoring · three-step illustrated guide",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-about",
+      "label": "About JotColoring · creative storybook and J emblem",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-license",
+      "label": "Artwork license · coloring sheet with copyright seal",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-commercial",
+      "label": "Commercial licensing · artwork contract and business case",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-help",
+      "label": "Help center · support headset with a heart",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-faq",
+      "label": "Frequently asked questions · question and answer bubbles",
+      "group": "Site navigation"
+    },
+    {
+      "id": "nav-contact",
+      "label": "Contact us · envelope and paper airplane",
+      "group": "Site navigation"
     }
   ]
 }

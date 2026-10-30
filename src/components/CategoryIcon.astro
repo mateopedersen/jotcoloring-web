@@ -1,6 +1,6 @@
 ---
-import {categoryById} from '../taxonomy/catalog';
+import {categoryPresentation} from '../icons/category';
 import VectorIcon from './VectorIcon.astro';
 const {name='all',size=28}=Astro.props;
 ---
-<VectorIcon name={categoryById(name)?.icon||name} size={size} class="category-3d"/>
+<VectorIcon name={categoryPresentation(name).icon} size={size} class="category-3d"/>

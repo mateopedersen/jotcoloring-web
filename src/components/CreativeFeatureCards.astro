@@ -1,0 +1,32 @@
+---
+import VectorIcon from './VectorIcon.astro';
+import ArrowIcon from './ArrowIcon.astro';
+import '../styles/creative-features.css';
+const idea='A friendly little dragon in a castle garden, with flowers, leafy plants and big wings. Black-and-white coloring page.';
+const ideaHref=`/create/text/?prompt=${encodeURIComponent(idea)}#prompt`;
+---
+<div class="creative-other-paths cf-paths">
+ <article class="cf-card cf-photo" aria-labelledby="cf-photo-title">
+  <div class="cf-topline"><span class="cf-category"><VectorIcon name="nav-photo" size={33}/>Photo to coloring page</span><span class="cf-number" aria-hidden="true">01</span></div>
+  <div class="cf-copy"><h3 id="cf-photo-title">Your moments.<br/><em>A fresh page.</em></h3><p>Turn a favorite photo into outlines you can print, color, and make your own.</p></div>
+  <div class="cf-photo-scene" role="group" aria-label="A coffee photograph beside the outline created from it">
+   <span class="cf-scene-orbit" aria-hidden="true"></span>
+   <figure class="cf-snapshot cf-snapshot-original"><img src="/features/coffee-photo.webp" alt="A coffee cup and spoon on a saucer, photographed on a wooden table." width="600" height="400" loading="lazy"/><figcaption><span class="cf-dot"></span>The photo</figcaption></figure>
+   <span class="cf-convert-arrow" aria-hidden="true"><ArrowIcon size={25}/></span>
+   <figure class="cf-snapshot cf-snapshot-outline"><img src="/features/coffee-outline.webp" alt="The same cup, saucer, and spoon converted into black-and-white outlines by JotColoring." width="600" height="400" loading="lazy"/><figcaption><VectorIcon name="brush" size={20}/>Your coloring page</figcaption></figure>
+   <svg class="cf-photo-spark" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="m25 4 5 15 15 6-15 5-5 16-5-16-16-5 16-6Z" fill="#f9bb63"/><path d="M7 4v8M3 8h8" stroke="#c27836" stroke-width="2" stroke-linecap="round"/></svg>
+  </div>
+  <div class="cf-bottom"><a class="cf-cta" href="/create/photo/"><span>Create from My Photo</span><span class="cf-cta-arrow"><ArrowIcon size={20}/></span></a><span class="cf-note"><VectorIcon name="privacy" size={19}/>Your photo stays on your device</span></div>
+ </article>
+ <article class="cf-card cf-idea" aria-labelledby="cf-idea-title">
+  <div class="cf-topline"><span class="cf-category"><VectorIcon name="nav-ai" size={33}/>AI coloring page creator</span><span class="cf-number" aria-hidden="true">02</span></div>
+  <div class="cf-copy"><h3 id="cf-idea-title">Imagine it.<br/><em>Make it a page.</em></h3><p>A little dragon? A whole new world? Describe your idea and choose your drawing style.</p></div>
+  <div class="cf-idea-scene">
+   <span class="cf-scene-orbit" aria-hidden="true"></span>
+   <div class="cf-idea-paper"><span class="cf-paper-pin" aria-hidden="true"></span><img src="/features/dragon-coloring.webp" alt="A friendly winged dragon in a garden beside a fairytale castle, ready to color." width="400" height="520" loading="lazy"/><span class="cf-paper-caption">A little inspiration</span></div>
+   <a class="cf-prompt" href={ideaHref}><VectorIcon name="ai" size={29}/><span><small>TRY AN IDEA</small>A dragon in<br/>a castle garden</span><ArrowIcon size={18}/></a>
+   <svg class="cf-idea-spark" viewBox="0 0 75 75" fill="none" aria-hidden="true"><path d="m31 7 5 18 18 6-18 5-5 18-5-18-19-5 19-6Z" fill="#c5abd9"/><path d="m62 45 2 8 8 3-8 2-2 9-3-9-8-2 8-3Z" fill="#efa95d"/><path d="M7 59h10M12 54v10" stroke="#9477b0" stroke-width="2" stroke-linecap="round"/></svg>
+  </div>
+  <div class="cf-bottom"><a class="cf-cta" href="/create/text/"><span>Create with AI</span><span class="cf-cta-arrow"><ArrowIcon size={20}/></span></a><span class="cf-note"><VectorIcon name="brush" size={19}/>Simple, cute, or beautifully detailed</span></div>
+ </article>
+</div>

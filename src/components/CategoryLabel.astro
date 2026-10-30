@@ -1,0 +1,9 @@
+---
+import VectorIcon from './VectorIcon.astro';
+import {categoryPresentation} from '../icons/category';
+import '../styles/category-label.css';
+interface Props {category:string;label?:string;overlay?:boolean;class?:string;}
+const {category,label,overlay=false,class:className=''}=Astro.props;
+const entry=categoryPresentation(category,label);
+---
+<a class:list={['jc-category-label',overlay&&'jc-category-label--overlay',className]} href={entry.href} data-category-label={entry.id} aria-label={`Explore ${entry.label} coloring pages`}><VectorIcon name={entry.icon} size={28}/><span>{entry.label}</span></a>

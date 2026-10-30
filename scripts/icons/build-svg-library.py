@@ -341,6 +341,10 @@ add('privacy','Privacy · protective shield',shadow(rx=36)+shield,'Creative')
 add('save','Save · project disk',shadow()+path('M23 12h72l18 18v72q0 10-10 10H23q-10 0-10-10V22q0-10 10-10Z',mat('orange'),'#a65e33',1.6)+rect(34,12,53,37,3,mat('metal'),'#8e9d92',1.2)+rect(66,17,12,27,1,mat('ink'))+rect(30,64,66,48,4,mat('paper'),'#b7a58d',1.2)+path('M41 77h44m-44 10h35m-35 10h40',stroke='#b5b6a4',sw=2)+path('M20 24v68',stroke='#ffdb9e',sw=2))
 add('refresh','Refresh · two rotating arrows',shadow()+path('M22 48C29 16 73 9 96 34l12-14 6 39-38-1 12-12C72 29 44 35 39 53Z',mat('orange'),'#b46b36',1.5)+path('M106 80c-7 32-51 39-74 14l-12 14-6-39 38 1-12 12c16 17 44 11 49-7Z',mat('mint'),'#68947a',1.5)+path('M29 43q16-26 44-17M99 85q-16 26-44 17',stroke='#fff2c8',sw=2))
 
+# Subject and navigation additions are original editable vector drawings.
+from category_art import register
+register(globals())
+
 # Larger page illustrations use the same tangible objects at a readable scale.
 SCENES={}
 def scene_base():
@@ -373,6 +377,12 @@ colors={
  'ink':['#5d6361','#343e40','#1f282d'], 'handle':['#f3b873','#bc6930','#733820'],
  'bristle':['#d4a16a','#936139','#3a3026'], 'lens':['#d9f1e2','#388a9b','#133747'],
  'leather':['#eaa46e','#b96939','#82482f'], 'purple':['#e9d7fa','#b69bce','#7d64a4'],
+ 'ginger':['#ffe5ad','#efb260','#ba7544'], 'fawn':['#f5d5a5','#cc9a65','#9c6847'],
+ 'pink':['#ffe6e8','#ee9fae','#c36d85'], 'coral':['#ffe5c3','#f49b76','#bf624d'],
+ 'aqua':['#d7ffff','#79cbda','#3e92b2'], 'jade':['#d1f2b7','#78bf9e','#3c8c7b'],
+ 'snow':['#ffffff','#e2f3f8','#b1d6e7'], 'navy':['#819aab','#435d77','#253c57'],
+ 'lavender':['#eddefa','#b49ed9','#7f6bab'], 'plum':['#c8b4e7','#947bbd','#66558c'],
+ 'cocoa':['#ebc09a','#bf8b69','#996244'],
  'cork':['#e6c991','#c5a570','#a8814f'], 'skin':['#ffe6b9','#e9b281','#bc805b']}
 defs=''
 for name,stops in colors.items():
@@ -386,8 +396,7 @@ svg='<svg xmlns="http://www.w3.org/2000/svg" fill="none">'+body+'</svg>\n'
 digest=sha256(svg.encode()).hexdigest()[:12]
 filename=f'jotcoloring-icons-{digest}.svg'
 out=ROOT/'public/illustrations';out.mkdir(exist_ok=True,parents=True)
-if not CHECK_ONLY:
- for old in out.glob('jotcoloring-icons-*.svg'):old.unlink()
+# Keep immutable earlier sprites usable by already-open pages.
 write_output(out/filename,svg)
 registry={'url':'/illustrations/'+filename,'viewBox':'0 0 128 128','scenes':[{'id':'scene-'+name,'viewBox':'0 0 320 280' if name=='cookies' else '0 0 420 320'} for name in SCENES],'icons':[{'id':name,'label':LABEL[name],'group':GROUP[name]} for name in ICON]}
 write_output(ROOT/'src/icons/catalog.json',json.dumps(registry,ensure_ascii=False,indent=2)+'\n')
