@@ -9,7 +9,7 @@ import {canonicalSubject} from '../search/intent';
 import {collectionScope} from './collection-scope';
 import {candidateTags,candidateTagWeight,rankRelated,collectionOverview,type RelatedResult} from '../content/related';
 export type {Content,CatalogPage,CatalogQuery} from './types';
-export interface CatalogRepository {list(query?:CatalogQuery):Promise<CatalogPage>;get(idOrSlug:string):Promise<Content|null>;getMany(keys:string[]):Promise<(Content|null)[]>;related(source:Content):Promise<RelatedResult>;relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>;categories():Promise<{id:string;name:string;parent_id:string|null;count:number}[]>;redirect(slug:string):Promise<string|null>}
+export interface CatalogRepository {list(query?:CatalogQuery):Promise<CatalogPage>;get(idOrSlug:string):Promise<Content|null>;getMany(keys:string[]):Promise<(Content|null)[]>;categoryCover(category?:string):Promise<Content|null>;categoryCovers(categories:string[]):Promise<(Content|null)[]>;related(source:Content):Promise<RelatedResult>;relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>;categories():Promise<{id:string;name:string;parent_id:string|null;count:number}[]>;redirect(slug:string):Promise<string|null>}
 export interface SearchProvider {search(q:string,limit?:number,options?:CatalogQuery):Promise<{ids:string[];total:number;has_more:boolean;next_cursor:string|null;search_match?:SearchMatch}>;project(document:SearchDocument):Promise<void>}
 export interface SearchDocument {description?:string;alt_text?:string;recommended_age?:AgeBand;id:string;source_version:number;visibility:string;locale:string;title:string;tags:string;categories:string;updated_at:string;age_groups?:string[];category_ids?:string[];difficulty?:string|null;published_at?:string;sort_score?:number;has_home_color?:boolean}
 export function normalizeSearch(q:string){return q.normalize('NFKC').trim().replace(/\s+/g,' ').slice(0,160)}
@@ -59,6 +59,22 @@ export class D1CatalogRepository implements CatalogRepository{
   return keys.map(key=>items.find(item=>item.id===key)||items.find(item=>item.slug===key)||null);
  }
  async get(idOrSlug:string){return(await this.getMany([idOrSlug]))[0]||null;}
+ /** Select only a published, verified thumbnail from each exact collection. */
+ async categoryCovers(categories:string[]){
+  if(categories.length>40)throw new AppError('VALIDATION_ERROR','Request up to 40 collection covers.');
+  if(!categories.length)return [];
+  // Each correlated lookup walks the category index in ID order and stops at the first eligible image.
+  const rows=await this.db.prepare(`SELECT j.key AS position,(SELECT c.id FROM content_category cc INDEXED BY category_content JOIN content c ON c.id=cc.content_id JOIN asset a ON a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1 WHERE cc.category_id=j.value AND c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 ORDER BY cc.content_id LIMIT 1) AS id FROM json_each(?) j ORDER BY CAST(j.key AS INTEGER)`).bind(JSON.stringify(categories)).all<{position:number;id:string|null}>();
+  const keys=rows.results.map(row=>row.id||'');return this.getMany(keys);
+ }
+ /** Cover choice is deterministic and independent of search, pagination, or other page filters. */
+ async categoryCover(category?:string){
+  if(category)return (await this.categoryCovers([category]))[0]||null;
+  const eligible="c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0";
+  const media="JOIN asset a ON a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1";
+  const statement=this.db.prepare(`SELECT c.* FROM content c ${media} WHERE ${eligible} ORDER BY c.published_at DESC,c.id DESC LIMIT 1`);
+  const row=await statement.first<Row>();return row?(await this.hydrate([row]))[0]||null:null;
+ }
 
  async relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>{
  const canonical={...query,page:1,cursor:undefined,sort:'trending' as const,limit:48};
