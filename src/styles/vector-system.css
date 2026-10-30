@@ -1,0 +1,9 @@
+/* One optical box for every icon, independent of label length or flex sizing. */
+.jc-vector-icon,.jc-glyph,.jc-direction-icon,.jc-studio-tool-icon,.aw-board-art,.aw-illustrated-icon{flex-shrink:0;vertical-align:middle;aspect-ratio:1;overflow:hidden;pointer-events:none}
+.jc-vector-icon,.jc-studio-tool-icon,.aw-board-art{fill:none}
+.jc-scene-art{max-width:100%;height:auto;overflow:hidden;pointer-events:none}
+.jc-heart-saved{display:none}
+[aria-pressed=true] .jc-heart-empty{display:none}
+[aria-pressed=true] .jc-heart-saved{display:inline}
+@media(forced-colors:active){.jc-vector-icon,.aw-illustrated-icon,.jc-studio-tool-icon{forced-color-adjust:none}.jc-direction-icon,.jc-glyph{color:ButtonText}.jc-social-mark{border:1px solid ButtonText}}
+@media(prefers-reduced-motion:reduce){.jc-vector-icon,.jc-glyph,.jc-direction-icon,.jc-scene-art{transition:none;animation:none}}

@@ -1,6 +1,5 @@
 ---
+import VectorIcon from './VectorIcon.astro';
 const {name='all',size=40,class:className=''}=Astro.props;
-const symbols=new Set(['all','animals','flowers','mandalas','kids','studio','photo','ai','artwork','printer','license','about','help','faq','mail']);
-const symbol=symbols.has(name)?name:'all';
 ---
-<svg class:list={['jc-creative-icon',className]} data-creative-icon={symbol} width={size} height={size} viewBox="0 0 128 128" fill="none" aria-hidden="true" focusable="false"><use href={`/illustrations/creative-tools-v2.svg#${symbol}`}/></svg>
+<VectorIcon name={name} size={size} class={`jc-creative-icon ${className}`} data-creative-icon={name}/>

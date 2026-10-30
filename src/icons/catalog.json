@@ -1,0 +1,456 @@
+{
+  "url": "/illustrations/jotcoloring-icons-9e038d0adfc6.svg",
+  "viewBox": "0 0 128 128",
+  "scenes": [
+    {
+      "id": "scene-about",
+      "viewBox": "0 0 420 320"
+    },
+    {
+      "id": "scene-license",
+      "viewBox": "0 0 420 320"
+    },
+    {
+      "id": "scene-help",
+      "viewBox": "0 0 420 320"
+    },
+    {
+      "id": "scene-privacy",
+      "viewBox": "0 0 420 320"
+    },
+    {
+      "id": "scene-notfound",
+      "viewBox": "0 0 420 320"
+    },
+    {
+      "id": "scene-cookies",
+      "viewBox": "0 0 320 280"
+    },
+    {
+      "id": "scene-photo",
+      "viewBox": "0 0 420 320"
+    }
+  ],
+  "icons": [
+    {
+      "id": "animals",
+      "label": "Animals · red fox",
+      "group": "Categories"
+    },
+    {
+      "id": "flowers",
+      "label": "Flowers · garden dahlia",
+      "group": "Categories"
+    },
+    {
+      "id": "mandalas",
+      "label": "Mandalas · layered rosette",
+      "group": "Categories"
+    },
+    {
+      "id": "all",
+      "label": "All coloring pages",
+      "group": "Categories"
+    },
+    {
+      "id": "fantasy",
+      "label": "Fantasy · storybook castle",
+      "group": "Categories"
+    },
+    {
+      "id": "holidays",
+      "label": "Holidays · decorated evergreen",
+      "group": "Categories"
+    },
+    {
+      "id": "vehicles",
+      "label": "Vehicles · camper van",
+      "group": "Categories"
+    },
+    {
+      "id": "space",
+      "label": "Space · ringed planet",
+      "group": "Categories"
+    },
+    {
+      "id": "ocean",
+      "label": "Ocean · clownfish",
+      "group": "Categories"
+    },
+    {
+      "id": "food",
+      "label": "Food · frosted cupcake",
+      "group": "Categories"
+    },
+    {
+      "id": "dinosaurs",
+      "label": "Dinosaurs · long-necked dinosaur",
+      "group": "Categories"
+    },
+    {
+      "id": "woodland",
+      "label": "Woodland · oak tree",
+      "group": "Categories"
+    },
+    {
+      "id": "pets",
+      "label": "Pets · puppy",
+      "group": "Categories"
+    },
+    {
+      "id": "farm-animals",
+      "label": "Farm animals · cow",
+      "group": "Categories"
+    },
+    {
+      "id": "birds",
+      "label": "Birds · garden songbird",
+      "group": "Categories"
+    },
+    {
+      "id": "brush",
+      "label": "Brush · wood handle and metal ferrule",
+      "group": "Studio tools"
+    },
+    {
+      "id": "edit",
+      "label": "Rename · drawing pencil",
+      "group": "Actions"
+    },
+    {
+      "id": "studio",
+      "label": "Coloring Studio · artist palette",
+      "group": "Creative"
+    },
+    {
+      "id": "photo",
+      "label": "Photo to Coloring Page · camera",
+      "group": "Creative"
+    },
+    {
+      "id": "image",
+      "label": "Image · framed landscape",
+      "group": "Files"
+    },
+    {
+      "id": "heart",
+      "label": "Favorites · sculpted heart",
+      "group": "Creative"
+    },
+    {
+      "id": "heart-filled",
+      "label": "Saved favorite · coral heart",
+      "group": "Creative"
+    },
+    {
+      "id": "ai",
+      "label": "Create with AI · idea and pencil",
+      "group": "Creative"
+    },
+    {
+      "id": "kids",
+      "label": "Kids · wax crayons",
+      "group": "Creative"
+    },
+    {
+      "id": "artwork",
+      "label": "My artwork · pinned drawings",
+      "group": "Creative"
+    },
+    {
+      "id": "boards",
+      "label": "Boards · pinned drawings",
+      "group": "Actions"
+    },
+    {
+      "id": "printer",
+      "label": "Printing guide · desktop printer",
+      "group": "Creative"
+    },
+    {
+      "id": "file-pdf",
+      "label": "PDF file",
+      "group": "Files"
+    },
+    {
+      "id": "file-png",
+      "label": "PNG file",
+      "group": "Files"
+    },
+    {
+      "id": "file-jpeg",
+      "label": "JPG file",
+      "group": "Files"
+    },
+    {
+      "id": "file-webp",
+      "label": "IMG file",
+      "group": "Files"
+    },
+    {
+      "id": "file-svg",
+      "label": "SVG file",
+      "group": "Files"
+    },
+    {
+      "id": "file-docx",
+      "label": "DOCX file",
+      "group": "Files"
+    },
+    {
+      "id": "pdf",
+      "label": "PDF document",
+      "group": "Files"
+    },
+    {
+      "id": "license",
+      "label": "Artwork license · permission seal",
+      "group": "Creative"
+    },
+    {
+      "id": "help",
+      "label": "Help · question bubble",
+      "group": "Creative"
+    },
+    {
+      "id": "faq",
+      "label": "FAQ · conversation bubbles",
+      "group": "Creative"
+    },
+    {
+      "id": "mail",
+      "label": "Contact · envelope",
+      "group": "Creative"
+    },
+    {
+      "id": "about",
+      "label": "About JotColoring · open coloring book",
+      "group": "Creative"
+    },
+    {
+      "id": "search",
+      "label": "Search · magnifying glass",
+      "group": "Creative"
+    },
+    {
+      "id": "zoom",
+      "label": "Zoom · magnifying glass",
+      "group": "Studio tools"
+    },
+    {
+      "id": "fill",
+      "label": "Fill · paint bucket",
+      "group": "Studio tools"
+    },
+    {
+      "id": "eraser",
+      "label": "Erase · artist eraser",
+      "group": "Studio tools"
+    },
+    {
+      "id": "picker",
+      "label": "Pick a color · glass eyedropper",
+      "group": "Studio tools"
+    },
+    {
+      "id": "move",
+      "label": "Move canvas · open hand",
+      "group": "Studio tools"
+    },
+    {
+      "id": "eye",
+      "label": "Quick view · eye",
+      "group": "Actions"
+    },
+    {
+      "id": "notes",
+      "label": "Notes, tags and rating · notebook",
+      "group": "Actions"
+    },
+    {
+      "id": "folder",
+      "label": "Move to a board · folder",
+      "group": "Actions"
+    },
+    {
+      "id": "star",
+      "label": "Star artwork · gold star",
+      "group": "Actions"
+    },
+    {
+      "id": "share",
+      "label": "Share · connected nodes",
+      "group": "Actions"
+    },
+    {
+      "id": "link",
+      "label": "Copy page link · linked rings",
+      "group": "Actions"
+    },
+    {
+      "id": "copy",
+      "label": "Copy details · duplicate documents",
+      "group": "Actions"
+    },
+    {
+      "id": "duplicate",
+      "label": "Duplicate artwork · two drawings",
+      "group": "Actions"
+    },
+    {
+      "id": "download",
+      "label": "Download · arrow into tray",
+      "group": "Actions"
+    },
+    {
+      "id": "upload",
+      "label": "Import · arrow from tray",
+      "group": "Actions"
+    },
+    {
+      "id": "up",
+      "label": "Move earlier · up arrow",
+      "group": "Actions"
+    },
+    {
+      "id": "down",
+      "label": "Move later · down arrow",
+      "group": "Actions"
+    },
+    {
+      "id": "backup",
+      "label": "Editable backup · storage drive",
+      "group": "Actions"
+    },
+    {
+      "id": "archive",
+      "label": "Archive · storage box",
+      "group": "Actions"
+    },
+    {
+      "id": "trash",
+      "label": "Trash · wastebasket",
+      "group": "Actions"
+    },
+    {
+      "id": "clock",
+      "label": "Recently saved · clock",
+      "group": "Actions"
+    },
+    {
+      "id": "tag",
+      "label": "Tags · paper label",
+      "group": "Actions"
+    },
+    {
+      "id": "settings",
+      "label": "Settings · precision gear",
+      "group": "Actions"
+    },
+    {
+      "id": "filter",
+      "label": "Filters · funnel",
+      "group": "Actions"
+    },
+    {
+      "id": "lock",
+      "label": "Privacy · padlock",
+      "group": "Actions"
+    },
+    {
+      "id": "select",
+      "label": "Select artwork · checked card",
+      "group": "Actions"
+    },
+    {
+      "id": "check",
+      "label": "Saved · check seal",
+      "group": "Actions"
+    },
+    {
+      "id": "layers",
+      "label": "Layers · stacked sheets",
+      "group": "Studio tools"
+    },
+    {
+      "id": "projects",
+      "label": "Projects · layered artwork",
+      "group": "Actions"
+    },
+    {
+      "id": "pin",
+      "label": "Pin to top · pushpin",
+      "group": "Actions"
+    },
+    {
+      "id": "grid",
+      "label": "Grid view",
+      "group": "Actions"
+    },
+    {
+      "id": "list",
+      "label": "List view",
+      "group": "Actions"
+    },
+    {
+      "id": "masonry",
+      "label": "Masonry view",
+      "group": "Actions"
+    },
+    {
+      "id": "info",
+      "label": "Information",
+      "group": "Actions"
+    },
+    {
+      "id": "undo",
+      "label": "Undo",
+      "group": "Actions"
+    },
+    {
+      "id": "redo",
+      "label": "Redo",
+      "group": "Actions"
+    },
+    {
+      "id": "refresh",
+      "label": "Refresh · two rotating arrows",
+      "group": "Actions"
+    },
+    {
+      "id": "save",
+      "label": "Save · project disk",
+      "group": "Actions"
+    },
+    {
+      "id": "age-3-5",
+      "label": "Recommended age · 3–5",
+      "group": "Age recommendations"
+    },
+    {
+      "id": "age-6-8",
+      "label": "Recommended age · 6–8",
+      "group": "Age recommendations"
+    },
+    {
+      "id": "age-9-12",
+      "label": "Recommended age · 9–12",
+      "group": "Age recommendations"
+    },
+    {
+      "id": "age-13-17",
+      "label": "Recommended age · 13–17",
+      "group": "Age recommendations"
+    },
+    {
+      "id": "age-adults",
+      "label": "Recommended age · Adults",
+      "group": "Age recommendations"
+    },
+    {
+      "id": "privacy",
+      "label": "Privacy · protective shield",
+      "group": "Creative"
+    }
+  ]
+}

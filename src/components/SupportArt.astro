@@ -1,28 +1,6 @@
 ---
-interface Props {kind?:'license'|'help'|'privacy'|'about'|'notfound';}
+import SceneArt from './SceneArt.astro';
+interface Props {kind?:'license'|'help'|'privacy'|'about'|'notfound'}
 const {kind='license'}=Astro.props;
-const id=`support-${crypto.randomUUID().replaceAll('-','')}`;
 ---
-<svg class="support-art" viewBox="0 0 420 320" fill="none" aria-hidden="true" focusable="false">
- <defs>
-  <linearGradient id={`${id}-paper`} x1="90" y1="40" x2="300" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset=".7" stop-color="#fff8ec"/><stop offset="1" stop-color="#dfbfa3"/></linearGradient>
-  <linearGradient id={`${id}-orange`} x1="100" y1="60" x2="285" y2="265" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe1a6"/><stop offset=".4" stop-color="#ffa55b"/><stop offset=".75" stop-color="#f77832"/><stop offset="1" stop-color="#b7411e"/></linearGradient>
-  <linearGradient id={`${id}-sage`} x1="170" y1="110" x2="290" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#e2edbc"/><stop offset=".5" stop-color="#a4c995"/><stop offset="1" stop-color="#4e8472"/></linearGradient>
-  <linearGradient id={`${id}-pencil`} x1="240" y1="55" x2="310" y2="190" gradientUnits="userSpaceOnUse"><stop stop-color="#ffcf74"/><stop offset=".3" stop-color="#ff9c39"/><stop offset=".65" stop-color="#ed681e"/><stop offset=".8" stop-color="#ffb04a"/><stop offset="1" stop-color="#be4820"/></linearGradient>
-  <filter id={`${id}-shadow`} x="-40%" y="-40%" width="190%" height="190%"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#875134" flood-opacity=".18"/></filter>
- </defs>
- <ellipse cx="214" cy="283" rx="145" ry="16" fill="#ac7554" opacity=".12"/>
- <circle cx="213" cy="155" r="132" fill="#ffe6c6" opacity=".7"/>
- {kind==='notfound'?<g filter={`url(#${id}-shadow)`}>
-  <g transform="translate(8 10)" stroke="#a64c27" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="m95 101-47 84h66m-10-84v132m252-132-47 84h66m-10-84v132"/><rect x="150" y="103" width="82" height="128" rx="37"/></g>
-  <g stroke={`url(#${id}-orange)`} stroke-width="15" stroke-linecap="round" stroke-linejoin="round"><path d="m95 101-47 84h66m-10-84v132m252-132-47 84h66m-10-84v132"/><rect x="150" y="103" width="82" height="128" rx="37"/></g>
-  <g transform="translate(187 165)"><circle r="26" fill={`url(#${id}-sage)`} stroke="#6d9f7b" stroke-width="2"/><path d="m-9-1 7 7 13-14" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
- </g>:<g filter={`url(#${id}-shadow)`}>
-  <rect x="95" y="61" width="194" height="212" rx="20" transform="rotate(-11 95 61)" fill="#f5b675" stroke="#da8b54" stroke-width="2"/>
-  <rect x="116" y="42" width="190" height="221" rx="20" transform="rotate(6 116 42)" fill={`url(#${id}-paper)`} stroke="#e1bda0" stroke-width="2"/>
-  <path d="m141 70 93 10m-96 2 72 8" stroke="#e3b797" stroke-width="6" stroke-linecap="round"/>
-  {kind==='privacy'?<g><path d="m205 112 57 20v45c0 40-57 67-57 67s-57-27-57-67v-45Z" fill={`url(#${id}-sage)`} stroke="#6c9a78" stroke-width="2"/><path d="M191 166v-12a15 15 0 0 1 30 0v12" stroke="#fff7df" stroke-width="7"/><rect x="181" y="164" width="50" height="39" rx="9" fill={`url(#${id}-paper)`}/><circle cx="206" cy="181" r="4" fill="#79a186"/><path d="M206 184v7" stroke="#79a186" stroke-width="3"/></g>:kind==='help'?<g><path d="M148 118h116v79H206l-24 20v-20h-34Z" fill={`url(#${id}-orange)`} stroke="#d47c43" stroke-width="2" stroke-linejoin="round"/><path d="M195 143c0-17 29-18 29-1 0 11-16 10-16 23m0 13h.1" stroke="#fffaf0" stroke-width="7" stroke-linecap="round"/></g>:kind==='about'?<g stroke="#68947a" stroke-width="2"><path d="M208 232v-77m0 54c-43 0-54-29-54-29 39-6 54 14 54 14m0-8c38 1 52-29 52-29-32-5-52 14-52 14" fill={`url(#${id}-sage)`}/><g fill={`url(#${id}-orange)`}><ellipse cx="209" cy="138" rx="18" ry="34"/><ellipse cx="209" cy="138" rx="18" ry="34" transform="rotate(60 209 138)"/><ellipse cx="209" cy="138" rx="18" ry="34" transform="rotate(120 209 138)"/></g><circle cx="209" cy="138" r="15" fill="#ffd57e" stroke="#de8f42"/><path d="m202 133 4-3" stroke="white" stroke-width="3" stroke-linecap="round"/></g>:<g><circle cx="208" cy="161" r="49" fill={`url(#${id}-sage)`} stroke="#80a783" stroke-width="2"/><path d="m187 160 15 16 30-32" stroke="#fffdf1" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="m185 204-10 32 27-10 17 17 7-35" fill={`url(#${id}-orange)`} stroke="#cb7943" stroke-width="2"/></g>}
- </g>}
- <g transform="rotate(31 305 155)" filter={`url(#${id}-shadow)`}><path d="M291 69q0-9 9-9h12q9 0 9 9v147l-15 32-15-32Z" fill={`url(#${id}-pencil)`} stroke="#d27134" stroke-width="2"/><path d="M291 215h30l-15 33Z" fill="#f0c799"/><path d="m300 235 6 13 6-13" fill="#4d3830"/><path d="M299 83v126m14-126v126" stroke="#ffe2a3" stroke-width="3" opacity=".6"/><rect x="290" y="74" width="32" height="17" rx="3" fill="#e8d2ae" stroke="#b7936c"/><path d="M294 78h24m-24 7h24" stroke="#fff4db" stroke-width="2"/></g>
- <g fill="#ef9455"><path d="m69 81 4 10 11 4-11 4-4 10-4-10-10-4 10-4Z"/><path d="m344 47 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z"/></g><circle cx="77" cy="237" r="8" fill="#bbd1b2"/><circle cx="354" cy="239" r="5" fill="#e9bb83"/>
-</svg>
+<SceneArt kind={kind} class="support-art"/>
