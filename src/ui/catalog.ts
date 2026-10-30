@@ -1,3 +1,4 @@
+import {difficultyLabel} from '../age/difficulty';
 import {artworkText} from './artwork-text';
 import type {Content} from '../server/types';
 import {selectFilterURL} from './filter-url';
@@ -41,7 +42,7 @@ for(const button of document.querySelectorAll<HTMLButtonElement>('.select-previe
  },item=>{
   const image=body.querySelector('img')!;image.src=item.preview;const text=artworkText(item);image.alt=text.alt;image.dataset.imageTitle=text.title;image.dataset.imageDescription=text.description;
   body.querySelector('h3')!.textContent=item.title;
-  const badges=body.querySelectorAll('.badge');badges[0].textContent=item.categoryName;badges[1].textContent=item.difficulty||'Ready to color';
+  const badges=body.querySelectorAll('.badge');badges[0].textContent=item.categoryName;badges[1].textContent=difficultyLabel(item.difficulty);
   body.querySelector<HTMLAnchorElement>('a.primary')!.href=`/studio/?page=${encodeURIComponent(item.id)}`;
   for(const link of body.querySelectorAll<HTMLAnchorElement>('[data-file-format]')){
    const format=link.dataset.fileFormat as 'pdf'|'webp';link.dataset.downloadId=item.id;link.href=item.downloads[format];link.download=`${item.slug}.${format}`;link.setAttribute('aria-label',`Download ${item.title} ${format==='webp'?'Image':'PDF'}`);

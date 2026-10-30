@@ -22,6 +22,7 @@ export async function saveProject(project: Project) { await transact('projects',
 export async function getProject(id: string): Promise<Project | undefined> {
   const value=await transact<Project|undefined>('projects','readonly',s=>s.get(id));
   if(value?.schema===1){value.schema=PROJECT_SCHEMA;value.objects=[];for(const snapshot of [...value.undo,...value.redo])snapshot.objects=[];}
+  if(value?.schema===2)value.schema=PROJECT_SCHEMA;
   if(value && value.schema!==PROJECT_SCHEMA) throw new Error('This project uses a newer format. Update JotColoring before opening it.');
   return value;
 }

@@ -5,6 +5,7 @@ import ImageLicense from './ImageLicense.astro';
 import Icon from './HomeIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import FileActions from './FileActions.astro';
+import DifficultyBadge from './DifficultyBadge.astro';
 import AgeBadge from './AgeBadge.astro';
 import ShareButton from './ShareButton.astro';
 import type {Content} from '../server/types';
@@ -12,6 +13,6 @@ const {item,marketing=false,quick=false,selected=false,showCategory=false,showDe
 const text=artworkText(item);
 ---
 <article class:list={['art-card','iv-card',selected&&'selected']} data-content-id={item.id}><ImageLicense item={item} assets={marketing?[item.thumbnail,item.home_color]:[item.thumbnail]}/>
- <div class="iv-card-picture" data-image-title={text.title} data-image-description={text.description}>{marketing?<Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/>:quick?<button type="button" aria-controls="quick-preview" class="art-picture select-preview" data-id={item.id} aria-label={`Preview ${item.title}`} aria-pressed={selected}><img src={item.thumbnail} alt={text.alt} width="512" height="512" loading="lazy"/><span class="iv-preview-label"><Icon name="search" size={14}/>Quick preview</span></button>:<a class="art-picture" href={`/coloring/${item.slug}/`}><img src={item.thumbnail} alt={text.alt} width="512" height="512" loading="lazy"/></a>}<ShareButton item={item}/></div>
+ <div class="iv-card-picture" data-image-title={text.title} data-image-description={text.description}>{marketing?<Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/>:quick?<button type="button" aria-controls="quick-preview" class="art-picture select-preview" data-id={item.id} aria-label={`Preview ${item.title}`} aria-pressed={selected}><img src={item.thumbnail} alt={text.alt} width="512" height="512" loading="lazy"/><span class="iv-preview-label"><Icon name="search" size={14}/>Quick preview</span></button>:<a class="art-picture" href={`/coloring/${item.slug}/`}><img src={item.thumbnail} alt={text.alt} width="512" height="512" loading="lazy"/></a>}<DifficultyBadge item={item} overlay/><ShareButton item={item}/></div>
  <div class="art-info"><AgeBadge item={item}/>{showCategory&&<p class="iv-card-category">{item.categoryName}</p>}<a class="art-title" href={`/coloring/${item.slug}/`}><span class="iv-card-title-text">{item.title}</span><span class="iv-card-title-arrow" aria-hidden="true"><ArrowIcon size={17}/></span></a>{showDescription&&<p class="jc-card-description">{text.description}</p>}{matchReasons.length>0&&<ul class="jc-match-reasons" aria-label="Why this page is related">{matchReasons.map(reason=><li>{reason}</li>)}</ul>}<FileActions item={item}/></div>
 </article>

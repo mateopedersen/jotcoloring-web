@@ -48,3 +48,5 @@ CREATE TABLE IF NOT EXISTS age_recommendation(content_id TEXT PRIMARY KEY REFERE
 CREATE INDEX IF NOT EXISTS age_recommendation_band ON age_recommendation(band,content_id);
 ALTER TABLE search_projection ADD COLUMN IF NOT EXISTS recommended_age TEXT;
 CREATE INDEX IF NOT EXISTS search_recommended_age ON search_projection(visibility,recommended_age,id);
+
+CREATE INDEX IF NOT EXISTS age_recommendation_detail ON age_recommendation(score_hundredths,content_id,content_version);

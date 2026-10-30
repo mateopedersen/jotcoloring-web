@@ -1,0 +1,17 @@
+import type {Stroke,BrushTip} from './model';
+const sprites=new Map<string,HTMLCanvasElement>();
+function brushSprite(style:string,color:string,hardness:number){
+ const key=style+color+hardness;let sprite=sprites.get(key);if(sprite)return sprite;sprite=document.createElement('canvas');sprite.width=sprite.height=64;const c=sprite.getContext('2d')!;c.fillStyle=color;
+ if(style==='pencil'||style==='crayon'){let seed=23471;for(let y=0;y<64;y++)for(let x=0;x<64;x++){seed=seed*16807%2147483647;c.globalAlpha=style==='pencil'?.18+seed/2147483647*.65:.35+seed/2147483647*.65;if(seed%7!==0)c.fillRect(x,y,1,1);}c.globalAlpha=1;}else c.fillRect(0,0,64,64);
+ if(hardness<100){c.globalCompositeOperation='destination-in';const gradient=c.createRadialGradient(32,32,32*hardness/100,32,32,32);gradient.addColorStop(0,'#fff');gradient.addColorStop(1,'#ffffff00');c.fillStyle=gradient;c.fillRect(0,0,64,64);}sprites.set(key,sprite);if(sprites.size>48)sprites.delete(sprites.keys().next().value!);return sprite;
+}
+export function customTip(t?:BrushTip){return t&&(t.shape!=='round'||t.hardness<100||t.angle!==0||t.roundness!==100||t.flow!==100||t.scatter>0||t.rainbow||t.pressureOpacity||t.spacing>25);}
+export function stampStroke(c:CanvasRenderingContext2D,op:Stroke,points:Stroke['points']){
+ const t=op.tip!,style=op.erase?'round':op.brush||'round';let distance=0,next=0,seed=41321;const random=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
+ function stamp(x:number,y:number,pressure:number){const radius=Math.max(.25,op.size*.5*(op.pressure?Math.max(.12,pressure):1)),angle=t.angle*Math.PI/180,color=t.rainbow&&!op.erase?`hsl(${Math.floor((distance*.65)%360/10)*10} 78% 52%)`:op.color,hardness=style==='airbrush'?Math.min(20,t.hardness):style==='watercolor'?Math.min(75,t.hardness):t.hardness;
+  c.save();c.globalAlpha=op.opacity*t.flow/100*(t.pressureOpacity?Math.max(.08,pressure):1)*(style==='marker'?.48:style==='watercolor'?.3:style==='airbrush'?.2:1);if(style==='marker')c.globalCompositeOperation='multiply';c.translate(x+(random()-.5)*op.size*t.scatter/100,y+(random()-.5)*op.size*t.scatter/100);c.rotate(angle);c.scale(1,Math.max(.08,t.roundness/100));c.fillStyle=color;
+  c.beginPath();if(t.shape==='square')c.rect(-radius,-radius,radius*2,radius*2);else if(t.shape==='chisel')c.rect(-radius,-radius*.28,radius*2,radius*.56);else if(t.shape==='dash')c.rect(-radius,-radius*.1,radius*2,radius*.2);else if(t.shape==='star'){for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=radius*(i%2?.42:1);i?c.lineTo(Math.cos(a)*r,Math.sin(a)*r):c.moveTo(Math.cos(a)*r,Math.sin(a)*r);}c.closePath();}else if(t.shape==='heart'){c.moveTo(0,radius);c.bezierCurveTo(-radius*1.8,0,-radius,-radius*1.6,0,-radius*.5);c.bezierCurveTo(radius,-radius*1.6,radius*1.8,0,0,radius);c.closePath();}else c.arc(0,0,radius,0,Math.PI*2);if(!op.erase&&(hardness<100||style==='pencil'||style==='crayon')){c.clip();c.drawImage(brushSprite(style,color,hardness),-radius,-radius,radius*2,radius*2);}else c.fill();c.restore();
+ }
+ if(!points.length)return;stamp(points[0].x,points[0].y,points[0].pressure??1);next=Math.max(.5,op.size*t.spacing/100);
+ for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],len=Math.hypot(b.x-a.x,b.y-a.y);if(!len)continue;while(next<=distance+len){const f=(next-distance)/len;stamp(a.x+(b.x-a.x)*f,a.y+(b.y-a.y)*f,(a.pressure??1)+((b.pressure??1)-(a.pressure??1))*f);next+=Math.max(.5,op.size*t.spacing/100);}distance+=len;}
+}

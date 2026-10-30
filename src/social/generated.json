@@ -21,18 +21,18 @@
     "description": "Explore coloring pages by recommended age and drawing detail."
   },
   "studio": {
-    "src": "/og/pages/studio-c2cc7779e2e5dd6f.png",
+    "src": "/og/pages/studio-2a21d63936eb53fd.png",
     "alt": "JotColoring your colors. your way. share image: Color online in JotColoring Studio. Featuring the actual your colors. your way. tools.",
-    "sha256": "c2cc7779e2e5dd6fd7d7d2dba7803ea307f9640dccc16bb0a6b89ad8f18e9128",
+    "sha256": "2a21d63936eb53fd9718e61a23d9e950853b19705e5d1195649c5aa14a7537cd",
     "title": "Color online in JotColoring Studio.",
     "description": "Fill a space. Make a mark. Keep the original lines."
   },
   "studio-export": {
-    "src": "/og/pages/studio-export-bf38e566823f5740.png",
+    "src": "/og/pages/studio-export-fc20fa07bbaea2a1.png",
     "alt": "JotColoring made by you. ready to keep. share image: Your artwork, ready to go. Featuring the actual made by you. ready to keep. tools.",
-    "sha256": "bf38e566823f574034b3b0a4e1931cd9f6ad3c55c9c96cca04882948f3f8098b",
+    "sha256": "fc20fa07bbaea2a19723d567a88bd1ede4840ceb3769277c4dfe015279907d77",
     "title": "Your artwork, ready to go.",
-    "description": "Take your finished colors with you as a PDF or image."
+    "description": "Keep your colors as PNG, SVG, JPG, JPEG, Word, PDF or WEBP."
   },
   "photo": {
     "src": "/og/pages/photo-c5e7834f85386eb4.png",

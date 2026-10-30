@@ -1,5 +1,6 @@
-import type { Project, PaintLayer } from './model';
+import type { Project, PaintLayer,TextObject } from './model';
 import {drawObject} from './objects';
+import {paintOperation} from './paint-render';
 import {brandedCanvas,sourceWithoutFooter} from './branding';
 const composites=new WeakMap<HTMLCanvasElement,HTMLCanvasElement>();
 export function makeCanvas(width:number,height:number){const c=document.createElement('canvas');c.width=width;c.height=height;return c;}
@@ -11,20 +12,18 @@ export function lineMask(image:CanvasImageSource,width:number,height:number,hasB
 }
 export function renderLayer(layer:PaintLayer,canvas:HTMLCanvasElement){
   const c=canvas.getContext('2d')!;c.clearRect(0,0,canvas.width,canvas.height);c.lineCap='round';c.lineJoin='round';
-  for(const op of layer.operations){c.save();c.globalAlpha=op.opacity;
-    if(op.kind==='stroke'){c.globalCompositeOperation=op.erase?'destination-out':'source-over';c.strokeStyle=op.color;c.fillStyle=op.color;c.lineWidth=op.size;if(op.points.length===1){c.beginPath();c.arc(op.points[0].x,op.points[0].y,op.size/2,0,Math.PI*2);c.fill();}else{c.beginPath();op.points.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.stroke();}}
-    else{c.fillStyle=op.color;for(let i=0;i<op.spans.length;i+=3)c.fillRect(op.spans[i+1],op.spans[i],op.spans[i+2]-op.spans[i+1]+1,1);}
-    c.restore();
-  }
+  for(const op of layer.operations)paintOperation(c,op,canvas.width,canvas.height);
 }
 export function compose(project:Project,mask:HTMLCanvasElement,target?:HTMLCanvasElement,cache?:Map<string,HTMLCanvasElement>){
-  let canvas=target?composites.get(target):undefined;if(!canvas||canvas.width!==project.source.width||canvas.height!==project.source.height){canvas=makeCanvas(project.source.width,project.source.height);if(target)composites.set(target,canvas);}const c=canvas.getContext('2d')!;c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle='#ffffff';c.fillRect(0,0,canvas.width,canvas.height);
-  if(project.lineVisible&&!project.keepOutlines)c.drawImage(mask,0,0);
-  for(const layer of project.layers){if(!layer.visible)continue;let lc=cache?.get(layer.id);if(!lc){lc=makeCanvas(canvas.width,canvas.height);renderLayer(layer,lc);}c.drawImage(lc,0,0);}
-  if(project.lineVisible&&project.keepOutlines)c.drawImage(mask,0,0);
+  let canvas=target?composites.get(target):undefined;if(!canvas||canvas.width!==project.source.width||canvas.height!==project.source.height){canvas=makeCanvas(project.source.width,project.source.height);if(target)composites.set(target,canvas);}const c=canvas.getContext('2d')!;c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle=project.background||'#ffffff';c.fillRect(0,0,canvas.width,canvas.height);
+  if(project.lineVisible&&!project.keepOutlines){c.save();c.globalAlpha=project.lineOpacity??1;c.drawImage(mask,0,0);c.restore();}
+  let below:HTMLCanvasElement|undefined;for(const layer of project.layers){if(!layer.visible||layer.clipBelow&&!below)continue;let lc=cache?.get(layer.id);if(!lc){lc=makeCanvas(canvas.width,canvas.height);renderLayer(layer,lc);}if(layer.clipBelow&&below){const clipped=makeCanvas(canvas.width,canvas.height),cc=clipped.getContext('2d')!;cc.drawImage(lc,0,0);cc.globalCompositeOperation='destination-in';cc.drawImage(below,0,0);lc=clipped;}below=lc;c.save();c.globalAlpha=layer.opacity??1;c.globalCompositeOperation=layer.blend||'source-over';c.drawImage(lc,0,0);c.restore();}
+  if(project.lineVisible&&project.keepOutlines){c.save();c.globalAlpha=project.lineOpacity??1;c.drawImage(mask,0,0);c.restore();}
   for(const object of project.objects||[])drawObject(c,object);
-  for(const text of project.texts){if(!text.visible)continue;c.save();c.translate(text.x,text.y);c.rotate(text.rotation*Math.PI/180);c.scale(text.scale,text.scale);c.fillStyle=text.color;c.font=`600 ${text.size}px sans-serif`;c.textAlign=text.align;c.textBaseline='top';text.text.split('\n').forEach((line,i)=>c.fillText(line,0,i*text.size*1.25));c.restore();}
+  for(const text of project.texts)drawTextObject(c,text);
   return brandedCanvas(canvas,target);
 }
 export function outlineCanvas(project:Project,mask:HTMLCanvasElement){const canvas=makeCanvas(project.source.width,project.source.height),c=canvas.getContext('2d')!;c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.drawImage(mask,0,0);return brandedCanvas(canvas);}
 export function canvasBlob(canvas:HTMLCanvasElement,type:string,quality?:number):Promise<Blob>{return new Promise((resolve,reject)=>canvas.toBlob(blob=>{if(!blob||!blob.size)reject(new Error('The image encoder returned an empty file.'));else if(blob.type!==type)reject(new Error(`This browser cannot export ${type.replace('image/','').toUpperCase()}. Use another browser; no file was downloaded.`));else resolve(blob);},type,quality));}
+
+export function drawTextObject(c:CanvasRenderingContext2D,text:TextObject){if(!text.visible)return;c.save();c.translate(text.x,text.y);c.rotate(text.rotation*Math.PI/180);c.scale(text.scale,text.scale);c.fillStyle=text.color;c.font=`${text.italic?'italic ':''}${text.weight||600} ${text.size}px ${text.font||'sans-serif'}`;c.textAlign=text.align;c.textBaseline='top';text.text.split('\n').forEach((line,i)=>{if(text.outline){c.strokeStyle=text.color;c.lineWidth=Math.max(1,text.size/35);c.strokeText(line,0,i*text.size*1.25);}else c.fillText(line,0,i*text.size*1.25);});c.restore();}
