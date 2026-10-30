@@ -7,7 +7,7 @@ export function measureLayout() {
   const visible = e => {
     const r = e.getBoundingClientRect(), s = getComputedStyle(e);
     return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' &&
-      s.display !== 'none' && !e.closest('[hidden],.sr-only,[aria-hidden=true],dialog:not([open])');
+      s.display !== 'none' && !e.closest('[hidden],.sr-only,dialog:not([open])');
   };
   const contained = e => {
     for (let p = e.parentElement; p && p !== document.body; p = p.parentElement)
@@ -52,10 +52,10 @@ export function measureLayout() {
 }
 
 /** Check visible control labels and alignment inside actual action groups.
- * Horizontal navigation scrollers and masonry galleries are intentional.
+ * Masonry galleries and explicitly designated image carousels may scroll.
  */
 export function measureControls() {
-  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden],.sr-only,[aria-hidden=true],dialog:not([open])');};
+  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden],.sr-only,dialog:not([open])');};
   const identify=e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'svg',text:e.textContent.trim().replace(/\s+/g,' ').slice(0,85)});
   const labels=[...document.querySelectorAll('.jc-footer-link-label,.support-tabs>a>b,.jc-file-copy,.aw-preview-actions button>span:last-child,.aw-dialog-secondary button>span:last-child,.jc-photo-formats strong,.jc-photo-formats small,.jc-dl-format>span,.jc-age-links>a>span,.settings-tabs button,.cf-cta>span:first-child,.jc-category-label>span,.aw-new-board-copy')].filter(visible);
   const escapingLabels=[];
@@ -86,4 +86,51 @@ export function measureControls() {
     if(children.length===1&&children[0].matches('.aw-new-board')&&grid.clientWidth-children[0].getBoundingClientRect().width>4)underfilledGroups.push({group:grid.className,available:grid.clientWidth,width:Math.round(children[0].getBoundingClientRect().width)});
   }
   return{viewport:innerWidth,escapingLabels,overlaps,unevenRows,underfilledGroups,groups,pass:!escapingLabels.length&&!overlaps.length&&!unevenRows.length&&!underfilledGroups.length};
+}
+
+/** A page can fit the viewport while its buttons still clip their contents.
+ * Inspect the actual text/icon boxes and navigation groups, including dialogs.
+ * Deliberate image carousels, native input text scrolling and invisible tooltips
+ * are excluded; navigation and action controls must fit without sideways scroll.
+ */
+export function measureMobileControls() {
+  const visible=e=>{
+    const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+    if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
+      e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
+    for(let p=e.parentElement;p;p=p.parentElement){
+      if(Number(getComputedStyle(p).opacity)===0)return false;
+      if(p.matches('details:not([open])')&&!p.querySelector(':scope>summary')?.contains(e))return false;
+    }
+    return true;
+  };
+  const identify=e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'svg',text:(e.getAttribute('aria-label')||e.textContent).trim().replace(/\s+/g,' ').slice(0,100)});
+  const clippedControls=[],escapedIcons=[],scrollingGroups=[];
+  for(const control of document.querySelectorAll('button,a,summary')){
+    if(!visible(control)||control.closest('.support-prose p,.support-prose li,.support-faq-answer'))continue;
+    const box=control.getBoundingClientRect(),style=getComputedStyle(control);
+    // Inline prose links naturally fragment over lines; card and button labels do not.
+    if(style.display==='inline')continue;
+    let clipped=control.scrollWidth>control.clientWidth+3;
+    for(const label of [control,...control.querySelectorAll('span,b,strong,small')]){
+      if(!visible(label)||!label.textContent.trim()||[...label.children].some(e=>e.tagName.toLowerCase()!=='svg'))continue;
+      const textStyle=getComputedStyle(label);
+      if(textStyle.textOverflow==='ellipsis'||textStyle.webkitLineClamp!=='none')continue;
+      const range=document.createRange();range.selectNodeContents(label);
+      const r=range.getBoundingClientRect();
+      if(r.width&&r.height&&(r.left<box.left-3||r.right>box.right+3||r.top<box.top-3||r.bottom>box.bottom+3))clipped=true;
+    }
+    if(clipped)clippedControls.push(identify(control));
+    for(const icon of control.querySelectorAll('svg')){
+      if(!visible(icon))continue;
+      const r=icon.getBoundingClientRect();
+      if(r.left<box.left-3||r.right>box.right+3||r.top<box.top-3||r.bottom>box.bottom+3)
+        escapedIcons.push({...identify(control),icon:icon.getAttribute('data-vector-icon')||icon.getAttribute('class')});
+    }
+  }
+  const groups='.support-tabs,.support-actions,.jc-gallery-tabs,.gallery-explore-themes,.jc-discovery-ideas>div,.library-filters,.library-scopes,.library-search-row,.library-pagination,.library-preview-levels,.library-preview-actions,.settings-tabs,.studio-tools,.canvas-toolbar,.plus-grid,.two-buttons,.two-fields,.studio-format-grid,.object-search,.jc-photo-formats,.jc-photo-presets,.jc-dl-formats,.jc-share-caption-actions,.jc-share-groups,.aw-toolbar,.aw-controls,.aw-preview-actions,.aw-dialog-secondary';
+  for(const group of document.querySelectorAll(groups))if(visible(group)&&group.scrollWidth>group.clientWidth+3)
+    scrollingGroups.push({...identify(group),width:group.clientWidth,contentWidth:group.scrollWidth});
+  return {viewport:innerWidth,clippedControls,escapedIcons,scrollingGroups,
+    pass:!clippedControls.length&&!escapedIcons.length&&!scrollingGroups.length};
 }

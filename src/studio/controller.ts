@@ -113,6 +113,11 @@ export async function mountStudio(){
   el<HTMLButtonElement>('[data-add-color]').onclick=e=>{const expanded=el('[data-advanced-color]')||el('#advanced-color');expanded.classList.toggle('open');(e.currentTarget as HTMLButtonElement).setAttribute('aria-expanded',String(expanded.classList.contains('open')));};
   el<HTMLButtonElement>('[data-mobile-settings]').onclick=e=>{(e.currentTarget as HTMLButtonElement).setAttribute('aria-expanded',String(!el('.studio-settings').classList.contains('more-settings')));el('.studio-settings').classList.toggle('more-settings');if(!el('.studio-settings').classList.contains('more-settings'))selectTab('colors');};
   el<HTMLButtonElement>('[data-close-inspector]').onclick=()=>{el('.studio-settings').classList.remove('more-settings');el('[data-mobile-settings]').setAttribute('aria-expanded','false');};
+  // Keep the inspector usable on a phone; the brush settings remain one tap away.
+  const compactInspector=matchMedia('(max-width:768px), (max-width:900px) and (max-height:540px)');
+  const brushSettings=el<HTMLDetailsElement>('[data-brush-settings]');
+  const fitBrushSettings=()=>{brushSettings.open=!compactInspector.matches;};
+  fitBrushSettings();compactInspector.addEventListener('change',fitBrushSettings);
   el<HTMLButtonElement>('[data-layers-toggle]').onclick=e=>{const content=el('#studio-layers');content.hidden=!content.hidden;const expanded=!content.hidden;(e.currentTarget as HTMLButtonElement).setAttribute('aria-expanded',String(expanded));};
   el<HTMLInputElement>('[data-color-input]').oninput=e=>setColor((e.target as HTMLInputElement).value);
   el<HTMLInputElement>('[data-hue]').oninput=e=>{hue=Number((e.target as HTMLInputElement).value);setColor(hsvToHex(hue,saturation,value));};
