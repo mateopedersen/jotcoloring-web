@@ -6,11 +6,19 @@ This release defines 114 stable category IDs: 22 top-level collections and 92 su
 
 Run the normal `scripts/data/prepare-media.ts` preparation step with `--categories auto`. Its local CPU model receives actual decoded image pixels, not the filename, title, prompt, or alt text. No image is sent to a remote inference API. The existing pinned CLIP model downloads are reused; no paid inference is enabled.
 
-The classifier reads a complete, letterboxed image and two center views. Two text templates compare the main subjects in each view. It then examines subtopics for the top three main candidates using the complete image. Narrow subtopics require their own evidence; a recognizable parent can be accepted without inventing a specific child. Very simple round diagrams are held for review instead of automatically being called mandalas.
+The classifier reads a complete, letterboxed image and two center views. Two text templates compare the main subjects in each view. It then examines subtopics for the top three main candidates using the complete image. Engine `jot-category-hierarchy-2.3.0` also requires the winning category to lead at least one whole-image reading: a pair of center crops cannot replace an off-center subject with background decoration. Narrow subtopics require their own evidence; a recognizable parent can be accepted without inventing a specific child. Very simple round diagrams are held for review instead of automatically being called mandalas.
 
 The scores are relative similarities, not calibrated probabilities. This remains an assistive classifier: decorations, unusual styles, ambiguous objects and unseen concepts can still confuse it. Low-confidence results stop automatic preparation and write `category-analysis.json` for review. Use `--categories parent,child --category-review 'Description of what is actually visible'` after inspecting the image. Overrides are recorded in the manifest; they do not overwrite the original model evidence. Categories not in the curated taxonomy are rejected.
 
-The final manifest contains `category_selection`, tied to the printable image SHA-256, engine version and taxonomy version. A changed image or mismatched selection fails validation. Non-draft imports require this field. Previously accepted content is not silently recategorized.
+The final manifest contains `category_selection`, tied to the printable image SHA-256, engine version and taxonomy version. A changed image or mismatched selection fails validation. Non-draft imports require this field. Previously accepted content is not silently recategorized. Historical 2.2.0 evidence remains verifiable under its recorded rules; new cache and queue keys use 2.3.0 and cannot reuse it as a fresh analysis.
+
+The four difficulty levels come from the same verified image measurements used by preparation, publication, catalog filters and search projection. Enclosed-space width and area matter more than counting tiny fur marks. Missing or inconsistent measurements and incomplete model output are rejected before receiving a score. The level describes coloring detail, not a strict age restriction. Batch results include both `difficulty_score` and `difficulty_level`.
+
+## Related pages and collections
+
+Individual pages and collection discovery now share the foreground-subject resolver. A title or caption's background clause does not become evidence for the main subject. A tag must be supported by the foreground title/caption before it can create a subject match. Known synonyms use the search resolver; Christmas and winter remain distinct. An actual subject match outranks a broad collection/theme or similar difficulty. Example-only content, the current page and duplicate IDs are excluded. Empty related tabs stay empty instead of receiving unrelated padding.
+
+This ranking uses bounded, indexed published candidates. It does not run image inference or scan millions of files on a visitor request. Accurate, image-specific title/description/tags are still required during import; lexical ranking cannot validate invented metadata.
 
 ## Large local batches
 

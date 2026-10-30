@@ -23,7 +23,8 @@ export const SUBJECT_LABELS=['animals','flowers and plants','fantasy castles and
 const clamp=(v:number)=>Math.max(0,Math.min(1,v));
 export function bandForScore(score:number):AgeBand{if(!Number.isFinite(score)||score<0||score>100)throw new Error('Invalid detail score.');return score<23?'3-5':score<42?'6-8':score<62?'9-12':score<80?'13-17':'adults';}
 export function recommendAge(metrics:ImageDetailMetrics,visualScores:readonly number[]){
- if(visualScores.length!==5||visualScores.some(s=>!Number.isFinite(s)||s<0)||visualScores.reduce((a,b)=>a+b,0)<=0)throw new Error('A real visual classification is required.');
+ if(!validDetailMetrics(metrics))throw new Error('Complete, consistent coloring-space measurements are required.');
+ if(visualScores.length!==5||visualScores.some(s=>!Number.isFinite(s)||s<0||s>1)||Math.abs(visualScores.reduce((a,b)=>a+b,0)-1)>.001)throw new Error('A complete normalized visual classification is required.');
  // Count fine detail by its share of the paintable area. Hundreds of tiny fur
  // marks should not outweigh a few broad body shapes, wherever they sit.
  const total=visualScores.reduce((a,b)=>a+b,0),visual=visualScores.reduce((n,s,i)=>n+s/total*i*25,0);
@@ -42,6 +43,12 @@ export function recommendAge(metrics:ImageDetailMetrics,visualScores:readonly nu
  if(metrics.regions>80||metrics.smallAreaShare>.2)value=Math.max(23,value);
  const score=Math.round(Math.max(0,Math.min(100,value))*100)/100;
  return{score,band:bandForScore(score)};
+}
+/** Reject partial/stale measurements before they can become a searchable level. */
+function validDetailMetrics(m:ImageDetailMetrics){
+ if(!m||!Number.isInteger(m.width)||!Number.isInteger(m.height)||m.width<32||m.height<32||m.width*m.height>1000000||!Number.isInteger(m.regions)||m.regions<0||m.regions>100000)return false;
+ for(const key of ['inkRatio','edgeDensity','smallRegionRatio','medianRegionRatio','largestRegionRatio','largeAreaShare','smallAreaShare','wideAreaShare','usableAreaShare','medianWidthRatio'] as const)if(!Number.isFinite(m[key])||m[key]<0||m[key]>(key==='edgeDensity'?2:1))return false;
+ return m.largestRegionRatio<=m.usableAreaShare+1e-6&&m.largeAreaShare+m.smallAreaShare<=1+1e-6&&m.wideAreaShare+m.smallAreaShare<=1+1e-6;
 }
 /** Actual decoded pixels only. No filenames, titles, tags or declared ages are inputs. */
 export function analyzeDetailPixels(rgb:Uint8Array,width:number,height:number,options:{minimumRegionPixels?:number;minimumRegionRatio?:number}={}):ImageDetailMetrics{

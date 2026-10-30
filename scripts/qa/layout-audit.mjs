@@ -95,6 +95,7 @@ export function measureControls() {
  */
 export function measureMobileControls() {
   const visible=e=>{
+    if(!e)return false;
     const r=e.getBoundingClientRect(),s=getComputedStyle(e);
     if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
       e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
@@ -131,6 +132,10 @@ export function measureMobileControls() {
   const groups='.support-tabs,.support-actions,.jc-gallery-tabs,.gallery-explore-themes,.jc-discovery-ideas>div,.library-filters,.library-scopes,.library-search-row,.library-pagination,.library-preview-levels,.library-preview-actions,.settings-tabs,.studio-tools,.canvas-toolbar,.plus-grid,.two-buttons,.two-fields,.studio-format-grid,.object-search,.jc-photo-formats,.jc-photo-presets,.jc-dl-formats,.jc-share-caption-actions,.jc-share-groups,.aw-toolbar,.aw-controls,.aw-preview-actions,.aw-dialog-secondary';
   for(const group of document.querySelectorAll(groups))if(visible(group)&&group.scrollWidth>group.clientWidth+3)
     scrollingGroups.push({...identify(group),width:group.clientWidth,contentWidth:group.scrollWidth});
-  return {viewport:innerWidth,clippedControls,escapedIcons,scrollingGroups,
-    pass:!clippedControls.length&&!escapedIcons.length&&!scrollingGroups.length};
+  const inaccessibleStudioTools=[];
+  const board=document.querySelector('.studio-v4.is-drawing-board:not(.easy-mode)');
+  if(board&&!visible(board.querySelector('[data-tab="layers"]'))&&!visible(board.querySelector('[data-board-all-tools]')))
+    inaccessibleStudioTools.push('Advanced drawing tools have no visible entry point.');
+  return {viewport:innerWidth,clippedControls,escapedIcons,scrollingGroups,inaccessibleStudioTools,
+    pass:!clippedControls.length&&!escapedIcons.length&&!scrollingGroups.length&&!inaccessibleStudioTools.length};
 }
