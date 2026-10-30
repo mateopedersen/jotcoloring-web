@@ -1,3 +1,4 @@
 import {illustrationMarkup} from '../icons/registry';
 const tools=new Set(['brush','fill','eraser','picker','move','zoom']);
-export function toolIcon(name:string){return illustrationMarkup(tools.has(name)?name:'brush','jc-studio-tool-icon');}
+const shapes:Record<string,string>={'select-rectangle':'M12 12H40V40H12ZM32 30L49 38L41 41L38 49Z',line:'M12 48L48 12',rectangle:'M13 14H47V46H13Z',ellipse:'M47 30A17 14 0 1 1 13 30A17 14 0 1 1 47 30',star:'M30 10L36 24L51 25L39 35L43 50L30 42L17 50L21 35L9 25L24 24Z',heart:'M30 49C-3 29 12 3 30 19C48 3 63 29 30 49Z'};
+export function toolIcon(name:string){if(shapes[name])return `<svg class="jc-studio-tool-icon" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="16" fill="#fff2df" stroke="#e5b28b"/><path d="${shapes[name]}" fill="${name==='line'?'none':'#f5c98e'}" stroke="#aa5426" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;return illustrationMarkup(tools.has(name)?name:'brush','jc-studio-tool-icon');}
