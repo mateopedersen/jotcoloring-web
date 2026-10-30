@@ -1,17 +1,5 @@
-export const categories = [
- {id:'animals',name:'Animals',icon:'🦊',sample:'woodland-friends'},
- {id:'flowers',name:'Flowers',icon:'🌺',sample:'hibiscus-garden'},
- {id:'fantasy',name:'Fantasy',icon:'🏰',sample:'friendly-dragon'},
- {id:'mandalas',name:'Mandalas',icon:'🏵️',sample:'botanical-mandala'},
- {id:'holidays',name:'Holidays',icon:'🎄',sample:'winter-wishes'},
- {id:'vehicles',name:'Vehicles',icon:'🚐',sample:'camper-adventure'},
- {id:'space',name:'Space',icon:'🪐',sample:'space-explorer'},
- {id:'ocean',name:'Ocean',icon:'🐢',sample:'ocean-adventure'},
- {id:'food',name:'Food',icon:'🧁',sample:'sweet-treats'},
- {id:'dinosaurs',name:'Dinosaurs',icon:'🦕',sample:'dinosaur-valley'}
-];
-export const animalCategories=[{id:'woodland',name:'Woodland',icon:'🐿️',sample:'woodland-friends'},{id:'pets',name:'Pets',icon:'🐱',sample:'sleepy-kitten'},{id:'farm-animals',name:'Farm animals',icon:'🐄',sample:'farm-friends'},{id:'ocean-life',name:'Ocean life',icon:'🐢',sample:'ocean-adventure'},{id:'birds',name:'Birds',icon:'🐦',sample:'woodland-owl'},{id:'dinosaurs',name:'Dinosaurs',icon:'🦕',sample:'dinosaur-valley'}];
-export const hrefCategory=(id:string)=>`/coloring-pages/${id}/`;
-
-/** Natural US-English modifiers for page headings; navigation keeps plural labels. */
-export const coloringTopic=(id:string)=>({animals:'Animal',flowers:'Flower',fantasy:'Fantasy',mandalas:'Mandala',holidays:'Holiday',vehicles:'Vehicle',space:'Space',ocean:'Ocean',food:'Food',dinosaurs:'Dinosaur',woodland:'Woodland',pets:'Pet','farm-animals':'Farm Animal','ocean-life':'Ocean Life',birds:'Bird'} as Record<string,string>)[id]||id;
+import {ROOT_CATEGORIES,categoryById,childCategories,categoryPath} from '../taxonomy/catalog';
+export const categories=ROOT_CATEGORIES;
+export const animalCategories=[...childCategories('animals'),categoryById('dinosaurs')!];
+export const hrefCategory=categoryPath;
+export const coloringTopic=(id:string)=>categoryById(id)?.topic||id;

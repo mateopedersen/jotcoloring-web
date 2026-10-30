@@ -84,15 +84,15 @@
 }
 
 /* The caption comes from each artwork record; the whole title row opens the page. */
-.home-v3 .hc-card-meta{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:13px;font-weight:520;line-height:1.65;white-space:normal;color:#766b66;min-height:4.95em;margin-bottom:10px}
+.home-v3 .hc-card-meta{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:13px;font-weight:520;line-height:1.65;white-space:normal;color:var(--text-ink, #000);min-height:4.95em;margin-bottom:10px}
 .home-v3 .hc-title{font-size:20px;line-height:1.25;font-weight:800;color:#9d3c18;gap:12px;min-height:48px;align-items:center}
 .home-v3 .hc-title>span:first-child{min-width:0}.hc-title-arrow{display:grid;place-items:center;width:35px;height:35px;flex:none;background:#fff0dd;border:1px solid #efc7a5;border-radius:50%;color:#ad491e;box-shadow:0 3px 7px #b56b2614}.hc-title-arrow svg{width:20px;height:20px;stroke-width:2.5}.hc-title:hover .hc-title-arrow{background:#c75225;color:#fff;border-color:#c75225;transform:translateX(2px)}.hc-title:focus-visible{outline:3px solid #b75a28;outline-offset:4px;border-radius:6px}
 @media(max-width:600px){.home-v3 .hc-card-meta{font-size:12px;line-height:1.6;min-height:4.8em}.home-v3 .hc-title{font-size:17px;font-weight:800;gap:5px;min-height:48px}.hc-title-arrow{width:28px;height:28px}.hc-title-arrow svg{width:17px;height:17px}}
 
 /* Shared breadcrumb hierarchy, including export and help pages. */
-:is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb){font-size:15px;font-weight:650;line-height:1.65;color:#60544e;gap:12px;flex-wrap:wrap}
+:is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb){font-size:15px;font-weight:650;line-height:1.65;color:var(--text-ink, #000);gap:12px;flex-wrap:wrap}
 :is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb) a{font-weight:700;color:#6e5140}
-:is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb) [aria-current=page]{font-weight:750;color:#443b37}
+:is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb) [aria-current=page]{font-weight:750;color:var(--text-ink, #000)}
 :is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb) svg{width:16px;height:16px;stroke-width:2;flex:none;color:#9a6a4b}
 @media(max-width:600px){:is(.home-v3,.site-v3) :is(.breadcrumbs,.export-breadcrumb,.support-breadcrumb){font-size:14px;gap:9px}}
 
