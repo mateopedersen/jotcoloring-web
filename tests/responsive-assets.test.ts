@@ -12,7 +12,7 @@ test('legacy display copies are bound to the exact source checksum and role',()=
   assert.deepEqual(displayCopies(row.source_sha256,row.source_role),row.copies);
   assert.deepEqual(displayCopies('0'.repeat(64),row.source_role),[]);
   assert.deepEqual(displayCopies(row.source_sha256,'unrelated_role'),[]);
-  for(const copy of row.copies){assert.match(copy.key,new RegExp('^responsive/v1/'+row.source_sha256+'/'));assert.ok(copy.width===240||copy.width===600);assert.match(copy.sha256,/^[a-f0-9]{64}$/);}
+  for(const copy of row.copies){assert.match(copy.key,new RegExp('^responsive/v1/'+row.source_sha256+'/'));assert.ok([240,320,400,600].includes(copy.width));assert.match(copy.sha256,/^[a-f0-9]{64}$/);}
  }
 });
 

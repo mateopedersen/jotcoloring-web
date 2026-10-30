@@ -30,8 +30,8 @@ class RemoteBucket implements Bucket{
  }
  async head(key:string){return this.get(key);}
  async put(key:string,value:ReadableStream|ArrayBuffer|Uint8Array|string,options:any={}){
-  const bytes=new Uint8Array(await new Response(value as BodyInit).arrayBuffer());if(bytes.length>25_000_000)throw new Error('R2 write exceeds media bound.');const existing=await this.get(key);if(existing){if(createHash('sha256').update(new Uint8Array(await existing.arrayBuffer())).digest('hex')!==createHash('sha256').update(bytes).digest('hex'))throw new Error('Refusing to overwrite nonidentical existing object.');return;}
-  const r=await request(this.endpoint(key),{method:'PUT',headers:{'Content-Type':options.httpMetadata?.contentType||'application/octet-stream','Content-Length':String(bytes.length)},body:bytes});if(!r.ok)throw new Error(`R2 upload failed (${r.status}).`);
+  const bytes=new Uint8Array(await new Response(value as BodyInit).arrayBuffer());if(bytes.length>25_000_000)throw new Error('R2 write exceeds media bound.');const cacheControl=options.httpMetadata?.cacheControl;if(cacheControl&&(!this.name.endsWith('-published')||cacheControl!=='public,max-age=31536000,immutable'))throw new Error('Unreviewed public cache metadata.');const existing=await this.get(key);if(existing){if(createHash('sha256').update(new Uint8Array(await existing.arrayBuffer())).digest('hex')!==createHash('sha256').update(bytes).digest('hex'))throw new Error('Refusing to overwrite nonidentical existing object.');if(!cacheControl)return;}
+  const r=await request(this.endpoint(key),{method:'PUT',headers:{'Content-Type':options.httpMetadata?.contentType||'application/octet-stream','Content-Length':String(bytes.length),...(cacheControl?{'Cache-Control':cacheControl,'Content-Disposition':'inline'}:{})},body:bytes});if(!r.ok)throw new Error(`R2 upload failed (${r.status}).`);
  }
  async delete(){throw new Error('Deletion is disabled for release.');}async list():Promise<never>{throw new Error('Bucket listing is disabled for release.');}
 }

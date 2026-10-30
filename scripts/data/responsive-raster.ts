@@ -6,14 +6,20 @@ import {brandedRaster,brandedColorCardWebP,brandedColorWebP} from './brand-raste
 export async function compactOutline(source:Uint8Array,width:number,height:number){
  const {data:original}=await sharp(source).removeAlpha().toColourspace('srgb').raw().toBuffer({resolveWithObject:true});
  verifyBrandedRaster(original,width,height,3,true);
- const pixels=Buffer.from(original),bottom=brandFooterLayout(width,height).footer.y;
- for(let i=0;i<bottom*width*3;i+=3){
-  const value=original[i];let shade=Math.round(value/4)*4;shade=Math.min(255,shade);
-  // Preserve the line/space boundary used by the coloring engine.
-  if(value<110&&shade>=110)shade=108;if(value>=110&&shade<110)shade=112;
-  pixels[i]=pixels[i+1]=pixels[i+2]=shade;
+ const bottom=brandFooterLayout(width,height).footer.y;
+ let bytes=await sharp(source).webp({lossless:true,effort:6}).toBuffer();
+ for(const step of [4,8,16]){
+  const pixels=Buffer.from(original);let error=0;
+  for(let i=0;i<bottom*width*3;i+=3){
+   const value=.2126*original[i]+.7152*original[i+1]+.0722*original[i+2];let shade=Math.min(255,Math.round(value/step)*step);
+   if(value<110&&shade>=110)shade=108;if(value>=110&&shade<110)shade=112;
+   pixels[i]=pixels[i+1]=pixels[i+2]=shade;
+   error+=Math.abs(original[i]-shade)+Math.abs(original[i+1]-shade)+Math.abs(original[i+2]-shade);
+  }
+  if(error/original.length>1.5)continue;
+  const candidate=await sharp(pixels,{raw:{width,height,channels:3}}).webp({lossless:true,effort:6}).toBuffer();
+  if(candidate.length<bytes.length)bytes=candidate;
  }
- const bytes=await sharp(pixels,{raw:{width,height,channels:3}}).webp({lossless:true,effort:6}).toBuffer();
  const decoded=await sharp(bytes).removeAlpha().toColourspace('srgb').raw().toBuffer();
  let error=0;for(let i=0;i<original.length;i++)error+=Math.abs(original[i]-decoded[i]);
  if(error/original.length>1.5)throw new Error('Compact preview exceeded its pixel error limit.');
