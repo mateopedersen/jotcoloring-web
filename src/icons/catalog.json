@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-687d54dcaa3b.svg",
+  "url": "/illustrations/jotcoloring-icons-c6dfa79a3b96.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -451,6 +451,21 @@
       "id": "privacy",
       "label": "Privacy · protective shield",
       "group": "Creative"
+    },
+    {
+      "id": "cartoons",
+      "label": "Characters & Cartoons · smiling speech bubble",
+      "group": "Categories"
+    },
+    {
+      "id": "dolls-toys",
+      "label": "Dolls & Toys · doll with a bow",
+      "group": "Categories"
+    },
+    {
+      "id": "video-games",
+      "label": "Video Games · game controller",
+      "group": "Categories"
     },
     {
       "id": "cats",
