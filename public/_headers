@@ -1,4 +1,7 @@
 # Content-addressed illustrations keep their URL only while bytes are unchanged.
+/illustrations/resolved/*
+  Cache-Control: public, max-age=3600
+
 /illustrations/social-brands-be7e690bf726.svg
   Cache-Control: public, max-age=31536000, immutable
 
