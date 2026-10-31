@@ -16,3 +16,4 @@ body .iv-cover-caption{color:#704323}
 /* Consent choices keep their hierarchy and contrast when the dialog is open. */
 body .jc-storage-actions button[data-storage-accept]{background:linear-gradient(135deg,var(--accessible-button-top),var(--accessible-button-bottom))!important;color:#fff!important}
 body .jc-storage-actions button:is([data-storage-settings],[data-storage-review]){background:#fffaf4!important;color:var(--accessible-accent)!important;border-color:#d5a97f;box-shadow:0 3px 0 #e5c8ad}
+body .jc-storage-eyebrow{color:var(--accessible-accent)!important}
