@@ -146,3 +146,16 @@ export function measureMobileControls() {
   return {viewport:innerWidth,clippedControls,escapedIcons,scrollingGroups,inaccessibleStudioTools,
     pass:!clippedControls.length&&!escapedIcons.length&&!scrollingGroups.length&&!inaccessibleStudioTools.length};
 }
+
+/** Visible form controls need real accessible names, including sliders whose
+ * wrapping label contains a preceding (also labelable) output element. */
+export function measureControlNames() {
+  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity)!==0&&!e.closest('[hidden],[aria-hidden=true],.sr-only,dialog:not([open])');};
+  const name=e=>e.getAttribute('aria-label')||
+    (e.getAttribute('aria-labelledby')||'').split(/\s+/).map(id=>document.getElementById(id)?.textContent.trim()).filter(Boolean).join(' ')||
+    e.getAttribute('title')||(e.labels?.length?[...e.labels].map(l=>l.textContent.trim()).join(' '):'')||
+    e.textContent.trim()||e.querySelector('img[alt]')?.getAttribute('alt');
+  const unlabeled=[...document.querySelectorAll('button,select,textarea,input:not([type=hidden]):not([type=submit])')]
+    .filter(e=>visible(e)&&!name(e)).map(e=>({tag:e.tagName,id:e.id,className:e.className,type:e.type}));
+  return {viewport:innerWidth,unlabeled,pass:!unlabeled.length};
+}
