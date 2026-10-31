@@ -1,6 +1,7 @@
 ---
 import CategoryIcon from './CategoryIcon.astro';
 import ActionIcon from './ActionIcon.astro';
+import {navigationLabel} from '../ui/navigation-label';
 import '../styles/hero-quick-links.css';
 const themes=[
  {id:'animals',label:'Animals'},
@@ -15,10 +16,10 @@ const shortcuts=[
 ---
 <div class="jc-hero-quick-links">
  <nav class="jc-hero-themes" aria-label="Popular coloring themes">
-  <span class="jc-hero-themes-label">Popular themes</span>
+  <span class="jc-hero-themes-label">Popular Themes</span>
   {themes.map(theme=><a href={`/coloring-pages/${theme.id}/`}><CategoryIcon name={theme.id} size={36}/><span>{theme.label}</span></a>)}
  </nav>
  <nav class="jc-hero-shortcuts" aria-label="Ways to use JotColoring">
-  {shortcuts.map(shortcut=><a href={shortcut.href}><ActionIcon name={shortcut.icon} size={36}/><span><strong>{shortcut.label}</strong><small>{shortcut.description}</small></span></a>)}
+  {shortcuts.map(shortcut=><a href={shortcut.href}><ActionIcon name={shortcut.icon} size={36}/><span><strong>{navigationLabel(shortcut.label)}</strong><small>{navigationLabel(shortcut.description)}</small></span></a>)}
  </nav>
 </div>
