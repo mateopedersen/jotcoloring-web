@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {validateReviewedBundle,bundleSignature,bundleReceiptKey,type ReviewedBundle} from '../src/server/reviewed-bundle';
+import {validateReviewedBundle,bundleSignature,bundleReceiptKey,inlineReviewedImportEnvironment,type ReviewedBundle} from '../src/server/reviewed-bundle';
 import {canonicalJSON,sha256} from '../src/server/http';
 import {syntheticAgeReview} from './fixtures/age-review';
 import {preparedCategorySelection} from '../scripts/data/category-selection';
@@ -19,3 +19,5 @@ async function checked(b:ReviewedBundle,environment='staging',signature?:string)
 test('sealed one-artwork transport authenticates its environment, all originals and all approved derivatives',async()=>{const b=await fixture();assert.equal((await checked(b)).decoded.size,15);await assert.rejects(()=>checked(b,'production'),/current release/);await assert.rejects(()=>checked(b,'staging','0'.repeat(64)),/signature/);assert.throws(()=>bundleReceiptKey('../wrong'));
  for(const mutation of ['copy','source','pixels','incomplete','expiry','approval','original']){const a=structuredClone(b);if(mutation==='copy')a.manifest.title='Changed title';if(mutation==='source')a.source_sha256='c'.repeat(64);if(mutation==='pixels')a.assets[0].base64=btoa('edited pixels');if(mutation==='incomplete')(a.release as any).designs=100;if(mutation==='expiry')a.expires_at='invalid';if(mutation==='approval')a.editorial.second_editorial_review.passes=1;if(mutation==='original')a.supplied[0].sha256='d'.repeat(64);await assert.rejects(()=>checked(a),mutation);}
 });
+
+test('inline reviewed imports suppress only their duplicate import delivery and preserve projection dispatch',async()=>{const sent:any[]=[];const queue={async send(message:any,options?:unknown){sent.push({message,options});}},env={INGEST_QUEUE:queue};const inline=inlineReviewedImportEnvironment(env);assert.equal(env.INGEST_QUEUE,queue);await inline.INGEST_QUEUE!.send({type:'import',job_id:'same-job'});assert.equal(sent.length,0);await inline.INGEST_QUEUE!.send({type:'projection',event_id:'event-1'},{delaySeconds:1});assert.deepEqual(sent,[{message:{type:'projection',event_id:'event-1'},options:{delaySeconds:1}}]);await env.INGEST_QUEUE.send({type:'import',job_id:'unrelated-job'});assert.equal(sent.length,2);assert.throws(()=>inlineReviewedImportEnvironment({}),/queue binding/);});
