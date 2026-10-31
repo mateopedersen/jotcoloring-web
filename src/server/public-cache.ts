@@ -4,7 +4,7 @@ export interface ResponseCache {
   match(key:Request):Promise<Response|undefined>;
   put(key:Request,response:Response):Promise<void>;
 }
-type Policy={kind:'html'|'json'|'media';catalog:boolean;seconds:number};
+type Policy={kind:'html'|'json'|'media'|'xml'|'text'|'redirect';catalog:boolean;seconds:number};
 const staticPages=new Set(['about','accessibility','contact','cookies','faq','help','how-to-use','license','licensing','printing-guide','privacy','terms']);
 const queryKeys=new Set(['q','page','limit','sort','category','subcategory','age','difficulty','recommended_age','marketingOnly','cursor','popular']);
 
@@ -15,9 +15,11 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   if(request.headers.has('cookie')&&request.headers.get('cookie')?.trim())return;
   const url=new URL(request.url),path=url.pathname;
   if(url.search.length>1800)return;
+  if(!url.search&&path==='/robots.txt')return{kind:'text',catalog:false,seconds:600};
+  if(!url.search&&(path==='/sitemap.xml'||/^\/sitemaps\/(?:static|[1-9]\d{0,4})\.xml$/.test(path)))return{kind:'xml',catalog:true,seconds:600};
   if(/^\/api\/(?:media|download)\/[A-Za-z0-9_-]+\/[A-Za-z0-9_]+$/.test(path)){
     if([...url.searchParams.keys()].some(k=>k!=='v'&&!(k==='display'&&path.startsWith('/api/media/')&&['240','320','400','600'].includes(url.searchParams.get(k)||'')))||!/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(url.searchParams.get('v')||''))return;
-    return{kind:'media',catalog:true,seconds:300};
+    return path.startsWith('/api/download/')?{kind:'redirect',catalog:true,seconds:60}:{kind:'media',catalog:true,seconds:300};
   }
   if([...url.searchParams.keys()].some(k=>!queryKeys.has(k)))return;
   if(/^\/api\/(?:catalog|search|categories)$/.test(path)||/^\/api\/(?:content|catalog)\/[A-Za-z0-9_-]+$/.test(path))return{kind:'json',catalog:true,seconds:60};
@@ -25,8 +27,8 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   if(!url.search&&staticPages.has(path.replace(/^\/|\/$/g,''))&&path.endsWith('/'))return{kind:'html',catalog:false,seconds:600};
 }
 
-function browserPolicy(policy:Policy,pathname:string){
-  return policy.kind==='html'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':pathname.startsWith('/api/download/')?'public, max-age=60':'public, max-age=300';
+function browserPolicy(policy:Policy){
+  return policy.kind==='html'||policy.kind==='redirect'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':'public, max-age=300';
 }
 
 export function publicCacheKey(request:Request,environment:string,release:string,epoch:string){
@@ -44,7 +46,7 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
   const enabled=cache&&policy&&['staging','production'].includes(env.APP_ENV||'')&&env.PUBLIC_SITE_URL&&url.origin===new URL(env.PUBLIC_SITE_URL).origin;
   const finish=(response:Response,state:string)=>{
     const headers=new Headers(response.headers);headers.set('X-JotColoring-Cache',state);
-    if(state==='HIT'||state==='MISS')headers.set('Cache-Control',browserPolicy(policy!,url.pathname));
+    if(state==='HIT'||state==='MISS')headers.set('Cache-Control',browserPolicy(policy!));
     return new Response(request.method==='HEAD'?null:response.body,{status:response.status,statusText:response.statusText,headers});
   };
   if(!enabled)return finish(await next(),'BYPASS');
@@ -69,10 +71,12 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
     }
   }catch{/* The cache is an optimization; an unavailable cache never blocks the origin. */}
   const response=await next(),type=response.headers.get('content-type')||'';
-  const correctType=policy.kind==='html'?type.includes('text/html'):policy.kind==='json'?type.includes('application/json'):type.startsWith('image/')||type.includes('application/pdf');
-  if(request.method==='GET'&&response.status===200&&correctType&&!response.headers.has('set-cookie')&&!/\b(?:private|no-store)\b/i.test(response.headers.get('cache-control')||'')){
+  const correctType=policy.kind==='html'?type.includes('text/html'):policy.kind==='json'?type.includes('application/json'):policy.kind==='xml'?type.includes('application/xml'):policy.kind==='text'?type.includes('text/plain'):policy.kind==='media'?type.startsWith('image/')||type.includes('application/pdf'):false;
+  let safeRedirect=false;
+  if(policy.kind==='redirect'&&response.status===302){try{const target=new URL(response.headers.get('location')||'');safeRedirect=target.protocol==='https:'&&target.hostname==='assets.jotcoloring.com'&&target.pathname.startsWith('/published/')&&!target.username&&!target.password&&!target.port;}catch{/* Invalid or relative redirects are never cached. */}}
+  if(request.method==='GET'&&((response.status===200&&correctType)||safeRedirect)&&!response.headers.has('set-cookie')&&!/\b(?:private|no-store)\b/i.test(response.headers.get('cache-control')||'')){
     const stored=response.clone(),headers=new Headers(stored.headers);headers.set('Cache-Control',`public, max-age=${policy.seconds}`);
-    waitUntil(cache!.put(key,new Response(stored.body,{status:200,headers})).catch(()=>{}));
+    waitUntil(cache!.put(key,new Response(stored.body,{status:response.status,headers})).catch(()=>{}));
     return finish(response,'MISS');
   }
   return finish(response,'BYPASS');
