@@ -1,6 +1,7 @@
 ---
 import {ROOT_CATEGORIES,childCategories,categoryById,categoryPath,COLORING_TAXONOMY} from '../taxonomy/catalog';
 import {hasIllustration} from '../icons/registry';
+import {navigationLabel} from '../ui/navigation-label';
 import CategoryIcon from './CategoryIcon.astro';
 import '../styles/category-directory.css';
 import ArrowIcon from './ArrowIcon.astro';
@@ -11,6 +12,6 @@ const topics=parent?childCategories(parent):ROOT_CATEGORIES;
 const groups=topics.map(c=>({...c,count:totals.get(c.id)||0,children:childCategories(c.id)}));
 ---
 {groups.length>0&&<section class="taxonomy-directory" aria-labelledby="topic-directory-title">
-<div class="taxonomy-heading"><div><p class="hv-kicker">EXPLORE BY SUBJECT</p><h2 id="topic-directory-title">{parent?`${categoryById(parent)?.name} themes`:'Find your next coloring theme'}</h2><p>{parent?'Choose a closer look at your favorite subject.':`${ROOT_CATEGORIES.length} collections, with ${COLORING_TAXONOMY.length-ROOT_CATEGORIES.length} more specific themes to explore.`}</p></div><a href="/coloring-by-age/">Browse by age <ArrowIcon size={18}/></a></div>
-<div class="taxonomy-grid">{groups.map(c=><details class="taxonomy-group"><summary><CategoryIcon name={c.id} size={48}/><span class="taxonomy-title-copy"><strong>{c.name}</strong><small data-availability={c.count?'ready':'soon'}><i aria-hidden="true"></i><span>{c.count?`${c.count} ${c.count===1?'page':'pages'}`:'New pages coming'}</span></small></span><span class="taxonomy-expand" aria-hidden="true"><ArrowIcon size={18}/></span></summary><div class="taxonomy-links"><a href={categoryPath(c.id)}>Explore {c.name.toLowerCase()} <ArrowIcon size={15}/></a>{c.children.map(child=><a href={categoryPath(child.id)}><span class="taxonomy-topic-name">{hasIllustration(child.id)&&<CategoryIcon name={child.id} size={30}/>}<span>{child.name}</span></span><span class="taxonomy-topic-count">{totals.get(child.id)||0}</span></a>)}</div></details>)}</div>
+<div class="taxonomy-heading"><div><p class="hv-kicker">EXPLORE BY SUBJECT</p><h2 id="topic-directory-title">{parent?`${categoryById(parent)?.name} themes`:'Find your next coloring theme'}</h2><p>{parent?'Choose a closer look at your favorite subject.':`${ROOT_CATEGORIES.length} collections, with ${COLORING_TAXONOMY.length-ROOT_CATEGORIES.length} more specific themes to explore.`}</p></div><a href="/coloring-by-age/">Browse By Age <ArrowIcon size={18}/></a></div>
+<div class="taxonomy-grid">{groups.map(c=><details class="taxonomy-group"><summary><CategoryIcon name={c.id} size={48}/><span class="taxonomy-title-copy"><strong>{navigationLabel(c.name)}</strong><small data-availability={c.count?'ready':'soon'}><i aria-hidden="true"></i><span>{c.count?`${c.count} ${c.count===1?'page':'pages'}`:'New pages coming'}</span></small></span><span class="taxonomy-expand" aria-hidden="true"><ArrowIcon size={18}/></span></summary><div class="taxonomy-links"><a href={categoryPath(c.id)}>{navigationLabel(`Explore ${c.name}`)} <ArrowIcon size={15}/></a>{c.children.map(child=><a href={categoryPath(child.id)}><span class="taxonomy-topic-name">{hasIllustration(child.id)&&<CategoryIcon name={child.id} size={30}/>}<span>{navigationLabel(child.name)}</span></span><span class="taxonomy-topic-count">{totals.get(child.id)||0}</span></a>)}</div></details>)}</div>
 </section>}
