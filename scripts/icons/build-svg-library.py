@@ -427,3 +427,7 @@ for style in ['simple','cute']:
  art+=path('M55 67q7-4 14 0l-7 8Z','#292e2b')
  preview_svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 150" fill="none"><rect width="160" height="150" fill="#fffdfa"/>'+g(art,'translate(16 8)')+'</svg>\n'
  write_output(ROOT/'public'/f'style-{style}.svg',preview_svg)
+
+# Always refresh browser-safe images when the editable illustrations change.
+import subprocess
+subprocess.run([sys.executable,str(ROOT/'scripts/icons/build-browser-icons.py')]+(['--check'] if CHECK_ONLY else []),check=True)

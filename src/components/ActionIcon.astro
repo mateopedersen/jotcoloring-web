@@ -1,7 +1,7 @@
 ---
-import {illustrationHref} from '../icons/registry';
+import {illustrationImageHref} from '../icons/registry';
 import VectorIcon from './VectorIcon.astro';
 interface Props {name:'pdf'|'webp'|'brush'|'heart';size?:number}
 const {name,size=38}=Astro.props;
 ---
-{name==='heart'?<svg class="jc-vector-icon jc-action-icon jc-action-icon-heart" data-vector-icon="heart" width={size} height={size} viewBox="0 0 128 128" fill="none" aria-hidden="true" focusable="false"><use class="jc-heart-empty" href={illustrationHref('heart')}/><use class="jc-heart-saved" href={illustrationHref('heart-filled')}/></svg>:<VectorIcon name={name==='brush'?'studio':name} size={size} class={`jc-action-icon jc-action-icon-${name}`}/>}
+{name==='heart'?<svg class="jc-vector-icon jc-action-icon jc-action-icon-heart" data-vector-icon="heart" width={size} height={size} viewBox="0 0 128 128" fill="none" aria-hidden="true" focusable="false"><image class="jc-heart-empty" href={illustrationImageHref('heart')} width="128" height="128"/><image class="jc-heart-saved" href={illustrationImageHref('heart-filled')} width="128" height="128"/></svg>:<VectorIcon name={name==='brush'?'studio':name} size={size} class={`jc-action-icon jc-action-icon-${name}`}/>}

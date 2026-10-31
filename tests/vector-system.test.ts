@@ -5,7 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
 import catalog from '../src/icons/catalog.json';
-import {ICON_SPRITE,illustrationHref,illustrationMarkup} from '../src/icons/registry';
+import {ICON_SPRITE,illustrationHref,illustrationImageHref,illustrationMarkup} from '../src/icons/registry';
 import {iconDocument} from '../src/icons/render';
 import {componentArt,siteIcon} from '../scripts/social/render';
 
@@ -47,6 +47,20 @@ test('social image rendering uses the new icon registry and supports both illust
 });
 
 test('committed vectors match the editable drawing source',()=>{execFileSync('python3',['scripts/icons/build-svg-library.py','--check'],{stdio:'pipe'});});
+
+test('browser icons have self-contained paint servers and match their original artwork',async()=>{
+ execFileSync('python3',['scripts/icons/build-browser-icons.py','--check'],{stdio:'pipe'});
+ for(const item of catalog.icons){
+  const url=illustrationImageHref(item.id);
+  const source=await fs.readFile('public'+url,'utf8');
+  assert.ok(url.includes(ICON_SPRITE.split('-').at(-1)!.replace('.svg','')),item.id);
+  const ids=new Set([...source.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
+  for(const ref of source.matchAll(/(?:href="#|url\(#)([^"\)]+)/g))assert.ok(ids.has(ref[1]),`${item.id}: missing ${ref[1]}`);
+  const expected=await sharp(Buffer.from(await iconDocument(item.id,128))).resize(128,128).ensureAlpha().raw().toBuffer();
+  const actual=await sharp(Buffer.from(source)).resize(128,128).ensureAlpha().raw().toBuffer();
+  assert.deepEqual(actual,expected,`${item.id}: self-contained artwork differs`);
+ }
+});
 
 test('subject navigation renders distinct artwork instead of collapsing topics to one animal',async()=>{
  const {ROOT_CATEGORIES,childCategories}=await import('../src/taxonomy/catalog');

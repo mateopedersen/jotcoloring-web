@@ -1,6 +1,6 @@
 ---
-import {illustrationHref,illustrationName,ICON_VIEWBOX} from '../icons/registry';
+import {illustrationImageHref,illustrationName,ICON_VIEWBOX} from '../icons/registry';
 interface Props {name:string;size?:number;class?:string;[key:string]:any}
 const {name,size=40,class:className='',...rest}=Astro.props;
 ---
-<svg class:list={['jc-vector-icon',className]} data-vector-icon={illustrationName(name)} width={size} height={size} viewBox={ICON_VIEWBOX} fill="none" aria-hidden="true" focusable="false" {...rest}><use href={illustrationHref(name)}/></svg>
+<svg class:list={['jc-vector-icon',className]} data-vector-icon={illustrationName(name)} width={size} height={size} viewBox={ICON_VIEWBOX} fill="none" aria-hidden="true" focusable="false" {...rest}><image href={illustrationImageHref(name)} width="128" height="128"/></svg>
