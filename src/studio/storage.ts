@@ -1,4 +1,5 @@
 import { PROJECT_SCHEMA, type Project, type Favorite } from './model';
+import {packProject,unpackProject,mayRetryBinary} from './storage-binary';
 const DB_NAME = 'jotcoloring-artwork';
 let pending: Promise<IDBDatabase> | undefined;
 function database() {
@@ -15,18 +16,21 @@ async function transact<T>(store: string, mode: IDBTransactionMode, operation: (
   return new Promise<T>((resolve, reject) => {
     const tx=db.transaction(store,mode); let result:T; const req=operation(tx.objectStore(store));
     req.onsuccess=()=>{result=req.result;};
-    tx.oncomplete=()=>resolve(result); tx.onerror=tx.onabort=()=>reject(new Error(tx.error?.name==='QuotaExceededError'?'Your device storage is full. Export your work, then free some space.':'Could not save on this device. Keep this tab open and try again.'));
+    tx.oncomplete=()=>resolve(result); tx.onabort=()=>reject(new Error(tx.error?.name==='QuotaExceededError'?'Your device storage is full. Export your work, then free some space.':'Could not save on this device. Keep this tab open and try again.',{cause:tx.error}));
   });
 }
-export async function saveProject(project: Project) { await transact('projects','readwrite',s=>s.put(project)); }
+export async function saveProject(project: Project) {
+  try{await transact('projects','readwrite',s=>s.put(project));}
+  catch(error){if(!mayRetryBinary(error))throw error;const encoded=await packProject(project);await transact('projects','readwrite',s=>s.put(encoded));}
+}
 export async function getProject(id: string): Promise<Project | undefined> {
-  const value=await transact<Project|undefined>('projects','readonly',s=>s.get(id));
+  const stored=await transact<Project|undefined>('projects','readonly',s=>s.get(id));const value=stored?unpackProject(stored):undefined;
   if(value?.schema===1){value.schema=PROJECT_SCHEMA;value.objects=[];for(const snapshot of [...value.undo,...value.redo])snapshot.objects=[];}
   if(value?.schema===2)value.schema=PROJECT_SCHEMA;
   if(value && value.schema!==PROJECT_SCHEMA) throw new Error('This project uses a newer format. Update JotColoring before opening it.');
   return value;
 }
-export async function getProjects() { return (await transact<Project[]>('projects','readonly',s=>s.getAll())).sort((a,b)=>b.updatedAt-a.updatedAt); }
+export async function getProjects() { return (await transact<Project[]>('projects','readonly',s=>s.getAll())).map(unpackProject).sort((a,b)=>b.updatedAt-a.updatedAt); }
 export async function deleteProject(id: string) { await transact('projects','readwrite',s=>s.delete(id)); }
 export async function getFavorites() { return (await transact<Favorite[]>('favorites','readonly',s=>s.getAll())).sort((a,b)=>b.savedAt-a.savedAt); }
 export async function isFavorite(id: string) { return Boolean(await transact('favorites','readonly',s=>s.get(id))); }
@@ -42,5 +46,6 @@ export async function renameSavedItem(kind:'project'|'favorite',id:string,title:
 export async function deleteFavorite(id:string){await transact('favorites','readwrite',s=>s.delete(id));}
 /** Imported IDs are new: add() fails atomically instead of overwriting existing work. */
 export async function addImportedItems(projects:Project[],favorites:Favorite[]){
- const db=await database();return new Promise<void>((resolve,reject)=>{const tx=db.transaction(['projects','favorites'],'readwrite');for(const p of projects)tx.objectStore('projects').add(p);for(const f of favorites)tx.objectStore('favorites').add(f);tx.oncomplete=()=>resolve();tx.onabort=tx.onerror=()=>reject(new Error('The import could not be saved. Existing artwork was not replaced.'));});
+ const db=await database();const add=(items:unknown[])=>new Promise<void>((resolve,reject)=>{const tx=db.transaction(['projects','favorites'],'readwrite');for(const p of items)tx.objectStore('projects').add(p);for(const f of favorites)tx.objectStore('favorites').add(f);tx.oncomplete=()=>resolve();tx.onabort=()=>reject(new Error('The import could not be saved. Existing artwork was not replaced.',{cause:tx.error}));});
+ try{await add(projects);}catch(error){if(!mayRetryBinary(error))throw error;await add(await Promise.all(projects.map(packProject)));}
 }
