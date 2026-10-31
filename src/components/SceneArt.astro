@@ -1,8 +1,8 @@
 ---
-import {ICON_SPRITE} from '../icons/registry';
+import {sceneImageHref} from '../icons/registry';
 import catalog from '../icons/catalog.json';
 const {kind='about',size,class:className=''}=Astro.props;
 const item=catalog.scenes.find(scene=>scene.id===`scene-${kind}`)||catalog.scenes[0];
 const [, ,w,h]=item.viewBox.split(' ').map(Number);
 ---
-<svg class:list={['jc-scene-art',className]} data-scene-art={kind} viewBox={item.viewBox} width={size} height={size?size*h/w:undefined} fill="none" aria-hidden="true" focusable="false"><use href={`${ICON_SPRITE}#${item.id}`}/></svg>
+<svg class:list={['jc-scene-art',className]} data-scene-art={kind} viewBox={item.viewBox} width={size} height={size?size*h/w:undefined} fill="none" aria-hidden="true" focusable="false"><image href={sceneImageHref(item.id)} width={w} height={h}/></svg>

@@ -23,7 +23,7 @@ export async function siteIcon(name:string){return sharp(Buffer.from(await iconD
 export async function componentArt(file:'CookieArt'|'LostColoringArt'){
  if(file==='CookieArt')return sharp(Buffer.from(await iconDocument('scene-cookies',600))).png().toBuffer();
  let svg=await fs.readFile(`src/components/${file}.astro`,'utf8');svg=svg.slice(svg.indexOf('<svg'));
- svg=svg.replace(/\{`([^`]*)`\}/g,(_,value:string)=>'"'+value.replaceAll('${id}','og-'+file.toLowerCase())+'"').replace(/\{illustrationHref\('edit'\)\}/g,'"#edit"').replace(/var\(--[a-z-]+,([^)]*)\)/g,'$1');
+ svg=svg.replace(/\{`([^`]*)`\}/g,(_,value:string)=>'"'+value.replaceAll('${id}','og-'+file.toLowerCase())+'"').replace(/<image href=\{illustrationImageHref\('edit'\)\}/g,'<use href="#edit"').replace(/var\(--[a-z-]+,([^)]*)\)/g,'$1');
  if(svg.includes('{'))throw new Error('Social illustration still has unresolved component code.');
  const source=await fs.readFile('public'+ICON_SPRITE,'utf8'),inner=source.replace(/^\s*<svg[^>]*>/,'').replace(/<\/svg>\s*$/,'');
  svg=svg.replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" width="600" height="520" ').replace('><defs>','>'+inner+'<defs>');
