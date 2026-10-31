@@ -2,7 +2,7 @@
 body:is(.home-v3,.site-v3){--hv-ink:#000;--hv-muted:#000;--hv-orange:#fa642b;--hv-orange-dark:#b94216;--hv-line:#e9e9ed;--orange:#fa642b;--orange-dark:#bd461d;--peach:#fff1e9;max-width:none;border:0;background:#fff;color:var(--hv-ink);padding:0;font-size:14px;line-height:1.6}
 :is(.home-v3,.site-v3) h1,:is(.home-v3,.site-v3) h2,:is(.home-v3,.site-v3) h3{color:var(--hv-ink)}
 :is(.home-v3,.site-v3) a,:is(.home-v3,.site-v3) button{transition:background .18s,color .18s,border-color .18s,box-shadow .18s,transform .18s}
-:is(.home-v3,.site-v3) a:hover{color:var(--hv-orange-dark)}
+
 :is(.home-v3,.site-v3) svg{flex-shrink:0;vertical-align:middle}
 .hv-container{width:min(1440px,calc(100% - 96px));margin-inline:auto}
 .hv-announcement{min-height:30px;display:flex;justify-content:space-between;gap:20px;padding:5px max(48px,calc((100vw - 1440px)/2));background:#22232a;color:#ececef;font-size:var(--type-note-size);letter-spacing:.1px}.hv-announcement span,.hv-announcement a{display:inline-flex;gap:7px;align-items:center}.hv-announcement svg{color:#ffb77a}.hv-announcement a:hover{color:#ffb77a}
