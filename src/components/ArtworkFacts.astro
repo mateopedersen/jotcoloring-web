@@ -1,0 +1,36 @@
+---
+import CategoryIcon from './CategoryIcon.astro';
+import VectorIcon from './VectorIcon.astro';
+import GlyphIcon from './GlyphIcon.astro';
+import {categoryPresentation} from '../icons/category';
+import type {Content} from '../server/types';
+const {item}=Astro.props as {item:Content};
+const category=categoryPresentation(item.category,item.categoryName);
+---
+<div class="artwork-facts" aria-label="Coloring page details">
+ <a class="artwork-fact artwork-fact--link" href={category.href}>
+  <span class="artwork-fact-icon"><CategoryIcon name={category.icon} size={44}/></span>
+  <span class="artwork-fact-copy"><span>Explore the collection</span><strong>{category.label}</strong></span>
+  <span class="artwork-fact-arrow"><GlyphIcon name="arrow" size={17}/></span>
+ </a>
+ <div class="artwork-fact">
+  <span class="artwork-fact-icon artwork-fact-icon--image"><VectorIcon name="image" size={44}/></span>
+  <span class="artwork-fact-copy"><span>Image size</span><strong>{item.width.toLocaleString('en-US')} × {item.height.toLocaleString('en-US')} px</strong></span>
+ </div>
+</div>
+<style>
+ .artwork-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0 20px}
+ .artwork-fact{min-width:0;min-height:86px;display:flex;align-items:center;gap:11px;padding:12px;border:1px solid #efdcca;border-radius:16px;background:linear-gradient(145deg,#fffdfa,#fff7ee);color:#382b24;box-shadow:0 3px 10px #8d532609}
+ .artwork-fact--link{text-decoration:none;transition:background .18s,border-color .18s,transform .18s}
+ .artwork-fact--link:hover{color:#382b24;background:#ffefdf;border-color:#e8aa7c;transform:translateY(-1px)}
+ .artwork-fact--link:focus-visible{outline:3px solid #ad4c1d;outline-offset:3px}
+ .artwork-fact-icon{width:50px;height:50px;display:grid;place-items:center;flex:none;background:#fff;border:1px solid #f1ddc9;border-radius:13px}
+ .artwork-fact-icon--image{background:#fffaf2}
+ .artwork-fact-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;line-height:1.25}
+ .artwork-fact-copy>span{font-size:13px;font-weight:650;color:#6e5040}
+ .artwork-fact-copy strong{font-size:16px;font-weight:800;color:#2f241f;overflow-wrap:anywhere}
+ .artwork-fact-arrow{width:29px;height:29px;flex:none;display:grid;place-items:center;color:#a34a20;background:#fff1df;border:1px solid #ecc8aa;border-radius:10px}
+ @media(max-width:430px){.artwork-facts{gap:8px}.artwork-fact{min-height:82px;gap:8px;padding:9px}.artwork-fact-icon{width:40px;height:40px}.artwork-fact-icon :global(svg){width:37px;height:37px}.artwork-fact-copy>span{font-size:12px}.artwork-fact-copy strong{font-size:14px}.artwork-fact-arrow{width:25px;height:25px}}
+ @media(max-width:480px){.artwork-facts{grid-template-columns:1fr}.artwork-fact{min-height:70px}}
+ @media(prefers-reduced-motion:reduce){.artwork-fact--link{transition:none}.artwork-fact--link:hover{transform:none}}
+</style>
