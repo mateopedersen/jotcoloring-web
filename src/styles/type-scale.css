@@ -118,7 +118,7 @@ html body:is(.home-v3,.site-v3) main small { font-size:var(--type-note-size); fo
 }
 html body.home-v3 .hc-card-meta.hc-card-summary{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;min-height:3.3em;font-size:15px;font-weight:600;line-height:1.65;text-wrap:pretty}
 /* Keep recommended-age labels and the card text below them aligned in a row. */
-@media(min-width:1101px){html body.home-v3 .hc-card .jc-age-badge{min-height:54px;align-items:center;padding-inline:4px;gap:3px}}
+@media(min-width:1101px){html body.home-v3 .hc-card .jc-age-badge{min-height:44px}}
 @media(min-width:381px) and (max-width:700px){html body.home-v3 .hc-card-meta.hc-card-summary{min-height:4.95em}}
 .jc-header .jc-main-nav a>span{min-width:0;white-space:normal;line-height:1.2}
 
@@ -130,6 +130,12 @@ html body.home-v3 .hc-card .hc-title>span:first-child{min-width:0;overflow-wrap:
 
 /* A quieter weight and an open, consistent font make age recommendations easier to read. */
 html body:is(.home-v3,.site-v3) .jc-age-badge{font-family:'Manrope Variable','Avenir Next',Avenir,sans-serif;font-weight:650;letter-spacing:.005em;color:#704323}
+html body:is(.home-v3,.site-v3) .jc-age-badge{display:inline-flex;align-items:center;gap:9px;max-width:100%;min-height:44px;padding:6px 11px 6px 7px;border:1px solid #ead0b4;border-radius:12px;background:#fff8ee;box-shadow:0 2px 5px #7b47210a;text-decoration:none;line-height:1.2}
+html body:is(.home-v3,.site-v3) .jc-age-badge:hover{background:#fff0de;border-color:#dca678;color:#704323}
+.jc-age-badge-icon{display:grid;place-items:center;flex:none;width:29px;height:29px;border-radius:9px;background:#ffe8c8;color:#975025}
+.jc-age-badge-icon svg{width:16px;height:16px}
+.jc-age-badge-copy{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 5px;min-width:0;font-size:13px;font-weight:600}
+.jc-age-badge-copy strong{color:#653718;font-size:14px;font-weight:750;white-space:nowrap}
 .home-v3 .jc-gallery-tab-art{width:46px;height:46px}
 .home-v3 .jc-gallery-tab-art .jc-gallery-illustration{width:44px;height:44px}
 @media(max-width:600px){.home-v3 .jc-gallery-tab-art{width:36px;height:36px}.home-v3 .jc-gallery-tab-art .jc-gallery-illustration{width:36px;height:36px}}
