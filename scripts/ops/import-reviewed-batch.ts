@@ -72,7 +72,7 @@ if(useQueue){
  const bundle={schema_version:1,environment,release:{sha256:await sha256(releaseBytes),collections:24,designs:2400},expires_at:new Date(Date.parse(release.sealed_at)+3*86400000).toISOString(),design_id:entry.id,source_sha256:entry.source_sha256,manifest:prepared,editorial,reviews:reviews.map((r:any)=>r.review),native:await file(`originals/${prepared.content_id}/${entry.source_sha256}.png`,'image/png',sourceBytes),supplied:await Promise.all(supplied.map((r:any)=>file(r.key,r.mime,r.bytes))),assets:await Promise.all(prepared.assets.map(async a=>file(a.object_key,a.mime,new Uint8Array(await fs.readFile(files[a.role])))))};
  const bytes=new TextEncoder().encode(JSON.stringify(bundle)),hash=await sha256(bytes),key=`operator-imports/${hash}.json`,message={type:'reviewed_bundle' as const,object_key:key,sha256:hash,signature:await bundleSignature(hash,environment!,env.MEDIA_VALIDATION_SECRET!)};
  await validateReviewedBundle(bytes,message,env);await env.ORIGINALS!.put(key,bytes,{httpMetadata:{contentType:'application/json'}});const readback=await env.ORIGINALS!.get(key);if(!readback||await sha256(new Uint8Array(await readback.arrayBuffer()))!==hash)throw Error('Transport readback failed');
- await api(`/queues/${queueID}/messages`,{body:JSON.stringify(message),content_type:'json'});
+ await api(`/queues/${queueID}/messages`,{body:message,content_type:'json'});
  receipt.items.push({id:prepared.content_id,slug:prepared.slug,version,transport_sha256:hash,status:'queued_not_yet_published'});console.log(JSON.stringify(receipt.items.at(-1)));continue;
 }
 
