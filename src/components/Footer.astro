@@ -1,6 +1,7 @@
 ---
 import ArrowIcon from '../components/ArrowIcon.astro';
 import FooterIcon from './FooterIcon.astro';
+import {navigationLabel} from '../ui/navigation-label';
 import '../styles/footer.css';
 const columns=[
  {label:'Explore',description:'Find Something You Love',icon:'nav-explore',items:[['All Coloring Pages','/coloring-pages/','nav-all-pages'],['Animals','/coloring-pages/animals/','animals'],['Flowers','/coloring-pages/flowers/','flowers'],['Browse By Age','/coloring-by-age/','nav-age'],['Coloring Pages For Kids','/coloring-pages/?age=kids','nav-kids'],['Coloring Pages For Adults','/coloring-by-age/adults/','nav-adults']]},
@@ -11,8 +12,8 @@ const columns=[
 <footer class="hv-footer jc-footer" aria-label="Site footer">
  <div class="hv-container jc-footer-inner">
   <div class="jc-footer-grid">
-   {columns.map(column=><nav class="jc-footer-nav" aria-label={column.label}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{column.label}</h2><p>{column.description}</p></span></div><div class="jc-footer-nav-links">{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon} size={44}/><span class="jc-footer-link-label">{label}</span><span class="jc-footer-link-arrow" aria-hidden="true"><ArrowIcon kind="right" size={18}/></span></a>)}</div></nav>)}
+   {columns.map(column=><nav class="jc-footer-nav" aria-label={navigationLabel(column.label)}><div class="jc-footer-nav-title"><FooterIcon name={column.icon}/><span><h2>{navigationLabel(column.label)}</h2><p>{navigationLabel(column.description)}</p></span></div><div class="jc-footer-nav-links">{column.items.map(([label,href,icon])=><a href={href}><FooterIcon name={icon} size={44}/><span class="jc-footer-link-label">{navigationLabel(label)}</span><span class="jc-footer-link-arrow" aria-hidden="true"><ArrowIcon kind="right" size={18}/></span></a>)}</div></nav>)}
   </div>
-  <div class="jc-footer-bottom"><div class="jc-footer-signature"><a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="176" height="56" alt="JotColoring" loading="lazy"/></a><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div><p class="jc-footer-closing">A little imagination. A world of color.</p><a class="jc-footer-backtop" href="#top" aria-label="Back to top" title="Back to top"><span class="jc-footer-backtop-label">Back to top</span><span class="jc-footer-backtop-icon" aria-hidden="true"><ArrowIcon kind="up" size={20}/></span></a></div>
+  <div class="jc-footer-bottom"><div class="jc-footer-signature"><a href="/" aria-label="JotColoring home"><img src="/logo-3d.webp" width="176" height="56" alt="JotColoring" loading="lazy"/></a><span>© {new Date().getFullYear()} JotColoring. All rights reserved where applicable.</span></div><p class="jc-footer-closing">A little imagination. A world of color.</p><a class="jc-footer-backtop" href="#top" aria-label="Back To Top" title="Back To Top"><span class="jc-footer-backtop-label">Back To Top</span><span class="jc-footer-backtop-icon" aria-hidden="true"><ArrowIcon kind="up" size={20}/></span></a></div>
  </div>
 </footer>

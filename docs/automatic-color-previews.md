@@ -31,7 +31,7 @@ remains 1,000,000 bytes. Real dimensions, MIME, hashes and source linkage are us
 The background import generates missing color roles once for non-draft content.
 Publishing an older draft also fills missing roles before public activation.
 Only verified, checksum-matching inputs are decoded. The bounded Worker fallback
-uses a preview of at most 2 MP and validates encoded output, branding and size.
+uses a preview of at most 2 MP and validates encoded output, branding and size. For unusually dense drawings it can reduce only the color-preview dimensions by up to 40%, with actual dimensions recorded and the aspect ratio checked. It chooses genuine WebP or PNG bytes; the original printable file is unchanged.
 It can complete missing responsive roles from an accepted color reference.
 
 Incoming and published files use the existing private/published R2 bindings.
