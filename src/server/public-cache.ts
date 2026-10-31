@@ -71,7 +71,7 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
     }
   }catch{/* The cache is an optimization; an unavailable cache never blocks the origin. */}
   const response=await next(),type=response.headers.get('content-type')||'';
-  const correctType=policy.kind==='html'?type.includes('text/html'):policy.kind==='json'?type.includes('application/json'):policy.kind==='xml'?type.includes('application/xml'):policy.kind==='text'?type.includes('text/plain'):policy.kind==='media'?type.startsWith('image/')||type.includes('application/pdf'):false;
+  const correctType=policy.kind==='html'?type.includes('text/html'):policy.kind==='json'?type.includes('application/json'):policy.kind==='xml'?type.includes('application/xml'):policy.kind==='text'?type.includes('text/plain'):type.startsWith('image/')||type.includes('application/pdf');
   let safeRedirect=false;
   if(policy.kind==='redirect'&&response.status===302){try{const target=new URL(response.headers.get('location')||'');safeRedirect=target.protocol==='https:'&&target.hostname==='assets.jotcoloring.com'&&target.pathname.startsWith('/published/')&&!target.username&&!target.password&&!target.port;}catch{/* Invalid or relative redirects are never cached. */}}
   if(request.method==='GET'&&((response.status===200&&correctType)||safeRedirect)&&!response.headers.has('set-cookie')&&!/\b(?:private|no-store)\b/i.test(response.headers.get('cache-control')||'')){
