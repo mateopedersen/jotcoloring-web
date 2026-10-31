@@ -21,4 +21,7 @@ export const animalCopy:Record<string,string>={
  dinosaurs:'Two long-necked dinosaurs stand among prehistoric plants, a waterfall, and distant mountains. Add color to a peaceful imaginary valley from long ago.',
 };
 
-for(const c of ROOT_CATEGORIES)if(!categoryCopy[c.id])categoryCopy[c.id]={intro:`${c.intro}. Browse ${c.name.toLowerCase()} coloring pages by theme, recommended age, or detail level. Download a PDF or image, or color online in Studio.`,note:'Choose a detail level that feels right for you. Save a favorite page or open it in Studio to try your colors.'};
+for(const c of ROOT_CATEGORIES)if(!categoryCopy[c.id])categoryCopy[c.id]={intro:c.intro,note:'Choose a detail level that feels right for you. Save a favorite page or open it in Studio to try your colors.'};
+
+// Expanded collections use the same reviewed catalog introduction in the page and taxonomy.
+for(const id of ['animals','flowers','mandalas','dinosaurs','fantasy','holidays','vehicles']){const c=ROOT_CATEGORIES.find(c=>c.id===id)!;categoryCopy[id].intro=c.intro;}
