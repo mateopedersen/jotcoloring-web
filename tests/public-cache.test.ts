@@ -47,3 +47,31 @@ test('cache and epoch lookup failures fail open without retrying the application
  const f=fixture();f.cache.match=async()=>{throw Error('cache unavailable')};f.cache.put=async()=>{throw Error('write unavailable')};assert.equal((await f.run()).status,200);await Promise.all(f.pending);assert.equal(f.calls,1);
  f.env.CATALOG_DB={prepare(){throw Error('DB unavailable')}} as never;assert.equal((await f.run()).status,200);assert.equal(f.calls,2);
 });
+
+test('sitemaps are cached as XML and invalidated by published catalog changes',async()=>{
+ const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/sitemaps/1.xml';let renders=0;
+ const next=async()=>{renders++;return new Response('<urlset/>',{headers:{'Content-Type':'application/xml; charset=utf-8','Cache-Control':'public,max-age=300'}})};
+ assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
+ assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'HIT');assert.equal(renders,1);
+ f.advance();assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(renders,2);
+ assert.equal(publicCachePolicy(new Request(url+'?private=1')),undefined);
+});
+
+test('only versioned public R2 download redirects are cached and publication changes invalidate them',async()=>{
+ const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/api/download/fox/pdf?v='+'a'.repeat(24);let renders=0;
+ const next=async()=>{renders++;return new Response(null,{status:302,headers:{Location:'https://assets.jotcoloring.com/published/fox/a.pdf','Cache-Control':'public,max-age=60'}})};
+ assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
+ const hit=await f.run(new Request(url),next);assert.equal(hit.headers.get('X-JotColoring-Cache'),'HIT');assert.equal(hit.status,302);assert.equal(hit.headers.get('Location'),'https://assets.jotcoloring.com/published/fox/a.pdf');assert.equal(renders,1);
+ f.advance();assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(renders,2);
+ for(const target of ['https://other.example/published/a.pdf','https://assets.jotcoloring.com/private/a.pdf','/published/a.pdf']){
+  const g=fixture(),response=await g.run(new Request(url),async()=>new Response(null,{status:302,headers:{Location:target}}));
+  assert.equal(response.headers.get('X-JotColoring-Cache'),'BYPASS');await Promise.all(g.pending);assert.equal(g.entries.size,0);
+ }
+});
+
+test('versioned downloads served directly as media also remain cacheable',async()=>{
+ const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/api/download/fox/pdf?v='+'b'.repeat(24);let renders=0;
+ const next=async()=>{renders++;return new Response('%PDF',{headers:{'Content-Type':'application/pdf','Cache-Control':'public,max-age=60'}})};
+ assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
+ const hit=await f.run(new Request(url),next);assert.equal(hit.headers.get('X-JotColoring-Cache'),'HIT');assert.equal(hit.status,200);assert.equal(await hit.text(),'%PDF');assert.equal(renders,1);
+});

@@ -17,11 +17,11 @@ The existing 18-item catalog uses a finite checksum-bound registry for display c
 
 ## Public response cache
 
-Only explicit public HTML, published catalog JSON and versioned public media routes qualify. Studio, photo/AI tools, My Artwork, admin, sessions, writes, unknown queries, Range requests, authorization and cookies bypass the cache. Only successful responses with the expected MIME type and without Set-Cookie/private/no-store are stored. Errors are never stored.
+Only explicit public HTML, published catalog JSON, robots.txt, sitemap XML, versioned public media and validated R2 download redirects qualify. Studio, photo/AI tools, My Artwork, admin, sessions, writes, unknown queries, Range requests, authorization and cookies bypass the cache. Only successful responses with the expected MIME type, or a 302 to the published R2 domain and path, and without Set-Cookie/private/no-store are stored. Errors are never stored.
 
 Keys include environment, exact build commit, trusted Cloudflare country and canonicalized path/query. Catalog-dependent entries also include the latest indexed publication outbox sequence. Normal publish/archive transactions advance this sequence; the next request uses a different key. Direct SQL changes that bypass the publication pipeline are unsupported: use the validated import/publish/archive tools. Search projection remains asynchronous and uses a short TTL.
 
-The edge TTL is 120 seconds for catalog HTML, 60 seconds for JSON, 300 seconds for versioned media and 600 seconds for static information pages. HTML still revalidates in the browser. Private content receives no new cache policy. Cache failures fall back to the application. `X-JotColoring-Cache` reports HIT, MISS or BYPASS; `Server-Timing` reports application elapsed time. Cache API entries are local to a Cloudflare location, so first visits elsewhere can miss.
+The edge TTL is 120 seconds for catalog HTML, 60 seconds for JSON and download redirects, 300 seconds for versioned media and 600 seconds for static information pages, robots.txt and sitemaps. HTML and redirects still revalidate in the browser. Sitemaps use the publication epoch so a new or withdrawn item cannot stay hidden behind a cached catalog version. Private content receives no new cache policy. Cache failures fall back to the application. `X-JotColoring-Cache` reports HIT, MISS or BYPASS; `Server-Timing` reports application elapsed time. Cache API entries are local to a Cloudflare location, so first visits elsewhere can miss.
 
 ## Run the checks
 
