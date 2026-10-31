@@ -2,7 +2,7 @@ import {drawingPaper,DRAWING_IDEAS} from './drawing-board';
 import {TouchFillGate,pinchScale} from './touch-gestures';
 import { createProject, checkpoint, undo, redo, sourceCoordinates, hsvToHex, hexToHsv, MAX_PIXELS, type Project, type Stroke, type Shape, type TextObject } from './model';
 import { getProject, saveProject } from './storage';
-import { canvasBlob, compose,drawTextObject, lineMask, loadSource, makeCanvas, renderLayer } from './render';
+import { canvasBlob, canvasPreviewBlob, compose,drawTextObject, lineMask, loadSource, makeCanvas, renderLayer } from './render';
 import {mountStudioExtensions} from './extensions';
 import {mountStudioPlus} from './plus-controller';
 import {mountWorkspace} from './workspace-controller';
@@ -60,7 +60,7 @@ export async function mountStudio(){
     if(!ready)return;clearTimeout(saveTimer);const captured=version;const snapshot=structuredClone(project);status('saving','Saving…');
     const thumbnail=makeCanvas(240,Math.max(1,Math.round(240*canvas.height/canvas.width)));thumbnail.getContext('2d')!.drawImage(canvas,0,0,thumbnail.width,thumbnail.height);
     // Enqueue before encoding, so a slower old thumbnail can never overwrite a newer save.
-    const task=saveChain.catch(()=>{}).then(async()=>{snapshot.thumbnail=await canvasBlob(thumbnail,'image/webp',.8);await saveProject(snapshot);});saveChain=task;
+    const task=saveChain.catch(()=>{}).then(async()=>{snapshot.thumbnail=await canvasPreviewBlob(thumbnail);await saveProject(snapshot);});saveChain=task;
     try{await task;savedVersion=Math.max(savedVersion,captured);if(version===captured){status('saved','Saved');message('');}}catch(error){status('error','Save failed');message(error instanceof Error?error.message:'Could not save on this device.',true);throw error;}
   }
   async function openDownload(format:string){touchFill.cancel();await workspace?.openExport(format);}

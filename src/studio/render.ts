@@ -1,6 +1,6 @@
 import {textLayout} from './lettering';
 import {makeCanvas} from '../ui/canvas';
-export {makeCanvas,loadSource,canvasBlob} from '../ui/canvas';
+export {makeCanvas,loadSource,canvasBlob,canvasPreviewBlob} from '../ui/canvas';
 import type { Project, PaintLayer,TextObject } from './model';
 import {drawObject} from './objects';
 import {paintOperation} from './paint-render';
