@@ -68,3 +68,10 @@ test('only versioned public R2 download redirects are cached and publication cha
   assert.equal(response.headers.get('X-JotColoring-Cache'),'BYPASS');await Promise.all(g.pending);assert.equal(g.entries.size,0);
  }
 });
+
+test('versioned downloads served directly as media also remain cacheable',async()=>{
+ const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/api/download/fox/pdf?v='+'b'.repeat(24);let renders=0;
+ const next=async()=>{renders++;return new Response('%PDF',{headers:{'Content-Type':'application/pdf','Cache-Control':'public,max-age=60'}})};
+ assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
+ const hit=await f.run(new Request(url),next);assert.equal(hit.headers.get('X-JotColoring-Cache'),'HIT');assert.equal(hit.status,200);assert.equal(await hit.text(),'%PDF');assert.equal(renders,1);
+});
