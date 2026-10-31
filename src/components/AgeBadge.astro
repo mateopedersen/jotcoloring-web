@@ -5,4 +5,4 @@ import type {Content} from '../server/types';
 import '../age/age.css';
 const {item}=Astro.props as {item:Content};const band=ageBand(item.recommendedAge?.band);
 ---
-{band&&<a class="jc-age-badge" data-recommended-age={band.id} href={`/coloring-by-age/${band.id}/`} title="Suggested by drawing detail and coloring-space size."><GlyphIcon name="star" size={15}/>{ageLabel(band.id)}</a>}
+{band&&<a class="jc-age-badge" data-recommended-age={band.id} href={`/coloring-by-age/${band.id}/`} aria-label={ageLabel(band.id)} title="Suggested by drawing detail and coloring-space size."><span class="jc-age-badge-icon"><GlyphIcon name="star" size={15}/></span><span class="jc-age-badge-copy"><span>Suggested for</span><strong>{band.id==='adults'?'Adults':`Ages ${band.short}`}</strong></span></a>}
