@@ -39,3 +39,11 @@
 
 .site-v3 .iv-card .art-title{font-family:'Avenir Next',Avenir,'Manrope Variable',sans-serif;font-weight:650;font-size:16px;line-height:1.4}.site-v3 .iv-category-hero h1,.site-v3 .detail-copy h1{font-weight:750;letter-spacing:-1.7px}.site-v3 .creator-form-panel h1,.site-v3 .my-artwork h1{font-weight:720}.site-v3 .iv-category-intro{line-height:2}.site-v3 .detail-description{line-height:1.95}
 @media(max-width:600px){.site-v3 .iv-card .art-title{font-size:var(--type-note-size)}.site-v3 .iv-category-hero h1,.site-v3 .detail-copy h1{letter-spacing:-1px}}
+
+/* A category without artwork still has an intentional, topic-specific illustration. */
+.iv-cover-placeholder{position:absolute;inset:12px 10px 4px 25px;display:grid;place-items:center;border:6px solid #fff;border-radius:16px;background:linear-gradient(145deg,#fffdf8,#ffecd9);transform:rotate(8deg);box-shadow:0 15px 25px #b2763d14}
+.iv-cover-placeholder svg{width: min(68%, 112px);height:auto;filter:drop-shadow(0 7px 5px #a75e2d24)}
+.iv-theme-placeholder{display:grid;place-items:center;aspect-ratio:1.4;background:linear-gradient(150deg,#fff8ee,#ffe6d1);border-radius:12px}
+.iv-theme-placeholder svg{width:54px;height:54px}
+@media(max-width:1250px){.iv-cover-placeholder{left:15px}}
+@media(max-width:950px){.iv-cover-placeholder{left:0}}

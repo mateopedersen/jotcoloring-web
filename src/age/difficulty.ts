@@ -1,8 +1,8 @@
 export const DIFFICULTY_LEVELS=[
- {id:'easy',label:'Easy',description:'Bigger spaces and simpler outlines.',color:'#608658'},
- {id:'medium',label:'Medium',description:'A little more detail to explore.',color:'#bf893b'},
- {id:'hard',label:'Hard',description:'Smaller spaces and richer scenes.',color:'#bd6845'},
- {id:'very-hard',label:'Very Hard',description:'Fine detail for a longer coloring session.',color:'#8963a3'},
+ {id:'easy',label:'Easy',description:'Bigger spaces and simpler outlines.',color:'#3c6538'},
+ {id:'medium',label:'Medium',description:'A little more detail to explore.',color:'#805017'},
+ {id:'hard',label:'Hard',description:'Smaller spaces and richer scenes.',color:'#923f22'},
+ {id:'very-hard',label:'Very Hard',description:'Fine detail for a longer coloring session.',color:'#67447e'},
 ] as const;
 export type DifficultyLevel=typeof DIFFICULTY_LEVELS[number]['id'];
 export const DIFFICULTY_VERSION='jot-detail-1.0';

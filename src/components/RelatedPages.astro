@@ -28,7 +28,7 @@ const counts={best:result.matches.length,theme:result.matches.filter(m=>m.sameTh
  {result.collection&&<section id="explore-this-collection" class="jc-explore-collection" aria-labelledby="explore-collection-title">
   <h3 id="explore-collection-title">Explore this collection</h3>
   <a class="jc-explore-card" href={result.collection.href}>
-   <span class="jc-explore-thumbnails" aria-hidden="true">{result.collection.previews.length?result.collection.previews.map(preview=><span class="jc-explore-thumbnail" data-image-title={artworkText(preview).title} data-image-description={artworkText(preview).description}><img src={preview.thumbnail} alt={artworkText(preview).alt} width="96" height="112" loading="lazy"/></span>):<CategoryIcon name={result.collection.id} size={72}/>}</span>
+   <span class="jc-explore-thumbnails" aria-hidden="true">{result.collection.previews.length?result.collection.previews.map(preview=><span class="jc-explore-thumbnail" data-image-title={artworkText(preview).title} data-image-description={artworkText(preview).description}><img src={preview.thumbnail} srcset={preview.thumbnailSrcset} sizes="auto, 96px" alt={artworkText(preview).alt} width="96" height="112" loading="lazy"/></span>):<CategoryIcon name={result.collection.id} size={72}/>}</span>
    <span class="jc-explore-copy"><strong>View all {coloringTopic(result.collection.id).toLowerCase()} coloring pages</strong><span>{result.collection.total!==null&&<b>{result.collection.total.toLocaleString('en-US')} {result.collection.total===1?'coloring page':'coloring pages'}<i aria-hidden="true">·</i></b>}Ready to print or color online</span></span>
    <span class="jc-explore-arrow" aria-hidden="true"><ArrowIcon size={24}/></span>
   </a>

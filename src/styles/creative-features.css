@@ -49,7 +49,7 @@
 .cf-paths a.cf-prompt:hover { transform:rotate(-3deg) translateY(-2px); }
 .cf-prompt>svg { flex:none; }
 .cf-prompt>span { flex:1; min-width:0; }
-.cf-paths .cf-prompt small { display:block; margin:0 0 4px; color:#8a6c98; font-size:var(--type-note-size); letter-spacing:.09em; font-weight:800; }
+.cf-paths .cf-prompt small { display:block; margin:0 0 4px; color:#634574; font-size:var(--type-note-size); letter-spacing:.09em; font-weight:800; }
 .cf-idea-spark { position:absolute; width:54px; height:54px; left:4px; top:17px; }
 @container (max-width:1000px) {
  .create-playground .creative-paths-grid { grid-template-columns:1fr; }

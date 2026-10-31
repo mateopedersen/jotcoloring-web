@@ -16,7 +16,7 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   const url=new URL(request.url),path=url.pathname;
   if(url.search.length>1800)return;
   if(/^\/api\/(?:media|download)\/[A-Za-z0-9_-]+\/[A-Za-z0-9_]+$/.test(path)){
-    if([...url.searchParams.keys()].some(k=>k!=='v')||!/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(url.searchParams.get('v')||''))return;
+    if([...url.searchParams.keys()].some(k=>k!=='v'&&!(k==='display'&&path.startsWith('/api/media/')&&['240','320','400','600'].includes(url.searchParams.get(k)||'')))||!/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(url.searchParams.get('v')||''))return;
     return{kind:'media',catalog:true,seconds:300};
   }
   if([...url.searchParams.keys()].some(k=>!queryKeys.has(k)))return;
