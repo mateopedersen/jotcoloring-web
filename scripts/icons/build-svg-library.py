@@ -341,6 +341,14 @@ add('privacy','Privacy · protective shield',shadow(rx=36)+shield,'Creative')
 add('save','Save · project disk',shadow()+path('M23 12h72l18 18v72q0 10-10 10H23q-10 0-10-10V22q0-10 10-10Z',mat('orange'),'#a65e33',1.6)+rect(34,12,53,37,3,mat('metal'),'#8e9d92',1.2)+rect(66,17,12,27,1,mat('ink'))+rect(30,64,66,48,4,mat('paper'),'#b7a58d',1.2)+path('M41 77h44m-44 10h35m-35 10h40',stroke='#b5b6a4',sw=2)+path('M20 24v68',stroke='#ffdb9e',sw=2))
 add('refresh','Refresh · two rotating arrows',shadow()+path('M22 48C29 16 73 9 96 34l12-14 6 39-38-1 12-12C72 29 44 35 39 53Z',mat('orange'),'#b46b36',1.5)+path('M106 80c-7 32-51 39-74 14l-12 14-6-39 38 1-12 12c16 17 44 11 49-7Z',mat('mint'),'#68947a',1.5)+path('M29 43q16-26 44-17M99 85q-16 26-44 17',stroke='#fff2c8',sw=2))
 
+# Reviewed character collections use distinct, original symbols.
+b=shadow()+path('M22 17h84q11 0 11 11v53q0 11-11 11H65l-23 20 4-20H22q-11 0-11-11V28q0-11 11-11Z',mat('mint'),'#517f72',1.7)+ellipse(46,48,6,8,'#334b46')+ellipse(83,48,6,8,'#334b46')+path('M39 67q25 27 51-1',stroke='#334b46',sw=4)+path('M23 29h76',stroke='#e7f5d6',sw=2)+sparkle(104,15,7)
+add('cartoons','Characters & Cartoons · smiling speech bubble',b,'Categories')
+b=shadow()+path('M34 61C13 27 43 8 64 8s51 20 30 53l8 43H26Z',mat('wood'),'#976143',1.5)+path('M42 33Q64 57 89 33v24q-3 27-25 27T39 57Z',mat('cream'),'#b98c6b',1.4)+ellipse(52,57,3,4,'#51443e')+ellipse(76,57,3,4,'#51443e')+path('M54 71q10 8 20 0',stroke='#af645b',sw=2)+path('M48 82h32l22 30H26Z',mat('rose'),'#ad6b77',1.4)+path('M47 84q17 14 34 0',stroke='#fff0d8',sw=2)+path('M43 16 58 26 43 35Zm0 0L29 26l14 9Z',mat('rose'),'#ad6b77',1.2)+circle(43,26,4,mat('gold'))
+add('dolls-toys','Dolls & Toys · doll with a bow',b,'Categories')
+b=shadow()+path('M40 34h48q17 0 23 20l8 40q3 20-12 18l-24-22H45l-24 22q-15 2-12-18l8-40q6-20 23-20Z',mat('metal'),'#6f8784',1.8)+path('M29 53h12v12h12v12H41v12H29V77H17V65h12Z',mat('ink'),'#47554f',1.2)+circle(89,58,6,mat('orange'),'stroke="#9c643c" stroke-width="1"')+circle(103,73,6,mat('rose'),'stroke="#a86774" stroke-width="1"')+circle(75,73,6,mat('leaf'),'stroke="#577951" stroke-width="1"')+circle(89,87,6,mat('gold'),'stroke="#ad7d39" stroke-width="1"')+rect(55,61,16,5,2,'#9dafa1')+path('M29 43q12-5 22-3',stroke='#fff8de',sw=2)
+add('video-games','Video Games · game controller',b,'Categories')
+
 # Subject and navigation additions are original editable vector drawings.
 from category_art import register
 register(globals())

@@ -565,5 +565,26 @@
     "sha256": "cad3494273b4112368fe5e482cc96053bac769f9edaf44e556b52d98623b403b",
     "title": "Camper Van At The Beach",
     "description": "A rounded camper van is parked beside surfboards on a palm-lined beach. Roof-mounted boards, coastal mountains, and a low sun add detail to the seaside scene."
+  },
+  "category-cartoons": {
+    "src": "/og/pages/category-cartoons-f32f47c15640b7de.png",
+    "alt": "JotColoring printable coloring pages share image: Cartoon Character coloring pages. ",
+    "sha256": "f32f47c15640b7dece0ae9385ef92c21c38b6c22bfb2fd52e01fc495e652190a",
+    "title": "Cartoon Character coloring pages.",
+    "description": "Hello Kitty, Bluey family, and HUNTR/X scenes to print or color online."
+  },
+  "category-dolls-toys": {
+    "src": "/og/pages/category-dolls-toys-d6159e31904cd583.png",
+    "alt": "JotColoring printable coloring pages share image: Doll & Toy coloring pages. ",
+    "sha256": "d6159e31904cd583b134e130002ff4e7025364bb132b75c179023f809c2e9174",
+    "title": "Doll & Toy coloring pages.",
+    "description": "Barbie scenes featuring hobbies, travel, and imaginary careers."
+  },
+  "category-video-games": {
+    "src": "/og/pages/category-video-games-0ac439c34892daf9.png",
+    "alt": "JotColoring printable coloring pages share image: Video Game coloring pages. ",
+    "sha256": "0ac439c34892daf92770f8511464f3cf839b4490d744f601aa9ae05da09c3f59",
+    "title": "Video Game coloring pages.",
+    "description": "Sonic adventures and Minecraft block worlds to print or color online."
   }
 }
