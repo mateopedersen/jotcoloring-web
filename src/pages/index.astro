@@ -19,6 +19,7 @@ import Footer from '../components/Footer.astro';
 import CategoryIcon from '../components/CategoryIcon.astro';
 import ActionIcon from '../components/ActionIcon.astro';
 import GalleryTabIcon from '../components/GalleryTabIcon.astro';
+import {homeGallerySelection} from '../ui/home-selection';
 import {categories} from '../ui/categories';
 import {createCatalog} from '../server/catalog';
 import type {Env,CatalogQuery} from '../server/types';
@@ -32,6 +33,10 @@ const query:CatalogQuery={marketingOnly:true,limit:24,sort:popularTab==='newest'
 if(popularTab==='easy'||popularTab==='detailed')query.difficulty=[popularTab];
 const [popular,featuredPage]=popularTab==='trending'?[await repo.list(query),undefined]:await Promise.all([repo.list(query),repo.list({marketingOnly:true,limit:6,sort:'trending'})]);
 const featured=featuredPage||{items:popular.items.slice(0,6)};
+if(popularTab==='trending'){
+ const recent=await repo.list({marketingOnly:true,limit:4,sort:'newest'});
+ popular.items=homeGallerySelection(popular.items,recent.items);
+}
 // Finish with two real pages from different collections, without repeating a card.
 const closingItems:typeof popular.items=[];
 if(popularTab==='trending'&&popular.items.length>=8){

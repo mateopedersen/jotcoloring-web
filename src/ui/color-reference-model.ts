@@ -1,6 +1,6 @@
 import {brandFooterLayout} from '../server/branding';
 export const COLOR_PALETTES=[
- {id:'original',name:'Original colors',description:'A scene-matched coloring reference. The swatches come from the actual picture.'},
+ {id:'original',name:'Color inspiration',description:'One way to color this drawing. Try these colors or make it your own; the swatches come from this preview.'},
  {id:'pastel',name:'Soft pastels',description:'Gentler saturation and lighter color, with the reference’s shapes and shading intact.'},
  {id:'warm',name:'Warm daylight',description:'A subtle warm lift to the picture’s own colors, keeping greens, blues and natural tones recognizable.'},
  {id:'vivid',name:'Rich & vibrant',description:'Richer color and a little more contrast, using the same scene-matched reference.'},

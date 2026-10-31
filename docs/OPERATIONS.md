@@ -4,6 +4,8 @@ Güncelleme: 30 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Work
 
 ## İçerik hazırlama
 
+Siyah-beyaz kaynak yeterlidir: hazırlama ve yayın akışı artık `color_inspiration` ile 240/320/400 px ana sayfa karşılaştırma görsellerini otomatik üretir. Ayrı renkli dosya zorunlu değildir; `--color` yalnız isteğe bağlı, onaylı bir referans içindir. Ayrıntılar: [Otomatik renkli önizlemeler](automatic-color-previews.md).
+
 Özgün çizim dosyasını kullanın; tasarım ekranından küçük görsel kırpmayın. Başlık, açıklama ve alternatif metni gerçekten görünen konuya göre yazın. `content_id` sabittir; dosya değiştiğinde yeni revision ve yeni checksum gerekir. Çizim alanı siyah-beyazdır. Son kullanıcı yönlendirmesiyle PDF/WEBP sağ alt ayrı beyaz footer alanında turuncu JotColoring™ taşır; bu kontrollü marka alanı çizimin renk doğrulamasından ayrı incelenir. Renkli ana sayfa önizlemeleri ayrı `home_half_color` rolündedir. Kullanıcının AI işi veya stüdyo projesi otomatik katalog yayını değildir.
 
 Yerel hazırlama aracı `scripts/data/prepare-media.ts`, ayrı küçük WEBP, detay WEBP, tam çözünürlüklü kalite kontrollü baskı WEBP ve A4 PDF üretir (yeni dosyalarda Letter seçeneği yoktur). Bütün PDF dosyaları **1.000.000 byte veya daha küçük** olmalıdır. İki sayfalı kişisel PDF de aynı toplam sınıra tabidir. Dosya boyutu kalite kontrolünden bağımsız değildir: önizlemeleri gerçek ekranda, baskı PDF'sini çizgiler ve kırpılma bakımından kontrol edin. Baskı WEBP tam çözünürlüğünü korur; kabul edilebilir piksel farkıyla daha küçük sürüm seçilir veya kayıpsız sürüme dönülür. Kartlarda ölçüsüne uygun küçük türev kullanılır. Büyük dosyaya yalnız uzantı değiştirerek WEBP/PDF adı verilmez.
