@@ -116,7 +116,7 @@ class OperationsTests(unittest.TestCase):
             self.assertEqual(result['tables']['category']['rows'], 127)
             restored=sqlite3.connect(':memory:');restored.execute('PRAGMA foreign_keys=ON');restored.executescript(sql)
             self.assertEqual(restored.execute('SELECT COUNT(*) FROM creator_upload').fetchone()[0],0)
-            self.assertEqual(restored.execute('SELECT COUNT(*) FROM category').fetchone()[0],124)
+            self.assertEqual(restored.execute('SELECT COUNT(*) FROM category').fetchone()[0],127)
             self.assertEqual(restored.execute("SELECT seq FROM sqlite_sequence WHERE name='audit_event'").fetchone()[0],9007199254740995)
             self.assertIn({'name':'audit_event','seq':'9007199254740995'},result['autoincrement_sequences'])
             self.assertIsNone(restored.execute('PRAGMA foreign_key_check').fetchone())
