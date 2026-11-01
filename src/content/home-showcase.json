@@ -142,5 +142,116 @@
     "thumbnailSrcset": "https://assets.jotcoloring.com/responsive/v1/0882206a48117fd43fcfb7b05a67631efa5474221e162a1c09c162ba6783f6c8/240-8364b09bb4d3f12ddd021d0ab55e37ed0316ffda99566a9dbfdff796df322383.webp 240w,https://assets.jotcoloring.com/responsive/v1/0882206a48117fd43fcfb7b05a67631efa5474221e162a1c09c162ba6783f6c8/320-783f2b61c5f6ec90e62ee321a6d1a516695e1da92f51e1f1dba409e040a05c0e.webp 320w,https://assets.jotcoloring.com/responsive/v1/0882206a48117fd43fcfb7b05a67631efa5474221e162a1c09c162ba6783f6c8/400-f6c5e4fc7eb843d0567c8e9adc5d6751dcd4bb526e47c06494d8111072a6bfc8.webp 400w",
     "home_color": "https://assets.jotcoloring.com/published/jc-camper-adventure/6/home_half_color-61943e259e17e8ebc0eaa7e8.webp",
     "homeColorSrcset": "https://assets.jotcoloring.com/responsive/v1/61943e259e17e8ebc0eaa7e8aae06f8c01b345340946c1515652902fa22b9c02/240-8d84f683fd00a45e6b2666ec90521930fea1da3f41e316500035c599f22a1253.webp 240w,https://assets.jotcoloring.com/responsive/v1/61943e259e17e8ebc0eaa7e8aae06f8c01b345340946c1515652902fa22b9c02/320-b7e6c78291f67b2417c8fc0001057571a61323ee7e0ac3e0e0158b0e80719cf3.webp 320w,https://assets.jotcoloring.com/published/jc-camper-adventure/6/home_half_color-61943e259e17e8ebc0eaa7e8.webp 400w"
+  },
+  {
+    "id": "jc-original-red-panda-in-the-bamboo",
+    "sourceHash": "9943e75a391ee93d8b4301df",
+    "thumbnail": "https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/catalog_thumb_bw.b5958944acf84806f7c115d8.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/catalog_thumb_small_bw.2017dd1b1d6941ffcad94c4b.webp 240w,https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/catalog_thumb_medium_bw.a834ae44c675d6056894b5a2.webp 320w,https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/catalog_thumb_bw.b5958944acf84806f7c115d8.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/home_half_color.a6e6a4a28940d44aeb6c1163.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/home_half_color_small.9110ed7506914548c4e67831.webp 240w,https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/home_half_color_medium.93a12dec46ab32b2abd4fa7a.webp 320w,https://assets.jotcoloring.com/published/animals/red-panda-in-the-bamboo/home_half_color.a6e6a4a28940d44aeb6c1163.webp 400w",
+    "groups": [
+      "nature"
+    ]
+  },
+  {
+    "id": "jc-original-otter-on-a-lily-pond",
+    "sourceHash": "9db4a44f0fe68118495783f1",
+    "thumbnail": "https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/catalog_thumb_bw.b9c4f7eb7d924ee3b9efeff7.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/catalog_thumb_small_bw.949518f59cc7103248548918.webp 240w,https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/catalog_thumb_medium_bw.61b20373b2eed9c61d63f2ee.webp 320w,https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/catalog_thumb_bw.b9c4f7eb7d924ee3b9efeff7.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/home_half_color.ff4f6619882f3fe53fa818e4.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/home_half_color_small.0e37f0b80c17ff2578703104.webp 240w,https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/home_half_color_medium.2699a8b354e61dc23f16887b.webp 320w,https://assets.jotcoloring.com/published/animals/otter-on-a-lily-pond/home_half_color.ff4f6619882f3fe53fa818e4.webp 400w",
+    "groups": [
+      "nature",
+      "cozy"
+    ]
+  },
+  {
+    "id": "jc-original-hummingbird-among-the-fuchsias",
+    "sourceHash": "9353dcc3087917fe675f8f0c",
+    "thumbnail": "https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/catalog_thumb_bw.52acfc459a562b17460259c0.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/catalog_thumb_small_bw.335fe9754760dc16d2e7d94c.webp 240w,https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/catalog_thumb_medium_bw.349e8bbc8e2f28e6e674564b.webp 320w,https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/catalog_thumb_bw.52acfc459a562b17460259c0.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/home_half_color.f09196217570733c82b2e449.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/home_half_color_small.413dca86e45e30e8283f3001.webp 240w,https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/home_half_color_medium.f22b8cea65c9d8a0e0deb2e9.webp 320w,https://assets.jotcoloring.com/published/animals/hummingbird-among-the-fuchsias/home_half_color.f09196217570733c82b2e449.webp 400w",
+    "groups": [
+      "nature"
+    ]
+  },
+  {
+    "id": "jc-original-lotus-blossoms-on-a-quiet-pond",
+    "sourceHash": "a77af4ebf4ecb9f8877d50e8",
+    "thumbnail": "https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/catalog_thumb_bw.7e1d589a1d69ed9792540d3b.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/catalog_thumb_small_bw.e855b3551c26d525e160f4ca.webp 240w,https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/catalog_thumb_medium_bw.b9ba61deca5d2c7755866cd9.webp 320w,https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/catalog_thumb_bw.7e1d589a1d69ed9792540d3b.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/home_half_color.0eb1cbb186b3d1e67b9a3f2a.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/home_half_color_small.c63b038ab3c085a095ce5254.webp 240w,https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/home_half_color_medium.064c487c324a953a021c3c0b.webp 320w,https://assets.jotcoloring.com/published/flowers/lotus-blossoms-on-a-quiet-pond/home_half_color.0eb1cbb186b3d1e67b9a3f2a.webp 400w",
+    "groups": [
+      "nature"
+    ]
+  },
+  {
+    "id": "jc-original-sea-turtle-above-a-coral-garden",
+    "sourceHash": "1350f01cb49a10551fe5a150",
+    "thumbnail": "https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/catalog_thumb_bw.af459b73899ffd4005b38165.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/catalog_thumb_small_bw.0d07ac7dac5e55e8c0e9836f.webp 240w,https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/catalog_thumb_medium_bw.42e51cfaa7a0fdc062396e65.webp 320w,https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/catalog_thumb_bw.af459b73899ffd4005b38165.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/home_half_color.8e6f8692049e826a57cb6c14.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/home_half_color_small.7a621c866bb8c009617115b6.webp 240w,https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/home_half_color_medium.37f4417dc3e6ee5f58e803f6.webp 320w,https://assets.jotcoloring.com/published/ocean/sea-turtle-above-a-coral-garden/home_half_color.8e6f8692049e826a57cb6c14.webp 400w",
+    "groups": [
+      "nature"
+    ]
+  },
+  {
+    "id": "jc-original-baby-dragon-and-a-teacup",
+    "sourceHash": "65c1e1622b01eceab56b1a61",
+    "thumbnail": "https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/catalog_thumb_bw.38027ffee271b10d85a485b8.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/catalog_thumb_small_bw.a3722d53f091f7682a646426.webp 240w,https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/catalog_thumb_medium_bw.0d1da9c1d7108307553a0a4a.webp 320w,https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/catalog_thumb_bw.38027ffee271b10d85a485b8.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/home_half_color.dc6ee6c2669453da4fb18bd5.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/home_half_color_small.cbcba681693c3d0cff0a57d2.webp 240w,https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/home_half_color_medium.b0eddecf5ef734e890b94027.webp 320w,https://assets.jotcoloring.com/published/fantasy/baby-dragon-and-a-teacup/home_half_color.dc6ee6c2669453da4fb18bd5.webp 400w",
+    "groups": [
+      "imagine"
+    ]
+  },
+  {
+    "id": "jc-original-astronaut-in-a-space-greenhouse",
+    "sourceHash": "eacb1d0483f97b52a09ed1ad",
+    "thumbnail": "https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/catalog_thumb_bw.529ec0761dd2d59bf0448a98.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/catalog_thumb_small_bw.253973d12c6401121e6ec74a.webp 240w,https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/catalog_thumb_medium_bw.ecf72a6db556355b158d4ead.webp 320w,https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/catalog_thumb_bw.529ec0761dd2d59bf0448a98.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/home_half_color.d1c5385a4b690def1a1f64bb.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/home_half_color_small.acd2acbd5e40d3f031f5ea48.webp 240w,https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/home_half_color_medium.f1525fffecd7645ca22af737.webp 320w,https://assets.jotcoloring.com/published/space/astronaut-in-a-space-greenhouse/home_half_color.d1c5385a4b690def1a1f64bb.webp 400w",
+    "groups": [
+      "imagine"
+    ]
+  },
+  {
+    "id": "jc-original-vintage-camper-on-the-coast",
+    "sourceHash": "5626c72c4cc975ee2204141a",
+    "thumbnail": "https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/catalog_thumb_bw.0b5f8bcca0474a59aac20759.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/catalog_thumb_small_bw.8ad08cc436d85cb94fd3e6f8.webp 240w,https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/catalog_thumb_medium_bw.3dc4a47617e1d917bcf8b35f.webp 320w,https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/catalog_thumb_bw.0b5f8bcca0474a59aac20759.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/home_half_color.4ae5e0f5c41db466906eccb4.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/home_half_color_small.989a52a82f546a4ea9000faa.webp 240w,https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/home_half_color_medium.7cfb5b0791ab837129d00b64.webp 320w,https://assets.jotcoloring.com/published/vehicles/vintage-camper-on-the-coast/home_half_color.4ae5e0f5c41db466906eccb4.webp 400w",
+    "groups": [
+      "imagine"
+    ]
+  },
+  {
+    "id": "jc-original-strawberry-cake-and-garden-flowers",
+    "sourceHash": "1312cc2777dbc09f7306f76d",
+    "thumbnail": "https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/catalog_thumb_bw.2e943124719e686be29d2a7a.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/catalog_thumb_small_bw.a56306a74cb013643df9bfe8.webp 240w,https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/catalog_thumb_medium_bw.8402d15b45014d02ce315ff0.webp 320w,https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/catalog_thumb_bw.2e943124719e686be29d2a7a.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/home_half_color.8abb7b4cf550c9e5cb9dabd5.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/home_half_color_small.b03bdd1bbe263db4d4eb6518.webp 240w,https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/home_half_color_medium.c1bd9de864916df8ee0c85be.webp 320w,https://assets.jotcoloring.com/published/food/strawberry-cake-and-garden-flowers/home_half_color.8abb7b4cf550c9e5cb9dabd5.webp 400w",
+    "groups": [
+      "cozy"
+    ]
+  },
+  {
+    "id": "jc-original-bookshop-on-a-flowering-lane",
+    "sourceHash": "52dcae72522173b358d62cea",
+    "thumbnail": "https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/catalog_thumb_bw.d8fd7d5dc0b14353fe8f7f11.webp",
+    "thumbnailSrcset": "https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/catalog_thumb_small_bw.5b47a8ce7374d3ff7efea5c1.webp 240w,https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/catalog_thumb_medium_bw.55ceb045e5c73a8a3adb206d.webp 320w,https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/catalog_thumb_bw.d8fd7d5dc0b14353fe8f7f11.webp 400w",
+    "home_color": "https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/home_half_color.2cfc3860cc6130f29ec9f2cf.webp",
+    "homeColorSrcset": "https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/home_half_color_small.4640e73f19f64cb30dc1c69f.webp 240w,https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/home_half_color_medium.d1a0b214da6824987141df20.webp 320w,https://assets.jotcoloring.com/published/buildings/bookshop-on-a-flowering-lane/home_half_color.2cfc3860cc6130f29ec9f2cf.webp 400w",
+    "groups": [
+      "cozy"
+    ]
   }
 ]

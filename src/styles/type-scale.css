@@ -119,14 +119,14 @@ html body:is(.home-v3,.site-v3) main small { font-size:var(--type-note-size); fo
 html body.home-v3 .hc-card-meta.hc-card-summary{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible;min-height:3.3em;font-size:15px;font-weight:600;line-height:1.65;text-wrap:pretty}
 /* Keep recommended-age labels and the card text below them aligned in a row. */
 @media(min-width:1101px){html body.home-v3 .hc-card .jc-age-badge{min-height:44px}}
-@media(min-width:381px) and (max-width:700px){html body.home-v3 .hc-card-meta.hc-card-summary{min-height:4.95em}}
 .jc-header .jc-main-nav a>span{min-width:0;white-space:normal;line-height:1.2}
 
 /* Cards share a readable title area while long titles remain fully visible. */
 html body.home-v3 .hc-card .hc-title{font-size:clamp(16px,1.3vw,18px);font-weight:700;line-height:1.32;min-height:3.96em;align-items:center}
 html body.home-v3 .hc-card .hc-title>span:first-child{min-width:0;overflow-wrap:anywhere}
-@media(min-width:381px) and (max-width:700px){html body.home-v3 .hc-card .hc-title{min-height:5.28em}}
-@media(min-width:1251px) and (max-width:1350px){html body.home-v3 .hc-card-meta.hc-card-summary{min-height:4.95em}}
+/* Reviewed short captions need two lines. Mobile title rows also reserve two
+ * lines, rather than retaining four empty lines from the old long copy. */
+@media(max-width:700px){html body.home-v3 .hc-card .hc-title{min-height:2.64em}}
 
 /* A quieter weight and an open, consistent font make age recommendations easier to read. */
 html body:is(.home-v3,.site-v3) .jc-age-badge{font-family:'Manrope Variable','Avenir Next',Avenir,sans-serif;font-weight:650;letter-spacing:.005em;color:#704323}
