@@ -16,3 +16,10 @@ test('short queries do not produce suggestions and results are bounded',()=>{
  assert.deepEqual(buildSuggestions('a',[item('1','cat','Cat')],categories),[]);
  assert.equal(buildSuggestions('cat',Array.from({length:20},(_,i)=>item(String(i),`cat-${i}`,`Cat ${i}`)),categories).filter(x=>x.kind==='page').length,5);
 });
+test('new CDN artwork keeps its thumbnail and nested collections keep their canonical path',()=>{
+ const thumb='https://assets.jotcoloring.com/published/cartoons/bluey/catalog_thumb_bw.123.webp';
+ const result=buildSuggestions('blu',[item('new','bluey-in-the-garden','Bluey in the Garden',thumb)],[{id:'bluey',name:'Bluey',href:'/coloring-pages/cartoons/bluey/',aliases:['bluey heeler']}]);
+ assert.equal(result[0].href,'/coloring-pages/cartoons/bluey/');assert.equal(result[1].thumbnail,thumb);
+ assert.deepEqual(buildSuggestions('fox moon',[],[{id:'animals',name:'Foxes',aliases:['fox']}]),[]);
+ assert.equal(buildSuggestions('bluey',[],[{id:'bluey',name:'Bluey',href:'https://outside.invalid/'}]).length,0);
+});
