@@ -23,3 +23,10 @@ intermediate gallery breakpoints. Hover descriptions must stay out of touch,
 scrolling and slider gestures while keyboard image-link explanations and Escape
 dismissal remain available. These checks do not establish perfect results on
 every physical device; record the engines, dimensions and tested interactions.
+
+Run `node scripts/qa/studio-exports.mjs` with the same browser variables after
+export changes. It checks all seven real formats in both engines, decodes the
+WEBP paint pixels, and verifies that the existing local codec is requested only
+when native canvas WEBP encoding is unavailable. Preview images keep their
+lightweight PNG fallback. The temporary server exposes only the test bundle and
+committed codec, never the project directory or private files.
