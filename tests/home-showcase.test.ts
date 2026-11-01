@@ -6,7 +6,7 @@ const fixture=()=>showcase.map(p=>({id:p.id,category:p.id.includes('butterfly')?
 test('new publications never enter any homepage view automatically',()=>{
  const original=fixture(),extra=Array.from({length:100},(_,i)=>({...original[0],id:'new-'+i}));
  for(const tab of ['trending','newest','easy','detailed'])assert.deepEqual(homeGallerySelection([...extra,...original],tab),homeGallerySelection(original,tab));
- const output=homeGallerySelection(original);assert.equal(output.length,18);assert.deepEqual(output.map(i=>i.id),HOME_SHOWCASE_KEYS);assert.equal(output[0].home_color,showcase[0].home_color);
+ const output=homeGallerySelection(original);assert.equal(output.length,showcase.length);assert.ok(showcase.length<=40,'Bounded catalog lookup');assert.deepEqual(output.map(i=>i.id),HOME_SHOWCASE_KEYS);assert.equal(output[0].home_color,showcase[0].home_color);
 });
 test('an unpublished or replaced source leaves the showcase instead of showing unreviewed artwork',()=>{
  const items=fixture();items[0].lineArtUrl='/replaced-new-source.webp';

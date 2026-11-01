@@ -14,9 +14,10 @@ export function homeGallerySelection(items:(Content|null)[],tab='trending'):Cont
  const byId=new Map(items.filter((item):item is Content=>!!item).map(item=>[item.id,item]));
  return showcase.flatMap(pinned=>{
   const item=byId.get(pinned.id);if(!item||!item.lineArtUrl.includes(pinned.sourceHash))return [];
-  if(tab==='newest'&&!['animals','flowers','nature','ocean'].includes(item.category))return [];
-  if(tab==='easy'&&!['jc-sweet-treats','jc-cozy-bookshop','jc-sleepy-kitten','jc-playful-puppy','jc-winter-wishes','jc-farm-friends','jc-little-hedgehog'].includes(item.id))return [];
-  if(tab==='detailed'&&!['fantasy','space','vehicles','dinosaurs','mandalas'].includes(item.category))return [];
+  const groups='groups'in pinned&&Array.isArray(pinned.groups)?pinned.groups:[];
+  if(tab==='newest'&&!groups.includes('nature')&&!['animals','flowers','nature','ocean'].includes(item.category))return [];
+  if(tab==='easy'&&!groups.includes('cozy')&&!['jc-sweet-treats','jc-cozy-bookshop','jc-sleepy-kitten','jc-playful-puppy','jc-winter-wishes','jc-farm-friends','jc-little-hedgehog'].includes(item.id))return [];
+  if(tab==='detailed'&&!groups.includes('imagine')&&!['fantasy','space','vehicles','dinosaurs','mandalas'].includes(item.category))return [];
   return [{...item,thumbnail:pinned.thumbnail,thumbnailSrcset:pinned.thumbnailSrcset,home_color:pinned.home_color,homeColorSrcset:pinned.homeColorSrcset}];
  });
 }

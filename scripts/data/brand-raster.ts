@@ -11,15 +11,29 @@ export async function brandedColorWebP(input:Uint8Array,width:number,height:numb
  */
 export async function brandedColorCardWebP(input:Uint8Array,width:number,height:number,maxBytes=250_000,maxMeanError=12){
  const source=await brandedRaster(input,width,height,false);
- const palette=await sharp(source).png({palette:true,colours:256,dither:0,effort:10}).toBuffer();
- const bytes=await sharp(palette).webp({lossless:true,effort:6}).toBuffer();
- const {data,info}=await sharp(bytes).toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
  const original=await sharp(source).toColourspace('srgb').removeAlpha().raw().toBuffer();
- let absoluteError=0;for(let i=0;i<original.length;i++)absoluteError+=Math.abs(original[i]-data[i]);
- if(absoluteError/original.length>maxMeanError)throw new Error('Color card palette exceeded its visual error limit.');
- const {verifyBrandedRaster}=await import('../../src/server/branding');verifyBrandedRaster(data,width,height,info.channels,false);
- if(bytes.length>maxBytes)throw new Error(`Color derivative exceeds ${maxBytes} bytes; inspect before publication.`);
- return bytes;
+ const {verifyBrandedRaster}=await import('../../src/server/branding');
+ let best:Buffer|undefined;
+ const accept=async(bytes:Buffer)=>{if(bytes.length>maxBytes||(best&&bytes.length>=best.length))return;
+  const {data,info}=await sharp(bytes).toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
+  let absoluteError=0;for(let i=0;i<original.length;i++)absoluteError+=Math.abs(original[i]-data[i]);
+  if(absoluteError/original.length>maxMeanError)return;
+  try{verifyBrandedRaster(data,width,height,info.channels,false);best=bytes}catch{/* Reject footer bleed and retain a verified encode. */}
+ };
+ // Detailed pencil references may exceed the palette error bound. Preserve
+ // that bound and try a true-color encoding instead of rejecting good art.
+ await accept(await sharp(source).webp({lossless:true,effort:6}).toBuffer());
+ const palette=await sharp(source).png({palette:true,colours:256,dither:0,effort:10}).toBuffer();
+ await accept(await sharp(palette).webp({lossless:true,effort:6}).toBuffer());
+ // Retain thousands of colors and the exact footer. Every candidate must
+ // meet the unchanged mean-error limit, including textured pencil references.
+ for(const step of [8,12,16]){if(best)break;const bounded=Buffer.from(original),end=brandFooterLayout(width,height).footer.y*width*3;
+  for(let i=0;i<end;i++)bounded[i]=Math.min(255,Math.round(bounded[i]/step)*step);
+  await accept(await sharp(bounded,{raw:{width,height,channels:3}}).webp({lossless:true,effort:6}).toBuffer());
+ }
+ for(const quality of [94,97])await accept(await sharp(source).webp({quality,effort:6}).toBuffer());
+ if(!best)throw new Error(`No color encoding satisfies the ${maxBytes}-byte or visual error limit with the required footer; inspect before publication.`);
+ return Buffer.from(best);
 }
 
 /** Larger inspiration previews retain crisp line work with bounded palette error. */
