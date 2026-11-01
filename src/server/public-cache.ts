@@ -56,8 +56,10 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
     try{
       // Publication/archive events advance this indexed sequence atomically with the content.
       // Query it for each request: no process-local TTL can hide a withdrawal or new revision.
-      const row=await env.CATALOG_DB.prepare('SELECT seq FROM outbox_event ORDER BY seq DESC LIMIT 1').first<{seq:number}>();
-      epoch=String(row?.seq||0);
+      // The search projection can finish after publication. Its monotonic receipt
+      // also invalidates any result cached while that publication was still queued.
+      const row=await env.CATALOG_DB.prepare('SELECT seq,(SELECT rowid FROM processed_event ORDER BY rowid DESC LIMIT 1) AS projected FROM outbox_event ORDER BY seq DESC LIMIT 1').first<{seq:number;projected:number|null}>();
+      epoch=String(row?.seq||0)+'.'+String(row?.projected||0);
     }catch{return finish(await next(),'BYPASS');}
   }
   const key=publicCacheKey(request,env.APP_ENV!,release,epoch);
