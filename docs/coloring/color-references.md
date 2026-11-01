@@ -21,7 +21,9 @@ Every automatic job receives the actual image pixels three times:
    not substituted for the source. Pigment transfers into source-owned regions;
    original dark pixels and the entire brand footer are preserved losslessly.
 3. Qwen examines the original and final transferred image, records actual observed
-   colors, and rejects material/character errors. Geometric checks also reject
+   colors, and rejects material/character errors. This final assessment is blind to
+   the proposed palette, so a valid white candle is not rejected merely because
+   the planner suggested red stripes. Geometric checks also reject
    missing colors or unrelated output. This is machine assessment, not a human
    visual approval or a guarantee of correct recognition.
 

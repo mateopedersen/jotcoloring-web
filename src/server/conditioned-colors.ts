@@ -104,7 +104,7 @@ export async function runColorReference(env:Env,key:string){
   }
   if(!saved)throw new AppError('COLOR_OUTPUT_MISSING','Saved color result unavailable.',503);
   const output=finishColorReference(bytes,new Uint8Array(await saved.arrayBuffer())),hash=await sha256(output.bytes),prefix=automaticReferencePrefix(source.id,job.source_sha256,job.preview_sha256);
-  const review=parseColorReview(await vision(reviewPrompt(plan),[input.png,prepareColorInput(output.bytes).png]));
+  const review=parseColorReview(await vision(reviewPrompt(),[input.png,prepareColorInput(output.bytes).png]));
   await env.JOB_ASSETS.put(rawKey+'.review',JSON.stringify(review));
   if(!review.acceptable)throw new AppError('COLOR_SEMANTIC_REVIEW','This color suggestion needs a closer visual review.',422);
   const semantic={status:'machine_passed' as const,model:COLOR_VISION_MODEL,plan_sha256:await sha256(new TextEncoder().encode(JSON.stringify(plan))),review_sha256:await sha256(new TextEncoder().encode(JSON.stringify(review)))};
