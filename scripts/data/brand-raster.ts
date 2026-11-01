@@ -38,3 +38,26 @@ export async function brandedColorCardWebP(input:Uint8Array,width:number,height:
 
 /** Larger inspiration previews retain crisp line work with bounded palette error. */
 export async function brandedColorInspirationWebP(input:Uint8Array,width:number,height:number){return brandedColorCardWebP(input,width,height,900_000,4.5);}
+
+
+/** Add the protected footer around native outline pixels, without a shrink/expand cycle.
+ * A lossless full-size printable is the Studio boundary source, so interpolation or
+ * a lossy encode must not open formerly enclosed coloring spaces.
+ */
+export async function nativeOutlineWebP(input:Uint8Array){
+ const clean=await sharp(input,{limitInputPixels:25_000_000}).rotate().flatten({background:'#fff'}).greyscale().toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
+ const nw=clean.info.width,nh=clean.info.height;let frame:{width:number;height:number;layout:ReturnType<typeof brandFooterLayout>}|undefined;
+ for(let height=nh+8;height<=nh+Math.ceil(nw*.12)+32&&!frame;height++){
+  const center=Math.round(nw*height/nh);
+  for(let width=Math.max(nw,center-2);width<=center+2;width++){
+   const layout=brandFooterLayout(width,height);
+   if(layout.artwork.width===nw&&layout.artwork.height===nh){frame={width,height,layout};break;}
+  }
+ }
+ if(!frame||frame.width*frame.height>25_000_000)throw Error('Cannot preserve native outline within the protected footer bounds.');
+ const footer=brandFooterRGBA(frame.width,frame.height);
+ const bytes=await sharp({create:{width:frame.width,height:frame.height,channels:3,background:'#fff'}}).composite([{input:clean.data,raw:{width:nw,height:nh,channels:clean.info.channels},left:frame.layout.artwork.x,top:0},{input:Buffer.from(footer.raw),raw:{width:footer.width,height:footer.height,channels:4},left:0,top:footer.top}]).webp({lossless:true,effort:6}).toBuffer();
+ const restored=await sharp(bytes).extract({left:frame.layout.artwork.x,top:0,width:nw,height:nh}).greyscale().raw().toBuffer();
+ if(!restored.equals(clean.data))throw Error('Printable export changed native outline pixels.');
+ return {bytes,width:frame.width,height:frame.height,nativeWidth:nw,nativeHeight:nh,artwork:frame.layout.artwork};
+}
