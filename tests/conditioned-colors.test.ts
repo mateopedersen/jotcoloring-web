@@ -68,3 +68,22 @@ test('vision gateway requires a source image and the full vision reservation bef
  const env={AI_FREE_GATEWAY_SECRET:secret,ACCOUNT_BILLING_PLAN:'workers_free',ENFORCED_ACCOUNT_ID:'0dce4e45aa8f6fcab101ea9622db99f2',AI:{run:async()=>{calls++;return new Response('{"response":"{}"}',{headers:{'Content-Type':'application/json'}})}}};
  for(const [field,cap,status] of [['input_image_0','600',200],['input_image_1','600',422],['input_image_0','300',401]] as const){const form=new FormData(),png=await sharp({create:{width:512,height:768,channels:4,background:'#fff'}}).png().toBuffer();form.set('prompt','Inspect the actual source drawing and list plausible colors.');form.set(field,new Blob([png],{type:'image/png'}),'source.png');const encoded=new Response(form),body=new Uint8Array(await encoded.arrayBuffer()),timestamp=String(Date.now()),id=crypto.randomUUID(),headers={'Content-Type':encoded.headers.get('content-type')!,'X-Request-Timestamp':timestamp,'Idempotency-Key':id,'X-AI-Model':COLOR_VISION_MODEL,'X-Max-Neurons':cap,'X-Request-Signature':await gatewaySignature(secret,signatureData(timestamp,id,COLOR_VISION_MODEL,cap,await gatewayDigest(body)))};assert.equal((await gateway.fetch(new Request('https://gateway.test/inference',{method:'POST',headers,body}),env)).status,status);}assert.equal(calls,1);
 });
+
+
+test('final review sees both real images but cannot anchor on the proposed palette',async()=>{
+ const f=await setup(),gateway=f.env.AI_FREE_ONLY_GATEWAY!;let reviewed=false;
+ const privateProposal='decorative-stripes-coral-proposal';
+ f.env.AI_FREE_ONLY_GATEWAY={fetch:async r=>{
+  const request=r as Request,form=await request.clone().formData(),prompt=String(form.get('prompt'));
+  if(prompt.startsWith('Inspect the supplied'))return new Response(JSON.stringify({response:JSON.stringify({objects:[{name:'Two shapes',parts:privateProposal}],notes:'Keep paper white.'})}),{headers:{'X-Zero-Charge-Enforced':'true','X-Provider-Receipt':'test-blind-plan'}});
+  if(prompt.startsWith('Image 1')){
+   reviewed=true;assert.ok(!prompt.includes(privateProposal));
+   const original=form.get('input_image_0') as File,result=form.get('input_image_1') as File;
+   assert.equal(await sha256(new Uint8Array(await original.arrayBuffer())),await sha256(prepareColorInput(f.sourceBytes).png));
+   assert.equal(await sha256(new Uint8Array(await result.arrayBuffer())),await sha256(prepareColorInput(finishColorReference(f.sourceBytes,f.priorBytes).bytes).png));
+   assert.match(prompt,/character/);assert.match(prompt,/spilling/);
+  }
+  return gateway.fetch(request);
+ }};
+ await runColorReference(f.env,f.job().job_key);assert.equal(reviewed,true);assert.equal(f.job().state,'ready');assert.equal(f.backups.files.size,5);
+});
