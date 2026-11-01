@@ -37,3 +37,7 @@ During the sealed 2400-artwork production release, unrestricted queue autoscalin
 ## PDF document identity after editorial edits
 
 A reviewed title change must refresh the PDF document title as well as the HTML metadata and rendered social cover. `rebind-reviewed-metadata.ts` writes a fresh PDF only when its internal title differs, without re-encoding the accepted drawing or footer image streams. The new PDF hash invalidates its earlier derivative review and receives a fresh inspection record. Import dry-runs and media audits require the PDF title to match the reviewed manifest. Never overwrite a previously accepted prepared bundle or immutable public object. If already published, use a normal revision update, verify its private recovery copy and all published assets, and recheck the actual public PDF bytes and document title.
+
+## Authorized 300-drawing follow-up
+
+The owner separately requested the Descendants / Squishy / KPop Demon Hunters package on 2026-11-01. Scope `descendants-squishy-kpop-20261101` requires exactly those three complete 100-drawing topics, its fixed original ZIP checksum, all 300 source-bound double reviews and final-render approvals, and an unchanged sealed source inventory. The original legacy 24/2400 gate is unchanged. Unknown release identifiers or smaller counts are rejected. Worker transports authenticate the explicit scope and all fifteen files through the same HMAC and normal import/backup/publication/search pipeline. This adds no resource, queue, public import endpoint, or paid inference.

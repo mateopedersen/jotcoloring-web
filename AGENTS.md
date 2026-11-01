@@ -11,3 +11,5 @@ Use the separate JotColoring authentication profile; do not replace the shared U
 Latest owner clarification: prepare all 24 packages and 2400 designs first, then publish together. Do not resume a partial production release. Require the complete source-bound full-release inventory and verify the entire publication live.
 
 Latest addition: Huntrix100 is included in the same full24-package release. Its README reports generated raster artwork; record that source claim alongside owner publication authorization. Fresh file hashes were computed because this ZIP supplies a CSV without SHA-256 values.
+
+Owner follow-up, 2026-11-01: the completed 24-topic release is preserved. The separately authorized Descendants / Squishy / KPop Demon Hunters ZIP is a complete three-topic, 300-drawing release with a distinct sealed scope. Never present its three topics as the earlier 24-topic inventory. Inspect every new drawing, preserve originals, require double editorial and final-render approval, and verify all new public downloads.
