@@ -113,7 +113,7 @@ class OperationsTests(unittest.TestCase):
             self.assertNotIn('private-photo-path', sql)
             self.assertEqual(result['excluded_private_rows']['creator_upload'], 1)
             self.assertEqual(result['tables']['creator_upload']['rows'], 0)
-            self.assertEqual(result['tables']['category']['rows'], 124)
+            self.assertEqual(result['tables']['category']['rows'], 127)
             restored=sqlite3.connect(':memory:');restored.execute('PRAGMA foreign_keys=ON');restored.executescript(sql)
             self.assertEqual(restored.execute('SELECT COUNT(*) FROM creator_upload').fetchone()[0],0)
             self.assertEqual(restored.execute('SELECT COUNT(*) FROM category').fetchone()[0],124)
