@@ -1,3 +1,4 @@
+import {requireSearchableTopicIdentity} from '../../src/taxonomy/topic-identity';
 import {automaticColorPNG} from './automatic-colors';
 import {compactOutline} from './responsive-raster';
 import {selectPreparedCategories,preparedCategorySelection} from './category-selection';
@@ -41,6 +42,7 @@ const ageRecommendation=await analyzeAgeImage(new Uint8Array(await fs.readFile(f
 await releaseAgeModel();
 await fs.writeFile(path.join(out,'category-analysis.json'),JSON.stringify({source_sha256:ageRecommendation.source_sha256,...ageRecommendation.category_analysis},null,2),{mode:0o600});
 const selectedCategories=selectPreparedCategories(ageRecommendation.category_analysis,flags.get('--categories')||'auto',flags.get('--category-review')||'');
+requireSearchableTopicIdentity({title,description,category_ids:selectedCategories});
 await fs.writeFile(path.join(out,'category-review.json'),JSON.stringify({source_sha256:ageRecommendation.source_sha256,analysis_version:ageRecommendation.version,selected_categories:selectedCategories,selection:flags.get('--categories')||'auto',review_note:(flags.get('--category-review')||'').trim()},null,2),{mode:0o600});
 const categorySelection=preparedCategorySelection(ageRecommendation.category_analysis,ageRecommendation.source_sha256,flags.get('--categories')||'auto',flags.get('--category-review')||'');
 // A black-and-white source is sufficient; a supplied reference is an optional override.
