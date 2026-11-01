@@ -14,7 +14,7 @@ const m=JSON.parse(await fs.readFile(path.join(oldDir,'manifest.json'),'utf8')),
 const hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex'),sourceBytes=new Uint8Array(await fs.readFile(files.source_original));if(!m.provenance.reference.includes('Source SHA-256 '+hash(sourceBytes)))throw Error('Native source changed');
 for(const a of m.assets){const bytes=new Uint8Array(await fs.readFile(files[a.role]));if(bytes.length!==a.bytes||hash(bytes)!==a.sha256)throw Error('Prepared source asset changed');}
 try{await fs.access(path.join(outDir,'manifest.json'));throw Error('Fresh output folder required');}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;}
-const previousTitle=m.title,previousSlug=m.slug;m.title=r.title;m.description=r.description;m.alt_text=r.alt_text;m.slug=r.title===previousTitle?previousSlug:r.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');m.tags=r.tags;
+const previousSlug=m.slug;m.title=r.title;m.description=r.description;m.alt_text=r.alt_text;m.slug=previousSlug;m.tags=r.tags;
 const selection=preparedCategorySelection(m.age_recommendation.category_analysis,m.age_recommendation.source_sha256,r.category_ids.join(','),'Inspected artwork: '+r.observations);m.category_selection=selection;m.category_ids=selection.category_ids;
 requireSearchableTopicIdentity(m);
 const line=m.assets.find((a:any)=>a.role==='printable_webp_bw'),binding=socialBinding({...m,recommendedAge:m.age_recommendation.band,sourceSHA256:line.sha256}),spec=contentSocialSpec(binding);
