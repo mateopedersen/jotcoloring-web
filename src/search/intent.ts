@@ -1,11 +1,11 @@
 /** Shared lexical intent. No network, paid model or inferred facts about unseen images. */
-export const SEARCH_VERSION='jot-search-3-topic-prefix';
+export const SEARCH_VERSION='jot-search-3-topic-aliases';
 const groups=[['cat','cats','kitten','kittens','kitty','kitties'],['dog','dogs','puppy','puppies','pup'],['rabbit','rabbits','bunny','bunnies'],['fox','foxes'],['deer','fawn','fawns'],['bird','birds'],['owl','owls'],['hedgehog','hedgehogs'],['flower','flowers','floral','bloom','blooms'],['dinosaur','dinosaurs','dino','dinos'],['car','cars','automobile','automobiles'],['camper','campers','campervan','van','vans'],['ocean','underwater','marine'],['turtle','turtles'],['fish','fishes'],['space','outerspace'],['astronaut','astronauts'],['planet','planets'],['mandala','mandalas'],['butterfly','butterflies'],['cupcake','cupcakes'],['dessert','desserts','sweets'],['snowman','snowmen'],['christmas','xmas'],['woodland','forest'],['bookshop','bookstore'],['color','colour']];
 const aliases=new Map(groups.flatMap(group=>group.map(term=>[term,group] as const)));
 const filler=new Set(['a','an','the','of','and','for','with','to','please','find','show','me','some','free','printable','printables','coloring','colouring','page','pages','sheet','sheets','picture','pictures','cute']);
 export function searchWords(value:string,limit=12){return value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/(?:coloring|colouring)[ -]+(?:pages?|sheets?)/g,' ').match(/[\p{L}\p{N}]+/gu)?.slice(0,limit)||[];}
-export function intentWords(value:string){return searchWords(value).filter(w=>!filler.has(w)).slice(0,8);}
-export function parseSearchIntent(value:string){let remaining=value.toLowerCase();const ages:string[]=[],bands:string[]=[],difficulty:string[]=[];
+export function intentWords(value:string){const words=searchWords(value),subjects=words.filter(w=>!filler.has(w)).slice(0,8);return subjects.length?subjects:words.includes('cute')?['cute']:[];}
+export function parseSearchIntent(value:string){let remaining=value.toLowerCase().replace(/\bsonic(?:\s+the)?\s+hedgehog\b/g,'sonic');const ages:string[]=[],bands:string[]=[],difficulty:string[]=[];
  remaining=remaining.replace(/\bfor\s+(adults?|kids|children|teens?|teenagers)\b/g,(_,group:string)=>{ages.push(/adult/.test(group)?'adults':/teen/.test(group)?'teens':'kids');return' ';});
  remaining=remaining.replace(/^(adults?|kids|children|teens?|teenagers)(?=\s+colou?ring|\s*$)/,(_,group:string)=>{ages.push(/adult/.test(group)?'adults':/teen/.test(group)?'teens':'kids');return' ';});
  const byAge=(first:number,last=first)=>{for(const [id,min,max] of [['3-5',3,5],['6-8',6,8],['9-12',9,12],['13-17',13,17],['adults',18,120]] as const)if(first<=max&&last>=min)bands.push(id);};
