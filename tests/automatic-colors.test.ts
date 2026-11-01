@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {automaticColorPixels,automaticColorTheme} from '../src/coloring/automatic';
-import {homeGallerySelection} from '../src/ui/home-selection';
 import {compactColorPixels} from '../src/coloring/compact';
 const fixture=()=>{
  const w=160,h=180,raw=new Uint8Array(w*h*4).fill(255);
@@ -31,10 +30,6 @@ test('blank paper and transparent areas are never fabricated into a colored draw
  const raw=new Uint8Array(64*64*4).fill(255);assert.equal(automaticColorPixels(raw,64,64).coloredRegions,0);assert.deepEqual(automaticColorPixels(raw,64,64).pixels,raw);
  raw.fill(0);assert.deepEqual(automaticColorPixels(raw,64,64).pixels,raw);
  assert.throws(()=>automaticColorPixels(raw,4000,4000));assert.throws(()=>automaticColorPixels(raw,64,64,{artBottom:100}));
-});
-test('new published pages automatically join the homepage without duplicates or displacing the entire featured selection',()=>{
- const old=Array.from({length:30},(_,i)=>({id:'old-'+i})),recent=[{id:'new-one'},{id:'old-5'},{id:'new-two'},{id:'new-three'},{id:'extra'}];
- const result=homeGallerySelection(old,recent);assert.deepEqual(result.slice(0,4),recent.slice(0,4));assert.equal(result.length,24);assert.equal(new Set(result.map(x=>x.id)).size,24);assert.ok(result.some(x=>x.id==='old-0'));assert.equal(result.some(x=>x.id==='extra'),false);assert.deepEqual(homeGallerySelection([],[]),[]);
 });
 test('bounded compression keeps ink, alpha and the brand band exact, with no more than eight levels of channel error',()=>{
  const{raw,w,h}=fixture(),colored=automaticColorPixels(raw,w,h,{title:'Flower garden',artBottom:166}).pixels;

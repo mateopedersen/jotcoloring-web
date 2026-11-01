@@ -4,13 +4,20 @@ import {withPublicCache,publicCachePolicy,publicCacheKey,type ResponseCache} fro
 import type {Env} from '../src/server/types';
 
 function fixture(){
- let epoch=1,originCalls=0;const entries=new Map<string,Response>(),pending:Promise<unknown>[]=[];
+ let epoch=1,projected=1,originCalls=0;const entries=new Map<string,Response>(),pending:Promise<unknown>[]=[];
  const cache:ResponseCache={async match(k){return entries.get(k.url)?.clone()},async put(k,r){entries.set(k.url,r)}};
- const env={APP_ENV:'staging',PUBLIC_SITE_URL:'https://staging.jotcoloring.com',CATALOG_DB:{prepare(){return{async first(){return{seq:epoch}}}}}} as unknown as Env;
+ const env={APP_ENV:'staging',PUBLIC_SITE_URL:'https://staging.jotcoloring.com',CATALOG_DB:{prepare(){return{async first(){return{seq:epoch,projected}}}}}} as unknown as Env;
  const next=async()=>{originCalls++;return new Response('published revision '+epoch,{headers:{'Content-Type':'text/html',ETag:'"revision-'+epoch+'"'}})};
  const run=(request=new Request(env.PUBLIC_SITE_URL+'/coloring/fox/'),handler=next)=>withPublicCache(request,env,'release-one',handler,cache,p=>pending.push(p));
- return{env,cache,entries,pending,run,get calls(){return originCalls},advance(){epoch++}};
+ return{env,cache,entries,pending,run,get calls(){return originCalls},advance(){epoch++},project(){projected++}};
 }
+test('a completed search projection invalidates results cached during the publication queue',async()=>{
+ const f=fixture(),request=new Request(f.env.PUBLIC_SITE_URL+'/api/search?q=bluey');let calls=0;
+ const next=async()=>new Response(JSON.stringify({total:++calls}),{headers:{'Content-Type':'application/json'}});
+ assert.equal((await f.run(request,next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
+ assert.equal((await f.run(request,next)).headers.get('X-JotColoring-Cache'),'HIT');assert.equal(calls,1);
+ f.project();assert.equal((await f.run(request,next)).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(calls,2);
+});
 test('public edge cache reuses published HTML and a publication epoch invalidates it immediately',async()=>{
  const f=fixture(),first=await f.run();assert.equal(first.headers.get('X-JotColoring-Cache'),'MISS');assert.equal(await first.text(),'published revision 1');await Promise.all(f.pending);
  const hit=await f.run();assert.equal(hit.headers.get('X-JotColoring-Cache'),'HIT');assert.equal(f.calls,1);assert.match(hit.headers.get('Cache-Control')!,/max-age=0/);
