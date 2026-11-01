@@ -42,3 +42,40 @@ test('a franchise alias never expands the HUNTR/X group into the whole film',()=
  assert.deepEqual(searchTopicIds('KPop Demon Hunters'),['k-pop-demon-hunters','huntrix']);
  assert.deepEqual(searchTopicIds('not a real collection'),[]);
 });
+
+
+/** Match the deployed D1 LIKE byte limit, while keeping real SQLite matching. */
+function enforceD1LikeLimit(db:LocalSearch){
+ const native=new DatabaseSync(':memory:'),match=native.prepare('SELECT ? LIKE ? ESCAPE ? AS matched');
+ db.sql.function('like',{varargs:true,deterministic:true},(...args)=>{
+  const [pattern,value,escape='\\']=args;
+  if(typeof pattern!=='string'||typeof value!=='string'||typeof escape!=='string')return null;
+  if(Buffer.byteLength(pattern)>50)throw new Error('LIKE or GLOB pattern too complex');
+  return Number(match.get(value,pattern,escape)!.matched);
+ });
+ return native;
+}
+const addSearchDrawing=(search:D1SearchProvider,id:string,title:string)=>search.project({id,title,categories:'cartoons hello-kitty',category_ids:['cartoons','hello-kitty'],tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-01',age_groups:['kids']});
+
+test('long literal title searches find the actual drawing under the D1 pattern limit',async(t)=>{
+ const db=new LocalSearch(),native=enforceD1LikeLimit(db),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>{db.sql.close();native.close();});
+ const titles=['Hello Kitty Waters a Flower-Filled Conservatory Garden','Hello Kitty Collects Shells Beside a Coastal Pavilion','Hello Kitty Celebrates Beside a Flowering Party Arch'];
+ for(const [index,title] of titles.entries())await addSearchDrawing(search,'long-title-'+index,title);
+ for(const [index,title] of titles.entries())assert.deepEqual((await search.search(title)).ids,['long-title-'+index]);
+});
+
+test('literal prefix ranking works across the 50-byte boundary and Unicode queries',async(t)=>{
+ const db=new LocalSearch(),native=enforceD1LikeLimit(db),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>{db.sql.close();native.close();});
+ const queries=['x'.repeat(49),'x'.repeat(50),'美しい庭園の花と静かな池の彩色風景'];
+ assert.ok(Buffer.byteLength(queries[2])>50&&queries[2].length<50);
+ for(const [index,query] of queries.entries())await addSearchDrawing(search,'prefix-boundary-'+index,query+' Scene');
+ for(const [index,query] of queries.entries())assert.ok((await search.search(query)).ids.includes('prefix-boundary-'+index));
+});
+
+test('exact titles, literal prefixes and cursor order keep their existing ranking',async(t)=>{
+ const db=new LocalSearch(),native=enforceD1LikeLimit(db),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>{db.sql.close();native.close();});
+ for(const [id,title] of [['exact','Garden'],['prefix','Garden Fox'],['suffix','Fox Garden']])await addSearchDrawing(search,id,title);
+ const first=await search.search('garden',1);assert.deepEqual(first.ids,['exact']);assert.equal(first.has_more,true);assert.ok(first.next_cursor);
+ const second=await search.search('garden',1,{cursor:first.next_cursor!});assert.deepEqual(second.ids,['prefix']);assert.ok(second.next_cursor);
+ const third=await search.search('garden',1,{cursor:second.next_cursor!});assert.deepEqual(third.ids,['suffix']);assert.equal(third.has_more,false);
+});
