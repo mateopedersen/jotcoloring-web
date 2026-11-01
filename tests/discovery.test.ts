@@ -12,3 +12,10 @@ test('duplicate concurrent delivery claims only once and late obsolete publicati
  const fetcher:any=async(u:string)=>{if(u.endsWith('.txt'))return new Response(INDEXNOW_KEY);if(u.includes('api.indexnow.org')){posts++;return new Response('',{status:200})}return new Response('',{status:404})};
  await Promise.all([sendDiscoveryNotices(f.env,fetcher),sendDiscoveryNotices(f.env,fetcher)]);assert.equal(posts,1);assert.ok(f.sql.prepare("SELECT id FROM discovery_notice WHERE state='obsolete'").get());
 });
+
+test('real publication validates both live preview and PDF before accepting its detail notification',async()=>{
+ const f=setup();drawing(f.sql);f.sql.exec("INSERT INTO content_category(content_id,category_id) VALUES('fox','animals')");for(const [role,mime,key] of [['catalog_preview_bw','image/webp','published/fox.webp'],['printable_pdf_a4_bw','application/pdf','published/fox.pdf']])f.sql.prepare('INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified) VALUES(?,?,?,?,?,?,?,?,?,?,?)').run(role,'fox',1,role,key,key,mime,100,'a'.repeat(64),1,1);
+ f.sql.exec("UPDATE content SET status='published',updated_at='2026-11-01T04:00:00Z' WHERE id='fox'");await rebuildDiscovery(f.env,8);const sent:string[]=[],heads:string[]=[];
+ const fetcher:any=async(u:string,init:any)=>{if(init?.method==='HEAD'){heads.push(u);return new Response(null,{headers:{'Content-Type':u.endsWith('.pdf')?'application/pdf':'image/webp'}})}if(u.endsWith('.txt'))return new Response(INDEXNOW_KEY);if(u.includes('api.indexnow.org')){sent.push(...JSON.parse(init.body).urlList);return new Response('',{status:200})}return new Response(`<link rel="canonical" href="${u}">`)};
+ await sendDiscoveryNotices(f.env,fetcher);assert.ok(sent.includes('https://jotcoloring.com/coloring/fox/'));assert.equal(heads.length,2);assert.equal(f.sql.prepare("SELECT COUNT(*) n FROM discovery_notice WHERE state='failed'").get()!.n,0);
+});
