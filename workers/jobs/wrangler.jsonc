@@ -172,7 +172,8 @@
             "max_batch_size": 1,
             "max_batch_timeout": 2,
             "max_retries": 3,
-            "dead_letter_queue": "jotcoloring-production-dead-letter"
+            "dead_letter_queue": "jotcoloring-production-dead-letter",
+            "max_concurrency": 8
           },
           {
             "queue": "jotcoloring-production-ai",
