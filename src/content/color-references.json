@@ -1,0 +1,502 @@
+[
+  {
+    "id": "jc-original-fox-beside-a-woodland-stream",
+    "sourceHash": "dbf7311c85789121ba72e1797244865354768198ea853a29ee368e2c8b24161a",
+    "referenceHash": "92dbcbbfbd63fd916e00629685ea873ea1948ff8cd9b94c33d37d4f2a9cb8028"
+  },
+  {
+    "id": "jc-original-rabbit-in-a-lavender-garden",
+    "sourceHash": "f4e50e9d26ffaa8de322093472a66a9478e86fbca441297ea745572e23dd42ed",
+    "referenceHash": "f30ed710591d3bf90f4ea59e2f454b7bfb559b2c8edd213e3f28815eb6c7fd70"
+  },
+  {
+    "id": "jc-original-red-panda-in-the-bamboo",
+    "sourceHash": "9943e75a391ee93d8b4301dfdae8cbb3236ff7a4c63670ccf35577d930b25325",
+    "referenceHash": "b71fd65bdd8d64aad6cb9ecc2ff7005325635f39560ba563f74cea8d1dba7e6f"
+  },
+  {
+    "id": "jc-original-hedgehog-in-an-apple-orchard",
+    "sourceHash": "e0a410782160cb495c5ed0b4edd8d8277f522738e51dfb24432cc8d28c6c7343",
+    "referenceHash": "ca294771292321c7da2533e7f3f79c45f1a64b55baa1a31cfa25ad0cd0ed0b41"
+  },
+  {
+    "id": "jc-original-otter-on-a-lily-pond",
+    "sourceHash": "9db4a44f0fe68118495783f139e42092a7d72bc5b7014d3d78a9f90a352b86d4",
+    "referenceHash": "4cd2e1a18b1ae8d8caf486d4442ad3ba9fad38170fee18b84b9c4ad1b25c19cc"
+  },
+  {
+    "id": "jc-original-fawn-among-the-bluebells",
+    "sourceHash": "e82d0e3c59a032ebf1176d1290033caf36cd03441d32fb11d4c734d5e30ac94c",
+    "referenceHash": "f2f9bea360a1ea7b3634622388c9e76a3dee4a3b93577e316372551f4991fd09"
+  },
+  {
+    "id": "jc-original-squirrel-and-the-autumn-acorns",
+    "sourceHash": "aaf42bfca73a3537f68ec97446b7c1fe7b2c073dbf098f9e22fd4b0a54cea4c5",
+    "referenceHash": "64c296749611556f47582d54ac4e752c47473740c95f71d13c8e1fa9fd25cd33"
+  },
+  {
+    "id": "jc-original-kitten-at-a-sunny-window",
+    "sourceHash": "05eb0a67f056ee14775726e38a523777288cfbebcefe7077632c201aa5c8b7c7",
+    "referenceHash": "31d4c1747f8278db6f99cc3c886252a59b226f459be69c9004c235aa186dee1c"
+  },
+  {
+    "id": "jc-original-puppy-in-a-cottage-garden",
+    "sourceHash": "c2b9b83b7142287d94a8023e85e742e443f7ddb0db59e72a88afc87518c4d406",
+    "referenceHash": "14fc051bc5c003086f490079ee434340a13f5edf129640b333b76b08747fac67"
+  },
+  {
+    "id": "jc-original-koala-in-the-eucalyptus",
+    "sourceHash": "ecbf458ce637aa8558d0ea088ed1afee02ffb877a1911ebd2e79d3bf04c06e0a",
+    "referenceHash": "6789c6e492076f4f34e80d3348e15f8fb89a67a5f37ff9cb39ebecd557ec518c"
+  },
+  {
+    "id": "jc-original-toucan-in-a-tropical-garden",
+    "sourceHash": "e80e4c6243ed0260ff8dade59e26b3510de32ec3feec56a7e7e41143b95fce22",
+    "referenceHash": "4798f5c2488521ad12e7da774b6c2e73ae7e78dac65187d4b7cf9f3e003b774f"
+  },
+  {
+    "id": "jc-original-hummingbird-among-the-fuchsias",
+    "sourceHash": "9353dcc3087917fe675f8f0c954596c3febbd740e9a59a5448ac82e3aeb7dad1",
+    "referenceHash": "34257a27018e41d117daba9c2341e6367b75c597a106d06fbbfa3c693b6bb53c"
+  },
+  {
+    "id": "jc-original-owl-beneath-a-starry-moon",
+    "sourceHash": "0e052fbaded0b66792aeff5e9eaf2ab7b65b6999fbb85e8769fd73fc5fe34144",
+    "referenceHash": "531502eb30dd0661d819d5cbb7b7ea98a373d391ac247d4bdccc817636f7a37d"
+  },
+  {
+    "id": "jc-original-kingfisher-by-a-garden-pond",
+    "sourceHash": "98456afe4ed091da9cd77e5ce9dd0beef721a3b2c4dc5260d2e5afa534f8229e",
+    "referenceHash": "ab87632d2fc35f6884cca7498c1fb45d371410b797b1f98d91f4665f6143aa36"
+  },
+  {
+    "id": "jc-original-puffin-on-a-coastal-cliff",
+    "sourceHash": "c761c33a07a2aa40b0ce2c9c59c9289d5b9afb7374835efc6da2e4547964c80a",
+    "referenceHash": "0fd6b8004cec9eeb3a312a5acb360e21b8c963cdcccf2e05dcb6974f88673470"
+  },
+  {
+    "id": "jc-original-peacock-in-a-palace-garden",
+    "sourceHash": "af30140fda87385a089ac0ae4462f2f6e8fa2f44ecf3a3449d8910d1562db9f9",
+    "referenceHash": "ea48279e2a018e2c79e0833dff9528d16f5291a5f90f44a9cbb50e1bf844047f"
+  },
+  {
+    "id": "jc-original-swans-and-water-lilies",
+    "sourceHash": "cc33b0cf9cad5418a2778b162ab79b44786b5e59796bc92ba8d28315c7860d9b",
+    "referenceHash": "7d6a8d72fd4dbd0219a9909c82a8dbf06c9f1a8384991b9ef399966bd85c72bf"
+  },
+  {
+    "id": "jc-original-blue-jay-in-the-oak-tree",
+    "sourceHash": "c7ca3af28c96cee288dc7cca99b0edc4eac426945865c2cbf18d7038b159cbf4",
+    "referenceHash": "b3b61b565796b478909729103d4673fba2eb2d1166c56217b9340617bbf99e62"
+  },
+  {
+    "id": "jc-original-parrot-and-tropical-orchids",
+    "sourceHash": "7412127b00af928957bd600bb4c61dfd7d4753a24a62259667a8f045b6cb51f7",
+    "referenceHash": "83b29d025c2afc568af26b5e1b64733676a589f9b7d29bb8fc2c08dc349fe026"
+  },
+  {
+    "id": "jc-original-robin-among-winter-berries",
+    "sourceHash": "747ec609844166a54200b34c8723d9fe994eb49fad887f44189986092ce4cad5",
+    "referenceHash": "7f7da1016f38a19e3fa15212f3e23dbf9518d6591f73b67abe0fed6fab827f21"
+  },
+  {
+    "id": "jc-original-sunflowers-and-busy-bees",
+    "sourceHash": "71440e36bbcc3c274aa45aef65a4c2909b3d49dff07955e129c94f0a56ac57b3",
+    "referenceHash": "7f28bbd55006b079a5d33b321f15c2bffda68c58d9fb7e2c3ed5b77388b07505"
+  },
+  {
+    "id": "jc-original-roses-around-a-garden-gazebo",
+    "sourceHash": "e0f4f17ac5cf564c2dc05989d02a10a073d39383335379ab4d08a0e26f16844b",
+    "referenceHash": "a33e337301237a2073a108daa783b22b8ddcc194c5897ba506eaf3a68ec49880"
+  },
+  {
+    "id": "jc-original-lotus-blossoms-on-a-quiet-pond",
+    "sourceHash": "a77af4ebf4ecb9f8877d50e8b39a91fc64556872b6b93407e44f9174b1f6b2fe",
+    "referenceHash": "2fad4d6f34f3e92792878702db6348b0ea62948e6ed084c3435e1c8ccfd48386"
+  },
+  {
+    "id": "jc-original-wildflower-meadow-with-butterflies",
+    "sourceHash": "bb55e3a07d7cb6803d8b458a0e11be28604c04b9746be4117dc9d2ef7ecd6ec3",
+    "referenceHash": "4e74d8059d65ab9af46d41195af7be3cbea90befa519112c78cf00598c6bc7e5"
+  },
+  {
+    "id": "jc-original-magnolias-and-a-garden-lantern",
+    "sourceHash": "3e9ef9b7d6fb1e847fba9c1eda2b1010293d8fe486b050b59d0b78a667f35861",
+    "referenceHash": "2d7366119106b8113d1a20d9979b37fc3d6d9c0009a6bf5728822831cb297224"
+  },
+  {
+    "id": "jc-original-dahlias-and-a-monarch-butterfly",
+    "sourceHash": "c0364dbbf6d69d7b803f87a668a4b391e0b4367b09360fe3250d85a983bdce58",
+    "referenceHash": "67b59f6f6a8d43618b0fe3f0143f28e8e7cb8e9b358a1d4b1754ccf5ce3c0552"
+  },
+  {
+    "id": "jc-original-tulips-by-a-country-windmill",
+    "sourceHash": "89ecd232304077aa741cd585994e92b51258fb6c319f151601875436d0747881",
+    "referenceHash": "b96908cbb283e9bb84ef308a8b318357ea3be0cd57fe57b049fe2fb127fe1f54"
+  },
+  {
+    "id": "jc-original-orchids-in-a-glasshouse",
+    "sourceHash": "512868d416b3ab66d88098fa7a204b7116ae89fef91da2f5700864972c4f3b14",
+    "referenceHash": "1a23dccd14439285980f6a9f1038a865c5a6c42841118e5c36ddb379afbc7f71"
+  },
+  {
+    "id": "jc-original-water-lilies-and-a-dragonfly",
+    "sourceHash": "32f3bb3da37e2325692e7d25d004543f09ea7fe6d18f247852cc3cf24cdfb244",
+    "referenceHash": "31b01ff45f071661c69363d281a57eca80a6fc1ba2bdb3e261f2cbb22a2eb842"
+  },
+  {
+    "id": "jc-original-poppies-beside-a-cottage-gate",
+    "sourceHash": "67f0f16b5e59701e1a306b01060ba45ef70930c983a604b74898742b71904483",
+    "referenceHash": "901a41d6d8b5a863605db57e896c00caa4748d7c812321b3c23226a6fbc39bcf"
+  },
+  {
+    "id": "jc-original-sea-turtle-above-a-coral-garden",
+    "sourceHash": "1350f01cb49a10551fe5a150547a65cd3cf29ed5e7b196a49f72140f19dec295",
+    "referenceHash": "47107e76286f1ce06bb84ecfc31c7e1cd3685fd181fe67c638d7e82c3d80a870"
+  },
+  {
+    "id": "jc-original-dolphins-in-a-sunlit-lagoon",
+    "sourceHash": "efc1ef2a213c13cfe8d6009c5645fc498ad146fbcfab2559c86751d15fd4f206",
+    "referenceHash": "11b828b554931dbd2ed86feeb95892910c36b9453f1c2b383544d85ef5e6b1e2"
+  },
+  {
+    "id": "jc-original-seahorse-in-the-coral-arches",
+    "sourceHash": "a0e9596c6f44492d89cb23f523be25c3d46840dd548f92f101868432ec7f677e",
+    "referenceHash": "21f9ab8ffdba0cf0c38da95dfc92e362864aa0d32d37ee02b237da17d5922622"
+  },
+  {
+    "id": "jc-original-octopus-at-a-sunken-ship",
+    "sourceHash": "4ba5e452a76fb76485e5943d48cf0146453fda9587bd7ff986817f9e6bc6e396",
+    "referenceHash": "88cad0c089a52af6e7888cea6eb263683d6fc4dc48aebcb91e06c208c82e1144"
+  },
+  {
+    "id": "jc-original-clownfish-and-sea-anemones",
+    "sourceHash": "023635a45c9100c6c3b3c318f677a41e4602c5c5e852fd9f23a5dd76b62a8086",
+    "referenceHash": "0101398a5e8ba96946fe210ebd9256f7a2d9d5bbaa0da5f5bb95fc9bb5e29798"
+  },
+  {
+    "id": "jc-original-whale-beneath-the-ocean-sunbeams",
+    "sourceHash": "a646c763db2ecb0095201ef4d8c9fdb4eaa342a3ae72906bfb14596e26cd4304",
+    "referenceHash": "1a7ec11321a0bed7bfd7753d08c8358432c2691ecd5c0b4da89fd8bbf1b25945"
+  },
+  {
+    "id": "jc-original-jellyfish-in-a-blue-lagoon",
+    "sourceHash": "0814463205bc00b3f908677ce04ac705c4ecae711d20439c0faa71311b4c4b17",
+    "referenceHash": "052a9ce459119a767372c9ca0e0db57ed055cd7af6298b2aa626d47673991d65"
+  },
+  {
+    "id": "jc-original-manta-ray-over-the-sea-garden",
+    "sourceHash": "fbd9aab28e25dbd7b0fa89d84bf7bbb1b37636b0c528f21d5e459b8c785dae38",
+    "referenceHash": "43b89645455df013c2fcede265a20018c578eb540349a5c7d8fa2b011f7ef82e"
+  },
+  {
+    "id": "jc-original-crab-beside-a-sandcastle",
+    "sourceHash": "58f35ebaa11b083a1d2276e50fc14df7ef05465d937c889a4dfe56ea1f9e8128",
+    "referenceHash": "6adb6159492cd37afe5a2c2d60b628d0f0b3fbda1467b4a596c79cdb059e7af9"
+  },
+  {
+    "id": "jc-original-narwhal-in-an-arctic-fjord",
+    "sourceHash": "3816ab00e60fc4bcc0763284f726921bfb787d50bc9f9bdd566397d731144884",
+    "referenceHash": "c76414c5ac338802ed79880f773ef09329b616a81aea5d06fffb10103af41741"
+  },
+  {
+    "id": "jc-original-mushroom-cottage-in-the-ferns",
+    "sourceHash": "e6071963b6fc5749fc02a75fc214117bde64a3e02ce3433b9956cbef95901675",
+    "referenceHash": "3567d65b87fc084b6bf467e331cd208a3c819d92b7ef2b4e150476091cccc457"
+  },
+  {
+    "id": "jc-original-fox-wizard-in-a-woodland-library",
+    "sourceHash": "4ab80e85c82c6cef2f0947aff3bda7be0504dfd10c1078c939b27cd0f2b157e5",
+    "referenceHash": "21040d9e199a109c560abcfbf6df9db37f9faf0e8c31707c3448ca75e890be92"
+  },
+  {
+    "id": "jc-original-baby-dragon-and-a-teacup",
+    "sourceHash": "65c1e1622b01eceab56b1a611f01fb9738af36997371557b6edcdeadd8205e0f",
+    "referenceHash": "38424e367dc8b815a64863f8020cdf746a6382e57dfc87e850302d7cd8265f6f"
+  },
+  {
+    "id": "jc-original-unicorn-in-a-blossom-glade",
+    "sourceHash": "6e15d25f46625a00e0d00456a1377ec975cbe6fdee976bec9e1d308739bf1443",
+    "referenceHash": "eb0c4ba9da7e112e6da7de1f98bc93c7d44e171e8e90282b46ca406cbdec1e81"
+  },
+  {
+    "id": "jc-original-fairy-treehouse-with-lanterns",
+    "sourceHash": "1ad6a506713371e8102167bc1b1048e7fa7668e64383324fc76195b194206c4b",
+    "referenceHash": "3cf3712b5ef8f83ba3a0384438cc320c95c6d41dab8ce211e5928ec31610c0ba"
+  },
+  {
+    "id": "jc-original-mermaid-in-a-shell-garden",
+    "sourceHash": "e0d5a45949d568bc284bbb15bf4b0cba5493a2effbdb670c0492cf7cff628f6a",
+    "referenceHash": "362eca44e48a10dc85c1d9be02bd79d54ff93a2fc1e65bc17f96094bdfe10cc9"
+  },
+  {
+    "id": "jc-original-floating-island-above-the-clouds",
+    "sourceHash": "4957297b57ba8de0cb6f162b71d8b825b9926e14d205976621bc67ee7be87db8",
+    "referenceHash": "fe065a94d2c386ee780b9ca896e99c132614b82f40756cb2bbafe411e38ab0c3"
+  },
+  {
+    "id": "jc-original-crystal-castle-by-a-lake",
+    "sourceHash": "ba11d576d004682257e101b8e2e12ef459a47599c50ebd569e19f739eaf4eb62",
+    "referenceHash": "863729efa1f67b5043c8163baab98f0fdb93f344567f95f34ed86bc2ba87dd14"
+  },
+  {
+    "id": "jc-original-forest-sprite-and-the-wildflowers",
+    "sourceHash": "ed7a16722913e166608b72c6a384393fa3d9b5a9060ddebff602b03df478812a",
+    "referenceHash": "3c0d0d8d6a16e0b9747ab7d21de883a27002c995857797656ca3d7326ffdb3bb"
+  },
+  {
+    "id": "jc-original-enchanted-woodland-carousel",
+    "sourceHash": "04277252049ab930ff575a063ed5d4d44333ba85e82889112fb079ac3e642104",
+    "referenceHash": "349135db6b66eb33b47dacd3be64e269331fe279e588d7412e6359c1194962a2"
+  },
+  {
+    "id": "jc-original-triceratops-in-the-fern-valley",
+    "sourceHash": "3512e7a620b3295a11ae4b66288fd67fe5c504c1c7c366d02f84ec3bdb672437",
+    "referenceHash": "f8b554596866a3b7b27c1a1a7836ca7ec2fef9525fc863eab183a552f31c97a9"
+  },
+  {
+    "id": "jc-original-brontosaurus-by-a-waterfall",
+    "sourceHash": "40a93a2a01d73571bfe63e984a3401bd571b2593c0b491bcd4d26a3abec40cc1",
+    "referenceHash": "d062e9e3072a8bcf5a9e4497861702d6ca2a0226be5d5e0bb7fcc35925dc3028"
+  },
+  {
+    "id": "jc-original-stegosaurus-in-the-cycad-garden",
+    "sourceHash": "941a2e1ba3c7c4052b39c02612f8354665bfd5e194ac52cd34075f58497c2edd",
+    "referenceHash": "db18259a64fdb832e016a8227ea44219f9367f2fb2d9de70a2f897e1a6e0a940"
+  },
+  {
+    "id": "jc-original-baby-dinosaur-hatching",
+    "sourceHash": "dd760164855dfa8f8c25dbf36f39faaa274508959acfb33d29a15c025d7cb440",
+    "referenceHash": "deda2954cd400dec80a8475499f4eab77f3b3e891eb8108dea56d35bb3d7910f"
+  },
+  {
+    "id": "jc-original-pteranodon-over-a-blue-lagoon",
+    "sourceHash": "a811527ff4ff8f8f71fae7602237fcfbaf449d83e25fd090c52be6ae5e847746",
+    "referenceHash": "60f1afd351354770cfb4c394083cdb9dfca18c77f9742361f1b066bc0002d719"
+  },
+  {
+    "id": "jc-original-ankylosaurus-on-a-forest-trail",
+    "sourceHash": "de1ec851928ee6dee0531874e22fd5128c6cb34a430d9d7b403590989d35d83b",
+    "referenceHash": "facb3170d27331bb2624d3f0110437b869dc5893dbccd2f6a5b950636c04e67e"
+  },
+  {
+    "id": "jc-original-parasaurolophus-among-the-palms",
+    "sourceHash": "426bf249d520490b530b3d7aa68e46343dc0e3da5bf950b451feb3b6a254ee58",
+    "referenceHash": "7350eb2906a8c81af8313870fec12c81f0f3407872f93c5057408891e857eabc"
+  },
+  {
+    "id": "jc-original-friendly-t-rex-in-a-flower-meadow",
+    "sourceHash": "2a9b1dde71795c6eec3bd572597e1b9b8c750452cf07a9f0fbf146ddca8b3ffc",
+    "referenceHash": "78e31f700ec0f39c14f0b9832df441764ce6526be8dd1a2a9ad035e78a9afe3f"
+  },
+  {
+    "id": "jc-original-dinosaur-family-beside-a-lake",
+    "sourceHash": "9897d5fac237060690952f13f8e0188e6178e615df3e6156d7ff3af43397ecdc",
+    "referenceHash": "f61aba598a17f80005e7f7b3d12021182bee41f87e2a4587c2d24ce50f813318"
+  },
+  {
+    "id": "jc-original-fossil-explorer-in-the-desert",
+    "sourceHash": "522e06c0ea73fd5793ba95f7f7c4c8fae6e8fe9663030bacade6bd55c3982bbf",
+    "referenceHash": "ceda102668260db7e564567c882d86fcf1e40c5186e672857f336dd8bb6be347"
+  },
+  {
+    "id": "jc-original-rocket-above-the-moon-garden",
+    "sourceHash": "6c55e6f65cb44f15df5ab24875feb804e392a52bb420c8705e541265f51de4e3",
+    "referenceHash": "d3db15f4ffd42ea8d1175f22a41b2bd1cc11a9886bace65bbe7c56b792e605e9"
+  },
+  {
+    "id": "jc-original-astronaut-in-a-space-greenhouse",
+    "sourceHash": "eacb1d0483f97b52a09ed1ad526afc82a6904eef1af1d05c409c483008fe189b",
+    "referenceHash": "0c4a405aa6dab287c95e7021ae7ed8923566f69e2e749fb1162549de4b6e9540"
+  },
+  {
+    "id": "jc-original-mars-rover-at-a-canyon",
+    "sourceHash": "d3513736ca56266533e0191f84031805a5c50411d4a238be5bd0af8c6f422597",
+    "referenceHash": "124130f8fe1a7fdb23ebc6bc65aae6b27470061fa4911f7462c702262dc1a36b"
+  },
+  {
+    "id": "jc-original-observatory-beneath-saturn",
+    "sourceHash": "fe02b538ab1fe1b2eeeec0e64c9005d260c29085e58cbfe934541a23685885e6",
+    "referenceHash": "d8c1d54faf8d2ad27f380dc659e6e7f3f3e71add69bd33928de3131f91a3d5d2"
+  },
+  {
+    "id": "jc-original-lunar-garden-with-friendly-robots",
+    "sourceHash": "c6346cdcae7c9c70154e860aa4a204f16f005264571b600aab17b8f8a2626856",
+    "referenceHash": "c95622c29ee89cfb4ae0135beeecb6bf2a840cf9e665354c01653786a9ef3066"
+  },
+  {
+    "id": "jc-original-galaxy-train-through-the-stars",
+    "sourceHash": "a5d5d76fde4a85e3b99b0d546b7a0026a40cf79e676968e3dd350fd6157bc5c9",
+    "referenceHash": "1df599816fa8b0948367dbeb54e14d7436a728aaaf78ee039c179a1876e83b94"
+  },
+  {
+    "id": "jc-original-solar-system-garden-of-planets",
+    "sourceHash": "194b31aedda85dbd77c3da4ef4a2f5695dd57d1a11323c211a3245767191c40d",
+    "referenceHash": "3c18217920a2e5ffa10ee942e63a5a432b2139e36a5b8d70092c0ce656031304"
+  },
+  {
+    "id": "jc-original-robot-and-a-comet-flower",
+    "sourceHash": "52492fe77d613888d6d7892d0b5de2baf7e777f19bcc57e4bac36e1a35f49a48",
+    "referenceHash": "74c75ca644c402476f0c168a88b0f3a12d60201e3c939dc9783eb1c6659dd47a"
+  },
+  {
+    "id": "jc-original-space-station-above-a-blue-planet",
+    "sourceHash": "4d1b7acd50d782bcd43ab9537db51e9bf5073d81b0446ceac69285a668206685",
+    "referenceHash": "23bcfcbc1d857299a23a8fb741dcf76d3d0ac90d032f950e1fd1e1aabdb3e403"
+  },
+  {
+    "id": "jc-original-a-whimsical-whale-in-space",
+    "sourceHash": "3931e2004a95aedeb5c2c868f13416089313291a3b6cb0d3e8b01274e7d10870",
+    "referenceHash": "aa701724aeaea520f001847059aa67bcec63f0e6a18defd7072d432330fa87ce"
+  },
+  {
+    "id": "jc-original-vintage-camper-on-the-coast",
+    "sourceHash": "5626c72c4cc975ee2204141abe13e46e85f36099d5c0cc611bf63ac1898391f9",
+    "referenceHash": "b26556ff9a679ea4c485476278d48b28f5e1ae68a9b814e46bee545eb9fd3b49"
+  },
+  {
+    "id": "jc-original-steam-train-through-the-countryside",
+    "sourceHash": "0a3c0e469bdec2444e18f62c2d2bd7962608495e95889b4fe9b9be5d1bedc4e9",
+    "referenceHash": "f02712bfe5b16624fb963de7b868d07d8e66f28d5a921915337bf9c5f0074eba"
+  },
+  {
+    "id": "jc-original-hot-air-balloons-above-a-valley",
+    "sourceHash": "8fbd5799d627f323cbe38464b0ebc46d7eb66acf3ca0fed4a2ed6307cfb2c8e7",
+    "referenceHash": "4e0e7ad09f9a2c1cb33e4783f9a1d457321b99484728489b7dabcf2d31dbb9c9"
+  },
+  {
+    "id": "jc-original-sailboat-in-a-flowering-harbor",
+    "sourceHash": "8037cff268b0c52b4230b5c3b618838fc8a0c0368ecf1a7cab6ecf3c4426d8dc",
+    "referenceHash": "a9ad0c21850c493f4cc459189a21ec02d0e4e76a14a2ed9c6f291da2ed760cb3"
+  },
+  {
+    "id": "jc-original-biplane-above-the-sunflowers",
+    "sourceHash": "307d5e76d66081ef58e12b12f8a447eee60a25c3548cc522b064eb3732a1a4f8",
+    "referenceHash": "8939bbb05b658c3f1ae8746ac5a506140f2caeb94011f287f992ba21e6f7a163"
+  },
+  {
+    "id": "jc-original-bicycle-outside-a-patisserie",
+    "sourceHash": "35b618bb6b770b5bc3cde3d06987d9bf036dcc4ab84338552708576eab3f58d9",
+    "referenceHash": "b0494c463f8cbfc3fac2a76b8e035978234dd4c6c6c95d5cdc64151b036e4a55"
+  },
+  {
+    "id": "jc-original-fire-engine-at-the-old-station",
+    "sourceHash": "f4bb36ac254009ea5c1fb727080d84d553adb840f4448c9c8516ad73245213b8",
+    "referenceHash": "a90fea3dbd6ed0c7b5a67edf9f906c7ce26ee76e95593921080f78ec6087d559"
+  },
+  {
+    "id": "jc-original-tractor-in-an-apple-orchard",
+    "sourceHash": "8075702d4006be5502957319ef439070dd616754302ffe26dab51c0d59dc8e15",
+    "referenceHash": "ca1780262dfc3d952c292360668bac6fd8ab0b1ff73909bf55c2dbe37d5de27b"
+  },
+  {
+    "id": "jc-original-race-car-in-a-garden-garage",
+    "sourceHash": "a5d867b99e4ef00beb4f8ed0d105ff0e9f3f64152cd8ea84f36c64f6087327fc",
+    "referenceHash": "fe328c3c83bc2a87dcc99d74c30b2d4ded048017664932d345cd3d6f73cd55f3"
+  },
+  {
+    "id": "jc-original-yellow-submarine-over-a-reef",
+    "sourceHash": "0cb2aa32b5504787d79d15429e2243e594a00aefdc6eef180ea10339f72d3698",
+    "referenceHash": "8280813a5bb3c28f1942cd2adc9e0eeefae8077d6a87efbf6dba62c331b86b63"
+  },
+  {
+    "id": "jc-original-strawberry-cake-and-garden-flowers",
+    "sourceHash": "1312cc2777dbc09f7306f76d6e63114f90e706d1b5e002fe11ed7fb4ec9a734e",
+    "referenceHash": "1f3862fb17c55d22c74224abaeca1b7d217a2ba0224693c58ad26b2552200b7a"
+  },
+  {
+    "id": "jc-original-lemon-tea-in-a-garden",
+    "sourceHash": "e21e15a10c13b9413058164c4d57f852c30ec1fa042f73025f72af222dc0f7df",
+    "referenceHash": "f4acfbc154b1da25f3139a071560d8ce811c9f9d5be0ae6695c8a824317dc713"
+  },
+  {
+    "id": "jc-original-gingerbread-cottage-with-sweets",
+    "sourceHash": "7f6cd577ae61c66df62dc158e6ac73162a02643bc3c892f318a2658397015bb5",
+    "referenceHash": "79560f9973312f44d86204147118fa3f19d131bfc151f5c2418321ede27980e8"
+  },
+  {
+    "id": "jc-original-picnic-basket-in-the-orchard",
+    "sourceHash": "c5ca2a431572b9e9f182c3ab07df04c484f3dfec68d55c67fc892f342a7b5f22",
+    "referenceHash": "5545f1155870030f7c2d0ba9ba62a41170b3063c0ed399ceaacf2fbcb5f08f09"
+  },
+  {
+    "id": "jc-original-ice-cream-cart-by-the-sea",
+    "sourceHash": "7f0711546d6961199e408d791f294740bcd6ab757c85d8b13b442d4ee08080f1",
+    "referenceHash": "35e8451db8e6e52a9eacef1c36ef9b44f1b888a56352ec5723f77c585f5a87ed"
+  },
+  {
+    "id": "jc-original-cherry-bakery-window",
+    "sourceHash": "0bed34a4001f65240ffebe6f0ef94b1705f38d99f33b0d349a43375b480b3c00",
+    "referenceHash": "1b1787ad86dd22c3aa6cbb9f5134906b7e66721cc10224f11693eec1f924dc0e"
+  },
+  {
+    "id": "jc-original-candy-cottage-in-a-sweet-garden",
+    "sourceHash": "ce540ded1fc767f48471c9d5a52fbc6236cea9b8b0c51751795727bfcec4a422",
+    "referenceHash": "f4c8491d96ad8be35693e8e2211f26629c876fc0b85e9bfa253025b4f55bd023"
+  },
+  {
+    "id": "jc-original-pancakes-and-fresh-berries",
+    "sourceHash": "aea46e3e62807a277d0ee1ff28f6f57e3336985032542aefb891b4bdc7795c5b",
+    "referenceHash": "694926a7352d775c9eb9eddc29e63dca306ff13528e287bb0550b2946bc13b3e"
+  },
+  {
+    "id": "jc-original-cookies-and-hibiscus-blossoms",
+    "sourceHash": "0226f1862ae0cadaf713d5aae4283b5b9fca790cbdc531f0099c7ab605086244",
+    "referenceHash": "7e37c74325e0fe6b73089ca38366fce0cc068b08407e30ef7b0bc4f312b44b55"
+  },
+  {
+    "id": "jc-original-apple-pie-at-a-cottage-window",
+    "sourceHash": "e9c2f8c1ac0fcfc78ed4c1c10655f29e24e462e4c0d084f1d37850f9e5eeada2",
+    "referenceHash": "cad03525d6056f82634e66db12b553265cf869b4851d0c14cc6d8114ef545612"
+  },
+  {
+    "id": "jc-original-bookshop-on-a-flowering-lane",
+    "sourceHash": "52dcae72522173b358d62cea565493c039d1adc2af82faefc109a5b227b24fdd",
+    "referenceHash": "ac41ad1f9998a6898104a18519b81544b5ba6f3aa3c72dee9cb38efb8469df96"
+  },
+  {
+    "id": "jc-original-mountain-cabin-in-the-wildflowers",
+    "sourceHash": "fed505977a10cd5474603b72f38c915b9e59413a9f6cf4926fa73ea435df6906",
+    "referenceHash": "23e221dbb422aa8dc7e81054b4f2f2627e754928d4f3f5bfbdde800adc28bf06"
+  },
+  {
+    "id": "jc-original-library-in-an-ancient-oak",
+    "sourceHash": "c68df590bef57d70dfeb9ff5068378b0997df1e4dd064e7edf55962dd10cce6b",
+    "referenceHash": "fedabbac5136e98d65005312855381e1808bb4efb42d4a481a3e88300fbb9b7c"
+  },
+  {
+    "id": "jc-original-lighthouse-and-the-coastal-garden",
+    "sourceHash": "4784c1bda46408a1098420a584cc2ed0c6b047ef86962dcbcfa32876c0829611",
+    "referenceHash": "eb6aeb027d1637dcbe31c57e8f5da807381d706968c013643461ae6842d09a61"
+  },
+  {
+    "id": "jc-original-canal-houses-and-a-little-bridge",
+    "sourceHash": "6a01e5d64ae453f53835da259e672a82f10f1e641ff5d5d0fb4a032daa52a407",
+    "referenceHash": "006db6afdf2f3e6e6289fc6eef7276b885e0c5ba576bdedeef5b0af69ced77e6"
+  },
+  {
+    "id": "jc-original-garden-bridge-beneath-the-maples",
+    "sourceHash": "c111be2f7c29a7add2a394592a2035cce2e2c0481fa0af6ba2e0649c89841868",
+    "referenceHash": "fe0e334537933bffcd054c3d86413b6e8b3af5f0ac71e7d428f9b9f18d9111f3"
+  },
+  {
+    "id": "jc-original-windmill-beside-the-tulips",
+    "sourceHash": "3217974a21240d9335ca73e88572dd627b3f635dd09f515d52fb37336eda5087",
+    "referenceHash": "49b964ba3108b65e8f8d38a02b0c63e68b50e086c080cc1efd957290760090fb"
+  },
+  {
+    "id": "jc-original-greenhouse-full-of-orchids",
+    "sourceHash": "e66769864635aa9ed0af7b22ddd6adc5fa53f353dba16520dcc44425c3f20579",
+    "referenceHash": "6ce81bd8d62e17d304201c943d31facd5ce7e6f9399b18eac9163e2c28dd4bf9"
+  },
+  {
+    "id": "jc-original-campsite-beneath-the-pines",
+    "sourceHash": "c1511e2ee2471773b6da76950326a1f507a6f84dc4f4f83c23623a9cb1495f02",
+    "referenceHash": "3297fdc99c3ad1f66409ce06e38d87c644d5c6c16fe1808cc22a6f1c604b7898"
+  },
+  {
+    "id": "jc-original-seaside-ice-cream-shop",
+    "sourceHash": "19e098a58b11722c5c10e61089e6759c639dd0a42e475e68f7a5a8e57cd28663",
+    "referenceHash": "a4bc8a9487a92246ef15059bc5d6d6cfb38a21fbea7e26e8989fbedf68597565"
+  }
+]

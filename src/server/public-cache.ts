@@ -17,6 +17,7 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   if(url.search.length>1800)return;
   if(!url.search&&path==='/robots.txt')return{kind:'text',catalog:false,seconds:600};
   if(!url.search&&(path==='/sitemap.xml'||/^\/sitemaps\/(?:static|[1-9]\d{0,4})\.xml$/.test(path)))return{kind:'xml',catalog:true,seconds:600};
+  if(/^\/api\/color-reference\/[A-Za-z0-9_-]+$/.test(path)&&[...url.searchParams.keys()].every(k=>k==='v'||k==='image')&&/^[a-f0-9]{24}$/.test(url.searchParams.get('v')||'')&&(!url.searchParams.has('image')||/^[a-f0-9]{64}$/.test(url.searchParams.get('image')||'')))return{kind:url.searchParams.has('image')?'media':'json',catalog:true,seconds:60};
   if(/^\/api\/(?:media|download)\/[A-Za-z0-9_-]+\/[A-Za-z0-9_]+$/.test(path)){
     if([...url.searchParams.keys()].some(k=>k!=='v'&&!(k==='display'&&path.startsWith('/api/media/')&&['240','320','400','600'].includes(url.searchParams.get(k)||'')))||!/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(url.searchParams.get('v')||''))return;
     return path.startsWith('/api/download/')?{kind:'redirect',catalog:true,seconds:60}:{kind:'media',catalog:true,seconds:300};

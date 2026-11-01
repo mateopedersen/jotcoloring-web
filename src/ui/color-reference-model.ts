@@ -2,10 +2,10 @@ import {brandFooterLayout} from '../server/branding';
 export const COLOR_PALETTES=[
  {id:'original',name:'Color inspiration',description:'One way to color this drawing. Try these colors or make it your own; the swatches come from this preview.'},
  {id:'pastel',name:'Soft pastels',description:'Gentler saturation and lighter color, with the reference’s shapes and shading intact.'},
- {id:'warm',name:'Warm daylight',description:'A subtle warm lift to the picture’s own colors, keeping greens, blues and natural tones recognizable.'},
+ {id:'warm',name:'Clear daylight',description:'A gentle lift in brightness that keeps each object’s original color family.'},
  {id:'vivid',name:'Rich & vibrant',description:'Richer color and a little more contrast, using the same scene-matched reference.'},
- {id:'calm',name:'Cool & calm',description:'A quieter, slightly cooler interpretation of the picture’s existing colors.'},
- {id:'accents',name:'Creative accents',description:'Try lavender, rose or teal accents in the picture’s pink, purple and blue color families. Leafy greens and warm natural colors stay recognizable.'}
+ {id:'calm',name:'Soft & calm',description:'Quieter saturation and a gentle lift, without changing familiar character colors.'},
+ {id:'accents',name:'Soft highlights',description:'A lighter, luminous finish that keeps the same object and character colors.'}
 ] as const;
 export type ColorMood=typeof COLOR_PALETTES[number]['id'];
 function validate(raw:Uint8ClampedArray,width:number,height:number){if(!Number.isSafeInteger(width)||!Number.isSafeInteger(height)||width<32||height<32||width*height>2_400_000||raw.length!==width*height*4)throw new Error('Invalid color reference input.');}
@@ -15,10 +15,10 @@ export function colorMoodRGB(r:number,g:number,b:number,mood:ColorMood):number[]
  if(mood==='original'||Math.max(r,g,b)<42||Math.min(r,g,b)>245||Math.max(r,g,b)-Math.min(r,g,b)<16)return[r,g,b];
  let [h,s,l]=hsl(r,g,b);
  if(mood==='pastel'){s*=.7;l=l+(1-l)*.18;}
- else if(mood==='warm'){h=(h+(h>=175&&h<=260?-4:h>=70&&h<175?-3:3)+360)%360;s*=.97;l=Math.min(.97,l+.015);}
+ else if(mood==='warm'){s*=.97;l=Math.min(.97,l+.015);}
  else if(mood==='vivid'){s=Math.min(1,s*1.14);l=Math.max(.04,Math.min(.97,.5+(l-.5)*1.035));}
- else if(mood==='calm'){h=(h+(h>=175&&h<=280?4:0))%360;s*=.86;l=Math.min(.97,l+.025);}
- else if(mood==='accents'){if(h>315){h=285+(h-335)*.35;}else if(h>=200&&h<=260){h=180+(h-210)*.45;}else if(h>260&&h<=315){h=325+(h-285)*.3;}s*=.94;l=Math.min(.97,l+.02);}
+ else if(mood==='calm'){s*=.86;l=Math.min(.97,l+.025);}
+ else if(mood==='accents'){s*=.94;l=Math.min(.97,l+(1-l)*.09);}
  return rgb(h,s,l);
 }
 /** Grade an existing matched reference. Never assign arbitrary colors to regions. */
