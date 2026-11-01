@@ -61,6 +61,7 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
       // also invalidates any result cached while that publication was still queued.
       const row=await env.CATALOG_DB.prepare('SELECT seq,(SELECT rowid FROM processed_event ORDER BY rowid DESC LIMIT 1) AS projected FROM outbox_event ORDER BY seq DESC LIMIT 1').first<{seq:number;projected:number|null}>();
       epoch=String(row?.seq||0)+'.'+String(row?.projected||0);
+      if(policy.kind==='xml'){const snapshot=await env.CATALOG_DB.prepare('SELECT epoch FROM discovery_state WHERE id=1').first<{epoch:number}>();epoch+='.'+String(snapshot?.epoch||0);}
     }catch{return finish(await next(),'BYPASS');}
   }
   const key=publicCacheKey(request,env.APP_ENV!,release,epoch);

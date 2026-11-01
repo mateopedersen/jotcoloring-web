@@ -82,3 +82,11 @@ test('versioned downloads served directly as media also remain cacheable',async(
  assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
  const hit=await f.run(new Request(url),next);assert.equal(hit.headers.get('X-JotColoring-Cache'),'HIT');assert.equal(hit.status,200);assert.equal(await hit.text(),'%PDF');assert.equal(renders,1);
 });
+
+test('prepared sitemap activation invalidates its real Workers cache key without Purge Everything',async()=>{
+ let manifest=1,calls=0;const stored=new Map<string,Response>(),pending:Promise<unknown>[]=[];
+ const env={APP_ENV:'production',PUBLIC_SITE_URL:'https://jotcoloring.com',CATALOG_DB:{prepare(sql:string){return{async first(){return sql.includes('discovery_state')?{epoch:manifest}:{seq:5,projected:5}}}}}} as unknown as Env;
+ const cache:ResponseCache={async match(k){return stored.get(k.url)?.clone()},async put(k,r){stored.set(k.url,r)}};
+ const request=new Request('https://jotcoloring.com/sitemap.xml'),next=async()=>new Response('<sitemapindex>'+ ++calls+'</sitemapindex>',{headers:{'Content-Type':'application/xml'}}),run=()=>withPublicCache(request,env,'release',next,cache,p=>pending.push(p));
+ assert.equal((await run()).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(pending);assert.equal((await run()).headers.get('X-JotColoring-Cache'),'HIT');manifest++;assert.equal((await run()).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(calls,2);
+});

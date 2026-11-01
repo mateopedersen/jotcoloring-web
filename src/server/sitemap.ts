@@ -2,19 +2,19 @@ import type {Env} from './types';
 import {categoryPath,categoryById} from '../taxonomy/catalog';
 import {AGE_BANDS} from '../age/model';
 import {AppError} from './http';
-export const SITEMAP_SEGMENT_SIZE=10000;
+export const SITEMAP_SEGMENT_SIZE=1000;
 export const escapeXML=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 const open='<?xml version="1.0" encoding="UTF-8"?>';
 const headers={'Content-Type':'application/xml; charset=utf-8','Cache-Control':'public,max-age=300,s-maxage=600','X-Content-Type-Options':'nosniff'};
 function originFor(env:Env,requestURL:URL){const local=['localhost','127.0.0.1','[::1]'].includes(requestURL.hostname);const url=new URL(local?requestURL.origin:env.PUBLIC_SITE_URL||requestURL.origin);if(!['https:','http:'].includes(url.protocol))throw new AppError('CONFIGURATION_INVALID','Site URL is invalid.',503);return url.origin;}
-export async function sitemapIndex(env:Env,url:URL){if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);const origin=originFor(env,url);const row=await env.CATALOG_DB.prepare('SELECT MAX(ordinal) AS maximum FROM sitemap_entry').first<{maximum:number|null}>();const segments=Math.ceil((row?.maximum||0)/SITEMAP_SEGMENT_SIZE);if(segments>49999)throw new AppError('SITEMAP_LIMIT','Catalog sitemap index needs a nested site partition.',503);const paths=['static',...Array.from({length:segments},(_,i)=>String(i+1))];return new Response(open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+paths.map(p=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+p+'.xml')}</loc></sitemap>`).join('')+'</sitemapindex>',{headers});}
+export async function buildSitemapIndex(env:Env,url:URL){if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);const origin=originFor(env,url);const row=await env.CATALOG_DB.prepare('SELECT MAX(ordinal) AS maximum FROM sitemap_entry').first<{maximum:number|null}>();const segments=Math.ceil((row?.maximum||0)/SITEMAP_SEGMENT_SIZE);if(segments>49999)throw new AppError('SITEMAP_LIMIT','Catalog sitemap index needs a nested site partition.',503);const paths=['static',...Array.from({length:segments},(_,i)=>String(i+1))];return new Response(open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+paths.map(p=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+p+'.xml')}</loc></sitemap>`).join('')+'</sitemapindex>',{headers});}
 type SitemapItem={path:string;updated?:string;images?:string[]};
 type SitemapRow={ordinal:number;slug:string;updated_at:string;content_id:string;preview_key:string|null;preview_sha:string|null;print_key:string|null;print_sha:string|null};
 function imageURL(env:Env,origin:string,id:string,role:string,key:string|null,sha:string|null){
  if(!key||!sha)return null;
  return env.PUBLIC_MEDIA_BASE_URL?`${env.PUBLIC_MEDIA_BASE_URL.replace(/\/$/,'')}/${key.split('/').map(encodeURIComponent).join('/')}`:`${origin}/api/media/${encodeURIComponent(id)}/${role}?v=${sha.slice(0,24)}`;
 }
-export async function sitemapSegment(env:Env,url:URL,segment:string){
+export async function buildSitemapSegment(env:Env,url:URL,segment:string){
  if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);
  const origin=originFor(env,url);let entries:SitemapItem[]=[];
  if(segment==='static'){
@@ -27,6 +27,24 @@ export async function sitemapSegment(env:Env,url:URL,segment:string){
   if(!rows.results.length){const max=await env.CATALOG_DB.prepare('SELECT MAX(ordinal) AS maximum FROM sitemap_entry').first<{maximum:number|null}>();if(start>=(max?.maximum||0))throw new AppError('NOT_FOUND','Sitemap not found.',404);}
   entries=rows.results.map(x=>({path:'/coloring/'+encodeURIComponent(x.slug)+'/',updated:x.updated_at,images:[imageURL(env,origin,x.content_id,'catalog_preview_bw',x.preview_key,x.preview_sha),imageURL(env,origin,x.content_id,'printable_webp_bw',x.print_key,x.print_sha)].filter((v):v is string=>!!v)}));
  }
+ const modified=(await env.CATALOG_DB.prepare('SELECT path_key,lastmod FROM discovery_page').all<{path_key:string;lastmod:string}>()).results;
+ for(const item of entries){const row=modified.find(x=>(x.path_key.startsWith('category:')?categoryPath(x.path_key.slice(9)):x.path_key)===item.path);if(row&&!item.updated)item.updated=row.lastmod;}
  const xml=open+'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'+entries.map(x=>`<url><loc>${escapeXML(origin+x.path)}</loc>${x.updated?`<lastmod>${escapeXML(new Date(x.updated).toISOString())}</lastmod>`:''}${(x.images||[]).map(image=>`<image:image><image:loc>${escapeXML(image)}</image:loc></image:image>`).join('')}</url>`).join('')+'</urlset>';
  return new Response(xml,{headers});
+}
+
+// Public requests read prepared immutable fragments; no full catalog or bucket scan.
+export async function sitemapIndex(env:Env,url:URL){
+ if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog unavailable.',503);
+ const rows=await env.CATALOG_DB.prepare('SELECT segment,generated_at FROM discovery_fragment ORDER BY segment').all<{segment:string;generated_at:string}>();
+ if(!rows.results.length)throw new AppError('SITEMAP_PREPARING','Sitemap is being prepared.',503);
+ const origin=originFor(env,url),xml=open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+rows.results.map(r=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+r.segment+'.xml')}</loc></sitemap>`).join('')+'</sitemapindex>';
+ return new Response(xml,{headers:{...headers,'Last-Modified':new Date(Math.max(...rows.results.map(r=>Date.parse(r.generated_at)))).toUTCString(),ETag:'"'+await import('./http').then(m=>m.sha256(new TextEncoder().encode(xml)))+'"'}});
+}
+export async function sitemapSegment(env:Env,url:URL,segment:string){
+ if(!/^(static|[1-9]\d{0,4})$/.test(segment))throw new AppError('NOT_FOUND','Sitemap not found.',404);
+ const row=await env.CATALOG_DB?.prepare('SELECT object_key,etag,generated_at FROM discovery_fragment WHERE segment=?').bind(segment).first<{object_key:string;etag:string;generated_at:string}>();
+ if(!row)throw new AppError('NOT_FOUND','Sitemap not found.',404);
+ const object=await env.PUBLISHED?.get(row.object_key);if(!object)throw new AppError('SITEMAP_UNAVAILABLE','Sitemap unavailable.',503);
+ return new Response(object.body,{headers:{...headers,ETag:'"'+row.etag+'"','Last-Modified':new Date(row.generated_at).toUTCString()}});
 }

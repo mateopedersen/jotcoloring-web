@@ -9,8 +9,9 @@ import argparse, datetime, hashlib, json, pathlib, sqlite3
 
 LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation']
 AGE_TABLES = LEGACY_TABLES + ['age_recommendation']
-TABLES = AGE_TABLES + ['color_reference_job','color_reference_scan','color_ai_reservation']
-SCHEMA_TABLES = {'jotcoloring-catalog-transfer/1': LEGACY_TABLES, 'jotcoloring-catalog-transfer/2': AGE_TABLES, 'jotcoloring-catalog-transfer/3': TABLES}
+COLOR_TABLES = AGE_TABLES + ['color_reference_job','color_reference_scan','color_ai_reservation']
+TABLES = COLOR_TABLES + ['discovery_dirty','discovery_fragment','discovery_page','discovery_state','discovery_notice']
+SCHEMA_TABLES = {'jotcoloring-catalog-transfer/1': LEGACY_TABLES, 'jotcoloring-catalog-transfer/2': AGE_TABLES, 'jotcoloring-catalog-transfer/3': COLOR_TABLES, 'jotcoloring-catalog-transfer/4': TABLES}
 def schema_tables(actual):
     for schema, tables in SCHEMA_TABLES.items():
         if actual == set(tables): return schema, tables
