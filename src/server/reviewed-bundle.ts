@@ -1,4 +1,5 @@
 /** Authenticated, one-artwork transport for an already sealed editorial release. */
+import {matchesReviewedReleaseScope} from './reviewed-release-scope';
 import type {Env,Bucket,Manifest} from './types';
 import {AppError,canonicalJSON,sha256} from './http';
 import {validateManifest} from './manifest';
@@ -9,7 +10,7 @@ import {heldDraftRevision,IMPORT_ACTOR} from './held-draft-resume';
 import {requireDoubleEditorialApproval} from './editorial-approval';
 export interface ReviewedBundleMessage {type:'reviewed_bundle';object_key:string;sha256:string;signature:string}
 interface File {key:string;mime:string;sha256:string;bytes:number;base64:string}
-export interface ReviewedBundle {schema_version:1;environment:string;release:{sha256:string;collections:24;designs:2400};expires_at:string;design_id:string;source_sha256:string;manifest:Manifest;editorial:any;reviews:MediaReview[];native:File;supplied:File[];assets:File[]}
+export interface ReviewedBundle {schema_version:1;environment:string;release:{id?:string;sha256:string;collections:number;designs:number};expires_at:string;design_id:string;source_sha256:string;manifest:Manifest;editorial:any;reviews:MediaReview[];native:File;supplied:File[];assets:File[]}
 const hex=/^[a-f0-9]{64}$/;
 export function bundleReceiptKey(hash:string){if(!hex.test(hash))throw Error('Invalid bundle hash');return `operator-import-receipts/${hash}.json`;}
 export async function bundleSignature(hash:string,environment:string,secret:string){
@@ -23,7 +24,7 @@ export async function validateReviewedBundle(bytes:Uint8Array,message:ReviewedBu
  const expected=await bundleSignature(message.sha256,env.APP_ENV||'',env.MEDIA_VALIDATION_SECRET);
  if(message.signature.length!==64||!Array.from(expected).every((c,i)=>c===message.signature[i]))throw new AppError('FORBIDDEN','Reviewed bundle signature was not accepted.',403);
  const b=JSON.parse(new TextDecoder().decode(bytes)) as ReviewedBundle;
- if(b.schema_version!==1||b.environment!==env.APP_ENV||b.release?.collections!==24||b.release.designs!==2400||!hex.test(b.release.sha256)||!Number.isFinite(Date.parse(b.expires_at))||Date.parse(b.expires_at)<Date.now()||Date.parse(b.expires_at)>Date.now()+7*86400000)throw Error('Complete current release required');
+ if(b.schema_version!==1||b.environment!==env.APP_ENV||!b.release||!matchesReviewedReleaseScope(b.release)||!hex.test(b.release.sha256)||!Number.isFinite(Date.parse(b.expires_at))||Date.parse(b.expires_at)<Date.now()||Date.parse(b.expires_at)>Date.now()+7*86400000)throw Error('Complete current release required');
  const m=validateManifest(b.manifest,env.APP_ENV==='production'),r=b.editorial;
  if(!/^[a-z0-9_-]+$/.test(b.design_id)||!hex.test(b.source_sha256)||m.requested_status!=='published'||m.import_action!=='create'||r?.design_id!==b.design_id||r?.status!=='approved_for_publication'||r?.prepared_source_sha256!==b.source_sha256||!m.provenance.reference?.includes('Source SHA-256 '+b.source_sha256))throw Error('Invalid source-bound publication');
  for(const k of ['title','description','alt_text','category_ids'] as const)if(canonicalJSON(m[k])!==canonicalJSON(r[k]))throw Error('Reviewed metadata changed');

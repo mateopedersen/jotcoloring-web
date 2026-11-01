@@ -17,7 +17,7 @@ test('production refuses partial publication before opening any cloud session',a
   let result=run([]);assert.notEqual(result.status,0);assert.match(result.stderr,/all 24 packages together.*full-release/);
   await writeFile(releaseFile,JSON.stringify({status:'pending_full_review',collections:[]}));
   result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/All 24 collections must be ready/);
-  const hash=(s:string)=>createHash('sha256').update(s).digest('hex');
+  await writeFile(releaseFile,JSON.stringify({release_id:'unknown',status:'ready_for_publication',collections:[]}));result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/Unknown owner-authorized release scope/);await writeFile(releaseFile,JSON.stringify({release_id:'descendants-squishy-kpop-20261101',status:'ready_for_publication',collections:[]}));result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/All authorized follow-up collections must be ready/);const hash=(s:string)=>createHash('sha256').update(s).digest('hex');
   await writeFile(releaseFile,JSON.stringify({status:'ready_for_publication',collections:Array.from({length:24},()=>({review_path:reviewFile,preparation_path:preparationFile,review_sha256:hash(review),preparation_sha256:hash(preparation)}))}));
   result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/Incomplete collection in full release/);
  }finally{await rm(dir,{recursive:true,force:true});}
