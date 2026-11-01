@@ -8,7 +8,7 @@ async function fixture(){
  const env:Env={CATALOG_DB:db,ORIGINALS:{async get(key:string){active++;peak=Math.max(peak,active);reads.push(key);await new Promise(r=>setTimeout(r,1));active--;const bytes=objects.get(key);if(!bytes)return null;return{key,size:bytes.length,etag:'',body:new Blob([new Uint8Array(bytes)]).stream(),arrayBuffer:async()=>bytes.slice().buffer,text:async()=>new TextDecoder().decode(bytes)};}} as Env['ORIGINALS']};
  const manifest={requested_status:'published',assets} as Manifest;return{sql,env,manifest,objects,reads,stats:()=>({queries,peak})};
 }
-test('all source bytes and exact trusted role reviews are checked with bounded storage reads',async()=>{const f=await fixture();const verified=await verifiedManifestAssets(f.env,f.manifest);assert.equal(verified.length,9);assert.equal(new Set(f.reads).size,9);assert.equal(f.stats().queries,1);assert.ok(f.stats().peak<=4&&f.stats().peak>1);assert.equal((await verifyAsset(f.env,f.manifest.assets[0])).review.role,'catalog_thumb_bw');});
+test('all source bytes and exact trusted role reviews are checked with bounded storage reads',async()=>{const f=await fixture();const verified=await verifiedManifestAssets(f.env,f.manifest);assert.equal(verified.length,9);assert.equal(new Set(f.reads).size,9);assert.equal(f.stats().queries,1);assert.ok(f.stats().peak<=2&&f.stats().peak>1);assert.equal((await verifyAsset(f.env,f.manifest.assets[0])).review.role,'catalog_thumb_bw');});
 test('batch validation rejects corruption in a later group and never accepts missing or stale review evidence',async()=>{
  for(const kind of ['bytes','missing-object','missing-review','wrong-size','wrong-width','wrong-role','old-version','colored-print']){
   const f=await fixture(),a=f.manifest.assets.at(-1)!;
