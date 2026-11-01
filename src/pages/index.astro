@@ -20,24 +20,19 @@ import CategoryIcon from '../components/CategoryIcon.astro';
 import ActionIcon from '../components/ActionIcon.astro';
 import GalleryTabIcon from '../components/GalleryTabIcon.astro';
 import {navigationLabel} from '../ui/navigation-label';
-import {homeGallerySelection} from '../ui/home-selection';
+import {homeGallerySelection,HOME_SHOWCASE_KEYS,HOME_SHOWCASE_TABS} from '../ui/home-selection';
 import {categories} from '../ui/categories';
 import {createCatalog} from '../server/catalog';
-import type {Env,CatalogQuery} from '../server/types';
+import type {Env} from '../server/types';
 import '../styles/home-v3.css';
 import '../styles/home-rhythm.css';
 import '../styles/category-discovery.css';
 const repo=createCatalog(env as unknown as Env);
 const requestedTab=Astro.url.searchParams.get('popular')||'trending';
 const popularTab=['trending','newest','easy','detailed'].includes(requestedTab)?requestedTab:'trending';
-const query:CatalogQuery={marketingOnly:true,limit:24,sort:popularTab==='newest'?'newest':'trending'};
-if(popularTab==='easy'||popularTab==='detailed')query.difficulty=[popularTab];
-const [popular,featuredPage]=popularTab==='trending'?[await repo.list(query),undefined]:await Promise.all([repo.list(query),repo.list({marketingOnly:true,limit:6,sort:'trending'})]);
-const featured=featuredPage||{items:popular.items.slice(0,6)};
-if(popularTab==='trending'){
- const recent=await repo.list({marketingOnly:true,limit:4,sort:'newest'});
- popular.items=homeGallerySelection(popular.items,recent.items);
-}
+const reviewedPages=await repo.getMany(HOME_SHOWCASE_KEYS);
+const popular={items:homeGallerySelection(reviewedPages,popularTab)};
+const featured={items:homeGallerySelection(reviewedPages).slice(0,6)};
 // Finish with two real pages from different collections, without repeating a card.
 const closingItems:typeof popular.items=[];
 if(popularTab==='trending'&&popular.items.length>=8){
@@ -56,7 +51,7 @@ const animalThemes=[
  {name:'Ocean Life',description:'Creatures beneath the waves',href:'/coloring-pages/animals/ocean-life/',icon:'ocean-life'}
 ];
 const discoveryIdeas=[['Foxes','fox','foxes'],['Cats','cat','cats'],['Dogs','dog','dogs'],['Butterflies','butterfly','butterflies'],['Dragons','dragon','dragons'],['Owls','owl','owls'],['Turtles','turtle','sea-turtles'],['Gardens','garden','gardens'],['Snowmen','snowman','snowmen']];
-const tabs=[{id:'trending',label:'Featured pages',hint:'A little of everything'},{id:'newest',label:'Just added',hint:'Fresh inspiration'},{id:'easy',label:'Easy coloring',hint:'Bigger spaces'},{id:'detailed',label:'Detailed designs',hint:'More to discover'}];
+const tabs=HOME_SHOWCASE_TABS;
 ---
 <Layout bodyClass="home-v3" title="Free Printable Coloring Pages for Kids & Adults | JotColoring" description="Explore free printable coloring pages for kids and adults. Download a PDF or image, color online, or turn your own photo into a coloring page.">
  <Fragment slot="head">{featured.items[0]?.thumbnail&&<link rel="preload" as="image" href={featured.items[0].thumbnail} imagesrcset={featured.items[0].thumbnailSrcset} imagesizes="(max-width:600px) 42vw, (max-width:1000px) 22vw, 240px" fetchpriority="high"/>}</Fragment>
@@ -67,7 +62,7 @@ const tabs=[{id:'trending',label:'Featured pages',hint:'A little of everything'}
   </section>
 <DifficultyNavigation home/><div class="hv-container"><AgeNavigation/></div>
   <div class="hv-discovery-layout hv-container"><aside class="hv-discovery-nav" aria-labelledby="category-title"><div class="hv-discovery-title"><p class="hv-kicker">FOLLOW YOUR CURIOSITY</p><h2 id="category-title">Find a theme<br/> you love.</h2></div><nav aria-label="Coloring categories"><a class="hv-discovery-all" href="/coloring-pages/"><span class="hv-category-symbol"><CategoryIcon name="all"/></span><span><strong>All coloring pages</strong><small>A little of everything</small></span><Icon name="chevron" size={14}/></a>{categories.map(c=><a href={`/coloring-pages/${c.id}/`}><span class="hv-category-symbol"><CategoryIcon name={c.id}/></span><span><strong>{c.name}</strong><small>{c.intro}</small></span><Icon name="chevron" size={14}/></a>)}</nav><p class="jc-discovery-label">EXPLORE ANIMAL THEMES</p><nav aria-label="Animal themes">{animalThemes.map(theme=><a href={theme.href}><span class="hv-category-symbol"><CategoryIcon name={theme.icon}/></span><span><strong>{theme.name}</strong><small>{theme.description}</small></span><Icon name="chevron" size={14}/></a>)}</nav><details class="jc-discovery-ideas"><summary>More ideas <span>9 themes</span><Icon name="chevron" size={14}/></summary><div>{discoveryIdeas.map(([label,term,icon])=><a href={`/coloring-pages/?q=${encodeURIComponent(term)}#catalog-results`}><CategoryIcon name={icon} size={34}/><span>{label}</span><Icon name="arrow" size={15}/></a>)}</div></details><a class="hv-sidebar-note" href="/studio/"><Icon name="brush" size={23}/><strong>A creative break?</strong><span>Your colors are waiting.</span><b>Open Studio <Icon name="arrow" size={15}/></b></a></aside>
-  <section id="gallery" class="hv-gallery-section"><div class="hv-gallery-inner"><div class="jc-gallery-intro"><div class="jc-gallery-copy"><h2>Pick your next page.<br/> <span>Make it your own.</span></h2><p>Browse printable designs, try a color preview, and choose your next coloring page.</p><a class="jc-gallery-collection" href="/coloring-pages/">Explore the collection <Icon name="arrow" size={17}/></a></div><div class="jc-gallery-art" aria-hidden="true"><span class="jc-gallery-orbit"></span>{featured.items.slice(0,2).map((item,i)=><div class={`jc-gallery-paper jc-gallery-paper-${i}`}><img src={item.home_color||item.thumbnail} srcset={item.home_color?item.homeColorSrcset:item.thumbnailSrcset} sizes="auto, 150px" alt="" loading="lazy" width="150" height="180"/></div>)}<span class="jc-gallery-stamp"><ActionIcon name="brush" size={34}/> MADE FOR<br/> <b>YOUR COLORS</b></span><svg class="jc-gallery-sparkle" width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 2 20 14l12 3-12 3-3 12-3-12-12-3 12-3Z" fill="#f6b06d" stroke="#e4834c"/></svg></div></div><div class="jc-gallery-choices"><div class="jc-gallery-choice-title"><span>FIND YOUR FAVORITE</span><small>Browse by style or see what’s new</small></div><nav class="hv-tabs jc-gallery-tabs" aria-label="Coloring page selection">{tabs.map(tab=><a href={`/?popular=${tab.id}#gallery`} class:list={[popularTab===tab.id&&'is-active']} aria-current={popularTab===tab.id?'page':undefined}><span class="jc-gallery-tab-art"><GalleryTabIcon kind={tab.id as 'trending'|'newest'|'easy'|'detailed'} size={44}/></span><span><strong>{navigationLabel(tab.label)}</strong><small>{navigationLabel(tab.hint)}</small></span></a>)}</nav></div><div class="hv-gallery" data-home-gallery-grid>{galleryItems.map(item=><HomeCard item={item}/>)}</div><GalleryClosingPages items={closingItems}/>{popular.items.length===0&&<p class="hv-empty">{popularTab==='easy'?'No easy pages are available yet.':'No pages are available in this selection yet.'} <a href="/coloring-pages/">Explore the collection</a></p>}<GalleryExplore items={popular.items.length?popular.items:featured.items}/></div></section>
+  <section id="gallery" class="hv-gallery-section"><div class="hv-gallery-inner"><div class="jc-gallery-intro"><div class="jc-gallery-copy"><h2>Pick your next page.<br/> <span>Make it your own.</span></h2><p>Browse printable designs, try a color preview, and choose your next coloring page.</p><a class="jc-gallery-collection" href="/coloring-pages/">Explore the collection <Icon name="arrow" size={17}/></a></div><div class="jc-gallery-art" aria-hidden="true"><span class="jc-gallery-orbit"></span>{featured.items.slice(0,2).map((item,i)=><div class={`jc-gallery-paper jc-gallery-paper-${i}`}><img src={item.home_color||item.thumbnail} srcset={item.home_color?item.homeColorSrcset:item.thumbnailSrcset} sizes="auto, 150px" alt="" loading="lazy" width="150" height="180"/></div>)}<span class="jc-gallery-stamp"><ActionIcon name="brush" size={34}/> MADE FOR<br/> <b>YOUR COLORS</b></span><svg class="jc-gallery-sparkle" width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 2 20 14l12 3-12 3-3 12-3-12-12-3 12-3Z" fill="#f6b06d" stroke="#e4834c"/></svg></div></div><div class="jc-gallery-choices"><div class="jc-gallery-choice-title"><span>FIND YOUR FAVORITE</span><small>Browse themes or try a favorite</small></div><nav class="hv-tabs jc-gallery-tabs" aria-label="Coloring page selection">{tabs.map(tab=><a href={`/?popular=${tab.id}#gallery`} class:list={[popularTab===tab.id&&'is-active']} aria-current={popularTab===tab.id?'page':undefined}><span class="jc-gallery-tab-art">{tab.id==='trending'?<GalleryTabIcon kind="trending" size={44}/>:<CategoryIcon name={tab.id==='newest'?'animals':tab.id==='easy'?'food':'fantasy'} size={44}/>}</span><span><strong>{navigationLabel(tab.label)}</strong><small>{navigationLabel(tab.hint)}</small></span></a>)}</nav></div><div class="hv-gallery" data-home-gallery-grid>{galleryItems.map(item=><HomeCard item={item}/>)}</div><GalleryClosingPages items={closingItems}/>{popular.items.length===0&&<p class="hv-empty">No reviewed pages are available in this selection yet. <a href="/coloring-pages/">Explore the collection</a></p>}<GalleryExplore items={popular.items.length?popular.items:featured.items}/></div></section>
   </div>
   <CategoryDirectory counts={await repo.categories()}/><CreatePlayground/>
   <HomeHowItWorks item={featured.items[0]}/>
