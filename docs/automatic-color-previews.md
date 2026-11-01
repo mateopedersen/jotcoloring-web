@@ -42,8 +42,21 @@ Retries preserve import idempotency; an interrupted backup cannot activate a
 half-published revision. No per-visitor generation, bucket listing, full-catalog
 scan, database migration, new plan or external inference is introduced.
 
-The homepage reserves four gallery positions for the newest published pages
-with verified color assets, then fills the rest from featured pages. This is a
-bounded query and removes duplicates. Publication/search projection and existing
-page cache expiration determine when visitors see the update. A fixed-size
-homepage cannot show every historic page; older items remain in the catalog.
+## Fixed homepage showcase
+
+The homepage uses the individually reviewed entries in
+`src/content/home-showcase.json`. Publication order never adds an item to any
+homepage tab. New uploads remain discoverable through their categories, search,
+related results, and individual pages.
+
+Each homepage entry binds an accepted source checksum to the actual black-and-white
+and colored asset URLs and responsive sizes. A source replacement leaves the
+showcase until its new pixels and reference are reviewed. Curated additions are
+explicit source-bound edits; the lookup stays bounded to at most 40 IDs. Optional
+groups choose the nature, cozy, and imagination tabs independently of upload time.
+
+The original-design release has supplied, visually reviewed color references.
+Its prepared images use those references rather than the automatic palette fill.
+General palette generation is not equivalent to recognizing every depicted object
+or recovering a character's official colors; inspect its output before selecting
+it for a prominent comparison.
