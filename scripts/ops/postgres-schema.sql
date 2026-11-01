@@ -50,3 +50,35 @@ ALTER TABLE search_projection ADD COLUMN IF NOT EXISTS recommended_age TEXT;
 CREATE INDEX IF NOT EXISTS search_recommended_age ON search_projection(visibility,recommended_age,id);
 
 CREATE INDEX IF NOT EXISTS age_recommendation_detail ON age_recommendation(score_hundredths,content_id,content_version);
+
+-- Source-bound color jobs and quota receipts must survive a catalog transfer.
+-- Color inspiration is an optional derivative, never a change to accepted artwork.
+CREATE TABLE color_reference_job (
+ job_key TEXT PRIMARY KEY,
+ content_id TEXT NOT NULL REFERENCES content(id) DEFERRABLE INITIALLY DEFERRED,
+ source_sha256 TEXT NOT NULL,
+ preview_sha256 TEXT NOT NULL,
+ engine TEXT NOT NULL DEFAULT 'pixel-conditioned-v3',
+ state TEXT NOT NULL DEFAULT 'queued' CHECK(state IN ('queued','running','processing','ready','retry','review_needed','obsolete')),
+ attempts BIGINT NOT NULL DEFAULT 0,
+ request_id TEXT,
+ lease_until TEXT,
+ not_before TEXT NOT NULL DEFAULT '',
+ error_code TEXT,
+ created_at TEXT NOT NULL,
+ updated_at TEXT NOT NULL,
+ UNIQUE(content_id,source_sha256,preview_sha256,engine)
+);
+CREATE INDEX color_reference_work ON color_reference_job(state,not_before,created_at);
+CREATE TABLE color_reference_scan (id BIGINT PRIMARY KEY CHECK(id=1), after_id TEXT NOT NULL DEFAULT '');
+
+CREATE TABLE color_ai_reservation (
+ request_id TEXT PRIMARY KEY,
+ job_key TEXT NOT NULL REFERENCES color_reference_job(job_key) DEFERRABLE INITIALLY DEFERRED,
+ day TEXT NOT NULL,
+ neurons BIGINT NOT NULL CHECK(neurons IN (300,600)),
+ daily_limit BIGINT NOT NULL CHECK(daily_limit BETWEEN 300 AND 9000),
+ provider_receipt TEXT,
+ created_at TEXT NOT NULL
+);
+CREATE INDEX color_ai_day ON color_ai_reservation(day);

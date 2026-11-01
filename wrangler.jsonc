@@ -60,6 +60,8 @@
       "vars": {
         "APP_ENV": "staging",
         "AI_ENABLED": "true",
+        "COLOR_REFERENCES_ENABLED": "true",
+        "COLOR_REFERENCES_SCAN": "false",
         "AI_BILLING_MODE": "free_only",
         "AI_FREE_DAILY_NEURONS": "9000",
         "AI_FREE_MAX_JOB_NEURONS": "300",
@@ -137,6 +139,8 @@
       "vars": {
         "APP_ENV": "production",
         "AI_ENABLED": "true",
+        "COLOR_REFERENCES_ENABLED": "true",
+        "COLOR_REFERENCES_SCAN": "true",
         "AI_BILLING_MODE": "free_only",
         "AI_FREE_DAILY_NEURONS": "9000",
         "AI_FREE_MAX_JOB_NEURONS": "300",

@@ -9,7 +9,9 @@ interface Column {name:string;type:string;primary_position:number}
 interface Table {name:string;columns:Column[];row_count:number;sha256:string}
 export interface Snapshot {schema:string;file_sha256:string;outbox_watermark:string;tables:Table[];rows:number}
 const LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation'];
-export const TABLES=[...LEGACY_TABLES,'age_recommendation'];
+const AGE_TABLES=[...LEGACY_TABLES,'age_recommendation'];
+export const TABLES=[...AGE_TABLES,'color_reference_job','color_reference_scan','color_ai_reservation'];
+const SCHEMA_TABLES:Record<string,string[]>={'jotcoloring-catalog-transfer/1':LEGACY_TABLES,'jotcoloring-catalog-transfer/2':AGE_TABLES,'jotcoloring-catalog-transfer/3':TABLES};
 export const canonical=(value:unknown):string=>JSON.stringify(value,(_key,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a<b?-1:a>b?1:0)):v);
 export const sha=(value:string)=>createHash('sha256').update(value).digest('hex');
 const ident=(value:string)=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw new Error('Unsafe SQL identifier');return '"'+value+'"';};
@@ -20,7 +22,7 @@ export async function inspectSnapshot(file:string):Promise<Snapshot>{
  const finish=()=>{if(current){current.sha256=digest.digest('hex');if(current.row_count!==actual)throw new Error('Table count mismatch: '+current.name);}};
  for await(const {number,value:v} of lines(file)){
   if(footer)throw new Error('Data after snapshot footer');
-  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(!['jotcoloring-catalog-transfer/1','jotcoloring-catalog-transfer/2'].includes(v.schema)||canonical(v.tables)!==canonical(v.schema==='jotcoloring-catalog-transfer/1'?LEGACY_TABLES:TABLES)||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
+  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(!Object.hasOwn(SCHEMA_TABLES,v.schema)||canonical(v.tables)!==canonical(SCHEMA_TABLES[v.schema])||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
   else if(v.kind==='table'){
    if(!header||v.table!==header.tables[tables.length])throw new Error('Unexpected table order');finish();
    if(!Number.isSafeInteger(v.row_count)||v.row_count<0||!Array.isArray(v.columns))throw new Error('Invalid table metadata');
