@@ -38,6 +38,11 @@ export async function validateReviewedBundle(bytes:Uint8Array,message:ReviewedBu
  return {bundle:b,manifest:m,decoded};
 }
 async function immutable(bucket:Bucket,file:File,bytes:Uint8Array){const old=await bucket.get(file.key);if(old){if(old.size!==file.bytes||await sha256(new Uint8Array(await old.arrayBuffer()))!==file.sha256)throw Error('Immutable source conflict');}else await bucket.put(file.key,bytes,{httpMetadata:{contentType:file.mime}});const check=await bucket.get(file.key);if(!check||await sha256(new Uint8Array(await check.arrayBuffer()))!==file.sha256)throw Error('Original readback failed');}
+/** This consumer runs the import itself; do not enqueue a second consumer for the same job. */
+export function inlineReviewedImportEnvironment(env:Env):Env{
+ const queue=env.INGEST_QUEUE;if(!queue)throw Error('Missing import queue binding');
+ return {...env,INGEST_QUEUE:{async send(message:any,options?:unknown){if(message?.type==='import')return;await queue.send(message,options);}}};
+}
 export async function processReviewedBundle(env:Env,message:ReviewedBundleMessage){
  if(!env.ORIGINALS||!env.BACKUPS||!env.PUBLISHED||!env.CATALOG_DB)throw Error('Missing import bindings');
  const object=await env.ORIGINALS.get(message.object_key);if(!object||object.size>20_000_000)throw Error('Missing bounded import bundle');
@@ -54,7 +59,7 @@ export async function processReviewedBundle(env:Env,message:ReviewedBundleMessag
  for(const f of [b.native,...b.supplied]){const data=decoded.get(f.key)!;await immutable(env.ORIGINALS,f,data);await backupBytes(env,f.key,data,f.mime);}
  for(const a of m.assets){const source=prepared.assets.find(s=>s.role===a.role)!;await immutable(env.ORIGINALS,{...b.assets.find(f=>f.key===source.object_key)!,key:a.object_key},decoded.get(source.object_key)!);}
  for(const review of b.reviews)await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));
- const job=await createImport(env,m,IMPORT_ACTOR);await processImport(env,job.job_id,`imports/${job.job_id}/manifest.json`);
+ const inlineEnv=inlineReviewedImportEnvironment(env);const job=await createImport(inlineEnv,m,IMPORT_ACTOR);await processImport(inlineEnv,job.job_id,`imports/${job.job_id}/manifest.json`);
  const events=await db.prepare('SELECT event_id FROM outbox_event WHERE content_id=? AND version=? AND processed_at IS NULL').bind(m.content_id,version).all<{event_id:string}>();for(const e of events.results)await projectEvent(env,e.event_id);
  const current=await db.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published')throw Error('Publication readback failed');
  for(const a of m.assets){const o=await env.PUBLISHED.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');}
