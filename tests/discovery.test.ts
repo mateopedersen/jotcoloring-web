@@ -25,3 +25,11 @@ test('natural age and level wording becomes explicit facets without treating eve
 
 test('cute-only searches retain their catalog style while mixed subject searches keep their focus',()=>{assert.deepEqual(parseSearchIntent('Cute coloring pages').words,['cute']);assert.deepEqual(parseSearchIntent('free printable cute pages').words,['cute']);assert.deepEqual(parseSearchIntent('cute kittens').words,['kittens']);assert.deepEqual(parseSearchIntent('coloring pages').words,[]);});
 test('Sonic the Hedgehog franchise aliases preserve additional subjects and age facets',()=>{assert.deepEqual(parseSearchIntent('Sonic the Hedgehog coloring pages').words,['sonic']);assert.deepEqual(parseSearchIntent('Sonic Hedgehog with Tails for kids').words,['sonic','tails']);assert.deepEqual(parseSearchIntent('Sonic the Hedgehog for kids').ages,['kids']);assert.deepEqual(parseSearchIntent('Sonic and a hedgehog').words,['sonic','hedgehog']);assert.deepEqual(parseSearchIntent('hedgehog coloring pages').words,['hedgehog']);});
+
+
+test('full FNAF franchise and compact trick-or-treat queries retain precise topic intent',()=>{
+ assert.deepEqual(parseSearchIntent("Five Nights at Freddy's").words,['fnaf']);
+ assert.deepEqual(parseSearchIntent('Five Nights at Freddys Bonnie').words,['fnaf','bonnie']);
+ assert.deepEqual(parseSearchIntent('trickortreat').words,['trick','or','treat']);
+ assert.deepEqual(parseSearchIntent('five nights under stars').words,['five','nights','under','stars']);
+});

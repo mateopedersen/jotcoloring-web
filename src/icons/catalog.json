@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-c6dfa79a3b96.svg",
+  "url": "/illustrations/jotcoloring-icons-c9b091580889.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -555,6 +555,16 @@
     {
       "id": "education",
       "label": "Learning · alphabet books and a pencil",
+      "group": "Subjects"
+    },
+    {
+      "id": "pandas",
+      "label": "Pandas · giant panda with rounded ears and eye patches",
+      "group": "Subjects"
+    },
+    {
+      "id": "bible",
+      "label": "Bible · blue book with a raised gold cross and ribbon",
       "group": "Subjects"
     },
     {

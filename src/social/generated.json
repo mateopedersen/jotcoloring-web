@@ -581,10 +581,31 @@
     "description": "Barbie scenes and rounded squishy-style animal and food mascots."
   },
   "category-video-games": {
-    "src": "/og/pages/category-video-games-0ac439c34892daf9.png",
+    "src": "/og/pages/category-video-games-26c80633e6a6c3aa.png",
     "alt": "JotColoring printable coloring pages share image: Video Game coloring pages. ",
-    "sha256": "0ac439c34892daf92770f8511464f3cf839b4490d744f601aa9ae05da09c3f59",
+    "sha256": "26c80633e6a6c3aa883991085bff80cecb9748948688776f7bfdeac8d363493e",
     "title": "Video Game coloring pages.",
-    "description": "Sonic adventures and Minecraft block worlds to print or color online."
+    "description": "Sonic, Minecraft, and Five Nights at Freddy’s scenes to print or color online."
+  },
+  "category-bible": {
+    "src": "/og/pages/category-bible-b2c366e4dbc147bf.png",
+    "alt": "JotColoring printable coloring pages share image: Bible coloring pages. ",
+    "sha256": "b2c366e4dbc147bf64e9ba77449c1f2d1c3d6d043853096dbcb077226959613a",
+    "title": "Bible coloring pages.",
+    "description": "Bible scenes, outline lettering, and illustrated parables to color."
+  },
+  "animals-turtles": {
+    "src": "/og/pages/animals-turtles-b1b5ab89e8961dea.png",
+    "alt": "JotColoring animal coloring collection share image: Turtle coloring pages. ",
+    "sha256": "b1b5ab89e8961deac03a2edec968a51a9da1463c72fcb6da6c24ba8ecedfc7e1",
+    "title": "Turtle coloring pages.",
+    "description": "Explore turtle coloring pages to download or color online."
+  },
+  "animals-pandas": {
+    "src": "/og/pages/animals-pandas-959ede2bdd704738.png",
+    "alt": "JotColoring animal coloring collection share image: Panda coloring pages. ",
+    "sha256": "959ede2bdd7047388e8f47b5738a32339808fc9b98edda8a6158bc6049fc4cd3",
+    "title": "Panda coloring pages.",
+    "description": "Explore panda coloring pages to download or color online."
   }
 }

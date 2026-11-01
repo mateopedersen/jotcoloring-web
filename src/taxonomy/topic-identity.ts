@@ -1,7 +1,7 @@
 /** Visible topic identity for newly authored copy. Never infer a topic from a filename. */
 const identities:Readonly<Record<string,string>>={
  'hello-kitty':'Hello Kitty',bluey:'Bluey',barbie:'Barbie',sonic:'Sonic',minecraft:'Minecraft',
- huntrix:'KPop Demon Hunters','k-pop-demon-hunters':'KPop Demon Hunters',descendants:'Descendants',squishy:'Squishy'
+ huntrix:'KPop Demon Hunters','k-pop-demon-hunters':'KPop Demon Hunters',descendants:'Descendants',squishy:'Squishy',fnaf:"Five Nights at Freddy's",bible:'Bible'
 };
 const normalized=(s:string)=>s.normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g,'');
 export function requiredTopicIdentities(categoryIds:readonly string[]){return [...new Set(categoryIds.map(id=>identities[id]).filter((s):s is string=>!!s))];}

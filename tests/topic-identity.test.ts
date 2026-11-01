@@ -11,3 +11,11 @@ test('topic checks preserve generic subjects and do not fabricate package age or
  assert.throws(()=>requireSearchableTopicIdentity({title:'Rounded Cat',description:'A rounded cat stretches beneath a heart.',category_ids:['dolls-toys','squishy']}),/Squishy/);
  assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Rounded Cat',description:'Squishy: A rounded cat stretches beneath a heart.',category_ids:['dolls-toys','squishy']}));
 });
+
+
+test('FNAF and Bible metadata retain their reviewed searchable subject',()=>{
+ assert.throws(()=>requireSearchableTopicIdentity({title:'Freddy Holds a Microphone',description:'Freddy stands beside a curtain.',category_ids:['video-games','fnaf']}),/Five Nights/);
+ assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Freddy Holds a Microphone',description:"Five Nights at Freddy’s (FNAF): Freddy stands beside a curtain.",category_ids:['video-games','fnaf']}));
+ assert.throws(()=>requireSearchableTopicIdentity({title:'Dove and Olive Leaf',description:'A dove carries a leaf.',category_ids:['bible']}),/Bible/);
+ assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Dove and Olive Leaf',description:'Bible illustration: A dove carries an olive leaf.',category_ids:['bible']}));
+});

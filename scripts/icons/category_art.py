@@ -116,6 +116,26 @@ def register(ns):
     b=G(R(17,29,62,77,5,M('blue'),'#4e879d',1.5)+R(24,36,49,60,2,M('paper'))+P('m35 80 11-28 12 28m-19-9h14',stroke='#508b9a',sw=3),'rotate(-13 50 70)')
     b+=G(R(45,20,61,83,5,M('coral'),'#b57656',1.5)+R(51,27,49,66,2,M('paper'))+P('M67 79V45h9q13 0 7 15 10 11-5 18Z M67 61h10',stroke='#bf7655',sw=3),'rotate(9 75 60)')+G(pencil(),'translate(62 24) rotate(22 20 40) scale(.72)')
     add('education','Learning · alphabet books and a pencil',b)
+    # Giant panda: rounded ears, dark eye patches and limbs surrounding pale fur.
+    b=E(64,84,34,31,M('paper'),'stroke="#7a858b" stroke-width="1.5"')
+    b+=E(36,84,12,24,M('navy'),'transform="rotate(23 36 84)"')+E(92,84,12,24,M('navy'),'transform="rotate(-23 92 84)"')
+    b+=E(45,109,17,10,M('navy'))+E(83,109,17,10,M('navy'))
+    b+=C(37,27,15,M('navy'))+C(91,27,15,M('navy'))
+    b+=E(64,47,40,33,M('paper'),'stroke="#7a858b" stroke-width="1.5"')
+    b+=E(46,45,11,14,M('navy'),'transform="rotate(28 46 45)"')+E(82,45,11,14,M('navy'),'transform="rotate(-28 82 45)"')
+    b+=C(46,43,4,'#fff')+C(82,43,4,'#fff')+C(47,44,2.1,'#253135')+C(81,44,2.1,'#253135')
+    b+=E(64,61,8,5,M('navy'))+P('M64 65v5m0-1q-7 7-13 0m13 0q7 7 13 0',stroke='#58616a',sw=1.6)
+    b+=P('M91 110 101 68m-7 30 10-5m-8-8 9-3',stroke='#548653',sw=4)+leaf(101,83,110,.55)+leaf(97,98,10,.5)
+    add('pandas','Pandas · giant panda with rounded ears and eye patches',b)
+    # Bible uses a book silhouette and embossed cross, separate from alphabet books.
+    b=P('M28 19 91 12q10-1 12 10v82q0 10-10 11l-63 5q-13 0-13-13V32q0-11 11-13Z',M('navy'),'#3d5068',1.7)
+    b+=P('M28 28 94 21v78l-64 7q-8 0-8-8V36q0-6 6-8Z',M('blue'),'#567c91',1.3)
+    b+=P('M31 108 94 101v10l-64 6q-8 0-8-6 2-3 9-3Z',M('paper'),'#9b947f',1.2)
+    b+=P('M34 111 92 105m-55 9 55-6',stroke='#c7bca0',sw=1)
+    b+=P('M57 39h12v15h15v12H69v24H57V66H42V54h15Z',M('gold'),'#ab7c37',1.2)
+    b+=P('M77 103v19l7-6 7 5v-19Z',M('coral'),'#ae644f',1.1)
+    add('bible','Bible · blue book with a raised gold cross and ribbon',b)
+
     # Soccer ball, with colored basketball behind.
     b=C(87,42,27,M('orange'),'stroke="#b5753f" stroke-width="1.5"')+P('M60 42h54m-27-27v54M69 23q30 22 0 39m36-39Q77 42 105 62',stroke='#9b6541',sw=1.8)
     b+=C(51,77,39,M('paper'),'stroke="#8b9c9b" stroke-width="1.5"')+P('m51 57 14 10-5 17H43l-6-17Zm-33 9 18 1m-11 31 18-14m17 0 17 14m-13-31 19-3M48 39l3 18',M('navy'),'#455967',1.6)+P('m18 68-3 15 10 16 13 12 17 3 18-8 13-16-4-17-8-18-16-10-19 2-14 10Z',stroke='#a6b7b4',sw=1.1)
