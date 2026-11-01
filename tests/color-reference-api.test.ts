@@ -2,12 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {publicColorReference} from '../src/server/color-references';
 import {publicCachePolicy} from '../src/server/public-cache';
-import {REFERENCE_VERSION} from '../src/coloring/reference-record';
+import {REFERENCE_VERSION,colorRecordKey} from '../src/coloring/reference-record';
 import {sha256} from '../src/server/http';
 import type {Env} from '../src/server/types';
 const source='a'.repeat(64),preview='b'.repeat(64),ref='c'.repeat(64),id='published-drawing';
 const record=()=>({version:REFERENCE_VERSION,id,source_sha256:source,preview_sha256:preview,reference_sha256:ref,key:`published/color-ideas/v1/${source}/${ref}.webp`,width:900,height:1350,bytes:1000,review:{status:'approved',source_sha256:source,reference_sha256:ref,notes:'Actual original and rendered reference reviewed together.',reviewed_at:'2026-11-01T12:00:00Z'}});
-function fixture(r:any=record(),current:any={sha256:source,preview_sha256:preview}){let lookups=0;const env={PUBLIC_MEDIA_BASE_URL:'https://assets.jotcoloring.com',CATALOG_DB:{prepare(sql:string){assert.match(sql,/c.status='published'/);assert.match(sql,/c.active_version/);return{bind(value:string){assert.equal(value,id);return{async first(){return current}}}}}},PUBLISHED:{async get(){lookups++;return r?{size:JSON.stringify(r).length,text:async()=>JSON.stringify(r)}:null}}} as unknown as Env;return{env,get lookups(){return lookups}};}
+function fixture(r:any=record(),current:any={sha256:source,preview_sha256:preview}){let lookups=0;const env={PUBLIC_MEDIA_BASE_URL:'https://assets.jotcoloring.com',CATALOG_DB:{prepare(sql:string){assert.match(sql,/c.status='published'/);assert.match(sql,/c.active_version/);return{bind(value:string){assert.equal(value,id);return{async first(){return current}}}}}},PUBLISHED:{async get(key:string){lookups++;return r&&key===colorRecordKey(source)?{size:JSON.stringify(r).length,text:async()=>JSON.stringify(r)}:null}}} as unknown as Env;return{env,get lookups(){return lookups}};}
 const request=()=>new Request(`https://jotcoloring.com/api/color-reference/${id}?v=${source.slice(0,24)}`);
 test('only current published sources can resolve an approved public color reference',async()=>{const f=fixture(),r=await publicColorReference(request(),f.env,id),j=await r.json();assert.equal(j.status,'ready');assert.equal(j.reference,'https://assets.jotcoloring.com/'+record().key);assert.equal(f.lookups,1);});
 test('archived or changed sources never reach stored reference bytes',async()=>{for(const current of [null,{sha256:'d'.repeat(64),preview_sha256:preview}]){const f=fixture(record(),current);await assert.rejects(publicColorReference(request(),f.env,id));assert.equal(f.lookups,0);}});

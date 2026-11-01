@@ -1,11 +1,61 @@
 # Source-bound Color Ideas
 
-The former `outline-colors-v1` region fill does not recognize objects. It must not
-be used as a semantic color reference. The public Color Ideas component now
-accepts the explicitly reviewed original showcase pairs, the 100 previously
-reviewed original color references, or a reviewed source-bound R2 manifest.
-Other pages show an honest unavailable state and retain their Studio link.
-This rollout does **not** claim that the entire imported catalog has been recolored.
+The former `outline-colors-v1` fill does not recognize objects and is never a
+semantic fallback. Reviewed showcase pairs and source-bound approved references
+remain preferred. Other published pages enter the bounded `pixel-conditioned-v3`
+background pipeline. A queued page is not a completed or verified color result.
+
+## Automatic preparation for existing and future pages
+
+The existing jobs Worker scans 100 published source records per scheduled tick.
+A database trigger queues new published revisions; an opened Color Ideas panel
+can also register the current verified source. The unique identity includes the
+content ID, original printable checksum, preview checksum and engine version.
+Archived or changed sources cannot activate a stale result. Homepage pins,
+originals, blank PDF/Image downloads and ordinary catalog publication stay intact.
+
+Every automatic job receives the actual image pixels three times:
+
+1. Qwen 3.8 27B observes the original and proposes object/part-specific colors.
+2. FLUX.2 Klein 4B colors that original using the observed plan. Its contours are
+   not substituted for the source. Pigment transfers into source-owned regions;
+   original dark pixels and the entire brand footer are preserved losslessly.
+3. Qwen examines the original and final transferred image, records actual observed
+   colors, and rejects material/character errors. Geometric checks also reject
+   missing colors or unrelated output. This is machine assessment, not a human
+   visual approval or a guarantee of correct recognition.
+
+Only successful results receive a source-bound `machine_checked` manifest under
+`published/color-ideas/v3/ID/SOURCE_SHA/PREVIEW_SHA/`. The source, result, plan,
+observations and assessment are first copied to private BACKUPS and read back
+with checksum verification. The public image is verified before its manifest
+is activated. An approved manual reference always takes precedence.
+
+The dedicated Workers Free account enforces the zero-charge ceiling. The main
+paid account never runs this inference. Vision planning/review each reserve 600
+neurons; image generation reserves 300. These conservative reservations share
+one 9,000-neuron daily ledger with the existing text generator: at most six full
+automatic jobs per UTC day when nothing else uses that allowance. Actual provider
+consumption can be lower. Other account activity may stop generation earlier.
+There is no paid fallback, new plan or attempt to bypass the provider quota.
+Consequently, a large catalog is processed gradually, not all at once.
+
+Only one automatic color job holds a 12-minute lease. Attempts are bounded to
+three. Confirmed image output and its plan survive interruption; a postponed
+review reuses them. Unknown provider outcomes wait until the next UTC day instead
+of being immediately replayed. Failed semantic/geometry checks and provider
+content rejections remain `review_needed` and are never automatically published.
+Investigate these source-specific cases before deliberately requeueing them.
+
+Staging has discovery disabled and only explicit test jobs run. Production uses
+scheduled discovery. Deploy catalog migrations 0013 and 0014 after a verified
+private database backup, then the compatible free gateway, jobs and web versions.
+CI does not apply database migrations or deploy the separate free gateway.
+
+To pause new automatic work, disable `COLOR_REFERENCES_SCAN` on the jobs Worker;
+to stop consumers too, disable `COLOR_REFERENCES_ENABLED`. Keep stored references
+and evidence intact. Track job states/error codes and the shared daily ledger;
+do not expose private request payloads, plans or credentials in public logs.
 
 ## Local preparation
 
@@ -72,7 +122,7 @@ bytes, the API and the rendered page.
 R2 keys are `published/color-ideas/v1/SOURCE_SHA/REFERENCE_SHA.webp` and
 `published/color-ideas/v1/SOURCE_SHA/reference.json`. New approved references become
 available to all six moods without an application deployment. New or replaced
-artwork requires its own preparation/review; no arbitrary fill is a fallback.
+artwork requires its own source-bound preparation; no arbitrary fill is a fallback.
 The lookup always verifies the current published revision and preview checksum.
 Unpublished, archived, changed or unreviewed artwork cannot inherit an old approval.
 Staging reads its own bucket, not production storage.
@@ -96,10 +146,15 @@ emulation is not a physical iPhone test.
 
 The first model-assisted review set contains nine drawings across simple objects,
 animals, characters, vehicles and a detailed unicorn scene. Local corrections were
-needed for two character examples. Full catalog backfill remains separate reviewed
-work; model quality and correctness on unseen drawings are not guaranteed.
+needed for two character examples. Automatic catalog backfill remains subject to the free daily allowance and quality
+gates; model quality and correctness on unseen drawings are not guaranteed.
 
 Primary implementation references:
 - https://huggingface.co/black-forest-labs/FLUX.2-klein-4B
 - https://github.com/mflux-community/mflux
 - https://huggingface.co/mflux-community/flux2-klein-4b-mflux-q4
+
+Automatic service references:
+- https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/
+- https://developers.cloudflare.com/workers-ai/models/flux-2-klein-4b/
+- https://developers.cloudflare.com/workers-ai/platform/pricing/

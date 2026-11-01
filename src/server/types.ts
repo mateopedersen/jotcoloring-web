@@ -9,7 +9,7 @@ export interface StoredObject { key: string; size: number; etag: string; httpEta
 export interface Bucket { get(key: string, options?: unknown): Promise<StoredObject | null>; head(key: string): Promise<StoredObject | null>; put(key: string, value: ReadableStream | ArrayBuffer | Uint8Array | string, options?: unknown): Promise<unknown>; delete(keys: string | string[]): Promise<void>; list(options?: { prefix?:string; cursor?:string; limit?:number }):Promise<{objects:StoredObject[];truncated:boolean;cursor?:string}> }
 export interface Queue { send(message: unknown, options?: unknown):Promise<void> }
 export interface Env {
- APP_ENV?: string; CATALOG_DB?: Database; SEARCH_DB?: Database; ORIGINALS?: Bucket; PUBLISHED?: Bucket; JOB_ASSETS?: Bucket; BACKUPS?: Bucket; INGEST_QUEUE?: Queue; AI_QUEUE?: Queue;
+ COLOR_REFERENCES_ENABLED?:string; COLOR_REFERENCES_SCAN?:string; APP_ENV?: string; CATALOG_DB?: Database; SEARCH_DB?: Database; ORIGINALS?: Bucket; PUBLISHED?: Bucket; JOB_ASSETS?: Bucket; BACKUPS?: Bucket; INGEST_QUEUE?: Queue; AI_QUEUE?: Queue;
  AI?: {run(model:string, input:unknown):Promise<unknown>}; IMAGES?: {input(stream:ReadableStream): {transform(options:unknown):unknown}};
  PUBLIC_SITE_URL?:string; PUBLIC_MEDIA_BASE_URL?:string; ACCESS_TEAM_DOMAIN?:string; ACCESS_APPLICATION_AUD?:string; ADMIN_ALLOWED_EMAILS?:string; ADMIN_ALLOWED_SUBJECTS?:string; ADMIN_ALLOWED_SERVICE_TOKENS?:string;
  SESSION_SIGNING_SECRET?:string; CURSOR_SIGNING_SECRET?:string; MEDIA_VALIDATION_SECRET?:string; AI_ENABLED?:string; AI_MODEL_ID?:string;

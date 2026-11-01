@@ -4,7 +4,7 @@ Güncelleme: 30 Ekim 2026. **Son kullanıcı açıklaması: mevcut ücretli Work
 
 ## İçerik hazırlama
 
-Siyah-beyaz kaynak yeterlidir: hazırlama ve yayın akışı artık `color_inspiration` ile 240/320/400 px ana sayfa karşılaştırma görsellerini otomatik üretir. Ayrı renkli dosya zorunlu değildir; `--color` yalnız isteğe bağlı, onaylı bir referans içindir. Ayrıntılar: [Otomatik renkli önizlemeler](automatic-color-previews.md).
+Siyah-beyaz kaynak yeterlidir. Ana sayfa artık onaylı ve sabit vitrin listesini kullanır; yeni yüklenen içerik kendiliğinden bu vitrine girmez. Renk fikirleri için gerçek görseli inceleyen, kaynak checksum'ına bağlı arka plan sistemi kullanılır. Ücretsiz günlük kota nedeniyle katalog kademeli işlenir; sıraya alınmış bir görsel hazır sayılmaz. Eski rastgele bölge dolguları doğru nesne rengi kanıtı değildir. Ayrıntılar: [Kaynağa bağlı renk fikirleri](coloring/color-references.md).
 
 Özgün çizim dosyasını kullanın; tasarım ekranından küçük görsel kırpmayın. Başlık, açıklama ve alternatif metni gerçekten görünen konuya göre yazın. `content_id` sabittir; dosya değiştiğinde yeni revision ve yeni checksum gerekir. Çizim alanı siyah-beyazdır. Son kullanıcı yönlendirmesiyle PDF/WEBP sağ alt ayrı beyaz footer alanında turuncu JotColoring™ taşır; bu kontrollü marka alanı çizimin renk doğrulamasından ayrı incelenir. Renkli ana sayfa önizlemeleri ayrı `home_half_color` rolündedir. Kullanıcının AI işi veya stüdyo projesi otomatik katalog yayını değildir.
 
