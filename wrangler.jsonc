@@ -75,7 +75,8 @@
         "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
         "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b",
         "ACCESS_TEAM_DOMAIN": "https://broken-term-6d26.cloudflareaccess.com",
-        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e"
+        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e",
+        "DISCOVERY_ENABLED": "true"
       },
       "d1_databases": [
         {
@@ -155,7 +156,8 @@
         "AI_FREE_GATEWAY_URL": "https://jotcoloring-ai-free-gateway.jotcoloring-web.workers.dev",
         "AI_MODEL_ID": "@cf/black-forest-labs/flux-2-klein-4b",
         "ACCESS_TEAM_DOMAIN": "https://broken-term-6d26.cloudflareaccess.com",
-        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e"
+        "ACCESS_APPLICATION_AUD": "ebac2f9db85f1e2b3e1acba20af4839a0c6b7d0841d6d8bf46abbd801423430e",
+        "DISCOVERY_ENABLED": "true"
       },
       "d1_databases": [
         {
@@ -221,7 +223,8 @@
       "preview_urls": false,
       "vars": {
         "APP_ENV": "preview",
-        "AI_ENABLED": "false"
+        "AI_ENABLED": "false",
+        "DISCOVERY_ENABLED": "true"
       },
       "d1_databases": [],
       "r2_buckets": [],

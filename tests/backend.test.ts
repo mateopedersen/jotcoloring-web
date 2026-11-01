@@ -11,7 +11,7 @@ import {AppError,requireOrigin,canonicalJSON,sha256} from '../src/server/http';
 import {sniffMime} from '../src/server/assets';
 import {aiConfiguration,validateGeneration,generationPrompt,WorkersAIProvider} from '../src/server/ai';
 import {rateLimit} from '../src/server/limits';
-import {sitemapIndex,sitemapSegment} from '../src/server/sitemap';
+import {buildSitemapIndex as sitemapIndex,buildSitemapSegment as sitemapSegment} from '../src/server/sitemap';
 import {colorRegions,imageDimensions,normalizePhoto} from '../src/server/image-processing';
 import type {Database,Statement,D1Result,Env,Manifest} from '../src/server/types';
 class LocalD1 implements Database{

@@ -10,8 +10,9 @@ interface Table {name:string;columns:Column[];row_count:number;sha256:string}
 export interface Snapshot {schema:string;file_sha256:string;outbox_watermark:string;tables:Table[];rows:number}
 const LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation'];
 const AGE_TABLES=[...LEGACY_TABLES,'age_recommendation'];
-export const TABLES=[...AGE_TABLES,'color_reference_job','color_reference_scan','color_ai_reservation'];
-const SCHEMA_TABLES:Record<string,string[]>={'jotcoloring-catalog-transfer/1':LEGACY_TABLES,'jotcoloring-catalog-transfer/2':AGE_TABLES,'jotcoloring-catalog-transfer/3':TABLES};
+const COLOR_TABLES=[...AGE_TABLES,'color_reference_job','color_reference_scan','color_ai_reservation'];
+export const TABLES=[...COLOR_TABLES,'discovery_dirty','discovery_fragment','discovery_page','discovery_state','discovery_notice'];
+const SCHEMA_TABLES:Record<string,string[]>={'jotcoloring-catalog-transfer/1':LEGACY_TABLES,'jotcoloring-catalog-transfer/2':AGE_TABLES,'jotcoloring-catalog-transfer/3':COLOR_TABLES,'jotcoloring-catalog-transfer/4':TABLES};
 export const canonical=(value:unknown):string=>JSON.stringify(value,(_key,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a<b?-1:a>b?1:0)):v);
 export const sha=(value:string)=>createHash('sha256').update(value).digest('hex');
 const ident=(value:string)=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw new Error('Unsafe SQL identifier');return '"'+value+'"';};
@@ -71,7 +72,7 @@ export async function importSnapshot(db:Pg,file:string,options:{batchSize?:numbe
  }
  await flush();if(await fileHash(file)!==snapshot.file_sha256)throw new Error('Snapshot changed during import');
  // Preserve explicit source sequence values without allowing the next insert to collide.
- for(const [table,column] of [['outbox_event','seq'],['audit_event','id'],['sitemap_entry','ordinal']])await db.query(`SELECT setval(pg_get_serial_sequence('${table}','${column}'),GREATEST(COALESCE(MAX(${ident(column)}),0),1),COALESCE(MAX(${ident(column)}),0)>0) FROM ${ident(table)}`);
+ for(const [table,column] of [['outbox_event','seq'],['audit_event','id'],['sitemap_entry','ordinal'],['discovery_notice','id']])await db.query(`SELECT setval(pg_get_serial_sequence('${table}','${column}'),GREATEST(COALESCE(MAX(${ident(column)}),0),1),COALESCE(MAX(${ident(column)}),0)>0) FROM ${ident(table)}`);
  await db.query('UPDATE transfer_checkpoint SET status=\'complete\',updated_at=now() WHERE snapshot_sha256=$1',[snapshot.file_sha256]);
  return{snapshot,status:'complete',batches,rows};
 }
