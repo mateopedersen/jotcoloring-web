@@ -103,6 +103,7 @@
   .studio-v4 .object-library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width:480px) {
+  .studio-v4 .export-modal .two-fields { grid-template-columns: minmax(0,1fr); }
   .studio-v4 .library-filters { grid-template-columns: minmax(0,1fr); }
   .studio-v4 .library-header { gap: 14px; align-items: flex-start; }
   .studio-v4 .library-header h2 { font-size: 24px; line-height: 1.18; }

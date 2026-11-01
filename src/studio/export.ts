@@ -20,6 +20,12 @@ export async function exportArtwork(art:HTMLCanvasElement,outline:HTMLCanvasElem
     const encode=async(canvas:HTMLCanvasElement)=>{
       if(format.id==='svg'){const png=await canvasBlob(canvas,'image/png');const bytes=new Uint8Array(await png.arrayBuffer());let raw='';for(let i=0;i<bytes.length;i+=32768)raw+=String.fromCharCode(...bytes.subarray(i,i+32768));const {xml}=await import('../photo/files');return new Blob([`<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}" viewBox="0 0 ${canvas.width} ${canvas.height}" role="img"><title>${xml(name)}</title><desc>Colored JotColoring artwork. Self-contained lossless PNG embedded in SVG; paint is not editable vector paths.</desc><image width="${canvas.width}" height="${canvas.height}" href="data:image/png;base64,${btoa(raw)}"/></svg>`],{type:format.mime});}
       if(format.id==='docx'){const {wordPhoto}=await import('../photo/files');return new Blob([wordPhoto(new Uint8Array(await(await canvasBlob(canvas,'image/png')).arrayBuffer()),canvas.width,canvas.height,name,{description:'Colored artwork created in JotColoring Studio. Embedded full-color image.'}) as BlobPart],{type:format.mime});}
+      // Safari can decode WEBP without offering a canvas WEBP encoder. Keep
+      // previews lightweight, but use the existing local codec for real files.
+      if(format.id==='webp'){
+        try{return await canvasBlob(canvas,format.mime,quality);}
+        catch{return(await import('../photo/webp')).losslessWebP(canvas);}
+      }
       return canvasBlob(canvas,format.mime,quality);
     };
     const colored=await encode(art);if(colored.size>32_000_000)throw new Error('Choose a smaller output size for this download.');
