@@ -4,9 +4,10 @@ import sharp from 'sharp';
 import {BRAND_VERSION,brandLogoRGB,BRAND_LOGO_WIDTH,BRAND_LOGO_HEIGHT} from '../../src/server/branding';
 import {pdfBrandBox} from '../../src/server/pdf-branding';
 /** Permit one inert grayscale artwork image and only the exact approved RGB logo in its footer. */
-export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBrand=true){
+export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBrand=true,expectedTitle?:string){
  if(bytes.length>1_000_000)throw new Error('PDF exceeds 1,000,000 bytes.');
  const doc=await PDFDocument.load(bytes,{ignoreEncryption:false});if(doc.getPageCount()!==1)throw new Error('Printable PDF must contain exactly one page.');
+ if(expectedTitle!==undefined&&doc.getTitle()!==expectedTitle)throw new Error('PDF document title differs from the reviewed artwork title.');
  const page=doc.getPage(0),size=page.getSize(),expected=role==='printable_pdf_letter_bw'?[612,792]:[595.2756,841.8898];if(Math.abs(size.width-expected[0])>1||Math.abs(size.height-expected[1])>1)throw new Error('Incorrect PDF paper size.');
  const b=pdfBrandBox(size.width,size.height),forbidden=['JS','JavaScript','OpenAction','AA','Launch','EmbeddedFiles','RichMedia','XFA','AcroForm','Encrypt'];let images=0,logos=0,streams=0,brands=0,artworkDraws=0;const logoRefs=new Set<string>();
  for(const [ref,object] of doc.context.enumerateIndirectObjects()){
@@ -33,4 +34,13 @@ export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBra
  const resources=page.node.Resources()?.lookup(PDFName.of('XObject'),PDFDict);if(requireBrand&&(!resources||!resources.entries().some(([name,ref])=>name.toString().startsWith('/JotBrand-')&&logoRefs.has(ref.toString()))))throw new Error('PDF footer does not reference its approved logo.');
  if(images!==1||artworkDraws!==1||streams!==1||logos!==(requireBrand?1:0)||brands!==(requireBrand?1:0))throw new Error('Only the prepared grayscale artwork and branded footer PDF layout is supported.');
  return {page_count:1,width:size.width,height:size.height,bw:true,artwork_grayscale:true,brand_version:requireBrand?BRAND_VERSION:null};
+}
+
+/** Update only document information; accepted image streams are not re-encoded. */
+export async function alignPDFDocumentTitle(bytes:Uint8Array,title:string){
+ const doc=await PDFDocument.load(bytes,{ignoreEncryption:false,updateMetadata:false});
+ if(doc.getTitle()===title)return {bytes,changed:false};
+ doc.setTitle(title);const updated=await doc.save({useObjectStreams:true});
+ if(updated.length>1_000_000)throw new Error('Updated PDF exceeds 1,000,000 bytes.');
+ return {bytes:updated,changed:true};
 }
