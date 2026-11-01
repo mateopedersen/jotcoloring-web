@@ -11,7 +11,7 @@ export const AGE_BANDS=[
 ] as const;
 export type AgeBand=typeof AGE_BANDS[number]['id'];
 export interface ImageDetailMetrics {width:number;height:number;inkRatio:number;edgeDensity:number;regions:number;smallRegionRatio:number;medianRegionRatio:number;largestRegionRatio:number;largeAreaShare:number;smallAreaShare:number;wideAreaShare:number;usableAreaShare:number;medianWidthRatio:number}
-export interface AgeAssessment {input_mode:'branded'|'plain';category_analysis:CategoryAnalysis;version:typeof AGE_VERSION;source_sha256:string;model:typeof VISION_MODEL;model_revision:typeof VISION_REVISION;band:AgeBand;score:number;metrics:ImageDetailMetrics;visual_scores:number[];subjects:Array<{label:string;score:number}>;analyzed_at:string}
+export interface AgeAssessment {input_revision?:string;input_mode:'branded'|'plain';category_analysis:CategoryAnalysis;version:typeof AGE_VERSION;source_sha256:string;model:typeof VISION_MODEL;model_revision:typeof VISION_REVISION;band:AgeBand;score:number;metrics:ImageDetailMetrics;visual_scores:number[];subjects:Array<{label:string;score:number}>;analyzed_at:string}
 export const DETAIL_LABELS=[
  'a preschool coloring page with a few large simple shapes and very little decoration',
  'a children’s coloring page with a large cartoon character and some small background decorations',
