@@ -58,8 +58,8 @@ test('cache and epoch lookup failures fail open without retrying the application
 test('sitemaps are cached as XML and invalidated by published catalog changes',async()=>{
  const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/sitemaps/1.xml';let renders=0;
  const next=async()=>{renders++;return new Response('<urlset/>',{headers:{'Content-Type':'application/xml; charset=utf-8','Cache-Control':'public,max-age=300'}})};
- assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(f.pending);
- assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'HIT');assert.equal(renders,1);
+ const first=await f.run(new Request(url),next);assert.equal(first.headers.get('X-JotColoring-Cache'),'MISS');assert.match(first.headers.get('Cache-Control')!,/max-age=0, must-revalidate/);await Promise.all(f.pending);
+ const cached=await f.run(new Request(url),next);assert.equal(cached.headers.get('X-JotColoring-Cache'),'HIT');assert.match(cached.headers.get('Cache-Control')!,/max-age=0, must-revalidate/);assert.equal(renders,1);
  f.advance();assert.equal((await f.run(new Request(url),next)).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(renders,2);
  assert.equal(publicCachePolicy(new Request(url+'?private=1')),undefined);
 });
@@ -89,4 +89,13 @@ test('prepared sitemap activation invalidates its real Workers cache key without
  const cache:ResponseCache={async match(k){return stored.get(k.url)?.clone()},async put(k,r){stored.set(k.url,r)}};
  const request=new Request('https://jotcoloring.com/sitemap.xml'),next=async()=>new Response('<sitemapindex>'+ ++calls+'</sitemapindex>',{headers:{'Content-Type':'application/xml'}}),run=()=>withPublicCache(request,env,'release',next,cache,p=>pending.push(p));
  assert.equal((await run()).headers.get('X-JotColoring-Cache'),'MISS');await Promise.all(pending);assert.equal((await run()).headers.get('X-JotColoring-Cache'),'HIT');manifest++;assert.equal((await run()).headers.get('X-JotColoring-Cache'),'MISS');assert.equal(calls,2);
+});
+
+test('a browser revalidating old XML receives the newly activated sitemap instead of a stale 304',async()=>{
+ let epoch=1;const entries=new Map<string,Response>(),pending:Promise<unknown>[]=[];
+ const env={APP_ENV:'production',PUBLIC_SITE_URL:'https://jotcoloring.com',CATALOG_DB:{prepare(sql:string){return{async first(){return sql.includes('discovery_state')?{epoch}:{seq:1,projected:1};}}}}} as unknown as Env;
+ const cache:ResponseCache={async match(key){return entries.get(key.url)?.clone()},async put(key,response){entries.set(key.url,response)}};
+ const run=(etag?:string)=>withPublicCache(new Request('https://jotcoloring.com/sitemaps/1.xml',{headers:etag?{'If-None-Match':etag}:{}}),env,'release',async()=>new Response('<urlset>revision '+epoch+'</urlset>',{headers:{'Content-Type':'application/xml',ETag:'"map-'+epoch+'"'}}),cache,p=>pending.push(p));
+ assert.match((await run()).headers.get('Cache-Control')!,/max-age=0, must-revalidate/);await Promise.all(pending);assert.equal((await run('"map-1"')).status,304);
+ epoch=2;const fresh=await run('"map-1"');assert.equal(fresh.status,200);assert.equal(fresh.headers.get('ETag'),'"map-2"');assert.match(await fresh.text(),/revision 2/);
 });

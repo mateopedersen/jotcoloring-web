@@ -22,3 +22,15 @@ Name the accurate reviewed topic or franchise naturally in each title or scene-s
 
 ## Seven-topic follow-up, 2026-11-01
 The owner authorized Turtle, Sharks, Trick or Treat, Bible, Five Nights at Freddy’s, Happy Birthday and Panda ZIPs as a distinct 7-topic / 700-drawing release. Scope `seven-topics-20261101` requires the exact seven archive checksums and complete source-bound double reviews. The reattached Descendants/Squishy/KPop archive is the already published package; do not duplicate it. Preserve existing Sharks, Sea Turtles and Birthdays categories. Retain outlined heading typography supplied outside a raster artwork; preserve original PDF/WebP and native raster separately, and bind reviews to the actual composed source. Package QA claims do not establish a fresh review, AI generation, identity or species. Record owner source claims truthfully.
+
+
+
+## Automatic sitemap updates — owner direction, 2026-11-02
+
+Every new topic/content publication must enter the existing automatic sitemap
+rebuild flow. Preserve its coalesced durable queue, scheduled recovery, bounded
+fragment generation, source/generation checks and last valid XML. A manual
+refresh is maintenance, not the normal publication requirement. Verify actual
+public XML contains the new canonical URLs before reporting a release complete.
+Read `docs/discovery-publication.md`; preserve the existing queue bounds and
+separate JotColoring operator profile.

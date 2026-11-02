@@ -29,7 +29,7 @@ export function publicCachePolicy(request:Request):Policy|undefined{
 }
 
 function browserPolicy(policy:Policy){
-  return policy.kind==='html'||policy.kind==='redirect'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':'public, max-age=300';
+  return policy.kind==='html'||policy.kind==='redirect'||policy.kind==='xml'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':'public, max-age=300';
 }
 
 export function publicCacheKey(request:Request,environment:string,release:string,epoch:string){

@@ -5,7 +5,7 @@ import {AppError} from './http';
 export const SITEMAP_SEGMENT_SIZE=1000;
 export const escapeXML=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 const open='<?xml version="1.0" encoding="UTF-8"?>';
-const headers={'Content-Type':'application/xml; charset=utf-8','Cache-Control':'public,max-age=300,s-maxage=600','X-Content-Type-Options':'nosniff'};
+const headers={'Content-Type':'application/xml; charset=utf-8','Cache-Control':'public,max-age=0,must-revalidate','X-Content-Type-Options':'nosniff'};
 function originFor(env:Env,requestURL:URL){const local=['localhost','127.0.0.1','[::1]'].includes(requestURL.hostname);const url=new URL(local?requestURL.origin:env.PUBLIC_SITE_URL||requestURL.origin);if(!['https:','http:'].includes(url.protocol))throw new AppError('CONFIGURATION_INVALID','Site URL is invalid.',503);return url.origin;}
 export async function buildSitemapIndex(env:Env,url:URL){if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);const origin=originFor(env,url);const row=await env.CATALOG_DB.prepare('SELECT MAX(ordinal) AS maximum FROM sitemap_entry').first<{maximum:number|null}>();const segments=Math.ceil((row?.maximum||0)/SITEMAP_SEGMENT_SIZE);if(segments>49999)throw new AppError('SITEMAP_LIMIT','Catalog sitemap index needs a nested site partition.',503);const paths=['static',...Array.from({length:segments},(_,i)=>String(i+1))];return new Response(open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+paths.map(p=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+p+'.xml')}</loc></sitemap>`).join('')+'</sitemapindex>',{headers});}
 type SitemapItem={path:string;updated?:string;images?:string[]};
