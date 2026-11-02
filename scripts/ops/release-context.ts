@@ -36,6 +36,15 @@ class RemoteBucket implements Bucket{
  async delete(){throw new Error('Deletion is disabled for release.');}async list():Promise<never>{throw new Error('Bucket listing is disabled for release.');}
 }
 const database=(binding:string)=>new RemoteDatabase(cfg.d1_databases.find((d:any)=>d.binding===binding).database_id),bucket=(binding:string)=>new RemoteBucket(cfg.r2_buckets.find((b:any)=>b.binding===binding).bucket_name);
-const env:Env={APP_ENV:environment,MEDIA_VALIDATION_SECRET:privateConfig.MEDIA_VALIDATION_SECRET,CURSOR_SIGNING_SECRET:privateConfig.CURSOR_SIGNING_SECRET,CATALOG_DB:database('CATALOG_DB'),SEARCH_DB:database('SEARCH_DB'),ORIGINALS:bucket('ORIGINALS'),PUBLISHED:bucket('PUBLISHED'),BACKUPS:bucket('BACKUPS'),INGEST_QUEUE:{async send(){/* Trusted operator processes this exact queued job below. */}}};
+let discoveryQueueID:string|undefined;
+const operatorQueue={async send(message:any){
+ // Operators process their own import/projection inline. Sitemap rebuilding is
+ // a real background job and must never be acknowledged by this adapter alone.
+ if(message?.type!=='discovery_rebuild')return;
+ if(message.job_id!=='sitemap')throw new Error('Unreviewed discovery job');
+ if(!discoveryQueueID){const name=`jotcoloring-${environment}-ingest`,queues=await api('/queues?name='+encodeURIComponent(name)),found=queues.filter((queue:any)=>queue.queue_name===name);if(found.length!==1)throw new Error('Exact existing discovery queue required');discoveryQueueID=found[0].queue_id;}
+ await api(`/queues/${discoveryQueueID}/messages`,{body:message,content_type:'json'});
+}};
+const env:Env={APP_ENV:environment,DISCOVERY_ENABLED:cfg.vars?.DISCOVERY_ENABLED,MEDIA_VALIDATION_SECRET:privateConfig.MEDIA_VALIDATION_SECRET,CURSOR_SIGNING_SECRET:privateConfig.CURSOR_SIGNING_SECRET,CATALOG_DB:database('CATALOG_DB'),SEARCH_DB:database('SEARCH_DB'),ORIGINALS:bucket('ORIGINALS'),PUBLISHED:bucket('PUBLISHED'),BACKUPS:bucket('BACKUPS'),INGEST_QUEUE:operatorQueue};
 return {env,api,requests:()=>requests,cfg};
 }

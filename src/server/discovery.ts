@@ -6,9 +6,50 @@ export const INDEXNOW_KEY='ee854fe90c4924b910aaa1776782403c';
 export const DISCOVERY_ORIGIN='https://jotcoloring.com';
 const utf8=new TextEncoder();
 export function discoveryPath(key:string){if(key.startsWith('category:'))return categoryById(key.slice(9))?categoryPath(key.slice(9)):null;return /^\/(?:coloring\/[a-z0-9-]+\/|coloring-pages\/)?$/.test(key)?key:null;}
+const REBUILD_LEASE_MS=5*60000;
+const rebuildWake={type:'discovery_rebuild',job_id:'sitemap'};
+async function sendRebuildWake(env:Env,token:string){
+ try{if(!env.INGEST_QUEUE)throw Error('DISCOVERY_QUEUE_UNAVAILABLE');await env.INGEST_QUEUE.send(rebuildWake);}
+ catch(error){await env.CATALOG_DB!.prepare("UPDATE discovery_state SET rebuild_state='idle',rebuild_lease_until='',rebuild_last_error=? WHERE id=1 AND rebuild_state='queued' AND rebuild_token=?").bind('QUEUE_SEND_FAILED',token).run();throw error;}
+}
+/** Coalesce publication events into one durable wake-up on the existing ingest queue. */
+export async function queueDiscoveryRebuild(env:Env){
+ if(env.DISCOVERY_ENABLED!=='true')return false;
+ const db=env.CATALOG_DB;if(!db||!env.INGEST_QUEUE)throw Error('DISCOVERY_BINDINGS_UNAVAILABLE');
+ if(!await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first())return false;
+ const now=new Date().toISOString(),token=crypto.randomUUID();
+ const claimed=await db.prepare("UPDATE discovery_state SET rebuild_state='queued',rebuild_token=?,rebuild_lease_until=?,rebuild_queued_at=?,rebuild_last_error='' WHERE id=1 AND (rebuild_state='idle' OR rebuild_lease_until<=?)").bind(token,new Date(Date.now()+REBUILD_LEASE_MS).toISOString(),now,now).run();
+ if(!claimed.meta.changes){if(!await db.prepare('SELECT id FROM discovery_state WHERE id=1').first())throw Error('DISCOVERY_STATE_UNAVAILABLE');return false;}
+ await sendRebuildWake(env,token);return true;
+}
+/** Queue and cron share a recoverable lease; old wake-ups may rebuild current dirty work. */
+export async function processDiscoveryRebuild(env:Env,by:'queue'|'cron'|'operator'='queue',limit=8){
+ if(env.DISCOVERY_ENABLED!=='true')return false;
+ const db=env.CATALOG_DB;if(!db||!env.PUBLISHED)throw Error('DISCOVERY_BINDINGS_UNAVAILABLE');
+ const now=new Date().toISOString();
+ if(!await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first()){
+  await db.prepare("UPDATE discovery_state SET rebuild_state='idle',rebuild_lease_until='' WHERE id=1 AND (rebuild_state<>'processing' OR rebuild_lease_until<=?) AND NOT EXISTS(SELECT 1 FROM discovery_dirty)").bind(now).run();return false;
+ }
+ const token=crypto.randomUUID(),claimed=await db.prepare("UPDATE discovery_state SET rebuild_state='processing',rebuild_token=?,rebuild_lease_until=?,rebuild_last_error='' WHERE id=1 AND (rebuild_state<>'processing' OR rebuild_lease_until<=?)").bind(token,new Date(Date.now()+REBUILD_LEASE_MS).toISOString(),now).run();
+ if(!claimed.meta.changes){if(!await db.prepare('SELECT id FROM discovery_state WHERE id=1').first())throw Error('DISCOVERY_STATE_UNAVAILABLE');return false;}
+ try{
+  await rebuildDiscovery(env,limit);
+  // Check dirty work in the same atomic update that releases ownership. A
+  // publication racing this boundary either gets this wake-up or claims idle.
+  const finished=await db.prepare("UPDATE discovery_state SET rebuild_state=CASE WHEN EXISTS(SELECT 1 FROM discovery_dirty) THEN 'queued' ELSE 'idle' END,rebuild_lease_until=CASE WHEN EXISTS(SELECT 1 FROM discovery_dirty) THEN ? ELSE '' END,rebuild_queued_at=CASE WHEN EXISTS(SELECT 1 FROM discovery_dirty) THEN ? ELSE rebuild_queued_at END,rebuild_completed_at=CASE WHEN EXISTS(SELECT 1 FROM discovery_dirty) THEN rebuild_completed_at ELSE ? END,rebuild_completed_by=CASE WHEN EXISTS(SELECT 1 FROM discovery_dirty) THEN rebuild_completed_by ELSE ? END WHERE id=1 AND rebuild_state='processing' AND rebuild_token=?").bind(new Date(Date.now()+REBUILD_LEASE_MS).toISOString(),new Date().toISOString(),new Date().toISOString(),by,token).run();
+  if(!finished.meta.changes)return false;
+  const state=await db.prepare('SELECT rebuild_state,rebuild_token FROM discovery_state WHERE id=1').first<{rebuild_state:string;rebuild_token:string}>();
+  if(state?.rebuild_state==='queued'&&state.rebuild_token===token)await sendRebuildWake(env,token);
+  return true;
+ }catch(error){
+  await db.prepare("UPDATE discovery_state SET rebuild_state='idle',rebuild_lease_until='',rebuild_last_error=? WHERE id=1 AND rebuild_token=?").bind(error instanceof Error?error.message.slice(0,120):'REBUILD_FAILED',token).run();throw error;
+ }
+}
 export async function rebuildDiscovery(env:Env,limit=4){
  const db=env.CATALOG_DB;if(!db||!env.PUBLISHED)return;
- const dirty=await db.prepare('SELECT segment,generation FROM discovery_dirty ORDER BY segment LIMIT ?').bind(Math.min(8,limit)).all<{segment:string;generation:number}>();
+ const bounded=Math.max(1,Math.min(8,Math.floor(limit))),first=await db.prepare("SELECT segment,generation FROM discovery_dirty WHERE segment='static'").all<{segment:string;generation:number}>();
+ const rest=await db.prepare("SELECT segment,generation FROM discovery_dirty WHERE segment<>'static' ORDER BY segment LIMIT ?").bind(bounded-first.results.length).all<{segment:string;generation:number}>();
+ const dirty={results:[...first.results,...rest.results]};
  for(const d of dirty.results){
   const response=await buildSitemapSegment(env,new URL(env.PUBLIC_SITE_URL||DISCOVERY_ORIGIN),d.segment),xml=await response.text(),bytes=utf8.encode(xml);
   const count=(xml.match(/<url>/g)||[]).length;
@@ -73,4 +114,4 @@ export async function reconcileDiscovery(env:Env){
  for(const r of rows.results)if(r.slug!==r.current_slug||r.visibility!==r.status||r.updated_at!==r.current_updated)await db.batch([db.prepare('UPDATE sitemap_entry SET slug=?,visibility=?,updated_at=? WHERE ordinal=?').bind(r.current_slug,r.status,r.current_updated,r.ordinal),db.prepare('INSERT INTO discovery_dirty(segment) VALUES(?) ON CONFLICT(segment) DO UPDATE SET generation=generation+1').bind(String(Math.floor((r.ordinal-1)/SITEMAP_SEGMENT_SIZE)+1))]);
  await db.prepare('UPDATE discovery_state SET reconcile_after=? WHERE id=1').bind(rows.results.at(-1)?.ordinal||0).run();
 }
-export async function runDiscovery(env:Env){if(env.DISCOVERY_ENABLED!=='true')return;await reconcileDiscovery(env);await rebuildDiscovery(env);await sendDiscoveryNotices(env);}
+export async function runDiscovery(env:Env){if(env.DISCOVERY_ENABLED!=='true')return;await reconcileDiscovery(env);await processDiscoveryRebuild(env,'cron');await sendDiscoveryNotices(env);}
