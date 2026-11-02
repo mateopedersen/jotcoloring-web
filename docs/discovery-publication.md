@@ -51,3 +51,9 @@ actual media bytes. A dirty segment or an incomplete rebuild remains pending.
 The scoped operator adapter sends only this sitemap job to the real existing
 queue, while preserving its intentional inline import/projection suppression.
 A local no-op queue must never be used as evidence of sitemap delivery.
+
+Canonical transfer snapshots with all seven coordination fields use format 5.
+Existing format 4 snapshots retain their original checksums and restore using
+only the seven reviewed idle/empty target defaults. Other target-column changes,
+unsafe defaults, partial migrations and version/column mismatches are rejected.
+Historical format 1–3 snapshots keep their existing supported table scopes.
