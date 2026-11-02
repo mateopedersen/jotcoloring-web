@@ -1,0 +1,20 @@
+.jc-catalog-filters{display:grid;grid-template-columns:155px minmax(0,1fr);gap:16px 22px;width:100%;min-width:0;margin:0 0 24px;padding:20px;border:1px solid #edd8c7;border-radius:20px;background:linear-gradient(115deg,#fff8ee,#fff 55%);box-shadow:0 4px 0 #f4e9df;color:#161616}
+.jc-filter-summary{display:flex;align-items:center;gap:12px;min-width:0}
+.jc-filter-summary-icon{display:grid;place-items:center;width:46px;height:52px;flex:none;border:1px solid #efd8bf;border-radius:14px;background:#fff5e5}
+.jc-filter-summary strong{display:block;font-family:'Avenir Next',Avenir,'Manrope Variable',sans-serif;font-size:27px;font-weight:800;line-height:1.15}
+.jc-filter-summary div>span{display:block;margin-top:5px;font-size:13px;font-weight:650;line-height:1.4}
+.jc-filter-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;min-width:0}
+.jc-catalog-filters--age .jc-filter-fields{grid-template-columns:repeat(3,minmax(0,1fr))}
+.jc-filter-field{display:grid;gap:8px;min-width:0;padding:11px;border:1px solid #ebdfd5;border-radius:14px;background:#fff;cursor:pointer}
+.jc-filter-field:focus-within{border-color:#b84a20;box-shadow:0 0 0 2px #ffead8}
+.jc-filter-field-heading{display:flex;align-items:center;gap:7px;min-width:0;font-size:13px;font-weight:750;line-height:1.3;color:#5c3823}
+.jc-filter-field-heading svg{width:29px;height:29px;flex:none}
+.site-v3 .jc-catalog-filters .jc-filter-field select{width:100%;max-width:100%;min-width:0;min-height:44px;margin:0;padding:9px 30px 9px 10px;border:1px solid #e4d9cf;border-radius:9px;background-color:#fffcf8;color:#111;font-size:15px;font-weight:700;line-height:1.4;cursor:pointer}
+.jc-filter-footer{grid-column:1/-1;display:flex;align-items:center;justify-content:flex-end;gap:16px;padding-top:12px;border-top:1px solid #f0e5db;font-size:12px;font-weight:650;color:#654b39}
+.jc-filter-footer>span{display:flex;align-items:center;gap:6px;margin-right:auto}
+.jc-filter-footer>a,.jc-filter-footer>button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;font-size:13px;font-weight:750;color:#a33c13}
+.jc-filter-footer>button{border-color:#dbb99b;background:#fff3e5}
+.jc-filter-footer>button[hidden]{display:none}
+@media(max-width:1100px){.jc-catalog-filters{grid-template-columns:minmax(0,1fr)}.jc-filter-summary{gap:10px}.jc-filter-summary div{display:flex;align-items:baseline;gap:8px}.jc-filter-summary-icon{width:36px;height:38px;border-radius:11px}.jc-filter-summary-icon svg{width:28px;height:28px}.jc-filter-summary strong{font-size:23px}.jc-filter-summary div>span{margin:0}.jc-filter-fields{gap:10px}}
+@media(max-width:700px){.jc-catalog-filters{padding:14px;gap:14px;border-radius:16px}.jc-filter-fields,.jc-catalog-filters--age .jc-filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.jc-filter-field{padding:9px;gap:7px}.jc-filter-field-heading{font-size:12px;gap:6px}.jc-filter-field-heading svg{width:26px;height:26px}.site-v3 .jc-catalog-filters .jc-filter-field select{font-size:14px;padding-left:8px}.jc-filter-footer{font-size:11px;gap:10px;flex-wrap:wrap}.jc-filter-footer>span{flex-basis:100%}.jc-filter-footer>a{margin-left:auto}}
+@media(max-width:350px){.jc-catalog-filters{padding:12px}.jc-filter-fields,.jc-catalog-filters--age .jc-filter-fields{grid-template-columns:minmax(0,1fr)}.jc-filter-field{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:8px}.jc-filter-field-heading{font-size:12px}}
