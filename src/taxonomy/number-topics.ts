@@ -45,6 +45,6 @@ export function searchNumberSubject(){
 }
 export function numberTopicForArt(item:{title:string;tags?:string[];category_ids?:string[]}){
  if(!item.category_ids?.includes('numbers'))return;
- const title=item.title.toLowerCase().replace(/(\d),(?=\d{3}\b)/g,'$1').replaceAll('-',' '),subjects=numberSubjects(title.split(/\s+/)),tags=(item.tags||[]).map(t=>numberSubjects(['number',...t.toLowerCase().split(/\s+/)])[0]?.number).filter((n):n is number=>n!==undefined);
+ const title=item.title.toLowerCase().replace(/(\d),(?=\d{3}\b)/g,'$1').replaceAll('-',' '),subjects=numberSubjects(title.split(/\s+/)),tags=[...new Set((item.tags||[]).map(t=>{const words=['number',...t.toLowerCase().split(/\s+/)],subject=numberSubjects(words)[0];return subject?.end===words.length?subject.number:undefined;}).filter((n):n is number=>n!==undefined))];
  return numberTopic(subjects.length===1?subjects[0].number:tags.length===1?tags[0]:'');
 }

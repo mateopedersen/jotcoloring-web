@@ -34,3 +34,10 @@ test('larger numeral subjects and thousands separators keep the complete number'
  }
 });
 
+
+test('arithmetic titles use agreeing digit/word subject aliases and reject scene-count tags',()=>{
+ const item={...number,title:'100 Equals 90 Plus 10 Activity',tags:['number','one hundred','100']};
+ assert.equal(contentBreadcrumbs(item).at(-2)!.path,'/coloring-pages/numbers/100/');
+ assert.equal(contentBreadcrumbs({...item,tags:['number','two cats']}).length,4);
+ assert.equal(contentBreadcrumbs({...item,tags:['100','101']}).length,4);
+});

@@ -129,3 +129,21 @@ test('notice wake-ups preserve revision scope and Retry-After without processing
  await assert.rejects(()=>queueDiscoveryNotices(f.env,'unreviewed'),/reviewed navigation/);f.env.APP_ENV='staging';assert.equal(await queueDiscoveryNotices(f.env),false);
  const {default:jobs}=await import('../workers/jobs/index');let acked=0;await jobs.queue({messages:[{body:{type:'discovery_notify',job_id:'indexnow'},attempts:1,ack(){acked++},retry(){throw Error('valid message rejected')}}]},f.env);assert.equal(acked,1);
 });
+
+test('twenty verified URLs share one IndexNow request and one key check',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);const paths=Array.from({length:15},(_,i)=>'/coloring-pages/numbers/'+(i+1)+'/').concat(['/collection/animals/','/collection/nature/','/collection/education/','/collection/characters/','/collection/bible/']);
+ const key=f.sql.prepare("SELECT object_key FROM discovery_fragment WHERE segment='static'").get()!.object_key as string;f.files.set(key,new TextEncoder().encode('<urlset>'+paths.map(p=>'<url><loc>https://jotcoloring.com'+p+'</loc></url>').join('')+'</urlset>'));
+ for(const path of paths)f.sql.prepare("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES(?,'batch','upsert')").run(path);
+ let posts=0,keys=0;const call:any=async(u:string,init:any)=>{if(u.endsWith('.txt')){keys++;return new Response(INDEXNOW_KEY);}if(u.includes('api.indexnow.org')){posts++;assert.deepEqual(JSON.parse(init.body).urlList,paths.map(p=>'https://jotcoloring.com'+p));return new Response('',{status:200});}return new Response(`<link rel="canonical" href="${u}">`);};
+ assert.equal(await processDiscoveryNotices(f.env,call),20);assert.equal(posts,1);assert.equal(keys,1);assert.equal(f.sql.prepare("SELECT COUNT(*) n FROM discovery_notice WHERE state='received'").get()!.n,20);
+});
+test('a 429 pauses every notification stream until Retry-After without spending unrelated attempts',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','limited','upsert')");let posts=0;
+ const call:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?(posts++,new Response('',{status:429,headers:{'Retry-After':'3600'}})):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
+ await processDiscoveryNotices(f.env,call);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/collection/education/','unrelated','upsert')");
+ assert.equal(await queueDiscoveryNotices(f.env),false);assert.equal(await processDiscoveryNotices(f.env,call),0);assert.equal(posts,1);assert.equal(f.sql.prepare("SELECT attempts FROM discovery_notice WHERE revision='unrelated'").get()!.attempts,0);assert.equal(f.messages.length,0);
+});
+test('a notification that loses its lease before the batch send cannot notify or overwrite the new owner',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','lease-check','upsert')");const prepare=f.db.prepare.bind(f.db);f.db.prepare=(q:string)=>{const s=prepare(q);if(q.startsWith('UPDATE discovery_notice SET lease_until=')){const run=s.run;s.run=async()=>{f.sql.exec("UPDATE discovery_notice SET lease_until='new-owner'");return run();};}return s;};
+ let posts=0;const call:any=async(u:string)=>u.includes('api.indexnow.org')?(posts++,new Response('')):new Response('<link rel="canonical" href="https://jotcoloring.com/">');await sendDiscoveryNotices(f.env,call);assert.equal(posts,0);const row=f.sql.prepare('SELECT state,lease_until FROM discovery_notice').get()!;assert.equal(row.state,'sending');assert.equal(row.lease_until,'new-owner');
+});
