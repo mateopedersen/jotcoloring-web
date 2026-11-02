@@ -25,3 +25,11 @@ test('number-subject searches match digit and word spellings without changing or
  assert.match(intentExpression(['number','two']),/"2" OR "two"/);
  assert.doesNotMatch(intentExpression(['two','cats']),/"2"/);
 });
+
+test('larger numeral subjects and thousands separators keep the complete number',()=>{
+ for(const [title,value] of [['Number 777 Beside A Dog',777],['Number 1,000 With Flowers',1000],['Number 1000 On A Book',1000]] as const){
+  const crumbs=contentBreadcrumbs({...number,title,tags:[]});
+  assert.equal(crumbs[3].name,'Number '+value);
+  assert.equal(new URL(crumbs[3].path,'https://jotcoloring.com').searchParams.get('q'),'number '+value);
+ }
+});
