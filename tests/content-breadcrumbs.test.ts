@@ -21,8 +21,8 @@ test('the breadcrumb schema uses the same reviewed hierarchy as the visible link
  assert.deepEqual(schema.itemListElement.map((c:any)=>c.name),contentBreadcrumbs(number).map(c=>c.name));
 });
 test('number-subject searches match digit and word spellings without changing ordinary scene counts',()=>{
- assert.match(intentExpression(['number','2']),/"2" OR "two"/);
- assert.match(intentExpression(['number','two']),/"2" OR "two"/);
+ assert.match(intentExpression(['number','2']),/title : \("number 2" OR "number two"/);
+ assert.match(intentExpression(['number','two']),/title : \("number 2" OR "number two"/);
  assert.doesNotMatch(intentExpression(['two','cats']),/"2"/);
 });
 
