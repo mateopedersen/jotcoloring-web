@@ -54,3 +54,7 @@ The owner authorized Turtle, Sharks, Trick or Treat, Bible, Five Nights at Fredd
 
 ## Bounded file stages and failed retries
 Independent original-copy, derivative-copy, public-copy and final public-readback operations run in pairs. Each stage waits for both in-flight operations before propagating a failure; later stages and publication completion remain blocked on every checksum and backup gate. The ingest consumer stays at eight invocations with one message per batch. A claimed import retry, including an existing draft revision, records a publication failure as failed so an exact idempotent retry can resume immediately; it must not remain processing until its lease expires.
+
+
+## Reviewed transport waiting on an active import
+A duplicate reviewed-bundle delivery can arrive while the same canonical import still holds its 15-minute processing lease, including recovery after an interrupted invocation. If publication readback is incomplete and the same job remains processing, defer that transport until just after the current lease expires instead of consuming short generic retries. Do not acknowledge it or emit a failure/completion receipt for that waiting state. An expired lease remains eligible for the normal idempotent import claim. Exact source/revision, backup and full published-byte checks still gate the eventual completion receipt; unrelated failures keep their normal error handling. The eight-consumer queue bound and retry-count setting are unchanged.
