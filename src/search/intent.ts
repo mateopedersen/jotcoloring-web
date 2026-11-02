@@ -1,5 +1,5 @@
 /** Shared lexical intent. No network, paid model or inferred facts about unseen images. */
-export const SEARCH_VERSION='jot-search-4-franchise-aliases';
+export const SEARCH_VERSION='jot-search-5-number-subjects';
 const groups=[['cat','cats','kitten','kittens','kitty','kitties'],['dog','dogs','puppy','puppies','pup'],['rabbit','rabbits','bunny','bunnies'],['fox','foxes'],['deer','fawn','fawns'],['bird','birds'],['owl','owls'],['hedgehog','hedgehogs'],['flower','flowers','floral','bloom','blooms'],['dinosaur','dinosaurs','dino','dinos'],['car','cars','automobile','automobiles'],['camper','campers','campervan','van','vans'],['ocean','underwater','marine'],['turtle','turtles'],['fish','fishes'],['space','outerspace'],['astronaut','astronauts'],['planet','planets'],['mandala','mandalas'],['butterfly','butterflies'],['cupcake','cupcakes'],['dessert','desserts','sweets'],['snowman','snowmen'],['christmas','xmas'],['woodland','forest'],['bookshop','bookstore'],['color','colour']];
 const aliases=new Map(groups.flatMap(group=>group.map(term=>[term,group] as const)));
 const filler=new Set(['a','an','the','of','and','for','with','to','please','find','show','me','some','free','printable','printables','coloring','colouring','page','pages','sheet','sheets','picture','pictures','cute']);
@@ -28,8 +28,11 @@ export function wordCandidates(word:string){
  return [...forms];
 }
 export function intentExpression(words:string[],known:ReadonlySet<string>=new Set()){
+ const numberWords=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+ const numberContext=words.some(w=>['number','numbers','digit','digits','numeral','numerals'].includes(w));
  return words.map((word,index)=>{
-  const synonyms=equivalents(word),forms=[...new Set([...synonyms,...wordCandidates(word).filter(form=>known.has(form))])];
+  const n=/^\d{1,2}$/.test(word)?Number(word):numberWords.indexOf(word);
+  const synonyms=numberContext&&n>=0&&n<numberWords.length?[String(n),numberWords[n]]:equivalents(word),forms=[...new Set([...synonyms,...wordCandidates(word).filter(form=>known.has(form))])];
   const prefix=synonyms.length===1&&index===words.length-1&&word.length>=2&&!/^\d+$/.test(word);
   const expressions=forms.map(form=>quote(form)+(prefix&&form===word?'*':''));
   return expressions.length>1?'('+expressions.join(' OR ')+')':expressions[0];
