@@ -1,6 +1,39 @@
 /** Explicit owner-authorized release scopes; completed release gates remain strict. */
 export const FOLLOWUP_RELEASE_ID='descendants-squishy-kpop-20261101';
 export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
+export const NUMBER_RELEASE_ID='numbers-30-20261102';
+export const NUMBER_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+  "number-1-coloring-pages": "05102be36f84a278cb1a34eca282d899252fb8a9daaa3dd66952f4c3da529132",
+  "number-2-coloring-pages": "dcf0e56614c2d7c6db71d2ad64580f3e7e37e79daac73c80b8d43008495eb133",
+  "number-3-coloring-pages": "380a2921cfde0a307695ee129d9cabae64daa273fe6ecb1df099eb7d5cbc7e24",
+  "number-4-coloring-pages": "9c126534346eb876512fa6b3f610f5ded3f168126dae194270187a68ef1047bd",
+  "number-5-coloring-pages": "135a3609e4e6348ad603d2f3892ff8e5ef59b7b0fd4960044d0901732dff1c28",
+  "number-6-coloring-pages": "dd0deb7397a3679d62160810a7a49ed4ba0b84af4f689a8a02976dd0aae446ff",
+  "number-7-coloring-pages": "31cf03038937b56ec64b6ab91f9c75e06430e1c5a1270729412bc67ff887291b",
+  "number-8-coloring-pages": "ed02b83fb09bcc930b6775a58cd5add527ae0a70563736e8079221a1ff7cebe2",
+  "number-9-coloring-pages": "0c49a8e6a724300c87808cb37c3ff0e8fb533e1e79d7dfcc581a87790093da44",
+  "number-10-coloring-pages": "c2644e5e6fa00ae25056ad2a01d95e33c75baae4c8d53b42cdc301a24f09a3d0",
+  "number-11-coloring-pages": "82a62d596d8e01d4b112694327778fc8caa3882c644097098f8fc13b9dd9d91d",
+  "number-12-coloring-pages": "82d7f3960151fb0657caee53c54319b9d09afbd75bbbda25bf663dbe625e6db1",
+  "number-13-coloring-pages": "1342d9f89dac585f16fd8fd2802e8e959cbc6d0b8e2ce84ba4b436a04437770c",
+  "number-14-coloring-pages": "6112cf993e0cd685cddcab92f40d789ea60e6943d40cad813cb6b2ba31829245",
+  "number-15-coloring-pages": "6adbc96852ed0d8efca7f1ded148c79aa385b5f3cda7ca6775639fe21283ea20",
+  "number-99-coloring-pages": "6cc38192cd7d68028177f1474f7a933d5c94ffe7e55b936ce34910f245068176",
+  "number-100-coloring-pages": "d028949a3876fb270bd317dedeac17e26ace7fb29b42d30b9d5bea748e761f86",
+  "number-101-coloring-pages": "6a072a9175c786ecaf2832c50a3ce6a3ca72260ed799aac7db9471a0c008968c",
+  "number-111-coloring-pages": "5fa2ce026ee9149f77d01f084070c2752ed337546e1b1fbc68eb5f8250846c85",
+  "number-222-coloring-pages": "d70082d521a1aebc095b4d206f2e0f9f4bdf708334ea18a7c847709e590fc46c",
+  "number-333-coloring-pages": "6c881672095ff468b6d5f0991acdb292fa6473d7eec73ff9a7d65ec116b58dca",
+  "number-444-coloring-pages": "9f36cd4ce62476c1bd30c9666c6cca18770a6c832cfb685154d351f034d2b0f3",
+  "number-555-coloring-pages": "3230d80ee887be9b0fd40d4249998051b2aaf11d629e71ab2f5917a7fc419697",
+  "number-666-coloring-pages": "e79471ed6232b3dd39d916d0bb0b40727e1bb7732f85584ceb7db5c9418e42f9",
+  "number-777-coloring-pages": "77b4302caee5e03757030a6aba8a7d4f0c776e6608e7fa0a58cc61e5ae00ab9b",
+  "number-888-coloring-pages": "9161eee9076e76d29618414669a37e1b0c03c1da3ad05ba99da23a0d58aa8ae5",
+  "number-999-coloring-pages": "4b40b34e56552e4f443e2dbaf58108c02a183f8b024b863dcce107137bdd58b2",
+  "number-1000-coloring-pages": "20b6b9ba4ee4264b568da963b36bb990d6128eddc55a414c7f844fbd58cad260",
+  "number-1001-coloring-pages": "1d5b55be189e7d492bb179c31f1d5d233c575be92e46eeed5ca318d4d3864035",
+  "number-2222-coloring-pages": "ab68581672b0d1aa338f81c991920056d93d09ef6e2de07b0511ea25078b8cbc"
+};
 export const SEVEN_TOPIC_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
  'turtle-coloring-pages':'b97029c20445fc599163d49de0bbfbd46c20e1275380a9a456e9101a32944840',
  'sharks-coloring-pages':'37b790536c965a8cfc600ddc31cea256ac6c09d3ab4da36b79a4f4f2c740783d',
@@ -14,6 +47,7 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===undefined)return {collections:24,designs:2400,topics:null as readonly string[]|null};
  if(id===FOLLOWUP_RELEASE_ID)return {collections:3,designs:300,topics:['descendants-coloring-pages','squishy-coloring-pages','k-pop-demon-hunters-coloring-pages'] as readonly string[]};
  if(id===SEVEN_TOPIC_RELEASE_ID)return {collections:7,designs:700,topics:Object.keys(SEVEN_TOPIC_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===NUMBER_RELEASE_ID)return {collections:30,designs:3000,topics:Object.keys(NUMBER_ZIP_CHECKSUMS) as readonly string[]};
  throw Error('Unknown owner-authorized release scope');
 }
 export function matchesReviewedReleaseScope(release:{id?:unknown;collections?:unknown;designs?:unknown}){
@@ -22,6 +56,10 @@ export function matchesReviewedReleaseScope(release:{id?:unknown;collections?:un
 export function matchesReviewedSourceArchives(release:{release_id?:unknown;source_zip_sha256?:unknown;source_zip_sha256s?:unknown}){
  if(release.release_id===undefined)return true;
  if(release.release_id===FOLLOWUP_RELEASE_ID)return release.source_zip_sha256==='d45545c97ec95111b93c311321c0c886482cc59e2a1d68d5262bf983b9060896';
+ if(release.release_id===NUMBER_RELEASE_ID){
+  if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
+  const actual=release.source_zip_sha256s as Record<string,unknown>;return Object.keys(actual).length===30&&Object.entries(NUMBER_ZIP_CHECKSUMS).every(([topic,hash])=>actual[topic]===hash);
+ }
  if(release.release_id!==SEVEN_TOPIC_RELEASE_ID||!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
  const actual=release.source_zip_sha256s as Record<string,unknown>,expected=SEVEN_TOPIC_ZIP_CHECKSUMS;
  return Object.keys(actual).length===Object.keys(expected).length&&Object.entries(expected).every(([topic,hash])=>actual[topic]===hash);
