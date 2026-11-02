@@ -79,3 +79,20 @@ test('exact titles, literal prefixes and cursor order keep their existing rankin
  const second=await search.search('garden',1,{cursor:first.next_cursor!});assert.deepEqual(second.ids,['prefix']);assert.ok(second.next_cursor);
  const third=await search.search('garden',1,{cursor:second.next_cursor!});assert.deepEqual(third.ids,['suffix']);assert.equal(third.has_more,false);
 });
+
+
+test('numeral collection searches require the depicted title subject, not scene counts or larger numbers',async()=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');
+ const add=async(id:string,title:string,tags:string)=>search.project({id,title,tags,description:tags,categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ await add('digit-two','Number 2 With Two Flowers','number two counting flowers');
+ await add('word-two','Number Two With Curved Sections','number two counting');
+ await add('different-number','Two Kittens Beside Number 444','number four hundred forty four two kittens');
+ await add('repeated-digits','Number 2222 With Nested Outlines','number two thousand two hundred twenty two');
+ await add('arithmetic','198 Divided By 2 Machine','number math 198 2');
+ await add('thousand','Number 1,000 With Flowers','number thousand flowers');
+ for(const query of ['number 2','number two','numeral 2'])assert.deepEqual(new Set((await search.search(query,48,{category:'education',subcategory:'numbers'})).ids),new Set(['digit-two','word-two']));
+ assert.deepEqual((await search.search('number 2 flowers')).ids,['digit-two']);
+ assert.deepEqual((await search.search('number 2222')).ids,['repeated-digits']);
+ assert.deepEqual((await search.search('number 1000')).ids,['thousand']);
+ db.sql.close();
+});
