@@ -1,9 +1,10 @@
+import {numberSubjects} from './number-subjects';
 /** Shared lexical intent. No network, paid model or inferred facts about unseen images. */
-export const SEARCH_VERSION='jot-search-6-exact-number-subjects';
+export const SEARCH_VERSION='jot-search-7-reviewed-number-tags';
 const groups=[['cat','cats','kitten','kittens','kitty','kitties'],['dog','dogs','puppy','puppies','pup'],['rabbit','rabbits','bunny','bunnies'],['fox','foxes'],['deer','fawn','fawns'],['bird','birds'],['owl','owls'],['hedgehog','hedgehogs'],['flower','flowers','floral','bloom','blooms'],['dinosaur','dinosaurs','dino','dinos'],['car','cars','automobile','automobiles'],['camper','campers','campervan','van','vans'],['ocean','underwater','marine'],['turtle','turtles'],['fish','fishes'],['space','outerspace'],['astronaut','astronauts'],['planet','planets'],['mandala','mandalas'],['butterfly','butterflies'],['cupcake','cupcakes'],['dessert','desserts','sweets'],['snowman','snowmen'],['christmas','xmas'],['woodland','forest'],['bookshop','bookstore'],['color','colour']];
 const aliases=new Map(groups.flatMap(group=>group.map(term=>[term,group] as const)));
 const filler=new Set(['a','an','the','of','and','for','with','to','please','find','show','me','some','free','printable','printables','coloring','colouring','page','pages','sheet','sheets','picture','pictures','cute']);
-export function searchWords(value:string,limit=12){return value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/(?:coloring|colouring)[ -]+(?:pages?|sheets?)/g,' ').match(/[\p{L}\p{N}]+/gu)?.slice(0,limit)||[];}
+export function searchWords(value:string,limit=12){return value.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/(?<=\d),(?=\d{3}(?:\D|$))/g,'').replace(/(?:coloring|colouring)[ -]+(?:pages?|sheets?)/g,' ').match(/[\p{L}\p{N}]+/gu)?.slice(0,limit)||[];}
 export function intentWords(value:string){const words=searchWords(value),subjects=words.filter(w=>!filler.has(w)).slice(0,8);return subjects.length?subjects:words.includes('cute')?['cute']:[];}
 export function parseSearchIntent(value:string){let remaining=value.toLowerCase().replace(/\bfive\s+nights?\s+at\s+freddy(?:['’]s|s)\b/g,'fnaf').replace(/\btrickortreat\b/g,'trick or treat').replace(/\bsonic(?:\s+the)?\s+hedgehog\b/g,'sonic');const ages:string[]=[],bands:string[]=[],difficulty:string[]=[];
  remaining=remaining.replace(/\bfor\s+(adults?|kids|children|teens?|teenagers)\b/g,(_,group:string)=>{ages.push(/adult/.test(group)?'adults':/teen/.test(group)?'teens':'kids');return' ';});
@@ -28,17 +29,15 @@ export function wordCandidates(word:string){
  return [...forms];
 }
 export function intentExpression(words:string[],known:ReadonlySet<string>=new Set()){
- const numberWords=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+ const subjects=new Map(numberSubjects(words).map(subject=>[subject.start,subject]));
  const expressions:string[]=[];
  for(let index=0;index<words.length;index++){
-  const word=words[index],following=words[index+1],number=/^\d{1,6}$/.test(following||'')?Number(following):numberWords.indexOf(following||'');
-  // A numeral subject is an adjacent title phrase. A scene containing two
-  // birds beside Number 444 must never enter the Number 2 collection.
-  const compound=numberWords.includes(words[index+2])||['hundred','thousand','million'].includes(words[index+2]);
-  if(['number','numbers','digit','digits','numeral','numerals'].includes(word)&&number>=0&&number<=999999&&!compound){
-   const names=[String(number),...(number<numberWords.length?[numberWords[number]]:[]),...(number>=1000?[number.toLocaleString('en-US')]:[])];
-   const phrases=['number','numbers','digit','digits','numeral','numerals'].flatMap(prefix=>names.map(name=>quote(prefix+' '+name)));
-   expressions.push('title : ('+phrases.join(' OR ')+')');index++;continue;
+  const word=words[index],subject=subjects.get(index);
+  if(subject){
+   // The provider also checks that this is the sole numeric subject tag
+   // in the Numbers category. Other numeric tags never broaden a subject.
+   expressions.push('('+subject.titleExpression+' OR (categories : "numbers" AND tags : "'+subject.number+'"))');
+   index=subject.end-1;continue;
   }
   const synonyms=equivalents(word),forms=[...new Set([...synonyms,...wordCandidates(word).filter(form=>known.has(form))])];
   const prefix=synonyms.length===1&&index===words.length-1&&word.length>=2&&!/^\d+$/.test(word);
