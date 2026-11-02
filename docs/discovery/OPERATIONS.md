@@ -17,7 +17,7 @@ Detail URLs contain the original WebP preview and printable WebP as image sitema
 
 Only production can send. The key is public verification material served as exact UTF-8 text at its root `.txt` URL; it is not an administrator credential. No public webhook is added. The privileged trigger is the existing authenticated publication/import transaction and private jobs infrastructure.
 
-The sender verifies current content revision, canonical live 200 HTML/indexability, current sitemap membership, and the verified live preview/PDF before upserts. Old slug changes use the existing permanent redirect; archives require 404/410 or a permanent redirect. Superseded notices are marked obsolete. Batches contain one same-host URL, sent only to `https://api.indexnow.org/indexnow`.
+The sender verifies current content revision, canonical live 200 HTML/indexability, current sitemap membership, and the verified live preview/PDF before upserts. Old slug changes use the existing permanent redirect; archives require 404/410 or a permanent redirect. Superseded notices are marked obsolete. Batches contain up to20 independently verified same-host URLs, sent only to `https://api.indexnow.org/indexnow`.
 
 `received` means HTTP 200 accepted. `key_pending` means HTTP 202 accepted pending key validation. Neither means indexed. HTTP 400/403/422 become failed; 429, 5xx and network failures retry with Retry-After, exponential delay and jitter, up to eight attempts. Leases recover interrupted work. Persistent URL/revision/event uniqueness suppresses duplicate messages. As with any network delivery, an interrupted response can cause an at-least-once retry; exactly-once external delivery is not claimed.
 
