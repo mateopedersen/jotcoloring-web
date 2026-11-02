@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {validateReviewedBundle,bundleSignature,bundleReceiptKey,inlineReviewedImportEnvironment,type ReviewedBundle} from '../src/server/reviewed-bundle';
+import {validateReviewedBundle,bundleSignature,bundleReceiptKey,inlineReviewedImportEnvironment,ReviewedImportPending,type ReviewedBundle} from '../src/server/reviewed-bundle';
 import {canonicalJSON,sha256} from '../src/server/http';
 import {syntheticAgeReview} from './fixtures/age-review';
 import {preparedCategorySelection} from '../scripts/data/category-selection';
@@ -21,3 +21,30 @@ test('sealed one-artwork transport authenticates its environment, all originals 
 });
 
 test('inline reviewed imports suppress only their duplicate import delivery and preserve projection dispatch',async()=>{const sent:any[]=[];const queue={async send(message:any,options?:unknown){sent.push({message,options});}},env={INGEST_QUEUE:queue};const inline=inlineReviewedImportEnvironment(env);assert.equal(env.INGEST_QUEUE,queue);await inline.INGEST_QUEUE!.send({type:'import',job_id:'same-job'});assert.equal(sent.length,0);await inline.INGEST_QUEUE!.send({type:'projection',event_id:'event-1'},{delaySeconds:1});assert.deepEqual(sent,[{message:{type:'projection',event_id:'event-1'},options:{delaySeconds:1}}]);await env.INGEST_QUEUE.send({type:'import',job_id:'unrelated-job'});assert.equal(sent.length,2);assert.throws(()=>inlineReviewedImportEnvironment({}),/queue binding/);});
+
+test('an active reviewed import lease defers transport delivery past the lease instead of exhausting short retries',async()=>{
+ const {default:jobs}=await import('../workers/jobs/index');
+ const bundle=await fixture(),{manifest}=await checked(bundle),bytes=new TextEncoder().encode(JSON.stringify(bundle)),hash=await sha256(bytes);
+ class Bucket{
+  objects=new Map<string,Uint8Array>();
+  async put(key:string,value:Uint8Array|ArrayBuffer|string){this.objects.set(key,typeof value==='string'?new TextEncoder().encode(value):new Uint8Array(value));}
+  async get(key:string){const data=this.objects.get(key);return data?{key,size:data.length,body:new Response(data as BodyInit).body!,arrayBuffer:async()=>data.slice().buffer,text:async()=>new TextDecoder().decode(data)}:null;}
+  async head(key:string){return this.get(key);}
+ }
+ const originals=new Bucket(),backups=new Bucket(),published=new Bucket();await originals.put('operator-imports/'+hash+'.json',bytes);
+ const payload=await sha256(canonicalJSON(manifest)),updatedAt=new Date().toISOString();let claimed=0;
+ const db:any={prepare(sql:string){return{bind(){return this;},async first(){
+  if(sql.startsWith('SELECT active_version'))return{active_version:null,latest_version:1,status:'draft'};
+  if(sql.startsWith('SELECT manifest_json'))return{manifest_json:JSON.stringify(manifest)};
+  if(sql.startsWith('SELECT id,payload_sha256,status FROM import_job'))return{id:'leased-job',payload_sha256:payload,status:'processing'};
+  if(sql.startsWith('SELECT * FROM import_job'))return{id:'leased-job',payload_sha256:payload,status:'processing',owner:'operator'};
+  if(sql.startsWith('SELECT status,updated_at FROM import_job'))return{status:'processing',updated_at:updatedAt};
+  throw Error('Unexpected read '+sql);
+ },async all(){return{results:[],success:true};},async run(){if(sql.startsWith('UPDATE import_job'))claimed++;return{results:[],success:true,meta:{changes:0}};}};}};
+ let acked=0;const retries:number[]=[];
+ await jobs.queue({messages:[{body:{type:'reviewed_bundle',object_key:'operator-imports/'+hash+'.json',sha256:hash,signature:await bundleSignature(hash,'staging',secret)},attempts:4,ack(){acked++;},retry(options){retries.push(options!.delaySeconds);}}]}, {APP_ENV:'staging',MEDIA_VALIDATION_SECRET:secret,ORIGINALS:originals,BACKUPS:backups,PUBLISHED:published,CATALOG_DB:db,INGEST_QUEUE:{async send(){throw Error('Duplicate import must remain inline');}}} as any);
+ assert.equal(claimed,1);assert.equal(acked,0);assert.equal(retries.length,1);assert.ok(retries[0]>=899&&retries[0]<=901);
+ assert.equal(published.objects.size,0);assert.equal(backups.objects.has(bundleReceiptKey(hash)),false);
+ assert.equal([...backups.objects.keys()].some(key=>key.startsWith('operator-import-errors/')),false);
+ const now=Date.now();assert.equal(new ReviewedImportPending(new Date(now-16*60000).toISOString(),now).retryAfterSeconds,1);
+});

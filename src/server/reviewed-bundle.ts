@@ -45,6 +45,15 @@ export function inlineReviewedImportEnvironment(env:Env):Env{
  const queue=env.INGEST_QUEUE;if(!queue)throw Error('Missing import queue binding');
  return {...env,INGEST_QUEUE:{async send(message:any,options?:unknown){if(message?.type==='import')return;await queue.send(message,options);}}};
 }
+/** The same import is still leased; retain the transport until a real publication receipt exists. */
+export class ReviewedImportPending extends Error{
+ readonly retryAfterSeconds:number;
+ constructor(updatedAt:string,now=Date.now()){
+  super('The reviewed import still has an active processing lease.');
+  this.name='ReviewedImportPending';
+  this.retryAfterSeconds=Math.max(1,Math.min(901,Math.ceil((Date.parse(updatedAt)+15*60000-now)/1000)+1));
+ }
+}
 export async function processReviewedBundle(env:Env,message:ReviewedBundleMessage){
  if(!env.ORIGINALS||!env.BACKUPS||!env.PUBLISHED||!env.CATALOG_DB)throw Error('Missing import bindings');
  const object=await env.ORIGINALS.get(message.object_key);if(!object||object.size>20_000_000)throw Error('Missing bounded import bundle');
@@ -63,7 +72,11 @@ export async function processReviewedBundle(env:Env,message:ReviewedBundleMessag
  for(const review of b.reviews)await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));
  const inlineEnv=inlineReviewedImportEnvironment(env);const job=await createImport(inlineEnv,m,IMPORT_ACTOR);await processImport(inlineEnv,job.job_id,`imports/${job.job_id}/manifest.json`);
  const events=await db.prepare('SELECT event_id FROM outbox_event WHERE content_id=? AND version=? AND processed_at IS NULL').bind(m.content_id,version).all<{event_id:string}>();for(const e of events.results)await projectEvent(env,e.event_id);
- const current=await db.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published')throw Error('Publication readback failed');
+ const current=await db.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published'){
+  const pending=await db.prepare('SELECT status,updated_at FROM import_job WHERE id=?').bind(job.job_id).first<{status:string;updated_at:string}>();
+  if(pending?.status==='processing'&&Number.isFinite(Date.parse(pending.updated_at)))throw new ReviewedImportPending(pending.updated_at);
+  throw Error('Publication readback failed');
+ }
  await forEachInPairs(m.assets,async a=>{const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');});
  const receipt={status:'published_pending_public_http_verification',id:m.content_id,slug:m.slug,version,release_sha256:b.release.sha256,transport_sha256:message.sha256,assetsVerified:m.assets.length,nativeSourceBackedUp:true,suppliedPdfAndWebpBackedUp:true};
  await backupBytes(env,receiptKey,new TextEncoder().encode(canonicalJSON(receipt)),'application/json');return receipt;
