@@ -1,3 +1,4 @@
+import {forEachInPairs} from './bounded';
 /** Authenticated, one-artwork transport for an already sealed editorial release. */
 import {matchesReviewedReleaseScope} from './reviewed-release-scope';
 import type {Env,Bucket,Manifest} from './types';
@@ -57,13 +58,13 @@ export async function processReviewedBundle(env:Env,message:ReviewedBundleMessag
    if(!original)throw Error('Unrelated existing content');m=validateManifest(heldDraftRevision(m,existing,JSON.parse(original.manifest_json),current,job),env.APP_ENV==='production');version=2;
   }
  }
- for(const f of [b.native,...b.supplied]){const data=decoded.get(f.key)!;await immutable(env.ORIGINALS,f,data);await backupBytes(env,f.key,data,f.mime);}
- for(const a of m.assets){const source=prepared.assets.find(s=>s.role===a.role)!;await immutable(env.ORIGINALS,{...b.assets.find(f=>f.key===source.object_key)!,key:a.object_key},decoded.get(source.object_key)!);}
+ await forEachInPairs([b.native,...b.supplied],async f=>{const data=decoded.get(f.key)!;await immutable(env.ORIGINALS!,f,data);await backupBytes(env,f.key,data,f.mime);});
+ await forEachInPairs(m.assets,async a=>{const source=prepared.assets.find(s=>s.role===a.role)!;await immutable(env.ORIGINALS!,{...b.assets.find(f=>f.key===source.object_key)!,key:a.object_key},decoded.get(source.object_key)!);});
  for(const review of b.reviews)await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));
  const inlineEnv=inlineReviewedImportEnvironment(env);const job=await createImport(inlineEnv,m,IMPORT_ACTOR);await processImport(inlineEnv,job.job_id,`imports/${job.job_id}/manifest.json`);
  const events=await db.prepare('SELECT event_id FROM outbox_event WHERE content_id=? AND version=? AND processed_at IS NULL').bind(m.content_id,version).all<{event_id:string}>();for(const e of events.results)await projectEvent(env,e.event_id);
  const current=await db.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published')throw Error('Publication readback failed');
- for(const a of m.assets){const o=await env.PUBLISHED.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');}
+ await forEachInPairs(m.assets,async a=>{const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');});
  const receipt={status:'published_pending_public_http_verification',id:m.content_id,slug:m.slug,version,release_sha256:b.release.sha256,transport_sha256:message.sha256,assetsVerified:m.assets.length,nativeSourceBackedUp:true,suppliedPdfAndWebpBackedUp:true};
  await backupBytes(env,receiptKey,new TextEncoder().encode(canonicalJSON(receipt)),'application/json');return receipt;
 }
