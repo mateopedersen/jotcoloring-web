@@ -124,3 +124,13 @@ test('numeric subject search retains complete cursor coverage and literal title 
  do{const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);if(!cursor)assert.equal(page.ids[0],'number-100-0');for(const id of page.ids){assert.ok(!found.has(id));found.add(id);}cursor=page.next_cursor||undefined;}while(cursor);
  assert.equal(found.size,55);
 });
+
+test('publishing another numeral cannot move existing collection items past a cursor',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,tags:string)=>search.project({id,title,tags,categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ for(let i=0;i<55;i++)await add('stable-100-'+i,i%2?'Number 100 With Flowers '+i:'Scene '+i+' Displaying 100','100 number one hundred');
+ const first=await search.search('number 100',20),found=new Set(first.ids);let cursor=first.next_cursor;
+ for(let i=0;i<100;i++)await add('new-two-'+i,'Number 2 Beside A Tree '+i,'number two counting');
+ while(cursor){const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);for(const id of page.ids){assert.ok(!found.has(id),'duplicate after corpus growth');found.add(id);}cursor=page.next_cursor;}
+ assert.equal(found.size,55,'existing number activities remain reachable after unrelated publications');
+});
