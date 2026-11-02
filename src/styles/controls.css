@@ -8,3 +8,27 @@
 .jc-search-panel:not([hidden]){display:flex;flex-direction:column;overflow:hidden}.jc-search-panel.is-above{top:auto;bottom:calc(100% + 10px)}.jc-search-panel .jc-search-options{display:flex;flex-direction:column;min-height:0;flex:1;overflow:hidden}.jc-search-results{display:grid;gap:2px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}.jc-search-panel-status{flex-shrink:0}.jc-search-all{flex-shrink:0;background:#fff7e9;box-shadow:0 -3px 12px #8c614016}.jc-search-options>.jc-search-all{margin:5px 0 0;min-height:45px;border-radius:9px}.jc-search-panel[hidden]{display:none!important}
 @media(max-width:600px){.jc-search-shell input[name=q]{font-size:16px!important}.jc-search-options .jc-search-option{min-height:76px}.jc-search-description{font-size:var(--type-note-size)!important}.jc-search-options .jc-search-all{min-height:48px;line-height:1.5;display:flex;align-items:center}.jc-search-options .jc-search-option strong{font-size:14px}}
 .jc-search-panel .jc-search-results{display:flex;flex-direction:column;align-items:stretch}.jc-search-results .jc-search-option{flex:0 0 auto;height:auto!important;max-height:none!important;min-height:78px;padding:9px 8px}.jc-search-results .jc-search-option>span:not(.jc-search-placeholder){display:flex;flex-direction:column;gap:2px;min-width:0}.jc-search-results .jc-search-option .jc-search-description{flex-shrink:0}
+
+/* Collections retain their topic artwork and a distinct label in every search. */
+.jc-search-results .jc-search-option[data-suggestion-kind="category"] {
+ align-items:center;
+ gap:12px;
+}
+.jc-search-results .jc-search-option .jc-search-collection-badge {
+ display:inline-flex;
+ align-self:flex-start;
+ align-items:center;
+ width:fit-content;
+ margin-top:4px;
+ padding:3px 9px;
+ border:1px solid #e4c5a9;
+ border-radius:6px;
+ background:#fff7ec;
+ color:#713b1c;
+ font-family:'Manrope Variable','Avenir Next',Avenir,sans-serif;
+ font-size:12px;
+ font-weight:750;
+ line-height:1.5;
+ letter-spacing:.01em;
+ white-space:nowrap;
+}
