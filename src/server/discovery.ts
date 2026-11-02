@@ -94,8 +94,9 @@ export async function sendDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,re
  if(await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first())return;
  const now=new Date().toISOString();
  const rows=await db.prepare("SELECT id,path_key,content_id,revision,event_type,attempts FROM discovery_notice WHERE ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))"+(revision?" AND revision=?":"")+" ORDER BY id LIMIT 20").bind(now,now,...(revision?[revision]:[])).all<Notice>();
+ let claimedCount=0;
  for(const n of rows.results){
-  const claim=await db.prepare("UPDATE discovery_notice SET state='sending',lease_until=?,attempts=attempts+1 WHERE id=? AND ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))").bind(new Date(Date.now()+300000).toISOString(),n.id,now,now).run();if(!claim.meta.changes)continue;
+  const claim=await db.prepare("UPDATE discovery_notice SET state='sending',lease_until=?,attempts=attempts+1 WHERE id=? AND ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))").bind(new Date(Date.now()+300000).toISOString(),n.id,now,now).run();if(!claim.meta.changes)continue;claimedCount++;
   const finish=async(state:string,status:number|null,error:string|null=null,at='')=>db.prepare('UPDATE discovery_notice SET state=?,last_status=?,last_error=?,not_before=?,lease_until=NULL,received_at=? WHERE id=?').bind(state,status,error,at,['received','key_pending'].includes(state)?new Date().toISOString():null,n.id).run();
   try{
    const path=discoveryPath(n.path_key,n.event_type==='redirect');if(!path){await finish('failed',null,'INVALID_PATH');continue;}
@@ -118,11 +119,23 @@ export async function sendDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,re
    }
    if(await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first())throw Error('PUBLICATION_CHANGED');
    const keyURL=`${DISCOVERY_ORIGIN}/${INDEXNOW_KEY}.txt`,key=await fetcher(keyURL,{signal:AbortSignal.timeout(15000)});if(key.status!==200||(await key.text()).trim()!==INDEXNOW_KEY)throw Error('KEY_NOT_LIVE');
-   const result=await fetcher('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({host:'jotcoloring.com',key:INDEXNOW_KEY,keyLocation:keyURL,urlList:[url]}),redirect:'error',signal:AbortSignal.timeout(20000)});
+   const result=await fetcher('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({host:'jotcoloring.com',key:INDEXNOW_KEY,keyLocation:keyURL,urlList:[url]}),redirect:'manual',signal:AbortSignal.timeout(20000)});
    if(result.status===200||result.status===202)await finish(result.status===200?'received':'key_pending',result.status);
    else{const next=nextDiscoveryAttempt(result.status,result.headers.get('retry-after'),n.attempts+1);await finish(next?'pending':'failed',result.status,'INDEXNOW_HTTP',next||'');}
   }catch(error){const next=nextDiscoveryAttempt(0,null,n.attempts+1);await finish(next?'pending':'failed',null,error instanceof Error?error.message.slice(0,80):'NETWORK',next||'');}
  }
+ return claimedCount;
+}
+/** One queue delivery handles at most 20 notices; receipt leases make duplicates harmless. */
+export async function queueDiscoveryNotices(env:Env,revision?:string){
+ if(revision&&!/^navigation-v1:[a-f0-9]{40}$/.test(revision))throw Error('Exact reviewed navigation revision required');
+ if(env.APP_ENV!=='production'||env.DISCOVERY_ENABLED!=='true'||env.PUBLIC_SITE_URL!==DISCOVERY_ORIGIN||!env.CATALOG_DB||!env.INGEST_QUEUE)return false;
+ const db=env.CATALOG_DB;if(await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first())return false;
+ const now=new Date().toISOString(),eligible=await db.prepare("SELECT id FROM discovery_notice WHERE ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))"+(revision?' AND revision=?':'')+' LIMIT 1').bind(now,now,...(revision?[revision]:[])).first();
+ if(!eligible)return false;await env.INGEST_QUEUE.send({type:'discovery_notify',job_id:'indexnow',...(revision?{revision}:{})});return true;
+}
+export async function processDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,revision?:string){
+ const claimed=await sendDiscoveryNotices(env,fetcher,revision);if(claimed)await queueDiscoveryNotices(env,revision);return claimed||0;
 }
 /** Bounded keyset reconciliation. The cursor survives restarts; never scans R2. */
 export async function reconcileDiscovery(env:Env){
@@ -131,5 +144,5 @@ export async function reconcileDiscovery(env:Env){
  for(const r of rows.results)if(r.slug!==r.current_slug||r.visibility!==r.status||r.updated_at!==r.current_updated)await db.batch([db.prepare('UPDATE sitemap_entry SET slug=?,visibility=?,updated_at=? WHERE ordinal=?').bind(r.current_slug,r.status,r.current_updated,r.ordinal),db.prepare('INSERT INTO discovery_dirty(segment) VALUES(?) ON CONFLICT(segment) DO UPDATE SET generation=generation+1').bind(String(Math.floor((r.ordinal-1)/SITEMAP_SEGMENT_SIZE)+1))]);
  await db.prepare('UPDATE discovery_state SET reconcile_after=? WHERE id=1').bind(rows.results.at(-1)?.ordinal||0).run();
 }
-export async function runDiscovery(env:Env){if(env.DISCOVERY_ENABLED!=='true')return;await reconcileDiscovery(env);await processDiscoveryRebuild(env,'cron');await sendDiscoveryNotices(env);}
+export async function runDiscovery(env:Env){if(env.DISCOVERY_ENABLED!=='true')return;await reconcileDiscovery(env);await processDiscoveryRebuild(env,'cron');await processDiscoveryNotices(env);}
 

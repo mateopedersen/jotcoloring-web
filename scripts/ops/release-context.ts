@@ -40,8 +40,8 @@ let discoveryQueueID:string|undefined;
 const operatorQueue={async send(message:any){
  // Operators process their own import/projection inline. Sitemap rebuilding is
  // a real background job and must never be acknowledged by this adapter alone.
- if(message?.type!=='discovery_rebuild')return;
- if(message.job_id!=='sitemap')throw new Error('Unreviewed discovery job');
+ if(!['discovery_rebuild','discovery_notify'].includes(message?.type))return;
+ if(message.type==='discovery_rebuild'?message.job_id!=='sitemap':message.job_id!=='indexnow'||message.revision!==undefined&&!/^navigation-v1:[a-f0-9]{40}$/.test(message.revision))throw new Error('Unreviewed discovery job');
  if(!discoveryQueueID){const name=`jotcoloring-${environment}-ingest`,queues=await api('/queues?name='+encodeURIComponent(name)),found=queues.filter((queue:any)=>queue.queue_name===name);if(found.length!==1)throw new Error('Exact existing discovery queue required');discoveryQueueID=found[0].queue_id;}
  await api(`/queues/${discoveryQueueID}/messages`,{body:message,content_type:'json'});
 }};

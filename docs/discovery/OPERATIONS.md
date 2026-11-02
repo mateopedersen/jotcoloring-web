@@ -52,3 +52,12 @@ Set `DISCOVERY_ENABLED=false` in the jobs configuration and deploy a reviewed ro
 - https://developers.cloudflare.com/queues/reference/delivery-guarantees/
 
 Sitemap acceptance, crawl eligibility and indexing are distinct. There is no indexing-time or ranking guarantee. Google Indexing API and the discontinued sitemap ping are not used.
+
+
+## IndexNow native delivery recovery
+
+IndexNow requests use `redirect: manual`, which the deployed Workers Fetch API supports. The exact approved HTTPS endpoint does not follow redirects. Every URL still passes the public canonical/indexability, current sitemap, key and active media checks before sending.
+
+The existing ingest queue also accepts `discovery_notify` / `indexnow`. Each delivery claims at most 20 notices under their existing durable leases, retains HTTP receipts, and queues one continuation only after it claims work and more eligible work remains. Retry-After and future retries stay deferred for the normal cron; staging cannot notify. The current consumer batch/concurrency/retry bounds are unchanged. An empty or duplicate wake-up stops.
+
+A navigation revision can be queued separately only after `navigation-notices.ts` accepts actual live page and redirect proof. Its `send --apply` command wakes the real production queue instead of running external sends in the operator process. Historical failed notifications may be requeued only after their exact fault is diagnosed and the affected rows are privately backed up; never clear successful receipts or reset unrelated failures.

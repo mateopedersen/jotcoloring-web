@@ -1,4 +1,5 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {DatabaseSync} from 'node:sqlite';
+import {queueDiscoveryNotices,processDiscoveryNotices} from '../src/server/discovery';
 import {rebuildDiscovery,sendDiscoveryNotices,nextDiscoveryAttempt,INDEXNOW_KEY,reconcileDiscovery,queueDiscoveryRebuild,processDiscoveryRebuild,runDiscovery} from '../src/server/discovery';import {sitemapIndex,sitemapSegment} from '../src/server/sitemap';import type {Env} from '../src/server/types';
 function database(sql:DatabaseSync):any{let tail:Promise<unknown>=Promise.resolve();return{prepare(q:string){let args:any[]=[];const stmt:any={bind(...v:any[]){args=v;return stmt},async first(){return sql.prepare(q).get(...args)||null},async all(){return{results:sql.prepare(q).all(...args),success:true,meta:{}}},async run(){return{results:[],success:true,meta:{changes:Number(sql.prepare(q).run(...args).changes)}}}};return stmt},async batch(stmts:any[]){const run=tail.then(async()=>{sql.exec('BEGIN');try{const r=[];for(const stmt of stmts)r.push(await stmt.run());sql.exec('COMMIT');return r}catch(error){sql.exec('ROLLBACK');throw error}});tail=run.catch(()=>{});return run;}};}
 function setup(){
@@ -102,4 +103,29 @@ test('crawler index changes with a changed fragment and unchanged XML preserves 
  f.sql.exec("UPDATE discovery_fragment SET generated_at='2026-01-01T00:00:00.000Z'");const before=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml')),tag=before.headers.get('etag'),xml=await before.text();assert.match(xml,/<lastmod>2026-01-01T00:00:00.000Z<\/lastmod>/);
  f.sql.exec("INSERT INTO discovery_dirty(segment) SELECT segment FROM discovery_fragment WHERE 1 ON CONFLICT(segment) DO UPDATE SET generation=generation+1");await rebuildDiscovery(f.env,8);const same=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml'));assert.equal(same.headers.get('etag'),tag);assert.equal(await same.text(),xml);
  drawing(f.sql,'index-new-topic','published');await rebuildDiscovery(f.env,8);const changed=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml'));assert.notEqual(changed.headers.get('etag'),tag);assert.notEqual(await changed.text(),xml);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM discovery_dirty').get()!.n,0);
+});
+
+test('IndexNow POST uses a redirect mode supported by the actual Workers runtime',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','runtime-check','upsert')");
+ const call:any=async(u:string,init:any)=>{if(init?.redirect==='error')throw Error('Workers rejects redirect:error');if(u.endsWith('.txt'))return new Response(INDEXNOW_KEY);if(u.includes('api.indexnow.org')){assert.equal(init.redirect,'manual');return new Response('',{status:200});}return new Response('<link rel="canonical" href="https://jotcoloring.com/">');};
+ await sendDiscoveryNotices(f.env,call);assert.equal(f.sql.prepare('SELECT state FROM discovery_notice').get()!.state,'received');
+});
+test('bounded notice deliveries drain a backlog with durable receipts and no empty follow-up loop',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);for(let i=0;i<45;i++)f.sql.prepare("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/',?,'upsert')").run('revision-'+i);
+ const call:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?new Response('',{status:200}):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
+ assert.equal(await queueDiscoveryNotices(f.env),true);assert.deepEqual(f.messages,[{type:'discovery_notify',job_id:'indexnow'}]);
+ assert.equal(await processDiscoveryNotices(f.env,call),20);assert.equal(f.messages.length,2);
+ assert.equal(await processDiscoveryNotices(f.env,call),20);assert.equal(f.messages.length,3);
+ assert.equal(await processDiscoveryNotices(f.env,call),5);assert.equal(f.messages.length,3);
+ assert.equal(await processDiscoveryNotices(f.env,call),0);assert.equal(f.messages.length,3);
+ assert.equal(f.sql.prepare("SELECT COUNT(*) n FROM discovery_notice WHERE state='received'").get()!.n,1);assert.equal(f.sql.prepare("SELECT COUNT(*) n FROM discovery_notice WHERE state='obsolete'").get()!.n,44);
+});
+test('notice wake-ups preserve revision scope and Retry-After without processing other or future notices',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);const revision='navigation-v1:'+'a'.repeat(40);
+ f.sql.prepare("INSERT INTO discovery_notice(path_key,revision,event_type,not_before) VALUES('/',?,'upsert',?)").run(revision,new Date(Date.now()+3600000).toISOString());
+ f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','other','upsert')");
+ assert.equal(await queueDiscoveryNotices(f.env,revision),false);assert.equal(await processDiscoveryNotices(f.env,async()=>{throw Error('should not fetch')},revision),0);assert.equal(f.messages.length,0);
+ f.sql.prepare("UPDATE discovery_notice SET not_before='' WHERE revision=?").run(revision);assert.equal(await queueDiscoveryNotices(f.env,revision),true);assert.deepEqual(f.messages,[{type:'discovery_notify',job_id:'indexnow',revision}]);
+ await assert.rejects(()=>queueDiscoveryNotices(f.env,'unreviewed'),/reviewed navigation/);f.env.APP_ENV='staging';assert.equal(await queueDiscoveryNotices(f.env),false);
+ const {default:jobs}=await import('../workers/jobs/index');let acked=0;await jobs.queue({messages:[{body:{type:'discovery_notify',job_id:'indexnow'},attempts:1,ack(){acked++},retry(){throw Error('valid message rejected')}}]},f.env);assert.equal(acked,1);
 });
