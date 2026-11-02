@@ -8,6 +8,7 @@ function written(number:number):string{
  if(number<1000)return units[Math.floor(number/100)]+' hundred'+(number%100?' '+written(number%100):'');
  return written(Math.floor(number/1000))+' thousand'+(number%1000?' '+written(number%1000):'');
 }
+export const writtenNumber=written;
 function readNumber(words:string[],start:number):{number:number;end:number}|undefined{
  const token=words[start];
  if(/^\d{1,6}$/.test(token||''))return{number:Number(token),end:start+1};

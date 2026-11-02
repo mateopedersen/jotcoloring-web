@@ -34,3 +34,21 @@ refresh is maintenance, not the normal publication requirement. Verify actual
 public XML contains the new canonical URLs before reporting a release complete.
 Read `docs/discovery-publication.md`; preserve the existing queue bounds and
 separate JotColoring operator profile.
+
+## Canonical navigation and future topics — owner direction, 2026-11-02
+
+Use the shared public navigation mapping. Main collections use `/collection/ID/`;
+subject pages use `/coloring-pages/TOPIC/`; numeral topics use
+`/coloring-pages/numbers/NUMBER/`. Read `docs/canonical-navigation.md` before
+adding a topic. Preserve source-reviewed classification IDs separately from the
+public grouping; every classification root must have exactly one navigation
+home. Require real published membership, a unique concise catalog-grounded intro,
+matching canonical/SEO/social identity, source-verified landing artwork and live
+search/count/route/sitemap proof. Never ship a new subject only as a search link.
+Archive or source-image/metadata replacement invalidates its prepared cover.
+Keep historical redirect and discovery receipts; all legacy URLs have one-hop
+301 counterparts. Use only the new canonical URLs for upserts, legacy URLs only
+for verified redirect notices. New publication uses automatic queue discovery;
+manual refresh is maintenance. Google/Bing submission is separate from IndexNow
+acceptance and from actual indexing. Do not claim a browser or search-engine
+submission without the real provider receipt.

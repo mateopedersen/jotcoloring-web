@@ -1,67 +1,14 @@
 ---
-import CategoryDirectory from '../../components/CategoryDirectory.astro';
-import {categoryById,childCategories} from '../../taxonomy/catalog';
-import DifficultyNavigation from '../../components/DifficultyNavigation.astro';
-import CatalogFilters from '../../components/CatalogFilters.astro';
-import CreatePlayground from '../../components/CreatePlayground.astro';
-import RelatedCollections from '../../components/RelatedCollections.astro';
-import AgeNavigation from '../../components/AgeNavigation.astro';
-import {AGE_BANDS} from '../../age/model';
-import ArrowIcon from '../../components/ArrowIcon.astro';
-import {env} from 'cloudflare:workers';
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import '../../styles/catalog-listing.css';
-import Card from '../../components/Card.astro';
-import CategoryIcon from '../../components/CategoryIcon.astro';
-import Icon from '../../components/HomeIcon.astro';
-import {selectFilterURL,clearFilterURL} from '../../ui/filter-url';
-import {categories,animalCategories,coloringTopic} from '../../ui/categories';
-import {categoryCopy,animalCopy} from '../../ui/category-copy';
-import {displayTitle} from '../../ui/titles';
-import {createCatalog,parseCatalogQuery} from '../../server/catalog';
-import type {Env,CatalogPage,CatalogQuery} from '../../server/types';
-const repo=createCatalog(env as unknown as Env);
-const parts=(Astro.params.category||'').split('/').filter(Boolean);
-const category=parts[0]||'',subcategory=parts[1]||'',animal=category==='animals';
-const categoryInfo=categories.find(c=>c.id===category),subInfo=childCategories(category).find(c=>c.id===subcategory)||(category==='animals'&&subcategory==='dinosaurs'?categoryById('dinosaurs'):undefined);
-if((category&&!categoryInfo)||parts.length>2||(subcategory&&(!subInfo)))return Astro.rewrite('/404/');
-if(category&&!subcategory&&categoryById(category)?.parent)return Astro.redirect('/coloring-pages/'+categoryById(category)!.parent+'/'+category+'/',301);
-const chosenCategory=Astro.url.searchParams.get('category');
-if(chosenCategory!==null&&chosenCategory!==category&&(!chosenCategory||categories.some(c=>c.id===chosenCategory))){const next=selectFilterURL(Astro.url.href,'category',[chosenCategory]);return Astro.redirect(next.pathname+next.search+next.hash,302);}
-const clearFilters=clearFilterURL(Astro.url.href);
-const params=new URLSearchParams(Astro.url.search);if(category)params.set('category',category);if(subcategory)params.set('subcategory',subcategory);params.set('limit','12');
-let error='';let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
-try{query=parseCatalogQuery(params);result=await repo.list(query)}catch(e){error=e instanceof Error?e.message:'The catalog could not be loaded.';Astro.response.status=400;}
-let samples:(import('../../server/types').Content|null)[]=[];
-try{
- if(animal){const visuals=await repo.categoryCovers([...animalCategories.map(c=>c.id),subcategory||category]);samples=visuals.slice(0,-1);}
-}
-catch{/* The collection still renders if optional theme thumbnails are unavailable. */}
-const emptyHref=Astro.url.pathname;
-const heading=query.q?`Coloring pages for “${query.q}”`:subcategory?`${coloringTopic(subInfo!.id)} coloring pages`:categoryInfo?`${coloringTopic(categoryInfo.id)} coloring pages`:'Free printable coloring pages';
-const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':subcategory?(animalCopy[subcategory]||subInfo!.intro):categoryInfo?categoryCopy[category].intro:'Browse animal, flower, fantasy, and seasonal coloring pages. Choose a free black-and-white PDF or image to print, or color the page online in Studio.';
-const pageHref=(page:number)=>{const p=new URLSearchParams(Astro.url.search);p.set('page',String(page));return `${Astro.url.pathname}?${p}#catalog-results`};
-const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
-const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
-const paginationTitle=result.page>1?` — Page ${result.page}`:'';
-const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');
-const relatedCollections=!error?await repo.relatedCollections(query,result):undefined;
+import CatalogView from '../../components/CatalogView.astro';
+import {categoryById} from '../../taxonomy/catalog';
+import {catalogLocation,catalogRedirect} from '../../taxonomy/catalog-location';
+import {selectFilterURL} from '../../ui/filter-url';
+import {navigationCollection,collectionForRoot} from '../../taxonomy/navigation';
+const location=catalogLocation(Astro.url.pathname);
+if(!location)return Astro.rewrite('/404/');
+const redirect=catalogRedirect(Astro.url);if(redirect)return Astro.redirect(redirect,301);
+const chosen=Astro.url.searchParams.get('category');
+const current=location.collection?.id||collectionForRoot(location.topic?.parent||location.topic?.id||(location.number?'education':''))?.id;
+if(chosen!==null&&chosen!==current&&(!chosen||navigationCollection(chosen)||categoryById(chosen))){const next=selectFilterURL(Astro.url.href,'category',[chosen]);if(next.pathname!==Astro.url.pathname){next.searchParams.delete('category');return Astro.redirect(next.pathname+next.search+next.hash,302);}}
 ---
-<Layout title={`${heading}${paginationTitle} — JotColoring`} description={intro} canonical={canonical} noindex={filtered||!!error}><Header active={category} search={query.q||''}/>
-<main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><Icon name="chevron" size={12}/>{categoryInfo?<><a href="/coloring-pages/">Coloring pages</a><Icon name="chevron" size={12}/><a href={`/coloring-pages/${category}/`}>{categoryInfo.name}</a>{subInfo&&<><Icon name="chevron" size={12}/><span aria-current="page">{subInfo.name}</span></>}</>:<span aria-current="page">Coloring pages</span>}</nav>
-<section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={subcategory||category||'all'} size={76}/></span><div><p class="hv-kicker">{categoryInfo?'COLORING PAGE COLLECTION':'THE JOTCOLORING COLLECTION'}</p><h1>{query.q?heading:displayTitle(heading)}</h1><p class="iv-category-intro">{intro}</p></div></section>
-<div class="jc-catalog-shell"><section class="iv-catalog-main jc-catalog-results">
-<div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
-<CatalogFilters total={result.total} query={query} category={category} currentURL={Astro.url.href}/>
-{activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
-{error?<div class="empty" role="alert">{error} <a href="/coloring-pages/">Reset filters</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory/>)}</div>}
-{result.total_pages>1&&<nav class="pagination" aria-label="Pagination">{result.page>1?<a href={pageHref(result.page-1)} aria-label="Previous page"><ArrowIcon kind="left" size={18}/></a>:<span aria-disabled="true"><ArrowIcon kind="left" size={18}/></span>}{Array.from({length:Math.min(result.total_pages,100)},(_,i)=>i+1).filter(p=>p===1||p===result.total_pages||Math.abs(p-result.page)<=2).map(p=><a class:list={[p===result.page&&'active']} aria-current={p===result.page?'page':undefined} href={pageHref(p)}>{p}</a>)}{result.has_more&&<a href={pageHref(result.page+1)} aria-label="Next page"><ArrowIcon kind="right" size={18}/></a>}</nav>}
-<div class="iv-catalog-explore" aria-label="More ways to browse">
-{animal&&<div class="iv-themes"><div class="iv-small-heading"><h2>Explore animal themes</h2><span>Choose a creature to color</span></div><div class="subcategory-strip">{animalCategories.map((c,i)=><a class:list={[subcategory===c.id&&'is-active']} href={`/coloring-pages/animals/${c.id}/`}>{samples[i]?<img loading="lazy" decoding="async" src={samples[i]!.thumbnail} srcset={samples[i]!.thumbnailSrcset} sizes="auto, 180px" alt={samples[i]!.alt} width="180" height="150"/>:<span class="iv-theme-placeholder" aria-hidden="true"><CategoryIcon name={c.id} size={54}/></span>}<strong>{c.name}</strong></a>)}</div></div>}
-<CategoryDirectory counts={await repo.categories()} parent={category||undefined}/>
-<DifficultyNavigation active={query.difficulty} currentURL={Astro.url.href}/><AgeNavigation compact active={query.recommended_age}/>
-</div>
-{category&&<section class="iv-category-note"><span><CategoryIcon name={category} size={29}/></span><div><h2>Make this collection your own.</h2><p>{categoryCopy[category].note}</p></div><a href="/studio/" class="hv-text-link">Try Studio <Icon name="arrow" size={16}/></a></section>}
-{relatedCollections&&<RelatedCollections result={relatedCollections} query={query}/>}
-</section></div><CreatePlayground contained/></main><script>import '../../ui/catalog';</script></Layout>
+<CatalogView location={location}/>

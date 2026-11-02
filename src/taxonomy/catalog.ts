@@ -1,3 +1,4 @@
+import {publicCategoryPath} from './routes';
 /** Stable, curated taxonomy. Adding a topic here does not fabricate catalog items. */
 export const TAXONOMY_VERSION='jot-taxonomy-2.3.0';
 export const FOLLOWUP_EDITORIAL_TAXONOMY_VERSION='jot-taxonomy-2.2.0';
@@ -156,7 +157,7 @@ const byId=new Map(COLORING_TAXONOMY.map(c=>[c.id,c]));
 export function categoryById(id:string){return byId.get(id);}
 export function childCategories(id:string){return COLORING_TAXONOMY.filter(c=>c.parent===id);}
 export function visionChildCategories(id:string){return childCategories(id).filter(c=>!c.editorial_only);}
-export function categoryPath(id:string){const c=byId.get(id);return c?`/coloring-pages/${c.parent?c.parent+'/':''}${c.id}/`:'/coloring-pages/';}
+export function categoryPath(id:string){const c=byId.get(id);return c?publicCategoryPath(c.id,c.parent):'/coloring-pages/';}
 export function categoryLineage(id:string):string[]{const c=byId.get(id);return c?[...(c.parent?[c.parent]:[]),c.id]:[];}
 // Reject ambiguous aliases rather than silently mapping one word to two collections.
 const aliases=new Map<string,Set<string>>();

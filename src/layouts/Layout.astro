@@ -11,19 +11,21 @@ import '../styles/type-scale.css';
 import '../styles/layout-constraints.css';
 import '../styles/vector-system.css';
 import '../styles/accessibility-colors.css';
-import '../styles/artwork-framing.css';
 import Footer from '../components/Footer.astro';
 import StorageNotice from '../components/StorageNotice.astro';
 import DownloadScreen from '../components/DownloadScreen.astro';
 import ShareDialog from '../components/ShareDialog.astro';
+import {validatedNavigationCard} from '../server/navigation-social';
+import type {Env} from '../server/types';
 import {pageSchema} from '../seo/page';
 import {searchTitle} from '../seo/title';
 import {socialOrigin,socialMetadata} from '../social/meta';
 
-const {title:rawTitle='Free Printable Coloring Pages | JotColoring',description='Find printable coloring pages to download or color online in JotColoring Studio.',noindex=false,canonical=Astro.url.pathname,bodyClass='site-v3',socialItem=undefined,downloadItem=undefined,downloadFormat='pdf'} = Astro.props;
+const {title:rawTitle='Free Printable Coloring Pages | JotColoring',description='Find printable coloring pages to download or color online in JotColoring Studio.',noindex=false,canonical=Astro.url.pathname,bodyClass='site-v3',socialItem=undefined,downloadItem=undefined,downloadFormat='pdf',socialFallback=undefined} = Astro.props;
 const title=searchTitle(rawTitle,Astro.url.pathname);
 const origin=socialOrigin(Astro.url.origin,env.PUBLIC_SITE_URL,env.APP_ENV);
-const social=socialMetadata(Astro.url.pathname,Astro.response.status||200,origin,socialItem||downloadItem,env.APP_ENV==='production'?env.PUBLIC_MEDIA_BASE_URL:undefined);
+const navigationCard=await validatedNavigationCard(env as unknown as Env,Astro.url.pathname);
+const social=socialMetadata(Astro.url.pathname,Astro.response.status||200,origin,socialItem||downloadItem,env.APP_ENV==='production'?env.PUBLIC_MEDIA_BASE_URL:undefined,navigationCard||socialFallback);
 const pageURL=new URL(canonical,origin).href;
 const structured=!noindex?pageSchema({origin,canonical,title,description,image:social.image,imageAlt:social.alt,item:socialItem}):null;
 // Development-only check for Android/Windows fallback-font metrics.

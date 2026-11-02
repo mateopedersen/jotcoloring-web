@@ -57,3 +57,8 @@ Existing format 4 snapshots retain their original checksums and restore using
 only the seven reviewed idle/empty target defaults. Other target-column changes,
 unsafe defaults, partial migrations and version/column mismatches are rejected.
 Historical format 1–3 snapshots keep their existing supported table scopes.
+
+The public sitemap index includes each prepared fragment's real modification
+time. Rebuilding identical XML preserves its previous modification time. A changed
+fragment advances the index body/ETag, so a crawler revalidating an old index
+receives the new child modification signal rather than an unchanged index.
