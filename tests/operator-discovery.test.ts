@@ -13,4 +13,6 @@ test('operator sitemap wakes use the real scoped queue while inline import/proje
  assert.equal(calls.length,3);assert.ok(calls[0].url.endsWith('/queues?name=jotcoloring-staging-ingest'));
  for(const call of calls.slice(1)){assert.ok(call.url.endsWith('/queues/existing-staging-queue/messages'));assert.deepEqual(call.body,{body:message,content_type:'json'});}
  await assert.rejects(()=>env.INGEST_QUEUE!.send({type:'discovery_rebuild',job_id:'another-project'}),/Unreviewed discovery job/);assert.equal(calls.length,3);
+ const notice={type:'discovery_notify',job_id:'indexnow',revision:'navigation-v1:'+'a'.repeat(40)};await env.INGEST_QUEUE!.send(notice);assert.deepEqual(calls.at(-1)!.body,{body:notice,content_type:'json'});
+ await assert.rejects(()=>env.INGEST_QUEUE!.send({...notice,job_id:'other'}),/Unreviewed discovery job/);await assert.rejects(()=>env.INGEST_QUEUE!.send({...notice,revision:'unreviewed'}),/Unreviewed discovery job/);assert.equal(calls.length,4);
 });
