@@ -24,9 +24,10 @@
   object-fit: contain;
   object-position: center;
 }
-:is(.site-v3,.home-v3) .compare.jc-artwork-compare {
+:is(.site-v3,.home-v3) .compare.jc-artwork-compare { background: #fff; }
+/* Preserve each promotional/creator frame; only gallery cards use one row ratio. */
+:is(.site-v3,.home-v3) :is(.hc-picture,.iv-card-picture) .compare.jc-artwork-compare {
   aspect-ratio: 3 / 4;
-  background: #fff;
 }
 :is(.site-v3,.home-v3) .compare.jc-artwork-compare > img {
   position: absolute;
