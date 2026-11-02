@@ -1,4 +1,4 @@
-import {artworkBreadcrumbs} from '../taxonomy/artwork-breadcrumbs';
+import {contentBreadcrumbs} from '../ui/content-breadcrumbs';
 import {categoryPath} from '../taxonomy/catalog';
 import {catalogLocation} from '../taxonomy/catalog-location';
 import {collectionForRoot,collectionPath} from '../taxonomy/navigation';
@@ -10,7 +10,7 @@ export function pageSchema(input:PageSEO){
  const title=input.title.replace(/\s*[|—·]\s*JotColoring\s*$/,'').trim();
  const absolute=(p:string)=>new URL(p,origin).href;
  const crumbs:{name:string;path:string}[]=[{name:'Home',path:'/'}];
- if(path.startsWith('/coloring/')&&input.item){crumbs.splice(0,crumbs.length,...artworkBreadcrumbs(input.item));}
+ if(path.startsWith('/coloring/')&&input.item){crumbs.splice(0,crumbs.length,...contentBreadcrumbs(input.item));}
  else if(path.startsWith('/coloring-pages/')||path.startsWith('/collection/')){const view=catalogLocation(path);crumbs.push({name:'Coloring pages',path:'/coloring-pages/'});if(view){const root=view.topic?.parent||view.topic?.id||(view.number?'education':undefined),group=view.collection||(root?collectionForRoot(root):undefined);if(group)crumbs.push({name:group.name,path:collectionPath(group.id)});if(view.topic)crumbs.push({name:view.topic.name,path:categoryPath(view.topic.id)});if(view.number)crumbs.push({name:'Numbers & Counting',path:categoryPath('numbers')},{name:view.number.name,path:view.number.path});}}
  else if(path.startsWith('/coloring-by-age/')){crumbs.push({name:'Coloring by age',path:'/coloring-by-age/'});const band=ageBand(path.split('/')[2]);if(band)crumbs.push({name:band.label,path});}
  else if(path!=='/')crumbs.push({name:title,path});

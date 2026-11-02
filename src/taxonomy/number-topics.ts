@@ -1,3 +1,4 @@
+import {numberSubjects} from '../search/number-subjects';
 /** Reviewed numeral topics; package labels never establish age or difficulty. */
 export const NUMBER_VALUES=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,99,100,101,111,222,333,444,555,666,777,888,999,1000,1001,2222] as const;
 export const numberTopic=(value:string|number)=>/^[1-9]\d{0,8}$/.test(String(value))&&(NUMBER_VALUES as readonly number[]).includes(Number(value))?{number:Number(value),id:'number-'+value,name:'Number '+value,path:'/coloring-pages/numbers/'+value+'/'}:undefined;
@@ -44,6 +45,6 @@ export function searchNumberSubject(){
 }
 export function numberTopicForArt(item:{title:string;tags?:string[];category_ids?:string[]}){
  if(!item.category_ids?.includes('numbers'))return;
- const literal=item.title.toLowerCase().replaceAll('-',' ').match(/\bnumber\s+([1-9]\d*)(?=\s|$)/),tags=(item.tags||[]).filter(t=>/^[0-9]+$/.test(t));
- return numberTopic(literal?.[1]||(tags.length===1?tags[0]:''));
+ const title=item.title.toLowerCase().replace(/(\d),(?=\d{3}\b)/g,'$1').replaceAll('-',' '),subjects=numberSubjects(title.split(/\s+/)),tags=(item.tags||[]).map(t=>numberSubjects(['number',...t.toLowerCase().split(/\s+/)])[0]?.number).filter((n):n is number=>n!==undefined);
+ return numberTopic(subjects.length===1?subjects[0].number:tags.length===1?tags[0]:'');
 }

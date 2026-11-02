@@ -1,6 +1,5 @@
 ---
 import {NAVIGATION_COLLECTIONS,collectionPath} from '../taxonomy/navigation';
-import {categoryPath} from '../taxonomy/catalog';
 import CategoryDirectory from '../components/CategoryDirectory.astro';
 import HeroQuickLinks from '../components/HeroQuickLinks.astro';
 import DifficultyNavigation from '../components/DifficultyNavigation.astro';
@@ -23,7 +22,6 @@ import ActionIcon from '../components/ActionIcon.astro';
 import GalleryTabIcon from '../components/GalleryTabIcon.astro';
 import {navigationLabel} from '../ui/navigation-label';
 import {homeGallerySelection,HOME_SHOWCASE_KEYS,HOME_SHOWCASE_TABS} from '../ui/home-selection';
-import {categories} from '../ui/categories';
 import {createCatalog} from '../server/catalog';
 import type {Env} from '../server/types';
 import '../styles/home-v3.css';
