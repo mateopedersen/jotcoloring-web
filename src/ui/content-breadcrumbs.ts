@@ -12,11 +12,12 @@ export function contentBreadcrumbs(item:BreadcrumbContent):ContentCrumb[]{
  // Numbers are subjects inside the Numbers collection; do not confuse scene
  // counts ("two cats") or recommended ages with the depicted numeral.
  if(child?.id==='numbers'){
-  const explicit=item.title.match(/\b(?:number|numeral|digit)\s+(\d{1,2}|[a-z]+)\b/i)?.[1]?.toLowerCase();
-  const tagged=(item.tags||[]).find(t=>numberWords.includes(t.toLowerCase())||/^\d{1,2}$/.test(t));
-  const token=explicit||tagged?.toLowerCase();
-  const number=token&&/^\d{1,2}$/.test(token)?Number(token):numberWords.indexOf(token||'');
-  if(number>=0&&number<=99){const url=new URL(categoryPath('numbers'),'https://jotcoloring.com');url.searchParams.set('q',`number ${number}`);url.hash='catalog-results';crumbs.push({name:`Number ${number}`,path:url.pathname+url.search+url.hash});}
+  const explicit=item.title.match(/\b(?:number|numeral|digit)\s+(\d[\d,]*|[a-z]+)\b/i)?.[1]?.toLowerCase();
+  const normalized=explicit&&/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(explicit)?explicit.replaceAll(',',''):explicit;
+  const tagged=(item.tags||[]).find(t=>numberWords.includes(t.toLowerCase())||/^\d{1,6}$/.test(t));
+  const token=normalized||tagged?.toLowerCase();
+  const number=token&&/^\d{1,6}$/.test(token)?Number(token):numberWords.indexOf(token||'');
+  if(number>=0&&number<=999999){const url=new URL(categoryPath('numbers'),'https://jotcoloring.com');url.searchParams.set('q',`number ${number}`);url.hash='catalog-results';crumbs.push({name:`Number ${number}`,path:url.pathname+url.search+url.hash});}
  }
  crumbs.push({name:item.title,path:`/coloring/${item.slug}/`});
  return crumbs;
