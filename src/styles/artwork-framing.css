@@ -1,0 +1,94 @@
+/* Artwork is a complete printable page, never a cropped photographic cover.
+   Shared cards and comparisons also serve every future catalog subject. */
+:is(.site-v3,.home-v3) .art-card .iv-card-picture {
+  height: auto;
+  aspect-ratio: auto;
+}
+:is(.site-v3,.home-v3) .art-card.iv-card .art-picture.jc-artwork-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+}
+:is(.site-v3,.home-v3) .art-card.iv-card .art-picture.jc-artwork-frame > img {
+  position: absolute;
+  inset: 4px;
+  display: block;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+}
+:is(.site-v3,.home-v3) .compare.jc-artwork-compare {
+  aspect-ratio: 3 / 4;
+  background: #fff;
+}
+:is(.site-v3,.home-v3) .compare.jc-artwork-compare > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.jc-artwork-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  min-width: 0;
+  min-height: 40px;
+  margin-bottom: 5px;
+}
+:is(.site-v3,.home-v3) .jc-artwork-tools .jc-detail-badge {
+  position: static;
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 5px 6px;
+}
+:is(.site-v3,.home-v3) .jc-artwork-tools .jc-detail-badge strong {
+  font-family: 'Avenir Next', Avenir, 'Manrope Variable', sans-serif;
+  font-size: 12px;
+  font-weight: 750;
+}
+:is(.site-v3,.home-v3) .jc-artwork-tools .jc-share-trigger--card {
+  position: static;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 3px;
+  margin: 0 0 0 auto;
+  transform: none;
+}
+.jc-artwork-tools .jc-share-trigger--card > svg { width: 28px; height: 28px; }
+.hc-info > .jc-category-label { margin: 0 0 10px; }
+/* Full-size detail uses the source's natural proportions with normal page
+   scrolling. No nested viewport, artificial maximum height or zoom state. */
+:is(.site-v3,.home-v3) .detail-viewport.jc-full-artwork {
+  height: auto;
+  max-height: none;
+  aspect-ratio: auto;
+  overflow: hidden;
+}
+:is(.site-v3,.home-v3) .detail-viewport.jc-full-artwork > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+/* Smaller collection/discovery illustrations keep the same complete-page rule. */
+:is(.site-v3,.home-v3) :is(.subcategory-strip,.quick-preview,.jc-gallery-paper,.iv-category-art,.jc-collection-paper,.cf-idea-paper) img {
+  object-fit: contain;
+  object-position: center;
+  background-color: #fff;
+}
