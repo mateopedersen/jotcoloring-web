@@ -6,7 +6,7 @@ export interface ResponseCache {
 }
 type Policy={kind:'html'|'json'|'media'|'xml'|'text'|'redirect';catalog:boolean;seconds:number};
 const staticPages=new Set(['about','accessibility','contact','cookies','faq','help','how-to-use','license','licensing','printing-guide','privacy','terms']);
-const queryKeys=new Set(['q','page','limit','sort','category','subcategory','age','difficulty','recommended_age','marketingOnly','cursor','popular']);
+const queryKeys=new Set(['q','page','limit','sort','category','subcategory','age','difficulty','recommended_age','marketingOnly','cursor','popular','collection','number']);
 
 /** Only published documents qualify. Private tools, jobs, admin, errors and writes never do. */
 export function publicCachePolicy(request:Request):Policy|undefined{
@@ -24,7 +24,7 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   }
   if([...url.searchParams.keys()].some(k=>!queryKeys.has(k)))return;
   if(/^\/api\/(?:catalog|search|categories)$/.test(path)||/^\/api\/(?:content|catalog)\/[A-Za-z0-9_-]+$/.test(path))return{kind:'json',catalog:true,seconds:60};
-  if(path==='/'||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
+  if(path==='/'||/^\/collection\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
   if(!url.search&&staticPages.has(path.replace(/^\/|\/$/g,''))&&path.endsWith('/'))return{kind:'html',catalog:false,seconds:600};
 }
 
@@ -85,3 +85,4 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
   }
   return finish(response,'BYPASS');
 }
+

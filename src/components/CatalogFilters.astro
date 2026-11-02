@@ -1,5 +1,5 @@
 ---
-import {categories} from '../ui/categories';
+import {NAVIGATION_COLLECTIONS,collectionForRoot} from '../taxonomy/navigation';
 import {AGE_BANDS} from '../age/model';
 import {DIFFICULTY_LEVELS} from '../age/difficulty';
 import {clearFilterURL} from '../ui/filter-url';
@@ -11,6 +11,7 @@ import '../styles/catalog-filters.css';
 interface Props {total:number;query:CatalogQuery;category?:string;currentURL:string;ageCollection?:boolean}
 const {total,query,category='',currentURL,ageCollection=false}=Astro.props;
 const url=new URL(currentURL),reset=clearFilterURL(currentURL);
+const selectedCollection=query.collection||collectionForRoot(category)?.id;
 reset.hash=ageCollection?'age-results':'catalog-results';
 const active=!!query.recommended_age&&!ageCollection||!!query.age?.length||!!query.difficulty?.length||query.sort==='newest'||query.sort==='title';
 ---
@@ -19,10 +20,11 @@ const active=!!query.recommended_age&&!ageCollection||!!query.age?.length||!!que
  {query.age?.map(age=><input type="hidden" name="age" value={age}/>)}
  <div class="jc-filter-summary"><span class="jc-filter-summary-icon"><VectorIcon name="grid" size={36}/></span><div><strong id={ageCollection?'age-results':'catalog-results'}>{total.toLocaleString('en-US')}</strong><span>{total===1?'Coloring Page':'Coloring Pages'}</span></div></div>
  <div class="jc-filter-fields">
-  {!ageCollection&&<label class="jc-filter-field" for="category-filter"><span class="jc-filter-field-heading"><CategoryIcon name={category||'all'} size={29}/><span>Choose a Theme</span></span><select id="category-filter" name="category" data-filter-select><option value="">All Categories</option>{categories.map(c=><option value={c.id} selected={category===c.id||query.category===c.id}>{c.name}</option>)}</select></label>}
+  {!ageCollection&&<label class="jc-filter-field" for="category-filter"><span class="jc-filter-field-heading"><CategoryIcon name={selectedCollection||category||'all'} size={29}/><span>Choose a Theme</span></span><select id="category-filter" name="category" data-filter-select><option value="">All Categories</option>{NAVIGATION_COLLECTIONS.map(c=><option value={c.id} selected={selectedCollection===c.id}>{c.name}</option>)}</select></label>}
   <label class="jc-filter-field" for="age-filter"><span class="jc-filter-field-heading"><VectorIcon name="nav-age" size={29}/><span>Recommended Age</span></span><select id="age-filter" name="recommended_age" data-filter-select><option value="">Any Age</option>{AGE_BANDS.map(a=><option value={a.id} selected={query.recommended_age===a.id}>{a.label}</option>)}</select></label>
   <label class="jc-filter-field" for="difficulty-filter"><span class="jc-filter-field-heading"><VectorIcon name="layers" size={29}/><span>Level of Detail</span></span><select id="difficulty-filter" name="difficulty" data-filter-select><option value="">All Levels</option>{DIFFICULTY_LEVELS.map(d=><option value={d.id} selected={query.difficulty?.includes(d.id)}>{d.label}</option>)}</select></label>
   <label class="jc-filter-field" for="sort-filter"><span class="jc-filter-field-heading"><VectorIcon name="list" size={29}/><span>Sort Your Pages</span></span><select id="sort-filter" name="sort" data-filter-select><option value="trending" selected={query.sort==='trending'}>{query.q?'Best Matches':'Featured First'}</option><option value="newest" selected={query.sort==='newest'}>Newest First</option><option value="title" selected={query.sort==='title'}>Title: A to Z</option></select></label>
  </div>
  <div class="jc-filter-footer"><span><Icon name="check" size={15}/>Your choices update the gallery</span>{active&&<a href={reset.pathname+reset.search+reset.hash}><Icon name="refresh" size={16}/>Reset Filters</a>}<button type="submit" data-apply-filters>Show Pages<Icon name="arrow" size={16}/></button></div>
 </form>
+

@@ -31,7 +31,7 @@ test('nested collection suggestions use their topic illustration instead of an i
  for(const [query,expectedIcon] of [['Floral Mandalas','mandalas'],['Flower Bouquets','flowers']]){
   const [collection]=buildSuggestions(query,[],options);
   assert.equal(collection.kind,'category');
-  assert.equal(collection.detail,'Collection');
+  assert.equal(collection.detail,'Topic');
   assert.equal(collection.icon,expectedIcon);
   assert.ok(!illustrationImageHref(collection.icon!).endsWith('/info.svg'));
  }
@@ -46,6 +46,7 @@ test('future collections without an illustration use a coloring-page stack',()=>
  for(const icon of [undefined,'missing-future-icon','info']){
   const [collection]=buildSuggestions('Future Theme',[],[{id:'future-theme',name:'Future Theme',icon}]);
   assert.equal(collection.icon,'nav-all-pages');
-  assert.equal(collection.detail,'Collection');
+  assert.equal(collection.detail,'Topic');
  }
 });
+

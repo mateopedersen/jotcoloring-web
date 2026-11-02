@@ -1,3 +1,5 @@
+import {NAVIGATION_COLLECTIONS,collectionPath} from '../taxonomy/navigation';
+import {canonicalNumberSubject,numberTopic} from '../taxonomy/number-topics';
 import type {Env} from './types';
 import {categoryPath,categoryById} from '../taxonomy/catalog';
 import {AGE_BANDS} from '../age/model';
@@ -18,8 +20,10 @@ export async function buildSitemapSegment(env:Env,url:URL,segment:string){
  if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);
  const origin=originFor(env,url);let entries:SitemapItem[]=[];
  if(segment==='static'){
-  const categories=await env.CATALOG_DB.prepare('SELECT id FROM category ORDER BY id').all<{id:string}>();
-  entries=[...AGE_BANDS.map(a=>({path:'/coloring-by-age/'+encodeURIComponent(a.id)+'/'})),{path:'/'},{path:'/coloring-pages/'},{path:'/coloring-by-age/'},{path:'/about/'},{path:'/privacy/'},{path:'/terms/'},{path:'/license/'},{path:'/licensing/'},{path:'/help/'},{path:'/faq/'},{path:'/cookies/'},{path:'/accessibility/'},{path:'/printing-guide/'},{path:'/how-to-use/'},{path:'/contact/'},{path:'/create/photo/'},{path:'/create/text/'},{path:'/studio/'},{path:'/drawing-board/'},...categories.results.filter(x=>categoryById(x.id)).map(x=>({path:categoryPath(x.id)}))];
+  const categories=await env.CATALOG_DB.prepare("SELECT DISTINCT cc.category_id AS id FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL ORDER BY cc.category_id").all<{id:string}>();
+  const numbers=await env.CATALOG_DB.prepare("SELECT DISTINCT ("+canonicalNumberSubject()+") AS number FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers')").all<{number:string}>();
+  entries=[...AGE_BANDS.map(a=>({path:'/coloring-by-age/'+encodeURIComponent(a.id)+'/'})),{path:'/'},{path:'/coloring-pages/'},{path:'/coloring-by-age/'},{path:'/about/'},{path:'/privacy/'},{path:'/terms/'},{path:'/license/'},{path:'/licensing/'},{path:'/help/'},{path:'/faq/'},{path:'/cookies/'},{path:'/accessibility/'},{path:'/printing-guide/'},{path:'/how-to-use/'},{path:'/contact/'},{path:'/create/photo/'},{path:'/create/text/'},{path:'/studio/'},{path:'/drawing-board/'},...categories.results.filter(x=>categoryById(x.id)).map(x=>({path:categoryPath(x.id)})),...NAVIGATION_COLLECTIONS.filter(c=>c.roots.some(id=>categories.results.some(row=>row.id===id))).map(c=>({path:collectionPath(c.id)})),...numbers.results.flatMap(row=>{const topic=numberTopic(row.number);return topic?[{path:topic.path}]:[];})];
+  entries=[...new Map(entries.map(entry=>[entry.path,entry])).values()];
  }else{
   if(!/^[1-9]\d{0,4}$/.test(segment))throw new AppError('NOT_FOUND','Sitemap not found.',404);
   const start=(Number(segment)-1)*SITEMAP_SEGMENT_SIZE;
@@ -38,7 +42,7 @@ export async function sitemapIndex(env:Env,url:URL){
  if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog unavailable.',503);
  const rows=await env.CATALOG_DB.prepare('SELECT segment,generated_at FROM discovery_fragment ORDER BY segment').all<{segment:string;generated_at:string}>();
  if(!rows.results.length)throw new AppError('SITEMAP_PREPARING','Sitemap is being prepared.',503);
- const origin=originFor(env,url),xml=open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+rows.results.map(r=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+r.segment+'.xml')}</loc></sitemap>`).join('')+'</sitemapindex>';
+ const origin=originFor(env,url),xml=open+'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+rows.results.map(r=>`<sitemap><loc>${escapeXML(origin+'/sitemaps/'+r.segment+'.xml')}</loc><lastmod>${new Date(r.generated_at).toISOString()}</lastmod></sitemap>`).join('')+'</sitemapindex>';
  return new Response(xml,{headers:{...headers,'Last-Modified':new Date(Math.max(...rows.results.map(r=>Date.parse(r.generated_at)))).toUTCString(),ETag:'"'+await import('./http').then(m=>m.sha256(new TextEncoder().encode(xml)))+'"'}});
 }
 export async function sitemapSegment(env:Env,url:URL,segment:string){
@@ -48,3 +52,4 @@ export async function sitemapSegment(env:Env,url:URL,segment:string){
  const object=await env.PUBLISHED?.get(row.object_key);if(!object)throw new AppError('SITEMAP_UNAVAILABLE','Sitemap unavailable.',503);
  return new Response(object.body,{headers:{...headers,ETag:'"'+row.etag+'"','Last-Modified':new Date(row.generated_at).toUTCString()}});
 }
+

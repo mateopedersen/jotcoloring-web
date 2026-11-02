@@ -35,14 +35,14 @@ async function consume(f:ReturnType<typeof setup>,body:any){
  return{acked,retries};
 }
 test('publication projection automatically queues one sitemap rebuild, including recovery of an already projected event',async()=>{
- const f=setup(),{projectEvent}=await import('../src/server/imports');f.sql.exec("DELETE FROM category WHERE id='numbers'");await rebuildDiscovery(f.env,8);assert.ok(!(await(await sitemapSegment(f.env,new URL('https://jotcoloring.com'),'static')).text()).includes('/education/numbers/'));f.sql.exec("INSERT INTO category(id,name,parent_id) VALUES('numbers','Numbers','education')");drawing(f.sql,'new-topic','published');f.sql.exec("INSERT INTO content_category(content_id,category_id) VALUES('new-topic','numbers')");
+ const f=setup(),{projectEvent}=await import('../src/server/imports');f.sql.exec("DELETE FROM category WHERE id='numbers'");await rebuildDiscovery(f.env,8);assert.ok(!(await(await sitemapSegment(f.env,new URL('https://jotcoloring.com'),'static')).text()).includes('/coloring-pages/numbers/'));f.sql.exec("INSERT INTO category(id,name,parent_id) VALUES('numbers','Numbers','education')");drawing(f.sql,'new-topic','published');f.sql.exec("INSERT INTO content_category(content_id,category_id) VALUES('new-topic','numbers')");
  f.sql.exec("INSERT INTO outbox_event(event_id,content_id,version,event_type) VALUES('new-publication','new-topic',1,'published')");
  await Promise.all([projectEvent(f.env,'new-publication'),projectEvent(f.env,'new-publication')]);
  assert.deepEqual(f.messages,[{type:'discovery_rebuild',job_id:'sitemap'}]);
  assert.equal(f.sql.prepare('SELECT rebuild_state FROM discovery_state').get()!.rebuild_state,'queued');
  assert.deepEqual(await consume(f,f.messages[0]),{acked:1,retries:[]});
  const result=await sitemapSegment(f.env,new URL('https://jotcoloring.com'),'1');assert.match(await result.text(),/coloring\/new-topic\//);assert.match(result.headers.get('Cache-Control')!,/max-age=0,must-revalidate/);
- assert.equal(f.sql.prepare('SELECT rebuild_completed_by FROM discovery_state').get()!.rebuild_completed_by,'queue');assert.match(await(await sitemapSegment(f.env,new URL('https://jotcoloring.com'),'static')).text(),/education\/numbers\//);
+ assert.equal(f.sql.prepare('SELECT rebuild_completed_by FROM discovery_state').get()!.rebuild_completed_by,'queue');assert.match(await(await sitemapSegment(f.env,new URL('https://jotcoloring.com'),'static')).text(),/coloring-pages\/numbers\//);
  f.sql.exec("UPDATE content SET title='Updated topic',updated_at='2026-11-02T10:00:00Z' WHERE id='new-topic'");
  await projectEvent(f.env,'new-publication');assert.equal(f.messages.length,2,'a known processed event can recover a failed wake-up');
 });
@@ -94,4 +94,12 @@ test('each rebuild is bounded, prioritizes topic URLs and queues remaining segme
  await queueDiscoveryRebuild(f.env);const put=f.env.PUBLISHED!.put,keys:string[]=[];f.env.PUBLISHED!.put=async(key,...args:any[])=>{keys.push(key);return put(key,...args as [any])};
  await consume(f,f.messages[0]);assert.equal(keys.length,8);assert.match(keys[0],/sitemaps\/v1\/static\//);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM discovery_dirty').get()!.n,2);assert.equal(f.sql.prepare('SELECT rebuild_completed_at FROM discovery_state').get()!.rebuild_completed_at,'');
  await consume(f,f.messages[1]);assert.equal(keys.length,10);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM discovery_dirty').get()!.n,0);
+});
+
+
+test('crawler index changes with a changed fragment and unchanged XML preserves real modification times',async()=>{
+ const {sitemapIndex}=await import('../src/server/sitemap');const f=setup();drawing(f.sql,'index-first','published');await rebuildDiscovery(f.env,8);
+ f.sql.exec("UPDATE discovery_fragment SET generated_at='2026-01-01T00:00:00.000Z'");const before=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml')),tag=before.headers.get('etag'),xml=await before.text();assert.match(xml,/<lastmod>2026-01-01T00:00:00.000Z<\/lastmod>/);
+ f.sql.exec("INSERT INTO discovery_dirty(segment) SELECT segment FROM discovery_fragment WHERE 1 ON CONFLICT(segment) DO UPDATE SET generation=generation+1");await rebuildDiscovery(f.env,8);const same=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml'));assert.equal(same.headers.get('etag'),tag);assert.equal(await same.text(),xml);
+ drawing(f.sql,'index-new-topic','published');await rebuildDiscovery(f.env,8);const changed=await sitemapIndex(f.env,new URL('https://jotcoloring.com/sitemap.xml'));assert.notEqual(changed.headers.get('etag'),tag);assert.notEqual(await changed.text(),xml);assert.equal(f.sql.prepare('SELECT COUNT(*) n FROM discovery_dirty').get()!.n,0);
 });
