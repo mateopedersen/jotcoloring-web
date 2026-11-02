@@ -6,7 +6,7 @@ interface Props {variant?:'hero'|'header';value?:string;idPrefix?:string;action?
 const {variant='header',value='',idPrefix,action='/coloring-pages/',recommendedAge}=Astro.props;
 const inputId=idPrefix?`${idPrefix}-search`:variant==='hero'?'home-search':'site-search',listId=`${inputId}-suggestions`;
 ---
-<form class:list={['jc-search-shell',variant==='hero'?'hv-search':'jc-header-search']} action={action} method="get" role="search" data-search-form data-category-options={JSON.stringify(COLORING_TAXONOMY.map(({id,name,aliases})=>({id,name,aliases,href:categoryPath(id)})))} data-recommended-age={recommendedAge}>
+<form class:list={['jc-search-shell',variant==='hero'?'hv-search':'jc-header-search']} action={action} method="get" role="search" data-search-form data-category-options={JSON.stringify(COLORING_TAXONOMY.map(({id,name,aliases,icon})=>({id,name,aliases,icon,href:categoryPath(id)})))} data-recommended-age={recommendedAge}>
  <SearchIcon size={variant==='hero'?48:38}/><label class="sr-only" for={inputId}>Search coloring pages</label>
  <input id={inputId} name="q" type="search" value={value} maxlength="160" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="search" enterkeyhint="search" placeholder="Search pages…"/>
  <button type="button" class="jc-search-clear" data-search-clear aria-label="Clear search" hidden><Icon name="close" size={17}/></button>
