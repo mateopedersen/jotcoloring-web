@@ -6,8 +6,8 @@ import {intentExpression} from '../src/search/intent';
 const number={slug:'number-2-with-interlocking-diamonds',title:'Number 2 With Interlocking Diamonds',category:'education',categoryName:'Learning',category_ids:['education','numbers'],subcategory:'numbers',tags:['counting','number','two']};
 test('reviewed number memberships expose both their parent collection and numeral subject',()=>{
  const crumbs=contentBreadcrumbs(number);
- assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning & Numbers','Numbers & Counting','Number 2',number.title]);
- const subject=new URL(crumbs[3].path,'https://jotcoloring.com');
+ assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning & Numbers','Number 2',number.title]);
+ const subject=new URL(crumbs.at(-2)!.path,'https://jotcoloring.com');
  assert.equal(subject.pathname,'/coloring-pages/numbers/2/');assert.equal(subject.search,'');
 });
 test('all recorded subtopics receive their real collection URL without inventing memberships',()=>{
@@ -29,8 +29,8 @@ test('number-subject searches match digit and word spellings without changing or
 test('larger numeral subjects and thousands separators keep the complete number',()=>{
  for(const [title,value] of [['Number 777 Beside A Dog',777],['Number 1,000 With Flowers',1000],['Number 1000 On A Book',1000]] as const){
   const crumbs=contentBreadcrumbs({...number,title,tags:[]});
-  assert.equal(crumbs[3].name,'Number '+value);
-  assert.equal(new URL(crumbs[3].path,'https://jotcoloring.com').pathname,'/coloring-pages/numbers/'+value+'/');
+  assert.equal(crumbs.at(-2)!.name,'Number '+value);
+  assert.equal(new URL(crumbs.at(-2)!.path,'https://jotcoloring.com').pathname,'/coloring-pages/numbers/'+value+'/');
  }
 });
 
