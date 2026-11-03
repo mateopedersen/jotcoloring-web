@@ -14,14 +14,22 @@ test('every canonical collection, subject and numeral has a distinct informative
  for(const path of paths){
   const location=catalogLocation(path)!;
   assert.ok(location,path);const summary=landingSummary(location);
-  assert.ok(summary.length>15&&summary.length<=400,`${path}: ${summary.length}`);
+  assert.ok(summary.split(/\s+/).length>=50&&summary.split(/\s+/).length<=140,`${path}: ${summary.split(/\s+/).length} words`);
   assert.ok(!/[-–—]/.test(summary),path);
   assert.match(summary,/[.!?]$/);
   assert.ok(!copy.has(summary),`Repeated introduction: ${path} and ${copy.get(summary)}`);
   copy.set(summary,path);
-  // Visible copy must condense the accepted introduction, not replace its identity.
-  assert.ok(landingIdentity(location).intro.replace(/[-–—]/g,' ').startsWith(summary.replace(/[.!?]$/,'')),path);
+  // Source observations are preserved; added instructions remain visitor advice.
+  assert.ok(summary.includes(landingIdentity(location).intro.replace(/[-–—]/g,' ').replace(/\s+/g,' ')),path);
  }
+});
+
+test('future subjects retain their reviewed facts and receive useful visitor guidance without guessed scene details',()=>{
+ const topic={id:'future-topic',name:'Future Topic',topic:'Future Topic',parent:'animals',visual:'',icon:'animals',sample:'',intro:'Reviewed birds rest beside a pond.',aliases:[]};
+ const text=landingSummary({topic,path:'/coloring-pages/future-topic/'});
+ assert.ok(text.includes(topic.intro));assert.match(text,/Compare the complete outlines/);
+ assert.doesNotMatch(text,/\d+ (?:pages|designs)|\b(?:AI|guarantee|ages|easy)\b/i);
+ assert.notEqual(text,landingSummary({topic:{...topic,id:'different-topic',topic:'Different Topic'},path:'/coloring-pages/different-topic/'}));
 });
 
 test('the artwork label appends Coloring Page once without altering accepted names',()=>{
