@@ -36,3 +36,13 @@ silently alter them. Avoid developer-only environment names in everyday help.
 After copy changes, regenerate affected social covers; verify titles/descriptions,
 links, and open dialogs, then check layout at 320/390/768/1024/1440 CSS pixels.
 The style rules apply to new pages and imports as well as existing content.
+
+Collection header refinement, November 3: write a substantial, topic specific
+visitor introduction explaining what is in the reviewed collection and helping
+someone choose and color a drawing. About 60 to 110 words is a practical layout
+guide, not an SEO target. Preserve actual source observations; suggestions for
+coloring must remain advice. Vary openings and the advice itself across topics.
+Do not paste the same welcome or download paragraph onto every collection. Keep
+navigation summaries concise and free of these longer paragraphs. New topics
+must supply their own reviewed intro and tailored visitor guidance; the shared
+resolver must retain those facts and avoid invented details during fallback.
