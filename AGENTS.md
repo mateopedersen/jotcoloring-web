@@ -84,3 +84,6 @@ Owner refinement, November 3: the visible collection introduction is a substanti
 
 ## November 3 seasonal ten follow-up
 The owner separately authorized Sugar Skull, Veterans Day, Christmas Tree, January, December, All Souls Day, Cheetah, Excavator, Gingerbread House and Fall Leaf: exactly ten complete archives and 1,000 drawings under `seasonal-ten-20261103`. Preserve supplied logos and healthy PDF/WebP bytes. Use image-specific English metadata and a substantial, individually written collection guide in the shared landing system. Keep AI generation claims from package manifests truthful and missing native sources explicit. This exact scope does not change earlier seals, the MrBeast exception or queue bounds.
+
+## Collection directory refinement, November 3
+Main collection pages present individual subject or number-series cards through the shared canonical resolver. Keep source-reviewed category membership, real published counts, a topic-specific accepted introduction and an accepted source-bound drawing cover. Do not mix all drawings into the main collection directory or invent counts, ages or numeral identities. Remove duplicate breadcrumb levels with the same target through the shared UI resolver. Preserve concurrent content intakes and avoid automatic coloring or paid inference.

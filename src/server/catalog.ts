@@ -58,11 +58,11 @@ export class D1SearchProvider implements SearchProvider{
  if(!total&&options.cursor)throw new AppError('INVALID_CURSOR','These search results changed. Start from the first page.');
  if(!total)return{ids:[],total:0,has_more:false,next_cursor:null,search_match:{mode:'none' as const,query,interpreted:words.join(' ')}};
  const phrase=hasWords?chosen.join(' '):query,categoryTerms=searchTopicIds(phrase),match:SearchMatch={mode,query,interpreted:phrase};
- // A numeral collection has an exact subject predicate. Corpus-wide BM25
- // changes when unrelated pages publish and would invalidate keyset positions.
- // Keep the existing literal-title boosts, then a stable ID tie-break for these
- // queries; other subject searches retain their lexical relevance scoring.
- const lexicalRank=numberSubjects(chosen).length?'0':'-bm25(search_fts,0,16,8,22,1,.6)*1000';
+ // Recognized topic and numeral searches have explicit subject identity.
+ // Corpus-wide BM25 changes as unrelated drawings publish, moving existing
+ // members across cursor boundaries. Keep literal-title/category boosts and
+ // the stable ID tie-break for these queries; free-text searches retain BM25.
+ const lexicalRank=numberSubjects(chosen).length||categoryTerms.length?'0':'-bm25(search_fts,0,16,8,22,1,.6)*1000';
  const cte="WITH matched AS MATERIALIZED (SELECT d.id,d.title,d.published_at,d.sort_score,"+(hasWords?"CASE WHEN lower(d.title)=? THEN 100000 WHEN instr(lower(d.title),?)=1 THEN 10000 ELSE 0 END+CASE WHEN instr(' '||lower(replace(d.title,'-',' '))||' ',?)>0 THEN 20000 ELSE 0 END+CASE WHEN EXISTS(SELECT 1 FROM json_each(d.category_ids) cat JOIN json_each(?) term ON cat.value=term.value) THEN 80000 ELSE 0 END+"+lexicalRank:'d.sort_score')+" AS relevance"+from()+')';
  const column=sort==='newest'?'published_at':sort==='title'?'title COLLATE NOCASE':'relevance',direction=sort==='title'?'ASC':'DESC',compare=sort==='title'?'>':'<',fingerprint=await sha256(canonicalJSON({...options,q:query,interpreted:phrase,version:SEARCH_VERSION,limit,page:undefined,cursor:undefined}));const where:string[]=[],values:unknown[]=hasWords?[phrase,phrase, ' '+phrase+' ',JSON.stringify(categoryTerms),expression,...boundScopes()]:boundScopes();
  if(options.cursor){if(!this.secret)throw new AppError('CURSOR_UNAVAILABLE','Cursor signing is not configured.',503);try{const [payload,sig]=options.cursor.split('.');if(!payload||!sig||sig!==await signCursor(payload,this.secret))throw new Error();const c=JSON.parse(decode(payload)) as Cursor;if(c.query!==fingerprint||c.sort!==sort||c.exp<Date.now())throw new Error();where.push(`(${column} ${compare} ? OR (${column}=? AND id ${compare} ?))`);values.push(c.value,c.value,c.id);}catch{throw new AppError('INVALID_CURSOR','This search cursor is invalid or expired.');}}
