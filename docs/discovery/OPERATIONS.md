@@ -19,7 +19,7 @@ Only production can send. The key is public verification material served as exac
 
 The sender verifies current content revision, canonical live 200 HTML/indexability, current sitemap membership, and the verified live preview/PDF before upserts. Old slug changes use the existing permanent redirect; archives require 404/410 or a permanent redirect. Superseded notices are marked obsolete. Batches contain up to20 independently verified same-host URLs, sent only to `https://api.indexnow.org/indexnow`.
 
-`received` means HTTP 200 accepted. `key_pending` means HTTP 202 accepted pending key validation. Neither means indexed. HTTP 400/403/422 become failed; 429, 5xx and network failures retry with Retry-After, exponential delay and jitter, up to eight attempts. Leases recover interrupted work. Persistent URL/revision/event uniqueness suppresses duplicate messages. As with any network delivery, an interrupted response can cause an at-least-once retry; exactly-once external delivery is not claimed.
+`received` means HTTP 200 accepted. `key_pending` means HTTP 202 accepted pending key validation. Neither means indexed. HTTP 400/403/422 become failed; 429 responses retain a durable site-wide cooldown with Retry-After, at least ten minutes of backoff and jitter, including after eight responses. HTTP 5xx and network failures retain their eight-attempt limit. Publication changes and an existing IndexNow cooldown defer work without consuming attempts. Leases recover interrupted work. Persistent URL/revision/event uniqueness suppresses duplicate messages. As with any network delivery, an interrupted response can cause an at-least-once retry; exactly-once external delivery is not claimed.
 
 Crawler Hints is a separate Cloudflare-managed source based on cache signals. Its hints do not have the application's delivery receipts and are not cross-system deduplicated.
 
@@ -63,3 +63,8 @@ The existing ingest queue also accepts `discovery_notify` / `indexnow`. Each del
 A navigation revision can be queued separately only after `navigation-notices.ts` accepts actual live page and redirect proof. Its `send --apply` command wakes the real production queue instead of running external sends in the operator process. Historical failed notifications may be requeued only after their exact fault is diagnosed and the affected rows are privately backed up; never clear successful receipts or reset unrelated failures.
 
 Each delivery groups at most20 independently verified URLs into one IndexNow POST and validates the public key once. A429 receipt pauses all streams until its recorded not_before time; unrelated notices do not spend attempts during that hold. Collection work has a90second budget, and each ready notice renews its exact lease before the batch; a changed lease cannot be sent or finalized by the previous owner.
+
+
+## Publication and rate-limit deferrals
+
+A changed sitemap during live checks or before a batch send is an internal deferral, not a failed provider attempt. Each still-owned notice returns to pending after one minute and releases its exact lease without spending an attempt. An HTTP429 keeps its pending receipt and durable global hold even after eight responses; without Retry-After it waits at least ten minutes, rising to at most one day of exponential delay. A longer provider Retry-After is honored. Permanent HTTP errors and the existing network/server retry bound remain unchanged. Successful receipts, originals, queue concurrency and the twenty-notice batch limit are preserved. See https://www.indexnow.org/faq.html.

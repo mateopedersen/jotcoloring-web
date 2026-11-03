@@ -147,3 +147,32 @@ test('a notification that loses its lease before the batch send cannot notify or
  const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','lease-check','upsert')");const prepare=f.db.prepare.bind(f.db);f.db.prepare=(q:string)=>{const s=prepare(q);if(q.startsWith('UPDATE discovery_notice SET lease_until=')){const run=s.run;s.run=async()=>{f.sql.exec("UPDATE discovery_notice SET lease_until='new-owner'");return run();};}return s;};
  let posts=0;const call:any=async(u:string)=>u.includes('api.indexnow.org')?(posts++,new Response('')):new Response('<link rel="canonical" href="https://jotcoloring.com/">');await sendDiscoveryNotices(f.env,call);assert.equal(posts,0);const row=f.sql.prepare('SELECT state,lease_until FROM discovery_notice').get()!;assert.equal(row.state,'sending');assert.equal(row.lease_until,'new-owner');
 });
+
+test('a repeated 429 retains the global cooldown instead of becoming a permanent failure',async()=>{
+ assert.equal(nextDiscoveryAttempt(429,null,1,0,0),'1970-01-01T00:10:00.000Z');
+ assert.ok(nextDiscoveryAttempt(429,null,8,0,0));
+ assert.equal(nextDiscoveryAttempt(429,'172800',40,0,0),'1970-01-03T00:00:00.000Z');
+ const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type,attempts) VALUES('/','eighth-rate-limit','upsert',7)");let posts=0;
+ const call:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?(posts++,new Response('',{status:429})):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
+ await processDiscoveryNotices(f.env,call);const row=f.sql.prepare('SELECT state,attempts,last_status,not_before FROM discovery_notice').get()!;
+ assert.equal(row.state,'pending');assert.equal(row.attempts,8);assert.equal(row.last_status,429);assert.ok(Date.parse(row.not_before as string)>Date.now()+600000);
+ f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/collection/education/','new-stream','upsert')");
+ assert.equal(await processDiscoveryNotices(f.env,call),0);assert.equal(posts,1);assert.equal(f.sql.prepare("SELECT attempts FROM discovery_notice WHERE revision='new-stream'").get()!.attempts,0);
+});
+
+test('publication during a live check defers the notice without exhausting its last attempt',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type,attempts) VALUES('/','publication-race','upsert',7)");let posts=0;
+ const call:any=async(u:string)=>{if(u.includes('api.indexnow.org')){posts++;return new Response('');}f.sql.exec("INSERT INTO discovery_dirty(segment) VALUES('static') ON CONFLICT(segment) DO UPDATE SET generation=generation+1");return new Response('<link rel="canonical" href="https://jotcoloring.com/">');};
+ await processDiscoveryNotices(f.env,call);const row=f.sql.prepare('SELECT state,attempts,last_error,lease_until,not_before FROM discovery_notice').get()!;
+ assert.equal(posts,0);assert.equal(row.state,'pending');assert.equal(row.attempts,7);assert.equal(row.last_error,'PUBLICATION_CHANGED');assert.equal(row.lease_until,null);assert.ok(Date.parse(row.not_before as string)>Date.now());
+ await rebuildDiscovery(f.env);f.sql.exec("UPDATE discovery_notice SET not_before='' WHERE revision='publication-race'");
+ const success:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?(posts++,new Response('')):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
+ await processDiscoveryNotices(f.env,success);assert.equal(posts,1);assert.equal(f.sql.prepare('SELECT state FROM discovery_notice').get()!.state,'received');
+});
+
+test('publication after preparation defers every owned batch notice without spending attempts',async()=>{
+ const f=setup();await rebuildDiscovery(f.env);for(let i=0;i<2;i++)f.sql.prepare("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES(?,?,'upsert')").run(i?'/coloring-pages/':'/','prepared-'+i);
+ const prepare=f.db.prepare.bind(f.db);f.db.prepare=(q:string)=>{const s=prepare(q);if(q.startsWith('UPDATE discovery_notice SET lease_until=')){const run=s.run;s.run=async()=>{const result=await run();f.sql.exec("INSERT INTO discovery_dirty(segment) VALUES('static') ON CONFLICT(segment) DO UPDATE SET generation=generation+1");return result;};}return s;};
+ let posts=0;const call:any=async(u:string)=>u.includes('api.indexnow.org')?(posts++,new Response('')):new Response(`<link rel="canonical" href="${u}">`);
+ await processDiscoveryNotices(f.env,call);assert.equal(posts,0);const rows=f.sql.prepare('SELECT state,attempts,last_error FROM discovery_notice').all();assert.equal(rows.length,2);for(const row of rows){assert.equal(row.state,'pending');assert.equal(row.attempts,0);assert.equal(row.last_error,'PUBLICATION_CHANGED');}
+});
