@@ -1,6 +1,6 @@
 # Public catalog navigation
 
-The owner chose `/collection/education/` for a main collection and
+The owner chose `/coloring-pages/education/` for a main collection and
 `/coloring-pages/numbers/111/` for an individual number. The public hierarchy now
 has ten curated collections in `src/taxonomy/navigation.ts`; it groups the
 existing reviewed classification roots without rewriting artwork identities.
@@ -41,3 +41,5 @@ Canonical aliases coalesce before IndexNow delivery. Real live HTML, sitemap,
 redirect targets and the existing verification key are checked before submission.
 An accepted/key-pending receipt is not a claim of indexing. GSC and Bing sitemap
 resubmission happen after live verification, through their real authenticated UI.
+
+Owner update, November 3: main collections now share the `/coloring-pages/` prefix with subjects. The former `/collection/ID/` paths remain one-hop permanent redirects. The classification and curated grouping remain distinct; neither a URL migration nor a visible introduction edits source artwork identity.

@@ -8,6 +8,7 @@ export function catalogLocation(pathname:string){
  if(parts[0]!=='coloring-pages')return;
  if(parts.length===1)return{path:'/coloring-pages/'};
  if(parts.length===3&&parts[1]==='numbers'){const number=numberTopic(parts[2]);return number?{number,path:number.path}:undefined;}
+ if(parts.length===2){const collection=navigationCollection(parts[1]);if(collection)return{collection,path:collectionPath(collection.id)};}
  let id=parts[1];
  if(parts.length===3){
   const legacy=parts[1]==='education'&&parts[2].match(/^(?:numbers?|number-)([1-9]\d*)$/);if(legacy){const number=numberTopic(legacy[1]);return number?{number,path:number.path}:undefined;}
@@ -21,7 +22,7 @@ export type CatalogLocation=NonNullable<ReturnType<typeof catalogLocation>>;
 /** Canonicalize legacy paths and exact scoped number searches in one hop. */
 export function catalogRedirect(url:URL){
  const location=catalogLocation(url.pathname);if(!location)return;
- const target=new URL(url);
+ const target=new URL(url);if(/^\d+$/.test(target.searchParams.get('page')||''))target.searchParams.delete('page');
  const words=(url.searchParams.get('q')||'').toLowerCase().trim().split(/[\s-]+/).filter(Boolean),subjects=numberSubjects(words);
  const number=location.topic?.id==='numbers'&&subjects.length===1&&subjects[0].start===0&&subjects[0].end===words.length?numberTopic(subjects[0].number):undefined;
  target.pathname=number?.path||location.path;if(number)target.searchParams.delete('q');const current=location.collection?.id||collectionForRoot(location.topic?.parent||location.topic?.id||(location.number?'education':''))?.id;if(target.searchParams.get('category')===current||target.searchParams.get('category')===location.topic?.id||target.searchParams.get('category')===location.topic?.parent||!current&&target.searchParams.get('category')==='')target.searchParams.delete('category');

@@ -12,8 +12,8 @@ test('home captions stay concise and work with both legacy and CDN source URLs',
 test('replaced images and renamed subjects cannot reuse a stale home caption',()=>{
  const entry=captions['jc-friendly-dragon'];
  const fresh={id:'jc-friendly-dragon',title:entry.title,description:'A new scene with broad leaves.',alt:'Broad leaves.',lineArtUrl:'/api/media/jc-friendly-dragon/printable_webp_bw?v='+'f'.repeat(24)};
- assert.equal(artworkSummary(fresh),'A new scene with broad leaves.');
- assert.equal(artworkSummary({...fresh,title:'A New Subject',lineArtUrl:`/api/media/jc-friendly-dragon/printable_webp_bw?v=${entry.sourceHash}`}),fresh.description);
+ assert.equal(artworkSummary(fresh),'New scene with broad leaves.');
+ assert.equal(artworkSummary({...fresh,title:'A New Subject',lineArtUrl:`/api/media/jc-friendly-dragon/printable_webp_bw?v=${entry.sourceHash}`}),'New scene with broad leaves.');
  const unknown={...fresh,id:'a-future-item',description:'A very long description '.repeat(20),alt:'A turtle beside a shell.'};
- assert.equal(artworkSummary(unknown),unknown.alt);assert.ok(!artworkSummary(unknown).includes('…'));
+ assert.equal(artworkSummary(unknown),'Turtle beside a shell.');assert.equal(unknown.alt,'A turtle beside a shell.');assert.ok(!artworkSummary(unknown).includes('…'));
 });

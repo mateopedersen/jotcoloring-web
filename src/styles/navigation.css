@@ -56,3 +56,34 @@ body:has(.jc-site-menu[open]) {overflow:hidden;}
 .jc-menu-collection-link>svg:last-child {width:16px;height:16px;flex:none;}
 .jc-menu-group details summary {justify-content:space-between;min-height:40px;padding:8px 12px;border-top:1px solid #f0e3d7;font-size:13px;color:#75452b;}
 .jc-menu-group details summary>svg {width:16px!important;height:16px!important;}
+/* Restore the familiar tool buttons while collections stay in the Menu. */
+:is(.site-v3,.home-v3) .jc-simple-header .hv-header-inner {gap:14px;}
+.jc-header-tools {display:flex;align-items:stretch;gap:9px;flex:1;justify-content:center;min-width:0;}
+.jc-header-tools>a,.jc-header-quick>a {display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:9px 12px;border:1px solid #eed8c6;border-radius:13px;background:linear-gradient(145deg,#fffdf9,#fff6ed);color:#362116;font-size:14px;font-weight:750;line-height:1.3;text-align:center;}
+.jc-header-tools>a>svg {width:32px;height:32px;flex:none;}
+.jc-header-tools>a:is(:hover,[aria-current=page]) {background:#fff0df;border-color:#d88b55;color:#9e390f;}
+.jc-header-quick {display:flex;align-items:center;gap:9px;flex:none;}
+.jc-header-quick .jc-header-artwork {padding:9px;}
+.jc-header-quick .jc-header-artwork>span {display:none;}
+.jc-header-quick .jc-header-studio {background:#b74316;color:white;border-color:#a23812;}
+.jc-header-quick .jc-header-studio:is(:hover,:focus-visible) {background:#95330e;color:#fff;}
+.jc-header-quick>a>svg {width:31px;height:31px;flex:none;}
+@media(max-width:1300px) and (min-width:851px){
+ :is(.site-v3,.home-v3) .jc-simple-header .hv-brand {flex-basis:190px;}
+ .jc-header-tools {gap:6px;}
+ .jc-header-tools>a {gap:6px;padding:8px;font-size:13px;}
+ .jc-header-tools>a>svg {width:28px;height:28px;}
+ .jc-header-quick {gap:7px;}
+ .jc-header-quick .jc-header-studio {padding:9px;font-size:13px;}
+}
+@media(max-width:1100px){.jc-header-tools>a:nth-child(3){display:none;}}
+@media(max-width:850px){.jc-header-tools{display:none}.jc-header-quick .jc-header-studio{display:none}}
+@media(max-width:650px){
+ :is(.site-v3,.home-v3) .jc-simple-header .hv-header-inner {gap:8px;}
+ :is(.site-v3,.home-v3) .jc-simple-header .hv-brand {flex:0 1 190px;}
+ :is(.site-v3,.home-v3) .jc-simple-header .hv-brand img {width:190px;}
+ .jc-header-quick{gap:7px;}
+ .jc-header-quick .jc-header-artwork{width:40px;min-height:44px;padding:5px;border-radius:11px;}
+ :is(.site-v3,.home-v3) .jc-site-menu-button{font-size:14px;padding:9px 10px;gap:6px;}
+}
+@media(max-width:360px){:is(.site-v3,.home-v3) .jc-simple-header .hv-brand{flex-basis:145px}.jc-header-quick{gap:5px}.jc-header-quick .jc-header-artwork{width:36px}.jc-header-quick .jc-header-artwork>svg{width:28px;height:28px}:is(.site-v3,.home-v3) .jc-site-menu-button{padding:9px 8px;font-size:13px}}

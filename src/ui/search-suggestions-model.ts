@@ -1,3 +1,4 @@
+import {isPublicCollection} from '../taxonomy/routes';
 import {intentWords,equivalents} from '../search/intent';
 import {hasIllustration} from '../icons/registry';
 import type {Content} from '../server/types';
@@ -14,7 +15,7 @@ export function buildSuggestions(query:string,items:SuggestionItem[],categories:
   if(!words.length||!matches.length)return [];
   const href=c.href||`/coloring-pages/${c.id}/`;if(!/^(?:\/collection\/[a-z0-9-]+\/|\/coloring-pages\/[a-z0-9-]+\/(?:[a-z0-9-]+\/)?)$/.test(href))return [];
   const icon=c.icon&&hasIllustration(c.icon)&&c.icon!=='info'?c.icon:'nav-all-pages';
-  return [{score:exact?200:matches.some(name=>name.startsWith(normalize(term)))?100:50,item:{kind:'category' as const,title:c.name,detail:href.startsWith('/collection/')?'Collection':'Topic',href,category:c.id,icon}}];
+  return [{score:exact?200:matches.some(name=>name.startsWith(normalize(term)))?100:50,item:{kind:'category' as const,title:c.name,detail:isPublicCollection(c.id)?'Collection':'Topic',href,category:c.id,icon}}];
  }).sort((a,b)=>b.score-a.score||a.item.title.localeCompare(b.item.title,'en-US')).slice(0,2).map(c=>c.item);
  const seen=new Set<string>(),pages:Suggestion[]=[];
  for(const item of items){

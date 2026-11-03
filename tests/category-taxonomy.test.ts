@@ -59,7 +59,7 @@ test('new manually reviewed collections preserve earlier taxonomy approvals and 
  for(const id of NEW_EDITORIAL_TOPIC_CATEGORY_IDS){const current=preparedCategorySelection(a,sha,id,'Inspected source artwork and assigned the visible character to its reviewed topic.');assert.ok(validateCategorySelection(current,a,sha));assert.equal(validateCategorySelection({...current,taxonomy_version:PREVIOUS_EXPANSION_EDITORIAL_TAXONOMY_VERSION},a,sha),false);}
  const prior=preparedCategorySelection(a,sha,'turtles','Turtle subject is visible in the inspected source artwork.');assert.ok(validateCategorySelection({...prior,taxonomy_version:PREVIOUS_EXPANSION_EDITORIAL_TAXONOMY_VERSION},a,sha),'previously approved 2.3 taxonomy reviews remain valid');
  assert.equal(categoryPath('fnaf'),'/coloring-pages/fnaf/');
- assert.equal(categoryPath('bible'),'/collection/bible/');
+ assert.equal(categoryPath('bible'),'/coloring-pages/bible/');
  assert.equal(resolveCategoryAlias('five nights at freddys'),'fnaf');
  assert.equal(categoryPath('labubu'),'/coloring-pages/labubu/');assert.equal(categoryPath('sonny-angel'),'/coloring-pages/sonny-angel/');
  assert.equal(resolveCategoryAlias('cry baby'),'crybaby');assert.equal(resolveCategoryAlias('chiikawa characters'),'chiikawa');
