@@ -94,3 +94,8 @@ Use neutral, image-specific public-figure copy. Invented roles and scenes are
 illustrations, not evidence of real events, products, achievements or endorsements.
 Preserve source logo and printable containers under the same eight-role media
 policy. Actual person/topic identities belong naturally in titles or descriptions.
+
+The supplied-original manifests explicitly use `color_preview_policy: none`.
+Both import and republish honor this policy before the automatic color fallback.
+Existing manifests keep the default automatic behavior. This policy changes no
+media signatures, source checksums, backups or final publication gates.

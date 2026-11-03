@@ -52,3 +52,24 @@ for verified redirect notices. New publication uses automatic queue discovery;
 manual refresh is maintenance. Google/Bing submission is separate from IndexNow
 acceptance and from actual indexing. Do not claim a browser or search-engine
 submission without the real provider receipt.
+
+## Owner-authorized November 3 additions
+
+The current intake consists of 17 character/toy packages with 100 drawings each,
+plus Elon Musk100, Donald Trump100 and MrBeast83: 20 topics and 1,983 new drawings.
+Hello Kitty's new100 append to its accepted existing100. The owner explicitly
+accepts83 complete MrBeast pairs from the truncated supplied ZIP and requests an
+honest report. This exception applies only to this exact source package; it does
+not permit silently shortening other sets. Preserve the original truncated ZIP,
+verified recovery container and unmatched PDF084 privately.
+
+The owner explicitly corrected logo cleaning: preserve the supplied JotColoring
+logo. Healthy supplied PDF/WebP print containers remain byte-identical; resized
+whole-page gallery images retain the source composition and mark. Do not erase,
+recolor, move or add a duplicate logo. Inspect actual source pixels and review
+image-specific English title, description, alt, categories and SEO twice. Public
+figures use neutral wording; invented scenes never establish real events,
+achievements, product specifications or endorsements. Source containers and
+checksums remain distinct from missing native originals. Do not generate color
+roles for this intake. Publish through existing guarded R2/import/search/backup
+and discovery paths, preserving separate JotColoring credentials and queue bounds.

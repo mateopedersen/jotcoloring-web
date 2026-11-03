@@ -13,6 +13,9 @@ export const AUTOMATIC_COLOR_ROLES=['home_half_color','home_half_color_small','h
  * accepted color asset. Generated files go through normal backups/CDN indexing.
  */
 export async function ensureAutomaticColors(env:Env,manifest:Manifest):Promise<Manifest>{
+ // An explicit owner choice is part of the signed, versioned import manifest.
+ // All normal source/media/backup/publication checks still run in the caller.
+ if(manifest.color_preview_policy==='none')return manifest;
  const missing=AUTOMATIC_COLOR_ROLES.filter(role=>!manifest.assets.some(a=>a.role===role));if(!missing.length)return manifest;
  if(!env.ORIGINALS||!env.CATALOG_DB)throw new AppError('STORAGE_UNAVAILABLE','Color preview storage is unavailable.',503);
  const line=manifest.assets.find(a=>a.role==='printable_webp_bw');if(!line)return manifest; // Incomplete drafts remain drafts.

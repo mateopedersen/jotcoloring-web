@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash,createHmac} from 'node:crypto';
 import sharp from 'sharp';
 import {PDFDocument} from 'pdf-lib';
+import {PUBLIC_FIGURE_TOPIC_COUNTS,COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS} from '../../src/server/reviewed-release-scope';
 import {inspectSuppliedPagePixels} from './supplied-page-validation';
 import {analyzeAgeImage,releaseAgeModel} from './age-vision';
 import {selectPreparedCategories,preparedCategorySelection} from './category-selection';
@@ -17,11 +18,15 @@ import {validateManifest} from '../../src/server/manifest';
 import type {Asset,Manifest} from '../../src/server/types';
 const root=path.resolve(process.argv[2]);
 const shard=Number(process.argv[3]||0),shards=Number(process.argv[4]||1);
-const rows=JSON.parse(await fs.readFile(path.join(root,'private-release/editorial-candidates.json'),'utf8'));
+const profile=process.argv[5]||'characters';if(!['characters','public-figures'].includes(profile))throw Error('Unknown supplied release profile');
+const publicFigures=profile==='public-figures',expectedCount=publicFigures?283:1700;
+const rows=JSON.parse(await fs.readFile(path.join(root,publicFigures?'private-release/editorial-candidates-public-figures.json':'private-release/editorial-candidates.json'),'utf8'));
+const expectedTopics=publicFigures?PUBLIC_FIGURE_TOPIC_COUNTS:Object.fromEntries(Object.keys(COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS).map(t=>[t,100]));
+if(Object.keys(expectedTopics).some(t=>rows.filter((r:any)=>r.topic===t).length!==expectedTopics[t])||rows.some((r:any)=>!(r.topic in expectedTopics)))throw Error('Complete exact topic inventory required');
 const secrets=JSON.parse(await fs.readFile(process.env.JOT_SECRETS_FILE!,'utf8')).production;
 const hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
-const audit=JSON.parse(await fs.readFile(path.join(root,'pdf-pair-audit.json'),'utf8'));
-if(audit.status!=='PASS'||audit.checked!==1700||rows.length!==1700)throw Error('Complete supplied-file audit required.');
+const audit=JSON.parse(await fs.readFile(path.join(root,publicFigures?'public-figure-combined-pdf-audit.json':'pdf-pair-audit.json'),'utf8'));
+if(audit.status!=='PASS'||audit.checked!==expectedCount||rows.length!==expectedCount)throw Error('Complete supplied-file audit required.');
 try{for(const [i,row] of rows.entries()){
  if(i%shards!==shard)continue;
  const out=row.preparation_folder;
@@ -56,7 +61,7 @@ try{for(const [i,row] of rows.entries()){
  }
  const age=await analyzeAgeImage(original,{brandFooter:true});
  const categories=selectPreparedCategories(age.category_analysis,row.category_ids.join(','),row.category_review);
- const manifest:Manifest={schema_version:'1.0',example_only:false,import_action:'create',idempotency_key:`supplied-${row.content_id}-${row.source_sha256.slice(0,20)}`,content_id:row.content_id,locale:'en',slug:row.slug,title:row.title,description:row.description,alt_text:row.alt_text,requested_status:'ready_for_review',category_ids:categories,tags:row.tags,age_recommendation:age,category_selection:preparedCategorySelection(age.category_analysis,age.source_sha256,categories.join(','),row.category_review),age_groups:[ageBand(age.band)!.group],provenance:{source_type:'user_owned',rights_status:'documented',reference:`Source SHA-256 ${row.source_sha256}; supplied PDF SHA-256 ${row.source_pdf_sha256}; owner states JotColoring team created drawings; original PDF/WebP and supplied JotColoring logo preserved verbatim. Native raster container absent from supplied ZIP.`,license_label:'Free personal and educational use. Commercial use requires permission: jotcoloring@gmail.com.'},assets};
+ const manifest:Manifest={schema_version:'1.0',color_preview_policy:'none',example_only:false,import_action:'create',idempotency_key:`supplied-${row.content_id}-${row.source_sha256.slice(0,20)}`,content_id:row.content_id,locale:'en',slug:row.slug,title:row.title,description:row.description,alt_text:row.alt_text,requested_status:'ready_for_review',category_ids:categories,tags:row.tags,age_recommendation:age,category_selection:preparedCategorySelection(age.category_analysis,age.source_sha256,categories.join(','),row.category_review),age_groups:[ageBand(age.band)!.group],provenance:{source_type:'user_owned',rights_status:'documented',reference:`Source SHA-256 ${row.source_sha256}; supplied PDF SHA-256 ${row.source_pdf_sha256}; owner states JotColoring team created drawings; original PDF/WebP and supplied JotColoring logo preserved verbatim. Native raster container absent from supplied ZIP.`,license_label:'Free personal and educational use. Commercial use requires permission: jotcoloring@gmail.com.'},assets};
  const binding=socialBinding({...manifest,recommendedAge:age.band,sourceSHA256:row.source_sha256});
  const cover=await renderSocial(contentSocialSpec(binding),{logo:new Uint8Array(await fs.readFile('public/logo-3d.webp')),icon:await siteIcon(contentSocialSpec(binding).icon),art:[{slug:row.slug,title:row.title,alt:row.alt_text,line:original,sourceSHA256:row.source_sha256}]},binding);
  await emit('social_og',cover.bytes,'image/png',1200,630,null,false);assets.at(-1)!.source_asset_id=assets[0].asset_id;

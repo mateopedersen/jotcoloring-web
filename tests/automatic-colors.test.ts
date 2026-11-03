@@ -35,3 +35,5 @@ test('bounded compression keeps ink, alpha and the brand band exact, with no mor
  const{raw,w,h}=fixture(),colored=automaticColorPixels(raw,w,h,{title:'Flower garden',artBottom:166}).pixels;
  for(const step of [8,16] as const){const compact=compactColorPixels(colored,w,h,166,step);assert.deepEqual(compact.slice(w*166*4),colored.slice(w*166*4));for(let p=0;p<colored.length;p+=4){assert.equal(compact[p+3],colored[p+3]);for(let c=0;c<3;c++)assert.ok(Math.abs(compact[p+c]-colored[p+c])<=step/2);if(Math.max(colored[p],colored[p+1],colored[p+2])<43)assert.deepEqual(compact.slice(p,p+4),colored.slice(p,p+4));}}
 });
+
+test('explicit no-color import returns the original manifest without storage reads or generated pixels',async()=>{const {ensureAutomaticColors}=await import('../src/server/automatic-colors');const manifest:any={color_preview_policy:'none',assets:[]};const env:any={get ORIGINALS(){throw Error('must not read source');},get CATALOG_DB(){throw Error('must not write reviews');}};assert.equal(await ensureAutomaticColors(env,manifest),manifest);await assert.rejects(()=>ensureAutomaticColors({}, {assets:[]} as any),/storage is unavailable/);});
