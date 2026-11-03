@@ -10,3 +10,31 @@
 .jc-dl-close{width:44px;height:44px;min-width:44px;min-height:44px;padding:10px;line-height:1}
 .jc-dl-modal{width:min(1120px,calc(100% - 40px));max-width:none;max-height:calc(100dvh - 36px);margin:auto;padding:0;overflow:auto;overscroll-behavior:contain;border:0;border-radius:25px;background:transparent;box-shadow:0 28px 100px #1e1a1655;color:inherit}.jc-dl-modal::backdrop{background:#34313cc7;backdrop-filter:blur(5px)}.jc-dl-modal .jc-download-screen{max-width:none;padding:0;margin:0}.jc-dl-modal .jc-dl-breadcrumb,.jc-dl-modal .jc-dl-guide,.jc-dl-modal .jc-dl-ad-space{display:none!important}.jc-dl-modal .jc-dl-card{box-shadow:none;border-radius:25px;border-color:#e6c5a5}.jc-dl-modal .jc-dl-heading{position:sticky;top:0;z-index:2;padding:21px 28px;background:linear-gradient(120deg,#fff8e9,#fffaf4)}.jc-dl-modal .jc-dl-heading>.jc-download-art{width:62px;height:62px}.jc-dl-modal .jc-dl-heading #jc-download-title{font-size:29px}.jc-dl-modal .jc-dl-heading #jc-download-title:focus{outline:none}.jc-dl-modal .jc-dl-grid{padding:26px 28px;gap:28px}.jc-dl-modal .jc-dl-paper img{max-height:470px}.jc-dl-modal .jc-dl-card-footer{padding:17px 28px}.jc-dl-modal .jc-dl-description{font-size:15px}
 @media(max-width:650px){.jc-dl-modal{width:calc(100% - 20px);max-height:calc(100dvh - 20px);border-radius:20px}.jc-dl-modal .jc-dl-card{border-radius:20px}.jc-dl-modal .jc-dl-heading{padding:17px 16px;gap:10px}.jc-dl-modal .jc-dl-heading>.jc-download-art{width:43px;height:43px}.jc-dl-modal .jc-dl-heading #jc-download-title{font-size:22px;letter-spacing:-.6px}.jc-dl-modal .jc-dl-heading p{font-size:var(--type-note-size)}.jc-dl-modal .jc-dl-heading>div>span{font-size:var(--type-note-size)}.jc-dl-modal .jc-dl-grid{padding:17px;gap:17px}.jc-dl-modal .jc-dl-paper img{max-height:290px}.jc-dl-modal .jc-dl-card-footer{padding:16px 17px}}
+/* File selection and the save action stay ahead of supplementary preview content. */
+.jc-dl-heading {padding:16px 22px;gap:12px;align-items:center;}
+.jc-dl-heading>.jc-download-art,.jc-dl-modal .jc-dl-heading>.jc-download-art {width:42px;height:42px;}
+.jc-download-screen .jc-dl-heading #jc-download-title,.jc-dl-modal .jc-dl-heading #jc-download-title {margin:0;font-family:'Avenir Next',Avenir,'Manrope Variable',sans-serif;font-size:25px;font-weight:800;letter-spacing:-.02em;}
+.jc-download-screen .jc-dl-copy h2 {font-family:'Avenir Next',Avenir,'Manrope Variable',sans-serif;font-size:24px;font-weight:750;line-height:1.3;letter-spacing:-.02em;}
+.jc-dl-copy .jc-dl-save {margin-top:16px;}
+.jc-dl-copy .jc-dl-selected {margin:12px 0;padding:0;border:0;background:none;}
+.jc-dl-selected>p {margin:4px 0 0;}
+@media(max-width:650px){
+ .jc-download-screen {padding:12px 12px 32px;}
+ .jc-dl-modal .jc-dl-heading,.jc-dl-heading {padding:12px 14px;gap:10px;}
+ .jc-download-screen .jc-dl-heading #jc-download-title,.jc-dl-modal .jc-dl-heading #jc-download-title {font-size:22px;}
+ .jc-dl-grid,.jc-dl-modal .jc-dl-grid {grid-template-columns:minmax(0,1fr);padding:16px;gap:20px;}
+ .jc-dl-copy {order:-1;padding:0;}
+ .jc-download-screen .jc-dl-copy h2 {font-size:21px;margin-bottom:14px;}
+ .jc-dl-choose {margin:0 0 8px;}
+ .jc-dl-format {min-height:64px;padding:10px;}
+ .jc-dl-format small {margin-top:3px;font-size:12px;}
+ .jc-dl-formats {margin-bottom:0;}
+ .jc-dl-permission {font-size:13px;line-height:1.5;}
+ .jc-dl-status {font-size:13px;margin:9px 0;min-height:20px;}
+ .jc-dl-selected>strong,.jc-dl-selected>p {font-size:13px;line-height:1.5;}
+ .jc-dl-preview {order:1;}
+ .jc-dl-paper {min-height:0;}
+ .jc-dl-paper img,.jc-dl-modal .jc-dl-paper img {max-height:220px;}
+ .jc-dl-breadcrumb>span {display:none;}
+ .jc-dl-details {margin:10px 0;}
+}
