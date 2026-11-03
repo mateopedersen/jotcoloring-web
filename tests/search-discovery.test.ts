@@ -134,3 +134,15 @@ test('publishing another numeral cannot move existing collection items past a cu
  while(cursor){const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);for(const id of page.ids){assert.ok(!found.has(id),'duplicate after corpus growth');found.add(id);}cursor=page.next_cursor;}
  assert.equal(found.size,55,'existing number activities remain reachable after unrelated publications');
 });
+
+test('topic and alias cursors keep every published member while unrelated drawings arrive',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,categories:string,description='')=>search.project({id,title,description,tags:'',categories,category_ids:categories.split(' '),source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-03'});
+ for(let i=0;i<100;i++)await add('pompompurin-'+String(i).padStart(3,'0'),'Pompompurin: '+['A Book','Sleeping Beneath A Tall Tree','A Toy And Many Flowers'][i%3]+' '+i,'cartoons pompompurin');
+ for(const query of ['Pompompurin','sanrio pompompurin']){
+  const first=await search.search(query,24),found=new Set(first.ids);let cursor=first.next_cursor;
+  for(let i=0;i<100;i++)await add(query.replace(/ /g,'-')+'-new-'+i,'Excavator: A Worksite With Several Trees And Pipes '+i,'vehicles excavator','A machine digs a trench beside plants.');
+  while(cursor){const page=await search.search(query,24,{cursor});assert.equal(page.total,100);for(const id of page.ids){assert.ok(!found.has(id),'no repeated member after corpus growth');found.add(id);}cursor=page.next_cursor;}
+  assert.equal(found.size,100,'every topic member stays reachable across changing corpus statistics');
+ }
+});
