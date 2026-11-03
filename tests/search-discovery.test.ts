@@ -79,3 +79,58 @@ test('exact titles, literal prefixes and cursor order keep their existing rankin
  const second=await search.search('garden',1,{cursor:first.next_cursor!});assert.deepEqual(second.ids,['prefix']);assert.ok(second.next_cursor);
  const third=await search.search('garden',1,{cursor:second.next_cursor!});assert.deepEqual(third.ids,['suffix']);assert.equal(third.has_more,false);
 });
+
+
+test('numeral collection searches require the depicted title subject, not scene counts or larger numbers',async()=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');
+ const add=async(id:string,title:string,tags:string)=>search.project({id,title,tags,description:tags,categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ await add('digit-two','Number 2 With Two Flowers','number two counting flowers');
+ await add('word-two','Number Two With Curved Sections','number two counting');
+ await add('different-number','Two Kittens Beside Number 444','number four hundred forty four two kittens');
+ await add('repeated-digits','Number 2222 With Nested Outlines','number two thousand two hundred twenty two');
+ await add('arithmetic','198 Divided By 2 Machine','number math 198 2');
+ await add('thousand','Number 1,000 With Flowers','number thousand flowers');
+ for(const query of ['number 2','number two','numeral 2'])assert.deepEqual(new Set((await search.search(query,48,{category:'education',subcategory:'numbers'})).ids),new Set(['digit-two','word-two']));
+ assert.deepEqual((await search.search('number 2 flowers')).ids,['digit-two']);
+ assert.deepEqual((await search.search('number 2222')).ids,['repeated-digits']);
+ assert.deepEqual((await search.search('number 1000')).ids,['thousand']);
+ db.sql.close();
+});
+
+test('reviewed numeric subjects remain discoverable in equations and scene-specific titles',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,tags:string,categories='education numbers')=>search.project({id,title,tags,categories,category_ids:categories.split(' '),source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ await add('equation-100','100 Equals 90 Plus 10 Activity','100 number one hundred');
+ await add('boot-1001','Rain boot displaying 1001 and its written name','1001 number one thousand one');
+ await add('display-999','Children beside a display showing 999 - 900 = 99','999 nine hundred ninety-nine number');
+ await add('equation-99','198 Divided By 2 Machine','99 ninety-nine number math 2');
+ await add('ambiguous','198 Divided By 2 Machine','number math 198 2');
+ await add('different-subject','Two Kittens Beside Number 444','444 number four hundred forty-four two kittens');
+ await add('unrelated','100 Balloons','100 number','celebrations');
+ for(const q of ['number 100','number one hundred','numeral 100'])assert.deepEqual((await search.search(q)).ids,['equation-100']);
+ for(const q of ['number 1001','number 1,001','number one thousand one'])assert.deepEqual((await search.search(q)).ids,['boot-1001']);
+ for(const q of ['number 999','number nine hundred ninety-nine'])assert.deepEqual((await search.search(q)).ids,['display-999']);
+ assert.equal((await search.search('number 2')).total,0);
+ assert.deepEqual((await search.search('number 444')).ids,['different-subject']);
+ assert.deepEqual((await search.search('number 100 activity')).ids,['equation-100']);
+ assert.equal((await search.search('number 100',48,{category:'animals'})).total,0);
+ assert.equal((await search.search('number 99')).total,0,'multiple numeric tags do not declare an unambiguous subject');
+});
+
+test('numeric subject search retains complete cursor coverage and literal title priority',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ for(let i=0;i<55;i++)await search.project({id:'number-100-'+i,title:i===0?'Number 100':'Scene '+i+' Displaying 100',tags:'100 number one hundred',categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ const found=new Set<string>();let cursor:string|undefined;
+ do{const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);if(!cursor)assert.equal(page.ids[0],'number-100-0');for(const id of page.ids){assert.ok(!found.has(id));found.add(id);}cursor=page.next_cursor||undefined;}while(cursor);
+ assert.equal(found.size,55);
+});
+
+test('publishing another numeral cannot move existing collection items past a cursor',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,tags:string)=>search.project({id,title,tags,categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-02'});
+ for(let i=0;i<55;i++)await add('stable-100-'+i,i%2?'Number 100 With Flowers '+i:'Scene '+i+' Displaying 100','100 number one hundred');
+ const first=await search.search('number 100',20),found=new Set(first.ids);let cursor=first.next_cursor;
+ for(let i=0;i<100;i++)await add('new-two-'+i,'Number 2 Beside A Tree '+i,'number two counting');
+ while(cursor){const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);for(const id of page.ids){assert.ok(!found.has(id),'duplicate after corpus growth');found.add(id);}cursor=page.next_cursor;}
+ assert.equal(found.size,55,'existing number activities remain reachable after unrelated publications');
+});

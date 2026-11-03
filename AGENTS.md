@@ -22,3 +22,33 @@ Name the accurate reviewed topic or franchise naturally in each title or scene-s
 
 ## Seven-topic follow-up, 2026-11-01
 The owner authorized Turtle, Sharks, Trick or Treat, Bible, Five Nights at Freddy’s, Happy Birthday and Panda ZIPs as a distinct 7-topic / 700-drawing release. Scope `seven-topics-20261101` requires the exact seven archive checksums and complete source-bound double reviews. The reattached Descendants/Squishy/KPop archive is the already published package; do not duplicate it. Preserve existing Sharks, Sea Turtles and Birthdays categories. Retain outlined heading typography supplied outside a raster artwork; preserve original PDF/WebP and native raster separately, and bind reviews to the actual composed source. Package QA claims do not establish a fresh review, AI generation, identity or species. Record owner source claims truthfully.
+
+
+
+## Automatic sitemap updates — owner direction, 2026-11-02
+
+Every new topic/content publication must enter the existing automatic sitemap
+rebuild flow. Preserve its coalesced durable queue, scheduled recovery, bounded
+fragment generation, source/generation checks and last valid XML. A manual
+refresh is maintenance, not the normal publication requirement. Verify actual
+public XML contains the new canonical URLs before reporting a release complete.
+Read `docs/discovery-publication.md`; preserve the existing queue bounds and
+separate JotColoring operator profile.
+
+## Canonical navigation and future topics — owner direction, 2026-11-02
+
+Use the shared public navigation mapping. Main collections use `/collection/ID/`;
+subject pages use `/coloring-pages/TOPIC/`; numeral topics use
+`/coloring-pages/numbers/NUMBER/`. Read `docs/canonical-navigation.md` before
+adding a topic. Preserve source-reviewed classification IDs separately from the
+public grouping; every classification root must have exactly one navigation
+home. Require real published membership, a unique concise catalog-grounded intro,
+matching canonical/SEO/social identity, source-verified landing artwork and live
+search/count/route/sitemap proof. Never ship a new subject only as a search link.
+Archive or source-image/metadata replacement invalidates its prepared cover.
+Keep historical redirect and discovery receipts; all legacy URLs have one-hop
+301 counterparts. Use only the new canonical URLs for upserts, legacy URLs only
+for verified redirect notices. New publication uses automatic queue discovery;
+manual refresh is maintenance. Google/Bing submission is separate from IndexNow
+acceptance and from actual indexing. Do not claim a browser or search-engine
+submission without the real provider receipt.

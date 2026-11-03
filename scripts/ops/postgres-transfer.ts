@@ -9,7 +9,13 @@ interface Column {name:string;type:string;primary_position:number}
 interface Table {name:string;columns:Column[];row_count:number;sha256:string}
 export interface Snapshot {schema:string;file_sha256:string;outbox_watermark:string;tables:Table[];rows:number}
 const LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation'];
-export const TABLES=[...LEGACY_TABLES,'age_recommendation'];
+const AGE_TABLES=[...LEGACY_TABLES,'age_recommendation'];
+const COLOR_TABLES=[...AGE_TABLES,'color_reference_job','color_reference_scan','color_ai_reservation'];
+export const TABLES=[...COLOR_TABLES,'discovery_dirty','discovery_fragment','discovery_page','discovery_state','discovery_notice'];
+const SCHEMA_TABLES:Record<string,string[]>={'jotcoloring-catalog-transfer/1':LEGACY_TABLES,'jotcoloring-catalog-transfer/2':AGE_TABLES,'jotcoloring-catalog-transfer/3':COLOR_TABLES,'jotcoloring-catalog-transfer/4':TABLES,'jotcoloring-catalog-transfer/5':TABLES};
+const DISCOVERY_BASE:Column[]=[{name:'id',type:'INTEGER',primary_position:1},{name:'epoch',type:'INTEGER',primary_position:0},{name:'reconcile_after',type:'INTEGER',primary_position:0}];
+const DISCOVERY_DEFAULTS:Record<string,string>={rebuild_state:'idle',rebuild_token:'',rebuild_lease_until:'',rebuild_queued_at:'',rebuild_completed_at:'',rebuild_completed_by:'',rebuild_last_error:''};
+const DISCOVERY_QUEUE:Column[]=Object.keys(DISCOVERY_DEFAULTS).map(name=>({name,type:'TEXT',primary_position:0}));
 export const canonical=(value:unknown):string=>JSON.stringify(value,(_key,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a<b?-1:a>b?1:0)):v);
 export const sha=(value:string)=>createHash('sha256').update(value).digest('hex');
 const ident=(value:string)=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw new Error('Unsafe SQL identifier');return '"'+value+'"';};
@@ -20,11 +26,12 @@ export async function inspectSnapshot(file:string):Promise<Snapshot>{
  const finish=()=>{if(current){current.sha256=digest.digest('hex');if(current.row_count!==actual)throw new Error('Table count mismatch: '+current.name);}};
  for await(const {number,value:v} of lines(file)){
   if(footer)throw new Error('Data after snapshot footer');
-  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(!['jotcoloring-catalog-transfer/1','jotcoloring-catalog-transfer/2'].includes(v.schema)||canonical(v.tables)!==canonical(v.schema==='jotcoloring-catalog-transfer/1'?LEGACY_TABLES:TABLES)||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
+  if(v.kind==='header'){if(number!==1||header)throw new Error('Unexpected header');if(!Object.hasOwn(SCHEMA_TABLES,v.schema)||canonical(v.tables)!==canonical(SCHEMA_TABLES[v.schema])||v.integer_encoding!=='decimal-string')throw new Error('Unsupported snapshot schema');header=v;}
   else if(v.kind==='table'){
    if(!header||v.table!==header.tables[tables.length])throw new Error('Unexpected table order');finish();
    if(!Number.isSafeInteger(v.row_count)||v.row_count<0||!Array.isArray(v.columns))throw new Error('Invalid table metadata');
    const columns=v.columns as Column[];for(const c of columns){ident(c.name);if(!['TEXT','INTEGER'].includes(c.type)||!Number.isSafeInteger(c.primary_position)||c.primary_position<0)throw new Error('Invalid column metadata');}
+   if(v.table==='discovery_state'&&canonical(columns)!==canonical([...DISCOVERY_BASE,...(header.schema==='jotcoloring-catalog-transfer/5'?DISCOVERY_QUEUE:[])]))throw new Error('Snapshot discovery_state version/column mismatch');
    if(new Set(columns.map(c=>c.name)).size!==columns.length||!columns.some(c=>c.primary_position))throw new Error('Invalid primary key');
    current={name:v.table,columns,row_count:v.row_count,sha256:''};tables.push(current);digest=createHash('sha256');actual=0;
   }else if(v.kind==='row'){
@@ -43,7 +50,16 @@ function validateRow(table:Table,data:DataRow){
  for(const c of table.columns){const v=data[c.name];if(v!==null&&typeof v!=='string')throw new Error('Lossy cell encoding');if(v!==null&&c.type==='INTEGER'&&!/^-?\d+$/.test(v))throw new Error('Invalid decimal integer');}
 }
 async function targetSchema(db:Pg,snapshot:Snapshot){
- for(const table of snapshot.tables){const result=await db.query<{column_name:string;data_type:string}>('SELECT column_name,data_type FROM information_schema.columns WHERE table_schema=\'public\' AND table_name=$1 ORDER BY ordinal_position',[table.name]);const found=new Map(result.rows.map(r=>[r.column_name,r.data_type]));if(found.size!==table.columns.length||table.columns.some(c=>found.get(c.name)!==(c.type==='INTEGER'?'bigint':'text')))throw new Error('Target schema mismatch: '+table.name);}
+ for(const table of snapshot.tables){
+  const result=await db.query<{column_name:string;data_type:string;is_nullable:string;column_default:string|null}>('SELECT column_name,data_type,is_nullable,column_default FROM information_schema.columns WHERE table_schema=\'public\' AND table_name=$1 ORDER BY ordinal_position',[table.name]);
+  const found=new Map(result.rows.map(r=>[r.column_name,r]));
+  // Only the exact reviewed v4→v5 additive shape may use target defaults.
+  // Original snapshot rows, checksums and checkpoint identity stay untouched.
+  const legacyDiscovery=snapshot.schema==='jotcoloring-catalog-transfer/4'&&table.name==='discovery_state'&&found.size===DISCOVERY_BASE.length+DISCOVERY_QUEUE.length;
+  const expected=legacyDiscovery?[...table.columns,...DISCOVERY_QUEUE]:table.columns;
+  if(found.size!==expected.length||expected.some(c=>found.get(c.name)?.data_type!==(c.type==='INTEGER'?'bigint':'text')))throw new Error('Target schema mismatch: '+table.name);
+  if(legacyDiscovery&&DISCOVERY_QUEUE.some(c=>{const r=found.get(c.name)!;const literal="'"+DISCOVERY_DEFAULTS[c.name]+"'";return r.is_nullable!=='NO'||![literal,literal+'::text'].includes(r.column_default||'');}))throw new Error('Target discovery_state defaults mismatch');
+ }
 }
 function keys(table:Table){return table.columns.filter(c=>c.primary_position).sort((a,b)=>a.primary_position-b.primary_position).map(c=>c.name);}
 async function writeRow(db:Pg,table:Table,data:DataRow,replace=false){
@@ -69,7 +85,7 @@ export async function importSnapshot(db:Pg,file:string,options:{batchSize?:numbe
  }
  await flush();if(await fileHash(file)!==snapshot.file_sha256)throw new Error('Snapshot changed during import');
  // Preserve explicit source sequence values without allowing the next insert to collide.
- for(const [table,column] of [['outbox_event','seq'],['audit_event','id'],['sitemap_entry','ordinal']])await db.query(`SELECT setval(pg_get_serial_sequence('${table}','${column}'),GREATEST(COALESCE(MAX(${ident(column)}),0),1),COALESCE(MAX(${ident(column)}),0)>0) FROM ${ident(table)}`);
+ for(const [table,column] of [['outbox_event','seq'],['audit_event','id'],['sitemap_entry','ordinal'],['discovery_notice','id']])await db.query(`SELECT setval(pg_get_serial_sequence('${table}','${column}'),GREATEST(COALESCE(MAX(${ident(column)}),0),1),COALESCE(MAX(${ident(column)}),0)>0) FROM ${ident(table)}`);
  await db.query('UPDATE transfer_checkpoint SET status=\'complete\',updated_at=now() WHERE snapshot_sha256=$1',[snapshot.file_sha256]);
  return{snapshot,status:'complete',batches,rows};
 }

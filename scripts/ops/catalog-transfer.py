@@ -8,8 +8,21 @@ are decimal strings so IDs/counters survive JavaScript's integer precision limit
 import argparse, datetime, hashlib, json, pathlib, sqlite3
 
 LEGACY_TABLES = ['category','content','content_revision','content_category','content_tag','content_age','asset','asset_review','slug_redirect','import_job','import_item','outbox_event','processed_event','audit_event','category_count','creator_job','creator_upload','capacity_snapshot','request_limit','sitemap_entry','ai_free_reservation']
-TABLES = LEGACY_TABLES + ['age_recommendation']
-SCHEMA = 'jotcoloring-catalog-transfer/2'
+AGE_TABLES = LEGACY_TABLES + ['age_recommendation']
+COLOR_TABLES = AGE_TABLES + ['color_reference_job','color_reference_scan','color_ai_reservation']
+TABLES = COLOR_TABLES + ['discovery_dirty','discovery_fragment','discovery_page','discovery_state','discovery_notice']
+SCHEMA_TABLES = {'jotcoloring-catalog-transfer/1': LEGACY_TABLES, 'jotcoloring-catalog-transfer/2': AGE_TABLES, 'jotcoloring-catalog-transfer/3': COLOR_TABLES, 'jotcoloring-catalog-transfer/4': TABLES, 'jotcoloring-catalog-transfer/5': TABLES}
+DISCOVERY_BASE = [('id','INTEGER',1),('epoch','INTEGER',0),('reconcile_after','INTEGER',0)]
+DISCOVERY_QUEUE = [(name,'TEXT',0) for name in ('rebuild_state','rebuild_token','rebuild_lease_until','rebuild_queued_at','rebuild_completed_at','rebuild_completed_by','rebuild_last_error')]
+def schema_tables(actual, discovery_columns=None):
+    if actual == set(TABLES) and discovery_columns is not None:
+        shape = [(c['name'],c['type'],c['primary_position']) for c in discovery_columns]
+        if shape == DISCOVERY_BASE: return 'jotcoloring-catalog-transfer/4', TABLES
+        if shape == DISCOVERY_BASE + DISCOVERY_QUEUE: return 'jotcoloring-catalog-transfer/5', TABLES
+        raise ValueError('Unreviewed discovery_state schema; finish or review its additive migration')
+    for schema, tables in SCHEMA_TABLES.items():
+        if actual == set(tables): return schema, tables
+    raise ValueError('Canonical schema changed: '+str(sorted(actual.symmetric_difference(TABLES))))
 def canonical(value):
     return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'))
 def export_catalog(source, destination):
@@ -20,9 +33,8 @@ def export_catalog(source, destination):
     db.execute('PRAGMA query_only=ON'); db.execute('BEGIN')
     try:
         actual={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '_cf_%' AND name<>'d1_migrations'")}
-        tables = TABLES if actual==set(TABLES) else LEGACY_TABLES if actual==set(LEGACY_TABLES) else None
-        if tables is None: raise ValueError('Canonical schema changed: '+str(sorted(actual.symmetric_difference(TABLES))))
-        schema = SCHEMA if tables==TABLES else 'jotcoloring-catalog-transfer/1'
+        discovery_columns = [{'name':r[1],'type':r[2],'primary_position':r[5]} for r in db.execute('PRAGMA table_info(discovery_state)')] if 'discovery_state' in actual else None
+        schema, tables = schema_tables(actual, discovery_columns)
         if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok': raise ValueError('SQLite integrity check failed')
         if db.execute('PRAGMA foreign_key_check').fetchone() is not None: raise ValueError('Source has broken foreign keys')
         watermark=str(db.execute('SELECT COALESCE(MAX(seq),0) FROM outbox_event').fetchone()[0])

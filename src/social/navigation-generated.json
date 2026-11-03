@@ -1,0 +1,3096 @@
+{
+  "/collection/animals/": {
+    "alt": "JotColoring explore the collection share image: Animals & Wildlife Coloring Pages Featuring Fox and Rabbit in Wildflowers, Sea Turtle and Coral Reef, Long-Necked Dinosaurs in a Valley.",
+    "description": "Explore pets, wild animals, dinosaurs, and life beneath the sea. Browse a subject for single animals, patterned details, and illustrated habitats.",
+    "identity_sha256": "4124640295bcb3a245d38b921b92c716c82f07e77c34c19f4f5dac9a43ffe491",
+    "sha256": "1316c0b97e0791a42b39df5c635088340be0755aea24f734ceee5b6bb7f5fa13",
+    "sources": [
+      {
+        "id": "jc-woodland-friends",
+        "sha256": "6a21fb0e05f1f160ec6be091f933e0ae3173bc733239cc314b9f22a0d212c948"
+      },
+      {
+        "id": "jc-ocean-adventure",
+        "sha256": "0e64ee5e5a265c6db41cc7f9f3d3d333f5e076df0c07451e18ad9e3051e6f1cd"
+      },
+      {
+        "id": "jc-dinosaur-valley",
+        "sha256": "6c75db97daf198f2666bd32943542424ef5e0a24476f182951e70d606eb99825"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/1316c0b97e0791a42b39df5c635088340be0755aea24f734ceee5b6bb7f5fa13.png",
+    "title": "Animals & Wildlife Coloring Pages"
+  },
+  "/collection/art-patterns/": {
+    "alt": "JotColoring explore the collection share image: Art & Patterns Coloring Pages Featuring Floral Leaf Mandala, Angular Art Deco Fan Motif, Barbie with a Paintbrush and Palette.",
+    "description": "Explore circular mandalas, floral and geometric repetitions, decorative motifs, and art supplies. Broad sections and closely arranged patterns offer different amounts of detail.",
+    "identity_sha256": "863d2410774123e631404124d4c2472cbc9038c953408b2c86cb724352658007",
+    "sha256": "0ac8be766a891d11ad1333d65d51ed871b77d8c132135cb6c500a6ef09ce91d3",
+    "sources": [
+      {
+        "id": "jc-botanical-mandala",
+        "sha256": "eb8530b7183eb74dcc35431e7dc3bd19fdbabe55d5df044f5148372a11084a7f"
+      },
+      {
+        "id": "jc-adult-easy-006",
+        "sha256": "021452fb0801f97005efd19ec832bb1d4192bdd998bb4d9e435810d19445ffc9"
+      },
+      {
+        "id": "jc-barbie-easy-007",
+        "sha256": "28458e4684bd17c5863e309a04f6309c215d2e2fb99b5e7ac78141423f1e29a0"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0ac8be766a891d11ad1333d65d51ed871b77d8c132135cb6c500a6ef09ce91d3.png",
+    "title": "Art & Patterns Coloring Pages"
+  },
+  "/collection/bible/": {
+    "alt": "JotColoring explore the collection share image: Bible Coloring Pages Featuring Dove with an Olive Leaf and Peace Lettering, Rainbow with God Keeps Promises Lettering, Open Bible with a Heart Bookmark.",
+    "description": "Browse illustrations inspired by Bible stories and Christian symbols. Arks, doves, shepherds, outlined words, and illustrated settings offer varied drawing detail.",
+    "identity_sha256": "6ba1d6cabbc92555307651eeff6cd5b80179290e0c5dd861d9f1d13b976936cc",
+    "sha256": "a2902f668d7af9b374e809ad8ca68d12c6be6fc76e165efe1c92b01933157e26",
+    "sources": [
+      {
+        "id": "jc-bible-easy-001",
+        "sha256": "c2bf4bd8a97196505c41495937f52906db2b56e869e51c67cb703a70ed908b94"
+      },
+      {
+        "id": "jc-bible-easy-002",
+        "sha256": "bd593e6f4e8712e58676f13ef43e1d62f87cf08a82a35a6765f3a91405d4bbdf"
+      },
+      {
+        "id": "jc-bible-easy-003",
+        "sha256": "eaed78ead66aed8a6d25693b06ec00e88bdb4eb1e3c5e89d7c7f4abd6d8ba3f8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a2902f668d7af9b374e809ad8ca68d12c6be6fc76e165efe1c92b01933157e26.png",
+    "title": "Bible Coloring Pages"
+  },
+  "/collection/characters/": {
+    "alt": "JotColoring explore the collection share image: Characters & Fantasy Coloring Pages Featuring Bluey Balloon Play, Freddy Fazbear Holding a Microphone, Barbie Waters a Potted Tulip.",
+    "description": "Find familiar cartoon, game, and doll characters alongside imaginary creatures and storybook worlds. Each character topic keeps its own collection.",
+    "identity_sha256": "aa4b9db0635530eea90f7397a20ef59dd2bf23ececf46e48c0158a7832e2dd42",
+    "sha256": "11dbb3b45d9b291ad076992b7f7d85b3a6c3570cb9681fb1dba17254791d66d5",
+    "sources": [
+      {
+        "id": "jc-bluey-easy-001",
+        "sha256": "75f568528523a9168fd3e500457a52ca9e554db00b614fda1c63f742159e38b5"
+      },
+      {
+        "id": "jc-fnaf-easy-001",
+        "sha256": "3070ae9d6a218e6dd6ca9be0e628db0cd812477d03b351b6c1c2a87b4aaa1cfa"
+      },
+      {
+        "id": "jc-barbie-easy-001",
+        "sha256": "1ea73ec37c57bfeeb735e96b63ad9472f22cb23a70122e77852b46f507078f13"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/11dbb3b45d9b291ad076992b7f7d85b3a6c3570cb9681fb1dba17254791d66d5.png",
+    "title": "Characters & Fantasy Coloring Pages"
+  },
+  "/collection/education/": {
+    "alt": "JotColoring explore the collection share image: Learning & Numbers Coloring Pages Featuring Number 100 Outline, Friends Read a Moon and Star Book, Children Fit Two Puzzle Pieces Together.",
+    "description": "Explore outlined numbers, counting scenes, and classroom subjects. Individual number topics have their own pages, with drawing detail shown for each design.",
+    "identity_sha256": "a9e1ba7d925df7ec32d98cd5587750d87c709bb030b2b51740e1fc2184a216af",
+    "sha256": "eac1266288e7b0508dcc9bc83c3e942e315fd803cda005b9c578f66421c3bff0",
+    "sources": [
+      {
+        "id": "jc-number-100-easy-001",
+        "sha256": "99a1caddc414591dfc0b1191b6f17424aedc0467fb8682ad66330a44cbb9c1b6"
+      },
+      {
+        "id": "jc-kids-easy-005",
+        "sha256": "a53b7607e4ad9dc12e3fac54ff4ba8ec5b803757438a600282186cea936cfc9d"
+      },
+      {
+        "id": "jc-kids-easy-010",
+        "sha256": "99125095bb283935bba7c131942b2f80cd8123efac343640dbc32013ef6444e5"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/eac1266288e7b0508dcc9bc83c3e942e315fd803cda005b9c578f66421c3bff0.png",
+    "title": "Learning & Numbers Coloring Pages"
+  },
+  "/collection/everyday-life/": {
+    "alt": "JotColoring explore the collection share image: Everyday Life Coloring Pages Featuring Barbie Waters a Potted Tulip, Strawberry Cupcakes and Daisies, Flowering Stone Garden Arch.",
+    "description": "People, homes, food, clothing, music, sports, and familiar objects fill this collection. Choose a subject to find everyday scenes and imaginative variations.",
+    "identity_sha256": "c9eb4a6fc06171681028f3ec3741e90b426f680346c4019be8473e2f9e261051",
+    "sha256": "d29a1aebae25e4d3fbcbf8b69581133b0c023c519da0e833f30a2a3e7fc73f37",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-001",
+        "sha256": "1ea73ec37c57bfeeb735e96b63ad9472f22cb23a70122e77852b46f507078f13"
+      },
+      {
+        "id": "jc-sweet-treats",
+        "sha256": "9b3e0995b31d600badff3f5c2ab24de27175c06ca4a1485e901a81232f5af6ed"
+      },
+      {
+        "id": "jc-adult-easy-012",
+        "sha256": "dc7965b3e9f6a4ccf1e89fc614745a0dc7639d89ea850fba6518e6929d5ae6ec"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/d29a1aebae25e4d3fbcbf8b69581133b0c023c519da0e833f30a2a3e7fc73f37.png",
+    "title": "Everyday Life Coloring Pages"
+  },
+  "/collection/holidays/": {
+    "alt": "JotColoring explore the collection share image: Holidays & Celebrations Coloring Pages Featuring Jack-o-Lantern Beneath a Crescent Moon, Square Gift with a Broad Bow, Easter Bunny Hugs a Striped Egg.",
+    "description": "Browse Halloween costumes, Easter eggs, Valentine hearts, harvest scenes, birthdays, and other celebrations. Choose a specific occasion to explore its drawings.",
+    "identity_sha256": "23dae7da4d8a44dfefa92754c172e7464cb14c4b28638771145c45f035273d40",
+    "sha256": "5cfa7a926ce39162aa2fcdacc083e74b474c5cf5a5e856c13ef90aa57fba4177",
+    "sources": [
+      {
+        "id": "jc-halloween-easy-001",
+        "sha256": "3fb15381a0706f93c4a72ebd9d34f54ca8c3440627d9867d8f904bec0de45ea0"
+      },
+      {
+        "id": "jc-easy-easy-025",
+        "sha256": "1abb56c3365f384e09c69237520844eb920ae284ca4955ca813ea8c4b3d026bc"
+      },
+      {
+        "id": "jc-easter-easy-001",
+        "sha256": "da49777e4f2c60861a840a78a15d66b025d046502a3d7424c6c1525f4f5f5460"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/5cfa7a926ce39162aa2fcdacc083e74b474c5cf5a5e856c13ef90aa57fba4177.png",
+    "title": "Holidays & Celebrations Coloring Pages"
+  },
+  "/collection/nature/": {
+    "alt": "JotColoring explore the collection share image: Nature & Flowers Coloring Pages Featuring Olive Branch with Long Leaves, Butterfly and Garden Flowers, Barbie Stands Beside a Snowman.",
+    "description": "Flowers, forests, mountains, seasonal scenes, and changing weather bring the natural world to the page. Choose a botanical subject or explore an outdoor setting.",
+    "identity_sha256": "935c38c16256e25665fbb68043ae3cfc374e52fa77cc15a7718e45909b97f172",
+    "sha256": "4f69e6c86fd231d63ca6102f9cd13730f6e404d322c8383523f48240cffe24c4",
+    "sources": [
+      {
+        "id": "jc-adult-easy-003",
+        "sha256": "8a4d5159b6ace1019ecf3c28e57e7f9c5f98ae5ee6e89d578de453592e0f2449"
+      },
+      {
+        "id": "jc-butterfly-garden",
+        "sha256": "196ab89eb0b643514ca747732d54e551fb86e126bd0d008238051ea6428370ca"
+      },
+      {
+        "id": "jc-barbie-easy-019",
+        "sha256": "273ff4bcc124c7bcef8683fc50d8d9d8e2d42d9baaecb75e42d6ba198cc28ab4"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/4f69e6c86fd231d63ca6102f9cd13730f6e404d322c8383523f48240cffe24c4.png",
+    "title": "Nature & Flowers Coloring Pages"
+  },
+  "/collection/space/": {
+    "alt": "JotColoring explore the collection share image: Space Coloring Pages Featuring Barbie in a Spacesuit with a Helmet, Decorative Solar System Scene, Rocket Above The Moon Garden.",
+    "description": "Explore astronauts, planets, rockets, and imagined space adventures. Outlined spacecraft and celestial settings bring different shapes and backgrounds to color.",
+    "identity_sha256": "404928f2fbff706589e3c9cbc962e54b45cd9cc011e66ebe89297b383f20fe95",
+    "sha256": "4102ecc0727aeb7662adb514e4a7211df0171ca9fc2f44fb7cddc8323b61af28",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-005",
+        "sha256": "3b4f48ff5e2b49c59930eff8cd89601d0e81e5513511e33048f75b8534ac742e"
+      },
+      {
+        "id": "jc-original-solar-system-garden-of-planets",
+        "sha256": "194b31aedda85dbd77c3da4ef4a2f5695dd57d1a11323c211a3245767191c40d"
+      },
+      {
+        "id": "jc-original-rocket-above-the-moon-garden",
+        "sha256": "6c55e6f65cb44f15df5ab24875feb804e392a52bb420c8705e541265f51de4e3"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/4102ecc0727aeb7662adb514e4a7211df0171ca9fc2f44fb7cddc8323b61af28.png",
+    "title": "Space Coloring Pages"
+  },
+  "/collection/vehicles/": {
+    "alt": "JotColoring explore the collection share image: Vehicles & Robots Coloring Pages Featuring Compact Hatchback on a Winding Road, Friendly Robot Waves Hello, Toy Train Carries a Teddy Bear.",
+    "description": "Cars, trucks, trains, boats, aircraft, and illustrated robots offer wheels, wings, and mechanical shapes to color. Browse each subject for different silhouettes and settings.",
+    "identity_sha256": "2da4d5bd6def5b1bc08914cc08c16af4ceb370cf5e701186443529f619ae0f9a",
+    "sha256": "e1d6fb437115b53733042ac1d6257db809b962ff27e39f147649d6b05cf8339f",
+    "sources": [
+      {
+        "id": "jc-car-easy-001",
+        "sha256": "78a25b98640d69f03650bac166754fbf0eb99caf531137e3a6fcd6f4c9063902"
+      },
+      {
+        "id": "jc-cute-easy-022",
+        "sha256": "220bcebd0eb3bdd0b765d2612ef1186c4114cfe9bebbcbe7eefd0bde49415c19"
+      },
+      {
+        "id": "jc-cute-medium-013",
+        "sha256": "09f7ba2d58eeb2067d0bc19849d0bfc8d17dd64aea3f4d7cc933a7c6453bcc47"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e1d6fb437115b53733042ac1d6257db809b962ff27e39f147649d6b05cf8339f.png",
+    "title": "Vehicles & Robots Coloring Pages"
+  },
+  "/coloring-pages/accessories/": {
+    "alt": "JotColoring printable coloring pages share image: Fashion Accessories Coloring Pages Featuring Star-Patterned Winter Mitten, Rain Boot with Three Large Spots.",
+    "description": "A winter mitten carries an outlined star, and a rain boot displays three large spots. Broad shapes, simple trim, and bold decorations keep these accessory drawings distinct.",
+    "identity_sha256": "1d59faa540406ed17d2514d0f75f10643ebc78c353dcc792de6d15af42864ad3",
+    "sha256": "27f50f866036329878a897e7dea0c6ffba4578f32ffcd6fdbe0e1a05c7371a1e",
+    "sources": [
+      {
+        "id": "jc-easy-easy-018",
+        "sha256": "61412ed9fa1c995bddf6e01384f3f89fe540557926fae678f81ab80e24af813a"
+      },
+      {
+        "id": "jc-easy-easy-024",
+        "sha256": "a8c15206080c12363ff13c98fe2b510fadf21bcb386a4704ac13eba1fb71aac3"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/27f50f866036329878a897e7dea0c6ffba4578f32ffcd6fdbe0e1a05c7371a1e.png",
+    "title": "Fashion Accessories Coloring Pages"
+  },
+  "/coloring-pages/aircraft/": {
+    "alt": "JotColoring printable coloring pages share image: Aircraft Coloring Pages Featuring Biplane Above The Sunflowers.",
+    "description": "A biplane flies above a field of sunflowers. Layered wings, wheels, clouds, stems, and large flower heads create the illustrated flying scene.",
+    "identity_sha256": "450ff92043338025041e6283bb7d238225bbbdfe1f3ec991e2579662281b2cae",
+    "sha256": "a0edb22a1cf979e59a9482477b32704843c2d0ac744e1fe76404586d6323d79a",
+    "sources": [
+      {
+        "id": "jc-original-biplane-above-the-sunflowers",
+        "sha256": "307d5e76d66081ef58e12b12f8a447eee60a25c3548cc522b064eb3732a1a4f8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a0edb22a1cf979e59a9482477b32704843c2d0ac744e1fe76404586d6323d79a.png",
+    "title": "Aircraft Coloring Pages"
+  },
+  "/coloring-pages/animal-mandalas/": {
+    "alt": "JotColoring printable coloring pages share image: Animal Mandalas Coloring Pages Featuring Butterflies and Garden Flower Mandala, Fish Circle Mandala, Feather Eye Mandala.",
+    "description": "Butterflies, fish, feather-eye motifs, shells, and starfish repeat among flowers and flowing shapes in circular ornamental designs.",
+    "identity_sha256": "236b07dd6d2f8e965d88e17ba0d026a62145478dcd5d64e696cf701a64a063e3",
+    "sha256": "4bb4099ae8c8f355566f984882c73d9a4fe7835ae53b085d1ad85ee6d9acbf28",
+    "sources": [
+      {
+        "id": "jc-mandala-easy-009",
+        "sha256": "75cbe68c807939d19bbdecc4d6cb3def4cc35ad057c00741cf6c14fbda917d89"
+      },
+      {
+        "id": "jc-mandala-easy-010",
+        "sha256": "ccab2f14ed6df7bc0f8fcd4b5b74854074f5c1fe578287512e1db44871cb2f5c"
+      },
+      {
+        "id": "jc-mandala-easy-011",
+        "sha256": "dbc0da0a3c84a0ef865d46673b45826c79130e6e588498bbc759ef38106dbbb1"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/4bb4099ae8c8f355566f984882c73d9a4fe7835ae53b085d1ad85ee6d9acbf28.png",
+    "title": "Animal Mandalas Coloring Pages"
+  },
+  "/coloring-pages/art-supplies/": {
+    "alt": "JotColoring printable coloring pages share image: Art Supplies Coloring Pages Featuring Barbie with a Paintbrush and Palette, Barbie Paints in a Windowed Studio, Barbie Paints Garden Flowers.",
+    "description": "Barbie holds a paintbrush and palette, paints beside a window, and works among garden flowers. Easels, paints, clothing, and studio details fill the creative scenes.",
+    "identity_sha256": "dd8b82913b3fd054f13198c4120350143bba92e2306c753eb27bc7928c4e39c9",
+    "sha256": "ae9d714f77832f0739038b83d9ae089e3aef01043cc140e5cc93ad1429328881",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-007",
+        "sha256": "28458e4684bd17c5863e309a04f6309c215d2e2fb99b5e7ac78141423f1e29a0"
+      },
+      {
+        "id": "jc-barbie-hard-007",
+        "sha256": "df5588f09840db90d8233b7ef4f9dceda82f1fb4db508a4b954decbaaff08807"
+      },
+      {
+        "id": "jc-barbie-medium-007",
+        "sha256": "b716b62986a11b180ca6b83484291ffe10d1feb75a2badd3b9c67b19f0951c13"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/ae9d714f77832f0739038b83d9ae089e3aef01043cc140e5cc93ad1429328881.png",
+    "title": "Art Supplies Coloring Pages"
+  },
+  "/coloring-pages/astronauts/": {
+    "alt": "JotColoring printable coloring pages share image: Astronauts Coloring Pages Featuring Barbie in a Spacesuit with a Helmet, Astronaut Barbie in a Space Greenhouse, Barbie Collects Rocks Beside a Rover.",
+    "description": "Imagined astronaut versions of Barbie wear spacesuits, tend a space greenhouse, and collect rocks beside a rover. Helmets, equipment, plants, and invented landscapes shape the scenes.",
+    "identity_sha256": "0153410fb7de1c8a557ef7bb0a57fab9ccc455453171cca547f243da854020a9",
+    "sha256": "89b15e3ecdf8eef65278fd52bc6aa1679d2b18dcaafe2240cd81ecac1338c98a",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-005",
+        "sha256": "3b4f48ff5e2b49c59930eff8cd89601d0e81e5513511e33048f75b8534ac742e"
+      },
+      {
+        "id": "jc-barbie-hard-005",
+        "sha256": "b7e80eaad67a798e988b5b8f7b916073bdcdfe99c900ff6299812439fac8d582"
+      },
+      {
+        "id": "jc-barbie-medium-005",
+        "sha256": "52df53e99a2e5b7580a9029c96d03fe6158f927c3b86ef59d2bfb01e1b420a4b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/89b15e3ecdf8eef65278fd52bc6aa1679d2b18dcaafe2240cd81ecac1338c98a.png",
+    "title": "Astronauts Coloring Pages"
+  },
+  "/coloring-pages/barbie/": {
+    "alt": "JotColoring printable coloring pages share image: Barbie Coloring Pages Featuring Barbie Waters a Potted Tulip, Barbie Holds a Kitten in a Vet Coat, Barbie Presents a Cupcake.",
+    "description": "Barbie gardens, cares for pets, makes art, explores space, and shares activities with friends. Choose a simple character drawing or a scene with a detailed background.",
+    "identity_sha256": "6fc1ec22ac06176d6d8b827ef72acc605b7b54846a0675d53a7e412c9e211940",
+    "sha256": "3ad57c1bc5baf98371dfb9eac24e6fbac2d7cb9726634c9c987b7a70d58f44cd",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-001",
+        "sha256": "1ea73ec37c57bfeeb735e96b63ad9472f22cb23a70122e77852b46f507078f13"
+      },
+      {
+        "id": "jc-barbie-easy-002",
+        "sha256": "f5d8d4593f49630f1ccf8dc9aec0dbe23ffe87a98e69039f238dd645fe0d062d"
+      },
+      {
+        "id": "jc-barbie-easy-003",
+        "sha256": "fd8831cdf223347c1923c5fec6a187241545d6d17902c7906a7243e13515e03c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/3ad57c1bc5baf98371dfb9eac24e6fbac2d7cb9726634c9c987b7a70d58f44cd.png",
+    "title": "Barbie Coloring Pages"
+  },
+  "/coloring-pages/beaches/": {
+    "alt": "JotColoring printable coloring pages share image: Beaches Coloring Pages Featuring Barbie Holds a Seashell at the Beach, Barbie Builds a Beach Sandcastle, Barbie and a Friend Share a Seaside Picnic.",
+    "description": "Barbie collects a seashell, builds a sandcastle, and shares a seaside picnic with a friend. Shoreline scenery, beach objects, and clothing details fill these coastal scenes.",
+    "identity_sha256": "2be3e5e83b20e97a92f9cce8c45086a2de82433c27bb63de2c506665c42cc58f",
+    "sha256": "e026686855874eef1538b5a26f1ba0bfc2a8bbf38b2a891f7d1e52baee1b0fe2",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-009",
+        "sha256": "2a4850cc327175b902a3666a7c91485cc3e617989cdcb231af1565522da3c045"
+      },
+      {
+        "id": "jc-barbie-medium-009",
+        "sha256": "0f8f575a912f0e2db5c2701d5bfeea0b19cf3181e1cd02162c305588e2316e02"
+      },
+      {
+        "id": "jc-barbie-very-hard-009",
+        "sha256": "ad05ba25f15324995ad511131056a15688306741ad4d2c148ac4ae01b900404b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e026686855874eef1538b5a26f1ba0bfc2a8bbf38b2a891f7d1e52baee1b0fe2.png",
+    "title": "Beaches Coloring Pages"
+  },
+  "/coloring-pages/bicycles/": {
+    "alt": "JotColoring printable coloring pages share image: Bicycles Coloring Pages Featuring Bicycle with a Leafy Basket, Bicycle Repair Workshop with Hanging Tools, Bicycle Outside a Flower-Trimmed Cafe.",
+    "description": "A bicycle carries a leafy basket, another stands in a repair workshop, and a cafe scene adds flower trim. Wheels, spokes, tools, and planted backgrounds provide varied details.",
+    "identity_sha256": "a4f236d6b15d126600c65f0b131e0bf1ff7cf546b769677e78a6b34bb6516f35",
+    "sha256": "b0234356275e39fe55f62ba289b7d6de352aa9279f0a6c02c29412f0c0f9d2c6",
+    "sources": [
+      {
+        "id": "jc-adult-easy-019",
+        "sha256": "1fc08417d5e554ecb875f8fbf97f661bf27ee14b25e524376e17786856b62444"
+      },
+      {
+        "id": "jc-adult-hard-019",
+        "sha256": "b5b427c33b8cc399085972ae9515cc7a2be883621588e360580c956c7c400341"
+      },
+      {
+        "id": "jc-adult-medium-019",
+        "sha256": "fe1e5b906df1d5def22d7c643f646138b845440929073008b04fb50ba41993ca"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/b0234356275e39fe55f62ba289b7d6de352aa9279f0a6c02c29412f0c0f9d2c6.png",
+    "title": "Bicycles Coloring Pages"
+  },
+  "/coloring-pages/birds/": {
+    "alt": "JotColoring printable coloring pages share image: Birds Coloring Pages Featuring Owl Under a Crescent Moon, Swan Among Lily Pads, Swans Beneath a Garden Footbridge.",
+    "description": "Owls beneath the moon and swans among lily pads are among these bird scenes. Wings, feathers, water, and garden bridges provide different outlined details.",
+    "identity_sha256": "6dabafaa92048d152528029e777b88b8cdfadbcf5622ec4e2fd571e08d6fa430",
+    "sha256": "48af1c6413bdbd3ac0f150144db181135e9395ad12cbb8bd1855a1c1b023acfe",
+    "sources": [
+      {
+        "id": "jc-woodland-owl",
+        "sha256": "50c6e7d5f1e1b0f251432b8ea51b6df25b816796beada5868a094202eb6bb087"
+      },
+      {
+        "id": "jc-adult-easy-016",
+        "sha256": "45720edec9877882a92c9d6c9f0089a97805814e991cb4c358011f5156d47e90"
+      },
+      {
+        "id": "jc-adult-hard-016",
+        "sha256": "e3a83c82af85b07d8079a40e559852a055e89816f1c3cd3a57924167164e7ccf"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/48af1c6413bdbd3ac0f150144db181135e9395ad12cbb8bd1855a1c1b023acfe.png",
+    "title": "Birds Coloring Pages"
+  },
+  "/coloring-pages/birthdays/": {
+    "alt": "JotColoring printable coloring pages share image: Birthdays Coloring Pages Featuring Square Gift with a Broad Bow, Birthday Cake with Balloons and Gifts, Birthday Cake with One Candle.",
+    "description": "Happy Birthday lettering tops cakes, gifts, playful animals, family celebrations, and imagined party settings. Open outlines and elaborate tea tables, gardens, bakeries, and fantasy scenes offer varied coloring detail.",
+    "identity_sha256": "295b31b0149f3a8b1ad24530207e2738744be0abc0b6adc6bb4d68e69cd5e7cd",
+    "sha256": "6950046d8b7fda29d0c5ef398095921f116a81b66ea45510f29e532e3ec27373",
+    "sources": [
+      {
+        "id": "jc-easy-easy-025",
+        "sha256": "1abb56c3365f384e09c69237520844eb920ae284ca4955ca813ea8c4b3d026bc"
+      },
+      {
+        "id": "jc-easy-very-hard-025",
+        "sha256": "39f2ac84b270805d1da56c17dc3f693716e27ace856aeee5f8647496260f0a4c"
+      },
+      {
+        "id": "jc-happy-birthday-easy-001",
+        "sha256": "110c784beff464dc08800ea6146e068ded7157e168209f9d2e6fae4b9690c3ce"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6950046d8b7fda29d0c5ef398095921f116a81b66ea45510f29e532e3ec27373.png",
+    "title": "Birthdays Coloring Pages"
+  },
+  "/coloring-pages/bluey/": {
+    "alt": "JotColoring printable coloring pages share image: Bluey Coloring Pages Featuring Bluey Balloon Play, Bluey Garden Helper with a Watering Can, Bluey Paper Boat in a Puddle.",
+    "description": "Bluey family characters play, garden, build, make crafts, and explore outdoors. Choose a simple character scene or a detailed family activity with a room or garden background.",
+    "identity_sha256": "dcac519d22b86de96b6dff8be28af3bdb6479ce4ec1ba328461a38ee6840ab9d",
+    "sha256": "6fd1efae012618a35aaa40dd46051c3ebb5b769eb255c0f06b532e98c7f9258e",
+    "sources": [
+      {
+        "id": "jc-bluey-easy-001",
+        "sha256": "75f568528523a9168fd3e500457a52ca9e554db00b614fda1c63f742159e38b5"
+      },
+      {
+        "id": "jc-bluey-easy-002",
+        "sha256": "b641456926afc28a1a7b4319e5b7c7b55ac0246433b5af54a6c46b11db318cc1"
+      },
+      {
+        "id": "jc-bluey-easy-003",
+        "sha256": "7eebb4552e4d48346e7ddc77b6cacf47be3799e02b26ffbb6a3e7ffdde9506dd"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6fd1efae012618a35aaa40dd46051c3ebb5b769eb255c0f06b532e98c7f9258e.png",
+    "title": "Bluey Coloring Pages"
+  },
+  "/coloring-pages/boats/": {
+    "alt": "JotColoring printable coloring pages share image: Boats & Ships Coloring Pages Featuring Sailboat Beneath the Sun, Fishing Boats in a Coastal Village, Simple Sailboat with Two Triangular Sails.",
+    "description": "Sailboats and fishing boats appear beneath the sun and beside coastal buildings. Explore triangular sails, hull shapes, mooring details, and waterside settings.",
+    "identity_sha256": "5cbf22ebeef21719874115b19aa0afacd8ea02233a4d9be8d048376a7052a26e",
+    "sha256": "6fe15ca27350d1454345716d5041b614c05bd71897753b86c0d49d56d0afa034",
+    "sources": [
+      {
+        "id": "jc-adult-easy-005",
+        "sha256": "db0abd0cd73bd6393c539b85041f256cdfa3a4a269020f1ccb80bc30fe69d756"
+      },
+      {
+        "id": "jc-adult-hard-003",
+        "sha256": "d9f316e912c1c4d6f4333ee7d3241c2a03df069976526bbd7856155a52b364ed"
+      },
+      {
+        "id": "jc-easy-easy-003",
+        "sha256": "978285f5b936647340ca6a77e07fac4a43253d524244bebb1c9019e30deacb39"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6fe15ca27350d1454345716d5041b614c05bd71897753b86c0d49d56d0afa034.png",
+    "title": "Boats & Ships Coloring Pages"
+  },
+  "/coloring-pages/bouquets/": {
+    "alt": "JotColoring printable coloring pages share image: Flower Bouquets Coloring Pages Featuring Barbie Carries a Daisy Bouquet, Barbie Arranges Tulips in a Vase, Barbie Photographs a Flower Arrangement.",
+    "description": "Tied stems, wrapped flowers, patterned vases, and flower-arranging tables bring together blossoms of different shapes and sizes.",
+    "identity_sha256": "3695af4a074b0ccd35ffb3377dfa81ac80a4f7239d2208023a3b22b3f2556c95",
+    "sha256": "bac6b04161138a4b7ca58d52d57155f69131989d6721176da3ba04b9a590f0b3",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-012",
+        "sha256": "bca4961c197ae762a3b7eed0d2db1c4c54b96a2d4a8025f2ab6cc90ae3f9f79e"
+      },
+      {
+        "id": "jc-barbie-medium-012",
+        "sha256": "4c2d0bab50140c582ea0d0f588ed9655672217a45fdfef4e8ab3dc3220826c09"
+      },
+      {
+        "id": "jc-barbie-very-hard-016",
+        "sha256": "058f7e72f42bd7a84fa0ca4ea8f6604da4db9c49da190bde92970813a8e6fd49"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/bac6b04161138a4b7ca58d52d57155f69131989d6721176da3ba04b9a590f0b3.png",
+    "title": "Flower Bouquets Coloring Pages"
+  },
+  "/coloring-pages/buildings/": {
+    "alt": "JotColoring printable coloring pages share image: Building Coloring Pages Featuring Flowering Stone Garden Arch, Scrollwork Gate Between Stone Posts, Fishing Boats in a Coastal Village.",
+    "description": "Garden arches, ornate gates, coastal villages, and illustrated homes explore architectural shapes. Stonework, windows, roofs, and planted settings add different kinds of detail.",
+    "identity_sha256": "06f5c2bee0de4cce52822bc34b1027d06b62f5d88b8b0748414edbbb0b424479",
+    "sha256": "30b2544c720f1efcd3c81fc0a493628d2b5d38ff149fb234f35b0234c2f0d71c",
+    "sources": [
+      {
+        "id": "jc-adult-easy-012",
+        "sha256": "dc7965b3e9f6a4ccf1e89fc614745a0dc7639d89ea850fba6518e6929d5ae6ec"
+      },
+      {
+        "id": "jc-adult-easy-025",
+        "sha256": "fc19c628af9a6a6805efa28c07b6a267954677f703d96c180fa22ce8e80033ad"
+      },
+      {
+        "id": "jc-adult-hard-003",
+        "sha256": "d9f316e912c1c4d6f4333ee7d3241c2a03df069976526bbd7856155a52b364ed"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/30b2544c720f1efcd3c81fc0a493628d2b5d38ff149fb234f35b0234c2f0d71c.png",
+    "title": "Building Coloring Pages"
+  },
+  "/coloring-pages/butterflies/": {
+    "alt": "JotColoring printable coloring pages share image: Butterflies Coloring Pages Featuring Butterfly with Large Circular Wing Spots, Butterfly Garden with a Winding Path, Butterflies Above a Large Daisy.",
+    "description": "Butterflies display spotted wings, hover above daisies, and fill winding garden scenes. Broad wing shapes and closely arranged flowers offer different spaces to color.",
+    "identity_sha256": "a3c611e32aab69c6e2f6b4db5b9287f4bde4bfd21e53bd7537b9a64b5a1b5d37",
+    "sha256": "f19ad53b3c33218b338523cd79c6ef389d7ec0a3f1cc63972f32fa5a81885e1e",
+    "sources": [
+      {
+        "id": "jc-easy-easy-006",
+        "sha256": "f9403d6553228f16121d66f35e382919f045bceefef4fc7d1fa5826026974e50"
+      },
+      {
+        "id": "jc-easy-hard-016",
+        "sha256": "4dc4bee1b43063b4cad5fc31c2d9aa10369ab22b03183d1b62b5dbfb8461f031"
+      },
+      {
+        "id": "jc-easy-medium-022",
+        "sha256": "5baf7f8e1560a918802dd5c4998a363eafd043767b5fddb3cdc1f702c76007f8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f19ad53b3c33218b338523cd79c6ef389d7ec0a3f1cc63972f32fa5a81885e1e.png",
+    "title": "Butterflies Coloring Pages"
+  },
+  "/coloring-pages/cars/": {
+    "alt": "JotColoring printable coloring pages share image: Cars Coloring Pages Featuring Compact Hatchback on a Winding Road, Sedan on a Sunny Tree-Lined Road, Roof-Rack Wagon on a Mountain Road.",
+    "description": "Hatchbacks, sedans, sports cars, pickups, and camper-style vehicles appear on open roads and in detailed streets and garages. Imaginative vehicle concepts are identified as concepts in their individual titles.",
+    "identity_sha256": "92574d847896790c31c64cc5bab1489ae7e76e505065dd3ee7c817e4bdf5b503",
+    "sha256": "8d1c6709d83820fcb31efdec42d54dbd6928ed1c3e354f221abca1a604e6985e",
+    "sources": [
+      {
+        "id": "jc-car-easy-001",
+        "sha256": "78a25b98640d69f03650bac166754fbf0eb99caf531137e3a6fcd6f4c9063902"
+      },
+      {
+        "id": "jc-car-easy-002",
+        "sha256": "10e967a4a387cf9e40bac86cdbc8fc4acfde21dfbee3cd5ea9bbe5e58f789601"
+      },
+      {
+        "id": "jc-car-easy-003",
+        "sha256": "0dc82181fb78a7d9c16221624e264d0936c6b11d94a313e3891c277bf91f9084"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8d1c6709d83820fcb31efdec42d54dbd6928ed1c3e354f221abca1a604e6985e.png",
+    "title": "Cars Coloring Pages"
+  },
+  "/coloring-pages/cartoons/": {
+    "alt": "JotColoring printable coloring pages share image: Cartoon Character Coloring Pages Featuring Bluey Balloon Play, Bluey Garden Helper with a Watering Can, Bluey Paper Boat in a Puddle.",
+    "description": "Hello Kitty, Bluey, Descendants, and KPop Demon Hunters characters appear in playful portraits and imagined adventures. Browse by character for music, crafts, gardens, magical settings, and varied coloring detail.",
+    "identity_sha256": "a0206010103840cd20f992f8458aaf9603180a7fffff1879790352b3be926e8f",
+    "sha256": "7f29295d63e45838ebcd481d77b663a6f7b75a16b690f9d54dcd6d8a56a5ec68",
+    "sources": [
+      {
+        "id": "jc-bluey-easy-001",
+        "sha256": "75f568528523a9168fd3e500457a52ca9e554db00b614fda1c63f742159e38b5"
+      },
+      {
+        "id": "jc-bluey-easy-002",
+        "sha256": "b641456926afc28a1a7b4319e5b7c7b55ac0246433b5af54a6c46b11db318cc1"
+      },
+      {
+        "id": "jc-bluey-easy-003",
+        "sha256": "7eebb4552e4d48346e7ddc77b6cacf47be3799e02b26ffbb6a3e7ffdde9506dd"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7f29295d63e45838ebcd481d77b663a6f7b75a16b690f9d54dcd6d8a56a5ec68.png",
+    "title": "Cartoon Character Coloring Pages"
+  },
+  "/coloring-pages/cats/": {
+    "alt": "JotColoring printable coloring pages share image: Cats & Kittens Coloring Pages Featuring Cat Beside a Leaf-Patterned Bowl, Cat on a Windowside Bench, Cat Curled on a Window Cushion.",
+    "description": "Kittens and cats stretch, sleep, play with yarn, and explore windows, gardens, and climbing towers. Find smooth coats, fluffy fur, outlined patches, and varied rooms and outdoor settings.",
+    "identity_sha256": "a2a6505bb647551a180d0206383256ff5f7b30d8bcd6c2171980d59a72dcff89",
+    "sha256": "e1edf69048e4ead8014a5e3f3cd26461ac3849e86c8b3582b40f35f094fbd79c",
+    "sources": [
+      {
+        "id": "jc-adult-easy-015",
+        "sha256": "3f0f96cf2f8a8e1a707f1b95853c2100307a8cc365f01013917b1750b46b416a"
+      },
+      {
+        "id": "jc-adult-hard-015",
+        "sha256": "817812920d878833f037f0fce80f75af056bc42eacbe70aefdd7c410974990d4"
+      },
+      {
+        "id": "jc-adult-medium-015",
+        "sha256": "890965168e6cb157f7874be1c95dc00cd85e137c818b56424c18a6a237de5fc2"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e1edf69048e4ead8014a5e3f3cd26461ac3849e86c8b3582b40f35f094fbd79c.png",
+    "title": "Cats & Kittens Coloring Pages"
+  },
+  "/coloring-pages/celebrations/": {
+    "alt": "JotColoring printable coloring pages share image: Celebration Coloring Pages Featuring Plain Heart Balloon with a Ribbon, Square Gift with a Broad Bow, Birthday Cake with Balloons and Gifts.",
+    "description": "Ribboned balloons, wrapped presents, birthday cakes, and illustrated party scenes mark cheerful occasions. Single motifs and decorated settings offer different levels of detail.",
+    "identity_sha256": "46fb5085e6c41bdcc09ed129d9d561beb4fc86e1995d1294a048c7f8c9d52e84",
+    "sha256": "6370f6b543b43523afaebf93c4fec43336dc382f98f21eaa7a8dde49bfa2198e",
+    "sources": [
+      {
+        "id": "jc-easy-easy-014",
+        "sha256": "8930dc4e205750c3af02c17f35804b0882612cefb144c50190124d59d1fcc5a5"
+      },
+      {
+        "id": "jc-easy-easy-025",
+        "sha256": "1abb56c3365f384e09c69237520844eb920ae284ca4955ca813ea8c4b3d026bc"
+      },
+      {
+        "id": "jc-easy-very-hard-025",
+        "sha256": "39f2ac84b270805d1da56c17dc3f693716e27ace856aeee5f8647496260f0a4c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6370f6b543b43523afaebf93c4fec43336dc382f98f21eaa7a8dde49bfa2198e.png",
+    "title": "Celebration Coloring Pages"
+  },
+  "/coloring-pages/cities/": {
+    "alt": "JotColoring printable coloring pages share image: Cities & Streets Coloring Pages Featuring Fishing Boats in a Coastal Village, Flower-Lined Canal with Moored Boats, Cobbled Mountain Village Lane.",
+    "description": "Fishing boats line a coastal village, flowers edge a canal, and a cobbled lane climbs between mountain houses. Roofs, windows, bridges, and moored boats create detailed streetscapes.",
+    "identity_sha256": "2539a05272cf181e79cd6c7acb140f3b3ec4a6bb6452baac6b992a942c272ee3",
+    "sha256": "0dab6bd3a961d72d78527f0053b8cf7175845544f354dfcc8e0d26c594b22b91",
+    "sources": [
+      {
+        "id": "jc-adult-hard-003",
+        "sha256": "d9f316e912c1c4d6f4333ee7d3241c2a03df069976526bbd7856155a52b364ed"
+      },
+      {
+        "id": "jc-adult-hard-005",
+        "sha256": "b06ba222a4358eeb63d6c910b8d04b757448fb1b8888c50f8eebf2c0fb463994"
+      },
+      {
+        "id": "jc-adult-hard-010",
+        "sha256": "e20d48434b51323ef4f6516122a8f735800bdbc4e87bc84673f82a867b9124d8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0dab6bd3a961d72d78527f0053b8cf7175845544f354dfcc8e0d26c594b22b91.png",
+    "title": "Cities & Streets Coloring Pages"
+  },
+  "/coloring-pages/coral-reefs/": {
+    "alt": "JotColoring printable coloring pages share image: Coral Reefs Coloring Pages Featuring Octopus, Fish, and Turtle Underwater.",
+    "description": "An octopus, fish, and a sea turtle share an illustrated underwater setting. Bubbles, shells, seabed plants, and outlined marine shapes fill the composition.",
+    "identity_sha256": "c42a32a492ca3732f8b7d977b83c1bb0a15f40992803fab17aec3925be1d6e9b",
+    "sha256": "31b6591d182c6eaa03192be33411c0792c9adbeafe66421ddf71067e6840a25f",
+    "sources": [
+      {
+        "id": "jc-easy-hard-019",
+        "sha256": "c0605648cbdbfe9311b3a1c67c5094db00226644837d57f70c5f88706d5aa58d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/31b6591d182c6eaa03192be33411c0792c9adbeafe66421ddf71067e6840a25f.png",
+    "title": "Coral Reefs Coloring Pages"
+  },
+  "/coloring-pages/descendants/": {
+    "alt": "JotColoring printable coloring pages share image: Descendants Coloring Pages Featuring Mal Holds a Dragon Spellbook, Evie Holds a Crowned Hand Mirror, Carlos Sits Beside Dude.",
+    "description": "Mal, Evie, Carlos, Jay, Uma, and their friends explore imagined royal gardens, pirate harbors, workshops, and magical rooms. Portraits and elaborate group scenes offer a range of coloring detail.",
+    "identity_sha256": "a11f914fcf45e5d83b9ec4d54d0be0afd595c6464829099154e91d439e0db9af",
+    "sha256": "c089ea4b34e3187b46051784ac70b176efb7caf768abc884840a1b023fb9b12a",
+    "sources": [
+      {
+        "id": "jc-descendants-easy-001",
+        "sha256": "71576130224620377b285d7bf4ffb5d060c0674efbcf623c4e9c07dcfac27519"
+      },
+      {
+        "id": "jc-descendants-easy-002",
+        "sha256": "0ecc7e0d5c4cdcfb7069bc9391b5d875f94c1297d57a08aa332c840f98c0fd1a"
+      },
+      {
+        "id": "jc-descendants-easy-003",
+        "sha256": "a88bf1821b18c98bec9ff5fbfad04493fb6c07598cac7b35ff561dc53a771bce"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/c089ea4b34e3187b46051784ac70b176efb7caf768abc884840a1b023fb9b12a.png",
+    "title": "Descendants Coloring Pages"
+  },
+  "/coloring-pages/desserts/": {
+    "alt": "JotColoring printable coloring pages share image: Desserts Coloring Pages Featuring Barbie Presents a Cupcake, Barbie Decorates a Layered Cake, Barbie Makes Star-Shaped Cookies.",
+    "description": "Barbie presents cupcakes, decorates layered cakes, and makes star-shaped cookies. Icing, baking tools, clothing, and illustrated kitchen settings surround the treats.",
+    "identity_sha256": "aba0f26abdddd4ed34216bf6b3d1587b372e2623d3417f9a0eba61257c387bec",
+    "sha256": "a6a1d8a800995019d053b08b92a35d22e1152fdf25422b1159dcc4d68667f5a5",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-003",
+        "sha256": "fd8831cdf223347c1923c5fec6a187241545d6d17902c7906a7243e13515e03c"
+      },
+      {
+        "id": "jc-barbie-hard-003",
+        "sha256": "96cbb96c4f7af75f859aed43e77d866b169c80523a9d03fb07afcb49f6b00710"
+      },
+      {
+        "id": "jc-barbie-medium-003",
+        "sha256": "efc26b0c16e00c3f130e0eedde12cdda814a4cb85bbd6877fa4321d8adcb2524"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a6a1d8a800995019d053b08b92a35d22e1152fdf25422b1159dcc4d68667f5a5.png",
+    "title": "Desserts Coloring Pages"
+  },
+  "/coloring-pages/dinosaurs/": {
+    "alt": "JotColoring printable coloring pages share image: Dinosaur Coloring Pages Featuring Long-Necked Dinosaurs in a Valley, Tyrannosaur Beside a Fern, Resting Triceratops Beside a Rock.",
+    "description": "Horned dinosaurs, plated backs, long necks, feathered forms, and hatchlings appear among ferns, rivers, and rocky landscapes. The drawings range from single animals to detailed forest and nesting scenes.",
+    "identity_sha256": "64660f5be95c7dae0ec9c099d2484e80806fd129e90d77d603d2cae32d13d8f9",
+    "sha256": "0ec4dbb814c29897de7dd2fb839bd6f0790070830f77742cfc92f7fca2191442",
+    "sources": [
+      {
+        "id": "jc-dinosaur-valley",
+        "sha256": "6c75db97daf198f2666bd32943542424ef5e0a24476f182951e70d606eb99825"
+      },
+      {
+        "id": "jc-dinosaur-easy-001",
+        "sha256": "341f7ac452f2a0adbd0b94a83a6adf376b8c1b35f33e5b5dec803dda0a09b12e"
+      },
+      {
+        "id": "jc-dinosaur-easy-002",
+        "sha256": "70073ca8d6de35af07dcb376e425e5a3f2bc8e3e6e01106146b951364cc54c84"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0ec4dbb814c29897de7dd2fb839bd6f0790070830f77742cfc92f7fca2191442.png",
+    "title": "Dinosaur Coloring Pages"
+  },
+  "/coloring-pages/dogs/": {
+    "alt": "JotColoring printable coloring pages share image: Dogs & Puppies Coloring Pages Featuring Barbie Brushes a Puppy, Barbie Examines a Puppy on a Vet Table, Barbie Grooms a Puppy on a Round Table.",
+    "description": "Puppies and dogs play with balls, rest in beds, and explore gardens, bridges, and mountain cabins. Floppy ears, curly coats, short legs, and shaggy fur give the collection a range of distinct silhouettes.",
+    "identity_sha256": "128547426c8437a9c77c9601530ce2f9cf15fccf1315284b125586a44c637ba7",
+    "sha256": "53f4bd9b895d320bf402359424f72104a45523631675ee799117f5d765a74a76",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-015",
+        "sha256": "f9da9f33bc4d316cfc681daa22d97fb6e69835b44fb301f40a02457b23739865"
+      },
+      {
+        "id": "jc-barbie-medium-002",
+        "sha256": "439a03a7764094c6e04db5a96de329cb5add344ed5c122f25520681a5cff14f1"
+      },
+      {
+        "id": "jc-barbie-medium-015",
+        "sha256": "a5b82144dd35d25cdd8582fd2b342d79eef7f2acff43843a94cb3271faedc8c2"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/53f4bd9b895d320bf402359424f72104a45523631675ee799117f5d765a74a76.png",
+    "title": "Dogs & Puppies Coloring Pages"
+  },
+  "/coloring-pages/dolls-toys/": {
+    "alt": "JotColoring printable coloring pages share image: Doll & Toy Coloring Pages Featuring Barbie Waters a Potted Tulip, Barbie Holds a Kitten in a Vet Coat, Barbie Presents a Cupcake.",
+    "description": "Barbie characters and rounded squishy-style mascots explore creative hobbies, sweet shops, gardens, and imagined adventures. Find open character outlines alongside detailed scenes filled with outfits, treats, toys, and decorative patterns.",
+    "identity_sha256": "e3684609018b29004712a62a9673465da40dde753740e673647e6e5a706cc31a",
+    "sha256": "f99ccec26ebd31bb42c90d7dfa541bc36c1f594bafa7a23cff5a9eba562bab06",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-001",
+        "sha256": "1ea73ec37c57bfeeb735e96b63ad9472f22cb23a70122e77852b46f507078f13"
+      },
+      {
+        "id": "jc-barbie-easy-002",
+        "sha256": "f5d8d4593f49630f1ccf8dc9aec0dbe23ffe87a98e69039f238dd645fe0d062d"
+      },
+      {
+        "id": "jc-barbie-easy-003",
+        "sha256": "fd8831cdf223347c1923c5fec6a187241545d6d17902c7906a7243e13515e03c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f99ccec26ebd31bb42c90d7dfa541bc36c1f594bafa7a23cff5a9eba562bab06.png",
+    "title": "Doll & Toy Coloring Pages"
+  },
+  "/coloring-pages/dragons/": {
+    "alt": "JotColoring printable coloring pages share image: Dragons Coloring Pages Featuring Little Dragon Tends a Flower Cart, Little Dragon Makes Star Cookies, Baby Dragon in a Crystal Palace.",
+    "description": "Little dragons tend flower carts, bake star-shaped cookies, and explore crystal palaces. Their imagined activities combine expressive characters with garden, kitchen, and architectural details.",
+    "identity_sha256": "2d341277a3067f808a5aa2f56343106da5ec4b2bf3bce79cc62d384915d6eebc",
+    "sha256": "17ff3e2241a382248248e9125825555facaf0cd6e056f02cbb76c5a44851ad12",
+    "sources": [
+      {
+        "id": "jc-cute-hard-014",
+        "sha256": "fe3097e9a194a8c4e9c340a68ba8824cf289e776fd2c98bd35a3656d7c78eb31"
+      },
+      {
+        "id": "jc-cute-medium-019",
+        "sha256": "cbab0715468babed85db3fcf558cceeb570524298f1124428d436644ff687600"
+      },
+      {
+        "id": "jc-cute-very-hard-013",
+        "sha256": "746d281fc996e414fe29c40c826715366f693ead562ee95d7c96d6c208a390b4"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/17ff3e2241a382248248e9125825555facaf0cd6e056f02cbb76c5a44851ad12.png",
+    "title": "Dragons Coloring Pages"
+  },
+  "/coloring-pages/drinks/": {
+    "alt": "JotColoring printable coloring pages share image: Drinks Coloring Pages Featuring Smiling Tea Set with a Cookie, Milk Carton and a Large Cookie, Plain Teapot with Matching Cups.",
+    "description": "Smiling tea sets, milk cartons with cookies, and plain teapots with matching cups explore drink-related objects. Handles, lids, patterns, and rounded outlines create varied spaces.",
+    "identity_sha256": "a415bef231387bdf0870ca5daf2a9aac4e3b185751db82aeb247404eb8a0e94d",
+    "sha256": "f0c0067e476516f9a03fc0eb7c60d0fa6fd9abc86c2231f842e65033bf1e8d1a",
+    "sources": [
+      {
+        "id": "jc-cute-medium-020",
+        "sha256": "c81e6d2c99a140c66ae4222d1e25f4ea6e772c0308962bc5416d3ca0d864fd4a"
+      },
+      {
+        "id": "jc-easy-medium-006",
+        "sha256": "e76c5c7c3444912bb635a6f0565acc4db71046ace28599cb370cc4eb7116617d"
+      },
+      {
+        "id": "jc-easy-medium-024",
+        "sha256": "ce3d0a05dc13e930f5d7a324a0be16cbf1b6963da814f56e017907f1f13259ff"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f0c0067e476516f9a03fc0eb7c60d0fa6fd9abc86c2231f842e65033bf1e8d1a.png",
+    "title": "Drinks Coloring Pages"
+  },
+  "/coloring-pages/easter/": {
+    "alt": "JotColoring printable coloring pages share image: Easter Coloring Pages Featuring Easter Bunny Hugs a Striped Egg, Chick Hatches from a Zigzag Egg, Easter Egg Basket with a Bow.",
+    "description": "Decorated eggs, rabbits, chicks, baskets, and spring flowers form the Easter collection. Simple arrangements and detailed gardens offer different amounts of pattern and background to color.",
+    "identity_sha256": "895035c050276bfb3fbfb061112776a626f2bd7928ae5db91ef64d6c96ec3128",
+    "sha256": "0bf6ddb14617379f9cf52e9ad6188416086a4c849bf2b7b7a7e94a80c64f6c37",
+    "sources": [
+      {
+        "id": "jc-easter-easy-001",
+        "sha256": "da49777e4f2c60861a840a78a15d66b025d046502a3d7424c6c1525f4f5f5460"
+      },
+      {
+        "id": "jc-easter-easy-002",
+        "sha256": "ca9f02ffbfbb6a6802e8a3a55ba151629b991487ad59b89e6d8fc1511413149f"
+      },
+      {
+        "id": "jc-easter-easy-003",
+        "sha256": "6b868ce4acf822e90f075e6db1386bc2faf4155b455086792b0d346ffebb3a8a"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0bf6ddb14617379f9cf52e9ad6188416086a4c849bf2b7b7a7e94a80c64f6c37.png",
+    "title": "Easter Coloring Pages"
+  },
+  "/coloring-pages/fairies/": {
+    "alt": "JotColoring printable coloring pages share image: Fairies Coloring Pages Featuring Fairy Barbie with a Flower Wand, Fairy Barbie Has Tea Beside a Flower Cottage, Fairy Barbie Among Giant Flowers.",
+    "description": "Imagined fairy versions of Barbie carry flower wands, share tea beside a cottage, and explore giant blossoms. Wings, dresses, petals, and tiny garden settings fill the scenes.",
+    "identity_sha256": "3e520ee3a27c799c7db8591377e8c7d1263d13b0b42ef82192b29ed571aeaebe",
+    "sha256": "2ded5cecc1f02a88f944e27a1c4858b6f68cd21d9761a87a394db0aa1a60ae9e",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-024",
+        "sha256": "12b97d1b44f02c54dd1e289db54f30b0ef1bfd4f5b5558a527acd1d0b08f61a0"
+      },
+      {
+        "id": "jc-barbie-hard-024",
+        "sha256": "3cd61bf7ff1dcc7364e0b41776cca2d577e94b839e18efb48886f751730bfe10"
+      },
+      {
+        "id": "jc-barbie-medium-024",
+        "sha256": "52c1c9296287d3be85fcd6706a09ce0ea0e1e3bb16ed4891c4e92a8e9652687d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/2ded5cecc1f02a88f944e27a1c4858b6f68cd21d9761a87a394db0aa1a60ae9e.png",
+    "title": "Fairies Coloring Pages"
+  },
+  "/coloring-pages/family/": {
+    "alt": "JotColoring printable coloring pages share image: Family & Friends Coloring Pages Featuring Barbie Films a Friend in a Garden, Barbie and a Friend Share a Seaside Picnic, Two Children Share a Beach Ball.",
+    "description": "Friends film in a garden, share a seaside picnic, and play together with a beach ball. These shared-activity drawings combine expressive characters with outdoor settings.",
+    "identity_sha256": "c7abbf0362dde2767cd1a53e1e245e4915714cf6139de44bda0e50181b60497b",
+    "sha256": "1d84593680e5b5828250759e11cb086a72fea534b5d60b9a99c9c19250dc7ca1",
+    "sources": [
+      {
+        "id": "jc-barbie-hard-016",
+        "sha256": "335e86f52012df896bb487839d6c259813e3e36a3c66cde5ecbc8d2bc3fc4540"
+      },
+      {
+        "id": "jc-barbie-very-hard-009",
+        "sha256": "ad05ba25f15324995ad511131056a15688306741ad4d2c148ac4ae01b900404b"
+      },
+      {
+        "id": "jc-kids-easy-001",
+        "sha256": "5730231a17245808e356d1401ff59d9469c6d8729f53bacb29021cc4048298b3"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/1d84593680e5b5828250759e11cb086a72fea534b5d60b9a99c9c19250dc7ca1.png",
+    "title": "Family & Friends Coloring Pages"
+  },
+  "/coloring-pages/fantasy/": {
+    "alt": "JotColoring printable coloring pages share image: Fantasy Coloring Pages Featuring Flower-Covered Bookshop, Dragon by a Fairytale Castle, Fairy Barbie with a Flower Wand.",
+    "description": "Unicorns, dragons, and storybook princesses explore gardens, castles, woodland paths, and imagined floating worlds. Simple character outlines and detailed scenes offer different ways to invent a palette.",
+    "identity_sha256": "24167dc1cef595741a3f939dba9e3ef6060060fbc8afc15da7d0a3fe7e837bc6",
+    "sha256": "a4d12e7a5343af9a1b350ca821c87e8d820091c446d9f267afa2690114cdaf40",
+    "sources": [
+      {
+        "id": "jc-cozy-bookshop",
+        "sha256": "b5388c9a7ddd4dd71f43b668e8c20936f0c5c12405be949ff200b05d468e6c7e"
+      },
+      {
+        "id": "jc-friendly-dragon",
+        "sha256": "09fe582d69da92238919433ffd1b4d47611f001adc51947d4295847dcbbe7bdd"
+      },
+      {
+        "id": "jc-barbie-easy-024",
+        "sha256": "12b97d1b44f02c54dd1e289db54f30b0ef1bfd4f5b5558a527acd1d0b08f61a0"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a4d12e7a5343af9a1b350ca821c87e8d820091c446d9f267afa2690114cdaf40.png",
+    "title": "Fantasy Coloring Pages"
+  },
+  "/coloring-pages/farm-animals/": {
+    "alt": "JotColoring printable coloring pages share image: Farm Animals Coloring Pages Featuring Calf by the Barn, Chick Wears a Giant Daisy Hat, Lamb with a Ribboned Bell Collar.",
+    "description": "Calves, chicks, and lambs appear with barns, flowers, and small decorative details. Look for soft wool, feather shapes, patterned ribbons, and illustrated farm settings.",
+    "identity_sha256": "c631842dbdbd82e617725f72bad1d28bd331483e98427f423156eaa32fcf8efe",
+    "sha256": "510c8bf2364744c6988a86e998935a5109c0f5396ef963f186928cf590d50fdf",
+    "sources": [
+      {
+        "id": "jc-farm-friends",
+        "sha256": "82afe0d56d985e1f452abd0fe7741e9b5643f417690b1cef7d8ba950dfe69502"
+      },
+      {
+        "id": "jc-cute-easy-008",
+        "sha256": "3c8baa908fe2531644915aaa8e82af800597573d17c8e9be7dae44e583942083"
+      },
+      {
+        "id": "jc-cute-easy-019",
+        "sha256": "1f3df048058f33af6e17da7159c4aa9813922a2fe2929ffb87fa17d9e117d29e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/510c8bf2364744c6988a86e998935a5109c0f5396ef963f186928cf590d50fdf.png",
+    "title": "Farm Animals Coloring Pages"
+  },
+  "/coloring-pages/fashion/": {
+    "alt": "JotColoring printable coloring pages share image: Fashion Coloring Pages Featuring Barbie with Fabric and a Pincushion, Barbie Fits a Floral Dress on a Mannequin, Barbie Sews at a Worktable.",
+    "description": "Barbie works with fabric, fits dresses on mannequins, and sews at a worktable. Clothing outlines and individual accessories add other ways to explore fashion details.",
+    "identity_sha256": "8a7516f64391f82aecc474df3e3fe20ef809f908ed73ead5bbafd83ff04efcfa",
+    "sha256": "3339954754c484f4dc475e4f930109fab189873191f2112a057728640f513fe2",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-013",
+        "sha256": "0a652e96e9d5cedfadd325bf3431b8264a59e79adf329132b497e9f7faf5ae20"
+      },
+      {
+        "id": "jc-barbie-hard-013",
+        "sha256": "5ab5797c7519747ffeeaca60ba061a5cf9837bc124e973aef97ab4c5f3b451ef"
+      },
+      {
+        "id": "jc-barbie-medium-013",
+        "sha256": "b815f7640870cd1316c456cab41922470e46df2f79cd1349705ed293a93eddcb"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/3339954754c484f4dc475e4f930109fab189873191f2112a057728640f513fe2.png",
+    "title": "Fashion Coloring Pages"
+  },
+  "/coloring-pages/fish/": {
+    "alt": "JotColoring printable coloring pages share image: Fish Coloring Pages Featuring Smiling Fish with Three Bubbles, Two Striped Fish Beside Seaweed, Clownfish And Sea Anemones.",
+    "description": "Smiling fish swim among bubbles and seaweed, while clownfish explore sea-anemone scenes. Rounded bodies, stripes, fins, and underwater plants provide different outlined shapes.",
+    "identity_sha256": "44085b2501aa88748b84acb1df3e44577881cf40439fbb7525fedebc65251831",
+    "sha256": "ccc99df6a11ffb299971f818a4f512fd0202c293f6d68e172408c5ed7edc172b",
+    "sources": [
+      {
+        "id": "jc-easy-easy-009",
+        "sha256": "2ed2f537861cc641f3c645e92874657c452618c5197edc454a85b1f214983f90"
+      },
+      {
+        "id": "jc-easy-medium-011",
+        "sha256": "43d48455525f13747e65709009f2f9a8b108c5764a0d05389015616639328b80"
+      },
+      {
+        "id": "jc-original-clownfish-and-sea-anemones",
+        "sha256": "023635a45c9100c6c3b3c318f677a41e4602c5c5e852fd9f23a5dd76b62a8086"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/ccc99df6a11ffb299971f818a4f512fd0202c293f6d68e172408c5ed7edc172b.png",
+    "title": "Fish Coloring Pages"
+  },
+  "/coloring-pages/floral-mandalas/": {
+    "alt": "JotColoring printable coloring pages share image: Floral Mandalas Coloring Pages Featuring Rounded Petals and Scallops Mandala, Petal Mandala with Round Nodes, Looped Daisy Mandala.",
+    "description": "Layered petals, leaves, tulip shapes, and botanical curls repeat around a central flower in broad or finely patterned rings.",
+    "identity_sha256": "c9715047ddb84b20856d79a05b4bce4012362b0393c86df986b0a4f1d1d8dccf",
+    "sha256": "3ec2895bf626bca3dae3e856f5823ccd8278fd6d61d85d5440f7208871d90a52",
+    "sources": [
+      {
+        "id": "jc-mandala-easy-001",
+        "sha256": "8c938808b3d09d39f3b4450a8b6100bbbf3e5eb146f57c77a61651285315ab53"
+      },
+      {
+        "id": "jc-mandala-easy-002",
+        "sha256": "cc2a9124010197e92d3de7185c0c31e6c3333a69ddca01b816ef8dfcf2988889"
+      },
+      {
+        "id": "jc-mandala-easy-003",
+        "sha256": "5d12e1c72633d9956ec9814de12ece9972b8ff83dea42d00562a4d6d7a31df6c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/3ec2895bf626bca3dae3e856f5823ccd8278fd6d61d85d5440f7208871d90a52.png",
+    "title": "Floral Mandalas Coloring Pages"
+  },
+  "/coloring-pages/flowers/": {
+    "alt": "JotColoring printable coloring pages share image: Flower Coloring Pages Featuring Butterfly and Garden Flowers, Floral Leaf Mandala, Hibiscus and Tropical Leaves.",
+    "description": "Explore roses, tulips, daisies, sunflowers, orchids, and other blossoms, from single stems to bouquets and elaborate gardens. Petal shapes, leaves, patterned pots, and glasshouse details give each page a different focus.",
+    "identity_sha256": "0797487e0b416aa870c3ac83879a821ecb5c1c5112d7e88cf846ec7cb178ca4b",
+    "sha256": "69773e523e23c820d21f9cbbb7df2a03438d0f38058c860b9b21617742bba8e6",
+    "sources": [
+      {
+        "id": "jc-butterfly-garden",
+        "sha256": "196ab89eb0b643514ca747732d54e551fb86e126bd0d008238051ea6428370ca"
+      },
+      {
+        "id": "jc-botanical-mandala",
+        "sha256": "eb8530b7183eb74dcc35431e7dc3bd19fdbabe55d5df044f5148372a11084a7f"
+      },
+      {
+        "id": "jc-hibiscus-garden",
+        "sha256": "60c9c7dc03156760b298886dc0bd2dd5c31363d580ab4907ad26286abff81a18"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/69773e523e23c820d21f9cbbb7df2a03438d0f38058c860b9b21617742bba8e6.png",
+    "title": "Flower Coloring Pages"
+  },
+  "/coloring-pages/fnaf/": {
+    "alt": "JotColoring printable coloring pages share image: Five Nights At Freddy's Coloring Pages Featuring Freddy Fazbear Holding a Microphone, Bonnie Sitting with a Star-Shaped Guitar, Chica Presenting Her Cupcake.",
+    "description": "Freddy, Bonnie, Chica, Foxy, and other Five Nights at Freddy’s characters appear in expressive poses and imagined activities. Explore familiar animatronic details and elaborate stage settings.",
+    "identity_sha256": "1c07c02709fd9b85a673afacb9eabc84ff612f4b0e2e08b3727a2f2af3862479",
+    "sha256": "60a86cb412c700304fddba3d7e4192b4fafd089d933347f009cd2115f302b3d0",
+    "sources": [
+      {
+        "id": "jc-fnaf-easy-001",
+        "sha256": "3070ae9d6a218e6dd6ca9be0e628db0cd812477d03b351b6c1c2a87b4aaa1cfa"
+      },
+      {
+        "id": "jc-fnaf-easy-002",
+        "sha256": "a46742f1c17d78cc3e5e60efad60a4e97127a65b673557b15b9cd035d9db445b"
+      },
+      {
+        "id": "jc-fnaf-easy-003",
+        "sha256": "036cc4b9ffe2e00ddaad51c48771eeb94a52eac8cf58a2f7f786346f1ab80b2b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/60a86cb412c700304fddba3d7e4192b4fafd089d933347f009cd2115f302b3d0.png",
+    "title": "Five Nights At Freddy's Coloring Pages"
+  },
+  "/coloring-pages/food/": {
+    "alt": "JotColoring printable coloring pages share image: Food Coloring Pages Featuring Strawberry Cupcakes and Daisies, Apples in a Woven Basket, Harvest Basket with Bottled Preserves.",
+    "description": "Cupcakes, fruit baskets, bread, drinks, and illustrated kitchens bring food to the page. Simple still lifes sit alongside decorated tables and food-making scenes.",
+    "identity_sha256": "d0689bdb6f61d6e4f7947dc4e2659329dfd62329a4818597d18808cf63773033",
+    "sha256": "a9a38b7ed8aa258a7a8773fff3f6671baee211e7503bb943071fcdb5940d4b46",
+    "sources": [
+      {
+        "id": "jc-sweet-treats",
+        "sha256": "9b3e0995b31d600badff3f5c2ab24de27175c06ca4a1485e901a81232f5af6ed"
+      },
+      {
+        "id": "jc-adult-easy-011",
+        "sha256": "5680fb775aa3fa3e09cda4fb5f306c9ed9907ddc63e0b669503ba7649287d89f"
+      },
+      {
+        "id": "jc-adult-medium-011",
+        "sha256": "192b44c7a4b006e0fa6fe8ef527add72540a6295f5ea43ceb44cdee497f34692"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a9a38b7ed8aa258a7a8773fff3f6671baee211e7503bb943071fcdb5940d4b46.png",
+    "title": "Food Coloring Pages"
+  },
+  "/coloring-pages/forests/": {
+    "alt": "JotColoring printable coloring pages share image: Forests & Trees Coloring Pages Featuring Bonsai Tree in a Shallow Pot, Bonsai Garden Inside a Glass Pavilion, Bonsai Workbench with Garden Tools.",
+    "description": "Bonsai trees appear in shallow pots, garden pavilions, and detailed workspaces. Branches, leafy canopies, benches, tools, and planted settings explore trees at different scales.",
+    "identity_sha256": "000a1811775c2941782e5c43c1fd6e36c76ec685192a80821ee1eaa73ffc4162",
+    "sha256": "92d96d80f9870b7baff5c8ec04342e7049d10b07d7ce2dab35842c3af803459d",
+    "sources": [
+      {
+        "id": "jc-adult-easy-021",
+        "sha256": "43f05d712a6a1fa55de9e16ef95b8b77d7825fa75bfbaae6be5ac6dc96a98e6a"
+      },
+      {
+        "id": "jc-adult-hard-021",
+        "sha256": "7ad63724f96755120bebbc4d723a700940e0649c1b23b2681b1ef09466313c55"
+      },
+      {
+        "id": "jc-adult-medium-021",
+        "sha256": "b35b7ffebc28454df8f13ea44849f41c1e190e3621e7c2f7f31c5be5c3f5f9c9"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/92d96d80f9870b7baff5c8ec04342e7049d10b07d7ce2dab35842c3af803459d.png",
+    "title": "Forests & Trees Coloring Pages"
+  },
+  "/coloring-pages/fruit/": {
+    "alt": "JotColoring printable coloring pages share image: Fruit Coloring Pages Featuring Apples in a Woven Basket, Harvest Basket with Bottled Preserves, Decorated Harvest Still Life.",
+    "description": "Apples fill a woven basket, harvest arrangements include bottled preserves, and decorated still lifes bring fruit together. Leaves, basket patterns, jars, and table details add variety.",
+    "identity_sha256": "388cc247c52fe6c2c3ec98e4d6382e46b5d4b7bdafe12608841f73776f5f4c17",
+    "sha256": "ee5234161e76d2340c6546d7c37ffae41b9d42801933bcb57df213ad252ef619",
+    "sources": [
+      {
+        "id": "jc-adult-easy-011",
+        "sha256": "5680fb775aa3fa3e09cda4fb5f306c9ed9907ddc63e0b669503ba7649287d89f"
+      },
+      {
+        "id": "jc-adult-medium-011",
+        "sha256": "192b44c7a4b006e0fa6fe8ef527add72540a6295f5ea43ceb44cdee497f34692"
+      },
+      {
+        "id": "jc-adult-very-hard-011",
+        "sha256": "7bbb5b10d37d158f3da3ed4ff84cb8e2c4951e9bfd53f402b8423980ba08cca3"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/ee5234161e76d2340c6546d7c37ffae41b9d42801933bcb57df213ad252ef619.png",
+    "title": "Fruit Coloring Pages"
+  },
+  "/coloring-pages/furniture/": {
+    "alt": "JotColoring printable coloring pages share image: Furniture Coloring Pages Featuring Armchair with Patterned Cushions, Reading Chair with a Draped Blanket, Tea Service in an Ornate Sitting Room.",
+    "description": "Patterned armchairs, draped blankets, and a tea service in an ornate sitting room explore furnishings. Cushions, upholstery, tables, and decorative room details add variety.",
+    "identity_sha256": "26166242fc01fc111c100d18b285c93bc092b0180016446b94afe640ba5115a7",
+    "sha256": "53d6f572ef17d8cd4d672e70d19c4f35ec5848fe1f2b30b8d9b33c46552c14f6",
+    "sources": [
+      {
+        "id": "jc-adult-easy-013",
+        "sha256": "a134fa79639d82a3cef051387d748063f3b8e130aa85ebf873affe38bd03d3ce"
+      },
+      {
+        "id": "jc-adult-easy-024",
+        "sha256": "c8079aa2c91ca19875b904687d232d197c239155f66d4d92de73ebc906dba398"
+      },
+      {
+        "id": "jc-adult-hard-001",
+        "sha256": "059288878b26c73edb52f00e4c8101ad44ea6fd5950a6573086428b5d3d90d80"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/53d6f572ef17d8cd4d672e70d19c4f35ec5848fe1f2b30b8d9b33c46552c14f6.png",
+    "title": "Furniture Coloring Pages"
+  },
+  "/coloring-pages/garden-flowers/": {
+    "alt": "JotColoring printable coloring pages share image: Garden Flowers Coloring Pages Featuring Barbie Plants a Raised Flower Bed, Single Tulip in a Plain Pot, Pointed-Petal Flower on a Stem.",
+    "description": "Tulips, daisies, lilies, orchids, and other garden blossoms appear in pots, flower beds, woodland patches, and conservatories.",
+    "identity_sha256": "cb0649a89938e1b9760a2b54f1f5b2e9ed3e303c8e40d005e2d759f3137250e7",
+    "sha256": "54ca651c8a9ef6b3f2f0dd83f24453c2d7bb6281cef012709f136cf1c46dd2cf",
+    "sources": [
+      {
+        "id": "jc-barbie-medium-001",
+        "sha256": "468ec8aa127613c837d50d7e1d28e89fef24376c57141ce7e32cedb03cfcae83"
+      },
+      {
+        "id": "jc-easy-easy-005",
+        "sha256": "175cfcd90ed43617fd472e5674ff2246fc23f7747b236efac56468d93145c23a"
+      },
+      {
+        "id": "jc-easy-easy-021",
+        "sha256": "7c8b62c77daa74c95d5c2b3f2a872dac340c4a51a17e9c18efc4e61c84fb944d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/54ca651c8a9ef6b3f2f0dd83f24453c2d7bb6281cef012709f136cf1c46dd2cf.png",
+    "title": "Garden Flowers Coloring Pages"
+  },
+  "/coloring-pages/geometric-mandalas/": {
+    "alt": "JotColoring printable coloring pages share image: Geometric Mandalas Coloring Pages Featuring Pointed Leaf Star Mandala, Sharp Star and Soft Petals Mandala, Snowflake and Petal Mandala.",
+    "description": "Stars, diamonds, angular petals, lattice bands, and celestial motifs form circular patterns with clearly repeated sections.",
+    "identity_sha256": "181162d595ae35bcff830c383c1954eae5c450a30fd512a2ce625f6cd45eb0e3",
+    "sha256": "fff383fe4553ae98bcd0fb69a97b36630b596dc9315a46329428a96377d7c9a1",
+    "sources": [
+      {
+        "id": "jc-mandala-easy-004",
+        "sha256": "8f42b62f8aaaa43e210c17d702d48f30038cfc116d8d187a9709a2e3dd3fc86b"
+      },
+      {
+        "id": "jc-mandala-easy-007",
+        "sha256": "796b8e2599191375a461ed8677aaebfa89f309df6bdc568be86f2c75d8dfed83"
+      },
+      {
+        "id": "jc-mandala-easy-012",
+        "sha256": "1023794c8f9a9f82bb9e2b21a2d15b89e5920f32ba763c18f599f621053e54da"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/fff383fe4553ae98bcd0fb69a97b36630b596dc9315a46329428a96377d7c9a1.png",
+    "title": "Geometric Mandalas Coloring Pages"
+  },
+  "/coloring-pages/geometric-patterns/": {
+    "alt": "JotColoring printable coloring pages share image: Geometric Patterns Coloring Pages Featuring Angular Art Deco Fan Motif, Four Decorative Tile Motifs, Patterned Tiles in a Decorative Workshop.",
+    "description": "Angular Art Deco fans, decorated tiles, and an illustrated tile workshop explore repeating shapes. Straight edges, curved motifs, and patterned surfaces offer varied coloring sections.",
+    "identity_sha256": "10ccbb69c331944318fefffa45650203c4c0bd2f9c1be7866f9bd4c518a5391d",
+    "sha256": "b386a75ce1a7f1b236ac7f73c2434a42fdcf3dca0e30f8b3653f96e6722c252a",
+    "sources": [
+      {
+        "id": "jc-adult-easy-006",
+        "sha256": "021452fb0801f97005efd19ec832bb1d4192bdd998bb4d9e435810d19445ffc9"
+      },
+      {
+        "id": "jc-adult-easy-020",
+        "sha256": "adf9fb4abcce311671946de1196f10a15c71634891d2177c0420ef8a040b48a9"
+      },
+      {
+        "id": "jc-adult-hard-020",
+        "sha256": "d7f70637bbf4a313a058ce587c9d4d762789f4ecd5577beddaf2ebc3f7e527bb"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/b386a75ce1a7f1b236ac7f73c2434a42fdcf3dca0e30f8b3653f96e6722c252a.png",
+    "title": "Geometric Patterns Coloring Pages"
+  },
+  "/coloring-pages/halloween/": {
+    "alt": "JotColoring printable coloring pages share image: Halloween Coloring Pages Featuring Jack-o-Lantern Beneath a Crescent Moon, Friendly Ghost Waves Beside Stars, Soft Pointed Witch Hat.",
+    "description": "Pumpkins, friendly ghosts, bats, black cats, costumes, and decorated houses create playful Halloween scenes. Open character outlines sit alongside detailed lantern-lit gardens and imaginative interiors.",
+    "identity_sha256": "d96ff69f6f871d2ecfaafe8f0aefb0a444a96b083856e30952dccfbff09e69e0",
+    "sha256": "916407665dda90f4558d6254d9c3aaaa07baed22c1fb2b5a63d6df367eeaca4d",
+    "sources": [
+      {
+        "id": "jc-halloween-easy-001",
+        "sha256": "3fb15381a0706f93c4a72ebd9d34f54ca8c3440627d9867d8f904bec0de45ea0"
+      },
+      {
+        "id": "jc-halloween-easy-002",
+        "sha256": "2951b9e8394907a009cb6979bc73ff7fffbdee64d0fe4ad9f9cc37c34125629e"
+      },
+      {
+        "id": "jc-halloween-easy-003",
+        "sha256": "f90c461dd73664e17616628b8ad972c50ef45448cd7948c01b9063b58a0bc82a"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/916407665dda90f4558d6254d9c3aaaa07baed22c1fb2b5a63d6df367eeaca4d.png",
+    "title": "Halloween Coloring Pages"
+  },
+  "/coloring-pages/hello-kitty/": {
+    "alt": "JotColoring printable coloring pages share image: Hello Kitty Coloring Pages Featuring Hello Kitty Holds an Apple Beside a Basket, Hello Kitty Has Tea at a Small Table, Hello Kitty Waters a Potted Tulip.",
+    "description": "Hello Kitty picks apples, pours tea, makes crafts, gardens, and plays music. The collection ranges from simple character outlines to richly decorated rooms and outdoor scenes.",
+    "identity_sha256": "3983f2f15307ec4487c78636eee4be58e6be4408094849d96d0309f45ff8cf5f",
+    "sha256": "cecca9200ff36fc9ac6f9f0c5036344d10ffc52c58da1de4ac9a75e3eecd23f4",
+    "sources": [
+      {
+        "id": "jc-hello-kitty-easy-001",
+        "sha256": "60628b8604e816b19ac23be933f25581d3a3b56d324fc19dcf3b154b9d82d5ca"
+      },
+      {
+        "id": "jc-hello-kitty-easy-002",
+        "sha256": "6742565cec22efeb782d721576919b0685413247608a4696d15f18ad059ebc9f"
+      },
+      {
+        "id": "jc-hello-kitty-easy-003",
+        "sha256": "c01a80e6665cdfe5130cd2692c1e33063d596f8d1b66927e5527c239cc272762"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/cecca9200ff36fc9ac6f9f0c5036344d10ffc52c58da1de4ac9a75e3eecd23f4.png",
+    "title": "Hello Kitty Coloring Pages"
+  },
+  "/coloring-pages/horned-dinosaurs/": {
+    "alt": "JotColoring printable coloring pages share image: Horned Dinosaurs Coloring Pages Featuring Resting Triceratops Beside a Rock, Spiked Frill Dinosaur in Profile, Triceratops Shelters a Small Youngster.",
+    "description": "Horned dinosaurs rest beside rocks, display spiked frills, and shelter their young. Frills, horns, scales, plants, and rocky surroundings provide different details.",
+    "identity_sha256": "6fef1315ea778c5c33111cc20fe510649b1823ae11c06d39cd2ae6c0c87bf7a4",
+    "sha256": "0c9c92214d03c5206f4d5060e3bfcc0d8d3f19614302ac94d57356ec65df6c53",
+    "sources": [
+      {
+        "id": "jc-dinosaur-easy-002",
+        "sha256": "70073ca8d6de35af07dcb376e425e5a3f2bc8e3e6e01106146b951364cc54c84"
+      },
+      {
+        "id": "jc-dinosaur-easy-012",
+        "sha256": "060d662f33230660f7ebd6fc290edbebe96ba00a56c30da24d1449e726483b12"
+      },
+      {
+        "id": "jc-dinosaur-hard-002",
+        "sha256": "da278ff0589655c918f92f9e997bbc20b8d3da156878abe318d3d23ffed01b5e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0c9c92214d03c5206f4d5060e3bfcc0d8d3f19614302ac94d57356ec65df6c53.png",
+    "title": "Horned Dinosaurs Coloring Pages"
+  },
+  "/coloring-pages/houses/": {
+    "alt": "JotColoring printable coloring pages share image: Houses & Homes Coloring Pages Featuring Rocking Chair on a Seaside Porch, Mountain View from a Wooden Porch, Barbie Presents a Model House.",
+    "description": "Seaside and mountain porches frame chairs, railings, and distant views, while Barbie presents a model house. Explore building outlines and the objects around an illustrated home.",
+    "identity_sha256": "7c035d73ab330dbd61020997c617dfd51bedf8d8d2d1e454264a45d461de753b",
+    "sha256": "2623c28bdd2fa816188a82c1857e33ea4286713c711b16f2b5e7bfc9c3659eb6",
+    "sources": [
+      {
+        "id": "jc-adult-medium-003",
+        "sha256": "4000c7465b031d8a8b01340a1b0ffc6d7166a33625add39b0664010195d4a2ea"
+      },
+      {
+        "id": "jc-adult-medium-010",
+        "sha256": "6fdab16a03bceeb01c043bf84c3919eab7c70c137c3eb477b74ae462b6af763f"
+      },
+      {
+        "id": "jc-barbie-easy-023",
+        "sha256": "fd2b73bd4b0627004c1aff3fb38151d066265dcc30311c29402cfae7d1a9257b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/2623c28bdd2fa816188a82c1857e33ea4286713c711b16f2b5e7bfc9c3659eb6.png",
+    "title": "Houses & Homes Coloring Pages"
+  },
+  "/coloring-pages/huntrix/": {
+    "alt": "JotColoring printable coloring pages share image: HUNTR/X Coloring Pages Featuring Rumi Sings into a Microphone, Mira Balances with Her Curved Blade, Zoey Writes in a Star-Covered Notebook.",
+    "description": "Rumi, Mira, and Zoey of HUNTR/X from KPop Demon Hunters sing, dance, make crafts, and explore imagined city and garden scenes. Character outlines and detailed settings offer varied coloring spaces.",
+    "identity_sha256": "50e06c7fec2484dfd5ea07bfc675af030d8791d465932f5d53745bac20ec47c4",
+    "sha256": "bb2c4ee33a88ed78302b1b2ff5e2182694251d86ef71a77d5023a7c3dc6fff73",
+    "sources": [
+      {
+        "id": "jc-huntrix-easy-001",
+        "sha256": "ac63c43479a46b8cf13877694de23fa72790c880742867d044eaecbdf2ed294e"
+      },
+      {
+        "id": "jc-huntrix-easy-002",
+        "sha256": "21cbc2aa1a69afbed62bf29280a5899c9f66454aefa8f21a8dcf6eff43157bba"
+      },
+      {
+        "id": "jc-huntrix-easy-003",
+        "sha256": "f2dd12d5d3163c6f961d1af82806009761ea79248c38b6b3c4ec1c278496a285"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/bb2c4ee33a88ed78302b1b2ff5e2182694251d86ef71a77d5023a7c3dc6fff73.png",
+    "title": "HUNTR/X Coloring Pages"
+  },
+  "/coloring-pages/instruments/": {
+    "alt": "JotColoring printable coloring pages share image: Musical Instruments Coloring Pages Featuring Barbie Plays an Acoustic Guitar, Barbie Plays a Harp in a Garden Pavilion, Barbie Plays a Keyboard by the Window.",
+    "description": "Barbie plays an acoustic guitar, a harp in a garden pavilion, and a keyboard beside a window. Strings, keys, clothing, and surrounding scenes give each instrument drawing its own setting.",
+    "identity_sha256": "6f5957b6580b819993fe61dd471ef293977d12416e8d67fe1be1ef7874f7346e",
+    "sha256": "299f8045f842a4bcef9ea3cdede25aad6ee4de9f035b46208b06b33f0f4078cd",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-008",
+        "sha256": "b1c300bd79c0cdc23b155d9b125d89a99ef78864ee1e57b8484e5dae53b5b484"
+      },
+      {
+        "id": "jc-barbie-hard-008",
+        "sha256": "e9e597f8e725cfcc3ae4187f19467c40c5c7f95716d8385a80691deb52c526bc"
+      },
+      {
+        "id": "jc-barbie-medium-008",
+        "sha256": "bcf62f07269bbbf6b42a1aeb8dd3f54ca6dd2d17d9e0fe6e1b58a075dde8929b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/299f8045f842a4bcef9ea3cdede25aad6ee4de9f035b46208b06b33f0f4078cd.png",
+    "title": "Musical Instruments Coloring Pages"
+  },
+  "/coloring-pages/jungle-animals/": {
+    "alt": "JotColoring printable coloring pages share image: Jungle Animals Coloring Pages Featuring Tiger Cub with Raised Front Paws, Gorilla Holds a Large Leaf, Sloth Hangs Beneath a Branch.",
+    "description": "A tiger cub raises its paws, a gorilla holds a leaf, and a sloth hangs beneath a branch. These illustrated animals explore leafy surroundings and varied poses.",
+    "identity_sha256": "6dc71da9d66273a22eab966cafca8f409eec709e11f54f50d408d4075a938df6",
+    "sha256": "65efc836cff94180deab53af7b86be92cc4098f3b59e6279dcb08ca07e32ad75",
+    "sources": [
+      {
+        "id": "jc-animal-easy-004",
+        "sha256": "b954a9cd925d8238f4bfc808dac7ab4a29861c52a0c073a7568e7c92079f9a88"
+      },
+      {
+        "id": "jc-animal-easy-008",
+        "sha256": "40550bd7ad80f78ec8896bad80f2684e80ed2d226641450080be03b849e56cdc"
+      },
+      {
+        "id": "jc-animal-easy-017",
+        "sha256": "2f4cfe734241f4d16934a42756a7ac2c342308f974ce3b3b46540cddb8c4a648"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/65efc836cff94180deab53af7b86be92cc4098f3b59e6279dcb08ca07e32ad75.png",
+    "title": "Jungle Animals Coloring Pages"
+  },
+  "/coloring-pages/k-pop-demon-hunters/": {
+    "alt": "JotColoring printable coloring pages share image: KPop Demon Hunters Coloring Pages Featuring Rumi Sings into a Microphone, Mira Balances with Her Curved Blade, Zoey Writes in a Star-Covered Notebook.",
+    "description": "Derpy, Sussie, the Saja Boys, and HUNTR/X characters appear in playful portraits, music scenes, and imagined adventures. Explore expressive creatures, familiar hairstyles, and detailed settings.",
+    "identity_sha256": "6a96a81a20528b9831a0f0e4d721245c88ecdeba0a1a0beaee0cc990be408659",
+    "sha256": "1dd0cb706814744a9eb63a1f79d9e247f36446651cd6a6b918daee8fc000da45",
+    "sources": [
+      {
+        "id": "jc-huntrix-easy-001",
+        "sha256": "ac63c43479a46b8cf13877694de23fa72790c880742867d044eaecbdf2ed294e"
+      },
+      {
+        "id": "jc-huntrix-easy-002",
+        "sha256": "21cbc2aa1a69afbed62bf29280a5899c9f66454aefa8f21a8dcf6eff43157bba"
+      },
+      {
+        "id": "jc-huntrix-easy-003",
+        "sha256": "f2dd12d5d3163c6f961d1af82806009761ea79248c38b6b3c4ec1c278496a285"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/1dd0cb706814744a9eb63a1f79d9e247f36446651cd6a6b918daee8fc000da45.png",
+    "title": "KPop Demon Hunters Coloring Pages"
+  },
+  "/coloring-pages/landmarks/": {
+    "alt": "JotColoring printable coloring pages share image: Landmarks Coloring Pages Featuring Garden Bridge Beneath The Maples, Windmill Beside The Tulips.",
+    "description": "A garden bridge beneath maples and a windmill beside tulips form illustrated architectural scenes. Paths, railings, sails, flowers, and surrounding foliage add detail.",
+    "identity_sha256": "bcbc10f14c6f6260691c4c534cef1dfdbfcfc48de4a0759b00ad29bf91c41ac4",
+    "sha256": "3fc535004305eda50d7f40c13c1838f68a695cabf7260cfa5c675c71dea38073",
+    "sources": [
+      {
+        "id": "jc-original-garden-bridge-beneath-the-maples",
+        "sha256": "c111be2f7c29a7add2a394592a2035cce2e2c0481fa0af6ba2e0649c89841868"
+      },
+      {
+        "id": "jc-original-windmill-beside-the-tulips",
+        "sha256": "3217974a21240d9335ca73e88572dd627b3f635dd09f515d52fb37336eda5087"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/3fc535004305eda50d7f40c13c1838f68a695cabf7260cfa5c675c71dea38073.png",
+    "title": "Landmarks Coloring Pages"
+  },
+  "/coloring-pages/long-neck-dinosaurs/": {
+    "alt": "JotColoring printable coloring pages share image: Long-Neck Dinosaurs Coloring Pages Featuring Long-Necked Dinosaur Beneath Clouds, Sauropod with a Long Curled Tail, Sauropod Reaches Toward a Branch.",
+    "description": "Long-necked dinosaurs stand beneath clouds and reach toward leafy branches. Tall necks, curled tails, broad bodies, and imagined prehistoric settings shape the drawings.",
+    "identity_sha256": "89fbb99e936cbfd3ef2a8da3935b7fddcc65dab89fb06ede49a522597c707d69",
+    "sha256": "731251e86a3fe5bcd68f62dfeea6e520bdc1b2bd23cc133bbc31249ec7ddeca7",
+    "sources": [
+      {
+        "id": "jc-dinosaur-easy-004",
+        "sha256": "1eb567b706ec3437fe7cede78b3ee1833520dd4965b063c59c504c5c987e770c"
+      },
+      {
+        "id": "jc-dinosaur-easy-005",
+        "sha256": "809ef476ba4f5fdc1374b05dc54ae9579e6495ab976ad664524de0b9a9a71ce1"
+      },
+      {
+        "id": "jc-dinosaur-easy-019",
+        "sha256": "af3ab1e0fdc88757350b6e19950c293b8c9997c85a0604fc7957459ef6427666"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/731251e86a3fe5bcd68f62dfeea6e520bdc1b2bd23cc133bbc31249ec7ddeca7.png",
+    "title": "Long-Neck Dinosaurs Coloring Pages"
+  },
+  "/coloring-pages/magical-castles/": {
+    "alt": "JotColoring printable coloring pages share image: Magical Castles Coloring Pages Featuring Crystal Castle By A Lake.",
+    "description": "An imagined crystal castle stands beside a lake. Turrets, pointed roofs, stonework, plants, and reflections create a detailed fantasy setting.",
+    "identity_sha256": "3f54366dc14388575ec75c6c5a2b36b7dcbf7b4cc91e89fa0c6a8f47e738cc69",
+    "sha256": "9f92dfece0586ac73b874e69f903cf83550ac9f13350ace7db04eb0f4b4a2a8b",
+    "sources": [
+      {
+        "id": "jc-original-crystal-castle-by-a-lake",
+        "sha256": "ba11d576d004682257e101b8e2e12ef459a47599c50ebd569e19f739eaf4eb62"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/9f92dfece0586ac73b874e69f903cf83550ac9f13350ace7db04eb0f4b4a2a8b.png",
+    "title": "Magical Castles Coloring Pages"
+  },
+  "/coloring-pages/mandalas/": {
+    "alt": "JotColoring printable coloring pages share image: Mandala Coloring Pages Featuring Floral Leaf Mandala, Rounded Petals and Scallops Mandala, Petal Mandala with Round Nodes.",
+    "description": "Petals, leaves, stars, paisley curls, butterflies, and fish form repeating circular designs. Choose broad shapes with open centers or tightly layered patterns with fine details.",
+    "identity_sha256": "7760aef14d93d54e9d98b105b05726f7bb7c138077aaa4411292b36cbcc0fd60",
+    "sha256": "de268de3bf7023d48c280b33f89329227b0e6b84e6ec814e303da525e4063add",
+    "sources": [
+      {
+        "id": "jc-botanical-mandala",
+        "sha256": "eb8530b7183eb74dcc35431e7dc3bd19fdbabe55d5df044f5148372a11084a7f"
+      },
+      {
+        "id": "jc-mandala-easy-001",
+        "sha256": "8c938808b3d09d39f3b4450a8b6100bbbf3e5eb146f57c77a61651285315ab53"
+      },
+      {
+        "id": "jc-mandala-easy-002",
+        "sha256": "cc2a9124010197e92d3de7185c0c31e6c3333a69ddca01b816ef8dfcf2988889"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/de268de3bf7023d48c280b33f89329227b0e6b84e6ec814e303da525e4063add.png",
+    "title": "Mandala Coloring Pages"
+  },
+  "/coloring-pages/meals/": {
+    "alt": "JotColoring printable coloring pages share image: Meals Coloring Pages Featuring Barbie Mixes a Bowl of Salad, Barbie Prepares a Salad in the Kitchen, Bread and Cupcakes on a Bakery Shelf.",
+    "description": "Barbie mixes and prepares salads, while bakery scenes arrange bread and cupcakes on shelves. Bowls, ingredients, work surfaces, and kitchen details give the drawings different focuses.",
+    "identity_sha256": "3c655cbd62e7305412e44718d14f8f4d2faf94c958a3cbdbec4d4a16558975f6",
+    "sha256": "1f91e21e4e03ca28d490638700513071eff55663a83a138302e0e3148a699a3c",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-018",
+        "sha256": "918f561d320584fa12a8b26a00b391c8a369fedc956e2dd4746927cd823a4a8f"
+      },
+      {
+        "id": "jc-barbie-medium-018",
+        "sha256": "88373a6a61dc2e64717281be8bf2a508b8bad1db22a5522bd3b83a0b1a542639"
+      },
+      {
+        "id": "jc-easy-hard-024",
+        "sha256": "59fe31b8b6c3c636942b8c6f3a65e7a360c3cd6cbbeaf6be21d717aad8f3da93"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/1f91e21e4e03ca28d490638700513071eff55663a83a138302e0e3148a699a3c.png",
+    "title": "Meals Coloring Pages"
+  },
+  "/coloring-pages/mermaids/": {
+    "alt": "JotColoring printable coloring pages share image: Mermaids Coloring Pages Featuring Mermaid In A Shell Garden.",
+    "description": "A mermaid rests in an imagined shell garden. Flowing hair, a curved tail, shells, and underwater plants give the composition its decorative details.",
+    "identity_sha256": "c77cb9dbfadc8aae243bbc303cd0b9964308ada246bc050718cb425f14de3a90",
+    "sha256": "0f8e971baed1ee10682d1f850d26a1f008e668cf90160ad2ff8ec6e3491e337d",
+    "sources": [
+      {
+        "id": "jc-original-mermaid-in-a-shell-garden",
+        "sha256": "e0d5a45949d568bc284bbb15bf4b0cba5493a2effbdb670c0492cf7cff628f6a"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0f8e971baed1ee10682d1f850d26a1f008e668cf90160ad2ff8ec6e3491e337d.png",
+    "title": "Mermaids Coloring Pages"
+  },
+  "/coloring-pages/minecraft/": {
+    "alt": "JotColoring printable coloring pages share image: Minecraft Coloring Pages Featuring Minecraft Builder with Stacked Blocks, Minecraft Gardener Plants a Flower, Minecraft Wolf Beside a Bone.",
+    "description": "Familiar Minecraft mobs and block-style builders appear in farms, villages, underwater gardens, and imagined adventures. Choose clear outlines or scenes filled with architectural detail.",
+    "identity_sha256": "4fe275c13917fe1bccf53ee3f3b31a8a13291e64686e5957e035be2cb6955e07",
+    "sha256": "5d79510af31956f303a37aeb1f1929abaff78b0f504970beef8317cb19cc491c",
+    "sources": [
+      {
+        "id": "jc-minecraft-easy-001",
+        "sha256": "8f6c815f74df9d8ebb4e211254baf19921599e0c6a7797f9491164ea30783766"
+      },
+      {
+        "id": "jc-minecraft-easy-002",
+        "sha256": "3fe69210fb6741605c263eadf218ecc456d2fcdde1c1dca3b681d5eae68e84e0"
+      },
+      {
+        "id": "jc-minecraft-easy-003",
+        "sha256": "dfbf4e1bbf461d06066a6bda38423733b6dc3a859a2703fd2da68a33bf92b51f"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/5d79510af31956f303a37aeb1f1929abaff78b0f504970beef8317cb19cc491c.png",
+    "title": "Minecraft Coloring Pages"
+  },
+  "/coloring-pages/mountains/": {
+    "alt": "JotColoring printable coloring pages share image: Mountains Coloring Pages Featuring Winding River Beneath Mountain Peaks, Cabin and Sailboat at a Mountain Lake.",
+    "description": "A winding river runs beneath mountain peaks, and a cabin overlooks a lake with a sailboat. Ridges, trees, water, and small buildings create layered landscape scenes.",
+    "identity_sha256": "d6f311d22de78cadbaeb28fee7e9ba7f7a23ea0d568b69dea155fad0baf5011c",
+    "sha256": "2feaefe0e5fe54ba8db601606eb11c0b8e66f1b88849468968901d2abfe903ca",
+    "sources": [
+      {
+        "id": "jc-adult-easy-010",
+        "sha256": "33fab3cc60ad2de419d80163463e9de0d7f85d72ee3a1d81494caeb29f72884a"
+      },
+      {
+        "id": "jc-easy-very-hard-009",
+        "sha256": "dfc1b6f380b4c646462392187ba7b0c042682ef1683094a0bc5c4c6f568626d8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/2feaefe0e5fe54ba8db601606eb11c0b8e66f1b88849468968901d2abfe903ca.png",
+    "title": "Mountains Coloring Pages"
+  },
+  "/coloring-pages/music/": {
+    "alt": "JotColoring printable coloring pages share image: Music Coloring Pages Featuring Barbie Plays an Acoustic Guitar, Barbie Plays a Harp in a Garden Pavilion, Barbie Plays a Keyboard by the Window.",
+    "description": "Barbie plays a guitar, a harp, and a keyboard in illustrated music scenes. Instruments, clothing, windows, and garden settings provide different shapes to color.",
+    "identity_sha256": "1850ec58b6c31a7f5ead97d4e20bfcf0c73798d04e255f14dad95c356b2d6f97",
+    "sha256": "176692a14c46eafbbd63e638235365c9b736acb963a9754d5880eb85f0d65047",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-008",
+        "sha256": "b1c300bd79c0cdc23b155d9b125d89a99ef78864ee1e57b8484e5dae53b5b484"
+      },
+      {
+        "id": "jc-barbie-hard-008",
+        "sha256": "e9e597f8e725cfcc3ae4187f19467c40c5c7f95716d8385a80691deb52c526bc"
+      },
+      {
+        "id": "jc-barbie-medium-008",
+        "sha256": "bcf62f07269bbbf6b42a1aeb8dd3f54ca6dd2d17d9e0fe6e1b58a075dde8929b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/176692a14c46eafbbd63e638235365c9b736acb963a9754d5880eb85f0d65047.png",
+    "title": "Music Coloring Pages"
+  },
+  "/coloring-pages/numbers/": {
+    "alt": "JotColoring printable coloring pages share image: Numbers & Counting Coloring Pages Featuring Number 100 Outline, Number 100 With Curved Bands, Number 100 With Circles.",
+    "description": "Explore individual numeral collections, counting pictures, decorative digits, and illustrated arithmetic. Choose a number for its own set of outlines, scenes, and patterns.",
+    "identity_sha256": "eb1a7c5916ad8ad1d98af669eee6cc2d3d788aae6e4f8a7004cf720e65b1ef28",
+    "sha256": "7fa5149927354c2851997666de3312654cf95bf1b282bf2c96a49cb1b137f5f9",
+    "sources": [
+      {
+        "id": "jc-number-100-easy-001",
+        "sha256": "99a1caddc414591dfc0b1191b6f17424aedc0467fb8682ad66330a44cbb9c1b6"
+      },
+      {
+        "id": "jc-number-100-easy-002",
+        "sha256": "0b3fe548310878407d8501627abc022fd81c442cb485bfaf69e1538be826a0ec"
+      },
+      {
+        "id": "jc-number-100-easy-003",
+        "sha256": "fd5e4b94773bac594f7e2435a8a18ba29a475785d6bce97f6b6fd064b3a4c813"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7fa5149927354c2851997666de3312654cf95bf1b282bf2c96a49cb1b137f5f9.png",
+    "title": "Numbers & Counting Coloring Pages"
+  },
+  "/coloring-pages/numbers/1/": {
+    "alt": "JotColoring printable coloring pages share image: Number 1 Coloring Pages Featuring Number 1 With A Turtle By A Pond, Number 1 As A Sailboat Sail, Number 1 With A Flag-Holding Astronaut.",
+    "description": "An outlined number 1 joins a pond-side turtle, a raccoon baker, and other illustrated scenes. Geometric versions divide the digit into curved and straight-sided sections.",
+    "identity_sha256": "c081c765654ea68cd879c173b4a1258e2477595a7c623e27160ef3973b8673f6",
+    "sha256": "10bf88d6307638417c2e65b13337d5444f78efc97fa0ebef246cdf41e3780417",
+    "sources": [
+      {
+        "id": "jc-number-one-easy-001",
+        "sha256": "568ae0eef65728fbef3f4c238fc0b16327ea7ec2df4f629128bcd0748aba2b3b"
+      },
+      {
+        "id": "jc-number-one-easy-002",
+        "sha256": "42fb110b8b5697b1cc12fa85e39984b6cf4125e78c730230b8a5151ab01bfc3f"
+      },
+      {
+        "id": "jc-number-one-easy-003",
+        "sha256": "51644f5876099b07e2cf59772293bef42d2d3a54649cafea90321022580a1742"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/10bf88d6307638417c2e65b13337d5444f78efc97fa0ebef246cdf41e3780417.png",
+    "title": "Number 1 Coloring Pages"
+  },
+  "/coloring-pages/numbers/10/": {
+    "alt": "JotColoring printable coloring pages share image: Number 10 Coloring Pages Featuring Number 10 With Ten Kites, Number 10 With Ten Snow Globes, Number 10 With Ten Bows.",
+    "description": "Kites, folding fans, and an orchard scene with a lamb explore number 10. The paired digits also appear with curved and angular sections to color.",
+    "identity_sha256": "005265cf246837a85cb822bb9935e3afc828ac299f145ceeefd4fae3d5897660",
+    "sha256": "060d29478c1ff4e45cc72285c083d6ea8af85e78776833c0ca9f58d43e1ad8be",
+    "sources": [
+      {
+        "id": "jc-number-ten-easy-001",
+        "sha256": "96a374e6d464f31b88bc7ef2a8c974cf5ecaabf0527efd86d9030e967e9ab18c"
+      },
+      {
+        "id": "jc-number-ten-easy-002",
+        "sha256": "1faa68c67a2987b15df27687fec14eac8096934f26c0c46ebe700feefc9e7f92"
+      },
+      {
+        "id": "jc-number-ten-easy-003",
+        "sha256": "20e81debf836457989ed992b4181b8bdd8dead8a02a97167431f607d497fc5a2"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/060d29478c1ff4e45cc72285c083d6ea8af85e78776833c0ca9f58d43e1ad8be.png",
+    "title": "Number 10 Coloring Pages"
+  },
+  "/coloring-pages/numbers/100/": {
+    "alt": "JotColoring printable coloring pages share image: Number 100 Coloring Pages Featuring Number 100 Outline, Number 100 With Curved Bands, Number 100 With Circles.",
+    "description": "Explore number 100 through clear digit outlines, a dinosaur museum scene, and floral arithmetic displays. Some drawings arrange ten groups of ten around the number.",
+    "identity_sha256": "74ed90e1075c5254d618031cd14cbbe33dce3a89f042667ed9a9dbf9ec274dc2",
+    "sha256": "e053d8029da8f5661e1b4ca17f06de88951f74d23690f6ca22d75782dc7b0a4e",
+    "sources": [
+      {
+        "id": "jc-number-100-easy-001",
+        "sha256": "99a1caddc414591dfc0b1191b6f17424aedc0467fb8682ad66330a44cbb9c1b6"
+      },
+      {
+        "id": "jc-number-100-easy-002",
+        "sha256": "0b3fe548310878407d8501627abc022fd81c442cb485bfaf69e1538be826a0ec"
+      },
+      {
+        "id": "jc-number-100-easy-003",
+        "sha256": "fd5e4b94773bac594f7e2435a8a18ba29a475785d6bce97f6b6fd064b3a4c813"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e053d8029da8f5661e1b4ca17f06de88951f74d23690f6ca22d75782dc7b0a4e.png",
+    "title": "Number 100 Coloring Pages"
+  },
+  "/coloring-pages/numbers/1000/": {
+    "alt": "JotColoring printable coloring pages share image: Number 1000 Coloring Pages Featuring Number 1000 in rounded outlines, Number 1000 filled with chevron stripes, Number 1000 decorated with circles.",
+    "description": "Number 1000 appears in rounded outlines, a pelican mailbox scene, and an owl arithmetic display. Four-digit compositions range from broad shapes to illustrated settings.",
+    "identity_sha256": "bf2950ee2127e68e58844212eb5479b0fbd1bf04d98024ea481860772891c44a",
+    "sha256": "169115dd53dd8b53f192758711b3fd1fa0fd513900e326f9ec6b1cb3ea521140",
+    "sources": [
+      {
+        "id": "jc-number-1000-easy-001",
+        "sha256": "7d9c364317ba9a8c7768a40256722eafb8cc1e9d3aa112e477f12d2764dd77aa"
+      },
+      {
+        "id": "jc-number-1000-easy-002",
+        "sha256": "8ddd2a075a84b77a2fd6e28e8f8c321c44271ef1634db0a302a5a693a96d7a19"
+      },
+      {
+        "id": "jc-number-1000-easy-003",
+        "sha256": "9e1fba2fb49fbae142382503f117c5844269d285c42ddf949b526255f47d0dc0"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/169115dd53dd8b53f192758711b3fd1fa0fd513900e326f9ec6b1cb3ea521140.png",
+    "title": "Number 1000 Coloring Pages"
+  },
+  "/coloring-pages/numbers/1001/": {
+    "alt": "JotColoring printable coloring pages share image: Number 1001 Coloring Pages Featuring Number 1001 in rounded outlines, Number 1001 in tall narrow outlines, Number 1001 in angular block outlines.",
+    "description": "Rounded number 1001 outlines join a painting chameleon and a garden number path. Addition and subtraction designs explore the relationship between 1000 and 1001.",
+    "identity_sha256": "9dff500b15cb5dd2100f03d601daf0bdee830ce6090191a1396b59ba8267c4b0",
+    "sha256": "e06fd35807550629210b7d5f464efe5fbbe219642f24af5207772be11d2d2520",
+    "sources": [
+      {
+        "id": "jc-number-1001-easy-001",
+        "sha256": "c69c5e2242e7d3b605f797438b1c8289ff31a9eda1adfe46aaf62b6c37252b6a"
+      },
+      {
+        "id": "jc-number-1001-easy-002",
+        "sha256": "d469d34d126e6430ea1c0def0415004ce401144e088d22f4eeae5debdc8d408e"
+      },
+      {
+        "id": "jc-number-1001-easy-003",
+        "sha256": "39bdb450cbd5863344ce4a18dc9de2de1db1f91d971ea361708a0a992ec7fe71"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e06fd35807550629210b7d5f464efe5fbbe219642f24af5207772be11d2d2520.png",
+    "title": "Number 1001 Coloring Pages"
+  },
+  "/coloring-pages/numbers/101/": {
+    "alt": "JotColoring printable coloring pages share image: Number 101 Coloring Pages Featuring Bold Number 101 Outline, Rounded Block Number 101, Angular Block Number 101.",
+    "description": "Bold outlined digits and crystalline cave formations give number 101 different shapes and settings. Place-value designs show how hundreds, tens, and ones form the number.",
+    "identity_sha256": "ef9c4d2b79bcdd44a2987d6d5d40b96ee8f9d5d11bcd6a499a1d9092e05c09e5",
+    "sha256": "06b70f2fafea8e5359387a7e7b888aecaac88fad27e4d0a770440c5f401a4330",
+    "sources": [
+      {
+        "id": "jc-number-101-easy-001",
+        "sha256": "f8071c09fdcedaea269d8bd4b12c8c41d302d71f3f102e85a052237b8bb90704"
+      },
+      {
+        "id": "jc-number-101-easy-002",
+        "sha256": "49c95678de4028175c6c4287bbe37a5111d7f1af1ac34603a3f312bdcfc3abae"
+      },
+      {
+        "id": "jc-number-101-easy-003",
+        "sha256": "940ec284520ed08026b164104c78141ff49333eb79ddbc713f15c7daf96ee137"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/06b70f2fafea8e5359387a7e7b888aecaac88fad27e4d0a770440c5f401a4330.png",
+    "title": "Number 101 Coloring Pages"
+  },
+  "/coloring-pages/numbers/11/": {
+    "alt": "JotColoring printable coloring pages share image: Number 11 Coloring Pages Featuring Number 11 With Eleven Toy Airplanes, Number 11 With Eleven Watering Cans, Number 11 With Eleven Ice Cream Cones.",
+    "description": "Toy airplanes, backpacks, and a dinosaur beside a cave accompany number 11. Decorative designs break the repeated digits into varied geometric sections.",
+    "identity_sha256": "ca818cd31a5615022574dc8526bcdd53fe39c7dff2018b13b16a3d91ebe32846",
+    "sha256": "edbbd30c317d4ec271be0bd0e3dd1d0e9163dca5aaa76d59b41ae29963973109",
+    "sources": [
+      {
+        "id": "jc-number-eleven-easy-001",
+        "sha256": "1c17db880fa428ee09414c2adbe77d3aa07bde0be881284df5772dca8662a19f"
+      },
+      {
+        "id": "jc-number-eleven-easy-002",
+        "sha256": "143e16f1d280e821ae0129f6c5ab4cb5c414cc9a338414d7d6a0840085988a94"
+      },
+      {
+        "id": "jc-number-eleven-easy-003",
+        "sha256": "50ea6229e8896bad22a38d55774675b859f6d53be49ede938b578e6f8c47f779"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/edbbd30c317d4ec271be0bd0e3dd1d0e9163dca5aaa76d59b41ae29963973109.png",
+    "title": "Number 11 Coloring Pages"
+  },
+  "/coloring-pages/numbers/111/": {
+    "alt": "JotColoring printable coloring pages share image: Number 111 Coloring Pages Featuring Rounded Number 111 Outline, Angular Block Number 111, Dimensional Number 111.",
+    "description": "Rounded number 111 outlines appear alongside an apple tree and ladder and other illustrated scenes. Place-value displays show 100 + 10 + 1 within decorative compositions.",
+    "identity_sha256": "a43d273d3c7507ba56d46eb2e4266a5e20dabf99c43d998926a7d44b69b61bed",
+    "sha256": "50133d8e655b89639ea40a17b9cf5be378902f11ae6fef2dfb43dd774a1cc119",
+    "sources": [
+      {
+        "id": "jc-number-111-easy-001",
+        "sha256": "be3795dc4bd0f85c40df7dfbe8f3d474cbf9155a166ca76ddf4aa19a0187a82c"
+      },
+      {
+        "id": "jc-number-111-easy-002",
+        "sha256": "09292adbd7dc40d7369f697722b2f832a4c3fd37d09e6bb72c9c1aad61abb1c0"
+      },
+      {
+        "id": "jc-number-111-easy-003",
+        "sha256": "a5fb42810702ad0979426d7d0861c3163c384644f2cae54c0781cdc2064d0027"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/50133d8e655b89639ea40a17b9cf5be378902f11ae6fef2dfb43dd774a1cc119.png",
+    "title": "Number 111 Coloring Pages"
+  },
+  "/coloring-pages/numbers/12/": {
+    "alt": "JotColoring printable coloring pages share image: Number 12 Coloring Pages Featuring Number 12 With Twelve Alarm Clocks, Number 12 With Twelve Acorns, Number 12 With Twelve Books.",
+    "description": "Alarm clocks, paint palettes, and an astronaut at an imagined space cave appear with number 12. Other pages use sectioned outlines within both digits.",
+    "identity_sha256": "97bcbfc01d0b2699acbbb2fd1ff77b2104a775bd6a2ebbcd16dd251d8181a329",
+    "sha256": "90e3a0807e78f5a35fa95c815e1052ac2d28a0b46dfaa7d56b1ba17d7baf219f",
+    "sources": [
+      {
+        "id": "jc-number-twelve-easy-001",
+        "sha256": "be0ea04c3af1504f2f2ff1101841e1c0e68ffca64171fc2f52de400924e28889"
+      },
+      {
+        "id": "jc-number-twelve-easy-002",
+        "sha256": "502f1dc0ff6635c5463018185e07a1b1f737dae2c9e8d9ab007e31c128aff70a"
+      },
+      {
+        "id": "jc-number-twelve-easy-003",
+        "sha256": "51493273b80487b7e6d2e800f5c9903ba9666d0523f3ae9af3a678c049d22517"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/90e3a0807e78f5a35fa95c815e1052ac2d28a0b46dfaa7d56b1ba17d7baf219f.png",
+    "title": "Number 12 Coloring Pages"
+  },
+  "/coloring-pages/numbers/13/": {
+    "alt": "JotColoring printable coloring pages share image: Number 13 Coloring Pages Featuring Number 13 With Thirteen Kites, Number 13 With Thirteen Spinning Tops, Number 13 With Thirteen Toy Airplanes.",
+    "description": "Kites and ducklings appear in counting scenes around number 13, including a robot character. Geometric versions add curved and angular sections inside the digits.",
+    "identity_sha256": "23a67bfe3c73ab9c55b87b607af16b71ebae850e4d5b18b3a52cc3b0569b5651",
+    "sha256": "541bc557a2a93e40207dd11f3b4f7397abb7ac2d92d45564c35f25a28053d308",
+    "sources": [
+      {
+        "id": "jc-number-thirteen-easy-001",
+        "sha256": "d9dec67a06614064b74de7e3e5271a781bef9a0215b8eb45fc444a32f20e8ca6"
+      },
+      {
+        "id": "jc-number-thirteen-easy-002",
+        "sha256": "bc17459ab27dafa2f9bb78e1938ffa9834e5571869d50f82b1e5c63c86b6e469"
+      },
+      {
+        "id": "jc-number-thirteen-easy-003",
+        "sha256": "820b78171f634493597ba8ccfcc4a06971aa98c09952680931d3287f06cb48f6"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/541bc557a2a93e40207dd11f3b4f7397abb7ac2d92d45564c35f25a28053d308.png",
+    "title": "Number 13 Coloring Pages"
+  },
+  "/coloring-pages/numbers/14/": {
+    "alt": "JotColoring printable coloring pages share image: Number 14 Coloring Pages Featuring Number 14 With Fourteen Pears, Number 14 With Fourteen Crayons, Number 14 With Fourteen Alarm Clocks.",
+    "description": "Pears, snow globes, and a rabbit at a musical stage accompany number 14. The numeral pair also appears in sectioned decorative designs.",
+    "identity_sha256": "c35be5330e19e38b165d6637efab63492e1b4664aac2b3448469fa38610bde6a",
+    "sha256": "eee9fdab7cfaceff31420b36a414efa96dad768dd46325caaa103e089ea53527",
+    "sources": [
+      {
+        "id": "jc-number-fourteen-easy-001",
+        "sha256": "a36c9d09c20a430ccf2ddb0068ff9948c1eeed19c17a0b21f43b3f2d61b774d1"
+      },
+      {
+        "id": "jc-number-fourteen-easy-002",
+        "sha256": "081492904b6bccdd0999ded18d518132f20873e6f582a338f6871659efb2300a"
+      },
+      {
+        "id": "jc-number-fourteen-easy-003",
+        "sha256": "80d7ba46fa71aef38f80bef7f77ba0ef53f8f3f8386260cc2d9df1bbc7218237"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/eee9fdab7cfaceff31420b36a414efa96dad768dd46325caaa103e089ea53527.png",
+    "title": "Number 14 Coloring Pages"
+  },
+  "/coloring-pages/numbers/15/": {
+    "alt": "JotColoring printable coloring pages share image: Number 15 Coloring Pages Featuring Number 15 With Fifteen Folding Fans, Number 15 With Fifteen Teacups, Number 15 With Fifteen Kites.",
+    "description": "Folding fans and an otter on a dock with watering cans are among these number 15 scenes. Curved and angular patterns provide another way to explore the two digits.",
+    "identity_sha256": "c43677ac906349f4cfb527f674c704e17823994a463079dae541ae524557fbdc",
+    "sha256": "2e06fa89d03a53124e14f396d68eb40428097b3c3ff88991d5606cd5fecbaffe",
+    "sources": [
+      {
+        "id": "jc-number-fifteen-easy-001",
+        "sha256": "1c1dea2c2e68c6afe83e93d4f6c7b616dbebee15426d0599a5ac283fdbdd0d69"
+      },
+      {
+        "id": "jc-number-fifteen-easy-002",
+        "sha256": "a4eaba226f907adb3ab9aae8fff1fdbe8937bd4a5fbc572425a787d32d3d7f7d"
+      },
+      {
+        "id": "jc-number-fifteen-easy-003",
+        "sha256": "efbf2d099104ecfbbfc72679993220842547c9f2bc00a12f256658f3362957ac"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/2e06fa89d03a53124e14f396d68eb40428097b3c3ff88991d5606cd5fecbaffe.png",
+    "title": "Number 15 Coloring Pages"
+  },
+  "/coloring-pages/numbers/2/": {
+    "alt": "JotColoring printable coloring pages share image: Number 2 Coloring Pages Featuring Number 2 With Two Penguins on Ice, Two Sailboats in a Winding Number 2, Number 2 With Rain Boots and Umbrella.",
+    "description": "Penguins, a gem-patterned digit beneath a castle arch, and sectioned outlines explore the number 2. Counting scenes and decorative versions give the curved numeral different settings.",
+    "identity_sha256": "b7d2ecb947e9543623c8a382d106b2f649bfa0c9586415ffdb20a6db89b31082",
+    "sha256": "ae8ee938855956b8fceed28bb763287169c1492fda51dbfa7f0d4012e8a96b40",
+    "sources": [
+      {
+        "id": "jc-number-two-easy-001",
+        "sha256": "2a651cd7dae228b66159403f644cb3d6c2d2eff1a49df9dd1f3bd9a826a855cd"
+      },
+      {
+        "id": "jc-number-two-easy-002",
+        "sha256": "ad05ff7cdfcc9fa1ca3b2fce2ab4f97209fe315a02bb8e31e24c9d73199d90b2"
+      },
+      {
+        "id": "jc-number-two-easy-003",
+        "sha256": "a144bc5be472fca34b8a20059e812bd33fe7ce9470852d519475d0a7d4925aa3"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/ae8ee938855956b8fceed28bb763287169c1492fda51dbfa7f0d4012e8a96b40.png",
+    "title": "Number 2 Coloring Pages"
+  },
+  "/coloring-pages/numbers/222/": {
+    "alt": "JotColoring printable coloring pages share image: Number 222 Coloring Pages Featuring Bold Number 222 Outline, Number 222 Horizontal Sections, Dimensional Number 222.",
+    "description": "Broad number 222 outlines share the collection with an imagined floating island and wind turbine. Place-value drawings arrange hundreds, tens, and ones around the repeated digits.",
+    "identity_sha256": "7a82318487571e94c9d84ad0585cd3986e22687b7978ce27ba16d2e622fe83d8",
+    "sha256": "8028efbfbded4e9ccaa3bde1dfb22ea19ffad2c632f9b814961a552d2489f533",
+    "sources": [
+      {
+        "id": "jc-number-222-easy-001",
+        "sha256": "92d97f0f5d61aafe3068ee64b792e295a42c0736b6887872e56c54710ca91a23"
+      },
+      {
+        "id": "jc-number-222-easy-002",
+        "sha256": "8564ffd3232719654d20eee57acb1e6e04c3bbe756c6af8f8afbb635cb7a4951"
+      },
+      {
+        "id": "jc-number-222-easy-003",
+        "sha256": "96d551357da96e26629d7a6712bb254b1d6253f0d06703ab0f5679f68351cf3e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8028efbfbded4e9ccaa3bde1dfb22ea19ffad2c632f9b814961a552d2489f533.png",
+    "title": "Number 222 Coloring Pages"
+  },
+  "/coloring-pages/numbers/2222/": {
+    "alt": "JotColoring printable coloring pages share image: Number 2222 Coloring Pages Featuring Number 2222 in rounded outlines, Number 2222 in tall narrow outlines, Number 2222 in squared block outlines.",
+    "description": "Rounded number 2222 outlines appear with a telescope scene and a penguin number path. Addition and subtraction by two accompany some of the four-digit designs.",
+    "identity_sha256": "8ae6a7cd49ef68c136ac57fa60b4171cbf64b381d67dc5ecc50cfd03eb55ed9d",
+    "sha256": "16c8938f1162df2beea149069fe1248ac8077560f481fa04dfea5e57230ac1d5",
+    "sources": [
+      {
+        "id": "jc-number-2222-easy-001",
+        "sha256": "f7d43fdc114d70c8233dd27332b0f20bafb1d3b97ce6195ee3bab30d72984008"
+      },
+      {
+        "id": "jc-number-2222-easy-002",
+        "sha256": "912be6d0708190bdc6ea89a6fc4abd2f6ebdacf043781a2bd7bfef4815b32a5d"
+      },
+      {
+        "id": "jc-number-2222-easy-003",
+        "sha256": "142d10ed8a31de80378859faaa900ffb732d2cc99d4b77759f7006ca8be2c144"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/16c8938f1162df2beea149069fe1248ac8077560f481fa04dfea5e57230ac1d5.png",
+    "title": "Number 2222 Coloring Pages"
+  },
+  "/coloring-pages/numbers/3/": {
+    "alt": "JotColoring printable coloring pages share image: Number 3 Coloring Pages Featuring Number 3 With a Lamb in an Orchard, Number 3 With Three Pears, Astronaut and Number 3 in a Space Landscape.",
+    "description": "A lamb in an apple orchard and a bear with a snowflake-patterned digit are among these number 3 scenes. Other designs divide its rounded outline into curved and angular spaces.",
+    "identity_sha256": "7916c37175a3e9ae12c3e6ff2597953748c2ca3005481736f19d7fd0d8e75cd4",
+    "sha256": "1c31b5cf4908581fc9d06c677f5bb0c3c20cd0c708dfdab3092df914d82e9c1f",
+    "sources": [
+      {
+        "id": "jc-number-three-easy-001",
+        "sha256": "3efd7304a5d8d32c75b64fb6f9febdf4c9fe7b6d2964f03896f2bb593d523550"
+      },
+      {
+        "id": "jc-number-three-easy-002",
+        "sha256": "f7b20590f1691521df67c8d95f9583b9cd82f3987c7d2c9f501cd6e04baab5f2"
+      },
+      {
+        "id": "jc-number-three-easy-003",
+        "sha256": "4f07fa378a391b3fe8330e97a54cf39c857fa2b9fc86d788279fd515d5ceaf54"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/1c31b5cf4908581fc9d06c677f5bb0c3c20cd0c708dfdab3092df914d82e9c1f.png",
+    "title": "Number 3 Coloring Pages"
+  },
+  "/coloring-pages/numbers/333/": {
+    "alt": "JotColoring printable coloring pages share image: Number 333 Coloring Pages Featuring Rounded Number 333 Outline, Angular Block Number 333, Tall Narrow Number 333.",
+    "description": "Rounded number 333 outlines join an underwater bookshelf with a sea turtle and other imaginative settings. Basket arrangements illustrate three groups of 111.",
+    "identity_sha256": "3c647c1ea26664ef3621e7ca29b1ac2c7c15ba8d1e2b492388185823aa46c8f2",
+    "sha256": "f19514eb9e0ea844687026eea9b387a0468de18b4d66e9e77a3c1657d46607b0",
+    "sources": [
+      {
+        "id": "jc-number-333-easy-001",
+        "sha256": "5561ede4018870cca0a9b72068c015c7f8b4f94632bd8384e7f8854299686b00"
+      },
+      {
+        "id": "jc-number-333-easy-002",
+        "sha256": "486af08f44ff08610e4ca20e70367cffdcb1bd66c885e57c84f4d66090232e2d"
+      },
+      {
+        "id": "jc-number-333-easy-003",
+        "sha256": "289508a9ef6518af912ae811acc7c4feb1b5bfccaf4c864f6e65f7daeb4d1869"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f19514eb9e0ea844687026eea9b387a0468de18b4d66e9e77a3c1657d46607b0.png",
+    "title": "Number 333 Coloring Pages"
+  },
+  "/coloring-pages/numbers/4/": {
+    "alt": "JotColoring printable coloring pages share image: Number 4 Coloring Pages Featuring Dinosaur and Number 4 in a Prehistoric Landscape, Astronaut Pulling a Number 4 Wagon, Robot Holding Number 4 in a Toy Room.",
+    "description": "A dinosaur in a prehistoric landscape and an elephant with ice cream cones accompany number 4. The collection also includes geometric sections inside the numeral.",
+    "identity_sha256": "a4d635db44d94f1f9f47d1ae04f5c7f5470a3b40c34297b9ce9ffc1c0be4c04a",
+    "sha256": "75f9ba866d84e7254f9d4841bb0908df4d6f2c96af350e79c2766f8a8d332f15",
+    "sources": [
+      {
+        "id": "jc-number-four-easy-001",
+        "sha256": "bdadf73616e02d6854e7049cc6fed83b7d5a291176906af7ee43ccc0f6913a93"
+      },
+      {
+        "id": "jc-number-four-easy-002",
+        "sha256": "388bb18a6d1a1c12d56a78a003046fbc2cfb16b27a537adde4e7b252201b3b93"
+      },
+      {
+        "id": "jc-number-four-easy-003",
+        "sha256": "75912383140691efb8d5cb9a255d5912c36c25f8413547f3588d2218c64b9a3c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/75f9ba866d84e7254f9d4841bb0908df4d6f2c96af350e79c2766f8a8d332f15.png",
+    "title": "Number 4 Coloring Pages"
+  },
+  "/coloring-pages/numbers/444/": {
+    "alt": "JotColoring printable coloring pages share image: Number 444 Coloring Pages Featuring Number 444 in rounded outlines, Number 444 divided by wavy bands, Number 444 with diagonal stripes.",
+    "description": "Explore number 444 in rounded outlines, an owl library lift, and a place-value building. Architectural and decorative details surround the repeated fours.",
+    "identity_sha256": "754d4d267583a7d247ae595bc12d04fccab2ffd9afa7c53cc760189bfdc84509",
+    "sha256": "231cebad7c5e6f1a817791351f2c4e0fd05597c213160cba9dc3a2bfade3ef41",
+    "sources": [
+      {
+        "id": "jc-number-444-easy-001",
+        "sha256": "eb5f5c2f9a4ce86fb359d51cc2acc694a53193079465ab10a298b05208705821"
+      },
+      {
+        "id": "jc-number-444-easy-002",
+        "sha256": "19446d205685f5a145d3d39439ea3e48a5e589769a81338ecee1158f73e24d41"
+      },
+      {
+        "id": "jc-number-444-easy-003",
+        "sha256": "cd39302bfe64c217c26409b5037491761e5c983758bd929c6cbfee19f7086f1b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/231cebad7c5e6f1a817791351f2c4e0fd05597c213160cba9dc3a2bfade3ef41.png",
+    "title": "Number 444 Coloring Pages"
+  },
+  "/coloring-pages/numbers/5/": {
+    "alt": "JotColoring printable coloring pages share image: Number 5 Coloring Pages Featuring Number 5 With Five Lunch Boxes, Number 5 With Five Pears, Number 5 With Five Pencils.",
+    "description": "Lunch boxes, a ladybug at a garden entrance, and books bring counting details to number 5. Decorative versions fill the digit with rounded arcs and irregular sections.",
+    "identity_sha256": "ec765f782b1d5e4b83fe7ec8fe784646cf75d320c62545bfccee095b3e9dcc8b",
+    "sha256": "d6162d87b8a205dd73daccd4dacf7f264e2fe7cf538682984d01bccfff9d6b56",
+    "sources": [
+      {
+        "id": "jc-number-five-easy-001",
+        "sha256": "c731f38d98f15a4a6d27ee03aadce4a4ceafa1c946b53d05ea643d458dba12e6"
+      },
+      {
+        "id": "jc-number-five-easy-002",
+        "sha256": "dfc943e8d234a8242c1a656b6927599fa6a4cede1121af8dab1bec02dd15bfc9"
+      },
+      {
+        "id": "jc-number-five-easy-003",
+        "sha256": "191904e8505c2f318ead5c85e5314d46db83f73a8a78bd0f841e6f5d00b13af2"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/d6162d87b8a205dd73daccd4dacf7f264e2fe7cf538682984d01bccfff9d6b56.png",
+    "title": "Number 5 Coloring Pages"
+  },
+  "/coloring-pages/numbers/555/": {
+    "alt": "JotColoring printable coloring pages share image: Number 555 Coloring Pages Featuring Number 555 in broad rounded outlines, Number 555 in narrow block outlines, Number 555 decorated with ovals.",
+    "description": "Broad outlined fives appear with a parcel-filled house and other illustrated settings. Place-value charts show 500 + 50 + 5 among decorative number designs.",
+    "identity_sha256": "18f22f957a181108182b51afc0c5b278d147107aabab9e8bd249afe762c66bab",
+    "sha256": "b5f59ab94d8a1d686fb7a0ab0fd1849efe297b592903f13216fcdb29fbe1f7d5",
+    "sources": [
+      {
+        "id": "jc-number-555-easy-001",
+        "sha256": "814eb3cae60ab55bf55a93f7964c79547a2468852ae8d6a429ffa8ee0c7cefcd"
+      },
+      {
+        "id": "jc-number-555-easy-002",
+        "sha256": "ae38e0a77e6cf1086c01d1daa5b86be04b44ca8ea2301fd47f17fc80c9e15173"
+      },
+      {
+        "id": "jc-number-555-easy-003",
+        "sha256": "ad74fb0d11047546807030edabafb7074d22e99b44e5132e54b5a97bccd1a26e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/b5f59ab94d8a1d686fb7a0ab0fd1849efe297b592903f13216fcdb29fbe1f7d5.png",
+    "title": "Number 555 Coloring Pages"
+  },
+  "/coloring-pages/numbers/6/": {
+    "alt": "JotColoring printable coloring pages share image: Number 6 Coloring Pages Featuring Number 6 With Six Socks, Number 6 With Six Folding Fans, Number 6 With Six Teacups.",
+    "description": "Socks, toy airplanes, and a squirrel appear in scenes built around number 6. Curved and angular divisions turn its looped outline into decorative coloring spaces.",
+    "identity_sha256": "4acb5b795594d7c9c9f348eb9572d7fef0ba5e6d1d9f25db0f13e7956c56d38a",
+    "sha256": "0c9e1e31629deedec809af65d674aad47e70e94c2c60bc821642e04fe4570d3c",
+    "sources": [
+      {
+        "id": "jc-number-six-easy-001",
+        "sha256": "bc5787fa03327f32de7869f3c50dd9adab095a4a966138aaaf7f709d6d92c7c4"
+      },
+      {
+        "id": "jc-number-six-easy-002",
+        "sha256": "12f45329a36e1d8f89248ad0c9171929a1478c8d59721d4c466cc65a8375f74f"
+      },
+      {
+        "id": "jc-number-six-easy-003",
+        "sha256": "346e23770d789be8435405b21232b4054a0802db8966cb67347f6455938e6573"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0c9e1e31629deedec809af65d674aad47e70e94c2c60bc821642e04fe4570d3c.png",
+    "title": "Number 6 Coloring Pages"
+  },
+  "/coloring-pages/numbers/666/": {
+    "alt": "JotColoring printable coloring pages share image: Number 666 Coloring Pages Featuring Number 666 in rounded outlines, Number 666 in tall narrow outlines, Number 666 in angular block outlines.",
+    "description": "Rounded number 666 outlines join scenes such as a fox with a wheelbarrow. An imagined castle displays addition and subtraction facts around the repeated digits.",
+    "identity_sha256": "ccf621a9eb8e1836330d5cb480248385f02610bb2131bba8a41c1432f08c5592",
+    "sha256": "8a456eef27655aeb1bfc84619a05b47c47f3a45f9c62f370add9f9e036a8364d",
+    "sources": [
+      {
+        "id": "jc-number-666-easy-001",
+        "sha256": "84162f719dec8f804fa6f56142a848313d606d5139ac4275c5f24ed39a259a7f"
+      },
+      {
+        "id": "jc-number-666-easy-002",
+        "sha256": "2c72b8913ecccd82243833e1e9582b3b0674ec09958f7638b0444f83a9fda7d3"
+      },
+      {
+        "id": "jc-number-666-easy-003",
+        "sha256": "73294ca334e52ed9ed50d7bd6d47d2eceee62f4ce3c92b1af10b1daea0d43956"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8a456eef27655aeb1bfc84619a05b47c47f3a45f9c62f370add9f9e036a8364d.png",
+    "title": "Number 666 Coloring Pages"
+  },
+  "/coloring-pages/numbers/7/": {
+    "alt": "JotColoring printable coloring pages share image: Number 7 Coloring Pages Featuring Number 7 With Seven Buttons, Number 7 With Seven Backpacks, Number 7 With Seven Lunch Boxes.",
+    "description": "Buttons, clocks, a dog, and a pond setting accompany number 7. Other drawings explore the angular digit through curved and straight-sided geometric sections.",
+    "identity_sha256": "a5ea633df118685754a7b781761c9f59929640bc6924611e955b0f32042e2321",
+    "sha256": "965e4b601e2c1356e5d442bd50be5e610fbc3fbda8822a8254bc91c46a763c5a",
+    "sources": [
+      {
+        "id": "jc-number-seven-easy-001",
+        "sha256": "222dea591290b2130aa58d116f8e38edce925b42c45e974a58c209d4ac0b5474"
+      },
+      {
+        "id": "jc-number-seven-easy-002",
+        "sha256": "3a00f417f85ab1365919aa2aad2efaccd122990fca7b251daed70947110a2e4b"
+      },
+      {
+        "id": "jc-number-seven-easy-003",
+        "sha256": "d40f137aa93966cddf35be30576bf2cbef592c9f78985f09d90968a639a75f03"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/965e4b601e2c1356e5d442bd50be5e610fbc3fbda8822a8254bc91c46a763c5a.png",
+    "title": "Number 7 Coloring Pages"
+  },
+  "/coloring-pages/numbers/777/": {
+    "alt": "JotColoring printable coloring pages share image: Number 777 Coloring Pages Featuring Number 777 in rounded outlines, Number 777 divided by diagonal stripes, Number 777 decorated with teardrop shapes.",
+    "description": "Number 777 appears in rounded outlines and beneath a harp-shaped structure. Other compositions arrange its hundreds, tens, and ones in decorative place-value displays.",
+    "identity_sha256": "9280e4a2c04e2597b99c42cdc9e6e2aef4ba93a9e24d2cd05fc880cf0bad50c4",
+    "sha256": "eb08f95636e1c4893de91604e1371d34ce51c3d224ad183e29c596284c75760b",
+    "sources": [
+      {
+        "id": "jc-number-777-easy-001",
+        "sha256": "02a6d9dac11fee975ccfc876a24bf52ed9d6b697a9f70422bfd7612098df7568"
+      },
+      {
+        "id": "jc-number-777-easy-002",
+        "sha256": "4a2cec38e773e80af6dbb5d79affdbffba17a909aa56b02c69bed45bc57c3a67"
+      },
+      {
+        "id": "jc-number-777-easy-003",
+        "sha256": "cb8cd4c42adb68adabde2cbf8a9d5211ef2775aac5b4aed5416051572e3ba5bc"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/eb08f95636e1c4893de91604e1371d34ce51c3d224ad183e29c596284c75760b.png",
+    "title": "Number 777 Coloring Pages"
+  },
+  "/coloring-pages/numbers/8/": {
+    "alt": "JotColoring printable coloring pages share image: Number 8 Coloring Pages Featuring Number 8 With Eight Bows, Number 8 With Eight Paint Palettes, Number 8 With Eight Socks.",
+    "description": "Bows, kites, and a pond-side turtle are among the counting details beside number 8. Sectioned versions offer decorative shapes within its two rounded loops.",
+    "identity_sha256": "60f3a6a7fd29016e6c29aa7fa48f521bd2bc40b38428a3c76ab5618ec50a7d85",
+    "sha256": "e6100dd5687db4aeeb0897dd066623c7318b5545fb7c831bbe6a8766f51c4a75",
+    "sources": [
+      {
+        "id": "jc-number-eight-easy-001",
+        "sha256": "df33cbcf149673678cb304e62070d741d3337a83c198512865446a492cb1e995"
+      },
+      {
+        "id": "jc-number-eight-easy-002",
+        "sha256": "a46fa45d7c9097c02dc08e4bdb8b153dc637d878495a9dc22d49662241d7482f"
+      },
+      {
+        "id": "jc-number-eight-easy-003",
+        "sha256": "c004486ace607b1b486b3a1ee7c5d5fe9c8155e512429c6fcf66ac4b7e541bc7"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/e6100dd5687db4aeeb0897dd066623c7318b5545fb7c831bbe6a8766f51c4a75.png",
+    "title": "Number 8 Coloring Pages"
+  },
+  "/coloring-pages/numbers/888/": {
+    "alt": "JotColoring printable coloring pages share image: Number 888 Coloring Pages Featuring Number 888 in rounded outlines, Number 888 in angular block outlines, Number 888 with crossing curved bands.",
+    "description": "Rounded number 888 outlines join a reading scene with a child and bookcase. An imagined castle presents an arithmetic design using 888 and 900.",
+    "identity_sha256": "53fded6a4ca75e7db59f1eb319a693efe1cd080c25ca334f842d953323be28e3",
+    "sha256": "757f58b09657008352d70dece4ab0b5ef30f5cc5ea954ec411e87225649dd69a",
+    "sources": [
+      {
+        "id": "jc-number-888-easy-001",
+        "sha256": "0ddf22b6251ac0eb174ada686044bdf71c60df96a7b378ca819a00f0808de436"
+      },
+      {
+        "id": "jc-number-888-easy-002",
+        "sha256": "f399cf41f0552a5dadbd82ba8c2f8b6a3d2f48d9216347700a2add74325ce574"
+      },
+      {
+        "id": "jc-number-888-easy-003",
+        "sha256": "fa20257ebfd28a1832c64a3bad3f8b5f04d54cd1be8758a02daf7def90fa3514"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/757f58b09657008352d70dece4ab0b5ef30f5cc5ea954ec411e87225649dd69a.png",
+    "title": "Number 888 Coloring Pages"
+  },
+  "/coloring-pages/numbers/9/": {
+    "alt": "JotColoring printable coloring pages share image: Number 9 Coloring Pages Featuring Number 9 With Nine Ice Cream Cones, Number 9 With Nine Ducklings, Number 9 With Nine Buttons.",
+    "description": "Ice cream cones, pears, and a puffin beside a seaside cave appear with number 9. Geometric designs divide its loop and stem into smaller outlined spaces.",
+    "identity_sha256": "df91f916deb0e4af2a42c33d384d2908fefc3489144dbeafca2cfed62acb2948",
+    "sha256": "336714fb09b7f9c0e324ebdc26b2658647f758af1224c026c50fa87b39192132",
+    "sources": [
+      {
+        "id": "jc-number-nine-easy-001",
+        "sha256": "2d7039da910c3549ee808c2fca1c41e4b07fd4b21847bf0276bf443d0fafcd44"
+      },
+      {
+        "id": "jc-number-nine-easy-002",
+        "sha256": "86bafafdd68f459d1f41966db4ac9e62d3efe81be69838fa46d93ee90bc725e2"
+      },
+      {
+        "id": "jc-number-nine-easy-003",
+        "sha256": "1ed94d952006d140de269d3cd66bfe56aedd271b8c1e4fdf54d964ee10e6a737"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/336714fb09b7f9c0e324ebdc26b2658647f758af1224c026c50fa87b39192132.png",
+    "title": "Number 9 Coloring Pages"
+  },
+  "/coloring-pages/numbers/99/": {
+    "alt": "JotColoring printable coloring pages share image: Number 99 Coloring Pages Featuring Rounded Number 99 Outline, Square Block Number 99, Number 99 With Curved Divisions.",
+    "description": "Rounded number 99 outlines sit alongside imagined stone formations, including a waterfall between two nines. Ornamental arithmetic displays add equations and decorative details.",
+    "identity_sha256": "731bebd14b9074de8016fbf14d2ef38f1fe430dc521c4c4e08444c22df192da9",
+    "sha256": "2065011d264a380d4ffed69c195d12d829d6317f5e9b4ef09f75131c367e2232",
+    "sources": [
+      {
+        "id": "jc-number-99-easy-001",
+        "sha256": "11e127463ae6464637aa08ea4dd9e390687402c0518a26017297884b64feb1b3"
+      },
+      {
+        "id": "jc-number-99-easy-002",
+        "sha256": "ae1ac7f9ab7d91db2509f1bbfe11bf76944a4f18284be09aba9967276f25fd3e"
+      },
+      {
+        "id": "jc-number-99-easy-003",
+        "sha256": "f73567e3462df579c11310e9699e72d14ee065308ce5957e9ef2f32272fd915d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/2065011d264a380d4ffed69c195d12d829d6317f5e9b4ef09f75131c367e2232.png",
+    "title": "Number 99 Coloring Pages"
+  },
+  "/coloring-pages/numbers/999/": {
+    "alt": "JotColoring printable coloring pages share image: Number 999 Coloring Pages Featuring Number 999 in rounded outlines, Number 999 in angular block outlines, Number 999 in dimensional outlines.",
+    "description": "Explore number 999 through rounded digit outlines, a skateboard park, and decorative place-value displays. Equations and scene details give the repeated nines different contexts.",
+    "identity_sha256": "9b25402028c253efba6cb4acb52380470d2833af6883e46edeb4eb180b417275",
+    "sha256": "89c04c630f5ff5a1bbb484e6d60a045d85418f03af40e4fc82923e2af2a91e4f",
+    "sources": [
+      {
+        "id": "jc-number-999-easy-001",
+        "sha256": "bc04a3204511b017f2feadd30e346e80c6564654dc227544909731147d020965"
+      },
+      {
+        "id": "jc-number-999-easy-002",
+        "sha256": "ef8e605dca6b8e9ceb91c068dcf22115bd1813f11e4db37c859207bc07316b7f"
+      },
+      {
+        "id": "jc-number-999-easy-003",
+        "sha256": "b1462721cd5c93668a65ade5e896be19f4972c23d6df2eaa14b0146b449b0aad"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/89c04c630f5ff5a1bbb484e6d60a045d85418f03af40e4fc82923e2af2a91e4f.png",
+    "title": "Number 999 Coloring Pages"
+  },
+  "/coloring-pages/objects/": {
+    "alt": "JotColoring printable coloring pages share image: Everyday Object Coloring Pages Featuring Leaf-Patterned Teacup and Saucer, Three Decorated Vases on a Shelf, Open Book and Reading Glasses.",
+    "description": "Patterned teacups, decorated vases, books, reading glasses, and other familiar objects form still lifes. Look for leafy motifs, geometric decoration, and detailed room settings.",
+    "identity_sha256": "3972bd2baea61c271c12cb31396f770af05473bc565289bfc6a2602e22b21cd1",
+    "sha256": "678d839e033af8779fee5e20fca1c54306466ff614233e8f70bb1379612fd71f",
+    "sources": [
+      {
+        "id": "jc-adult-easy-001",
+        "sha256": "6e86cafc8b691974582c71e83d7fd29bc2d5cd1efaf26ff736b99bfd8b68d0b8"
+      },
+      {
+        "id": "jc-adult-easy-002",
+        "sha256": "ceeb033acd07ac48e68f8babfd694304248c6d2f8f345679e93ca48accd9677e"
+      },
+      {
+        "id": "jc-adult-easy-007",
+        "sha256": "f52d3cba20e2e583339447ff970bb846a455ca97ce8ecacd6482bbb3b1a429e6"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/678d839e033af8779fee5e20fca1c54306466ff614233e8f70bb1379612fd71f.png",
+    "title": "Everyday Object Coloring Pages"
+  },
+  "/coloring-pages/occupations/": {
+    "alt": "JotColoring printable coloring pages share image: Jobs & Helpers Coloring Pages Featuring Barbie Holds a Kitten in a Vet Coat, Barbie Examines a Rabbit in a Vet Clinic, Barbie Takes Notes Beside an Aquarium.",
+    "description": "Imagined veterinary versions of Barbie care for kittens, examine rabbits, and take notes beside an aquarium. Animals, coats, work surfaces, and equipment provide scene-specific details.",
+    "identity_sha256": "8e9fdb1bd2ec3c03f009f163ed616ddf086eaf75175314727baa01676e629549",
+    "sha256": "399d7f9c7abfc3ae970d8587b817ee448f09b10b47c758436ffc31267780bf08",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-002",
+        "sha256": "f5d8d4593f49630f1ccf8dc9aec0dbe23ffe87a98e69039f238dd645fe0d062d"
+      },
+      {
+        "id": "jc-barbie-hard-002",
+        "sha256": "46220a8159cfa3cd56ec32e39f4a2333179aa93421b7ee98f81113059611c402"
+      },
+      {
+        "id": "jc-barbie-hard-014",
+        "sha256": "2209ceb3685d9acaa0ae238cd0a0fee6d1df195b217c2869537cb0d784fb1a74"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/399d7f9c7abfc3ae970d8587b817ee448f09b10b47c758436ffc31267780bf08.png",
+    "title": "Jobs & Helpers Coloring Pages"
+  },
+  "/coloring-pages/ocean-life/": {
+    "alt": "JotColoring printable coloring pages share image: Ocean Life Coloring Pages Featuring Sea Turtle and Coral Reef, Spotted Seal on a Rocky Shore, Seals Above a Coastal Rock Pool.",
+    "description": "Sea turtles explore reefs while seals rest on rocky shores and beside coastal pools. Shells, fish, water plants, and other habitat details surround the marine animals.",
+    "identity_sha256": "152bcd35a685bb449d5e10e2f33c6d989f7ae8d1247ea31afd823714aa7de774",
+    "sha256": "40f1dba8a565fee4321c07f37eb30e36bda0ae28042d40b91073304312b991e8",
+    "sources": [
+      {
+        "id": "jc-ocean-adventure",
+        "sha256": "0e64ee5e5a265c6db41cc7f9f3d3d333f5e076df0c07451e18ad9e3051e6f1cd"
+      },
+      {
+        "id": "jc-animal-easy-022",
+        "sha256": "dfa7d78b8b74bbdf464381f4957ec8ef394971c7f0af63884287b1dfe4841c24"
+      },
+      {
+        "id": "jc-animal-hard-022",
+        "sha256": "6b25f7197a32dcc7bad37d2fedaf96532765eb3a3ecdfa7076cb721bd2739ef7"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/40f1dba8a565fee4321c07f37eb30e36bda0ae28042d40b91073304312b991e8.png",
+    "title": "Ocean Life Coloring Pages"
+  },
+  "/coloring-pages/ocean/": {
+    "alt": "JotColoring printable coloring pages share image: Ocean Coloring Pages Featuring Sea Turtle and Coral Reef, Spiral Shell and Scallop Shell, Sea Turtle Swims Among Bubbles.",
+    "description": "Sea turtles, shells, reef fish, and other underwater subjects explore the ocean. Find broad animal outlines alongside detailed seabeds and coastal settings.",
+    "identity_sha256": "5ce1d1e1c23c3fb6cc38cd17f3f0bc14609130709da2cc663956e2f206b7e432",
+    "sha256": "0fa632e2a16d6178d08d4adf0578bb4886d31671849634f9f102ee0a44678002",
+    "sources": [
+      {
+        "id": "jc-ocean-adventure",
+        "sha256": "0e64ee5e5a265c6db41cc7f9f3d3d333f5e076df0c07451e18ad9e3051e6f1cd"
+      },
+      {
+        "id": "jc-adult-easy-009",
+        "sha256": "ec110567376fbcb4f47831d125086c6e3ff6b77850be59a4a198d7903fc8fcc1"
+      },
+      {
+        "id": "jc-animal-easy-024",
+        "sha256": "44a930d82620f4f89fb08a52f29c1e3c4fa731a02cd9766be001f7074c307495"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0fa632e2a16d6178d08d4adf0578bb4886d31671849634f9f102ee0a44678002.png",
+    "title": "Ocean Coloring Pages"
+  },
+  "/coloring-pages/outfits/": {
+    "alt": "JotColoring printable coloring pages share image: Clothing & Outfits Coloring Pages Featuring Barbie Fits a Floral Dress on a Mannequin, Barbie and a Friend Fit an Ornate Gown, Raincoat and Boots Above a Puddle.",
+    "description": "Barbie fits dresses and ornate gowns on mannequins, while a raincoat and boots appear above a puddle. Fabric shapes, garment details, and dressing scenes explore clothing.",
+    "identity_sha256": "ec018da8c99ebfb064948a10dc9876e43b2ec777825146230a1cade4be9a5f1a",
+    "sha256": "85885fc3312d59d716ee77edafb2eab09fd291ce3b25024eb4effdb013d46fe6",
+    "sources": [
+      {
+        "id": "jc-barbie-hard-013",
+        "sha256": "5ab5797c7519747ffeeaca60ba061a5cf9837bc124e973aef97ab4c5f3b451ef"
+      },
+      {
+        "id": "jc-barbie-very-hard-013",
+        "sha256": "cf241fd38d5d3f8698b1b5d486613377f36b6bb183f37721464718b792e8fcc0"
+      },
+      {
+        "id": "jc-easy-medium-019",
+        "sha256": "36217163620b191fe25bfa86e8731ab67129994ca3a5f7d54199a2bd31c7df06"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/85885fc3312d59d716ee77edafb2eab09fd291ce3b25024eb4effdb013d46fe6.png",
+    "title": "Clothing & Outfits Coloring Pages"
+  },
+  "/coloring-pages/pandas/": {
+    "alt": "JotColoring printable coloring pages share image: Panda Coloring Pages Featuring Panda Holding a Bamboo Stalk, Panda Curled Up on the Grass, Panda Watching a Butterfly.",
+    "description": "Pandas snack on bamboo, rest in trees, play, and explore leafy settings. Choose an open character drawing or a scene filled with bamboo and woodland details.",
+    "identity_sha256": "dbd40d35e466b4062ad00d97e6048316732f35b957f6f471ff616e0cd7837d4e",
+    "sha256": "7207e2513a40288aa4b824c74f55d08535bc8cb3aea02cb9e0bfca28933c842d",
+    "sources": [
+      {
+        "id": "jc-panda-easy-001",
+        "sha256": "2e5ecf9bbe0d2fdcfba30e3679cdab413499e2f54b5d7658dc0f46d3fed9af3d"
+      },
+      {
+        "id": "jc-panda-easy-002",
+        "sha256": "e774e87e4967c4aa0eded79c6d59634db6db9e8a44bdadcf3bc617c9576621a3"
+      },
+      {
+        "id": "jc-panda-easy-003",
+        "sha256": "ee64cf67519f7a75734382a3dcef2abee9ef9c189b2600e1561b581a77909e81"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7207e2513a40288aa4b824c74f55d08535bc8cb3aea02cb9e0bfca28933c842d.png",
+    "title": "Panda Coloring Pages"
+  },
+  "/coloring-pages/parties/": {
+    "alt": "JotColoring printable coloring pages share image: Parties Coloring Pages Featuring Plain Heart Balloon with a Ribbon.",
+    "description": "A heart-shaped balloon is tied with a ribbon. Its broad heart outline and curved bow provide a simple illustrated party motif.",
+    "identity_sha256": "eb89f49ef5a7f875f67a45d5bdd9c3f10a69196083c1600aa4ac58eebf8c6e06",
+    "sha256": "8bbfbd36e11e90938c8a2c24e695db464b4d453cf215b3371da8d3285d5f02d3",
+    "sources": [
+      {
+        "id": "jc-easy-easy-014",
+        "sha256": "8930dc4e205750c3af02c17f35804b0882612cefb144c50190124d59d1fcc5a5"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8bbfbd36e11e90938c8a2c24e695db464b4d453cf215b3371da8d3285d5f02d3.png",
+    "title": "Parties Coloring Pages"
+  },
+  "/coloring-pages/people/": {
+    "alt": "JotColoring printable coloring pages share image: People Coloring Pages Featuring Barbie Waters a Potted Tulip, Barbie Holds a Kitten in a Vet Coat, Barbie Presents a Cupcake.",
+    "description": "Barbie characters and children appear in everyday activities, shared outings, and imagined roles. Clothing, poses, tools, and surrounding scenes give each drawing its own focus.",
+    "identity_sha256": "cbd47a571fa594acff4e17c678253e2f4bc6733ca0ac332ebb347a8ba59aa5bf",
+    "sha256": "3d0a58632d40dad9a97135d9dbf228cc3aa5ccd8bddbe72fd9fb9b8344e39ebb",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-001",
+        "sha256": "1ea73ec37c57bfeeb735e96b63ad9472f22cb23a70122e77852b46f507078f13"
+      },
+      {
+        "id": "jc-barbie-easy-002",
+        "sha256": "f5d8d4593f49630f1ccf8dc9aec0dbe23ffe87a98e69039f238dd645fe0d062d"
+      },
+      {
+        "id": "jc-barbie-easy-003",
+        "sha256": "fd8831cdf223347c1923c5fec6a187241545d6d17902c7906a7243e13515e03c"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/3d0a58632d40dad9a97135d9dbf228cc3aa5ccd8bddbe72fd9fb9b8344e39ebb.png",
+    "title": "People Coloring Pages"
+  },
+  "/coloring-pages/pets/": {
+    "alt": "JotColoring printable coloring pages share image: Pets Coloring Pages Featuring Puppy with a Ball and Daisies, Sleeping Kitten with Yarn, Barbie Examines a Rabbit in a Vet Clinic.",
+    "description": "Puppies play beside flowers, kittens curl up with yarn, and illustrated veterinary scenes show animals receiving care. The pet collection includes both individual animals and shared activities.",
+    "identity_sha256": "4bab7a448739c715b740f733cdb58e101fff5a6454ddf3146533c080a65fd6cc",
+    "sha256": "554edbedaca44546993c82b276be656e401ebf0b4ee4a361f4d079e54a609923",
+    "sources": [
+      {
+        "id": "jc-playful-puppy",
+        "sha256": "2aecc991a142e3c02e99e0564aeb9e05affea73537aeb7624d03aaf08e4d038a"
+      },
+      {
+        "id": "jc-sleepy-kitten",
+        "sha256": "6f1f20ffa9a3e361ed4c3ee9d4928799bd3ff2e6e8d3c94af154ae16563c286e"
+      },
+      {
+        "id": "jc-barbie-hard-002",
+        "sha256": "46220a8159cfa3cd56ec32e39f4a2333179aa93421b7ee98f81113059611c402"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/554edbedaca44546993c82b276be656e401ebf0b4ee4a361f4d079e54a609923.png",
+    "title": "Pets Coloring Pages"
+  },
+  "/coloring-pages/planets/": {
+    "alt": "JotColoring printable coloring pages share image: Planets & Solar System Coloring Pages Featuring Decorative Solar System Scene.",
+    "description": "A decorative solar-system scene arranges planets among stars and curved orbital lines. Outlined rings, repeated motifs, and different circular forms create spaces to color.",
+    "identity_sha256": "28385d9dfeb4d93af702cffee295732649d95a4495e05aebff74e4b3580dc258",
+    "sha256": "973283b06922a49db4d469e581a57f4ea37682339ba9912eec5a76af2f08f121",
+    "sources": [
+      {
+        "id": "jc-original-solar-system-garden-of-planets",
+        "sha256": "194b31aedda85dbd77c3da4ef4a2f5695dd57d1a11323c211a3245767191c40d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/973283b06922a49db4d469e581a57f4ea37682339ba9912eec5a76af2f08f121.png",
+    "title": "Planets & Solar System Coloring Pages"
+  },
+  "/coloring-pages/polar-animals/": {
+    "alt": "JotColoring printable coloring pages share image: Polar Animals Coloring Pages Featuring Penguin Beside a Snowflake, Penguin and Chick Among Ice Floes, Penguin Slides Down a Snowy Slope.",
+    "description": "Penguins stand beside snowflakes, shelter with chicks among ice floes, and slide down snowy slopes. Rounded animal outlines sit alongside icy landscapes and winter details.",
+    "identity_sha256": "3d42725d5f636750accf54f3d7a036c795402c99cd706a9f989967ea4feca6f4",
+    "sha256": "427e453bbd2c44760903006e6f3c60a9f974c3c87391accdc91b5bafdc9b848f",
+    "sources": [
+      {
+        "id": "jc-animal-easy-023",
+        "sha256": "0f85044fbe86ebd05731cd2545aa7f8d582acd945e50d3340d1124b2fa21b004"
+      },
+      {
+        "id": "jc-animal-hard-023",
+        "sha256": "b96681597bf0018577ce743015ef1f6329630449bfafcf15743c6a580a887b56"
+      },
+      {
+        "id": "jc-animal-medium-023",
+        "sha256": "5f7e6d8db5076e51f6fca677f768b61822279db3f4584402b2a89a7f03082abf"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/427e453bbd2c44760903006e6f3c60a9f974c3c87391accdc91b5bafdc9b848f.png",
+    "title": "Polar Animals Coloring Pages"
+  },
+  "/coloring-pages/princesses/": {
+    "alt": "JotColoring printable coloring pages share image: Princess Coloring Pages Featuring Princess with a Long-Stemmed Rose, Princess Holds a Closed Book, Princess Plays a Small Harp.",
+    "description": "Storybook princesses explore gardens, play music, read, make crafts, and care for animals. Simple character drawings sit beside detailed castles and imaginative landscapes.",
+    "identity_sha256": "228f1ff6cd621de317ff14a4f1d1b6b9610610755b4ef80161c285d754118b8d",
+    "sha256": "c49c75d648b529d736b53856029a25914ce0d3879cde8c241d7a3ffaa99a49f4",
+    "sources": [
+      {
+        "id": "jc-princess-easy-001",
+        "sha256": "8db83af8647f17ba70e0a05e9d2de9fcf7e5917afacbf8cf469fb37c09dadf12"
+      },
+      {
+        "id": "jc-princess-easy-002",
+        "sha256": "74407a9f78fd232fb58a7883e7a64b8daa4fb94bba4d03b108a57cb2417aca55"
+      },
+      {
+        "id": "jc-princess-easy-003",
+        "sha256": "455d816c5ad26ade77e9670d6beb79d4a7f1bb3da964961042a4f3e2dee432b2"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/c49c75d648b529d736b53856029a25914ce0d3879cde8c241d7a3ffaa99a49f4.png",
+    "title": "Princess Coloring Pages"
+  },
+  "/coloring-pages/reptiles/": {
+    "alt": "JotColoring printable coloring pages share image: Reptiles Coloring Pages Featuring Tortoise Carries Stacked Flower Pots, Smiling Tortoise with Geometric Shell Plates, Sea Turtle Beneath Three Bubbles.",
+    "description": "Tortoises carry flower pots, patterned shells divide into geometric plates, and turtles swim among bubbles. Explore different shell shapes, feet, flippers, and surrounding scenes.",
+    "identity_sha256": "bea0df5bcf0f2dd3b89f92cf968e74b559eab252149baa68a624dc81802599de",
+    "sha256": "5c611c863ef078007b037b5a24529641222df53c9e7660f19c3eddf602bc4bce",
+    "sources": [
+      {
+        "id": "jc-cute-medium-022",
+        "sha256": "b701963757c1ea8bf211a2344e13fb55c2ae088ea836cda24fbc7fe7fe98349b"
+      },
+      {
+        "id": "jc-easy-easy-017",
+        "sha256": "98c0cc5d54b6e1d0787af3bb87510735b6a8dc95fe0f1c70554f412ad650bab3"
+      },
+      {
+        "id": "jc-turtle-easy-001",
+        "sha256": "190d3c4f25170480ec0446645392e744e8e2e1e43b1e8c6a3f285a177f809818"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/5c611c863ef078007b037b5a24529641222df53c9e7660f19c3eddf602bc4bce.png",
+    "title": "Reptiles Coloring Pages"
+  },
+  "/coloring-pages/robots/": {
+    "alt": "JotColoring printable coloring pages share image: Robot Coloring Pages Featuring Friendly Robot Waves Hello, Robots Care for Aquarium Fish, Robot Waters Seedling Pots.",
+    "description": "Friendly robots wave, tend seedlings, and care for aquarium fish. Clear mechanical shapes and illustrated workspaces offer varied amounts of background detail.",
+    "identity_sha256": "28ae9cfc2badf92a3d213b9585788bb2e7f630a333264a6c41333e1d6567cde9",
+    "sha256": "b557704efc2b035f9e0f49ce15d1c1da173edb438deaab7496b22d5b92ede4da",
+    "sources": [
+      {
+        "id": "jc-cute-easy-022",
+        "sha256": "220bcebd0eb3bdd0b765d2612ef1186c4114cfe9bebbcbe7eefd0bde49415c19"
+      },
+      {
+        "id": "jc-cute-hard-015",
+        "sha256": "72d90626a05e7f6a35a50f6ec444aa0919ba90eaca4df22f5d21eaf394a9c099"
+      },
+      {
+        "id": "jc-cute-medium-017",
+        "sha256": "3550829dea0f8f23b89d70183fd09daeabd7e73b79dd572f7cfc1781d8bbcfd1"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/b557704efc2b035f9e0f49ce15d1c1da173edb438deaab7496b22d5b92ede4da.png",
+    "title": "Robot Coloring Pages"
+  },
+  "/coloring-pages/rockets/": {
+    "alt": "JotColoring printable coloring pages share image: Rockets Coloring Pages Featuring Rocket Above The Moon Garden, Space Station Above A Blue Planet.",
+    "description": "A rocket rises above an imagined moon garden, and a space station floats above a planet. Spacecraft, celestial shapes, and invented scenery fill the drawings.",
+    "identity_sha256": "e01303171977febae90cc1c182a5182dd455d1080692ef076ba059ed625cbb98",
+    "sha256": "588ed1e83b4e585bbc08dc54d15be93936d19f7ea7a3188fe99aa7d9cd35096d",
+    "sources": [
+      {
+        "id": "jc-original-rocket-above-the-moon-garden",
+        "sha256": "6c55e6f65cb44f15df5ab24875feb804e392a52bb420c8705e541265f51de4e3"
+      },
+      {
+        "id": "jc-original-space-station-above-a-blue-planet",
+        "sha256": "4d1b7acd50d782bcd43ab9537db51e9bf5073d81b0446ceac69285a668206685"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/588ed1e83b4e585bbc08dc54d15be93936d19f7ea7a3188fe99aa7d9cd35096d.png",
+    "title": "Rockets Coloring Pages"
+  },
+  "/coloring-pages/roses/": {
+    "alt": "JotColoring printable coloring pages share image: Roses Coloring Pages Featuring Single Rose with Serrated Leaves, Rose Arch in a Garden Courtyard, Rose Basket with Garden Tools.",
+    "description": "Single roses, buds, tied bunches, garden arches, and formal fountain gardens highlight layered petals and serrated leaves.",
+    "identity_sha256": "4f651fd94cc2c648c0782411bcb7425409bcda0318e886437d6b3dab9c4925c9",
+    "sha256": "588eb940d20965f48a52c0179bba9e22ec29a1f63f432d27b7349f93f8002732",
+    "sources": [
+      {
+        "id": "jc-flower-easy-001",
+        "sha256": "9e5bd16c94c7ce071add536a9280c2365f1ae23b3359fac80dc137bbd8e3b5fb"
+      },
+      {
+        "id": "jc-flower-hard-001",
+        "sha256": "e9b81f78da52260988845c733a905df38a2e17cf07df32ebb44a7cddbf5af015"
+      },
+      {
+        "id": "jc-flower-medium-001",
+        "sha256": "ae2a9d03424aad98f84fdb59edb3d95a0e97667617c1a5df7ab337798669c751"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/588eb940d20965f48a52c0179bba9e22ec29a1f63f432d27b7349f93f8002732.png",
+    "title": "Roses Coloring Pages"
+  },
+  "/coloring-pages/safari-animals/": {
+    "alt": "JotColoring printable coloring pages share image: Safari Animals Coloring Pages Featuring Young Elephant Raises Its Trunk, Giraffe Reaches for Hanging Leaves, Lion Sits Beside a Rock.",
+    "description": "Elephants, giraffes, and lions appear in clear animal drawings and illustrated outdoor scenes. Raised trunks, long necks, manes, leaves, and rocks distinguish the subjects.",
+    "identity_sha256": "94aa948e7ea0931039eb992c79413877b2f10892d447b205c2e8ebc73d4b0186",
+    "sha256": "619a850e82cfe394ffaf69650cfc5000f9df463d888d04e772a0244340b6ebac",
+    "sources": [
+      {
+        "id": "jc-animal-easy-001",
+        "sha256": "e4b85d71fafa081670f4222d994e24bbc5d4cd9cf3c2010d1bf91379f99f1478"
+      },
+      {
+        "id": "jc-animal-easy-002",
+        "sha256": "d7cd674170ef5bcfd6430d86728f8b163f24084127c513ae542b607629dbf3c9"
+      },
+      {
+        "id": "jc-animal-easy-003",
+        "sha256": "6ce8b19e961331b9df895324fa9f345d12803b04abd2f9057a04f87a3c9ad1ef"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/619a850e82cfe394ffaf69650cfc5000f9df463d888d04e772a0244340b6ebac.png",
+    "title": "Safari Animals Coloring Pages"
+  },
+  "/coloring-pages/school/": {
+    "alt": "JotColoring printable coloring pages share image: School Coloring Pages Featuring Friends Read a Moon and Star Book, Children Fit Two Puzzle Pieces Together, Children Display Science Fair Projects.",
+    "description": "Children read an illustrated book, fit puzzle pieces together, and present science projects. Books, shapes, desks, and classroom displays give the learning scenes different focuses.",
+    "identity_sha256": "1f457e7548c4258f7cfd0de2eb76851bee45e6d75f655e49ec93d7e9898c72ee",
+    "sha256": "001477062c5a2d4f860c52d357d3f2f6a1224e5063d0c9a86ba708097775cad1",
+    "sources": [
+      {
+        "id": "jc-kids-easy-005",
+        "sha256": "a53b7607e4ad9dc12e3fac54ff4ba8ec5b803757438a600282186cea936cfc9d"
+      },
+      {
+        "id": "jc-kids-easy-010",
+        "sha256": "99125095bb283935bba7c131942b2f80cd8123efac343640dbc32013ef6444e5"
+      },
+      {
+        "id": "jc-kids-hard-004",
+        "sha256": "99a4c559b00bbc905b8d3c6c354216544b9b8bfdad20396c6053d03f969173f4"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/001477062c5a2d4f860c52d357d3f2f6a1224e5063d0c9a86ba708097775cad1.png",
+    "title": "School Coloring Pages"
+  },
+  "/coloring-pages/sea-turtles/": {
+    "alt": "JotColoring printable coloring pages share image: Sea Turtles Coloring Pages Featuring Sea Turtle Swims Among Bubbles, Sea Turtle Among Coral and Fish, Sea Turtle Glides Above Shells.",
+    "description": "Sea turtles hatch on sandy shores and glide among coral, kelp, mangrove roots, and reef fish. Explore expressive hatchlings, patterned flippers, and detailed underwater habitats.",
+    "identity_sha256": "4514a0755d6dfe6580711efa54eea93ca6ddc40841b293ac210321c2fb9f1c51",
+    "sha256": "9dd5aa536e5402a428d000cfdfc7b804f1a2cb90ff7d78d0e0cd72b9aeb5a996",
+    "sources": [
+      {
+        "id": "jc-animal-easy-024",
+        "sha256": "44a930d82620f4f89fb08a52f29c1e3c4fa731a02cd9766be001f7074c307495"
+      },
+      {
+        "id": "jc-animal-hard-024",
+        "sha256": "079275e70a64324fa1532a29b27aa2ca62bd9c4ba199ab370aedb5d9e2b7ad22"
+      },
+      {
+        "id": "jc-animal-medium-024",
+        "sha256": "359d51cf9a23eca330fbf19916d07a65770e314c1afeb28435a4b2453e980204"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/9dd5aa536e5402a428d000cfdfc7b804f1a2cb90ff7d78d0e0cd72b9aeb5a996.png",
+    "title": "Sea Turtles Coloring Pages"
+  },
+  "/coloring-pages/seasons/": {
+    "alt": "JotColoring printable coloring pages share image: Season & Weather Coloring Pages Featuring Barbie Stands Beside a Snowman, Barbie Pulls a Sled Through Snow, Barbie and a Friend Pull a Gift Wagon.",
+    "description": "Snowmen, sleds, gift wagons, spring flowers, and changing weather create seasonal scenes. Browse a season or weather subject for its individual drawings.",
+    "identity_sha256": "198623ecca8bdbfcfbc9731ac06d39e203898ec547cfa492ebf6cd2ce4008913",
+    "sha256": "80b84898edcfd84e9e13c2739c21611169eebacf363ff1aad63eccab1ce40a10",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-019",
+        "sha256": "273ff4bcc124c7bcef8683fc50d8d9d8e2d42d9baaecb75e42d6ba198cc28ab4"
+      },
+      {
+        "id": "jc-barbie-medium-019",
+        "sha256": "3483e4216fcb292469b84270fbd8c5902f59d02f8196a4c51f69979492fb352d"
+      },
+      {
+        "id": "jc-barbie-very-hard-019",
+        "sha256": "ff2f9b4e60eb0843db066dfa85928e176c82b6402ee198465b091c72d83b6296"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/80b84898edcfd84e9e13c2739c21611169eebacf363ff1aad63eccab1ce40a10.png",
+    "title": "Season & Weather Coloring Pages"
+  },
+  "/coloring-pages/sharks/": {
+    "alt": "JotColoring printable coloring pages share image: Sharks Coloring Pages Featuring Shark in a Simple Side View, Smiling Hammerhead Shark with Bubbles, Spotted Whale Shark in Profile.",
+    "description": "Hammerheads, spotted whale sharks, long-tailed threshers, and other sharks explore reefs, kelp forests, and mangrove channels. Simple profiles and richly detailed underwater scenes show different silhouettes and fin shapes.",
+    "identity_sha256": "402860d1e99761bfaba246ba23cce982628d3c8f0e41e9e6d6613f392403650b",
+    "sha256": "30beef269efe2e2f7324cba206e1c5f35241963147f475dc5e91cbd1104a572b",
+    "sources": [
+      {
+        "id": "jc-sharks-easy-001",
+        "sha256": "e65f0d37f96cd1c360e4bb0d8d75d46ef02cfaf1c353b4ccf0a56f6c9440ee07"
+      },
+      {
+        "id": "jc-sharks-easy-002",
+        "sha256": "d00c407ffcceb3ff7b96f02f3c4bf2fdb123a481c69bb6a6971559f0d9137431"
+      },
+      {
+        "id": "jc-sharks-easy-003",
+        "sha256": "f816f1eabc47a7aa8f227aa41dce472f19c9345a2794d6b43efa11580ff7e095"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/30beef269efe2e2f7324cba206e1c5f35241963147f475dc5e91cbd1104a572b.png",
+    "title": "Sharks Coloring Pages"
+  },
+  "/coloring-pages/sonic/": {
+    "alt": "JotColoring printable coloring pages share image: Sonic Coloring Pages Featuring Sonic Waves Beside a Ring, Sonic Runs Across the Grass, Sonic Holds a Wrench.",
+    "description": "Sonic, Tails, Amy, and Knuckles appear in running, gardening, music, workshop, and adventure scenes, from open outlines to detailed settings.",
+    "identity_sha256": "e62311e37f388a72642d0f5086e48fdb0223070c03596249f79d398cf234b233",
+    "sha256": "37c2a4c9a3b599983efbb0c226e0ed91536fa3d6241c1f4b4f4a20630edaea0c",
+    "sources": [
+      {
+        "id": "jc-sonic-easy-001",
+        "sha256": "9d7b80182d128082bd13c13c8a76b40d281ae11db28717c9001b3ceb066b7dec"
+      },
+      {
+        "id": "jc-sonic-easy-002",
+        "sha256": "937f4ab4a15c9cd0fccde9b919eb999e9d9dc8645b0456c55e5f9822773a47cb"
+      },
+      {
+        "id": "jc-sonic-easy-003",
+        "sha256": "e426f784584fec6f396e58a7a783003d8d14c616370a181710ce01264f1123e6"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/37c2a4c9a3b599983efbb0c226e0ed91536fa3d6241c1f4b4f4a20630edaea0c.png",
+    "title": "Sonic Coloring Pages"
+  },
+  "/coloring-pages/sports/": {
+    "alt": "JotColoring printable coloring pages share image: Sports Coloring Pages Featuring Barbie Fastens Ice Skates on a Park Bench.",
+    "description": "Barbie sits on a park bench to fasten her ice skates. The skating scene includes winter trees, lamps, a pavilion, and a frozen pond.",
+    "identity_sha256": "acd4f53a1d850191e9774d432e21deb93eb201b30eec16e9e5bdecc90805bb75",
+    "sha256": "4355a3ebd4a59b1b8909a4972cddc03f870c60003ad4aa1934f9e42face51dc2",
+    "sources": [
+      {
+        "id": "jc-barbie-hard-019",
+        "sha256": "9caf491b345d957df191cc26b7085cef47dc3ded851a92efb38dba14410d652e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/4355a3ebd4a59b1b8909a4972cddc03f870c60003ad4aa1934f9e42face51dc2.png",
+    "title": "Sports Coloring Pages"
+  },
+  "/coloring-pages/spring/": {
+    "alt": "JotColoring printable coloring pages share image: Spring Coloring Pages Featuring Spring Tree Beside Tulips and a Watering Can, Seedling Beneath the Sun, Bird on a Budding Branch.",
+    "description": "New leaves, blossoms, rain puddles, nesting birds, and young animals fill these spring scenes. Garden activities, flower markets, streams, and glasshouses bring more detail to the collection.",
+    "identity_sha256": "4b620200e06d3df6736b746f51686dc52103cc5d0c459a0aac91f670654f8181",
+    "sha256": "f5d352b80062040b0c1ca72786274fa2b164d59dc8b7dfc7b99fbb800a4a87b7",
+    "sources": [
+      {
+        "id": "jc-easy-hard-001",
+        "sha256": "ee2e419c07f5b08d3cef530ac73cef45cb8d89a09d8f3bc0509247ff88f9c8d4"
+      },
+      {
+        "id": "jc-spring-easy-001",
+        "sha256": "3ce39ba0dd05f80c39e779b9f50e9eb87bb2c621eff32a61a552777a9ae6c97d"
+      },
+      {
+        "id": "jc-spring-easy-002",
+        "sha256": "83e538a46bd43e4a494454b0a4c32a6c29b61ba2cb2c3d13caba9ef4080c4b19"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f5d352b80062040b0c1ca72786274fa2b164d59dc8b7dfc7b99fbb800a4a87b7.png",
+    "title": "Spring Coloring Pages"
+  },
+  "/coloring-pages/squishy/": {
+    "alt": "JotColoring printable coloring pages share image: Squishy Coloring Pages Featuring Rounded Cat Stretches Beneath a Heart, Smiling Peach with Broad Leaves, Bear-Shaped Pancake Stack.",
+    "description": "Rounded animal mascots and smiling food characters fill this squishy-style collection. Choose open character outlines or playful shops, gardens, craft tables, and imagined adventures.",
+    "identity_sha256": "1203d90e0cb556565ebc8affa266d79bd8bd7f134d3e495048f8cf9fb937ceab",
+    "sha256": "b3d8359379f74eff2725d63930d6bf0f4b683855325edb6f40b743b6f8047c9d",
+    "sources": [
+      {
+        "id": "jc-squishy-easy-001",
+        "sha256": "db14bdaa89199d3bd5a26b2c14b4de814847eb4cb7cb16bbc541b522acf4be3a"
+      },
+      {
+        "id": "jc-squishy-easy-002",
+        "sha256": "93e45700ce94e70d0d907db5dec6a0ec25909970ef6841e5b7a28be65b831f5a"
+      },
+      {
+        "id": "jc-squishy-easy-003",
+        "sha256": "9a7de4cc37fdc92d531f314e4d704f2502d4b2e479bbf7f27d8fc18d5d94d6f7"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/b3d8359379f74eff2725d63930d6bf0f4b683855325edb6f40b743b6f8047c9d.png",
+    "title": "Squishy Coloring Pages"
+  },
+  "/coloring-pages/sunflowers/": {
+    "alt": "JotColoring printable coloring pages share image: Sunflowers Coloring Pages Featuring Barbie Photographs a Sunflower, Sunflower with Broad Leaves, Sunflowers Outside a Cottage Door.",
+    "description": "Large sunflower heads, broad leaves, tied bouquets, cottage entrances, and covered garden seats offer bold flower shapes and varied backgrounds.",
+    "identity_sha256": "345f02166996ee5bbcc6bfd8accc494821153f0bb5b9819d576a935b0e565825",
+    "sha256": "269b39321d2e710d1068d9aa23f93183dacc149984ece935cbf6b1fc2621533d",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-016",
+        "sha256": "91d3085b40bd6fd7c5bced15d6fe2b940a1174abd63f6468bb11cc99fe7e3f81"
+      },
+      {
+        "id": "jc-flower-easy-004",
+        "sha256": "8a5c95aaf325eb89b16d6ba42b575891b256ffd670d367401dfcdfa6fd32ee51"
+      },
+      {
+        "id": "jc-flower-hard-004",
+        "sha256": "aa17cb4b73dcc39d48bf37c637e03f8178e9bb33c94a9612970dac556f00a72b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/269b39321d2e710d1068d9aa23f93183dacc149984ece935cbf6b1fc2621533d.png",
+    "title": "Sunflowers Coloring Pages"
+  },
+  "/coloring-pages/thanksgiving/": {
+    "alt": "JotColoring printable coloring pages share image: Thanksgiving Coloring Pages Featuring Smiling Turkey with a Fanned Tail, Pie Slice with Whipped Cream, Harvest Basket with Fruit and Pumpkin.",
+    "description": "Turkeys, pumpkins, harvest baskets, autumn leaves, and shared meal scenes make up this Thanksgiving collection. Clear single subjects and detailed kitchens, porches, and harvest arrangements offer a range of drawing detail.",
+    "identity_sha256": "944e54f3e1f8293dee9e35bab960ed177d9f89e9d598a70820c8d144ae1047ae",
+    "sha256": "a334dda6048468f03934d2240d57b3d39e16f7e1b9d5804732778541e9bb1107",
+    "sources": [
+      {
+        "id": "jc-thanksgiving-easy-001",
+        "sha256": "17350ca3c54374e8a387b6e0b5aa23046f48f2ee6ff29ec0423e00bb9456932b"
+      },
+      {
+        "id": "jc-thanksgiving-easy-002",
+        "sha256": "ae6bd454087f1e406005cfe967dc2db23962800f82f7f2ff3828b237b33905ed"
+      },
+      {
+        "id": "jc-thanksgiving-easy-003",
+        "sha256": "336adc5f94ce6de1a27a1bb54516dec78cd76cdc4b0b8cdb97b516f8fe6ea843"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/a334dda6048468f03934d2240d57b3d39e16f7e1b9d5804732778541e9bb1107.png",
+    "title": "Thanksgiving Coloring Pages"
+  },
+  "/coloring-pages/tools/": {
+    "alt": "JotColoring printable coloring pages share image: Tools Coloring Pages Featuring Daisy-Decorated Watering Can.",
+    "description": "A watering can carries a large daisy decoration. Its curved handle, long spout, round sprinkler head, and broad body create clear outlined shapes.",
+    "identity_sha256": "df519b60dc874bca688b9fa9e51c832bc1f6e44ca884ee0814f49b83fd3ed303",
+    "sha256": "6d219394f501c377d9fda8c52bf47967b58ab4b6a82dce9f37d2556a28c3fbda",
+    "sources": [
+      {
+        "id": "jc-easy-easy-010",
+        "sha256": "491b7befd363d67e703e50cce8a44e0ed44c85468c338c729ae37761d3015f56"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6d219394f501c377d9fda8c52bf47967b58ab4b6a82dce9f37d2556a28c3fbda.png",
+    "title": "Tools Coloring Pages"
+  },
+  "/coloring-pages/toys/": {
+    "alt": "JotColoring printable coloring pages share image: Toys Coloring Pages Featuring Sock Puppet in a Toy Box, Friendly Robot Waves Hello, Robots Care for Aquarium Fish.",
+    "description": "Sock puppets, toy boxes, and friendly robot characters appear in playful drawings. Mechanical shapes, patterned objects, and imagined activities provide varied details.",
+    "identity_sha256": "5c1a0231f8b2ed9f7b26987a7198fd8ae4dfdb3a96433fd3c8ca05f456b069c1",
+    "sha256": "ebc027ef64d40e995d7b32ab09749d019c13880d2b58fc22bdc3961e3e74b43b",
+    "sources": [
+      {
+        "id": "jc-cute-easy-017",
+        "sha256": "0aa862998d5b3dfa9d552afc055e588e41145c49a18d1c37ee3d7016595f8c38"
+      },
+      {
+        "id": "jc-cute-easy-022",
+        "sha256": "220bcebd0eb3bdd0b765d2612ef1186c4114cfe9bebbcbe7eefd0bde49415c19"
+      },
+      {
+        "id": "jc-cute-hard-015",
+        "sha256": "72d90626a05e7f6a35a50f6ec444aa0919ba90eaca4df22f5d21eaf394a9c099"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/ebc027ef64d40e995d7b32ab09749d019c13880d2b58fc22bdc3961e3e74b43b.png",
+    "title": "Toys Coloring Pages"
+  },
+  "/coloring-pages/trains/": {
+    "alt": "JotColoring printable coloring pages share image: Trains Coloring Pages Featuring Toy Train Carries a Teddy Bear, Animal Train Crosses a Flowered Bridge, Toy Locomotive Pulls a Block Wagon.",
+    "description": "Toy locomotives carry teddy bears, blocks, and animal passengers. Flowered bridges and illustrated surroundings add playful settings around the carriages and wheels.",
+    "identity_sha256": "fb25c0212070b04154d484d6271faf32dc5a73ef287ef2d5b767ff7ed0386c78",
+    "sha256": "cf3ff017d24c9f7eea53ed3b05c38a82b388219381160634c702a7e4c8e5f88b",
+    "sources": [
+      {
+        "id": "jc-cute-medium-013",
+        "sha256": "09f7ba2d58eeb2067d0bc19849d0bfc8d17dd64aea3f4d7cc933a7c6453bcc47"
+      },
+      {
+        "id": "jc-cute-very-hard-012",
+        "sha256": "1babf74b13694c554a31a167def3f733290a01f4169bd4e96b97a62cf1ef774e"
+      },
+      {
+        "id": "jc-easy-medium-012",
+        "sha256": "a19c855b811ece69cd70d1f81f6cf38139f49ff1f6852c2c30552ad2becdce6f"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/cf3ff017d24c9f7eea53ed3b05c38a82b388219381160634c702a7e4c8e5f88b.png",
+    "title": "Trains Coloring Pages"
+  },
+  "/coloring-pages/trick-or-treat/": {
+    "alt": "JotColoring printable coloring pages share image: Trick Or Treat Coloring Pages Featuring Jack-o-Lantern Bucket Filled with Candy, Ghost Costume at the Doorstep, Astronaut Costume Ringing a Doorbell.",
+    "description": "Costumed trick-or-treaters visit decorated doorsteps with candy buckets and treat bags. Explore friendly ghosts, jack-o-lanterns, and neighborhood Halloween scenes.",
+    "identity_sha256": "0ce49d5fb959ce687c7ddb4e5f22c313485ffdd04af0d2ff8af982eb8d5038ec",
+    "sha256": "03701850cd874de3e80437d90b6daffe9c0ccc0ed363d5d249f88ab609a4d1c0",
+    "sources": [
+      {
+        "id": "jc-trick-or-treat-easy-001",
+        "sha256": "45d61160192618fb1df15bce97e7e85f9afaa4938b9ec3871e8da2f299752886"
+      },
+      {
+        "id": "jc-trick-or-treat-easy-002",
+        "sha256": "764b7d06d51c229f35fb58f748150cba7452d6527b5fec57f44e780c192fa6d0"
+      },
+      {
+        "id": "jc-trick-or-treat-easy-003",
+        "sha256": "820099d2d63184bc55932e7d284aa0b2223c099a441d7172156f34e0636229cd"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/03701850cd874de3e80437d90b6daffe9c0ccc0ed363d5d249f88ab609a4d1c0.png",
+    "title": "Trick Or Treat Coloring Pages"
+  },
+  "/coloring-pages/trucks/": {
+    "alt": "JotColoring printable coloring pages share image: Trucks Coloring Pages Featuring Simple Tipper Truck in Side View, Fire Engine At The Old Station.",
+    "description": "A clear side-view tipper truck and a fire engine outside an old station show different truck shapes. Wheels, cargo bodies, buildings, and surrounding objects add detail.",
+    "identity_sha256": "5bc9038b8c097bc7073dd299adb6818efa9548f078e1462c030d7fddcbce2a2c",
+    "sha256": "f486911529f49c6bd0c0006daca8ea7ee5f0f0cd431ae56f71cff7a6f7ba628f",
+    "sources": [
+      {
+        "id": "jc-easy-easy-013",
+        "sha256": "899845a28b7ddf3b2766f997cc71c35b4e4306f2f92d9957c98aea1da47fef2f"
+      },
+      {
+        "id": "jc-original-fire-engine-at-the-old-station",
+        "sha256": "f4bb36ac254009ea5c1fb727080d84d553adb840f4448c9c8516ad73245213b8"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f486911529f49c6bd0c0006daca8ea7ee5f0f0cd431ae56f71cff7a6f7ba628f.png",
+    "title": "Trucks Coloring Pages"
+  },
+  "/coloring-pages/turtles/": {
+    "alt": "JotColoring printable coloring pages share image: Turtle Coloring Pages Featuring Sea Turtle Beneath Three Bubbles, Turtle Beside a Fallen Leaf, Sea Turtle Hatching from an Egg.",
+    "description": "Sea turtles glide through underwater scenes while freshwater turtles and tortoises explore ponds, logs, and gardens. Look for patterned shells, hatching turtles, and detailed habitats.",
+    "identity_sha256": "7d44b1d89f9d4c957cd827e28ed9d87a39a572aade108c718b22c98882344bea",
+    "sha256": "65c6d0e55c0915100449f0419ec31ac123e646be3b4fb14224653aa4d5dbefe8",
+    "sources": [
+      {
+        "id": "jc-turtle-easy-001",
+        "sha256": "190d3c4f25170480ec0446645392e744e8e2e1e43b1e8c6a3f285a177f809818"
+      },
+      {
+        "id": "jc-turtle-easy-002",
+        "sha256": "b2bbdb24fea9512b64a6e6978ea8cad85726cd46a3dd658fdd848ea9f8d055b5"
+      },
+      {
+        "id": "jc-turtle-easy-003",
+        "sha256": "3ce5232f38c72ab0af2882f436f23dc508f9f2982c77bd51144ca12aacf266bd"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/65c6d0e55c0915100449f0419ec31ac123e646be3b4fb14224653aa4d5dbefe8.png",
+    "title": "Turtle Coloring Pages"
+  },
+  "/coloring-pages/tyrannosaurus/": {
+    "alt": "JotColoring printable coloring pages share image: Tyrannosaurus Coloring Pages Featuring Tyrannosaur Beside a Fern, Tyrannosaur in a Fern-Filled Canyon, Tyrannosaur Crosses a Rocky Stream.",
+    "description": "Tyrannosaurs stand beside ferns, explore plant-filled canyons, and cross rocky streams. Large heads, short forelimbs, tails, and prehistoric settings distinguish these dinosaur scenes.",
+    "identity_sha256": "d7ac5a863c79d0adf3760c9fd8b264b375649500a2fd56248498d08fc386b829",
+    "sha256": "8c103f06683d893d952d7dc7dacf4ca16f4e141b45e413e9204571b4816e8077",
+    "sources": [
+      {
+        "id": "jc-dinosaur-easy-001",
+        "sha256": "341f7ac452f2a0adbd0b94a83a6adf376b8c1b35f33e5b5dec803dda0a09b12e"
+      },
+      {
+        "id": "jc-dinosaur-hard-001",
+        "sha256": "6e3abfe5e4ba7ce4fb5550af4587ec6929e9f170bc8d3ae6d92010079ebe1281"
+      },
+      {
+        "id": "jc-dinosaur-medium-001",
+        "sha256": "8ff8974cb2b6a845f853fea8052f8cbef52735290ef51d8a007f37eb1b97659d"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8c103f06683d893d952d7dc7dacf4ca16f4e141b45e413e9204571b4816e8077.png",
+    "title": "Tyrannosaurus Coloring Pages"
+  },
+  "/coloring-pages/unicorns/": {
+    "alt": "JotColoring printable coloring pages share image: Unicorns Coloring Pages Featuring Unicorn In A Blossom Glade, Unicorn Sniffs a Daisy, Unicorn Sleeps on a Cloud.",
+    "description": "Single-horned unicorns explore flower gardens, woodland paths, clouds, and imagined castles. Choose a clear character outline or a scene with patterned manes, plants, and architectural details.",
+    "identity_sha256": "3714d3ce5de432f0c2c009790de3b2d98e9fd910ad2daba2733dd5ee89556e42",
+    "sha256": "0dec3f93f97456aa18837be8e848d9fa63e7c4a4c57fdde22185d5364b3f758f",
+    "sources": [
+      {
+        "id": "jc-original-unicorn-in-a-blossom-glade",
+        "sha256": "6e15d25f46625a00e0d00456a1377ec975cbe6fdee976bec9e1d308739bf1443"
+      },
+      {
+        "id": "jc-unicorn-easy-001",
+        "sha256": "3f5839c611a641b1a12aec801362c9b90e6ebfadf394faab72004516fdc78a7d"
+      },
+      {
+        "id": "jc-unicorn-easy-002",
+        "sha256": "a3d7146122138935c5ab89bf9a5de7cd4fdcacd5d6c31cd3decf338e23ad02e0"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/0dec3f93f97456aa18837be8e848d9fa63e7c4a4c57fdde22185d5364b3f758f.png",
+    "title": "Unicorns Coloring Pages"
+  },
+  "/coloring-pages/valentines-day/": {
+    "alt": "JotColoring printable coloring pages share image: Valentine’s Day Coloring Pages Featuring Ribbon Heart with a Bow, Rose Inside a Heart Frame, Two Tulips Form a Heart.",
+    "description": "Hearts, roses, paired animals, gift boxes, letters, and tea sets fill these Valentine designs. Choose a simple motif or an ornate floral frame with fine decorative details.",
+    "identity_sha256": "e0bf2babcc67fcaf8fdce4f90ab9bfc363afe90534f6fa4b5a247c97e0770349",
+    "sha256": "f081abc39ad09b89e721f72e82065d0d5035450d2dcf83f07281de1b53b196a2",
+    "sources": [
+      {
+        "id": "jc-valentine-easy-001",
+        "sha256": "b39640ca5b60998d4309ec3ca96a5a24c369aa5161be9e709b96a1aa39c25ebf"
+      },
+      {
+        "id": "jc-valentine-easy-002",
+        "sha256": "ea554ec1b4f1ec2ff7bd66cd8901fe73a0d251b8ee438e305db77f32758e4ddb"
+      },
+      {
+        "id": "jc-valentine-easy-003",
+        "sha256": "aa31b6b22e93b61d1a943fc9015484f7bb86fdb244f943deba23acff35678e7b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f081abc39ad09b89e721f72e82065d0d5035450d2dcf83f07281de1b53b196a2.png",
+    "title": "Valentine’s Day Coloring Pages"
+  },
+  "/coloring-pages/video-games/": {
+    "alt": "JotColoring printable coloring pages share image: Video Game Coloring Pages Featuring Freddy Fazbear Holding a Microphone, Bonnie Sitting with a Star-Shaped Guitar, Chica Presenting Her Cupcake.",
+    "description": "Explore Sonic adventures, Five Nights at Freddy’s characters, and Minecraft-inspired block worlds, from familiar characters and friendly mobs to building projects and richly imagined settings.",
+    "identity_sha256": "9cb8c1f25ad419b90bdceb4961f2c59029a6a28e1079a68e6a3993dee24cfb7b",
+    "sha256": "8a84a32a79f070996fc766a7c33fbf15b06cf68e4071cc025b6b0a0daec8c77f",
+    "sources": [
+      {
+        "id": "jc-fnaf-easy-001",
+        "sha256": "3070ae9d6a218e6dd6ca9be0e628db0cd812477d03b351b6c1c2a87b4aaa1cfa"
+      },
+      {
+        "id": "jc-fnaf-easy-002",
+        "sha256": "a46742f1c17d78cc3e5e60efad60a4e97127a65b673557b15b9cd035d9db445b"
+      },
+      {
+        "id": "jc-fnaf-easy-003",
+        "sha256": "036cc4b9ffe2e00ddaad51c48771eeb94a52eac8cf58a2f7f786346f1ab80b2b"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/8a84a32a79f070996fc766a7c33fbf15b06cf68e4071cc025b6b0a0daec8c77f.png",
+    "title": "Video Game Coloring Pages"
+  },
+  "/coloring-pages/weather/": {
+    "alt": "JotColoring printable coloring pages share image: Weather Coloring Pages Featuring Laughing Sun with Rounded Rays, Rain Cloud with Five Drops.",
+    "description": "A laughing sun has rounded rays, and a rain cloud releases five drops. These clear weather motifs use broad shapes, expressive features, and open outlines.",
+    "identity_sha256": "4540d3e370d61769130e3e3266872c25faf9c3742d4775274aaa605422505c34",
+    "sha256": "25c416c44949fb7d3c044790335f902969a13d578929cf0e6aa1ec691202b182",
+    "sources": [
+      {
+        "id": "jc-easy-easy-001",
+        "sha256": "ea6a1a6c5023ebdd79c6a0dacf68a9a83a640957fb179be6ae0ce9809a29db6a"
+      },
+      {
+        "id": "jc-easy-easy-007",
+        "sha256": "70466f8dd1e900ebcc9c4a7bf63f5ac4e1406ea8dc5fcfe14597ceabab057fa0"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/25c416c44949fb7d3c044790335f902969a13d578929cf0e6aa1ec691202b182.png",
+    "title": "Weather Coloring Pages"
+  },
+  "/coloring-pages/whales-dolphins/": {
+    "alt": "JotColoring printable coloring pages share image: Whales & Dolphins Coloring Pages Featuring Whale with a Heart-Shaped Spout, Whale and Friends Above a Coral Bed, Dolphins In A Sunlit Lagoon.",
+    "description": "Whales appear with heart-shaped spouts and marine companions, while dolphins swim through an illustrated lagoon. Curved bodies, waves, and seabed details shape the scenes.",
+    "identity_sha256": "ce20d691627ed4010025104c5088b2928523011d3f850eee55aafedb7b2afdf0",
+    "sha256": "52f29aef35508a619be9607b2f6899dcd0ad60d2423290111fccc379d86dd85f",
+    "sources": [
+      {
+        "id": "jc-cute-easy-018",
+        "sha256": "b18f4eed47d3b874e89e56a59a9f0401f4c3bb72cce893832e864e9b10da6e6d"
+      },
+      {
+        "id": "jc-easy-very-hard-004",
+        "sha256": "4f7c6e05b9e3c4c9f4df199827101ece66de74f2bd839b12ab1679ee5d3089a9"
+      },
+      {
+        "id": "jc-original-dolphins-in-a-sunlit-lagoon",
+        "sha256": "efc1ef2a213c13cfe8d6009c5645fc498ad146fbcfab2559c86751d15fd4f206"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/52f29aef35508a619be9607b2f6899dcd0ad60d2423290111fccc379d86dd85f.png",
+    "title": "Whales & Dolphins Coloring Pages"
+  },
+  "/coloring-pages/winter-sports/": {
+    "alt": "JotColoring printable coloring pages share image: Winter Sports Coloring Pages Featuring Barbie Fastens Ice Skates on a Park Bench.",
+    "description": "Barbie fastens her ice skates while seated on a park bench. A frozen pond, snow-covered pavilion, bare trees, and lamps surround the illustrated skating scene.",
+    "identity_sha256": "c617c311e61d34ac77c789329b2f3a8fff30c3c4ee9bfdf6a0ed37e08a2f417b",
+    "sha256": "128d15eceeb8a23b0247ca88f51a336d3def34b801d30ba0f34842e46b07e2a5",
+    "sources": [
+      {
+        "id": "jc-barbie-hard-019",
+        "sha256": "9caf491b345d957df191cc26b7085cef47dc3ded851a92efb38dba14410d652e"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/128d15eceeb8a23b0247ca88f51a336d3def34b801d30ba0f34842e46b07e2a5.png",
+    "title": "Winter Sports Coloring Pages"
+  },
+  "/coloring-pages/winter/": {
+    "alt": "JotColoring printable coloring pages share image: Winter Coloring Pages Featuring Barbie Stands Beside a Snowman, Barbie Pulls a Sled Through Snow, Barbie and a Friend Pull a Gift Wagon.",
+    "description": "Barbie stands beside a snowman, pulls a sled, and shares a gift-wagon outing with a friend. Winter clothing, bare branches, snow, and outdoor settings provide seasonal details.",
+    "identity_sha256": "d571e302b552f559f02559f9c563bc9ea61679b1197ed58f3b64ef455df8aa29",
+    "sha256": "7ddd16285f9ee552c83b0a56b232c527172b3334c8fba8a448aef235c8cb7c88",
+    "sources": [
+      {
+        "id": "jc-barbie-easy-019",
+        "sha256": "273ff4bcc124c7bcef8683fc50d8d9d8e2d42d9baaecb75e42d6ba198cc28ab4"
+      },
+      {
+        "id": "jc-barbie-medium-019",
+        "sha256": "3483e4216fcb292469b84270fbd8c5902f59d02f8196a4c51f69979492fb352d"
+      },
+      {
+        "id": "jc-barbie-very-hard-019",
+        "sha256": "ff2f9b4e60eb0843db066dfa85928e176c82b6402ee198465b091c72d83b6296"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7ddd16285f9ee552c83b0a56b232c527172b3334c8fba8a448aef235c8cb7c88.png",
+    "title": "Winter Coloring Pages"
+  },
+  "/coloring-pages/woodland/": {
+    "alt": "JotColoring printable coloring pages share image: Woodland Coloring Pages Featuring Fox and Rabbit in Wildflowers, Fawn in a Woodland Garden, Hedgehog with Mushrooms.",
+    "description": "Foxes, rabbits, fawns, and hedgehogs appear among woodland flowers, mushrooms, and trees. Some drawings center on one animal while others fill the surrounding habitat with detail.",
+    "identity_sha256": "faa93935f40569504a392a961fb938e2cbd9ff96ff47fb96771ddc7d9712fccb",
+    "sha256": "bbd2a0689eb605c4ba19a759838e0402884394acaaabd5298da0af10b92e5234",
+    "sources": [
+      {
+        "id": "jc-woodland-friends",
+        "sha256": "6a21fb0e05f1f160ec6be091f933e0ae3173bc733239cc314b9f22a0d212c948"
+      },
+      {
+        "id": "jc-gentle-deer",
+        "sha256": "bf4837b59f5863f00ccd54129864770419272a86ca9b48427c916f9ab4679d47"
+      },
+      {
+        "id": "jc-little-hedgehog",
+        "sha256": "11aa1855a8c8c5538ef378ebdd3a8b091440e8e957303b83be9d56cf842a86a5"
+      }
+    ],
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/bbd2a0689eb605c4ba19a759838e0402884394acaaabd5298da0af10b92e5234.png",
+    "title": "Woodland Coloring Pages"
+  }
+}

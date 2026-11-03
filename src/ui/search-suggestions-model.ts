@@ -1,8 +1,9 @@
 import {intentWords,equivalents} from '../search/intent';
+import {hasIllustration} from '../icons/registry';
 import type {Content} from '../server/types';
 type SuggestionItem=Pick<Content,'id'|'slug'|'title'|'thumbnail'|'categoryName'>&Partial<Pick<Content,'description'>>;
-type Category={id:string;name:string;href?:string;aliases?:string[]};
-export type Suggestion={kind:'category'|'page';title:string;detail:string;href:string;thumbnail?:string;category?:string;description?:string};
+type Category={id:string;name:string;href?:string;aliases?:string[];icon?:string};
+export type Suggestion={kind:'category'|'page';title:string;detail:string;href:string;thumbnail?:string;category?:string;icon?:string;description?:string};
 export function buildSuggestions(query:string,items:SuggestionItem[],categories:Category[]):Suggestion[]{
  const term=query.normalize('NFKC').trim().toLocaleLowerCase();if(term.length<2)return [];
  const words=intentWords(term),normalize=(text:string)=>text.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
@@ -11,8 +12,9 @@ export function buildSuggestions(query:string,items:SuggestionItem[],categories:
   const names=[c.name,...(c.aliases||[])].map(normalize),exact=names.includes(normalize(term));
   const matches=names.filter(name=>words.every((word,index)=>equivalents(word).some(t=>name.split(' ').some(token=>token===t||(index===words.length-1&&t.length>=2&&token.startsWith(t))))));
   if(!words.length||!matches.length)return [];
-  const href=c.href||`/coloring-pages/${c.id}/`;if(!/^\/coloring-pages\/[a-z0-9-]+\/(?:[a-z0-9-]+\/)?$/.test(href))return [];
-  return [{score:exact?200:matches.some(name=>name.startsWith(normalize(term)))?100:50,item:{kind:'category' as const,title:c.name,detail:'Collection',href,category:c.id}}];
+  const href=c.href||`/coloring-pages/${c.id}/`;if(!/^(?:\/collection\/[a-z0-9-]+\/|\/coloring-pages\/[a-z0-9-]+\/(?:[a-z0-9-]+\/)?)$/.test(href))return [];
+  const icon=c.icon&&hasIllustration(c.icon)&&c.icon!=='info'?c.icon:'nav-all-pages';
+  return [{score:exact?200:matches.some(name=>name.startsWith(normalize(term)))?100:50,item:{kind:'category' as const,title:c.name,detail:href.startsWith('/collection/')?'Collection':'Topic',href,category:c.id,icon}}];
  }).sort((a,b)=>b.score-a.score||a.item.title.localeCompare(b.item.title,'en-US')).slice(0,2).map(c=>c.item);
  const seen=new Set<string>(),pages:Suggestion[]=[];
  for(const item of items){
@@ -27,3 +29,4 @@ function trustedThumbnail(value:unknown){
  if(/^\/api\/media\/[a-zA-Z0-9_-]+\/[a-z_]+(?:\?[^#]*)?$/.test(value))return value;
  try{const url=new URL(value);if(url.origin==='https://assets.jotcoloring.com'&&!url.username&&!url.password&&url.pathname.startsWith('/published/')&&!url.hash)return url.href;}catch{/* Ignore malformed or untrusted image URLs. */}
 }
+

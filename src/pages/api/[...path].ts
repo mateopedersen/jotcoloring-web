@@ -1,3 +1,4 @@
+import {publicColorReference} from '../../server/color-references';
 import type {APIRoute} from 'astro';
 import {env as runtimeEnv} from 'cloudflare:workers';
 import type {Env} from '../../server/types';
@@ -13,12 +14,13 @@ import {configurationReadiness} from '../../server/readiness';
 import {rateLimit,verifyTurnstile} from '../../server/limits';
 import {aiConfiguration,uploadPhoto,createGeneration,generationStatus,generationResult,cancelGeneration} from '../../server/ai';
 export const prerender=false;
-export const ALL:APIRoute=async ({request,params})=>{const env=runtimeEnv as unknown as Env;const parts=(params.path||'').split('/').filter(Boolean);const method=request.method==='HEAD'&&['catalog','search','categories','content','media','download'].includes(parts[0])?'GET':request.method;try{
+export const ALL:APIRoute=async ({request,params})=>{const env=runtimeEnv as unknown as Env;const parts=(params.path||'').split('/').filter(Boolean);const method=request.method==='HEAD'&&['catalog','search','categories','content','media','download','color-reference'].includes(parts[0])?'GET':request.method;try{
  if(env.APP_ENV==='preview'&&(parts[0]==='admin'||!['GET','HEAD','OPTIONS'].includes(method)))throw new AppError('PREVIEW_READ_ONLY','Preview deployments are read-only.',403);
  if(parts[0]==='health'&&method==='GET'){const r=configurationReadiness(env);return json({status:r.publicReady&&!r.invalidEnabledFeature?'available':'setup_required',generation:r.aiReady?'available':'configuration_required'},r.publicReady&&!r.invalidEnabledFeature?200:503);}
  if((parts[0]==='catalog'||parts[0]==='search')&&parts.length===1&&method==='GET'){const page=await createCatalog(env).list(parseCatalogQuery(new URL(request.url).searchParams));return json(page,200,{'Cache-Control':'public,max-age=30,s-maxage=60'});}
  if(parts[0]==='categories'&&method==='GET')return json({items:await createCatalog(env).categories()},200,{'Cache-Control':'public,max-age=30'});
  if(['content','catalog'].includes(parts[0])&&parts.length===2&&method==='GET'){const item=await createCatalog(env).get(parts[1]);if(!item)throw new AppError('NOT_FOUND','Coloring page not found.',404);return json(item,200,{'Cache-Control':'public,max-age=30'});}
+ if(parts[0]==='color-reference'&&parts.length===2&&method==='GET')return await publicColorReference(request,env,parts[1]);
  if(parts[0]==='media'&&parts.length===3&&method==='GET')return await publicAsset(request,env,parts[1],parts[2]);
  if(parts[0]==='download'&&parts.length===3&&method==='GET'){const role=({pdf:'printable_pdf_a4_bw',letter:'printable_pdf_letter_bw',webp:'printable_webp_bw'} as Record<string,string>)[parts[2]];if(!role)throw new AppError('NOT_FOUND','Download format not found.',404);return await publicAsset(request,env,parts[1],role,true);}
  if(parts[0]==='creator'){

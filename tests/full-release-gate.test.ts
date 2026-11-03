@@ -14,7 +14,7 @@ test('production refuses partial publication before opening any cloud session',a
   await writeFile(reviewFile,review);await writeFile(preparationFile,preparation);
   const args=['--import','tsx','scripts/ops/import-reviewed-batch.ts','--environment','production','--review',reviewFile,'--preparation',preparationFile,'--start','0','--limit','1','--apply'];
   const run=(extra:string[])=>spawnSync(process.execPath,[...args,...extra],{encoding:'utf8',env:{...process.env,JOT_WRANGLER_AUTH_FILE:'',JOT_SECRETS_FILE:''}});
-  let result=run([]);assert.notEqual(result.status,0);assert.match(result.stderr,/all 24 packages together.*full-release/);
+  let result=run([]);assert.notEqual(result.status,0);assert.match(result.stderr,/complete owner-authorized release.*full-release/);
   await writeFile(releaseFile,JSON.stringify({status:'pending_full_review',collections:[]}));
   result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/All 24 collections must be ready/);
   await writeFile(releaseFile,JSON.stringify({release_id:'unknown',status:'ready_for_publication',collections:[]}));result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/Unknown owner-authorized release scope/);await writeFile(releaseFile,JSON.stringify({release_id:'descendants-squishy-kpop-20261101',status:'ready_for_publication',collections:[]}));result=run(['--full-release',releaseFile]);assert.notEqual(result.status,0);assert.match(result.stderr,/All authorized follow-up collections must be ready/);const hash=(s:string)=>createHash('sha256').update(s).digest('hex');

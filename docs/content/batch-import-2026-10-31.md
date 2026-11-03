@@ -50,3 +50,47 @@ Name the accurate reviewed topic or franchise naturally in each title or scene-s
 
 ## Seven-topic follow-up, 2026-11-01
 The owner authorized Turtle, Sharks, Trick or Treat, Bible, Five Nights at Freddy’s, Happy Birthday and Panda ZIPs as a distinct 7-topic / 700-drawing release. Scope `seven-topics-20261101` requires the exact seven archive checksums and complete source-bound double reviews. The reattached Descendants/Squishy/KPop archive is the already published package; do not duplicate it. Preserve existing Sharks, Sea Turtles and Birthdays categories. Retain outlined heading typography supplied outside a raster artwork; preserve original PDF/WebP and native raster separately, and bind reviews to the actual composed source. Package QA claims do not establish a fresh review, AI generation, identity or species. Record owner source claims truthfully.
+
+
+## Bounded file stages and failed retries
+Independent original-copy, derivative-copy, public-copy and final public-readback operations run in pairs. Each stage waits for both in-flight operations before propagating a failure; later stages and publication completion remain blocked on every checksum and backup gate. The ingest consumer stays at eight invocations with one message per batch. A claimed import retry, including an existing draft revision, records a publication failure as failed so an exact idempotent retry can resume immediately; it must not remain processing until its lease expires.
+
+
+## Reviewed transport waiting on an active import
+A duplicate reviewed-bundle delivery can arrive while the same canonical import still holds its 15-minute processing lease, including recovery after an interrupted invocation. If publication readback is incomplete and the same job remains processing, defer that transport until just after the current lease expires instead of consuming short generic retries. Do not acknowledge it or emit a failure/completion receipt for that waiting state. An expired lease remains eligible for the normal idempotent import claim. Exact source/revision, backup and full published-byte checks still gate the eventual completion receipt; unrelated failures keep their normal error handling. The eight-consumer queue bound and retry-count setting are unchanged.
+
+## Supplied branded PDF/WebP pages — November 3, 2026
+
+The owner authorized the exact 17 collectible-character packages as scope
+`collectible-characters-20261103`. Preserve the supplied JotColoring logo and both
+printable containers verbatim. Hello Kitty appends 100 new stable artwork IDs to
+its existing topic; never replace the accepted 100 pages. Native PNG containers
+are absent from these ZIPs and must not be claimed as backed up.
+
+`prepare-supplied-pages.ts` validates source checksums, one-page A4 PDFs, source
+logo presence, blank artwork tolerance, whole-page responsive image pixels and
+actual image-derived age/category analysis. It creates five lossless resized
+previews and a source-bound social cover. No color assets are generated. The
+signed transport requires exactly those eight roles and rejects any replacement
+of the supplied printable PDF or WebP. Original source and backup readbacks,
+double editorial approval, exact release inventory, media signatures, normal
+imports, search projection and public verification remain mandatory. This source
+layout is intentionally preserved under the owner's explicit logo instruction;
+the generated-page footer compositor must not be applied to it.
+
+### Public-figure addition and explicit 83-page exception
+
+The owner subsequently added MrBeast, Elon Musk and Donald Trump. Scope
+`public-figures-20261103` requires exactly 83 MrBeast, 100 Elon Musk and 100 Donald
+Trump drawings, 283 total. The supplied MrBeast ZIP is truncated during WebP 084;
+83 complete PDF/WebP pairs were recovered with original member checksums. The
+owner explicitly accepted publication of those 83, with the incomplete count
+reported. Preserve the original truncated ZIP, recovery receipt and extra PDF 084
+privately. The recovered container has a separate immutable checksum. No missing
+native or original file may be claimed as supplied or backed up. All other scopes
+retain their original exact counts.
+
+Use neutral, image-specific public-figure copy. Invented roles and scenes are
+illustrations, not evidence of real events, products, achievements or endorsements.
+Preserve source logo and printable containers under the same eight-role media
+policy. Actual person/topic identities belong naturally in titles or descriptions.

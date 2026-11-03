@@ -1,0 +1,11 @@
+/** Operator actions use the existing scoped JotColoring profile, never browser secrets. */
+import {remoteContext} from './release-context';import {processDiscoveryRebuild,queueDiscoveryRebuild,runDiscovery} from '../../src/server/discovery';
+const [stage,action,id]=process.argv.slice(2);if(stage!=='production'&&stage!=='staging')throw Error('Select production or staging');if(!['status','rebuild','refresh','run','retry'].includes(action))throw Error('Use status, rebuild, refresh, run or retry');const {env}=await remoteContext(stage,{requestLimit:200});env.PUBLIC_SITE_URL=stage==='production'?'https://jotcoloring.com':'https://staging.jotcoloring.com';env.PUBLIC_MEDIA_BASE_URL=stage==='production'?'https://assets.jotcoloring.com':undefined;env.DISCOVERY_ENABLED='true';
+if(action!=='status'&&!process.argv.includes('--apply'))throw Error('Explicit --apply required');
+if(action==='refresh'){
+ await env.CATALOG_DB!.prepare("INSERT INTO discovery_dirty(segment) SELECT segment FROM discovery_fragment WHERE 1 ON CONFLICT(segment) DO UPDATE SET generation=generation+1").run();
+ await queueDiscoveryRebuild(env);
+}
+if(action==='retry'){if(!/^\d+$/.test(id||''))throw Error('Exact failed notice ID required');await env.CATALOG_DB!.prepare("UPDATE discovery_notice SET state='pending',attempts=0,not_before='',lease_until=NULL,last_error=NULL WHERE id=? AND state='failed'").bind(Number(id)).run();}
+if(action==='rebuild')await processDiscoveryRebuild(env,'operator',8);if(action==='run')await runDiscovery(env);
+console.log(JSON.stringify({stage,rebuild:(await env.CATALOG_DB!.prepare('SELECT rebuild_state,rebuild_queued_at,rebuild_lease_until,rebuild_completed_at,rebuild_completed_by,rebuild_last_error FROM discovery_state WHERE id=1').first()),fragments:(await env.CATALOG_DB!.prepare('SELECT segment,url_count,bytes,etag FROM discovery_fragment ORDER BY segment').all()).results,dirty:(await env.CATALOG_DB!.prepare('SELECT * FROM discovery_dirty LIMIT 20').all()).results,notices:(await env.CATALOG_DB!.prepare('SELECT state,COUNT(*) n FROM discovery_notice GROUP BY state').all()).results,failures:(await env.CATALOG_DB!.prepare("SELECT id,path_key,last_status,last_error,attempts FROM discovery_notice WHERE state='failed' ORDER BY id DESC LIMIT 20").all()).results},null,2));

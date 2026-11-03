@@ -2,6 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {selectFilterURL,clearFilterURL} from '../src/ui/filter-url';
 import {LatestRequest} from '../src/ui/latest-request';
+test('age-collection selectors navigate to the selected band and preserve search and difficulty',()=>{
+ const url=selectFilterURL('https://example.test/coloring-by-age/9-12/?q=fox&difficulty=easy&page=3','recommended_age',['adults']);
+ assert.equal(url.pathname,'/coloring-by-age/adults/');assert.equal(url.searchParams.get('q'),'fox');assert.equal(url.searchParams.get('difficulty'),'easy');assert.equal(url.searchParams.has('page'),false);assert.equal(url.hash,'#age-results');
+ const all=selectFilterURL(url.href,'recommended_age',['']);assert.equal(all.pathname,'/coloring-pages/');assert.equal(all.searchParams.has('recommended_age'),false);
+ const category=selectFilterURL(url.href,'category',['flowers']);assert.equal(category.searchParams.get('recommended_age'),'adults');assert.equal(category.pathname,'/coloring-pages/flowers/');
+});
 test('changing category keeps the search and chosen facets but drops stale pagination and subcategory',()=>{
  const url=selectFilterURL('https://example.test/coloring-pages/animals/pets/?q=fox&age=kids&difficulty=easy&page=3&cursor=stale&subcategory=pets&category=animals','category',['flowers']);
  assert.equal(url.pathname,'/coloring-pages/flowers/');assert.equal(url.searchParams.get('q'),'fox');assert.equal(url.searchParams.get('age'),'kids');assert.equal(url.searchParams.get('difficulty'),'easy');

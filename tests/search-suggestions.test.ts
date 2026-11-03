@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {COLORING_TAXONOMY,categoryPath} from '../src/taxonomy/catalog';
+import {hasIllustration,illustrationImageHref} from '../src/icons/registry';
 import {buildSuggestions} from '../src/ui/search-suggestions-model';
 
 const categories=[{id:'animals',name:'Animals'},{id:'flowers',name:'Flowers'}];
@@ -23,3 +25,28 @@ test('new CDN artwork keeps its thumbnail and nested collections keep their cano
  assert.deepEqual(buildSuggestions('fox moon',[],[{id:'animals',name:'Foxes',aliases:['fox']}]),[]);
  assert.equal(buildSuggestions('bluey',[],[{id:'bluey',name:'Bluey',href:'https://outside.invalid/'}]).length,0);
 });
+
+test('nested collection suggestions use their topic illustration instead of an information icon',()=>{
+ const options=COLORING_TAXONOMY.map(c=>({...c,href:categoryPath(c.id)}));
+ for(const [query,expectedIcon] of [['Floral Mandalas','mandalas'],['Flower Bouquets','flowers']]){
+  const [collection]=buildSuggestions(query,[],options);
+  assert.equal(collection.kind,'category');
+  assert.equal(collection.detail,'Topic');
+  assert.equal(collection.icon,expectedIcon);
+  assert.ok(!illustrationImageHref(collection.icon!).endsWith('/info.svg'));
+ }
+ for(const category of options){
+  const result=buildSuggestions(category.name,[],[category])[0];
+  assert.ok(result,category.id);
+  assert.ok(hasIllustration(result.icon!),category.id);
+  assert.notEqual(result.icon,'info',category.id);
+ }
+});
+test('future collections without an illustration use a coloring-page stack',()=>{
+ for(const icon of [undefined,'missing-future-icon','info']){
+  const [collection]=buildSuggestions('Future Theme',[],[{id:'future-theme',name:'Future Theme',icon}]);
+  assert.equal(collection.icon,'nav-all-pages');
+  assert.equal(collection.detail,'Topic');
+ }
+});
+

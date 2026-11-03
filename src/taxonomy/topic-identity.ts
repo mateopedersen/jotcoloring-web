@@ -1,6 +1,7 @@
 /** Visible topic identity for newly authored copy. Never infer a topic from a filename. */
 const identities:Readonly<Record<string,string>>={
  'hello-kitty':'Hello Kitty',bluey:'Bluey',barbie:'Barbie',sonic:'Sonic',minecraft:'Minecraft',
+ mrbeast:'MrBeast','elon-musk':'Elon Musk','donald-trump':'Donald Trump',labubu:'Labubu',crybaby:'CRYBABY',pompompurin:'Pompompurin',cinnamoroll:'Cinnamoroll',kuromi:'Kuromi',monchhichi:'Monchhichi',mofusand:'Mofusand',chiikawa:'Chiikawa',smiski:'Smiski','sonny-angel':'Sonny Angel',zimomo:'Zimomo',pucky:'Pucky',hacipupu:'Hacipupu','twinkle-twinkle':'Twinkle Twinkle',hirono:'Hirono',skullpanda:'SKULLPANDA',
  huntrix:'KPop Demon Hunters','k-pop-demon-hunters':'KPop Demon Hunters',descendants:'Descendants',squishy:'Squishy',fnaf:"Five Nights at Freddy's",bible:'Bible'
 };
 const normalized=(s:string)=>s.normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g,'');

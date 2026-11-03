@@ -6,7 +6,7 @@ export interface ResponseCache {
 }
 type Policy={kind:'html'|'json'|'media'|'xml'|'text'|'redirect';catalog:boolean;seconds:number};
 const staticPages=new Set(['about','accessibility','contact','cookies','faq','help','how-to-use','license','licensing','printing-guide','privacy','terms']);
-const queryKeys=new Set(['q','page','limit','sort','category','subcategory','age','difficulty','recommended_age','marketingOnly','cursor','popular']);
+const queryKeys=new Set(['q','page','limit','sort','category','subcategory','age','difficulty','recommended_age','marketingOnly','cursor','popular','collection','number']);
 
 /** Only published documents qualify. Private tools, jobs, admin, errors and writes never do. */
 export function publicCachePolicy(request:Request):Policy|undefined{
@@ -17,18 +17,19 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   if(url.search.length>1800)return;
   if(!url.search&&path==='/robots.txt')return{kind:'text',catalog:false,seconds:600};
   if(!url.search&&(path==='/sitemap.xml'||/^\/sitemaps\/(?:static|[1-9]\d{0,4})\.xml$/.test(path)))return{kind:'xml',catalog:true,seconds:600};
+  if(/^\/api\/color-reference\/[A-Za-z0-9_-]+$/.test(path)&&[...url.searchParams.keys()].every(k=>k==='v'||k==='image')&&/^[a-f0-9]{24}$/.test(url.searchParams.get('v')||'')&&(!url.searchParams.has('image')||/^[a-f0-9]{64}$/.test(url.searchParams.get('image')||'')))return{kind:url.searchParams.has('image')?'media':'json',catalog:true,seconds:60};
   if(/^\/api\/(?:media|download)\/[A-Za-z0-9_-]+\/[A-Za-z0-9_]+$/.test(path)){
     if([...url.searchParams.keys()].some(k=>k!=='v'&&!(k==='display'&&path.startsWith('/api/media/')&&['240','320','400','600'].includes(url.searchParams.get(k)||'')))||!/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(url.searchParams.get('v')||''))return;
     return path.startsWith('/api/download/')?{kind:'redirect',catalog:true,seconds:60}:{kind:'media',catalog:true,seconds:300};
   }
   if([...url.searchParams.keys()].some(k=>!queryKeys.has(k)))return;
   if(/^\/api\/(?:catalog|search|categories)$/.test(path)||/^\/api\/(?:content|catalog)\/[A-Za-z0-9_-]+$/.test(path))return{kind:'json',catalog:true,seconds:60};
-  if(path==='/'||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
+  if(path==='/'||/^\/collection\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
   if(!url.search&&staticPages.has(path.replace(/^\/|\/$/g,''))&&path.endsWith('/'))return{kind:'html',catalog:false,seconds:600};
 }
 
 function browserPolicy(policy:Policy){
-  return policy.kind==='html'||policy.kind==='redirect'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':'public, max-age=300';
+  return policy.kind==='html'||policy.kind==='redirect'||policy.kind==='xml'?'public, max-age=0, must-revalidate':policy.kind==='json'?'public, max-age=30':'public, max-age=300';
 }
 
 export function publicCacheKey(request:Request,environment:string,release:string,epoch:string){
@@ -60,6 +61,7 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
       // also invalidates any result cached while that publication was still queued.
       const row=await env.CATALOG_DB.prepare('SELECT seq,(SELECT rowid FROM processed_event ORDER BY rowid DESC LIMIT 1) AS projected FROM outbox_event ORDER BY seq DESC LIMIT 1').first<{seq:number;projected:number|null}>();
       epoch=String(row?.seq||0)+'.'+String(row?.projected||0);
+      if(policy.kind==='xml'){const snapshot=await env.CATALOG_DB.prepare('SELECT epoch FROM discovery_state WHERE id=1').first<{epoch:number}>();epoch+='.'+String(snapshot?.epoch||0);}
     }catch{return finish(await next(),'BYPASS');}
   }
   const key=publicCacheKey(request,env.APP_ENV!,release,epoch);
@@ -83,3 +85,4 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
   }
   return finish(response,'BYPASS');
 }
+

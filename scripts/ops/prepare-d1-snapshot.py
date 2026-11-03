@@ -26,7 +26,7 @@ def prepare(source, destination):
     try:
         db.executescript(source.decode('utf8'))
         actual={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
-        table_order=transfer.TABLES if 'age_recommendation' in actual else transfer.LEGACY_TABLES
+        _, table_order=transfer.schema_tables(actual-{'d1_migrations'})
         if actual-set(table_order)-{'d1_migrations'} or set(table_order)-actual:raise ValueError('Unexpected canonical schema; review before export')
         if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or db.execute('PRAGMA foreign_key_check').fetchone():raise ValueError('Source SQL integrity or foreign-key failure')
         original_counts={table:db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0] for table in table_order}

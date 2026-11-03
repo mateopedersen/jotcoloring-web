@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {inspectSuppliedPagePixels} from '../scripts/data/supplied-page-validation';
+function fixture(){const width=600,height=850,data=new Uint8Array(width*height*3).fill(255);const paint=(x:number,y:number)=>data.set([255,96,26],(y*width+x)*3);for(let y=810;y<825;y++)for(let x=500;x<520;x++)paint(x,y);return{data,width,height,paint};}
+test('supplied logo and thin source frame are preserved without modifying pixels',()=>{const f=fixture();for(let y=20;y<790;y++)f.paint(22,y);const before=f.data.slice(),result=inspectSuppliedPagePixels(f.data,f.width,f.height);assert.equal(result.logoPixels,300);assert.ok(result.frameChroma>700);assert.deepEqual(f.data,before);});
+test('colored artwork away from source frame and logo is rejected',()=>{const f=fixture();for(let y=200;y<250;y++)for(let x=200;x<250;x++)f.paint(x,y);assert.throws(()=>inspectSuppliedPagePixels(f.data,f.width,f.height),/blank-source tolerance/);});
+test('missing source logo cannot receive a supplied-page media review',()=>{const f=fixture();f.data.fill(255);assert.throws(()=>inspectSuppliedPagePixels(f.data,f.width,f.height),/logo missing/);});

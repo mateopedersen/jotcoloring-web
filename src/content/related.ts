@@ -1,3 +1,5 @@
+import {isPublicCollection,collectionPath} from '../taxonomy/routes';
+import {categoryPath} from '../taxonomy/catalog';
 import type {Content} from '../server/types';
 import {ageLabel} from '../age/model';
 import {canonicalSubject,equivalents} from '../search/intent';
@@ -9,11 +11,12 @@ export interface RelatedMatch {item:Content;score:number;reasons:string[];shared
 export interface CollectionOverview {id:string;name:string;href:string;total:number|null;previews:Content[];}
 export interface RelatedResult {matches:RelatedMatch[];explore:Content[];theme:string;candidateCount:number;collection?:CollectionOverview;}
 /** Reuse published candidates already loaded for this page; never pad the strip with duplicates. */
-export function collectionOverview(source:Content,candidates:Content[],metadata:{id:string;name:string;count:number|null}):CollectionOverview|undefined{
- if(metadata.id!==source.category||!metadata.name||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(metadata.id))return;
+export function collectionOverview(source:Content,candidates:Content[],metadata:{id:string;name:string;count:number|null;source_category?:string;href?:string}):CollectionOverview|undefined{
+ const subject=metadata.source_category||metadata.id;if(metadata.source_category&&(!isPublicCollection(metadata.id)||metadata.href!==collectionPath(metadata.id)))return;
+ if(subject!==source.category||!metadata.name||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(metadata.id))return;
  const seen=new Set<string>(),previews:Content[]=[];
- for(const item of [source,...candidates]){if(item.category!==metadata.id||!item.thumbnail||seen.has(item.id))continue;seen.add(item.id);previews.push(item);if(previews.length===3)break;}
- return{id:metadata.id,name:metadata.name,href:`/coloring-pages/${metadata.id}/`,total:typeof metadata.count==='number'&&Number.isSafeInteger(metadata.count)&&metadata.count>=1?metadata.count:null,previews};
+ for(const item of [source,...candidates]){if(item.category!==subject||!item.thumbnail||seen.has(item.id))continue;seen.add(item.id);previews.push(item);if(previews.length===3)break;}
+ return{id:metadata.id,name:metadata.name,href:metadata.href||categoryPath(metadata.id),total:typeof metadata.count==='number'&&Number.isSafeInteger(metadata.count)&&metadata.count>=1?metadata.count:null,previews};
 }
 // Decorative words are useful context, but cannot outweigh the actual subject.
 const decoration=new Set(['flower','flowers','floral','leaf','leaves','garden','plants','plant','coloring','page','printable','detailed','art','cute','nature','background','pattern']);

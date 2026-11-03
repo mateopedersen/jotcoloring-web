@@ -7,3 +7,10 @@
 .jc-ideas-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .jc-ideas-actions :is(button,a){justify-content:center;min-height:44px;min-width:0;line-height:1.5}
 .jc-ideas-actions>a{grid-column:1/-1;justify-content:space-between}
+.jc-color-ideas [hidden]{display:none!important}
+.jc-ideas-divider{left:clamp(20px,var(--idea-split),calc(100% - 20px))}
+.jc-ideas-palettes button:focus-visible,.jc-ideas-actions :is(button,a):focus-visible{outline:3px solid #8b3b16;outline-offset:3px}
+.jc-ideas-label,.jc-ideas-description,.jc-color-ideas [data-ideas-status]{color:#71482e}
+.jc-ideas-comparison input{appearance:none;-webkit-appearance:none;border:0;background:transparent}
+.jc-ideas-comparison input::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:40px;height:44px}
+.jc-ideas-comparison input::-moz-range-thumb{width:40px;height:44px;border:0}

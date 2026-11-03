@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="face" x1="0" x2="1" y2="1"><stop stop-color="#ffc555"/><stop offset=".4" stop-color="#ff8228"/><stop offset="1" stop-color="#df3e08"/></linearGradient><linearGradient id="edge" x2=".9" y2="1"><stop stop-color="#ed730c"/><stop offset="1" stop-color="#a32b08"/></linearGradient></defs><path d="M37 12h16v23c0 18-7 26-23 26C16 61 7 53 8 41l13-1c0 6 3 9 9 9 5 0 7-4 7-13V12Z" fill="url(#edge)"/><path d="M35 9h16v23c0 18-7 26-23 26C14 58 5 50 6 38l13-1c0 6 3 9 9 9 5 0 7-4 7-13V9Z" fill="url(#face)" stroke="#d55c0c" stroke-width=".6"/><path d="m35 10 9-9 7 9" fill="#f7dab2"/><path d="m41 4 3-3 2 3" fill="#eb6b17"/><path d="M38 14v23c0 11-5 16-13 15-8-1-12-5-12-10" stroke="#ffd175" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="body" x1=".1" y1=".1" x2=".9" y2=".9">
+      <stop stop-color="#ffcf41"/><stop offset=".35" stop-color="#ff8b08"/><stop offset=".72" stop-color="#ff6500"/><stop offset="1" stop-color="#d83000"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f67500"/><stop offset="1" stop-color="#a92000"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2=".5"><stop stop-color="#fff3cf"/><stop offset=".6" stop-color="#eabf83"/><stop offset="1" stop-color="#fff0ca"/></linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff6a3"/><stop offset=".6" stop-color="#ffc529"/><stop offset="1" stop-color="#ffa408"/></linearGradient>
+    <path id="j" d="M132 83 177 79C184 106 189 144 176 178 164 211 139 231 104 233 67 235 29 215 23 186 16 157 35 138 59 140 78 142 92 152 94 170L72 180C71 171 67 166 60 166 49 165 47 175 52 184 61 201 87 207 108 195 136 180 143 151 137 119Z"/>
+  </defs>
+  <ellipse cx="105" cy="238" rx="78" ry="9" fill="#5c220c" opacity=".13"/>
+  <use href="#j" transform="translate(5 5)" fill="url(#edge)" stroke="#a52b06" stroke-width="3" stroke-linejoin="round"/>
+  <use href="#j" fill="url(#body)" stroke="#d84a05" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M144 91C153 134 154 166 134 191 115 215 84 221 58 207 39 197 32 182 37 169 42 155 58 152 71 159" fill="none" stroke="url(#shine)" stroke-width="15" stroke-linecap="round"/>
+  <path d="M143 96C152 137 151 166 132 190 114 212 86 219 63 208" fill="none" stroke="#fff4a3" stroke-width="3.5" stroke-linecap="round" opacity=".9"/>
+  <path d="M132 86 142 48 171 12Q175 9 177 15L182 77 175 89 164 82 154 94 145 83 138 91Z" fill="url(#wood)" stroke="#c68c4f" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M153 35 171 12Q175 9 177 15L179 49 170 52 163 45Z" fill="url(#body)" stroke="#d14a06" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="m157 34 16-19-7 29" fill="#ffb321"/><path d="M144 56 139 80M155 62 153 84M170 57 174 77" stroke="#d2a36c" stroke-width="1.5" opacity=".6"/>
+  <path d="M32 163C36 147 59 141 77 152M152 26 169 13" fill="none" stroke="#fff7c8" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+</svg>
