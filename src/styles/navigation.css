@@ -64,6 +64,8 @@ body:has(.jc-site-menu[open]) {overflow:hidden;}
 .jc-header-tools>a {flex:1 1 0;min-width:0;min-height:62px;padding:11px 13px;font-size:clamp(14px,1.05vw,17px);line-height:1.35;}
 .jc-header-tools>a>svg {width:36px;height:36px;}
 .jc-header-tools>a>span {min-width:0;overflow-wrap:normal;}
+.jc-header-tools>a:nth-child(2) {flex:1.65 0 auto;}
+.jc-header-tools>a:nth-child(2)>span {white-space:nowrap;}
 .jc-header-tools>a:is(:hover,[aria-current=page]) {background:#fff0df;border-color:#d88b55;color:#9e390f;}
 .jc-header-quick {display:flex;align-items:center;gap:9px;flex:none;}
 .jc-header-quick .jc-header-artwork {padding:9px;}
@@ -85,6 +87,7 @@ body:has(.jc-site-menu[open]) {overflow:hidden;}
  .jc-header-quick .jc-header-studio {padding:9px;font-size:13px;}
 }
 @media(max-width:1100px){.jc-header-tools>a:nth-child(3){display:none;}}
+@media(max-width:1200px){.jc-header-quick .jc-header-studio{display:none}}
 @media(max-width:850px){.jc-header-tools{display:none}.jc-header-quick .jc-header-studio{display:none}}
 @media(max-width:650px){
  :is(.site-v3,.home-v3) .jc-simple-header .hv-header-inner {gap:8px;}
