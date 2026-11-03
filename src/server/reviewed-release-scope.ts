@@ -4,6 +4,19 @@ export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
 export const NUMBER_RELEASE_ID='numbers-30-20261102';
 export const COLLECTIBLE_CHARACTER_RELEASE_ID='collectible-characters-20261103';
 export const PUBLIC_FIGURE_RELEASE_ID='public-figures-20261103';
+export const SEASONAL_TEN_RELEASE_ID='seasonal-ten-20261103';
+export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+  "sugar-skull": "4217f71752b8f1481e338ebee58513c1aa4182a79071a57d82ad1d362abcda89",
+  "veterans-day": "b65b687197c1488023c2431e85822425a174504f729d185361ed6c4449de69a5",
+  "christmas-tree": "70e35eb7dc0810cd91320c4d14818ea0d4a4b6994b9f0d99a3035b1d539ffe97",
+  "january": "41c621a2330784751dfe0190636dcc3ece9708e17e5dbdb9c1a8a28e45707421",
+  "december": "7084e2a7f5c71fa5cc45bc7560a1484380d46957a187f448ca272f4ca574b0b1",
+  "all-souls-day": "f2968e683bfeaa28aa6e4b81529eb34f0a7f9ba478a63eeb992935dd8156b4d7",
+  "cheetah": "392e4a7b490aeb70ef968d1722fdd510ce0f938210c85acb37d9beaaa50f8f8e",
+  "excavator": "63163b46a248a5953de747671b123ebe564db19657689229664ca1b26d460b55",
+  "gingerbread-house": "ea7635ce7f141e8e93b665a005c17615474986b81cb51ff30ff764b0020fbbd3",
+  "fall-leaf": "918d5f68776986a33728075612af2396f60f4c25d40d7261e131deddcb63587a"
+};
 export const PUBLIC_FIGURE_TOPIC_COUNTS:Readonly<Record<string,number>>={'mrbeast':83,'elon-musk':100,'donald-trump':100};
 export const PUBLIC_FIGURE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={'mrbeast':'313351aa87beb697db6e44ee860eb2c2a5c7ea53ea26a7fbb901e5d02c62f908','elon-musk':'e8911bbf03ef4da43fd61342fbde7a143be734f7f355b5979c20bb855f2bbe92','donald-trump':'b877e04898603d52cd65a77b1b4db65f4a6d6307b8433c8e67af1fa41f2b5366'};
 export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):100;}
@@ -73,6 +86,7 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===FOLLOWUP_RELEASE_ID)return {collections:3,designs:300,topics:['descendants-coloring-pages','squishy-coloring-pages','k-pop-demon-hunters-coloring-pages'] as readonly string[]};
  if(id===SEVEN_TOPIC_RELEASE_ID)return {collections:7,designs:700,topics:Object.keys(SEVEN_TOPIC_ZIP_CHECKSUMS) as readonly string[]};
  if(id===NUMBER_RELEASE_ID)return {collections:30,designs:3000,topics:Object.keys(NUMBER_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===SEASONAL_TEN_RELEASE_ID)return {collections:10,designs:1000,topics:Object.keys(SEASONAL_TEN_ZIP_CHECKSUMS) as readonly string[]};
  if(id===PUBLIC_FIGURE_RELEASE_ID)return {collections:3,designs:283,topics:Object.keys(PUBLIC_FIGURE_TOPIC_COUNTS) as readonly string[]};
  if(id===COLLECTIBLE_CHARACTER_RELEASE_ID)return {collections:17,designs:1700,topics:Object.keys(COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS) as readonly string[]};
  throw Error('Unknown owner-authorized release scope');
@@ -87,6 +101,7 @@ export function matchesReviewedSourceArchives(release:{release_id?:unknown;sourc
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
   const actual=release.source_zip_sha256s as Record<string,unknown>;return Object.keys(actual).length===30&&Object.entries(NUMBER_ZIP_CHECKSUMS).every(([topic,hash])=>actual[topic]===hash);
  }
+ if(release.release_id===SEASONAL_TEN_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===10&&Object.entries(SEASONAL_TEN_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===PUBLIC_FIGURE_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===3&&Object.entries(PUBLIC_FIGURE_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===COLLECTIBLE_CHARACTER_RELEASE_ID){
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
