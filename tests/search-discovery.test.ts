@@ -134,3 +134,28 @@ test('publishing another numeral cannot move existing collection items past a cu
  while(cursor){const page=await search.search('number 100',20,{cursor});assert.equal(page.total,55);for(const id of page.ids){assert.ok(!found.has(id),'duplicate after corpus growth');found.add(id);}cursor=page.next_cursor;}
  assert.equal(found.size,55,'existing number activities remain reachable after unrelated publications');
 });
+
+test('topic and alias cursors keep every published member while unrelated drawings arrive',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,categories:string,description='')=>search.project({id,title,description,tags:'',categories,category_ids:categories.split(' '),source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-03'});
+ for(let i=0;i<100;i++)await add('pompompurin-'+String(i).padStart(3,'0'),'Pompompurin: '+['A Book','Sleeping Beneath A Tall Tree','A Toy And Many Flowers'][i%3]+' '+i,'cartoons pompompurin');
+ for(const query of ['Pompompurin','sanrio pompompurin']){
+  const first=await search.search(query,24),found=new Set(first.ids);let cursor=first.next_cursor;
+  for(let i=0;i<100;i++)await add(query.replace(/ /g,'-')+'-new-'+i,'Excavator: A Worksite With Several Trees And Pipes '+i,'vehicles excavator','A machine digs a trench beside plants.');
+  while(cursor){const page=await search.search(query,24,{cursor});assert.equal(page.total,100);for(const id of page.ids){assert.ok(!found.has(id),'no repeated member after corpus growth');found.add(id);}cursor=page.next_cursor;}
+  assert.equal(found.size,100,'every topic member stays reachable across changing corpus statistics');
+ }
+});
+
+
+test('animal ages and machine sizes are specific queries rather than whole-topic aliases',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string,description:string)=>search.project({id,title,description,tags:categories.includes('cheetah')?'cheetah cheetahs':'excavator excavators digger diggers',categories,category_ids:categories.split(' '),source_version:2,visibility:'published',locale:'en',updated_at:'2026-11-03'});
+ await add('adult-cheetah','Cheetah: Standing in Side Profile','animals cheetah','A slender cheetah stands with its tail lowered.');
+ await add('cub-cheetah','Cheetah: A Cub Watching a Butterfly','animals cheetah','A cheetah cub looks up at a butterfly.');
+ await add('full-excavator','Excavator: Loading a Quarry Truck','vehicles excavator','An excavator loads rocks into a truck.');
+ await add('mini-excavator','Excavator: A Compact Garden Machine','vehicles excavator','A mini excavator digs beside a garden path.');
+ assert.equal((await search.search('cheetah')).total,2);assert.equal((await search.search('digger')).total,2);
+ for(const query of ['cheetah cub','cheetah cubs']){assert.deepEqual(searchTopicIds(query),[]);assert.deepEqual((await search.search(query)).ids,['cub-cheetah']);}
+ assert.deepEqual(searchTopicIds('mini excavator'),[]);assert.deepEqual((await search.search('mini excavator')).ids,['mini-excavator']);
+});
