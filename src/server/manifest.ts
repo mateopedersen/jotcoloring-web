@@ -9,7 +9,7 @@ export const MAX_PDF_BYTES=1_000_000;
 const object=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v);
 const str=(v:unknown,min:number,max:number)=>typeof v==='string'&&v.length>=min&&v.length<=max;
 const list=(v:unknown,max:number)=>Array.isArray(v)&&v.length<=max&&new Set(v).size===v.length;
-const fields=['category_selection','difficulty_level','age_recommendation','schema_version','example_only','import_action','idempotency_key','expected_version','content_id','locale','slug','title','description','alt_text','requested_status','category_ids','tags','provenance','assets','age_groups','difficulty'];
+const fields=['color_preview_policy','category_selection','difficulty_level','age_recommendation','schema_version','example_only','import_action','idempotency_key','expected_version','content_id','locale','slug','title','description','alt_text','requested_status','category_ids','tags','provenance','assets','age_groups','difficulty'];
 export function safeObjectKey(key:string){return key.startsWith('incoming/')&&key.length<=1024&&!key.includes('..')&&!key.includes('\\')&&!key.includes('//')&&!/[\x00-\x1f\x7f%?#]/.test(key)&&!key.endsWith('/')}
 export function validateManifest(value:unknown,_production=false):Manifest{
  const errors:Record<string,string>={};if(!object(value))throw new AppError('VALIDATION_ERROR','Manifest must be an object.');const v=value;
@@ -26,6 +26,8 @@ export function validateManifest(value:unknown,_production=false):Manifest{
  if(v.alt_text!==undefined&&!str(v.alt_text,0,400))errors.alt_text='Maximum 400 characters.';
  if(v.requested_status==='published'){if(!str(v.description,1,5000)||!String(v.description).trim())errors.description='A specific description is required for publishing.';if(!str(v.alt_text,1,400)||!String(v.alt_text).trim())errors.alt_text='A descriptive image alt text is required for publishing.';}
  if(!['draft','ready_for_review','published'].includes(String(v.requested_status)))errors.requested_status='Unknown requested status.';
+ if(v.color_preview_policy!==undefined&&!['automatic','none'].includes(String(v.color_preview_policy)))errors.color_preview_policy='Use automatic or none.';
+ if(v.color_preview_policy==='none'&&Array.isArray(v.assets)&&v.assets.some((a:any)=>['home_half_color','home_half_color_small','home_half_color_medium','color_inspiration'].includes(a?.role)))errors.color_preview_policy='An omitted color preview policy cannot include color preview assets.';
  if(v.expected_version!==undefined&&(!Number.isSafeInteger(v.expected_version)||Number(v.expected_version)<1))errors.expected_version='Positive integer required.';
  if(v.import_action==='update'&&v.expected_version===undefined)errors.expected_version='Required for updates.';
  if(!list(v.category_ids,12)||(v.category_ids as unknown[]).some(x=>!str(x,1,128)))errors.category_ids='Up to 12 unique category IDs.';

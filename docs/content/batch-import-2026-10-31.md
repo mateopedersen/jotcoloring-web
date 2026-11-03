@@ -58,3 +58,50 @@ Independent original-copy, derivative-copy, public-copy and final public-readbac
 
 ## Reviewed transport waiting on an active import
 A duplicate reviewed-bundle delivery can arrive while the same canonical import still holds its 15-minute processing lease, including recovery after an interrupted invocation. If publication readback is incomplete and the same job remains processing, defer that transport until just after the current lease expires instead of consuming short generic retries. Do not acknowledge it or emit a failure/completion receipt for that waiting state. An expired lease remains eligible for the normal idempotent import claim. Exact source/revision, backup and full published-byte checks still gate the eventual completion receipt; unrelated failures keep their normal error handling. The eight-consumer queue bound and retry-count setting are unchanged.
+
+## Supplied branded PDF/WebP pages — November 3, 2026
+
+The owner authorized the exact 17 collectible-character packages as scope
+`collectible-characters-20261103`. Preserve the supplied JotColoring logo and both
+printable containers verbatim. Hello Kitty appends 100 new stable artwork IDs to
+its existing topic; never replace the accepted 100 pages. Native PNG containers
+are absent from these ZIPs and must not be claimed as backed up.
+
+`prepare-supplied-pages.ts` validates source checksums, one-page A4 PDFs, source
+logo presence, blank artwork tolerance, whole-page responsive image pixels and
+actual image-derived age/category analysis. It creates five lossless resized
+previews and a source-bound social cover. No color assets are generated. The
+signed transport requires exactly those eight roles and rejects any replacement
+of the supplied printable PDF or WebP. Original source and backup readbacks,
+double editorial approval, exact release inventory, media signatures, normal
+imports, search projection and public verification remain mandatory. This source
+layout is intentionally preserved under the owner's explicit logo instruction;
+the generated-page footer compositor must not be applied to it.
+
+### Public-figure addition and explicit 83-page exception
+
+The owner subsequently added MrBeast, Elon Musk and Donald Trump. Scope
+`public-figures-20261103` requires exactly 83 MrBeast, 100 Elon Musk and 100 Donald
+Trump drawings, 283 total. The supplied MrBeast ZIP is truncated during WebP 084;
+83 complete PDF/WebP pairs were recovered with original member checksums. The
+owner explicitly accepted publication of those 83, with the incomplete count
+reported. Preserve the original truncated ZIP, recovery receipt and extra PDF 084
+privately. The recovered container has a separate immutable checksum. No missing
+native or original file may be claimed as supplied or backed up. All other scopes
+retain their original exact counts.
+
+Use neutral, image-specific public-figure copy. Invented roles and scenes are
+illustrations, not evidence of real events, products, achievements or endorsements.
+Preserve source logo and printable containers under the same eight-role media
+policy. Actual person/topic identities belong naturally in titles or descriptions.
+
+The supplied-original manifests explicitly use `color_preview_policy: none`.
+Both import and republish honor this policy before the automatic color fallback.
+Existing manifests keep the default automatic behavior. This policy changes no
+media signatures, source checksums, backups or final publication gates.
+
+The same omitted-preview policy reaches catalog responses and hides See Color
+Ideas on these pages. Anonymous reference requests reject omitted previews before
+reading stored colors or adding a job. Scheduled color discovery skips them;
+an older queued job becomes obsolete before inference when the active revision
+omits previews. Existing pages without this policy retain their current behavior.

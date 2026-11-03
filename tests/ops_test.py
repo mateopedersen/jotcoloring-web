@@ -104,6 +104,7 @@ class OperationsTests(unittest.TestCase):
         db.execute("INSERT INTO creator_upload VALUES ('upload-one','private-owner','private-photo-path','image/png',100,'sha','uploaded','2026-10-29T00:00:00Z')")
         db.execute("INSERT INTO audit_event(id,actor,action,target_id) VALUES (9007199254740995,'fixture','test','test')")
         db.execute('DELETE FROM audit_event')
+        expected_categories = db.execute('SELECT COUNT(*) FROM category').fetchone()[0]
         source = ('\n'.join(db.iterdump())+'\n').encode()
         db.close()
         with tempfile.TemporaryDirectory() as folder:
@@ -113,10 +114,10 @@ class OperationsTests(unittest.TestCase):
             self.assertNotIn('private-photo-path', sql)
             self.assertEqual(result['excluded_private_rows']['creator_upload'], 1)
             self.assertEqual(result['tables']['creator_upload']['rows'], 0)
-            self.assertEqual(result['tables']['category']['rows'], 132)
+            self.assertEqual(result['tables']['category']['rows'], expected_categories)
             restored=sqlite3.connect(':memory:');restored.execute('PRAGMA foreign_keys=ON');restored.executescript(sql)
             self.assertEqual(restored.execute('SELECT COUNT(*) FROM creator_upload').fetchone()[0],0)
-            self.assertEqual(restored.execute('SELECT COUNT(*) FROM category').fetchone()[0],132)
+            self.assertEqual(restored.execute('SELECT COUNT(*) FROM category').fetchone()[0],expected_categories)
             self.assertEqual(restored.execute("SELECT seq FROM sqlite_sequence WHERE name='audit_event'").fetchone()[0],9007199254740995)
             self.assertIn({'name':'audit_event','seq':'9007199254740995'},result['autoincrement_sequences'])
             self.assertIsNone(restored.execute('PRAGMA foreign_key_check').fetchone())
