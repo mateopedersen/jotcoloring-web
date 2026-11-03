@@ -10,11 +10,12 @@ import CategoryIcon from './CategoryIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import SearchIcon from './SearchIcon.astro';
 import {artworkText} from '../ui/artwork-text';
+import {displayTitle} from '../ui/titles';
 import '../styles/related.css';
 const {item,result}=Astro.props as {item:Content;result:RelatedResult};
 const view=relatedView(Astro.url.searchParams.get('related')),matches=selectRelated(result,view);
 const themeLabel=coloringTopic(result.theme.replaceAll(' ','-')).toLowerCase();
-const labels={best:'Best matches',theme:`More ${themeLabel} pages`,detail:'Similar detail',collection:'Same subject'};
+const labels={best:'Best Matches',theme:displayTitle(`More ${themeLabel} Pages`),detail:'Similar Detail',collection:'Same Subject'};
 const intros={best:`Follow the subjects and details you enjoyed in ${item.title}. These pages share a theme, subject or collection.`,theme:`Explore shared subjects and ${themeLabel} themes. A different scene, with something familiar to color.`,detail:'Find related subjects with a similar level of drawing detail. Recommended ages are a guide; everyone can color at their own pace.',collection:`Explore more ${item.categoryName.toLowerCase()} subjects and illustrated scenes.`};
 const counts={best:result.matches.length,theme:result.matches.filter(m=>m.sameTheme).length,detail:result.matches.filter(m=>m.similarDetail).length,collection:result.matches.filter(m=>m.sameCollection).length};
 ---
