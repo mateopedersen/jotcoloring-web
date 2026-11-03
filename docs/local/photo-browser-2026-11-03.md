@@ -41,3 +41,9 @@ fillable part. Compare original, outline settings, local fill testing, correctio
 and Studio remain available. Physical iPhone/Safari coverage must be reported
 separately from Chrome viewport emulation. Neither perfect fidelity on arbitrary
 photos nor a device-independent processing time is promised.
+
+The processing state shows the actual selected photo, an animated scan/orbit and
+a clearly marked estimated countdown. When the estimate expires it switches to
+elapsed time instead of pretending completion. It supports reduced motion and a
+local stop action; timers end on completion, cancellation or navigation. Pointer
+correction uses the same contained-image coordinates as the fill preview.
