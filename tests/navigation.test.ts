@@ -1,7 +1,7 @@
 import {PUBLIC_COLLECTION_IDS} from '../src/taxonomy/routes';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {COLORING_TAXONOMY,ROOT_CATEGORIES,categoryPath} from '../src/taxonomy/catalog';
-import {NAVIGATION_COLLECTIONS,collectionForRoot} from '../src/taxonomy/navigation';
+import {NAVIGATION_COLLECTIONS,collectionForRoot,collectionPath} from '../src/taxonomy/navigation';
 import {catalogLocation,catalogRedirect} from '../src/taxonomy/catalog-location';
 import {NUMBER_VALUES,numberTopic} from '../src/taxonomy/number-topics';
 import {parseCatalogQuery} from '../src/server/catalog';
@@ -13,10 +13,11 @@ test('every reviewed classification has one public navigation home and a unique 
  const urls=COLORING_TAXONOMY.map(c=>{assert.ok(collectionForRoot(c.parent||c.id),c.id);const path=categoryPath(c.id);assert.equal(catalogLocation(path)?.path,path);assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+path)),undefined);return path;});assert.equal(new Set(urls).size,urls.length);
 });
 test('legacy topic/category URLs redirect once, retain filters, and exact scoped number searches become real topics',()=>{
- for(const [old,target] of [['/coloring-pages/education/','/collection/education/'],['/coloring-pages/animals/cats/','/coloring-pages/cats/'],['/coloring-pages/video-games/fnaf/','/coloring-pages/fnaf/'],['/coloring-pages/education/numbers/?q=number+111','/coloring-pages/numbers/111/'],['/coloring-pages/education/numbers111','/coloring-pages/numbers/111/'],['/coloring-pages/animals/?difficulty=easy&page=2','/collection/animals/?difficulty=easy&page=2'],['/coloring-pages/numbers/111/?category=education&difficulty=easy','/coloring-pages/numbers/111/?difficulty=easy']]){assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+old)),target);assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+target)),undefined);}
- assert.equal(catalogLocation('/collection/does-not-exist/'),undefined);assert.equal(catalogLocation('/coloring-pages/flowers/fnaf/'),undefined);assert.equal(catalogLocation('/coloring-pages/numbers/99999999/'),undefined);
+ for(const [old,target] of [['/collection/education/','/coloring-pages/education/'],['/coloring-pages/animals/cats/','/coloring-pages/cats/'],['/coloring-pages/video-games/fnaf/','/coloring-pages/fnaf/'],['/coloring-pages/education/numbers/?q=number+111','/coloring-pages/numbers/111/'],['/coloring-pages/education/numbers111','/coloring-pages/numbers/111/'],['/collection/animals/?difficulty=easy&page=2','/coloring-pages/animals/?difficulty=easy'],['/coloring-pages/numbers/111/?category=education&difficulty=easy','/coloring-pages/numbers/111/?difficulty=easy']]){assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+old)),target);assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+target)),undefined);}
+ assert.equal(catalogLocation('/coloring-pages/does-not-exist/'),undefined);assert.equal(catalogLocation('/coloring-pages/flowers/fnaf/'),undefined);assert.equal(catalogLocation('/coloring-pages/numbers/99999999/'),undefined);
  for(const n of NUMBER_VALUES){const topic=numberTopic(n)!;assert.equal(catalogLocation(topic.path)?.number?.number,n);assert.equal(discoveryPath(topic.path),topic.path);}
- assert.equal(discoveryPath('/coloring-pages/education/'),null);assert.equal(discoveryPath('/coloring-pages/education/',true),'/coloring-pages/education/');
+ assert.equal(discoveryPath('/collection/education/'),null);assert.equal(discoveryPath('/collection/education/',true),'/collection/education/');
+ for(const c of NAVIGATION_COLLECTIONS){assert.equal(catalogRedirect(new URL('https://jotcoloring.com/collection/'+c.id+'/')),collectionPath(c.id));assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+collectionPath(c.id))),undefined);}
 });
 test('collection and number API scopes reject unknown values and search suggestions use the same canonical paths',()=>{
  assert.equal(parseCatalogQuery(new URLSearchParams('collection=characters')).collection,'characters');assert.equal(parseCatalogQuery(new URLSearchParams('number=111')).number,'111');

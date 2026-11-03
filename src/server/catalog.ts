@@ -127,7 +127,12 @@ export class D1CatalogRepository implements CatalogRepository{
   else{const ids=result.matches.map(m=>m.collection.id);const counts=await this.db.prepare(`SELECT cc.category_id AS id,COUNT(*) AS total FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE cc.category_id IN (${ids.map(()=>'?').join(',')}) AND ${scope.sql} GROUP BY cc.category_id`).bind(...ids,...scope.values).all<{id:string;total:number}>();for(const match of result.matches)match.collection.total=counts.results.find(c=>c.id===match.collection.id)?.total||0;}
   result.matches=result.matches.filter(m=>m.collection.total>0);if(result.mode==='browse')result.matches.sort((a,b)=>b.collection.total-a.collection.total||a.collection.id.localeCompare(b.collection.id));
  }
- for(const match of result.matches){const group=navigationCollection(match.collection.id);if(!group)continue;const total=(await this.list({...query,collection:group.id,number:undefined,category:undefined,subcategory:undefined,marketingOnly:undefined,page:1,cursor:undefined,limit:1})).total;match.collection={...match.collection,name:group.name,icon:group.icon,href:collectionPath(group.id),total};}
+ const groups=result.matches.map(m=>navigationCollection(m.collection.id)).filter((g):g is NonNullable<typeof g>=>!!g);
+ // Count the public groups in one query. Hydrating one full artwork per group
+ // solely to obtain its total created dozens of sequential D1 requests.
+ const groupTotals=!query.q&&groups.length?(await this.db.prepare(`SELECT g.key AS id,COUNT(DISTINCT c.id) AS total FROM json_each(?) g JOIN json_each(g.value) root JOIN content_category cc ON cc.category_id=root.value JOIN content c ON c.id=cc.content_id WHERE ${scope.sql} GROUP BY g.key`).bind(JSON.stringify(Object.fromEntries(groups.map(g=>[g.id,g.roots]))),...scope.values).all<{id:string;total:number}>()).results:undefined;
+ for(const match of result.matches){const group=navigationCollection(match.collection.id);if(!group)continue;const total=groupTotals?groupTotals.find(row=>row.id===group.id)?.total||0:(await this.list({...query,collection:group.id,number:undefined,category:undefined,subcategory:undefined,marketingOnly:undefined,page:1,cursor:undefined,limit:1})).total;match.collection={...match.collection,name:group.name,icon:group.icon,href:collectionPath(group.id),total};}
+
  if(result.mode==='browse')result.matches.sort((a,b)=>b.collection.total-a.collection.total||a.collection.id.localeCompare(b.collection.id));
  return result;
  }

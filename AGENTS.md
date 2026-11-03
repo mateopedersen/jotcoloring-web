@@ -73,3 +73,9 @@ achievements, product specifications or endorsements. Source containers and
 checksums remain distinct from missing native originals. Do not generate color
 roles for this intake. Publish through existing guarded R2/import/search/backup
 and discovery paths, preserving separate JotColoring credentials and queue bounds.
+
+## Owner navigation and browsing update, November 3
+
+The owner replaced the earlier main `/collection/ID/` convention. Every main collection now uses `/coloring-pages/ID/`; subject and number routes keep the shared canonical resolver. Preserve one-hop permanent redirects from the former collection paths, canonical/menu/search/breadcrumb/sitemap consistency and historical discovery receipts. A route change does not rewrite artwork IDs, source metadata or media. Prepared covers with historical path bindings must not be silently rekeyed as new verified artifacts.
+
+Show each topic's complete accepted, unique collection introduction in its visible header box. Keep counts in the filter toolbar, not the right side of that box. New topics use the same shared system and tests. Catalogs continue on one page through bounded signed-cursor batches; do not restore numbered paging or request an entire large collection at once. New cards use the shared server-rendered Card, file actions and delegated controls.

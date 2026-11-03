@@ -8,13 +8,13 @@ import {landingSummary} from '../src/taxonomy/landing-summary';
 import {landingIdentity} from '../src/taxonomy/landing-identity';
 import {coloringPageTitle,coloringInvitation} from '../src/ui/coloring-copy';
 
-test('every canonical collection, subject and numeral has a distinct concise visible summary',()=>{
+test('every canonical collection, subject and numeral has a distinct informative visible introduction',()=>{
  const paths=new Set(['/coloring-pages/',...NAVIGATION_COLLECTIONS.map(c=>collectionPath(c.id)),...COLORING_TAXONOMY.map(t=>categoryPath(t.id)),...NUMBER_VALUES.map(n=>numberTopic(n)!.path)]);
  const copy=new Map<string,string>();
  for(const path of paths){
   const location=catalogLocation(path)!;
   assert.ok(location,path);const summary=landingSummary(location);
-  assert.ok(summary.length>15&&summary.length<=200,`${path}: ${summary.length}`);
+  assert.ok(summary.length>15&&summary.length<=400,`${path}: ${summary.length}`);
   assert.ok(!/[-–—]/.test(summary),path);
   assert.match(summary,/[.!?]$/);
   assert.ok(!copy.has(summary),`Repeated introduction: ${path} and ${copy.get(summary)}`);

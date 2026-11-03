@@ -1,0 +1,15 @@
+---
+import {env} from 'cloudflare:workers';
+import {catalogLocation} from '../taxonomy/catalog-location';
+import {catalogParameters} from '../taxonomy/catalog-query';
+import {createCatalog,parseCatalogQuery} from '../server/catalog';
+import type {Env} from '../server/types';
+import Card from '../components/Card.astro';
+const source=Astro.url.searchParams.get('source')||'';
+const location=source.startsWith('/coloring-pages/')?catalogLocation(source):undefined;
+Astro.response.headers.set('X-Robots-Tag','noindex,follow');
+Astro.response.headers.set('Cache-Control','private,no-store');
+let result;let error='';
+try{if(!location||location.path!==source||!Astro.url.searchParams.get('cursor'))throw Error('Choose a collection to continue.');const query=parseCatalogQuery(catalogParameters(location,Astro.url.searchParams));result=await createCatalog(env as unknown as Env).list(query);}catch{Astro.response.status=400;error='These pages could not load. Please retry from the collection.';}
+---
+<section data-catalog-fragment data-next-cursor={result?.next_cursor||''} data-has-more={result?.has_more?'true':'false'}>{result?.items.map(item=><Card item={item} showCategory={!location?.topic&&!location?.number}/>)}{error&&<p>{error}</p>}</section>
