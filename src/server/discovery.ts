@@ -82,9 +82,11 @@ export async function rebuildDiscovery(env:Env,limit=4){
 }
 export function nextDiscoveryAttempt(status:number,retryAfter:string|null,attempt:number,now=Date.now(),random=Math.random()){
  if(![429,0].includes(status)&&status<500)return null;
- if(attempt>=8)return null;
+ // A provider rate limit is a hold, not a permanent delivery failure. Keep
+ // its durable cooldown even after repeated responses so other streams wait.
+ if(attempt>=8&&status!==429)return null;
  const retry=retryAfter?(Number.isFinite(Number(retryAfter))?now+Number(retryAfter)*1000:Date.parse(retryAfter)):0;
- return new Date(Math.max(Number.isFinite(retry)?retry:0,now+Math.min(86400000,30000*2**attempt)+random*10000)).toISOString();
+ return new Date(Math.max(Number.isFinite(retry)?retry:0,now+Math.max(status===429?600000:0,Math.min(86400000,30000*2**attempt))+random*10000)).toISOString();
 }
 async function discoveryCoolingDown(db:NonNullable<Env['CATALOG_DB']>){return !!await db.prepare("SELECT id FROM discovery_notice WHERE state='pending' AND last_status=429 AND not_before>? LIMIT 1").bind(new Date().toISOString()).first();}
 interface Notice{id:number;path_key:string;content_id:string|null;revision:string;event_type:string;attempts:number}
@@ -96,11 +98,12 @@ export async function sendDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,re
  if(await discoveryCoolingDown(db))return;
  const now=new Date().toISOString(),started=Date.now();
  const rows=await db.prepare("SELECT id,path_key,content_id,revision,event_type,attempts FROM discovery_notice WHERE ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))"+(revision?" AND revision=?":"")+" ORDER BY id LIMIT 20").bind(now,now,...(revision?[revision]:[])).all<Notice>();
- let claimedCount=0;const ready:{url:string;n:Notice;renew:()=>Promise<boolean>;finish:(state:string,status:number|null,error?:string|null,at?:string)=>Promise<unknown>}[]=[];
+ let claimedCount=0;const ready:{url:string;n:Notice;renew:()=>Promise<boolean>;defer:(reason:string)=>Promise<unknown>;finish:(state:string,status:number|null,error?:string|null,at?:string)=>Promise<unknown>}[]=[];
  for(const n of rows.results){
   if(Date.now()-started>90000)break;let lease=new Date(Date.now()+300000).toISOString();
   const claim=await db.prepare("UPDATE discovery_notice SET state='sending',lease_until=?,attempts=attempts+1 WHERE id=? AND ((state='pending' AND not_before<=?) OR (state='sending' AND lease_until<?))").bind(lease,n.id,now,now).run();if(!claim.meta.changes)continue;claimedCount++;
   const finish=async(state:string,status:number|null,error:string|null=null,at='')=>db.prepare("UPDATE discovery_notice SET state=?,last_status=?,last_error=?,not_before=?,lease_until=NULL,received_at=? WHERE id=? AND state='sending' AND lease_until=?").bind(state,status,error,at,['received','key_pending'].includes(state)?new Date().toISOString():null,n.id,lease).run();
+  const defer=async(reason:string)=>db.prepare("UPDATE discovery_notice SET state='pending',attempts=MAX(attempts-1,0),last_error=?,not_before=?,lease_until=NULL WHERE id=? AND state='sending' AND lease_until=?").bind(reason,new Date(Date.now()+60000).toISOString(),n.id,lease).run();
   try{
    const path=discoveryPath(n.path_key,n.event_type==='redirect');if(!path){await finish('failed',null,'INVALID_PATH');continue;}
    // Coalesce superseded notices, but retain the old URL's redirect/removal event.
@@ -121,8 +124,8 @@ export async function sendDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,re
     for(const a of assets.results){const ar=await fetcher('https://assets.jotcoloring.com/'+a.object_key.split('/').map(encodeURIComponent).join('/'),{method:'HEAD',redirect:'manual',signal:AbortSignal.timeout(15000)});if(ar.status!==200||!ar.headers.get('content-type')?.startsWith(a.mime))throw Error('LIVE_ASSET_STATUS');}
    }
    if(await db.prepare('SELECT segment FROM discovery_dirty LIMIT 1').first())throw Error('PUBLICATION_CHANGED');
-   ready.push({url,n,finish,renew:async()=>{const next=new Date(Date.now()+300000).toISOString(),result=await db.prepare("UPDATE discovery_notice SET lease_until=? WHERE id=? AND state='sending' AND lease_until=?").bind(next,n.id,lease).run();if(!result.meta.changes)return false;lease=next;return true;}});
-  }catch(error){const next=nextDiscoveryAttempt(0,null,n.attempts+1);await finish(next?'pending':'failed',null,error instanceof Error?error.message.slice(0,80):'NETWORK',next||'');}
+   ready.push({url,n,finish,defer,renew:async()=>{const next=new Date(Date.now()+300000).toISOString(),result=await db.prepare("UPDATE discovery_notice SET lease_until=? WHERE id=? AND state='sending' AND lease_until=?").bind(next,n.id,lease).run();if(!result.meta.changes)return false;lease=next;return true;}});
+  }catch(error){if(discoveryDeferral(error)){await defer(error.message);continue;}const next=nextDiscoveryAttempt(0,null,n.attempts+1);await finish(next?'pending':'failed',null,error instanceof Error?error.message.slice(0,80):'NETWORK',next||'');}
  }
  const active:typeof ready=[];for(const item of ready)if(await item.renew())active.push(item);
  if(active.length){try{
@@ -131,9 +134,10 @@ export async function sendDiscoveryNotices(env:Env,fetcher:typeof fetch=fetch,re
   const keyURL=`${DISCOVERY_ORIGIN}/${INDEXNOW_KEY}.txt`,key=await fetcher(keyURL,{signal:AbortSignal.timeout(15000)});if(key.status!==200||(await key.text()).trim()!==INDEXNOW_KEY)throw Error('KEY_NOT_LIVE');
   const result=await fetcher('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json; charset=utf-8'},body:JSON.stringify({host:'jotcoloring.com',key:INDEXNOW_KEY,keyLocation:keyURL,urlList:[...new Set(active.map(item=>item.url))]}),redirect:'manual',signal:AbortSignal.timeout(20000)});
   for(const item of active){if(result.status===200||result.status===202)await item.finish(result.status===200?'received':'key_pending',result.status);else{const next=nextDiscoveryAttempt(result.status,result.headers.get('retry-after'),item.n.attempts+1);await item.finish(next?'pending':'failed',result.status,'INDEXNOW_HTTP',next||'');}}
- }catch(error){for(const item of active){const next=nextDiscoveryAttempt(0,null,item.n.attempts+1);await item.finish(next?'pending':'failed',null,error instanceof Error?error.message.slice(0,80):'NETWORK',next||'');}}}
+ }catch(error){for(const item of active){if(discoveryDeferral(error)){await item.defer(error.message);continue;}const next=nextDiscoveryAttempt(0,null,item.n.attempts+1);await item.finish(next?'pending':'failed',null,error instanceof Error?error.message.slice(0,80):'NETWORK',next||'');}}}
  return claimedCount;
 }
+function discoveryDeferral(error:unknown):error is Error{return error instanceof Error&&['PUBLICATION_CHANGED','INDEXNOW_COOLDOWN'].includes(error.message);}
 /** One queue delivery handles at most 20 notices; receipt leases make duplicates harmless. */
 export async function queueDiscoveryNotices(env:Env,revision?:string){
  if(revision&&!/^navigation-v1:[a-f0-9]{40}$/.test(revision))throw Error('Exact reviewed navigation revision required');
