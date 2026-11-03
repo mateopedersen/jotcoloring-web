@@ -97,6 +97,7 @@ export function finishDrawing(map:DrawingMap,width:number,height:number,settings
   const before=gray.slice();for(let y=1;y<height-1;y++)for(let x=1;x<width-1;x++){const i=y*width+x;gray[i]=Math.min(before[i],before[i-1],before[i+1],before[i-width],before[i+width]);}
  }
  let inkPixels=0;for(let i=0;i<mask.length;i++){mask[i]=gray[i]<155?1:0;inkPixels+=mask[i];}
+ if(inkPixels>mask.length*.65)throw new Error('Drawing output is too dense. Try another processor.');
  if(inkPixels<16)throw new Error('No clear outlines were found. Try a sharper photo or choose Direct trace.');
  return {mask,gray,width,height,inkPixels,threshold:155,method:'faithful',repairedGaps:repaired.repaired,regions:countColoringRegions(mask,width,height)};
 }

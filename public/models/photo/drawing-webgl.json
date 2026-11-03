@@ -1,0 +1,27 @@
+{
+  "grid": 512,
+  "file": "drawing-webgl-893ea6a3.bin",
+  "bytes": 8424317,
+  "transportSHA256": "893ea6a3178e5e9f056aaec4d685b30d014f0fc12f4f6fc6e14bd5371db9a3ea",
+  "decodedBytes": 17234476,
+  "decodedSHA256": "b77fb657aaa3d5e05158c3728381f4a43e8c2b2790ffe0088a13b1efd89c8da4",
+  "sourceSHA256": "544fb9a41348734fb3c83dd1decf7548b981c4127b986b151ea2ec79c63ed988",
+  "weightsRounded": 4295297,
+  "hierarchicalNormalizations": 11,
+  "mantissaBits": 8,
+  "operators": [
+    "Pad",
+    "Conv",
+    "AveragePool",
+    "GlobalAveragePool",
+    "Sub",
+    "Mul",
+    "Add",
+    "Sqrt",
+    "Div",
+    "Relu",
+    "ConvTranspose",
+    "ReduceSum",
+    "Sigmoid"
+  ]
+}
