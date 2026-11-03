@@ -87,3 +87,12 @@ test('final review sees both real images but cannot anchor on the proposed palet
  }};
  await runColorReference(f.env,f.job().job_key);assert.equal(reviewed,true);assert.equal(f.job().state,'ready');assert.equal(f.backups.files.size,5);
 });
+
+test('omitted previews are excluded from discovery and a previously queued job stops before inference',async()=>{
+ const f=await setup();f.db.sql.prepare('INSERT INTO content_revision(content_id,version,manifest_json,manifest_sha256) VALUES(?,?,?,?)').run('test-drawing',1,JSON.stringify({color_preview_policy:'none'}),'d'.repeat(64));
+ // setup publishes the fixture and its existing database trigger queues a job.
+ f.db.sql.exec('DELETE FROM color_reference_job');await discoverColorReferences(f.env);assert.equal(f.job(),undefined);
+ f.db.sql.prepare('INSERT INTO color_reference_job(job_key,content_id,source_sha256,preview_sha256,engine) VALUES(?,?,?,?,?)').run('omitted-fixture','test-drawing',f.source,f.preview,'pixel-conditioned-v3');
+ await runColorReference(f.env,'omitted-fixture');assert.equal(f.job().state,'obsolete');assert.equal(f.calls(),0);assert.equal(f.backups.files.size,0);
+ const {D1CatalogRepository}=await import('../src/server/catalog');const item=await new D1CatalogRepository(f.env,f.env.CATALOG_DB!).get('test-drawing');assert.equal(item?.color_preview_policy,'none');
+});
