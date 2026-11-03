@@ -26,6 +26,7 @@ import {categoryPath} from '../taxonomy/catalog';
 import {canonicalNumberSubject} from '../taxonomy/number-topics';
 import NumberTopicDirectory from './NumberTopicDirectory.astro';
 import {landingIdentity} from '../taxonomy/landing-identity';
+import {landingSummary} from '../taxonomy/landing-summary';
 const {location}=Astro.props as {location:CatalogLocation};
 const collection=location.collection,topic=location.topic,number=location.number;
 const category=collection?.roots[0]||topic?.parent||topic?.id||(number?'education':'');
@@ -41,6 +42,7 @@ try{
 const emptyHref=cover?Astro.url.pathname:subcategory?categoryPath(category):'/coloring-pages/';
 const identity=landingIdentity(location);
 const heading=query.q?`Coloring pages for “${query.q}”`:identity.heading;
+const summary=query.q?`Browse the drawings matching “${query.q}” and narrow your selection with the filters.`:landingSummary(location);
 const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':identity.intro;
 const pageHref=(page:number)=>{const p=new URLSearchParams(Astro.url.search);p.set('page',String(page));return `${Astro.url.pathname}?${p}#catalog-results`};
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
@@ -57,7 +59,7 @@ const relatedCollections=!error&&!number?await repo.relatedCollections(query,res
 ---
 <Layout title={`${heading}${paginationTitle} — JotColoring`} description={intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||!result.total}><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>
-<section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div><h1>{query.q?heading:displayTitle(heading)}</h1></div></section>
+<section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div><h1>{query.q?heading:displayTitle(heading)}</h1></div><div class="jc-collection-overview"><p>{summary}</p><span class="jc-collection-count"><Icon name="grid" size={17}/><strong>{result.total.toLocaleString('en-US')}</strong> {query.q||activeFilters.length?'matching':'coloring'} {result.total===1?'page':'pages'}</span></div></section>
 {shortcutTopics.length>0&&<nav class="jc-subject-shortcuts" aria-label="Subjects in this collection">{shortcutTopics.map(t=><a href={categoryPath(t!.id)}><CategoryIcon name={t!.icon} size={24}/>{t!.name}<Icon name="arrow" size={14}/></a>)}</nav>}
 <div class="jc-catalog-shell"><section class="iv-catalog-main jc-catalog-results">
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
@@ -65,7 +67,6 @@ const relatedCollections=!error&&!number?await repo.relatedCollections(query,res
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
 {error?<div class="empty" role="alert">{error} <a href="/coloring-pages/">Reset filters</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory={!topic&&!number}/>)}</div>}
 {result.total_pages>1&&<nav class="pagination" aria-label="Pagination">{result.page>1?<a href={pageHref(result.page-1)} aria-label="Previous page"><ArrowIcon kind="left" size={18}/></a>:<span aria-disabled="true"><ArrowIcon kind="left" size={18}/></span>}{Array.from({length:Math.min(result.total_pages,100)},(_,i)=>i+1).filter(p=>p===1||p===result.total_pages||Math.abs(p-result.page)<=2).map(p=><a class:list={[p===result.page&&'active']} aria-current={p===result.page?'page':undefined} href={pageHref(p)}>{p}</a>)}{result.has_more&&<a href={pageHref(result.page+1)} aria-label="Next page"><ArrowIcon kind="right" size={18}/></a>}</nav>}
-<details class="jc-collection-about"><summary>About This Collection</summary><p>{intro}</p></details>
 <div class="iv-catalog-explore" aria-label="More ways to browse">
 <CategoryDirectory counts={categoryCounts} collectionId={mainCollection?.id}/>{category==='education'&&<NumberTopicDirectory counts={numberCounts} active={number?.number}/>}
 <DifficultyNavigation active={query.difficulty} currentURL={Astro.url.href}/><AgeNavigation compact active={query.recommended_age}/>
