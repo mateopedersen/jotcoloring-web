@@ -22,12 +22,13 @@ test('sealed one-artwork transport authenticates its environment, all originals 
 
 test('supplied 17-topic transport preserves print containers and excludes color roles',async()=>{
  const b=await fixture(),excluded=new Set(['home_half_color','home_half_color_small','home_half_color_medium','color_inspiration']);
- b.manifest.assets=b.manifest.assets.filter(a=>!excluded.has(a.role));b.assets=b.assets.filter(a=>b.manifest.assets.some(m=>m.object_key===a.key));b.reviews=b.reviews.filter(a=>!excluded.has(a.role));
+ b.manifest.color_preview_policy='none';b.manifest.assets=b.manifest.assets.filter(a=>!excluded.has(a.role));b.assets=b.assets.filter(a=>b.manifest.assets.some(m=>m.object_key===a.key));b.reviews=b.reviews.filter(a=>!excluded.has(a.role));
  const line=b.assets.find(a=>a.key===b.manifest.assets.find(m=>m.role==='printable_webp_bw')!.object_key)!,pdf=b.assets.find(a=>a.key===b.manifest.assets.find(m=>m.role==='printable_pdf_a4_bw')!.object_key)!;
  const source=line.sha256;b.source_sha256=source;b.release={...b.release,id:COLLECTIBLE_CHARACTER_RELEASE_ID,collections:17,designs:1700};b.editorial.prepared_source_sha256=source;b.editorial.second_editorial_review.source_sha256=source;b.editorial.pdf_sha256=pdf.sha256;b.manifest.provenance.reference='Source SHA-256 '+source+'; original PDF/WebP preserved verbatim.';
  const collection=b.design_id.split('__')[0];b.source_file={...line,key:`packages/${collection}/${b.design_id}/${source}.webp`};b.supplied=[{...pdf,key:`packages/${collection}/${b.design_id}/${pdf.sha256}.pdf`}];delete b.native;
  b.editorial.render_review.assets=Object.fromEntries(b.manifest.assets.map(a=>[a.role,a.sha256]));
  const result=await checked(b);assert.equal(result.decoded.size,10);assert.equal(result.manifest.assets.length,8);assert.equal(result.bundle.native,undefined);
+ const automatic=structuredClone(b);delete automatic.manifest.color_preview_policy;await assert.rejects(()=>checked(automatic),/no color previews/);
  const changed=structuredClone(b);changed.manifest.assets.find(a=>a.role==='printable_webp_bw')!.sha256='b'.repeat(64);await assert.rejects(()=>checked(changed));
  const missing=structuredClone(b);missing.manifest.assets=missing.manifest.assets.filter(a=>a.role!=='catalog_preview_mobile_bw');await assert.rejects(()=>checked(missing),/preserved/);
  const invalid=structuredClone(b);invalid.source_file!.sha256='b'.repeat(64);await assert.rejects(()=>checked(invalid),/Transported bytes changed/);
