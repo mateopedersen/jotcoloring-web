@@ -251,6 +251,28 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/a0edb22a1cf979e59a9482477b32704843c2d0ac744e1fe76404586d6323d79a.png",
     "title": "Aircraft Coloring Pages"
   },
+  "/coloring-pages/all-souls-day/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/73edcf6377af532fcadeca39e6c2e22cdf59eccc3164ea7b4a889ef69661db60.png",
+    "alt": "JotColoring printable coloring pages share image: All Souls' Day Coloring Pages Featuring All Souls' Day: Candle with Leaves, All Souls' Day: Cross and Lily, All Souls' Day: Praying Hands and Candles.",
+    "title": "All Souls' Day Coloring Pages",
+    "description": "Candles, crosses, lilies, doves, prayer books, and remembrance wreaths form the central symbols in these All Souls' Day drawings. Families pray together, carry lanterns, arrange flowers, and visit churchyards. Other pages show chapel interiors, candle stands, quiet gardens, choirs, and shared preparations for remembrance. Blank memorial stones and picture frames appear beside flowers, giving these illustrated spaces a quiet, personal focus.",
+    "sha256": "73edcf6377af532fcadeca39e6c2e22cdf59eccc3164ea7b4a889ef69661db60",
+    "identity_sha256": "a8826198a85d82616cdf22de762180b7aa5ca5c75f2dd63ea2be9f20cb422f0f",
+    "sources": [
+      {
+        "id": "jc-all-souls-day-page-001",
+        "sha256": "a759911541bac9dd9e078bb5904083ed36d10de0619558b9b7e29126af37bc68"
+      },
+      {
+        "id": "jc-all-souls-day-page-002",
+        "sha256": "a0cc5022392318bfaa17879122cd032f41bbb9f9c6406f4bb32d69ab556cb7c2"
+      },
+      {
+        "id": "jc-all-souls-day-page-003",
+        "sha256": "5e8ba263a6ea9a5a6bc09aa1fccba72ce5a0dcb9c02a1757b9009e30ba72e557"
+      }
+    ]
+  },
   "/coloring-pages/animal-mandalas/": {
     "alt": "JotColoring printable coloring pages share image: Animal Mandalas Coloring Pages Featuring Butterflies and Garden Flower Mandala, Fish Circle Mandala, Feather Eye Mandala.",
     "description": "Butterflies, fish, feather-eye motifs, shells, and starfish repeat among flowers and flowing shapes in circular ornamental designs.",
@@ -625,6 +647,50 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/6370f6b543b43523afaebf93c4fec43336dc382f98f21eaa7a8dde49bfa2198e.png",
     "title": "Celebration Coloring Pages"
   },
+  "/coloring-pages/cheetah/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/f2d9fac273218c9febdd9049ab317897fbc00bb8c188592b732f937559a938d9.png",
+    "alt": "JotColoring printable coloring pages share image: Cheetah Coloring Pages Featuring Cheetah: Sitting with a Curled Tail, Cheetah: Cub Stepping onto a Rock, Cheetah: Standing in Side Profile.",
+    "title": "Cheetah Coloring Pages",
+    "description": "Cheetahs sit, stretch, run, drink, and rest in individual animal drawings and scenes with cubs. Look for slender bodies, long tails, outlined spots, and facial tear marks expressed in a range of illustrated styles. Grassland trees, rocks, streams, flowers, and broad leaves surround many of the animals. Family groups and playful cubs offer different poses from the standing profiles and resting adults.",
+    "sha256": "f2d9fac273218c9febdd9049ab317897fbc00bb8c188592b732f937559a938d9",
+    "identity_sha256": "9ba785329f13e9b2cdf292bf3a312f65c7bccfa676a1edea943d670824a9c50b",
+    "sources": [
+      {
+        "id": "jc-cheetah-page-001",
+        "sha256": "d41baed73c32302ac62b63acb459b944ccef5305fa64c7db546c3827097729f7"
+      },
+      {
+        "id": "jc-cheetah-page-002",
+        "sha256": "e8f6b9ca650ceb7dbdf09145b3e52e18b16ee14a86064bc0eea1e8d2c3a42eda"
+      },
+      {
+        "id": "jc-cheetah-page-003",
+        "sha256": "be86a0e10aef5219e829d7ba39b237962eb347b2f9319bf5a2bdbd78a8ca36ac"
+      }
+    ]
+  },
+  "/coloring-pages/christmas-tree/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6fb33e9e8929223f179497bdd102cf787e0f822b59ffe43cee38a576f394be47.png",
+    "alt": "JotColoring printable coloring pages share image: Christmas Tree Coloring Pages Featuring Christmas Tree: Star and Round Ornaments, Christmas Tree: Heart Ornaments and a Big Bow, Christmas Tree: Children Hanging Ornaments.",
+    "title": "Christmas Tree Coloring Pages",
+    "description": "Christmas trees carry round baubles, bows, stars, hearts, bells, snowflakes, and playful cookie ornaments. Children and woodland animals decorate trees, while pets rest beneath branches and toy trains circle their trunks. Larger drawings place trees in cabins, libraries, shops, conservatories, village squares, and imagined grand halls. Smaller potted trees and individual ornament arrangements offer another way to focus on the branches and decorations.",
+    "sha256": "6fb33e9e8929223f179497bdd102cf787e0f822b59ffe43cee38a576f394be47",
+    "identity_sha256": "c48ce400ba5686b0cbd90edb1b814df40ed438f4d6e30a6bb39929b0d016b1b0",
+    "sources": [
+      {
+        "id": "jc-christmas-tree-page-001",
+        "sha256": "b4fec9a12269780d45b59bfbf78e4cbdcde5f85fc3970894193f9e73586749a1"
+      },
+      {
+        "id": "jc-christmas-tree-page-002",
+        "sha256": "bc3542fe69e9668e6c404b6fbdddeee73442719c6ebe05a1da3d52236593793e"
+      },
+      {
+        "id": "jc-christmas-tree-page-003",
+        "sha256": "0d7f6e321d1a09869e5d39135a5ccb533be04ab57dbc3a01d939921dbc55cf2d"
+      }
+    ]
+  },
   "/coloring-pages/cities/": {
     "alt": "JotColoring printable coloring pages share image: Cities & Streets Coloring Pages Featuring Fishing Boats in a Coastal Village, Flower-Lined Canal with Moored Boats, Cobbled Mountain Village Lane.",
     "description": "Fishing boats line a coastal village, flowers edge a canal, and a cobbled lane climbs between mountain houses. Roofs, windows, bridges, and moored boats create detailed streetscapes.",
@@ -660,6 +726,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/31b6591d182c6eaa03192be33411c0792c9adbeafe66421ddf71067e6840a25f.png",
     "title": "Coral Reefs Coloring Pages"
+  },
+  "/coloring-pages/december/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/6977b49a8908873b3b67ee7875b5de3bafe102caac7c7adbf3c80a0956a3035e.png",
+    "alt": "JotColoring printable coloring pages share image: December Coloring Pages Featuring December: Warm Hat and Mitten, December: Small Potted Christmas Tree, December: Gingerbread Cottage.",
+    "title": "December Coloring Pages",
+    "description": "December pages combine outlined month lettering with hats, mittens, lanterns, gifts, cocoa, and cheerful winter characters. Families bake, make cards, wrap presents, share meals, and help their neighbors. Decorated trees, gingerbread buildings, snowy markets, train stations, workshops, and village festivities appear in broader scenes. This mix of seasonal activities and holiday imagery offers both small individual subjects and lively gatherings.",
+    "sha256": "6977b49a8908873b3b67ee7875b5de3bafe102caac7c7adbf3c80a0956a3035e",
+    "identity_sha256": "d1b62b729e618eac5f7a5bc4b7e4956fb4568c6fa352354281820e7791c48d37",
+    "sources": [
+      {
+        "id": "jc-december-page-001",
+        "sha256": "358e4c2a7754d3030bab74e5c97a559f48b2d4116dffd536906e93a4d8e3e31a"
+      },
+      {
+        "id": "jc-december-page-002",
+        "sha256": "55fc98b95021ef2a044a87a206216cec82ba9dcd2aa3805abe3ae2a68a1bfe67"
+      },
+      {
+        "id": "jc-december-page-003",
+        "sha256": "7c5df6fd604aa182bf9d494867165dc69cd7629aa20720a4cfec53b3ae93b669"
+      }
+    ]
   },
   "/coloring-pages/descendants/": {
     "alt": "JotColoring printable coloring pages share image: Descendants Coloring Pages Featuring Mal Holds a Dragon Spellbook, Evie Holds a Crowned Hand Mirror, Carlos Sits Beside Dude.",
@@ -837,6 +925,28 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/0bf6ddb14617379f9cf52e9ad6188416086a4c849bf2b7b7a7e94a80c64f6c37.png",
     "title": "Easter Coloring Pages"
   },
+  "/coloring-pages/excavator/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7e0e2e3795fab317617c1e87044aedeccb4ac4887f824b3e4af4c3a8f084065d.png",
+    "alt": "JotColoring printable coloring pages share image: Excavator Coloring Pages Featuring Excavator: Tracked Digger Beside a Soil Pile, Excavator: Compact Side View, Excavator: Bucket Resting Near the Tracks.",
+    "title": "Excavator Coloring Pages",
+    "description": "Tracked and wheeled excavators appear with digging buckets, grading blades, grapples, and breaker attachments. The illustrated machines move soil, handle pipes, load trucks, and work in gardens, construction sites, quarries, and workshops. Cab windows, jointed arms, tracks, tires, and nearby tools provide distinct shapes to color. Individual machine views highlight these parts, while worksite scenes add materials, neighboring vehicles, and people.",
+    "sha256": "7e0e2e3795fab317617c1e87044aedeccb4ac4887f824b3e4af4c3a8f084065d",
+    "identity_sha256": "0f3934072fd7d348957af85ecdb9d8d409c6d81c8d81791f09240219a70e903c",
+    "sources": [
+      {
+        "id": "jc-excavator-page-001",
+        "sha256": "9d14684333dbb692d092587e4428f462aa2de699f0ce14c53ddb76f27b99c868"
+      },
+      {
+        "id": "jc-excavator-page-002",
+        "sha256": "fe2f71f8f27442ed1ae2fff331b4c16523d32147f23b14ebf1b40b4df49d3ae1"
+      },
+      {
+        "id": "jc-excavator-page-003",
+        "sha256": "e15c574e83ca49174583ef08d7dc3d284a54c60cc983da954a352d05a4c7a77c"
+      }
+    ]
+  },
   "/coloring-pages/fairies/": {
     "alt": "JotColoring printable coloring pages share image: Fairies Coloring Pages Featuring Fairy Barbie with a Flower Wand, Fairy Barbie Has Tea Beside a Flower Cottage, Fairy Barbie Among Giant Flowers.",
     "description": "Imagined fairy versions of Barbie carry flower wands, share tea beside a cottage, and explore giant blossoms. Wings, dresses, petals, and tiny garden settings fill the scenes.",
@@ -858,6 +968,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/2ded5cecc1f02a88f944e27a1c4858b6f68cd21d9761a87a394db0aa1a60ae9e.png",
     "title": "Fairies Coloring Pages"
+  },
+  "/coloring-pages/fall-leaf/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/d23e617dde6653a2b4e23a054bdfac40057fe8986e841e5b420558916a7d5ea6.png",
+    "alt": "JotColoring printable coloring pages share image: Fall Leaf Coloring Pages Featuring Fall Leaf: Rounded Leaf with Branching Veins, Fall Leaf: Fan Shaped Ginkgo Leaf, Fall Leaf: Rounded Oak Leaf Lobes.",
+    "title": "Fall Leaf Coloring Pages",
+    "description": "Individual leaves show pointed lobes, rounded edges, fan shapes, compound leaflets, and branching veins. Maple, oak, and ginkgo inspired forms also appear in wreaths, baskets, craft projects, and decorative borders. Children collect and study leaves, while woodland animals explore paths, ponds, gardens, and treehouses. Larger autumn scenes combine falling foliage with bridges, cottages, garden rooms, and quiet places to read.",
+    "sha256": "d23e617dde6653a2b4e23a054bdfac40057fe8986e841e5b420558916a7d5ea6",
+    "identity_sha256": "83fd78bb9af8a7eeed10abf938904b2aa048fd4efe7b84456e6396859378d113",
+    "sources": [
+      {
+        "id": "jc-fall-leaf-page-001",
+        "sha256": "2226d720acbeb3c5f758e7780ba6abf52e08a6da134fae944641975f5d33b374"
+      },
+      {
+        "id": "jc-fall-leaf-page-002",
+        "sha256": "b6998cc0c50487e68819f783b9461f2db260322c34128215389a46140dec68d8"
+      },
+      {
+        "id": "jc-fall-leaf-page-003",
+        "sha256": "ea5da982a56b55d7f158972cea3d470aaa7e2fae9950e04ad7cc6c72a69be2bb"
+      }
+    ]
   },
   "/coloring-pages/family/": {
     "alt": "JotColoring printable coloring pages share image: Family & Friends Coloring Pages Featuring Barbie Films a Friend in a Garden, Barbie and a Friend Share a Seaside Picnic, Two Children Share a Beach Ball.",
@@ -1189,6 +1321,28 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/b386a75ce1a7f1b236ac7f73c2434a42fdcf3dca0e30f8b3653f96e6722c252a.png",
     "title": "Geometric Patterns Coloring Pages"
   },
+  "/coloring-pages/gingerbread-house/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/5ddfa05ad30aa2d3dcf542c580fa304714397a45a46e6bf01126ceb1cc99ded4.png",
+    "alt": "JotColoring printable coloring pages share image: Gingerbread House Coloring Pages Featuring Gingerbread House: Heart Gable Cottage, Gingerbread House: Candy Cane Doorway, Gingerbread House: Round Tower House.",
+    "title": "Gingerbread House Coloring Pages",
+    "description": "Icing roofs, peppermint windows, cookie walls, candy canes, and ribbon bows decorate cottages and elaborate fantasy buildings. The gingerbread designs expand into castles, treehouses, windmills, lighthouses, cafés, railway stations, and whole imagined villages. Bakers decorate miniature houses, and gingerbread figures explore gardens, fountains, and fairground scenes. Open façades and densely decorated architectural compositions give visitors different kinds of details to follow.",
+    "sha256": "5ddfa05ad30aa2d3dcf542c580fa304714397a45a46e6bf01126ceb1cc99ded4",
+    "identity_sha256": "c4f5a02e8b8ee86282294526bc18ec65a246d58b1a9174d8e88f4189539b2931",
+    "sources": [
+      {
+        "id": "jc-gingerbread-house-page-001",
+        "sha256": "d0de4c8fcefe66561bca53f913fc183c76c3c621a1003ca211fc6e3b672e6813"
+      },
+      {
+        "id": "jc-gingerbread-house-page-002",
+        "sha256": "62855a627ffd02933be7faf1fdbe32887c8526e7aa27bcc9a01e8255d7301323"
+      },
+      {
+        "id": "jc-gingerbread-house-page-003",
+        "sha256": "9687f94d4f0cf6d73fc8ddc791105bd73eeceae9160f96f82be69ba9084d87d2"
+      }
+    ]
+  },
   "/coloring-pages/halloween/": {
     "alt": "JotColoring printable coloring pages share image: Halloween Coloring Pages Featuring Jack-o-Lantern Beneath a Crescent Moon, Friendly Ghost Waves Beside Stars, Soft Pointed Witch Hat.",
     "description": "Pumpkins, friendly ghosts, bats, black cats, costumes, and decorated houses create playful Halloween scenes. Open character outlines sit alongside detailed lantern-lit gardens and imaginative interiors.",
@@ -1320,6 +1474,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/299f8045f842a4bcef9ea3cdede25aad6ee4de9f035b46208b06b33f0f4078cd.png",
     "title": "Musical Instruments Coloring Pages"
+  },
+  "/coloring-pages/january/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/78a900b54c6e6b9616f3d2280e2f68c280ca34be5751e4fd542491806eb08139.png",
+    "alt": "JotColoring printable coloring pages share image: January Coloring Pages Featuring January: Snowman with a Pennant, January: Snow Boots and Footprints, January: Wooden Sled and Pull Rope.",
+    "title": "January Coloring Pages",
+    "description": "January lettering accompanies snowmen, skates, sleds, winter animals, warm drinks, books, and everyday activities. Families skate, follow animal tracks, care for plants, repair equipment, and work on indoor projects. Other pages explore snowy villages, railway buildings, conservatories, mountain lodges, and coastal settings. These wintry settings range from an individual object with month lettering to busy rooms and expansive landscapes.",
+    "sha256": "78a900b54c6e6b9616f3d2280e2f68c280ca34be5751e4fd542491806eb08139",
+    "identity_sha256": "6de9d4ff37413de6797e4d7dfd0b58350d7b53b6c96db759f9144f234422fd16",
+    "sources": [
+      {
+        "id": "jc-january-page-001",
+        "sha256": "7f91597c963274dbd7083bf02b59cd4359169a5b7bb5d366a28dfc7bb7e0d2c0"
+      },
+      {
+        "id": "jc-january-page-002",
+        "sha256": "7e020bae699cb7d97c0508ddc8cb359be6b4dd9ccdfeec2944f864e196be0321"
+      },
+      {
+        "id": "jc-january-page-003",
+        "sha256": "2ead41d9c710d104c93510661e0f32699d296d4935666dde01f3986a04b4d7d4"
+      }
+    ]
   },
   "/coloring-pages/jungle-animals/": {
     "alt": "JotColoring printable coloring pages share image: Jungle Animals Coloring Pages Featuring Tiger Cub with Raised Front Paws, Gorilla Holds a Large Leaf, Sloth Hangs Beneath a Branch.",
@@ -2743,6 +2919,28 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/b3d8359379f74eff2725d63930d6bf0f4b683855325edb6f40b743b6f8047c9d.png",
     "title": "Squishy Coloring Pages"
   },
+  "/coloring-pages/sugar-skull/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/acbcf51033742c503e58d3dcd934b992f0e691d8e42cdb70cb7bd2ca11864fd9.png",
+    "alt": "JotColoring printable coloring pages share image: Sugar Skull Coloring Pages Featuring Sugar Skull: Flower Eyes and Heart Cheeks, Sugar Skull: Calavera on a Leaf Napkin, Sugar Skull: Side Profile on a Plate.",
+    "title": "Sugar Skull Coloring Pages",
+    "description": "Floral calaveras appear as individual designs, masks, ornaments, planters, pottery, and decorated treats. Other drawings show families making paper crafts, artisans piping icing, remembrance tables with flowers and candles, and imagined festival streets. Flower shaped eyes, heart motifs, curling leaves, and butterfly borders give each sugar skull a different pattern to explore.",
+    "sha256": "acbcf51033742c503e58d3dcd934b992f0e691d8e42cdb70cb7bd2ca11864fd9",
+    "identity_sha256": "5dc5b7c03109216913e53b024df94fd25e081efbeab266f75263766e87d41434",
+    "sources": [
+      {
+        "id": "jc-sugar-skull-page-001",
+        "sha256": "9b9f0f59c957f3ec6e376117e088539ab3e916c6836bc0e1073b0949e3a8fadc"
+      },
+      {
+        "id": "jc-sugar-skull-page-002",
+        "sha256": "ed4c6dc8ae28a5a55f06e414738450e505ad1fd0b38d57203a0655537a3c4b60"
+      },
+      {
+        "id": "jc-sugar-skull-page-003",
+        "sha256": "feb950b122f7afd0123209c7535beb1218eb27cc9d36612601aa418251ae876c"
+      }
+    ]
+  },
   "/coloring-pages/sunflowers/": {
     "alt": "JotColoring printable coloring pages share image: Sunflowers Coloring Pages Featuring Barbie Photographs a Sunflower, Sunflower with Broad Leaves, Sunflowers Outside a Cottage Door.",
     "description": "Large sunflower heads, broad leaves, tied bouquets, cottage entrances, and covered garden seats offer bold flower shapes and varied backgrounds.",
@@ -2972,6 +3170,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/f081abc39ad09b89e721f72e82065d0d5035450d2dcf83f07281de1b53b196a2.png",
     "title": "Valentine’s Day Coloring Pages"
+  },
+  "/coloring-pages/veterans-day/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/32d3ccde236f52fc29ed44028e9fbe5ffb0d494673de24af8da877cce8e57295.png",
+    "alt": "JotColoring printable coloring pages share image: Veterans Day Coloring Pages Featuring Veterans Day: Cap, Boots, and Star, Veterans Day: Saluting Woman Veteran, Veterans Day: Veteran Waving from a Chair.",
+    "title": "Veterans Day Coloring Pages",
+    "description": "Veterans share books, garden with children, make crafts, mentor young people, and gather with family and community. Separate drawings feature service caps, boots, medals, a peace dove, and appreciation ribbons. Many pages include outlined Veterans Day lettering, while wider scenes bring in libraries, workshops, gardens, and community celebrations. The collection moves from personal gestures of thanks to shared activities in familiar community settings.",
+    "sha256": "32d3ccde236f52fc29ed44028e9fbe5ffb0d494673de24af8da877cce8e57295",
+    "identity_sha256": "b09cf8b141c7bc89af9e5075109172932970ec1ed2846cdf9680d5b48429d498",
+    "sources": [
+      {
+        "id": "jc-veterans-day-page-001",
+        "sha256": "592fa75fcca88808942f8e596623dedbbb86f3d7bf2cf728044c014e0e4ba243"
+      },
+      {
+        "id": "jc-veterans-day-page-002",
+        "sha256": "f97d6b766fd369ee284acdaa00cc83c7be0070b8a498e107d2d9a162608c3b3b"
+      },
+      {
+        "id": "jc-veterans-day-page-003",
+        "sha256": "911611625e5163ba450f21fb0537bbaed8b67a0fa2596c19d215f7ac20c1d756"
+      }
+    ]
   },
   "/coloring-pages/video-games/": {
     "alt": "JotColoring printable coloring pages share image: Video Game Coloring Pages Featuring Freddy Fazbear Holding a Microphone, Bonnie Sitting with a Star-Shaped Guitar, Chica Presenting Her Cupcake.",
