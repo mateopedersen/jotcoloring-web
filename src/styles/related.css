@@ -14,3 +14,7 @@
 @media(max-width:360px){.jc-explore-card{padding:13px;gap:14px 9px}.jc-explore-thumbnail{width:45px;height:55px}.jc-explore-thumbnails{gap:5px}.jc-explore-copy>strong{font-size:16px}.jc-explore-arrow{width:36px;height:36px}}
 @media(prefers-reduced-motion:reduce){.jc-explore-card,.jc-explore-arrow svg{transition:none}.jc-explore-card:hover .jc-explore-arrow svg{transform:none}}
 @media(max-width:380px){.jc-related .jc-related-tabs{grid-template-columns:minmax(0,1fr)}}
+
+/* Clear, regular-weight labels for every related-page view. */
+.site-v3 .jc-related-tabs a,.site-v3 .jc-related-tabs a>span,.site-v3 .jc-related-tabs a>b{font-family:'Avenir Next',Avenir,'Manrope Variable',sans-serif;font-weight:400;font-size:16px;line-height:1.4}
+@media(max-width:600px){.site-v3 .jc-related-tabs a,.site-v3 .jc-related-tabs a>span{font-size:15px}.site-v3 .jc-related-tabs a>b{font-size:14px}}

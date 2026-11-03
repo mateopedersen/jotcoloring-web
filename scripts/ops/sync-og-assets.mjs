@@ -4,7 +4,9 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 const account='48c779c8eaa80234e0bb9d57f96e588b',bucket='jotcoloring-production-published';
 const root=process.cwd(),manifest=JSON.parse(await fs.readFile(path.join(root,'src/social/generated.json'),'utf8'));
-const entries=[...new Map(Object.values(manifest).map(e=>[e.src,e])).values()];
+const only=process.argv.find(arg=>arg.startsWith('--only='))?.slice(7);
+if(only&&!Object.hasOwn(manifest,only))throw new Error('Unknown OG cover key.');
+const entries=[...new Map((only?[manifest[only]]:Object.values(manifest)).map(e=>[e.src,e])).values()];
 const plan=[];
 for(const entry of entries){
  if(!/^\/og\/(?:pages|coloring)\/[a-z0-9-]+-[a-f0-9]{16}\.png$/.test(entry.src))throw new Error('Unexpected public OG path');
