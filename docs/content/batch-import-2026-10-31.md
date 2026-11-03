@@ -77,3 +77,20 @@ double editorial approval, exact release inventory, media signatures, normal
 imports, search projection and public verification remain mandatory. This source
 layout is intentionally preserved under the owner's explicit logo instruction;
 the generated-page footer compositor must not be applied to it.
+
+### Public-figure addition and explicit 83-page exception
+
+The owner subsequently added MrBeast, Elon Musk and Donald Trump. Scope
+`public-figures-20261103` requires exactly 83 MrBeast, 100 Elon Musk and 100 Donald
+Trump drawings, 283 total. The supplied MrBeast ZIP is truncated during WebP 084;
+83 complete PDF/WebP pairs were recovered with original member checksums. The
+owner explicitly accepted publication of those 83, with the incomplete count
+reported. Preserve the original truncated ZIP, recovery receipt and extra PDF 084
+privately. The recovered container has a separate immutable checksum. No missing
+native or original file may be claimed as supplied or backed up. All other scopes
+retain their original exact counts.
+
+Use neutral, image-specific public-figure copy. Invented roles and scenes are
+illustrations, not evidence of real events, products, achievements or endorsements.
+Preserve source logo and printable containers under the same eight-role media
+policy. Actual person/topic identities belong naturally in titles or descriptions.

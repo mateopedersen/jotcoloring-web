@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash,createHmac} from 'node:crypto';
 import sharp from 'sharp';
 import {PDFDocument} from 'pdf-lib';
+import {inspectSuppliedPagePixels} from './supplied-page-validation';
 import {analyzeAgeImage,releaseAgeModel} from './age-vision';
 import {selectPreparedCategories,preparedCategorySelection} from './category-selection';
 import {ageBand} from '../../src/age/model';
@@ -30,15 +31,7 @@ try{for(const [i,row] of rows.entries()){
  const {data,info}=await sharp(original).toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
  // The supplied logo is intentionally placed differently from generated pages.
  // Check its reserved source region without erasing, moving, or recoloring pixels.
- let logoPixels=0,edgeChroma=0;for(let y=0;y<info.height;y++)for(let x=0;x<info.width;x++){
-  const p=(y*info.width+x)*info.channels;
-  if(Math.max(data[p],data[p+1],data[p+2])-Math.min(data[p],data[p+1],data[p+2])>16){
-   if(y<info.height*.93||x<info.width*.65)edgeChroma++;else logoPixels++;
-  }
- }
- // Match the existing blank-source tolerance for tiny chroma fringes in encoded line edges.
- if(edgeChroma/(info.width*info.height)>.001)throw Error('Color outside supplied logo exceeds blank-source tolerance: '+row.design_id);
- if(logoPixels<100)throw Error('Supplied logo missing');
+ const {logoPixels,frameChroma,edgeChroma}=inspectSuppliedPagePixels(data,info.width,info.height,info.channels);
  const pdf=execFileSync('/usr/bin/unzip',['-p',row.source_zip_path,row.source_pdf_path],{maxBuffer:2_000_000});
  if(hash(pdf)!==row.source_pdf_sha256||pdf.length>1_000_000)throw Error('Source PDF changed');
  const doc=await PDFDocument.load(pdf);const pages=doc.getPages();
@@ -70,7 +63,7 @@ try{for(const [i,row] of rows.entries()){
  const checked=validateManifest(manifest,true);
  await fs.writeFile(path.join(out,'files.json'),JSON.stringify(files,null,2),{mode:0o600});
  await fs.writeFile(path.join(out,'reviews.json'),JSON.stringify(reviews,null,2),{mode:0o600});
- await fs.writeFile(path.join(out,'preservation.json'),JSON.stringify({original_webp_sha256:row.source_sha256,original_pdf_sha256:row.source_pdf_sha256,logo_pixels:logoPixels,logo_preserved:true,printables_identical_to_supplied:true,previews:'whole-page lossless resized copies',color_assets_created:false}),{mode:0o600});
+ await fs.writeFile(path.join(out,'preservation.json'),JSON.stringify({original_webp_sha256:row.source_sha256,original_pdf_sha256:row.source_pdf_sha256,logo_pixels:logoPixels,source_frame_chroma_pixels:frameChroma,source_edge_chroma_pixels:edgeChroma,logo_preserved:true,printables_identical_to_supplied:true,previews:'whole-page lossless resized copies',color_assets_created:false}),{mode:0o600});
  await fs.writeFile(path.join(out,'manifest.json'),JSON.stringify(checked,null,2),{mode:0o600});
  console.log(JSON.stringify({completed:i+1,id:row.design_id,assets:assets.length}));
 }}finally{await releaseAgeModel();}

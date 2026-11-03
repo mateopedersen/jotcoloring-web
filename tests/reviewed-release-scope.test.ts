@@ -19,3 +19,6 @@ test('collectible character release is bound to the exact 17 archive hashes',()=
  assert.equal(matchesReviewedSourceArchives({...release,source_zip_sha256s:{...release.source_zip_sha256s,extra:'b'.repeat(64)}}),false);
  assert.equal(matchesReviewedReleaseScope({id:COLLECTIBLE_CHARACTER_RELEASE_ID,collections:17,designs:1600}),false);
 });
+
+
+test('public figure release retains exact 100/100/83 owner-authorized counts',async()=>{const {PUBLIC_FIGURE_RELEASE_ID,PUBLIC_FIGURE_TOPIC_COUNTS,PUBLIC_FIGURE_ZIP_CHECKSUMS,reviewedTopicCount}=await import('../src/server/reviewed-release-scope');assert.deepEqual(PUBLIC_FIGURE_TOPIC_COUNTS,{'mrbeast':83,'elon-musk':100,'donald-trump':100});assert.equal(reviewedReleaseScope(PUBLIC_FIGURE_RELEASE_ID).designs,283);assert.equal(reviewedTopicCount(PUBLIC_FIGURE_RELEASE_ID,'mrbeast'),83);assert.equal(reviewedTopicCount('collectible-characters-20261103','labubu'),100);assert.equal(reviewedTopicCount(PUBLIC_FIGURE_RELEASE_ID,'unrelated'),0);assert.ok(matchesReviewedSourceArchives({release_id:PUBLIC_FIGURE_RELEASE_ID,source_zip_sha256s:PUBLIC_FIGURE_ZIP_CHECKSUMS}));assert.ok(!matchesReviewedSourceArchives({release_id:PUBLIC_FIGURE_RELEASE_ID,source_zip_sha256s:{...PUBLIC_FIGURE_ZIP_CHECKSUMS,mrbeast:'0'.repeat(64)}}));});
