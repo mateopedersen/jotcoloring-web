@@ -105,3 +105,7 @@ Ideas on these pages. Anonymous reference requests reject omitted previews befor
 reading stored colors or adding a job. Scheduled color discovery skips them;
 an older queued job becomes obsolete before inference when the active revision
 omits previews. Existing pages without this policy retain their current behavior.
+
+
+## Specific facets in seasonal artwork
+Whole-topic aliases and tags must describe every member. Cheetah cub/cubs and mini excavator are age/size facets, not aliases for all cheetahs or excavators. Keep those details in each actually reviewed drawing's title or description; preserve broad cheetah/cheetahs and excavator/excavators/digger/diggers discovery. Historical sealed transports remain immutable and receive explicit checksum-bound normal metadata revisions when needed.
