@@ -109,3 +109,7 @@ omits previews. Existing pages without this policy retain their current behavior
 
 ## Specific facets in seasonal artwork
 Whole-topic aliases and tags must describe every member. Cheetah cub/cubs and mini excavator are age/size facets, not aliases for all cheetahs or excavators. Keep those details in each actually reviewed drawing's title or description; preserve broad cheetah/cheetahs and excavator/excavators/digger/diggers discovery. Historical sealed transports remain immutable and receive explicit checksum-bound normal metadata revisions when needed.
+
+
+## Normal imports with an active processing lease
+A duplicate normal import delivery that loses the existing processing claim is deferred until just after that claim's15-minute lease expires. It is never acknowledged as finished while the job remains processing. If the competing invocation has already completed, the duplicate is acknowledged normally. Invalid lease timestamps retain the message for the bounded retry path. Normal publication, backup, source checks, retry-count settings, cron recovery and the eight-consumer bound remain unchanged.
