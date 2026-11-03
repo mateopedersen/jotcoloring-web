@@ -99,3 +99,9 @@ The supplied-original manifests explicitly use `color_preview_policy: none`.
 Both import and republish honor this policy before the automatic color fallback.
 Existing manifests keep the default automatic behavior. This policy changes no
 media signatures, source checksums, backups or final publication gates.
+
+The same omitted-preview policy reaches catalog responses and hides See Color
+Ideas on these pages. Anonymous reference requests reject omitted previews before
+reading stored colors or adding a job. Scheduled color discovery skips them;
+an older queued job becomes obsolete before inference when the active revision
+omits previews. Existing pages without this policy retain their current behavior.
