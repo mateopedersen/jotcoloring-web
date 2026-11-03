@@ -73,3 +73,14 @@ achievements, product specifications or endorsements. Source containers and
 checksums remain distinct from missing native originals. Do not generate color
 roles for this intake. Publish through existing guarded R2/import/search/backup
 and discovery paths, preserving separate JotColoring credentials and queue bounds.
+
+## Owner navigation and browsing update, November 3
+
+The owner replaced the earlier main `/collection/ID/` convention. Every main collection now uses `/coloring-pages/ID/`; subject and number routes keep the shared canonical resolver. Preserve one-hop permanent redirects from the former collection paths, canonical/menu/search/breadcrumb/sitemap consistency and historical discovery receipts. A route change does not rewrite artwork IDs, source metadata or media. Prepared covers with historical path bindings must not be silently rekeyed as new verified artifacts.
+
+Show each topic's complete accepted, unique collection introduction in its visible header box. Keep counts in the filter toolbar, not the right side of that box. New topics use the same shared system and tests. Catalogs continue on one page through bounded signed-cursor batches; do not restore numbered paging or request an entire large collection at once. New cards use the shared server-rendered Card, file actions and delegated controls.
+
+Owner refinement, November 3: the visible collection introduction is a substantial visitor welcome and guide, not a short source inventory. Keep each topic's accepted observations and add individually written, subject specific coloring and selection guidance in natural American English. Existing collection and number guidance lives in `landing-guidance.json` and `number-guidance.json`; update it for a new topic rather than copying the same welcome to every page. The shared resolver provides safe immediate guidance for future topics while retaining their reviewed intro. Do not invent unseen artwork details, fixed totals, age suitability, or model recognition. Avoid hyphens in this visitor prose. Compact menu summaries remain short; this longer copy belongs only in the collection header.
+
+## November 3 seasonal ten follow-up
+The owner separately authorized Sugar Skull, Veterans Day, Christmas Tree, January, December, All Souls Day, Cheetah, Excavator, Gingerbread House and Fall Leaf: exactly ten complete archives and 1,000 drawings under `seasonal-ten-20261103`. Preserve supplied logos and healthy PDF/WebP bytes. Use image-specific English metadata and a substantial, individually written collection guide in the shared landing system. Keep AI generation claims from package manifests truthful and missing native sources explicit. This exact scope does not change earlier seals, the MrBeast exception or queue bounds.

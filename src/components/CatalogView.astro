@@ -8,7 +8,6 @@ import CreatePlayground from '../components/CreatePlayground.astro';
 import RelatedCollections from '../components/RelatedCollections.astro';
 import AgeNavigation from '../components/AgeNavigation.astro';
 import {AGE_BANDS} from '../age/model';
-import ArrowIcon from '../components/ArrowIcon.astro';
 import {env} from 'cloudflare:workers';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
@@ -26,29 +25,31 @@ import {categoryPath} from '../taxonomy/catalog';
 import {canonicalNumberSubject} from '../taxonomy/number-topics';
 import NumberTopicDirectory from './NumberTopicDirectory.astro';
 import {landingIdentity} from '../taxonomy/landing-identity';
+import {landingSummary} from '../taxonomy/landing-summary';
+import {catalogParameters} from '../taxonomy/catalog-query';
 const {location}=Astro.props as {location:CatalogLocation};
 const collection=location.collection,topic=location.topic,number=location.number;
 const category=collection?.roots[0]||topic?.parent||topic?.id||(number?'education':'');
 const subcategory=topic?.parent?topic.id:number?'numbers':'';
 const clearFilters=clearFilterURL(Astro.url.href);
-const params=new URLSearchParams(Astro.url.search);if(collection){params.delete('category');params.delete('subcategory');params.set('collection',collection.id);}else{if(category)params.set('category',category);if(subcategory)params.set('subcategory',subcategory);}if(number)params.set('number',String(number.number));params.set('limit','12');
+const params=catalogParameters(location,Astro.url.searchParams);
+const categoryCountsPromise=repo.categories();
+const independentCover=number?Promise.resolve(null):(collection?repo.categoryCovers(collection.roots).then(c=>c.find(Boolean)||null):repo.categoryCover(subcategory||category||undefined)).catch(()=>null);
 let error='';let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
 try{query=parseCatalogQuery(params);result=await repo.list(query)}catch(e){error=e instanceof Error?e.message:'The catalog could not be loaded.';Astro.response.status=400;}
-let cover=null;
-try{
- cover=number?result.items[0]||null:collection?(await repo.categoryCovers(collection.roots)).find(Boolean)||null:await repo.categoryCover(subcategory||category||undefined);
-}catch{/* The collection still renders if its decorative artwork is unavailable. */}
+const cover=number?result.items[0]||null:await independentCover;
 const emptyHref=cover?Astro.url.pathname:subcategory?categoryPath(category):'/coloring-pages/';
 const identity=landingIdentity(location);
 const heading=query.q?`Coloring pages for “${query.q}”`:identity.heading;
+const summary=query.q?`Browse the drawings matching “${query.q}” and narrow your selection with the filters.`:landingSummary(location);
 const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':identity.intro;
-const pageHref=(page:number)=>{const p=new URLSearchParams(Astro.url.search);p.set('page',String(page));return `${Astro.url.pathname}?${p}#catalog-results`};
+
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
 const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
 if(number&&!result.total&&!filtered)Astro.response.status=404;
 const numberCounts=category==='education'?(await (env as unknown as Env).CATALOG_DB!.prepare("SELECT ("+canonicalNumberSubject()+") AS number,COUNT(*) AS count FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers') GROUP BY number").all<{number:string;count:number}>()).results:[];
 const mainCollection=collection||collectionForRoot(category);
-const categoryCounts=await repo.categories();
+const categoryCounts=await categoryCountsPromise;
 const shortcutTopics=collection?collection.roots.map(categoryById).filter(t=>t&&categoryPath(t.id)!==collectionPath(collection.id)&&categoryCounts.some(c=>c.id===t.id&&c.count>0)):[];
 const crumbs=[{name:'Home',href:'/'},{name:'Coloring pages',href:'/coloring-pages/'},...(mainCollection?[{name:mainCollection.name,href:collectionPath(mainCollection.id)}]:[]),...(topic?[{name:topic.name,href:categoryPath(topic.id)}]:[]),...(number?[{name:'Numbers & Counting',href:categoryPath('numbers')},{name:number.name,href:number.path}]:[])];
 const paginationTitle=result.page>1?` — Page ${result.page}`:'';
@@ -57,18 +58,18 @@ const relatedCollections=!error&&!number?await repo.relatedCollections(query,res
 ---
 <Layout title={`${heading}${paginationTitle} — JotColoring`} description={intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||!result.total}><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>
-<section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div><h1>{query.q?heading:displayTitle(heading)}</h1></div></section>
+<section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div class="jc-collection-heading"><h1>{query.q?heading:displayTitle(heading)}</h1><a class="jc-view-pages" href="#catalog-results">View Coloring Pages<Icon name="arrow" size={17}/></a></div><div class="jc-collection-overview"><p>{summary}</p></div></section>
 {shortcutTopics.length>0&&<nav class="jc-subject-shortcuts" aria-label="Subjects in this collection">{shortcutTopics.map(t=><a href={categoryPath(t!.id)}><CategoryIcon name={t!.icon} size={24}/>{t!.name}<Icon name="arrow" size={14}/></a>)}</nav>}
 <div class="jc-catalog-shell"><section class="iv-catalog-main jc-catalog-results">
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
 <CatalogFilters total={result.total} query={query} category={category} currentURL={Astro.url.href}/>
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
 {error?<div class="empty" role="alert">{error} <a href="/coloring-pages/">Reset filters</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory={!topic&&!number}/>)}</div>}
-{result.total_pages>1&&<nav class="pagination" aria-label="Pagination">{result.page>1?<a href={pageHref(result.page-1)} aria-label="Previous page"><ArrowIcon kind="left" size={18}/></a>:<span aria-disabled="true"><ArrowIcon kind="left" size={18}/></span>}{Array.from({length:Math.min(result.total_pages,100)},(_,i)=>i+1).filter(p=>p===1||p===result.total_pages||Math.abs(p-result.page)<=2).map(p=><a class:list={[p===result.page&&'active']} aria-current={p===result.page?'page':undefined} href={pageHref(p)}>{p}</a>)}{result.has_more&&<a href={pageHref(result.page+1)} aria-label="Next page"><ArrowIcon kind="right" size={18}/></a>}</nav>}
-<details class="jc-collection-about"><summary>About This Collection</summary><p>{intro}</p></details>
+{result.has_more&&result.next_cursor&&<div class="jc-catalog-stream" data-catalog-stream data-source={location.path} data-next-cursor={result.next_cursor} aria-busy="false"><p role="status" aria-live="polite">{result.items.length} of {result.total.toLocaleString('en-US')} coloring pages shown. Scroll for more.</p><button type="button">Show More Coloring Pages</button></div>}
+
 <div class="iv-catalog-explore" aria-label="More ways to browse">
 <CategoryDirectory counts={categoryCounts} collectionId={mainCollection?.id}/>{category==='education'&&<NumberTopicDirectory counts={numberCounts} active={number?.number}/>}
 <DifficultyNavigation active={query.difficulty} currentURL={Astro.url.href}/><AgeNavigation compact active={query.recommended_age}/>
 </div>
 {relatedCollections&&<RelatedCollections result={relatedCollections} query={query}/>}
-</section></div><CreatePlayground contained/></main><script>import '../ui/catalog';</script></Layout>
+</section></div><CreatePlayground contained/></main><script>import '../ui/catalog';import {mountCatalogStream} from '../ui/catalog-stream';mountCatalogStream();</script></Layout>

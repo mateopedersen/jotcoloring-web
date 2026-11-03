@@ -7,11 +7,11 @@
     "description": "Find a favorite theme, print a page, or add your colors online."
   },
   "collection": {
-    "src": "/og/pages/collection-329e777dffaca073.png",
-    "alt": "JotColoring the coloring collection share image: Find your next coloring page. Featuring Fox And Rabbit In Wildflowers, Hibiscus And Tropical Leaves, Long-Necked Dinosaurs In A Valley.",
-    "sha256": "329e777dffaca073a8d1af8531599eea08521bf0cc2c8ad9e5555d5050068ae4",
-    "title": "Find your next coloring page.",
-    "description": "Explore animals, flowers, fantasy scenes, and more. Download or color online."
+    "src": "/og/pages/collection-8dd67322c7be5430.png",
+    "alt": "JotColoring Free Coloring Pages collection cover with nine real drawings: woodland animals, butterfly and flowers, dragon, floral mandala, astronaut, sea turtle, camper van, dinosaurs, and strawberry cupcakes. Each page compares colorful inspiration with its original outline.",
+    "sha256": "8dd67322c7be5430cd93c6d872873ebd8941ce8c96ec37cf7b93f6aac0267dc0",
+    "title": "Free Coloring Pages",
+    "description": "Explore animals, flowers, fantasy, mandalas, space, ocean life, vehicles, dinosaurs, and food. Download a page or color online."
   },
   "ages": {
     "src": "/og/pages/ages-e72ebbdabec8c1d6.png",
@@ -607,5 +607,12 @@
     "sha256": "959ede2bdd7047388e8f47b5738a32339808fc9b98edda8a6158bc6049fc4cd3",
     "title": "Panda coloring pages.",
     "description": "Explore panda coloring pages to download or color online."
+  },
+  "animals-cheetah": {
+    "src": "/og/pages/animals-cheetah-7d1b87c1517c1cc7.png",
+    "alt": "JotColoring animal coloring collection share image: Cheetah coloring pages. Featuring Cheetah: Sitting with a Curled Tail, Cheetah: Cub Stepping onto a Rock, Cheetah: Standing in Side Profile.",
+    "sha256": "7d1b87c1517c1cc7a2386aeaf7c469d0e725fb7ca15bdc0db3b07fa4c68ba2a1",
+    "title": "Cheetah coloring pages.",
+    "description": "Explore cheetah coloring pages to download or color online."
   }
 }

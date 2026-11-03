@@ -29,7 +29,7 @@ try{
   if(spec.kind==='category'){const category=spec.paths[0].split('/').filter(Boolean).at(-1);selected=items.filter(i=>i.category===category||i.subcategory===category).map(i=>art.get(i.slug)!);}
   if(spec.age)selected=items.filter(i=>i.recommendedAge?.band===spec.age).map(i=>art.get(i.slug)!);
   // Empty categories use their own illustration; unrelated drawings are never represented as category members.
-  await save(spec,selected.slice(0,3),{version:OG_VERSION,key:spec.key,path:spec.paths[0]});
+  await save(spec,selected.slice(0,spec.key==='collection'?9:3),{version:OG_VERSION,key:spec.key,path:spec.paths[0]});
  }
  for(const item of items){if(args.has('--sample')&&item.slug!=='woodland-friends')continue;const source=art.get(item.slug)!,m=manifests.get(item.slug)!;const binding=socialBinding({...m,recommendedAge:m.age_recommendation?.band,sourceSHA256:source.sourceSHA256}),result=await save(contentSocialSpec(binding),[source],binding,true);
   if(args.has('--apply-content')){const sha256=result.report.sha256,role='social_og',base=m.assets.find(a=>a.role==='printable_webp_bw')!;const asset:Asset={asset_id:`${item.id}-og-${sha256.slice(0,20)}`,role,source_asset_id:base.asset_id,storage_zone:'private_incoming',object_key:`incoming/${item.id}/${item.version}/${role}-${sha256.slice(0,24)}.png`,mime:'image/png',bytes:result.bytes.length,sha256,asset_version:1,width:1200,height:630,page_count:null,black_and_white_verified:false};const key=publishedKey(item.id,item.version,asset);m.assets=[...m.assets.filter(a=>a.role!==role),asset];

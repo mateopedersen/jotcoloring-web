@@ -7,6 +7,7 @@ import {GlobalFonts,createCanvas,convertSVGTextToPath} from '@napi-rs/canvas';
 import {createHash} from 'node:crypto';
 import {OG_WIDTH,OG_HEIGHT,OG_VERSION,type SocialSpec,type SocialBinding} from '../../src/social/model';
 import {stampPNG} from '../../src/social/png';
+import {renderDirectory} from './directory';
 export interface SocialArtwork {slug:string;title:string;alt:string;line:Uint8Array;color?:Uint8Array;sourceSHA256:string;}
 export interface RenderAssets {art:SocialArtwork[];logo:Uint8Array;icon:Uint8Array;screen?:Uint8Array;}
 const xml=(v:string)=>v.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
@@ -31,7 +32,7 @@ export async function componentArt(file:'CookieArt'|'LostColoringArt'){
 }
 async function halfColor(art:SocialArtwork){if(!art.color)return dataURI(art.line);const line=await sharp(art.line).resize(480,720,{fit:'fill'}).png().toBuffer(),color=await sharp(art.color).resize(480,720,{fit:'fill'}).extract({left:0,top:0,width:240,height:720}).png().toBuffer();return dataURI(await sharp(line).composite([{input:color,left:0,top:0}]).png().toBuffer());}
 export async function renderSocial(spec:SocialSpec,assets:RenderAssets,binding:SocialBinding|{version:string;key:string;path:string}){
- prepareSocialFont();let next=0;const boxes:Array<{text:string;x:number;y:number;width:number;height:number;size:number;truncated?:boolean}>=[];
+ prepareSocialFont();if(spec.key==='collection')return renderDirectory(spec,assets,binding as {version:string;key:string;path:string});let next=0;const boxes:Array<{text:string;x:number;y:number;width:number;height:number;size:number;truncated?:boolean}>=[];
  const text=(value:string,x:number,y:number,size:number,fill='#332a28',weight=800)=>{boxes.push({text:value,x,y:y-size*.95,width:measureCopy(value,size,weight),height:size*1.2,size});return `<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" font-weight="${weight}" font-family="${weight>=800?'JotExtra':weight>=700?'JotBold':'JotMedium'}">${xml(value)}</text>`;};
  const logo=await dataURI(assets.logo,700),icon=await dataURI(assets.icon,400),pictures=await Promise.all(assets.art.map(a=>dataURI(a.line,700))),split=await Promise.all(assets.art.map(a=>halfColor(a)));
  const paper=(src:string,x:number,y:number,w:number,h:number,angle=0)=>{const id='paper-'+next++;return `<g transform="rotate(${angle} ${x+w/2} ${y+h/2})" filter="url(#paper-shadow)"><rect x="${x+3}" y="${y+7}" width="${w}" height="${h}" rx="17" fill="#dfbb97"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="17" fill="#fff" stroke="#dbbea3" stroke-width="1.5"/><clipPath id="${id}"><rect x="${x+11}" y="${y+12}" width="${w-22}" height="${h-24}" rx="8"/></clipPath><image href="${src}" x="${x+11}" y="${y+12}" width="${w-22}" height="${h-24}" preserveAspectRatio="xMidYMid meet" clip-path="url(#${id})"/></g>`;};

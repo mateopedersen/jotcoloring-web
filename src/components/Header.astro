@@ -4,11 +4,14 @@ import {COLORING_TAXONOMY,categoryPath} from '../taxonomy/catalog';
 import Icon from './HomeIcon.astro';
 import SearchForm from './SearchForm.astro';
 import CategoryIcon from './CategoryIcon.astro';
+import ActionIcon from './ActionIcon.astro';
+import NavMagicIcon from './NavMagicIcon.astro';
+import NavPhotoIcon from './NavPhotoIcon.astro';
 import '../styles/navigation.css';
 const path=Astro.url.pathname;
 const {search=''}=Astro.props;
 ---
-<header class="hv-header jc-header jc-simple-header"><div class="hv-header-inner"><a href="/" class="hv-brand" aria-label="JotColoring home"><img src="/logo-3d.webp" alt="JotColoring" width="254" height="48"/></a><button type="button" class="hamburger hv-menu-button jc-site-menu-button" aria-expanded="false" aria-controls="mobile-menu"><Icon name="menu" size={22}/><span>Menu</span></button></div></header>
+<header class="hv-header jc-header jc-simple-header"><div class="hv-header-inner"><a href="/" class="hv-brand" aria-label="JotColoring home"><img src="/logo-3d.webp" alt="JotColoring" width="254" height="48"/></a><nav class="jc-header-tools" aria-label="Main navigation"><a href="/coloring-pages/" aria-current={path.startsWith('/coloring-pages/')?'page':undefined}><CategoryIcon name="all" size={32}/><span>Coloring Pages</span></a><a href="/create/photo/"><NavPhotoIcon/><span>Photo To Coloring Page</span></a><a href="/create/text/"><NavMagicIcon/><span>Create With AI</span></a></nav><div class="jc-header-quick"><a class="jc-header-artwork" href="/my-artwork/" aria-label="My Artwork And Favorites"><ActionIcon name="heart" size={30}/><span>My Artwork</span></a><a class="jc-header-studio" href="/studio/"><ActionIcon name="brush" size={32}/><span>Open Studio</span></a><button type="button" class="hamburger hv-menu-button jc-site-menu-button" aria-expanded="false" aria-controls="mobile-menu"><Icon name="menu" size={22}/><span>Menu</span></button></div></div></header>
 <dialog id="mobile-menu" class="jc-site-menu" aria-labelledby="mobile-menu-title">
  <div class="jc-menu-heading"><h2 id="mobile-menu-title">Find Your Coloring Page</h2><button type="button" data-close-dialog aria-label="Close menu"><Icon name="close" size={22}/></button></div>
  <SearchForm idPrefix="menu" value={search}/>
