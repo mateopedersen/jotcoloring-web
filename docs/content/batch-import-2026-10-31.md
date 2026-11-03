@@ -58,3 +58,22 @@ Independent original-copy, derivative-copy, public-copy and final public-readbac
 
 ## Reviewed transport waiting on an active import
 A duplicate reviewed-bundle delivery can arrive while the same canonical import still holds its 15-minute processing lease, including recovery after an interrupted invocation. If publication readback is incomplete and the same job remains processing, defer that transport until just after the current lease expires instead of consuming short generic retries. Do not acknowledge it or emit a failure/completion receipt for that waiting state. An expired lease remains eligible for the normal idempotent import claim. Exact source/revision, backup and full published-byte checks still gate the eventual completion receipt; unrelated failures keep their normal error handling. The eight-consumer queue bound and retry-count setting are unchanged.
+
+## Supplied branded PDF/WebP pages — November 3, 2026
+
+The owner authorized the exact 17 collectible-character packages as scope
+`collectible-characters-20261103`. Preserve the supplied JotColoring logo and both
+printable containers verbatim. Hello Kitty appends 100 new stable artwork IDs to
+its existing topic; never replace the accepted 100 pages. Native PNG containers
+are absent from these ZIPs and must not be claimed as backed up.
+
+`prepare-supplied-pages.ts` validates source checksums, one-page A4 PDFs, source
+logo presence, blank artwork tolerance, whole-page responsive image pixels and
+actual image-derived age/category analysis. It creates five lossless resized
+previews and a source-bound social cover. No color assets are generated. The
+signed transport requires exactly those eight roles and rejects any replacement
+of the supplied printable PDF or WebP. Original source and backup readbacks,
+double editorial approval, exact release inventory, media signatures, normal
+imports, search projection and public verification remain mandatory. This source
+layout is intentionally preserved under the owner's explicit logo instruction;
+the generated-page footer compositor must not be applied to it.

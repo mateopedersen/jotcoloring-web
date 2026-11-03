@@ -2,6 +2,7 @@
 export const FOLLOWUP_RELEASE_ID='descendants-squishy-kpop-20261101';
 export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
 export const NUMBER_RELEASE_ID='numbers-30-20261102';
+export const COLLECTIBLE_CHARACTER_RELEASE_ID='collectible-characters-20261103';
 export const NUMBER_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
   "number-1-coloring-pages": "05102be36f84a278cb1a34eca282d899252fb8a9daaa3dd66952f4c3da529132",
   "number-2-coloring-pages": "dcf0e56614c2d7c6db71d2ad64580f3e7e37e79daac73c80b8d43008495eb133",
@@ -43,11 +44,31 @@ export const SEVEN_TOPIC_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
  'happy-birthday-coloring-pages':'6b2b1865c9ad17e6c928945d685eabe54c922e68abbe93a82e0798b256823501',
  'panda-coloring-pages':'4b5db2b042ae4444f25148c359ce11fd6f20f1844af9be9f8fc13cc5a6a52344'
 };
+export const COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+ 'labubu':'3d51b82e1f0aaa86f8ae4d72802188a73c84a6c4296dc660cd7d9d9c955ac282',
+ 'crybaby':'9ba514d8dfb45d7a9b136c4221c97cf66d65b0cc1ba1f4fe2de3273902241f7e',
+ 'hello-kitty':'9c8548bfdeab4162a2329c473f9dc2da4cf5e1c1761eb8e0fb7cdbcf0b86c204',
+ 'pompompurin':'3631212e4a58327df7ae5f88e93d8c04421f8e91f28225f41a6327910c6c2306',
+ 'cinnamoroll':'7801649ee248ee270ebc45c473e526adb317eee688b62c170e5ae5b67cb76693',
+ 'kuromi':'73309cfc32970a1e22e556e7067d84064c76ed7b8adac9aca32d39018f03ea2b',
+ 'monchhichi':'f34bdde0406a0883f4c052c4ddc6a9196f5abdbcc5b736e67ebe9f4924e4719a',
+ 'mofusand':'b564d038221480f57eaa393d44e5f88db6f1df41c8471d3d23f2712ce2cbfb14',
+ 'chiikawa':'6d3312675f72286564eb2a8540e79c2b020dcfe355bcd102b0e1a2daa1ee10ce',
+ 'smiski':'d0ce9a02bc85fa484cdc6f1cdecaa83c6de08b8abb5bf25d11029332cf9c6dfc',
+ 'sonny-angel':'ad16c4332dab269fe483e4bf190bbc9dcd7e35b081a7b8a972868fd947d5d82d',
+ 'zimomo':'65b91169427e3bbfb293803555260ebdce4c321699afff220cd75be9bb38e53a',
+ 'pucky':'3d4aacde38239cd9b67e37cc123d036ab8c3ccace2fc6845acef08bbb51f35ef',
+ 'hacipupu':'e5fc69124bf8ef805a67726efcbd6d15e6b61cc6d864e40f54233f23fb05c399',
+ 'twinkle-twinkle':'625b110e356396538c13bb9b4275b5683d5ab34af44817355e5f75fb417bd9ff',
+ 'hirono':'2d0955383e73172748499dc307851b99100b67fce08008b6041804c09734abad',
+ 'skullpanda':'53601486d4397c24b7c64c3e664628eb8c8757d2fdf82979a647efd11c04d7d4'
+};
 export function reviewedReleaseScope(id?:unknown){
  if(id===undefined)return {collections:24,designs:2400,topics:null as readonly string[]|null};
  if(id===FOLLOWUP_RELEASE_ID)return {collections:3,designs:300,topics:['descendants-coloring-pages','squishy-coloring-pages','k-pop-demon-hunters-coloring-pages'] as readonly string[]};
  if(id===SEVEN_TOPIC_RELEASE_ID)return {collections:7,designs:700,topics:Object.keys(SEVEN_TOPIC_ZIP_CHECKSUMS) as readonly string[]};
  if(id===NUMBER_RELEASE_ID)return {collections:30,designs:3000,topics:Object.keys(NUMBER_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===COLLECTIBLE_CHARACTER_RELEASE_ID)return {collections:17,designs:1700,topics:Object.keys(COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS) as readonly string[]};
  throw Error('Unknown owner-authorized release scope');
 }
 export function matchesReviewedReleaseScope(release:{id?:unknown;collections?:unknown;designs?:unknown}){
@@ -59,6 +80,10 @@ export function matchesReviewedSourceArchives(release:{release_id?:unknown;sourc
  if(release.release_id===NUMBER_RELEASE_ID){
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
   const actual=release.source_zip_sha256s as Record<string,unknown>;return Object.keys(actual).length===30&&Object.entries(NUMBER_ZIP_CHECKSUMS).every(([topic,hash])=>actual[topic]===hash);
+ }
+ if(release.release_id===COLLECTIBLE_CHARACTER_RELEASE_ID){
+  if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
+  const actual=release.source_zip_sha256s as Record<string,unknown>,expected=COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS;return Object.keys(actual).length===Object.keys(expected).length&&Object.entries(expected).every(([topic,hash])=>actual[topic]===hash);
  }
  if(release.release_id!==SEVEN_TOPIC_RELEASE_ID||!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;
  const actual=release.source_zip_sha256s as Record<string,unknown>,expected=SEVEN_TOPIC_ZIP_CHECKSUMS;

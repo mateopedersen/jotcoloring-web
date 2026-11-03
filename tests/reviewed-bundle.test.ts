@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {validateReviewedBundle,bundleSignature,bundleReceiptKey,inlineReviewedImportEnvironment,ReviewedImportPending,type ReviewedBundle} from '../src/server/reviewed-bundle';
 import {canonicalJSON,sha256} from '../src/server/http';
 import {syntheticAgeReview} from './fixtures/age-review';
-import {preparedCategorySelection} from '../scripts/data/category-selection';
+import {preparedCategorySelection} from '../scripts/data/category-selection';import {COLLECTIBLE_CHARACTER_RELEASE_ID} from '../src/server/reviewed-release-scope';
 const secret='test-only-reviewed-bundle-secret-1234567890';
 async function fixture(){
  const source=await sha256('source'),line=await sha256('line');
@@ -18,6 +18,19 @@ async function fixture(){
 async function checked(b:ReviewedBundle,environment='staging',signature?:string){const bytes=new TextEncoder().encode(JSON.stringify(b)),hash=await sha256(bytes);return validateReviewedBundle(bytes,{type:'reviewed_bundle',object_key:`operator-imports/${hash}.json`,sha256:hash,signature:signature??await bundleSignature(hash,environment,secret)},{APP_ENV:environment,MEDIA_VALIDATION_SECRET:secret});}
 test('sealed one-artwork transport authenticates its environment, all originals and all approved derivatives',async()=>{const b=await fixture();const followup=structuredClone(b);followup.release={...followup.release,id:'descendants-squishy-kpop-20261101',collections:3,designs:300};assert.equal((await checked(followup)).decoded.size,15);for(const change of [{id:undefined,collections:3,designs:300},{id:'unknown',collections:3,designs:300},{id:'descendants-squishy-kpop-20261101',collections:3,designs:100}]){const invalid=structuredClone(followup);invalid.release={...invalid.release,...change};await assert.rejects(()=>checked(invalid),/current release/);}assert.equal((await checked(b)).decoded.size,15);await assert.rejects(()=>checked(b,'production'),/current release/);await assert.rejects(()=>checked(b,'staging','0'.repeat(64)),/signature/);assert.throws(()=>bundleReceiptKey('../wrong'));
  for(const mutation of ['copy','source','pixels','incomplete','expiry','approval','original']){const a=structuredClone(b);if(mutation==='copy')a.manifest.title='Changed title';if(mutation==='source')a.source_sha256='c'.repeat(64);if(mutation==='pixels')a.assets[0].base64=btoa('edited pixels');if(mutation==='incomplete')(a.release as any).designs=100;if(mutation==='expiry')a.expires_at='invalid';if(mutation==='approval')a.editorial.second_editorial_review.passes=1;if(mutation==='original')a.supplied[0].sha256='d'.repeat(64);await assert.rejects(()=>checked(a),mutation);}
+});
+
+test('supplied 17-topic transport preserves print containers and excludes color roles',async()=>{
+ const b=await fixture(),excluded=new Set(['home_half_color','home_half_color_small','home_half_color_medium','color_inspiration']);
+ b.manifest.assets=b.manifest.assets.filter(a=>!excluded.has(a.role));b.assets=b.assets.filter(a=>b.manifest.assets.some(m=>m.object_key===a.key));b.reviews=b.reviews.filter(a=>!excluded.has(a.role));
+ const line=b.assets.find(a=>a.key===b.manifest.assets.find(m=>m.role==='printable_webp_bw')!.object_key)!,pdf=b.assets.find(a=>a.key===b.manifest.assets.find(m=>m.role==='printable_pdf_a4_bw')!.object_key)!;
+ const source=line.sha256;b.source_sha256=source;b.release={...b.release,id:COLLECTIBLE_CHARACTER_RELEASE_ID,collections:17,designs:1700};b.editorial.prepared_source_sha256=source;b.editorial.second_editorial_review.source_sha256=source;b.editorial.pdf_sha256=pdf.sha256;b.manifest.provenance.reference='Source SHA-256 '+source+'; original PDF/WebP preserved verbatim.';
+ const collection=b.design_id.split('__')[0];b.source_file={...line,key:`packages/${collection}/${b.design_id}/${source}.webp`};b.supplied=[{...pdf,key:`packages/${collection}/${b.design_id}/${pdf.sha256}.pdf`}];delete b.native;
+ b.editorial.render_review.assets=Object.fromEntries(b.manifest.assets.map(a=>[a.role,a.sha256]));
+ const result=await checked(b);assert.equal(result.decoded.size,10);assert.equal(result.manifest.assets.length,8);assert.equal(result.bundle.native,undefined);
+ const changed=structuredClone(b);changed.manifest.assets.find(a=>a.role==='printable_webp_bw')!.sha256='b'.repeat(64);await assert.rejects(()=>checked(changed));
+ const missing=structuredClone(b);missing.manifest.assets=missing.manifest.assets.filter(a=>a.role!=='catalog_preview_mobile_bw');await assert.rejects(()=>checked(missing),/preserved/);
+ const invalid=structuredClone(b);invalid.source_file!.sha256='b'.repeat(64);await assert.rejects(()=>checked(invalid),/Transported bytes changed/);
 });
 
 test('inline reviewed imports suppress only their duplicate import delivery and preserve projection dispatch',async()=>{const sent:any[]=[];const queue={async send(message:any,options?:unknown){sent.push({message,options});}},env={INGEST_QUEUE:queue};const inline=inlineReviewedImportEnvironment(env);assert.equal(env.INGEST_QUEUE,queue);await inline.INGEST_QUEUE!.send({type:'import',job_id:'same-job'});assert.equal(sent.length,0);await inline.INGEST_QUEUE!.send({type:'projection',event_id:'event-1'},{delaySeconds:1});assert.deepEqual(sent,[{message:{type:'projection',event_id:'event-1'},options:{delaySeconds:1}}]);await env.INGEST_QUEUE.send({type:'import',job_id:'unrelated-job'});assert.equal(sent.length,2);assert.throws(()=>inlineReviewedImportEnvironment({}),/queue binding/);});
