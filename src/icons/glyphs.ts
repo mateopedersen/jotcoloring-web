@@ -1,5 +1,6 @@
 /** Small functional controls stay crisp at 14–24px. */
 export const glyphs:Record<string,string>={
+ filter:'M4 6h4m4 0h8M4 18h8m4 0h4M8 3v6m8 6v6M4 12h10m4 0h2M14 9v6',
  save:'M5 3h12l4 4v14H3V3h2Zm2 0v6h10V3M7 21v-8h10v8',
  link:'m9 15 6-6M8 13l-2 2a3.5 3.5 0 0 0 5 5l3-3m2-6 2-2a3.5 3.5 0 0 0-5-5l-3 3',
  share:'m8 11 8-5M8 13l8 5M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm12-8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm0 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
