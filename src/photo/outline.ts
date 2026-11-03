@@ -1,4 +1,4 @@
-export const PHOTO_ALGORITHM='jot-photo-drawing-5.0';
+export const PHOTO_ALGORITHM='jot-photo-drawing-6.0';
 export const MAX_PHOTO_PIXELS=32_000_000;
 export const MAX_WORK_PIXELS=2_400_000;
 export const MAX_PHOTO_BYTES=20_000_000;
@@ -40,7 +40,7 @@ export function photoOutline(rgba:Uint8ClampedArray,width:number,height:number,s
  return{mask:output,width,height,inkPixels,threshold:high};
 }
 export function maskRGBA(mask:Uint8Array,width:number,height:number){if(mask.length!==width*height)throw new Error('Invalid outline mask.');const raw=new Uint8ClampedArray(mask.length*4);for(let i=0;i<mask.length;i++){const v=mask[i]?0:255;raw[i*4]=raw[i*4+1]=raw[i*4+2]=v;raw[i*4+3]=255;}return raw;}
-export function workingDimensions(width:number,height:number){if(!Number.isInteger(width)||!Number.isInteger(height)||width<64||height<64||width*height>MAX_PHOTO_PIXELS)throw new Error('Choose a photo between 64 pixels and 32 megapixels.');const ratio=Math.min(1,2400/Math.max(width,height),Math.sqrt(MAX_WORK_PIXELS/(width*height))),w=Math.floor(width*ratio),h=Math.floor(height*ratio);if(w<32||h<32)throw new Error('This photo is too narrow to create clear outlines. Choose a less extreme aspect ratio.');return{width:w,height:h};}
+export function workingDimensions(width:number,height:number){if(!Number.isInteger(width)||!Number.isInteger(height)||width<64||height<64||width*height>MAX_PHOTO_PIXELS)throw new Error('Choose a photo between 64 pixels and 32 megapixels.');const ratio=Math.min(Math.min(2,Math.max(1,1024/Math.max(width,height))),2400/Math.max(width,height),Math.sqrt(MAX_WORK_PIXELS/(width*height))),w=Math.floor(width*ratio),h=Math.floor(height*ratio);if(w<32||h<32)throw new Error('This photo is too narrow to create clear outlines. Choose a less extreme aspect ratio.');return{width:w,height:h};}
 
 /** Display the same anti-aliased linework in preview, exports, and Studio. */
 export function outlineRGBA(result:OutlineResult){

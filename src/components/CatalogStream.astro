@@ -1,0 +1,5 @@
+---
+import type {CatalogPage} from '../server/types';
+const {result,source}=Astro.props as {result:CatalogPage;source:string};
+---
+{result.has_more&&result.next_cursor&&<div class="jc-catalog-stream" data-catalog-stream data-source={source} data-next-cursor={result.next_cursor} data-total={result.total} aria-busy="false"><p role="status" aria-live="polite"></p><button type="button" data-catalog-retry hidden>Retry Loading</button><noscript><p>More drawings are available in this collection. Enable JavaScript to continue browsing on this page.</p></noscript></div>}

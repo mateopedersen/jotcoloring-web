@@ -10,8 +10,8 @@ export function contentBreadcrumbs(item:BreadcrumbContent):ContentCrumb[]{
  if(root&&categoryPath(root.id)!==crumbs.at(-1)?.path)crumbs.push({name:root.name,path:categoryPath(root.id)});
  const members=new Set(item.category_ids||[]);
  const child=[item.subcategory,...members].filter((id):id is string=>!!id).map(categoryById).find(c=>c?.parent===item.category&&members.has(c.id));
- if(child)crumbs.push({name:child.name,path:categoryPath(child.id)});
  const number=child?.id==='numbers'?numberTopicForArt(item):undefined;
+ if(child&&!number)crumbs.push({name:child.name,path:categoryPath(child.id)});
  if(number)crumbs.push({name:number.name,path:number.path});
- crumbs.push({name:item.title,path:`/coloring/${item.slug}/`});return crumbs;
+ crumbs.push({name:item.title,path:`/coloring/${item.slug}/`});return crumbs.filter((crumb,index)=>crumbs.findIndex(c=>c.path===crumb.path)===index);
 }

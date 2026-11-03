@@ -1,4 +1,6 @@
 import {preparedCategorySelection} from '../scripts/data/category-selection';
+import {loadSeriesDirectory} from '../src/server/series-directory';
+import {catalogLocation} from '../src/taxonomy/catalog-location';
 import {syntheticAgeReview} from './fixtures/age-review';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
@@ -38,6 +40,21 @@ test('search ranks the actual subject collection first and searches descriptions
 });
 test('related repository hydrates a bounded published candidate pool and uses indexed tag/category lookups',async()=>{const {db,search,env}=setup();for(let n=0;n<120;n++){const id='related-'+String(n).padStart(3,'0');await add(db,search,id,'Fox '+n,n===4?'draft':n===5?'archived':'published');await db.prepare('INSERT INTO content_tag(content_id,tag) VALUES(?,?)').bind(id,'fox').run();}const repo=new D1CatalogRepository(env,db),source=await repo.get('related-060');assert.ok(source);const result=await repo.related(source);assert.equal(result.collection?.total,118);assert.equal(result.collection?.href,'/coloring-pages/animals/');assert.ok(result.candidateCount<=88);assert.ok(result.matches.length>0);assert.ok(result.matches.every(m=>!['related-060','related-004','related-005'].includes(m.item.id)));assert.deepEqual((await repo.related(source)).matches.map(m=>m.item.id),result.matches.map(m=>m.item.id));const plan=db.sql.prepare('EXPLAIN QUERY PLAN SELECT content_id FROM content_tag WHERE tag=? AND content_id>? ORDER BY content_id LIMIT 8').all('fox',source.id);assert.match(JSON.stringify(plan),/tag_content/);const categoryPlan=db.sql.prepare('EXPLAIN QUERY PLAN SELECT content_id FROM content_category WHERE category_id=? AND content_id>? ORDER BY content_id LIMIT 20').all('animals',source.id);assert.match(JSON.stringify(categoryPlan),/category_content/);});
 async function add(db:LocalD1,search:LocalD1,id:string,title:string,status='published',score=100){await db.prepare('INSERT INTO content(id,slug,title,status,active_version,latest_version,published_at,sort_score,provenance_json,difficulty) VALUES(?,?,?,?,?,?,?,?,?,?)').bind(id,id,title,status,1,1,'2026-10-28T10:00:00Z',score,'{}','detailed').run();await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,'animals').run();await db.prepare('INSERT INTO content_age(content_id,age) VALUES(?,?)').bind(id,'adults').run();await new D1SearchProvider(search).project({id,source_version:1,visibility:status,locale:'en',title,tags:'fox flowers',categories:'animals',updated_at:'2026-10-28',age_groups:['adults'],category_ids:['animals'],difficulty:'detailed',published_at:'2026-10-28',sort_score:score});}
+test('series directories count published memberships once, choose current verified covers and refresh after publication',async()=>{
+ const {db,search,env}=setup(),repo=new D1CatalogRepository(env,db);
+ for(const [id,title,status,verified] of [['a-222','Number 222 Shapes','published',1],['b-222','Number 222 Rings','published',0],['c-1001','Number 1001 Leaves','draft',1]] as const){
+  await add(db,search,id,title,status);for(const cat of ['education','numbers'])await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,cat).run();
+  await db.prepare('INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(id+'-cover',id,1,'catalog_thumb_bw','published/'+id,'incoming/'+id,'image/webp',100,'a'.repeat(64),1,verified).run();
+ }
+ const learning=await loadSeriesDirectory(env,repo,catalogLocation('/coloring-pages/education/')!,await repo.categories());
+ assert.deepEqual(learning.map(e=>[e.number,e.count,e.cover?.id]),[[222,2,'a-222']]);
+ await db.prepare("UPDATE content SET status='published' WHERE id='c-1001'").run();
+ const updated=await loadSeriesDirectory(env,repo,catalogLocation('/coloring-pages/education/')!,await repo.categories());
+ assert.deepEqual(updated.map(e=>[e.number,e.count]),[[222,2],[1001,1]]);
+ const main=await loadSeriesDirectory(env,repo,catalogLocation('/coloring-pages/')!,await repo.categories());
+ assert.equal(main.find(e=>e.id==='education')?.count,3,'Education + Numbers memberships must not double count the same page');
+ assert.equal(main.find(e=>e.id==='animals')?.count,3);
+});
 test('collection covers follow published verified images and update as categories change',async()=>{
  const {db,search,env}=setup(),repo=new D1CatalogRepository(env,db);
  const attach=async(id:string,category:string,verified=1,version=1)=>{await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,category).run();await db.prepare('INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(id+'-thumb',id,version,'catalog_thumb_bw','published/'+id,'incoming/'+id,'image/webp',100,'a'.repeat(64),version,verified).run()};

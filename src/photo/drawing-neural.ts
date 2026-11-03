@@ -18,7 +18,7 @@ async function session(){
  })().catch(error=>{sessionPromise=undefined;throw error;});return sessionPromise;
 }
 export async function recognizeDrawing(rgba:Uint8ClampedArray,width:number,height:number,smoothing:number,progress:(message:string)=>void):Promise<DrawingMap>{
- progress('Loading the private drawing processor. First use downloads about 32 MB; your photo stays on this device.');
+ progress('Preparing the optional refined drawing. You can stop and use Fast outlines at any time.');
  const engine=await session();
  progress('Reducing surface texture while keeping the edges in your photo…');
  const input=smoothDrawingPixels(prepareDrawingPixels(rgba,width,height),smoothing),tensor=new ort.Tensor('float32',drawingTensor(input),[1,3,input.paddedHeight,input.paddedWidth]);

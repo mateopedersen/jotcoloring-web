@@ -166,6 +166,7 @@ body:is(.site-v3,.home-v3):has(.jc-simple-header) {padding-bottom:0;}
 .jc-catalog-stream {display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin:22px 0;padding:14px;color:#593a27;font-size:14px;line-height:1.5;text-align:center;}
 .jc-catalog-stream p {margin:0;}
 .jc-catalog-stream button {min-height:44px;padding:10px 16px;border:1px solid #dfb68e;background:#fff7ec;color:#903b16;border-radius:11px;font-weight:750;}
+.jc-catalog-stream button[hidden]{display:none}
 
 .home-v3 .hv-gallery .hc-card-summary {display:block;min-height:0;height:auto;margin:8px 0;font-size:14px;line-height:1.5;font-weight:550;overflow:visible;overflow-wrap:break-word;-webkit-line-clamp:unset;}
 .home-v3 .hv-gallery .hc-info {display:flex;flex-direction:column;gap:8px;}
