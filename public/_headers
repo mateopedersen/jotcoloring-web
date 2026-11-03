@@ -17,3 +17,9 @@
 
 /illustrations/studio-tools-0bde2ff165fc.svg
   Cache-Control: public, max-age=31536000, immutable
+
+/models/photo/drawing-webgl-893ea6a3.bin
+  Cache-Control: public, max-age=31536000, immutable
+
+/models/photo/teed-webgl-390ad3ec.onnx
+  Cache-Control: public, max-age=31536000, immutable
