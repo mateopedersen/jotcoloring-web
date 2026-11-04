@@ -1,5 +1,17 @@
 # JotColoring content operations
 
+## Collection header copy — owner direction, November 5
+
+Read `docs/content/collection-introductions.md`. Every collection, subject, and
+number series needs its own catalog grounded introduction that leads with the
+printable topic, describes the actual drawing varieties, and naturally explains
+selection, PDF/image downloads, and online coloring. No generic palette advice,
+keyword stuffing, or identical Welcome paragraph. Use
+`src/taxonomy/landing-introductions.json` with its exact `sourceIntro` binding.
+The release tests require a current entry for every canonical topic. This
+supersedes the former automatic `landing-guidance`/`number-guidance` advice.
+Preserve source artwork, short SEO/social identities, IDs, URLs, and active queues.
+
 ## Latest route contract, November 4, superseding earlier navigation paths
 
 Broad classification roots and curated navigation groups now use `/collections/ID/`.
