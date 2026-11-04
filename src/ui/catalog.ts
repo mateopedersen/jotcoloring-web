@@ -2,31 +2,29 @@ import {coloringPageTitle} from './coloring-copy';
 import {difficultyLabel} from '../age/difficulty';
 import {artworkText} from './artwork-text';
 import type {Content} from '../server/types';
-import {selectFilterURL} from './filter-url';
+import {selectFilterURL,catalogFilterFormURL} from './filter-url';
 import {LatestRequest} from './latest-request';
 for(const input of document.querySelectorAll<HTMLInputElement>('input[data-filter]'))input.addEventListener('change',()=>{
  const name=input.dataset.filter;if(name!=='age'&&name!=='difficulty')return;
  const values=[...document.querySelectorAll<HTMLInputElement>(`input[data-filter="${name}"]:checked`)].map(el=>el.value);
  location.assign(selectFilterURL(location.href,name,values).href);
 });
+const form=document.querySelector<HTMLFormElement>('#catalog-filters');
+function applyCatalogForm(){if(form)location.assign(catalogFilterFormURL(location.href,new URLSearchParams(new FormData(form) as unknown as Record<string,string>)).href);}
+form?.addEventListener('submit',event=>{event.preventDefault();applyCatalogForm();});
 for(const select of document.querySelectorAll<HTMLSelectElement>('[data-filter-select]'))select.addEventListener('change',()=>{
  const name=select.name;if(!['category','age','recommended_age','difficulty','sort'].includes(name))return;
- location.assign(selectFilterURL(location.href,name as 'category'|'age'|'recommended_age'|'difficulty'|'sort',[select.value]).href);
+ if(form?.contains(select))applyCatalogForm();else location.assign(selectFilterURL(location.href,name as 'category'|'age'|'recommended_age'|'difficulty'|'sort',[select.value]).href);
 });
 
 // Until the listeners are ready, the real GET submit button stays available.
 // If a visitor already chose an option during loading, apply that choice.
-const form=document.querySelector<HTMLFormElement>('#catalog-filters');
 const apply=form?.querySelector<HTMLButtonElement>('[data-apply-filters]');
 const pending=[...document.querySelectorAll<HTMLSelectElement>('[data-filter-select]')].filter(select=>{
  const initial=[...select.options].find(option=>option.defaultSelected)||select.options[0];
  return initial&&select.value!==initial.value;
 });
-if(pending.length){
- let next=new URL(location.href);
- for(const select of pending)if(['category','age','recommended_age','difficulty','sort'].includes(select.name))next=selectFilterURL(next.href,select.name as 'category'|'age'|'recommended_age'|'difficulty'|'sort',[select.value]);
- location.assign(next.href);
-}else if(apply)apply.hidden=true;
+if(pending.length)applyCatalogForm();else if(apply)apply.hidden=true;
 const requests=new LatestRequest();
 for(const button of document.querySelectorAll<HTMLButtonElement>('.select-preview'))button.addEventListener('click',()=>{
  const panel=document.querySelector<HTMLElement>('#quick-preview'),body=panel?.querySelector<HTMLElement>('[data-preview-body]'),error=panel?.querySelector<HTMLElement>('[data-preview-error]'),status=panel?.querySelector<HTMLElement>('[data-preview-status]');
