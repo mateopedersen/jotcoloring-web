@@ -1,15 +1,13 @@
 /** Queue only reviewed public canonical changes; preserve historical receipts. */
 import fs from 'node:fs/promises';import {remoteContext} from './release-context';import {backupBytes} from '../../src/server/backups';
-import {COLORING_TAXONOMY,categoryPath} from '../../src/taxonomy/catalog';import {NAVIGATION_COLLECTIONS,collectionPath} from '../../src/taxonomy/navigation';
 import {catalogLocation} from '../../src/taxonomy/catalog-location';
+import {legacyCatalogRedirects} from '../../src/taxonomy/navigation-migration';
 import {canonicalJSON,sha256} from '../../src/server/http';import {queueDiscoveryRebuild,queueDiscoveryNotices} from '../../src/server/discovery';
 const [action,proofFile]=process.argv.slice(2);if(!['plan','apply','send','status'].includes(action)||!proofFile)throw Error('Use plan/apply/send/status and exact verified public proof');
 const proof=JSON.parse(await fs.readFile(proofFile,'utf8'));if(proof.status!=='PASS'||!/^[a-f0-9]{40}$/.test(proof.source_commit)||!Array.isArray(proof.canonical_pages)||proof.canonical_pages.length<100)throw Error('Complete live canonical/redirect proof required');
 const revision='navigation-v1:'+proof.source_commit,paths=[...new Set(proof.canonical_pages.map((p:any)=>p.path))] as string[];
 if(paths.some(p=>catalogLocation(p)?.path!==p))throw Error('Only current canonical topic/collection URLs');
-const redirects=COLORING_TAXONOMY.flatMap(c=>{const old='/coloring-pages/'+(c.parent?c.parent+'/':'')+c.id+'/',target=categoryPath(c.id);return old!==target?[{path:old,target}]:[];});
-redirects.push(...NAVIGATION_COLLECTIONS.map(c=>({path:'/collection/'+c.id+'/',target:collectionPath(c.id)})));
-redirects.push({path:'/coloring-pages/animals/dinosaurs/',target:categoryPath('dinosaurs')});
+const redirects=legacyCatalogRedirects();
 if(redirects.some(r=>!proof.redirects?.some((p:any)=>p.path===r.path&&p.target===r.target&&p.status===301)))throw Error('Every legacy redirect requires actual live proof');
 const plan={revision,source_commit:proof.source_commit,public_proof_sha256:await sha256(canonicalJSON(proof)),canonical_paths:paths,redirects};
 if(action==='plan'){console.log(JSON.stringify({status:'PLAN_ONLY',...plan},null,2));process.exit(0);}

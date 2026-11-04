@@ -3,5 +3,5 @@ export function searchTitle(value:string,path='/'){
  const title=value.replace(/\s+(?:—|–|-|·)\s+(?=JotColoring\s*$)/,' | ').trim();
  if(/^free\b/i.test(title))return title;
  // Do not imply that a commercial license, legal document, or support is free.
- return /^\/(?:collection|coloring|coloring-pages|coloring-by-age|studio|drawing-board|create)(?:\/|$)/.test(path)?`Free ${title}`:`Free Coloring Pages | ${title}`;
+ return /^\/(?:collections?|coloring|coloring-pages|coloring-by-age|studio|drawing-board|create)(?:\/|$)/.test(path)?`Free ${title}`:`Free Coloring Pages | ${title}`;
 }

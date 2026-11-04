@@ -4,7 +4,7 @@ import {catalogParameters} from './catalog-query';
 /** Bind continuation to the canonical collection, never to a client-supplied
  * category/age override. The signed cursor still verifies the complete query. */
 export function streamQuery(source:string,search:URLSearchParams){
- const location=source.startsWith('/coloring-pages/')?catalogLocation(source):undefined;
+ const location=/^\/(?:coloring-pages|collections)\//.test(source)?catalogLocation(source):undefined;
  if(location&&location.path===source)return {params:catalogParameters(location,search),showCategory:!location.topic&&!location.number};
  const match=/^\/coloring-by-age\/([^/]+)\/$/.exec(source),band=match&&ageBand(match[1]);
  if(!band)throw Error('Choose a collection to continue.');

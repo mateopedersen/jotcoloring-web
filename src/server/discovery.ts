@@ -5,6 +5,7 @@ import type {Env} from './types';
 import {sha256} from './http';
 import {buildSitemapSegment,SITEMAP_SEGMENT_SIZE} from './sitemap';
 import {categoryPath,categoryById,COLORING_TAXONOMY} from '../taxonomy/catalog';
+import {ALL_COLORING_PAGES_PATH} from '../taxonomy/routes';
 export const INDEXNOW_KEY='ee854fe90c4924b910aaa1776782403c';
 export const DISCOVERY_ORIGIN='https://jotcoloring.com';
 const utf8=new TextEncoder();
@@ -14,7 +15,7 @@ export async function recordDiscoveryLandingPages(env:Env,contentId:string){
  if(env.DISCOVERY_ENABLED!=='true'||!env.CATALOG_DB)return;const db=env.CATALOG_DB;
  const content=await db.prepare('SELECT c.status,c.updated_at,('+canonicalNumberSubject()+") AS number,EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers') AS is_number FROM content c WHERE c.id=?").bind(contentId).first<{status:string;updated_at:string;number:string|null;is_number:number}>();if(!content)return;
  const categories=(await db.prepare('SELECT category_id FROM content_category WHERE content_id=?').bind(contentId).all<{category_id:string}>()).results;
- const existing=new Set(categories.map(c=>categoryPath(c.category_id))),paths=new Set<string>();
+ const existing=new Set(categories.map(c=>categoryPath(c.category_id))),paths=new Set<string>(['/coloring-pages/',ALL_COLORING_PAGES_PATH]);
  for(const row of categories){const category=categoryById(row.category_id),group=category&&collectionForRoot(category.parent||category.id);if(group&&!existing.has(collectionPath(group.id)))paths.add(collectionPath(group.id));}
  const number=content.is_number&&content.number?numberTopic(content.number):undefined;if(number)paths.add(number.path);
  if(!paths.size)return;

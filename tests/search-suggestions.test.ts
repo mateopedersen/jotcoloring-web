@@ -8,7 +8,7 @@ const categories=[{id:'animals',name:'Animals'},{id:'flowers',name:'Flowers'}];
 const item=(id:string,slug:string,title:string,thumbnail='/api/media/item/catalog_thumb_bw?v=123')=>({id,slug,title,thumbnail,categoryName:'Animals'});
 test('suggestions use the actual matching category and returned catalog items',()=>{
  const result=buildSuggestions('ani',[item('one','sleepy-kitten','Sleepy Kitten')],categories);
- assert.deepEqual(result.map(x=>[x.kind,x.title,x.href]),[['category','Animals','/coloring-pages/animals/'],['page','Sleepy Kitten','/coloring/sleepy-kitten/']]);
+ assert.deepEqual(result.map(x=>[x.kind,x.title,x.href]),[['category','Animals','/collections/animals/'],['page','Sleepy Kitten','/coloring/sleepy-kitten/']]);
 });
 test('unsafe slugs, duplicate IDs and external thumbnails are not promoted as trusted links or images',()=>{
  const result=buildSuggestions('cat',[item('1','safe-cat','Safe Cat','https://outside.invalid/photo'),item('1','again','Duplicate'),item('2','../outside','Bad path')],categories);

@@ -24,7 +24,7 @@ export function publicCachePolicy(request:Request):Policy|undefined{
   }
   if([...url.searchParams.keys()].some(k=>!queryKeys.has(k)))return;
   if(/^\/api\/(?:catalog|search|categories)$/.test(path)||/^\/api\/(?:content|catalog)\/[A-Za-z0-9_-]+$/.test(path))return{kind:'json',catalog:true,seconds:60};
-  if(path==='/'||/^\/collection\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
+  if(path==='/'||/^\/collections?\/[a-z0-9-]+\/(?:all\/)?$/.test(path)||/^\/coloring-pages\/(?:[a-z0-9-]+\/){0,2}$/.test(path)||/^\/coloring\/[a-z0-9-]+\/$/.test(path)||/^\/coloring-by-age\/(?:[a-z0-9-]+\/)?$/.test(path))return{kind:'html',catalog:true,seconds:120};
   if(!url.search&&staticPages.has(path.replace(/^\/|\/$/g,''))&&path.endsWith('/'))return{kind:'html',catalog:false,seconds:600};
 }
 

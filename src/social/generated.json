@@ -7,11 +7,11 @@
     "description": "Find a favorite theme, print a page, or add your colors online."
   },
   "collection": {
-    "src": "/og/pages/collection-8dd67322c7be5430.png",
+    "src": "/og/pages/collection-898fa242d693b00b.png",
     "alt": "JotColoring Free Coloring Pages collection cover with nine real drawings: woodland animals, butterfly and flowers, dragon, floral mandala, astronaut, sea turtle, camper van, dinosaurs, and strawberry cupcakes. Each page compares colorful inspiration with its original outline.",
-    "sha256": "8dd67322c7be5430cd93c6d872873ebd8941ce8c96ec37cf7b93f6aac0267dc0",
-    "title": "Free Coloring Pages",
-    "description": "Explore animals, flowers, fantasy, mandalas, space, ocean life, vehicles, dinosaurs, and food. Download a page or color online."
+    "sha256": "898fa242d693b00b2c26b260f34b1dd4e40b6e0a247876694736e37bd3252ba4",
+    "title": "Free Printable Coloring Pages",
+    "description": "Explore free printable coloring pages for kids and adults. Browse animals, flowers, characters, holidays, and more. Download a PDF or image, or color online."
   },
   "ages": {
     "src": "/og/pages/ages-e72ebbdabec8c1d6.png",
@@ -35,11 +35,11 @@
     "description": "Keep your colors as PNG, SVG, JPG, JPEG, Word, PDF or WEBP."
   },
   "photo": {
-    "src": "/og/pages/photo-7f47ccc5bc59d267.png",
-    "alt": "JotColoring from photo to coloring page share image: Turn a photo into a coloring page. Featuring the actual from photo to coloring page tools.",
-    "sha256": "7f47ccc5bc59d2675775fe71f735db5b9bea92f08ca4b7f64b36564d74a4949b",
-    "title": "Turn a photo into a coloring page.",
-    "description": "Create an outline from your photo, adjust the detail, and download your page."
+    "src": "/og/pages/photo-7a3344c51a96a360.png",
+    "alt": "JotColoring free photo to coloring page share image: Turn a Photo Into a Coloring Page Featuring the actual free photo to coloring page tools.",
+    "sha256": "7a3344c51a96a36015399d816830359fac15ec9775738593e31c4bfd3950c3f1",
+    "title": "Turn a Photo Into a Coloring Page",
+    "description": "Turn a photo into a coloring page for free. Create printable line art, adjust the outlines, and download a PDF or image. Your photo stays on your device."
   },
   "ai": {
     "src": "/og/pages/ai-a750230caaaa1cdc.png",
@@ -614,5 +614,12 @@
     "sha256": "7d1b87c1517c1cc7a2386aeaf7c469d0e725fb7ca15bdc0db3b07fa4c68ba2a1",
     "title": "Cheetah coloring pages.",
     "description": "Explore cheetah coloring pages to download or color online."
+  },
+  "all-pages": {
+    "src": "/og/pages/all-pages-b33147d1969659bc.png",
+    "alt": "JotColoring Free Coloring Pages collection cover with nine real drawings: woodland animals, butterfly and flowers, dragon, floral mandala, astronaut, sea turtle, camper van, dinosaurs, and strawberry cupcakes. Each page compares colorful inspiration with its original outline.",
+    "sha256": "b33147d1969659bcc507f2faacb392da751b95d6903510627e746043be94f477",
+    "title": "All Free Coloring Pages",
+    "description": "Browse all free coloring pages in one gallery. Find printable drawings for kids and adults, filter by theme or detail, and download a PDF or image."
   }
 }
