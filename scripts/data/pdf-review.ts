@@ -2,14 +2,14 @@ import {PDFDocument,PDFDict,PDFName,PDFRawStream,PDFArray,PDFRef} from 'pdf-lib'
 import {inflateSync} from 'node:zlib';
 import sharp from 'sharp';
 import {BRAND_VERSION,brandLogoRGB,BRAND_LOGO_WIDTH,BRAND_LOGO_HEIGHT} from '../../src/server/branding';
-import {pdfBrandBox} from '../../src/server/pdf-branding';
+import {pdfBrandBox,SUPPLIED_A4_BRAND_BOX} from '../../src/server/pdf-branding';
 /** Permit one inert grayscale artwork image and only the exact approved RGB logo in its footer. */
 export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBrand=true,expectedTitle?:string){
  if(bytes.length>1_000_000)throw new Error('PDF exceeds 1,000,000 bytes.');
  const doc=await PDFDocument.load(bytes,{ignoreEncryption:false});if(doc.getPageCount()!==1)throw new Error('Printable PDF must contain exactly one page.');
  if(expectedTitle!==undefined&&doc.getTitle()!==expectedTitle)throw new Error('PDF document title differs from the reviewed artwork title.');
  const page=doc.getPage(0),size=page.getSize(),expected=role==='printable_pdf_letter_bw'?[612,792]:[595.2756,841.8898];if(Math.abs(size.width-expected[0])>1||Math.abs(size.height-expected[1])>1)throw new Error('Incorrect PDF paper size.');
- const b=pdfBrandBox(size.width,size.height),forbidden=['JS','JavaScript','OpenAction','AA','Launch','EmbeddedFiles','RichMedia','XFA','AcroForm','Encrypt'];let images=0,logos=0,streams=0,brands=0,artworkDraws=0;const logoRefs=new Set<string>();
+ const b=pdfBrandBox(size.width,size.height),allowedLogoBoxes=[b,...(Math.abs(size.width-595.2756)<1&&Math.abs(size.height-841.8898)<1?[SUPPLIED_A4_BRAND_BOX]:[])],forbidden=['JS','JavaScript','OpenAction','AA','Launch','EmbeddedFiles','RichMedia','XFA','AcroForm','Encrypt'];let images=0,logos=0,streams=0,brands=0,artworkDraws=0;const logoRefs=new Set<string>();
  for(const [ref,object] of doc.context.enumerateIndirectObjects()){
   const dict=object instanceof PDFDict?object:object instanceof PDFRawStream?object.dict:null;
   if(dict?.has(PDFName.of('Annots'))){const annotations=doc.context.lookup(dict.get(PDFName.of('Annots')));if(!(annotations instanceof PDFArray)||annotations.size()>0)throw new Error('PDF annotations are not supported.');}
@@ -27,7 +27,7 @@ export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBra
    streams++;if(object.dict.get(PDFName.of('Filter'))?.toString()!=='/FlateDecode')throw new Error('Unsupported PDF stream.');
    let decoded=inflateSync(object.getContents(),{maxOutputLength:20000}).toString('ascii');
    const logoBlock=/q\n([^\n]+) cm\n\/(JotBrand-\d+) Do\nQ\n/g;
-   decoded=decoded.replace(logoBlock,(_all,matrix,name)=>{const values=String(matrix).split(' ').map(Number),expected=[b.width,0,0,b.height,b.x,b.y];if(values.length!==6||values.some((v,i)=>Math.abs(v-expected[i])>.001))throw new Error('PDF logo is outside the approved footer.');const resource=page.node.Resources()?.lookup(PDFName.of('XObject'),PDFDict)?.get(PDFName.of(name));if(!(resource instanceof PDFRef))throw new Error('Missing PDF logo resource.');const image=doc.context.lookup(resource);if(!(image instanceof PDFRawStream))throw new Error('Unexpected PDF image resource.');if(image.dict.get(PDFName.of('ColorSpace'))?.toString()!=='/DeviceRGB')throw new Error('Unexpected PDF logo resource.');brands++;return '';});
+   decoded=decoded.replace(logoBlock,(_all,matrix,name)=>{const values=String(matrix).split(' ').map(Number),matches=allowedLogoBoxes.some(box=>{const expected=[box.width,0,0,box.height,box.x,box.y];return values.length===6&&values.every((v,i)=>Math.abs(v-expected[i])<=.001)});if(!matches)throw new Error('PDF logo is outside the approved footer position.');const resource=page.node.Resources()?.lookup(PDFName.of('XObject'),PDFDict)?.get(PDFName.of(name));if(!(resource instanceof PDFRef))throw new Error('Missing PDF logo resource.');const image=doc.context.lookup(resource);if(!(image instanceof PDFRawStream))throw new Error('Unexpected PDF image resource.');if(image.dict.get(PDFName.of('ColorSpace'))?.toString()!=='/DeviceRGB')throw new Error('Unexpected PDF logo resource.');brands++;return '';});
    const number='[-+]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)',transform=new RegExp('^(?:'+number+'\\s+){6}cm$');for(const line of decoded.split(/\r?\n/).map(x=>x.trim()).filter(Boolean)){if(/^\/Image-[0-9]+ Do$/.test(line)){const name=line.slice(1,-3),resource=page.node.Resources()?.lookup(PDFName.of('XObject'),PDFDict)?.get(PDFName.of(name));if(!(resource instanceof PDFRef))throw new Error('Missing PDF image resource.');const image=doc.context.lookup(resource);if(!(image instanceof PDFRawStream)||image.dict.get(PDFName.of('ColorSpace'))?.toString()!=='/DeviceGray')throw new Error('Colored content is only permitted in the approved logo footer.');artworkDraws++;}else if(line!=='q'&&line!=='Q'&&!transform.test(line))throw new Error('PDF contains unreviewed operators outside the approved footer.');}
   }
  }
