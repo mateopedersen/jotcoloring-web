@@ -108,12 +108,19 @@ export class D1CatalogRepository implements CatalogRepository{
  }
 
  async relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>{
+ const scoped=!!query.q||!!query.recommended_age||!!query.age?.length||!!query.difficulty?.length;
  const canonical={...query,page:1,cursor:undefined,sort:'trending' as const,limit:48};
- const sourcePage=page.page===1&&page.total<=page.items.length?page:await this.list(canonical),source=sourcePage.items;
+ // Filter results are already authoritative evidence. Do not rerun their image-bound
+ // predicates for every taxonomy branch just to render optional recommendations.
+ const sourcePage=scoped||page.page===1&&page.total<=page.items.length?page:await this.list(canonical),source=sourcePage.items;
  const definitions=collectionDefinitions(await this.categories()),scope=collectionScope(query);let neighbors:Content[]=[];
+ if(!source.length)return {...rankCollections(query,[],[],definitions),topics:[]};
  if(query.q){const globalPage=!query.category&&!query.subcategory?sourcePage:await this.list({...canonical,category:undefined,subcategory:undefined});neighbors=globalPage.items;}
- else if(definitions.length){const branches:string[]=[],values:unknown[]=[];
-  for(const c of definitions){branches.push(`SELECT * FROM (SELECT c.id FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE cc.category_id=? AND ${scope.sql} ORDER BY cc.content_id LIMIT 3)`);values.push(c.id,...scope.values);}
+ else if(!scoped&&definitions.length){const branches:string[]=[],values:unknown[]=[];
+  // A bounded root sample plus supported subject tags scales independently of the
+  // number of imported topics. Leaf-by-leaf filtered sampling overloaded D1.
+  const roots=definitions.filter(c=>!c.parent).sort((a,b)=>b.total-a.total||a.id.localeCompare(b.id)).slice(0,12);
+  for(const c of roots){branches.push(`SELECT * FROM (SELECT c.id FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE cc.category_id=? AND ${scope.sql} ORDER BY cc.content_id LIMIT 3)`);values.push(c.id,...scope.values);}
   const tags=new Map<string,number>();for(const item of source){const focus=subjectFocus(item);for(const tag of item.tags)if(focus.has(canonicalSubject(tag.toLowerCase())))tags.set(tag,(tags.get(tag)||0)+1);}
   for(const [tag] of [...tags].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,6)){branches.push(`SELECT * FROM (SELECT c.id FROM content_tag ct JOIN content c ON c.id=ct.content_id WHERE ct.tag=? AND ${scope.sql} ORDER BY ct.content_id LIMIT 8)`);values.push(tag,...scope.values);}
   // Stay within D1's bind ceiling even when all age/difficulty facets are selected.
@@ -121,7 +128,7 @@ export class D1CatalogRepository implements CatalogRepository{
   for(let offset=0;offset<branches.length;){const max=Math.min(5,Math.max(1,Math.floor(90/(1+scope.values.length)))),batch=branches.slice(offset,offset+max),params=values.slice(offset*(1+scope.values.length),(offset+batch.length)*(1+scope.values.length));found.push(...(await this.db.prepare(batch.join(' UNION ALL ')).bind(...params).all<{id:string}>()).results);offset+=batch.length;}
   const ids=[...new Set(found.map(r=>r.id))].filter(id=>!sourceIds.has(id)).slice(0,80);if(ids.length){const rows=await this.db.prepare(`SELECT * FROM content c WHERE c.id IN (${ids.map(()=>'?').join(',')}) AND c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0`).bind(...ids).all<Row>();neighbors=await this.hydrate(rows.results);}
  }
- const result=rankCollections(query,source,neighbors,definitions);result.topics=collectionTopics(source,query,definitions);const scoped=!!query.q||!!query.recommended_age||!!query.age?.length||!!query.difficulty?.length;
+ const result=rankCollections(query,source,neighbors,definitions);result.topics=collectionTopics(source,query,definitions);
  if(scoped&&result.matches.length){
   if(query.q&&this.search){const pinned=sourcePage.search_match?.interpreted||query.q;const counts=await Promise.all(result.matches.map(async m=>({id:m.collection.id,total:(await this.search!.search(pinned,1,{...query,page:1,cursor:undefined,category:m.collection.parent||m.collection.id,subcategory:m.collection.parent?m.collection.id:undefined})).total})));for(const match of result.matches)match.collection.total=counts.find(c=>c.id===match.collection.id)?.total||0;}
   else{const ids=result.matches.map(m=>m.collection.id);const counts=await this.db.prepare(`SELECT cc.category_id AS id,COUNT(*) AS total FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE cc.category_id IN (${ids.map(()=>'?').join(',')}) AND ${scope.sql} GROUP BY cc.category_id`).bind(...ids,...scope.values).all<{id:string;total:number}>();for(const match of result.matches)match.collection.total=counts.results.find(c=>c.id===match.collection.id)?.total||0;}

@@ -10,7 +10,7 @@ test('learning directories expose distinct published numeral series, not a dupli
 });
 test('the main directory uses distinct published group counts and omits empty groups',()=>{
  const entries=seriesDirectory(location('/coloring-pages/'),[],[],{animals:14,education:200,nature:0});
- assert.deepEqual(entries.map(e=>[e.path,e.count]),[['/coloring-pages/animals/',14],['/coloring-pages/education/',200]]);
+ assert.deepEqual(entries.map(e=>[e.path,e.count]),[['/collections/animals/',14],['/collections/education/',200]]);
 });
 test('registered new topics appear from publication counts without a hand-maintained card list',()=>{
  const entries=seriesDirectory(location('/coloring-pages/animals/'),[{id:'cats',count:2},{id:'dogs',count:3},{id:'birds',count:0}]);

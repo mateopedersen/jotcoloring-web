@@ -20,7 +20,7 @@ test('new content needs category metadata rather than item-specific icon assignm
   const entry=categoryPresentation('',name);
   assert.equal(entry.label,name);
   assert.notEqual(entry.icon,'share');
-  assert.match(entry.href,/^\/(?:collection|coloring-pages)\//);
+  assert.match(entry.href,/^\/(?:collections?|coloring-pages)\//);
  }
 });
 test('unknown categories use a neutral collection symbol instead of an unrelated animal',()=>{

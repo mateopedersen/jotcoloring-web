@@ -9,6 +9,7 @@ import numberGuidance from './number-guidance.json';
  */
 export function landingSummary(location:CatalogLocation){
  const identity=landingIdentity(location),key=location.collection?.id||location.topic?.id||'all';
+ if(!location.collection&&!location.topic&&!location.number)return identity.intro;
  const notes=location.number?(numberGuidance as Record<string,string>)[location.number.number]:(guidance as Record<string,string>)[key];
  const fallback=`Explore ${identity.heading.replace(/ coloring pages$/i,'').toLowerCase()} at your own pace and choose the drawing that interests you most. Compare the complete outlines before deciding where to begin. You can start with a small palette for the largest shapes, then add contrast to the details you want to highlight.`;
  const advice=notes||fallback,stop=advice.indexOf('. '),opening=stop<0?advice:advice.slice(0,stop+1),rest=stop<0?'':advice.slice(stop+2);

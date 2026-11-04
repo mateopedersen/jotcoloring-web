@@ -1,5 +1,27 @@
 # JotColoring content operations
 
+## Latest route contract, November 4, superseding earlier navigation paths
+
+Broad classification roots and curated navigation groups now use `/collections/ID/`.
+This includes Ocean at `/collections/ocean/`, with the heading Ocean Coloring Pages Collection.
+Specific reviewed subjects keep `/coloring-pages/TOPIC/`; reviewed numeral series keep
+`/coloring-pages/numbers/NUMBER/`. `/coloring-pages/` is the collection directory and
+`/coloring-pages/all/` is the full drawing gallery. Scoped gallery views use the shared
+`catalogAllPath` helper. Do not emit `?view=pages` as a public navigation link.
+
+Use `categoryPath`, `collectionPath`, `catalogLocation` and the shared breadcrumbs/search/SEO
+resolvers. An individual reviewed ocean drawing enters its accurate Ocean classification,
+creates its ordinary stable `/coloring/SLUG/` detail page, and updates the collection, search
+and sitemap through publication. Register a genuinely new specific subject under its correct
+reviewed parent; do not invent a Water category, infer unseen pixels or rename existing IDs
+from a word in a filename. URL changes do not invalidate healthy source/media approvals.
+Ocean has its own navigation home; preserve accurate secondary subject memberships.
+All former public root, singular collection and nested subject URLs keep one-hop permanent
+redirects. Prepared social covers must be rebound and actually reviewed for the new page
+identity; never silently rekey old approved PNGs. Maintain discovery backups, generation
+fences, queue bounds and real provider submission receipts.
+
+
 Read `docs/OPERATIONS.md`, `docs/content/us-english-style.txt` and `docs/content/batch-import-2026-10-31.md` before importing drawings or publishing catalog data.
 
 Owner direction 2026-10-31: supplied drawing packages are produced in-house by the JotColoring team. Inspect actual artwork deeply, write specific titles/descriptions/alt, verify topic and image-based difficulty, repair genuinely faulty PDFs, and publish through the existing JotColoring R2 pipeline. Verify public pages, search, category discovery and actual download checksums after publication. Do not treat filenames, supplied difficulty folders or old package review flags as fresh evidence.

@@ -28,6 +28,9 @@ import CatalogStream from './CatalogStream.astro';
 import {landingIdentity} from '../taxonomy/landing-identity';
 import {landingSummary} from '../taxonomy/landing-summary';
 import {catalogParameters} from '../taxonomy/catalog-query';
+import {catalogAllPath} from '../taxonomy/routes';
+import {DIRECTORY_SEO,ALL_PAGES_SEO} from '../seo/catalog-copy';
+import {catalogBreadcrumbs} from '../taxonomy/catalog-breadcrumbs';
 const {location}=Astro.props as {location:CatalogLocation};
 const collection=location.collection,topic=location.topic,number=location.number;
 const category=collection?.roots[0]||topic?.parent||topic?.id||(number?'education':'');
@@ -38,7 +41,7 @@ const categoryCountsPromise=repo.categories();
 const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
 const categoryCounts=await categoryCountsPromise;
 let series:Awaited<ReturnType<typeof loadSeriesDirectory>>=[];
-if(!filtered)try{series=await loadSeriesDirectory(env as unknown as Env,repo,location,categoryCounts)}catch(e){console.error('Collection directory unavailable',e instanceof Error?e.message:'unknown');}
+if(!filtered&&!location.allPages)try{series=await loadSeriesDirectory(env as unknown as Env,repo,location,categoryCounts)}catch(e){console.error('Collection directory unavailable',e instanceof Error?e.message:'unknown');}
 const directoryMode=series.length>0;
 const independentCover=number?Promise.resolve(null):(collection?repo.categoryCovers(collection.roots).then(c=>c.find(Boolean)||null):repo.categoryCover(subcategory||category||undefined)).catch(()=>null);
 let error='';let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
@@ -49,23 +52,25 @@ const identity=landingIdentity(location);
 const heading=query.q?`Coloring pages for “${query.q}”`:identity.heading;
 const summary=query.q?`Browse the drawings matching “${query.q}” and narrow your selection with the filters.`:landingSummary(location);
 const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':identity.intro;
+const directoryRoot=!collection&&!topic&&!number;
+const focusedSEO=directoryRoot&&!query.q?(location.allPages?ALL_PAGES_SEO:DIRECTORY_SEO):undefined;
 
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
 if(number&&!result.total&&!filtered)Astro.response.status=404;
 const mainCollection=collection||collectionForRoot(category);
 const shortcutTopics=collection?collection.roots.map(categoryById).filter(t=>t&&categoryPath(t.id)!==collectionPath(collection.id)&&categoryCounts.some(c=>c.id===t.id&&c.count>0)):[];
-const crumbCandidates=[{name:'Home',href:'/'},{name:'Coloring pages',href:'/coloring-pages/'},...(mainCollection?[{name:mainCollection.name,href:collectionPath(mainCollection.id)}]:[]),...(topic?[{name:topic.name,href:categoryPath(topic.id)}]:[]),...(number?[{name:number.name,href:number.path}]:[])];
-const crumbs=crumbCandidates.filter((crumb,index)=>crumbCandidates.findIndex(c=>c.href===crumb.href)===index);
+const crumbs=catalogBreadcrumbs(location).map(crumb=>({name:crumb.name,href:crumb.path}));
 const paginationTitle=result.page>1?` — Page ${result.page}`:'';
 const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');
-const relatedCollections=!directoryMode&&!error&&!number?await repo.relatedCollections(query,result):undefined;
+let relatedCollections:Awaited<ReturnType<typeof repo.relatedCollections>>|undefined;
+if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedCollections(query,result)}catch(e){console.error('Optional collection recommendations unavailable',e instanceof Error?e.message:'unknown');}
 ---
-<Layout title={`${heading}${paginationTitle} — JotColoring`} description={intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||!result.total}><Header active={category} search={query.q||''}/>
+<Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||!result.total}><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>
 <section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div class="jc-collection-heading"><h1>{query.q?heading:displayTitle(heading)}</h1><a class="jc-view-pages" href={directoryMode?'#collection-series':'#catalog-results'}>{directoryMode?'View Collections':'View Coloring Pages'}<Icon name="arrow" size={17}/></a></div><div class="jc-collection-overview"><p>{summary}</p></div></section>
 {!directoryMode&&shortcutTopics.length>0&&<nav class="jc-subject-shortcuts" aria-label="Subjects in this collection">{shortcutTopics.map(t=><a href={categoryPath(t!.id)}><CategoryIcon name={t!.icon} size={24}/>{t!.name}<Icon name="arrow" size={14}/></a>)}</nav>}
 <div class="jc-catalog-shell"><section class="iv-catalog-main jc-catalog-results">
-{directoryMode?<><SeriesDirectory entries={series} title={category==='education'?(series.every(entry=>entry.number)?'Choose A Number Collection':'Choose A Learning Collection'):'Choose Your Next Collection'}/><nav class="jc-browse-all" aria-label="All drawings in this collection"><a href={location.path+'?view=pages#catalog-results'}>Browse All Coloring Pages<Icon name="arrow" size={18}/></a></nav></>:<>
+{directoryMode?<><SeriesDirectory entries={series} title={category==='education'?(series.every(entry=>entry.number)?'Choose A Number Collection':'Choose A Learning Collection'):'Choose Your Next Collection'}/><nav class="jc-browse-all" aria-label="All drawings in this collection"><a href={catalogAllPath(location.path)}>Browse All Coloring Pages<Icon name="arrow" size={18}/></a></nav></>:<>
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
 <CatalogFilters total={result.total} query={query} category={category} currentURL={Astro.url.href}/>
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}

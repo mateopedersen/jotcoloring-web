@@ -131,7 +131,7 @@ test('notice wake-ups preserve revision scope and Retry-After without processing
 });
 
 test('twenty verified URLs share one IndexNow request and one key check',async()=>{
- const f=setup();await rebuildDiscovery(f.env);const paths=Array.from({length:15},(_,i)=>'/coloring-pages/numbers/'+(i+1)+'/').concat(['/coloring-pages/animals/','/coloring-pages/nature/','/coloring-pages/education/','/coloring-pages/characters/','/coloring-pages/bible/']);
+ const f=setup();await rebuildDiscovery(f.env);const paths=Array.from({length:15},(_,i)=>'/coloring-pages/numbers/'+(i+1)+'/').concat(['/collections/animals/','/collections/nature/','/collections/education/','/collections/characters/','/collections/bible/']);
  const key=f.sql.prepare("SELECT object_key FROM discovery_fragment WHERE segment='static'").get()!.object_key as string;f.files.set(key,new TextEncoder().encode('<urlset>'+paths.map(p=>'<url><loc>https://jotcoloring.com'+p+'</loc></url>').join('')+'</urlset>'));
  for(const path of paths)f.sql.prepare("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES(?,'batch','upsert')").run(path);
  let posts=0,keys=0;const call:any=async(u:string,init:any)=>{if(u.endsWith('.txt')){keys++;return new Response(INDEXNOW_KEY);}if(u.includes('api.indexnow.org')){posts++;assert.deepEqual(JSON.parse(init.body).urlList,paths.map(p=>'https://jotcoloring.com'+p));return new Response('',{status:200});}return new Response(`<link rel="canonical" href="${u}">`);};
@@ -140,7 +140,7 @@ test('twenty verified URLs share one IndexNow request and one key check',async()
 test('a 429 pauses every notification stream until Retry-After without spending unrelated attempts',async()=>{
  const f=setup();await rebuildDiscovery(f.env);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/','limited','upsert')");let posts=0;
  const call:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?(posts++,new Response('',{status:429,headers:{'Retry-After':'3600'}})):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
- await processDiscoveryNotices(f.env,call);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/coloring-pages/education/','unrelated','upsert')");
+ await processDiscoveryNotices(f.env,call);f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/collections/education/','unrelated','upsert')");
  assert.equal(await queueDiscoveryNotices(f.env),false);assert.equal(await processDiscoveryNotices(f.env,call),0);assert.equal(posts,1);assert.equal(f.sql.prepare("SELECT attempts FROM discovery_notice WHERE revision='unrelated'").get()!.attempts,0);assert.equal(f.messages.length,0);
 });
 test('a notification that loses its lease before the batch send cannot notify or overwrite the new owner',async()=>{
@@ -156,7 +156,7 @@ test('a repeated 429 retains the global cooldown instead of becoming a permanent
  const call:any=async(u:string)=>u.endsWith('.txt')?new Response(INDEXNOW_KEY):u.includes('api.indexnow.org')?(posts++,new Response('',{status:429})):new Response('<link rel="canonical" href="https://jotcoloring.com/">');
  await processDiscoveryNotices(f.env,call);const row=f.sql.prepare('SELECT state,attempts,last_status,not_before FROM discovery_notice').get()!;
  assert.equal(row.state,'pending');assert.equal(row.attempts,8);assert.equal(row.last_status,429);assert.ok(Date.parse(row.not_before as string)>Date.now()+600000);
- f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/coloring-pages/education/','new-stream','upsert')");
+ f.sql.exec("INSERT INTO discovery_notice(path_key,revision,event_type) VALUES('/collections/education/','new-stream','upsert')");
  assert.equal(await processDiscoveryNotices(f.env,call),0);assert.equal(posts,1);assert.equal(f.sql.prepare("SELECT attempts FROM discovery_notice WHERE revision='new-stream'").get()!.attempts,0);
 });
 
