@@ -4,32 +4,58 @@ import {COLORING_TAXONOMY,categoryPath} from '../src/taxonomy/catalog';
 import {NAVIGATION_COLLECTIONS,collectionPath} from '../src/taxonomy/navigation';
 import {NUMBER_VALUES,numberTopic} from '../src/taxonomy/number-topics';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {landingSummary,reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 import {landingIdentity} from '../src/taxonomy/landing-identity';
 import {coloringPageTitle,coloringInvitation} from '../src/ui/coloring-copy';
 
 test('every canonical collection, subject and numeral has a distinct informative visible introduction',()=>{
  const paths=new Set(['/coloring-pages/',...NAVIGATION_COLLECTIONS.map(c=>collectionPath(c.id)),...COLORING_TAXONOMY.map(t=>categoryPath(t.id)),...NUMBER_VALUES.map(n=>numberTopic(n)!.path)]);
- const copy=new Map<string,string>();
+ const copy=new Map<string,string>(),openings=new Map<string,string>();
  for(const path of paths){
   const location=catalogLocation(path)!;
   assert.ok(location,path);const summary=landingSummary(location);
-  assert.ok(summary.split(/\s+/).length>=50&&summary.split(/\s+/).length<=140,`${path}: ${summary.split(/\s+/).length} words`);
+  assert.ok(summary.split(/\s+/).length>=40&&summary.split(/\s+/).length<=120,`${path}: ${summary.split(/\s+/).length} words`);
   assert.ok(!/[-–—]/.test(summary),path);
   assert.match(summary,/[.!?]$/);
   assert.ok(!copy.has(summary),`Repeated introduction: ${path} and ${copy.get(summary)}`);
   copy.set(summary,path);
-  // Source observations are preserved; added instructions remain visitor advice.
-  assert.ok(summary.includes(landingIdentity(location).intro.replace(/[-–—]/g,' ').replace(/\s+/g,' ')),path);
+  if(location.collection||location.topic||location.number){
+   const entry=reviewedLandingIntroduction(location);
+   assert.ok(entry,`Missing or stale reviewed collection introduction: ${path}`);
+   assert.equal(entry.sourceIntro,landingIdentity(location).intro,path);
+   assert.match(summary,/\bfree\b/i,path);assert.match(summary,/\bcoloring pages\b/i,path);
+   assert.match(summary,/\bPDF\b/,path);assert.match(summary,/\bimage\b/i,path);
+   const opening=summary.replace(/\bT\.\s+rex/gi,'T rex').split(/(?<=[.!?])\s/)[0];
+   assert.match(opening,/coloring pages/i,`${path}: introduce the collection first`);
+   assert.ok(!openings.has(opening),`Repeated opening: ${path} and ${openings.get(opening)}`);
+   openings.set(opening,path);
+   assert.doesNotMatch(summary,/at your own pace|quieter background|clear focal point|suits your time|palette feels|a small palette/i,path);
+   assert.doesNotMatch(summary,/\b(?:includes|contains|over|exactly|choose from)\s+\d[\d,]*\s+(?:pages|designs)\b|\bguarantee\b|100%/i,path);
+  }
  }
 });
 
-test('future subjects retain their reviewed facts and receive useful visitor guidance without guessed scene details',()=>{
+test('future subjects display only their own reviewed introduction instead of an invented advice template',()=>{
  const topic={id:'future-topic',name:'Future Topic',topic:'Future Topic',parent:'animals',visual:'',icon:'animals',sample:'',intro:'Reviewed birds rest beside a pond.',aliases:[]};
  const text=landingSummary({topic,path:'/coloring-pages/future-topic/'});
- assert.ok(text.includes(topic.intro));assert.match(text,/Compare the complete outlines/);
+ assert.equal(text,topic.intro);assert.equal(reviewedLandingIntroduction({topic,path:'/coloring-pages/future-topic/'}),undefined);
  assert.doesNotMatch(text,/\d+ (?:pages|designs)|\b(?:AI|guarantee|ages|easy)\b/i);
- assert.notEqual(text,landingSummary({topic:{...topic,id:'different-topic',topic:'Different Topic'},path:'/coloring-pages/different-topic/'}));
+ assert.equal(landingSummary({topic:{...topic,intro:'A new reviewed subject description.'},path:'/coloring-pages/future-topic/'}),'A new reviewed subject description.');
+});
+
+test('panda collection copy introduces the printable collection and keeps coloring advice out',()=>{
+ const location=catalogLocation('/coloring-pages/pandas/')!;
+ const text=landingSummary(location);
+ assert.match(text,/^Browse free panda coloring pages/);
+ assert.match(text,/bamboo groves/);assert.match(text,/download a printable PDF or image/);
+ assert.doesNotMatch(text,/Keep the panda|quieter background|main figure/);
+});
+
+test('replacement source metadata cannot keep a stale authored introduction',()=>{
+ const location=catalogLocation('/coloring-pages/pandas/')!;
+ const changed={...location,topic:{...location.topic!,intro:'Replacement source observations.'}};
+ assert.equal(reviewedLandingIntroduction(changed),undefined);
+ assert.equal(landingSummary(changed),'Replacement source observations.');
 });
 
 test('the artwork label appends Coloring Page once without altering accepted names',()=>{
