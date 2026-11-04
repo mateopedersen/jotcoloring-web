@@ -21,27 +21,40 @@ const paths=[
  '/coloring-pages/?difficulty=very-hard&q=mandala',
 ];
 const checks=[];
+// Workers propagation may briefly reach the previous release in another region.
+// Wait only for the reviewed commit; never retry an assertion on that commit.
+async function releaseFetch(url,options={}){
+ const expected=process.env.GITHUB_SHA;
+ for(let attempt=0;attempt<8;attempt++){
+  const response=await fetch(url,{...options,signal:AbortSignal.timeout(45000)});
+  if(!expected||response.headers.get('x-jotcoloring-commit')===expected)return response;
+  await response.body?.cancel();
+  if(attempt===7)throw new Error('Expected release has not reached '+new URL(url).pathname);
+  await new Promise(resolve=>setTimeout(resolve,1500));
+ }
+ throw new Error('Release check did not complete.');
+}
 for(const path of paths){
- const response=await fetch(base+path,{signal:AbortSignal.timeout(45000)}),html=await response.text();
+ const response=await releaseFetch(base+path),html=await response.text();
  assert.equal(response.status,200,path+' HTTP status');
  assert.match(response.headers.get('content-type')||'',/text\/html/,path+' content type');
  assert.ok(html.length>5000,path+' returned an empty or truncated document');
- assert.match(html,/<main\b[^>]*id="main"/,path+' main landmark');
- assert.match(html,/<h1\b/,path+' page heading');
- assert.match(html,/id="(?:catalog|age)-results"/,path+' usable filter controls');
- assert.match(html,/id="catalog-search"/,path+' scoped search');
- assert.match(html,/id="category-filter"/,path+' topic choices');
- assert.match(html,/<optgroup\s/,path+' grouped published topics');
+ assert.ok(/<main\b[^>]*id="main"/.test(html),path+' main landmark');
+ assert.ok(/<h1\b/.test(html),path+' page heading');
+ assert.ok(/id="(?:catalog|age)-results"/.test(html),path+' usable filter controls');
+ assert.ok(/id="catalog-search"/.test(html),path+' scoped search');
+ assert.ok(/id="category-filter"/.test(html),path+' topic choices');
+ assert.ok(/<optgroup\s/.test(html),path+' grouped published topics');
  const cards=[...html.matchAll(/data-content-id="([^"]+)"/g)].map(m=>m[1]);
  assert.equal(cards.length,new Set(cards).size,path+' duplicate gallery cards');
  assert.ok(cards.length||/class="[^"]*(?:iv-empty|jc-age-empty)/.test(html),path+' missing gallery and empty selection message');
  const level=new URL(base+path).searchParams.get('difficulty');
- if(level)assert.match(html,new RegExp('<option[^>]*value="'+level+'"[^>]*selected'),path+' selected filter');
+ if(level)assert.ok(new RegExp('<option[^>]*value="'+level+'"[^>]*selected').test(html),path+' selected filter');
  checks.push({path,status:response.status,bytes:new TextEncoder().encode(html).length,cards:cards.length,commit:response.headers.get('x-jotcoloring-commit')});
 }
 for(const source of ['/coloring-by-age/6-8/?difficulty=medium','/coloring-pages/?difficulty=very-hard']){
  const fields=new URLSearchParams({source,initial_category:'',category:'animals/cats',recommended_age:source.includes('coloring-by-age')?'6-8':'',difficulty:source.includes('very-hard')?'very-hard':'medium',sort:'newest',q:'kitten'});
- const response=await fetch(base+'/api/catalog-filters?'+fields,{redirect:'manual',signal:AbortSignal.timeout(45000)});
+ const response=await releaseFetch(base+'/api/catalog-filters?'+fields,{redirect:'manual'});
  assert.equal(response.status,303,'Native GET filter form');
  const target=new URL(response.headers.get('location')||'',base);
  assert.equal(target.origin,new URL(base).origin);assert.equal(target.searchParams.get('q'),'kitten');assert.equal(target.searchParams.get('sort'),'newest');
@@ -49,6 +62,6 @@ for(const source of ['/coloring-by-age/6-8/?difficulty=medium','/coloring-pages/
  if(source.includes('coloring-by-age'))assert.equal(target.searchParams.get('subcategory'),'cats');
  checks.push({path:'/api/catalog-filters (native form: '+source+')',status:response.status,location:target.pathname+target.search+target.hash});
 }
-const invalid=await fetch(base+'/api/catalog-filters?source=https%3A%2F%2Foutside.invalid%2F',{redirect:'manual',signal:AbortSignal.timeout(45000)});
+const invalid=await releaseFetch(base+'/api/catalog-filters?source=https%3A%2F%2Foutside.invalid%2F',{redirect:'manual'});
 assert.equal(invalid.status,400,'Reject external filter form source');checks.push({path:'/api/catalog-filters (invalid source)',status:invalid.status});
 console.log(JSON.stringify({status:'PASS',base,checks},null,2));
