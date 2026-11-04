@@ -6,13 +6,13 @@ import {intentExpression} from '../src/search/intent';
 const number={slug:'number-2-with-interlocking-diamonds',title:'Number 2 With Interlocking Diamonds',category:'education',categoryName:'Learning',category_ids:['education','numbers'],subcategory:'numbers',tags:['counting','number','two']};
 test('reviewed number memberships expose both their parent collection and numeral subject',()=>{
  const crumbs=contentBreadcrumbs(number);
- assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning & Numbers','Number 2',number.title]);
+ assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning, Letters & Numbers','Number 2',number.title]);
  const subject=new URL(crumbs.at(-2)!.path,'https://jotcoloring.com');
  assert.equal(subject.pathname,'/coloring-pages/numbers/2/');assert.equal(subject.search,'');
 });
 test('all recorded subtopics receive their real collection URL without inventing memberships',()=>{
  const item={...number,category:'animals',categoryName:'Animals',category_ids:['animals','cats'],subcategory:'cats',title:'Two Cats Beside A Window'};
- assert.deepEqual(contentBreadcrumbs(item).map(c=>c.path),['/','/collections/animals/','/coloring-pages/cats/','/coloring/'+item.slug+'/']);
+ assert.deepEqual(contentBreadcrumbs(item).map(c=>c.path),['/','/coloring-pages/animals/','/coloring-pages/cats/','/coloring/'+item.slug+'/']);
  assert.equal(contentBreadcrumbs({...item,category_ids:['animals']}).length,3);
 });
 test('the breadcrumb schema uses the same reviewed hierarchy as the visible links',()=>{

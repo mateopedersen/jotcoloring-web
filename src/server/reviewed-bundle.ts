@@ -1,6 +1,6 @@
 import {forEachInPairs} from './bounded';
 /** Authenticated, one-artwork transport for an already sealed editorial release. */
-import {SEASONAL_TEN_RELEASE_ID,PUBLIC_FIGURE_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID,matchesReviewedReleaseScope} from './reviewed-release-scope';
+import {SEASONAL_TEN_RELEASE_ID,PUBLIC_FIGURE_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID,LETTERS_26_RELEASE_ID,matchesReviewedReleaseScope} from './reviewed-release-scope';
 import type {Env,Bucket,Manifest} from './types';
 import {AppError,canonicalJSON,sha256} from './http';
 import {validateManifest} from './manifest';
@@ -32,8 +32,8 @@ export async function validateReviewedBundle(bytes:Uint8Array,message:ReviewedBu
  await requireDoubleEditorialApproval(r,b.source_sha256);
  if(!!b.native===!!b.source_file)throw Error('Exactly one source container is required');
  const source=b.source_file||b.native!;
- const preserved=b.release.id===SEASONAL_TEN_RELEASE_ID||b.release.id===COLLECTIBLE_CHARACTER_RELEASE_ID||b.release.id===PUBLIC_FIGURE_RELEASE_ID;const expectedCount=preserved?8:12;
- if(preserved){if(m.color_preview_policy!=='none')throw Error('Owner requested no color previews for supplied originals');const roles=['printable_webp_bw','printable_pdf_a4_bw','catalog_thumb_bw','catalog_thumb_small_bw','catalog_thumb_medium_bw','catalog_preview_bw','catalog_preview_mobile_bw','social_og'];if(!b.source_file||roles.some(role=>!m.assets.some(a=>a.role===role))||m.assets.find(a=>a.role==='printable_webp_bw')?.sha256!==b.source_sha256||m.assets.find(a=>a.role==='printable_pdf_a4_bw')?.sha256!==r.pdf_sha256)throw Error('Supplied printable containers must be preserved');}
+ const preserved=b.release.id===SEASONAL_TEN_RELEASE_ID||b.release.id===COLLECTIBLE_CHARACTER_RELEASE_ID||b.release.id===PUBLIC_FIGURE_RELEASE_ID||b.release.id===LETTERS_26_RELEASE_ID;const expectedCount=preserved?8:12;
+ if(preserved){if(m.color_preview_policy!=='none')throw Error('Owner requested no color previews for supplied originals');const roles=['printable_webp_bw','printable_pdf_a4_bw','catalog_thumb_bw','catalog_thumb_small_bw','catalog_thumb_medium_bw','catalog_preview_bw','catalog_preview_mobile_bw','social_og'];const publishedPDF=m.assets.find(a=>a.role==='printable_pdf_a4_bw');if(!b.source_file||roles.some(role=>!m.assets.some(a=>a.role===role))||m.assets.find(a=>a.role==='printable_webp_bw')?.sha256!==b.source_sha256||!publishedPDF||b.release.id!==LETTERS_26_RELEASE_ID&&publishedPDF.sha256!==r.pdf_sha256)throw Error('Supplied printable containers must be preserved');}
  if(!Array.isArray(b.assets)||b.assets.length!==m.assets.length||m.assets.length!==expectedCount||!Array.isArray(b.reviews)||b.reviews.length!==expectedCount||!Array.isArray(b.supplied)||b.supplied.length!==(b.source_file?1:2))throw Error('Complete prepared media required');
  const decoded=new Map<string,Uint8Array>();
  for(const f of [source,...b.supplied,...b.assets]){if(!/^[a-zA-Z0-9][a-zA-Z0-9_./-]*$/.test(f.key)||f.key.includes('..')||decoded.has(f.key))throw Error('Invalid immutable file key');const data=fileBytes(f);if(data.length!==f.bytes||await sha256(data)!==f.sha256)throw Error('Transported bytes changed');decoded.set(f.key,data);}
