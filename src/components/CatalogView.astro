@@ -62,7 +62,8 @@ const shortcutTopics=collection?collection.roots.map(categoryById).filter(t=>t&&
 const crumbs=catalogBreadcrumbs(location).map(crumb=>({name:crumb.name,href:crumb.path}));
 const paginationTitle=result.page>1?` — Page ${result.page}`:'';
 const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');
-const relatedCollections=!directoryMode&&!error&&!number?await repo.relatedCollections(query,result):undefined;
+let relatedCollections:Awaited<ReturnType<typeof repo.relatedCollections>>|undefined;
+if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedCollections(query,result)}catch(e){console.error('Optional collection recommendations unavailable',e instanceof Error?e.message:'unknown');}
 ---
 <Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||!result.total}><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>

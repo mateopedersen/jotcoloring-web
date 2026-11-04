@@ -106,6 +106,8 @@ jobs:
       - name: Verify public media and cached browser-download headers after production releases
         if: env.JOT_DEPLOY_ENV == 'production'
         run: node scripts/qa/public-media.mjs production
+      - name: Verify nonempty filtered galleries and their controls after publication
+        run: node scripts/qa/catalog-filters.mjs "$JOT_DEPLOY_ENV"
       # Sole automatic publisher: do not enable Workers Builds deploy triggers.
       # No queue management, cron/route updates, D1 migrations, content imports,
       # AI gateway deploys or resource creation. Existing triggers stay in place.
