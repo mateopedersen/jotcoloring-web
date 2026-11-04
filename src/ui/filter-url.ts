@@ -1,4 +1,4 @@
-import {isPublicCollection,collectionPath,publicCategoryPath} from '../taxonomy/routes';
+import {isPublicCollection,collectionPath,publicCategoryPath,catalogAllPath} from '../taxonomy/routes';
 type Filter='category'|'age'|'recommended_age'|'difficulty'|'sort';
 export function selectFilterURL(current:string,name:Filter,values:string[]):URL {
  const url=new URL(current);url.searchParams.delete('page');url.searchParams.delete('cursor');
@@ -13,7 +13,8 @@ export function selectFilterURL(current:string,name:Filter,values:string[]):URL 
   if(ageCollection)url.searchParams.set('recommended_age',ageCollection[1]);
   const category=values[0]||'';
   if(category&&!/^[a-z0-9-]+$/.test(category))throw new Error('Invalid category.');
-  url.pathname=category?(isPublicCollection(category)?collectionPath(category):publicCategoryPath(category)):'/coloring-pages/';url.searchParams.delete('collection');url.searchParams.delete('number');
+  const gallery=/\/all\/$/.test(url.pathname)||url.searchParams.get('view')==='pages',target=category?(isPublicCollection(category)?collectionPath(category):publicCategoryPath(category)):'/coloring-pages/';
+  url.pathname=gallery?catalogAllPath(target):target;url.searchParams.delete('collection');url.searchParams.delete('number');url.searchParams.delete('view');
   url.searchParams.delete('category');url.searchParams.delete('subcategory');
  }else{url.searchParams.delete(name);for(const value of [...new Set(values)].filter(Boolean))url.searchParams.append(name,value);}
  url.hash=ageCollection&&name!=='category'?'age-results':'catalog-results';return url;

@@ -1,0 +1,14 @@
+---
+import CatalogView from '../../components/CatalogView.astro';
+import {categoryById} from '../../taxonomy/catalog';
+import {catalogLocation,catalogRedirect} from '../../taxonomy/catalog-location';
+import {selectFilterURL} from '../../ui/filter-url';
+import {navigationCollection,collectionForRoot} from '../../taxonomy/navigation';
+const location=catalogLocation(Astro.url.pathname);
+if(!location)return Astro.rewrite('/404/');
+const redirect=catalogRedirect(Astro.url);if(redirect)return Astro.redirect(redirect,301);
+const chosen=Astro.url.searchParams.get('category');
+const current=location.collection?.id||collectionForRoot(location.topic?.parent||location.topic?.id||(location.number?'education':''))?.id;
+if(chosen!==null&&chosen!==current&&(!chosen||navigationCollection(chosen)||categoryById(chosen))){const next=selectFilterURL(Astro.url.href,'category',[chosen]);if(next.pathname!==Astro.url.pathname){next.searchParams.delete('category');return Astro.redirect(next.pathname+next.search+next.hash,302);}}
+---
+<CatalogView location={location}/>

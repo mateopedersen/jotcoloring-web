@@ -12,7 +12,7 @@ test('reviewed number memberships expose both their parent collection and numera
 });
 test('all recorded subtopics receive their real collection URL without inventing memberships',()=>{
  const item={...number,category:'animals',categoryName:'Animals',category_ids:['animals','cats'],subcategory:'cats',title:'Two Cats Beside A Window'};
- assert.deepEqual(contentBreadcrumbs(item).map(c=>c.path),['/','/coloring-pages/animals/','/coloring-pages/cats/','/coloring/'+item.slug+'/']);
+ assert.deepEqual(contentBreadcrumbs(item).map(c=>c.path),['/','/collections/animals/','/coloring-pages/cats/','/coloring/'+item.slug+'/']);
  assert.equal(contentBreadcrumbs({...item,category_ids:['animals']}).length,3);
 });
 test('the breadcrumb schema uses the same reviewed hierarchy as the visible links',()=>{

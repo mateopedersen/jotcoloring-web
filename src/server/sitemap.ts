@@ -4,6 +4,8 @@ import type {Env} from './types';
 import {categoryPath,categoryById} from '../taxonomy/catalog';
 import {AGE_BANDS} from '../age/model';
 import {AppError} from './http';
+import {ALL_COLORING_PAGES_PATH,catalogAllPath} from '../taxonomy/routes';
+import {COLORING_TAXONOMY} from '../taxonomy/catalog';
 export const SITEMAP_SEGMENT_SIZE=1000;
 export const escapeXML=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 const open='<?xml version="1.0" encoding="UTF-8"?>';
@@ -23,6 +25,9 @@ export async function buildSitemapSegment(env:Env,url:URL,segment:string){
   const categories=await env.CATALOG_DB.prepare("SELECT DISTINCT cc.category_id AS id FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL ORDER BY cc.category_id").all<{id:string}>();
   const numbers=await env.CATALOG_DB.prepare("SELECT DISTINCT ("+canonicalNumberSubject()+") AS number FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers')").all<{number:string}>();
   entries=[...AGE_BANDS.map(a=>({path:'/coloring-by-age/'+encodeURIComponent(a.id)+'/'})),{path:'/'},{path:'/coloring-pages/'},{path:'/coloring-by-age/'},{path:'/about/'},{path:'/privacy/'},{path:'/terms/'},{path:'/license/'},{path:'/licensing/'},{path:'/help/'},{path:'/faq/'},{path:'/cookies/'},{path:'/accessibility/'},{path:'/printing-guide/'},{path:'/how-to-use/'},{path:'/contact/'},{path:'/create/photo/'},{path:'/create/text/'},{path:'/studio/'},{path:'/drawing-board/'},...categories.results.filter(x=>categoryById(x.id)).map(x=>({path:categoryPath(x.id)})),...NAVIGATION_COLLECTIONS.filter(c=>c.roots.some(id=>categories.results.some(row=>row.id===id))).map(c=>({path:collectionPath(c.id)})),...numbers.results.flatMap(row=>{const topic=numberTopic(row.number);return topic?[{path:topic.path}]:[];})];
+  const published=new Set(categories.results.map(row=>row.id));
+  const directories=[...NAVIGATION_COLLECTIONS.filter(c=>COLORING_TAXONOMY.some(t=>t.parent&&c.roots.includes(t.parent)&&published.has(t.id))).map(c=>collectionPath(c.id)),...COLORING_TAXONOMY.filter(c=>published.has(c.id)&&(c.id==='numbers'||COLORING_TAXONOMY.some(child=>child.parent===c.id&&published.has(child.id)))).map(c=>categoryPath(c.id))];
+  entries.push({path:ALL_COLORING_PAGES_PATH},...directories.map(path=>({path:catalogAllPath(path)})));
   entries=[...new Map(entries.map(entry=>[entry.path,entry])).values()];
  }else{
   if(!/^[1-9]\d{0,4}$/.test(segment))throw new AppError('NOT_FOUND','Sitemap not found.',404);
