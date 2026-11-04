@@ -224,3 +224,17 @@
   .jc-photo-converter .jc-photo-preview-tabs button { font-size: 14px; padding: 10px 5px; }
   .jc-photo-converter .jc-photo-tips h2 { font-size: 26px; }
 }
+
+/* The page introduction spans the entire hero, including on narrow screens. */
+.jc-photo-converter .jc-photo-hero { column-gap: 32px; row-gap: 18px; }
+.jc-photo-converter .jc-photo-intro {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  font-size: clamp(16px, 1.45vw, 20px);
+  font-weight: 500;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+.jc-photo-converter .jc-photo-promises { grid-column: 1 / -1; }
