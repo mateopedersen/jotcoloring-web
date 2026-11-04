@@ -6,7 +6,7 @@ import {intentExpression} from '../src/search/intent';
 const number={slug:'number-2-with-interlocking-diamonds',title:'Number 2 With Interlocking Diamonds',category:'education',categoryName:'Learning',category_ids:['education','numbers'],subcategory:'numbers',tags:['counting','number','two']};
 test('reviewed number memberships expose both their parent collection and numeral subject',()=>{
  const crumbs=contentBreadcrumbs(number);
- assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning & Numbers','Number 2',number.title]);
+ assert.deepEqual(crumbs.map(c=>c.name),['Home','Learning, Letters & Numbers','Number 2',number.title]);
  const subject=new URL(crumbs.at(-2)!.path,'https://jotcoloring.com');
  assert.equal(subject.pathname,'/coloring-pages/numbers/2/');assert.equal(subject.search,'');
 });

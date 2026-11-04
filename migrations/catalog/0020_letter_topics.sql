@@ -1,0 +1,28 @@
+-- Add the 26 source-reviewed letter topics beneath the existing Alphabet category.
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-a','Letter A','alphabet',120) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-b','Letter B','alphabet',121) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-c','Letter C','alphabet',122) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-d','Letter D','alphabet',123) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-e','Letter E','alphabet',124) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-f','Letter F','alphabet',125) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-g','Letter G','alphabet',126) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-h','Letter H','alphabet',127) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-i','Letter I','alphabet',128) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-j','Letter J','alphabet',129) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-k','Letter K','alphabet',130) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-l','Letter L','alphabet',131) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-m','Letter M','alphabet',132) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-n','Letter N','alphabet',133) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-o','Letter O','alphabet',134) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-p','Letter P','alphabet',135) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-q','Letter Q','alphabet',136) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-r','Letter R','alphabet',137) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-s','Letter S','alphabet',138) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-t','Letter T','alphabet',139) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-u','Letter U','alphabet',140) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-v','Letter V','alphabet',141) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-w','Letter W','alphabet',142) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-x','Letter X','alphabet',143) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-y','Letter Y','alphabet',144) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('letter-z','Letter Z','alphabet',145) ON CONFLICT(id) DO NOTHING;
+PRAGMA foreign_keys = ON;

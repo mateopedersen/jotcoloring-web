@@ -5,6 +5,35 @@ export const NUMBER_RELEASE_ID='numbers-30-20261102';
 export const COLLECTIBLE_CHARACTER_RELEASE_ID='collectible-characters-20261103';
 export const PUBLIC_FIGURE_RELEASE_ID='public-figures-20261103';
 export const SEASONAL_TEN_RELEASE_ID='seasonal-ten-20261103';
+export const LETTERS_26_RELEASE_ID='letters-26-20261104';
+export const LETTERS_26_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+ 'letter-a':'801f92cc93c8c457eefdd55dad8c948d24d594249238e429bf662e1c0f0dbfdb',
+ 'letter-b':'043ca750733a004643360b28b92fe452d1506fdb5974641e842c3ad4d9dbe590',
+ 'letter-c':'a07880f84615507aa5ff1d349d0e968fad2deb8391dcc89bf0725f375ace5477',
+ 'letter-d':'97c65daa168e6a93b1c3558551f7c63b83cb0f4b35aceffda6fa7909fca9e0c4',
+ 'letter-e':'e272cc9de896df0c955cf7316f707217c9b2b2196264e9d4692cf437dafa102d',
+ 'letter-f':'9382840370cf4cae133d782b7749f66eb40c91364c65b520e503bfe3d024a2f5',
+ 'letter-g':'0eb62422c776c9b35c26985c92287e6321278c37c1e51f37d4e98d71e9532e84',
+ 'letter-h':'063da422dacb5566a03dd93135a36a1270f950721f8033d94846063622df01d7',
+ 'letter-i':'9f1861f1f9231f52e4c6275b0d3f9613249e941ac85288c82ad7d684683bc091',
+ 'letter-j':'8c0ebcb5691c205c0aec746ca7d46be12447cc196c54625acb517d4da21dd42a',
+ 'letter-k':'f4018f3ee6b57dd5da9d0ab2603422cdb74c38573f84de47b5b8b920c7296d3e',
+ 'letter-l':'eba96567cf9135cd3f685665d905993f1dcac7422211357115758064cf0b6a39',
+ 'letter-m':'de2a38ce8e76d82ab87705a1afdedff32d71da3449a803e6852768f58887e9b7',
+ 'letter-n':'704dd3dad775ee6c1fbab2e3a46b13a9f88f4d0eaf537611363aa443c19ae67e',
+ 'letter-o':'28e3124faae03d7e79a6a86fee67f32a9593ec198827b566ebe228673057fa30',
+ 'letter-p':'2e8c3a4425a7c193920c94b9e04bb055a55000830e90f0a8ba7e971163fae428',
+ 'letter-q':'0bb144d649b6cca77afebcc50c726f88053419cdce0cab16c7046daf2e775005',
+ 'letter-r':'ff7d067be1d51d0d8ff631d0c6d9b2e3c0e45d5fac64bf87b4223663440c9ce9',
+ 'letter-s':'09f0c0382de4c49a3aade2e615bf0024ccaf887aa8c46b993baf86d566b0c588',
+ 'letter-t':'8f80011d7afc1184624e041ad06d015f388ee5a24953194a247580533f33c897',
+ 'letter-u':'5e04a809078a2fa514328c87061a597e8bac74b3ada2b3605424d2dcfbcf9103',
+ 'letter-v':'55d68f7fd3338156eeb2b3bca542dd7e676bca8491a53d02cbd80a1896a2cfee',
+ 'letter-w':'311b5b32e859beeb6492e532fae91afd75734e29309cdda7b742393f40094952',
+ 'letter-x':'2d2bd02432b9dc9cdc440952a8d15f348969003a4fdbafb2ee6169ccb85fc82f',
+ 'letter-y':'1b086b32546bf4831e80bed1ec2af582b4f7ac0c61f1f481df9979bfb88dbdc6',
+ 'letter-z':'62fefcf03fb0566f19509e09aa5cadb16b263e9293f631dead06220e1a94279a'
+};
 export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
   "sugar-skull": "4217f71752b8f1481e338ebee58513c1aa4182a79071a57d82ad1d362abcda89",
   "veterans-day": "b65b687197c1488023c2431e85822425a174504f729d185361ed6c4449de69a5",
@@ -87,6 +116,7 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===SEVEN_TOPIC_RELEASE_ID)return {collections:7,designs:700,topics:Object.keys(SEVEN_TOPIC_ZIP_CHECKSUMS) as readonly string[]};
  if(id===NUMBER_RELEASE_ID)return {collections:30,designs:3000,topics:Object.keys(NUMBER_ZIP_CHECKSUMS) as readonly string[]};
  if(id===SEASONAL_TEN_RELEASE_ID)return {collections:10,designs:1000,topics:Object.keys(SEASONAL_TEN_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===LETTERS_26_RELEASE_ID)return {collections:26,designs:2600,topics:Object.keys(LETTERS_26_ZIP_CHECKSUMS) as readonly string[]};
  if(id===PUBLIC_FIGURE_RELEASE_ID)return {collections:3,designs:283,topics:Object.keys(PUBLIC_FIGURE_TOPIC_COUNTS) as readonly string[]};
  if(id===COLLECTIBLE_CHARACTER_RELEASE_ID)return {collections:17,designs:1700,topics:Object.keys(COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS) as readonly string[]};
  throw Error('Unknown owner-authorized release scope');
@@ -102,6 +132,7 @@ export function matchesReviewedSourceArchives(release:{release_id?:unknown;sourc
   const actual=release.source_zip_sha256s as Record<string,unknown>;return Object.keys(actual).length===30&&Object.entries(NUMBER_ZIP_CHECKSUMS).every(([topic,hash])=>actual[topic]===hash);
  }
  if(release.release_id===SEASONAL_TEN_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===10&&Object.entries(SEASONAL_TEN_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
+ if(release.release_id===LETTERS_26_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===26&&Object.entries(LETTERS_26_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===PUBLIC_FIGURE_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===3&&Object.entries(PUBLIC_FIGURE_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===COLLECTIBLE_CHARACTER_RELEASE_ID){
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;

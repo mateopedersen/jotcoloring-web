@@ -1,16 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtempSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {COLORING_TAXONOMY,VISION_ROOT_CATEGORIES as ROOT_CATEGORIES,categoryPath,categoryLineage,resolveCategoryAlias,TAXONOMY_VERSION,VISION_TAXONOMY_VERSION,PREVIOUS_EDITORIAL_TAXONOMY_VERSION,PREVIOUS_EXPANSION_EDITORIAL_TAXONOMY_VERSION,NEW_EDITORIAL_TOPIC_CATEGORY_IDS,EDITORIAL_REVIEW_CATEGORY_IDS,visionChildCategories} from '../src/taxonomy/catalog';
+import {COLORING_TAXONOMY,VISION_ROOT_CATEGORIES as ROOT_CATEGORIES,categoryPath,categoryLineage,resolveCategoryAlias,TAXONOMY_VERSION,VISION_TAXONOMY_VERSION,PREVIOUS_EDITORIAL_TAXONOMY_VERSION,PREVIOUS_EXPANSION_EDITORIAL_TAXONOMY_VERSION,NEW_EDITORIAL_TOPIC_CATEGORY_IDS,EDITORIAL_REVIEW_CATEGORY_IDS,LETTER_TOPIC_IDS,visionChildCategories} from '../src/taxonomy/catalog';
 import {hasIllustration} from '../src/icons/registry';
 import {classifyCategories,categoryLabels,decideCategories,isHierarchicalCategoryAnalysis,validateCategorySelection} from '../src/taxonomy/analysis';
 import {preparedCategorySelection} from '../scripts/data/category-selection';
 import {CategoryQueue} from '../scripts/data/category-queue';
 const oneHot=(labels:string[],index:number)=>labels.map((_,i)=>Number(i===index));
 async function recognized(root:string,child?:string){return classifyCategories(async labels=>{const index=labels===undefined?-1:labels.indexOf(child&&labels.includes(COLORING_TAXONOMY.find(c=>c.id===child)!.visual)?COLORING_TAXONOMY.find(c=>c.id===child)!.visual:COLORING_TAXONOMY.find(c=>c.id===root)!.visual);return oneHot(labels,index<0?labels.length-1:index);});}
-test('expanded stable taxonomy has unique IDs, real parents, routable paths and available icons',()=>{assert.equal(ROOT_CATEGORIES.length,22);assert.equal(COLORING_TAXONOMY.length,161);assert.equal(new Set(COLORING_TAXONOMY.map(c=>c.id)).size,COLORING_TAXONOMY.length);for(const c of COLORING_TAXONOMY){assert.ok(hasIllustration(c.icon),c.id+': '+c.icon);assert.ok(categoryPath(c.id).endsWith('/'+c.id+'/'));assert.equal(categoryLineage(c.id).at(-1),c.id);if(c.parent)assert.ok(COLORING_TAXONOMY.some(r=>!r.parent&&r.id===c.parent));}assert.equal(categoryPath('woodland'),'/coloring-pages/woodland/');assert.equal(categoryPath('dinosaurs'),'/coloring-pages/dinosaurs/');assert.equal(categoryPath('houses'),'/coloring-pages/houses/');});
+test('expanded stable taxonomy has unique IDs, real parents, routable paths and available icons',()=>{assert.equal(ROOT_CATEGORIES.length,22);assert.equal(COLORING_TAXONOMY.length,187);assert.equal(new Set(COLORING_TAXONOMY.map(c=>c.id)).size,COLORING_TAXONOMY.length);for(const c of COLORING_TAXONOMY){assert.ok(hasIllustration(c.icon),c.id+': '+c.icon);assert.ok(categoryPath(c.id).endsWith('/'+c.id+'/'));assert.equal(categoryLineage(c.id).at(-1),c.id);if(c.parent)assert.ok(COLORING_TAXONOMY.some(r=>r.id===c.parent));}assert.equal(categoryPath('woodland'),'/coloring-pages/woodland/');assert.equal(categoryPath('dinosaurs'),'/coloring-pages/dinosaurs/');assert.equal(categoryPath('houses'),'/coloring-pages/houses/');});
 test('formerly unsupported subjects classify into meaningful new parent and child collections',async()=>{for(const [root,child] of [['buildings','houses'],['people','portraits'],['education','alphabet'],['sports','basketball'],['music','instruments'],['objects','tools'],['nature','mountains']] as const){const a=await recognized(root,child);assert.equal(a.review_required,false);assert.deepEqual(a.category_ids,[root,child]);assert.ok(isHierarchicalCategoryAnalysis(a));}});
 test('templates disagreeing or closely competing roots require review; unknown never becomes fantasy',()=>{const labels=categoryLabels('root'),one=oneHot(labels,0),two=oneHot(labels,1);const a=decideCategories([{scope:'root',scores:[one,two,one,two,one,two]}]);assert.equal(a.review_required,true);const unknown=decideCategories([{scope:'root',scores:Array.from({length:6},()=>oneHot(labels,labels.length-1))}]);assert.equal(unknown.primary,null);assert.deepEqual(unknown.category_ids,[]);});
 test('parent agreement can be automatic while uncertain child labels are withheld',async()=>{const a=await classifyCategories(async labels=>labels.length===categoryLabels('root').length?oneHot(labels,ROOT_CATEGORIES.findIndex(c=>c.id==='buildings')):labels.map(()=>1/labels.length));assert.deepEqual(a.category_ids,['buildings']);assert.equal(a.review_required,false);});
@@ -36,8 +36,8 @@ test('center crops cannot replace the whole-frame subject with background decora
 test('character and public-figure topics require explicit current editorial selection while legacy visual evidence remains valid',async()=>{
  const a=await recognized('fantasy','dragons'),sha='c'.repeat(64);
  assert.equal(a.taxonomy_version,VISION_TAXONOMY_VERSION);assert.ok(isHierarchicalCategoryAnalysis(a));
- assert.equal(EDITORIAL_REVIEW_CATEGORY_IDS.size,47);
- for(const id of EDITORIAL_REVIEW_CATEGORY_IDS){const c=COLORING_TAXONOMY.find(c=>c.id===id)!;assert.equal(c.editorial_only,true);if(c.parent){assert.equal(categoryLabels(c.parent).includes(c.visual),false);assert.equal(visionChildCategories(c.parent).some(v=>v.id===id),false);}else assert.equal(categoryLabels('root').includes(c.visual),false);}
+ assert.equal(EDITORIAL_REVIEW_CATEGORY_IDS.size,73);
+ for(const id of EDITORIAL_REVIEW_CATEGORY_IDS){const c=COLORING_TAXONOMY.find(c=>c.id===id)!;assert.equal(c.editorial_only,true);if(c.parent){const parent=COLORING_TAXONOMY.find(x=>x.id===c.parent)!;if(!parent.parent)assert.equal(categoryLabels(c.parent).includes(c.visual),false);assert.equal(visionChildCategories(c.parent).some(v=>v.id===id),false);}else assert.equal(categoryLabels('root').includes(c.visual),false);}
  const selected=preparedCategorySelection(a,sha,'sonic','Visible Sonic character holding a ring; identity reviewed from actual artwork.');
  assert.deepEqual(selected.category_ids,['video-games','sonic']);assert.equal(selected.taxonomy_version,TAXONOMY_VERSION);assert.ok(validateCategorySelection(selected,a,sha));
  assert.equal(validateCategorySelection({...selected,taxonomy_version:VISION_TAXONOMY_VERSION},a,sha),false);assert.ok(validateCategorySelection({...selected,taxonomy_version:PREVIOUS_EDITORIAL_TAXONOMY_VERSION},a,sha),'accepted earlier character reviews remain valid');const fresh=preparedCategorySelection(a,sha,'descendants','Mal and Evie identities checked against source artwork and official character references.');assert.ok(validateCategorySelection(fresh,a,sha));assert.equal(validateCategorySelection({...fresh,taxonomy_version:PREVIOUS_EDITORIAL_TAXONOMY_VERSION},a,sha),false,'new character topics require the new explicit review vocabulary');
@@ -63,6 +63,23 @@ test('new manually reviewed collections preserve earlier taxonomy approvals and 
  assert.equal(resolveCategoryAlias('five nights at freddys'),'fnaf');
  assert.equal(categoryPath('labubu'),'/coloring-pages/labubu/');assert.equal(categoryPath('sonny-angel'),'/coloring-pages/sonny-angel/');
  assert.equal(resolveCategoryAlias('cry baby'),'crybaby');assert.equal(resolveCategoryAlias('chiikawa characters'),'chiikawa');
+});
+
+test('A to Z are separately searchable education topics and cannot reuse older reviews',async()=>{
+ const a=await recognized('education','alphabet'),sha='f'.repeat(64);
+ assert.equal(LETTER_TOPIC_IDS.length,26);
+ for(const [index,id] of LETTER_TOPIC_IDS.entries()){
+  const letter=String.fromCharCode(65+index),selected=preparedCategorySelection(a,sha,id,`Letter ${letter} artwork and its matching alphabet topic were reviewed.`);
+  assert.deepEqual(selected.category_ids,['education','alphabet',id]);
+  assert.equal(categoryPath(id),`/coloring-pages/${id}/`);
+  assert.equal(resolveCategoryAlias(`letter ${letter.toLowerCase()} coloring pages`),id);
+  assert.ok(validateCategorySelection(selected,a,sha));
+  assert.equal(validateCategorySelection({...selected,taxonomy_version:'jot-taxonomy-2.5.0'},a,sha),false);
+ }
+ const migration=readFileSync(new URL('../migrations/catalog/0020_letter_topics.sql',import.meta.url),'utf8');
+ const seeded=[...migration.matchAll(/INSERT INTO category\(id,name,parent_id,sort_order\) VALUES\('([^']+)','([^']+)','([^']+)',(\d+)\)/g)].map(match=>({id:match[1],name:match[2],parent:match[3],order:Number(match[4])}));
+ assert.deepEqual(seeded.map(row=>row.id),LETTER_TOPIC_IDS,'every searchable letter topic is seeded in the catalog database');
+ assert.ok(seeded.every((row,index)=>row.name===`Letter ${String.fromCharCode(65+index)}`&&row.parent==='alphabet'&&row.order===120+index));
 });
 
  test('seasonal2.5 approvals preserve old2.4 reviews while new topics require current source-bound selection',async()=>{const a=await recognized('fantasy','dragons'),sha='e'.repeat(64);const prior=preparedCategorySelection(a,sha,'labubu','Character identity reviewed against the actual source artwork.');assert.ok(validateCategorySelection({...prior,taxonomy_version:'jot-taxonomy-2.4.0'},a,sha));for(const id of ['sugar-skull','veterans-day','christmas-tree','january','december','all-souls-day','cheetah','excavator','gingerbread-house','fall-leaf']){const selected=preparedCategorySelection(a,sha,id,'Actual source pixels and subject specific collection reviewed.');assert.ok(validateCategorySelection(selected,a,sha));assert.equal(validateCategorySelection({...selected,taxonomy_version:'jot-taxonomy-2.4.0'},a,sha),false);}});
