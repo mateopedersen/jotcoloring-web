@@ -1,6 +1,6 @@
 ---
 import {NAVIGATION_COLLECTIONS} from '../taxonomy/navigation';
-import {categoryById} from '../taxonomy/catalog';
+import {categoryById,COLORING_TAXONOMY} from '../taxonomy/catalog';
 import {AGE_BANDS} from '../age/model';
 import {DIFFICULTY_LEVELS} from '../age/difficulty';
 import {clearFilterURL} from '../ui/filter-url';
@@ -9,23 +9,29 @@ import CategoryIcon from './CategoryIcon.astro';
 import VectorIcon from './VectorIcon.astro';
 import Icon from './HomeIcon.astro';
 import '../styles/catalog-filters.css';
-interface Props {total:number;query:CatalogQuery;category?:string;currentURL:string;ageCollection?:boolean}
-const {total,query,category='',currentURL,ageCollection=false}=Astro.props;
+interface Props {total:number;query:CatalogQuery;category?:string;currentURL:string;ageCollection?:boolean;counts?:{id:string;count:number}[]}
+const {total,query,category='',currentURL,ageCollection=false,counts=[]}=Astro.props;
 const url=new URL(currentURL),reset=clearFilterURL(currentURL);
-const selectedCollection=query.collection||category;
-const scopedCategory=category&&!NAVIGATION_COLLECTIONS.some(c=>c.id===category)?categoryById(category):undefined;
+const selectedTopic=query.subcategory?categoryById(query.subcategory):undefined;
+const selectedCategory=query.number?'number-'+query.number:selectedTopic?.parent?selectedTopic.parent+'/'+selectedTopic.id:query.collection||category;
+const totals=new Map(counts.map(c=>[c.id,c.count]));
+const groups=NAVIGATION_COLLECTIONS.map(c=>({...c,topics:COLORING_TAXONOMY.filter(t=>c.roots.includes(t.parent||t.id)&&t.id!==c.id&&((totals.get(t.id)||0)>0||selectedCategory===(t.parent?t.parent+'/':'')+t.id)).sort((a,b)=>a.name.localeCompare(b.name,'en'))})).filter(c=>c.roots.some(id=>(totals.get(id)||0)>0)||c.topics.length||selectedCategory===c.id);
 reset.hash=ageCollection?'age-results':'catalog-results';
-const active=!!query.recommended_age&&!ageCollection||!!query.age?.length||!!query.difficulty?.length||query.sort==='newest'||query.sort==='title';
+if(ageCollection)for(const key of ['collection','category','subcategory','number'])reset.searchParams.delete(key);
+const active=!!query.q||!!query.recommended_age&&!ageCollection||!!query.age?.length||!!query.difficulty?.length||query.sort==='newest'||query.sort==='title'||ageCollection&&!!selectedCategory;
+const searchHelp=ageCollection?'Search within '+AGE_BANDS.find(b=>b.id===query.recommended_age)?.label.toLowerCase()+'. Your age selection stays applied.':'Search these coloring pages. Your topic, age and detail choices stay applied.';
 ---
-<div class="jc-browse-toolbar" id={ageCollection?'age-results':'catalog-results'}><p class="jc-result-count"><Icon name="grid" size={20}/><strong>{total.toLocaleString('en-US')}</strong> {total===1?'Coloring Page':'Coloring Pages'}</p><details class="jc-filter-disclosure"><summary><Icon name="filter" size={18}/>Filter & Sort{active&&<span class="jc-filter-active">Active</span>}<Icon name="chevron" size={14}/></summary><form class:list={['jc-catalog-filters',ageCollection&&'jc-catalog-filters--age']} id="catalog-filters" action={url.pathname}>
- {query.q&&<input type="hidden" name="q" value={query.q}/>}
+<div class="jc-browse-toolbar" id={ageCollection?'age-results':'catalog-results'}><p class="jc-result-count"><Icon name="grid" size={20}/><strong>{total.toLocaleString('en-US')}</strong> {total===1?'Coloring Page':'Coloring Pages'}</p><details class="jc-filter-disclosure" open={active}><summary><Icon name="filter" size={18}/>Filter & Sort{active&&<span class="jc-filter-active">Active</span>}<Icon name="chevron" size={14}/></summary><form class:list={['jc-catalog-filters',ageCollection&&'jc-catalog-filters--age']} id="catalog-filters" action="/api/catalog-filters" method="get">
+ <input type="hidden" name="source" value={url.pathname+url.search}/>
+ <input type="hidden" name="initial_category" value={selectedCategory}/>
+ <label class="jc-filter-search" for="catalog-search"><span class="jc-filter-field-heading"><Icon name="search" size={24}/><span>Search These Pages</span></span><span class="jc-filter-search-row"><input id="catalog-search" aria-label="Search These Pages" type="search" name="q" value={query.q||''} maxlength="160" placeholder="Try cats, flowers, or a number" aria-describedby="catalog-search-help"/><button type="submit"><Icon name="search" size={20}/>Search</button></span><small id="catalog-search-help">{searchHelp}</small></label>
  {query.age?.map(age=><input type="hidden" name="age" value={age}/>)}
  <div class="jc-filter-fields">
-  {!ageCollection&&<label class="jc-filter-field" for="category-filter"><span class="jc-filter-field-heading"><CategoryIcon name={selectedCollection||category||'all'} size={29}/><span>Choose a Theme</span></span><select id="category-filter" name="category" data-filter-select><option value="">All Categories</option>{scopedCategory&&<option value={scopedCategory.id} selected={selectedCollection===scopedCategory.id}>{scopedCategory.name}</option>}{NAVIGATION_COLLECTIONS.map(c=><option value={c.id} selected={selectedCollection===c.id}>{c.name}</option>)}</select></label>}
+  <label class="jc-filter-field" for="category-filter"><span class="jc-filter-field-heading"><CategoryIcon name={selectedTopic?.id||category||'all'} size={29}/><span>Topic or Collection</span></span><select id="category-filter" name="category" data-filter-select><option value="">All Topics</option>{query.number&&<option value={'number-'+query.number} selected>Number {query.number}</option>}{groups.map(c=><optgroup label={c.name}><option value={c.id} selected={selectedCategory===c.id}>All {c.name}</option>{c.topics.map(t=><option value={(t.parent?t.parent+'/':'')+t.id} selected={selectedCategory===(t.parent?t.parent+'/':'')+t.id}>{t.name}</option>)}</optgroup>)}</select></label>
   <label class="jc-filter-field" for="age-filter"><span class="jc-filter-field-heading"><VectorIcon name="nav-age" size={29}/><span>Recommended Age</span></span><select id="age-filter" name="recommended_age" data-filter-select><option value="">Any Age</option>{AGE_BANDS.map(a=><option value={a.id} selected={query.recommended_age===a.id}>{a.label}</option>)}</select></label>
   <label class="jc-filter-field" for="difficulty-filter"><span class="jc-filter-field-heading"><VectorIcon name="layers" size={29}/><span>Level of Detail</span></span><select id="difficulty-filter" name="difficulty" data-filter-select><option value="">All Levels</option>{DIFFICULTY_LEVELS.map(d=><option value={d.id} selected={query.difficulty?.includes(d.id)}>{d.label}</option>)}</select></label>
   <label class="jc-filter-field" for="sort-filter"><span class="jc-filter-field-heading"><VectorIcon name="list" size={29}/><span>Sort Your Pages</span></span><select id="sort-filter" name="sort" data-filter-select><option value="trending" selected={query.sort==='trending'}>{query.q?'Best Matches':'Featured First'}</option><option value="newest" selected={query.sort==='newest'}>Newest First</option><option value="title" selected={query.sort==='title'}>Title: A to Z</option></select></label>
  </div>
- <div class="jc-filter-footer"><span><Icon name="check" size={15}/>Your choices update the gallery</span>{active&&<a href={reset.pathname+reset.search+reset.hash}><Icon name="refresh" size={16}/>Reset Filters</a>}<button type="submit" data-apply-filters>Show Pages<Icon name="arrow" size={16}/></button></div>
+ <div class="jc-filter-footer"><span><Icon name="check" size={15}/>Search and filters work together</span>{active&&<a href={reset.pathname+reset.search+reset.hash}><Icon name="refresh" size={16}/>Reset Filters</a>}<button type="submit" data-apply-filters>Show Pages<Icon name="arrow" size={16}/></button></div>
 </form></details></div>
 
