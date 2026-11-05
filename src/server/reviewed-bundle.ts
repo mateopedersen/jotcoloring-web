@@ -1,4 +1,5 @@
 import {forEachInPairs} from './bounded';
+import {immutableReadCache} from './immutable-read-cache';
 /** Authenticated, one-artwork transport for an already sealed editorial release. */
 import {ALL_52_RELEASE_ID,SEASONAL_TEN_RELEASE_ID,PUBLIC_FIGURE_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID,LETTERS_26_RELEASE_ID,ADDITIONAL_FIVE_RELEASE_ID,LETTERS_AND_ADDITIONAL_FIVE_RELEASE_ID,matchesReviewedReleaseScope} from './reviewed-release-scope';
 import type {Env,Bucket,Manifest} from './types';
@@ -60,10 +61,14 @@ export class ReviewedImportPending extends Error{
 }
 export async function processReviewedBundle(env:Env,message:ReviewedBundleMessage){
  if(!env.ORIGINALS||!env.BACKUPS||!env.PUBLISHED||!env.CATALOG_DB)throw Error('Missing import bindings');
+ const db=env.CATALOG_DB,backups=env.BACKUPS;
  const object=await env.ORIGINALS.get(message.object_key);if(!object||object.size>20_000_000)throw Error('Missing bounded import bundle');
  const {bundle:b,manifest:prepared,decoded}=await validateReviewedBundle(new Uint8Array(await object.arrayBuffer()),message,env);
- const receiptKey=bundleReceiptKey(message.sha256),done=await env.BACKUPS.get(receiptKey);if(done)return JSON.parse(await done.text());
- let m=prepared,version=1;const db=env.CATALOG_DB;
+ // Scope to this delivery only. Initial storage writes still require a real
+ // readback; repeated validation reuses those exact bytes and fresh DB reviews.
+ env={...env,ORIGINALS:immutableReadCache(env.ORIGINALS,[...decoded.keys()])};
+ const receiptKey=bundleReceiptKey(message.sha256),done=await backups.get(receiptKey);if(done)return JSON.parse(await done.text());
+ let m=prepared,version=1;
  const existing=await db.prepare('SELECT active_version,latest_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();
  if(existing){const revision=await db.prepare('SELECT manifest_json FROM content_revision WHERE content_id=? AND version=?').bind(m.content_id,existing.latest_version).first<any>();if(!revision)throw Error('Existing revision unavailable');const current=JSON.parse(revision.manifest_json);
   if(existing.latest_version!==1||canonicalJSON(current)!==canonicalJSON(m)){
