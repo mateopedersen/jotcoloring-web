@@ -40,7 +40,38 @@ export async function createArtifactManifest(directory:string,stage:Stage,commit
 export async function verifyArtifactManifest(directory:string,manifest:any,stage:Stage,commit:string,lockHash:string){const current=await createArtifactManifest(directory,stage,commit,lockHash);if(JSON.stringify(current)!==JSON.stringify(manifest))throw new Error('Build artifact, commit, lockfile or environment differs from verified input');return current;}
 function command(program:string,args:string[],capture=false){const result=spawnSync(program,args,{encoding:'utf8',stdio:capture?'pipe':'inherit',env:process.env});if(result.status!==0)throw new Error(capture?'Required release verification command failed':'Release step failed; later publication steps were not run');return result.stdout?.trim()||'';}
 export function assertCiPublication(stage:Stage,env:NodeJS.ProcessEnv){const branch=stage==='production'?'main':'staging';if(env.GITHUB_ACTIONS!=='true'||env.GITHUB_EVENT_NAME!=='push'||env.GITHUB_REPOSITORY!==REPOSITORY||env.GITHUB_REF!==`refs/heads/${branch}`||env.CLOUDFLARE_ACCOUNT_ID!==ACCOUNT||!env.CLOUDFLARE_API_TOKEN)throw new Error('Publication requires the reviewed push workflow and environment token');return branch;}
+export async function assertCurrentReleaseCommit(
+  branch: 'main' | 'staging',
+  commit: string,
+  token: string | undefined,
+  request: typeof fetch = fetch,
+) {
+  if (!token) throw new Error('Missing GitHub token for release branch verification');
+  const reference = await request(
+    `https://api.github.com/repos/${REPOSITORY}/git/ref/heads/${branch}`,
+    {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${token}`,
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      cache: 'no-store',
+      redirect: 'error',
+      signal: AbortSignal.timeout(15_000),
+    },
+  );
+  if (!reference.ok) throw new Error(`GitHub release branch verification failed (HTTP ${reference.status})`);
+
+  const head = await reference.json() as { ref?: string; object?: { type?: string; sha?: string } } | null;
+  if (head?.ref !== `refs/heads/${branch}` || head.object?.type !== 'commit' || head.object.sha !== commit) {
+    throw new Error('Branch advanced or returned an unexpected reference; release stopped');
+  }
+}
+
 export async function run(argv:string[]){
+  // The short-lived GitHub token is only for the branch read, never a child process.
+  const branchReadToken = process.env.JOT_RELEASE_GITHUB_TOKEN;
+  delete process.env.JOT_RELEASE_GITHUB_TOKEN;
   const stage=stageOf(argv[0]),prepare=argv.includes('--prepare'),apply=argv.includes('--apply');if(prepare&&apply)throw new Error('Preparation and publication must be separate');
   const web=JSON.parse(await fs.readFile('dist/server/wrangler.json','utf8')),jobs=JSON.parse(await fs.readFile('workers/jobs/wrangler.jsonc','utf8')),plan=assertReleaseTargets(stage,web,jobs);
   const targets:WorkerTarget[]=[{stage,name:plan.jobs_worker,config:{...jobs,...jobs.env[stage]},originalConfig:'workers/jobs/wrangler.jsonc',originalEnvironment:stage,topLevelName:jobs.name},{stage,name:plan.web_worker,config:web,originalConfig:'dist/server/wrangler.json',topLevelName:web.topLevelName||'jotcoloring-web'}];
@@ -52,9 +83,8 @@ export async function run(argv:string[]){
   console.log(JSON.stringify({mode:apply?'APPLY':'CHECK_ONLY',...plan,commit}));
   if(!apply)return;
   const expectedBranch=assertCiPublication(stage,process.env);
-  // Avoid a queued older commit replacing a newer deployment. This public read
-  // has no GitHub token and never fetches or checks out another commit.
-  const current=command('git',['ls-remote',`https://github.com/${REPOSITORY}.git`,`refs/heads/${expectedBranch}`],true).split(/\s+/)[0];if(current!==commit)throw new Error('Branch advanced; stale commit will not be published');
+  // Avoid a queued older commit replacing a newer deployment.
+  await assertCurrentReleaseCommit(expectedBranch, commit, branchReadToken);
   await fs.mkdir('.local',{recursive:true});const directory=await fs.mkdtemp('.local/version-release-'),releases=[];
   for(const target of targets){const receipt=await publishWorkerVersion(target,commit,path.join(directory,target.name),undefined,undefined,undefined,event=>console.log(JSON.stringify(event)));releases.push(receipt);console.log(JSON.stringify(receipt));}
   console.log(JSON.stringify({status:'PUBLISHED_JOBS_THEN_WEB',...plan,commit,releases}));
