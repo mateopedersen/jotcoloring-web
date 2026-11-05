@@ -29,7 +29,7 @@ test('editing accepted content preserves source-bound social and color assets in
   const previous=fixture(),before=structuredClone(previous);
   validateManifest(previous);
   let sequence=0;
-  const updated=prepareUpdateManifest(previous,2,()=>`revision-uuid-${++sequence}`);
+  const updated=prepareUpdateManifest(previous,2,()=>`00000000-0000-4000-8000-${String(++sequence).padStart(12,'0')}`);
   assert.doesNotThrow(()=>validateManifest(updated));
   assert.equal(updated.import_action,'update');
   assert.equal(updated.expected_version,2);
