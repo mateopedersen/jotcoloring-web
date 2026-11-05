@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-c9b091580889.svg",
+  "url": "/illustrations/jotcoloring-icons-69d63dd7f118.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -466,6 +466,31 @@
       "id": "video-games",
       "label": "Video Games · game controller",
       "group": "Categories"
+    },
+    {
+      "id": "rat",
+      "label": "Rat · round ears, pointed muzzle and long curling tail",
+      "group": "Subjects"
+    },
+    {
+      "id": "rabbit",
+      "label": "Rabbit · long upright ears and a round tail",
+      "group": "Subjects"
+    },
+    {
+      "id": "reindeer",
+      "label": "Reindeer · branching antlers and cloven hooves",
+      "group": "Subjects"
+    },
+    {
+      "id": "red-panda",
+      "label": "Red panda · pale facial markings and a bushy ringed tail",
+      "group": "Subjects"
+    },
+    {
+      "id": "raccoon",
+      "label": "Raccoon · dark eye mask and a striped tail",
+      "group": "Subjects"
     },
     {
       "id": "cats",

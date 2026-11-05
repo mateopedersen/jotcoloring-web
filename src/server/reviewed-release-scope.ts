@@ -1,4 +1,5 @@
 /** Explicit owner-authorized release scopes; completed release gates remain strict. */
+import {categoryLineage} from '../taxonomy/catalog';
 export const FOLLOWUP_RELEASE_ID='descendants-squishy-kpop-20261101';
 export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
 export const NUMBER_RELEASE_ID='numbers-30-20261102';
@@ -6,12 +7,16 @@ export const COLLECTIBLE_CHARACTER_RELEASE_ID='collectible-characters-20261103';
 export const PUBLIC_FIGURE_RELEASE_ID='public-figures-20261103';
 export const SEASONAL_TEN_RELEASE_ID='seasonal-ten-20261103';
 export const LETTERS_26_RELEASE_ID='letters-26-20261104';
+export const ADDITIONAL_FIVE_RELEASE_ID='additional-five-20261104';
+export const LETTERS_AND_ADDITIONAL_FIVE_RELEASE_ID='letters-and-additional-five-20261104';
+export const ALL_52_RELEASE_ID='all-52-topics-20261104';
+export const ADDITIONAL_FIVE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={jet:'fe13b1c8e01ca20d7418794ec5f43dad4a59dfc07ef54b9614904bcdebdaa96a','jurassic-park':'429d6b2ba915e9573ebf1b893af3e7d879e8859d13775000d6788f1c6bee99cb',jungle:'ccdedda4dab613832141df83cf62433022b86eb79ed40d550215571f53373eb2',juneteenth:'3f6358a9b1afc34084b3beb6267e73eb5322f4ea885d140db9ac2ef9ea3d250e','john-deere':'e09749d4687cd4713187abf7e4685a1a7a076b1883a964d72f29ee5d28fbdcf5'};
 export const LETTERS_26_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
  'letter-a':'801f92cc93c8c457eefdd55dad8c948d24d594249238e429bf662e1c0f0dbfdb',
  'letter-b':'043ca750733a004643360b28b92fe452d1506fdb5974641e842c3ad4d9dbe590',
  'letter-c':'a07880f84615507aa5ff1d349d0e968fad2deb8391dcc89bf0725f375ace5477',
  'letter-d':'97c65daa168e6a93b1c3558551f7c63b83cb0f4b35aceffda6fa7909fca9e0c4',
- 'letter-e':'e272cc9de896df0c955cf7316f707217c9b2b2196264e9d4692cf437dafa102d',
+ 'letter-e':'e272cc9de896df0c955cf7316f707217c9c2b2196264e9d4692cf437dafa102d',
  'letter-f':'9382840370cf4cae133d782b7749f66eb40c91364c65b520e503bfe3d024a2f5',
  'letter-g':'0eb62422c776c9b35c26985c92287e6321278c37c1e51f37d4e98d71e9532e84',
  'letter-h':'063da422dacb5566a03dd93135a36a1270f950721f8033d94846063622df01d7',
@@ -34,6 +39,33 @@ export const LETTERS_26_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
  'letter-y':'1b086b32546bf4831e80bed1ec2af582b4f7ac0c61f1f481df9979bfb88dbdc6',
  'letter-z':'62fefcf03fb0566f19509e09aa5cadb16b263e9293f631dead06220e1a94279a'
 };
+export const LETTERS_AND_ADDITIONAL_FIVE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={...LETTERS_26_ZIP_CHECKSUMS,...ADDITIONAL_FIVE_ZIP_CHECKSUMS};
+export const NEW_EIGHT_A_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+ 'american-flag':'a3b1471cdc3b840f5c1d2c5425939795340ad235b8343428dbe2758ba2a9e7e4',
+ 'ant':'ec18cbb65710e63743ea58a9ce1b7172c33cd2221f2ac1dfd24f9ada8a7b8bfc',
+ 'anpanman':'c09c1e7083ec70935b29c46803e23838ca58e61185e8cbaf1d9cc3ec43771adb',
+ 'ankylosaurus':'24b9d27f6f057b7630de08e372e88acea378f48d3e4eee6308e6dcb643f56f89',
+ 'angry-birds':'78fdaa2935247255d3d51d6182b139fa9a90a2aec29724241f869f29f0f63ff4',
+ 'angel':'759bd68431f408deea1439da2c2afb9899a45b50db2b87a151a4a4bf0714eece',
+ 'amy-rose':'c0c8a605ad8b856ec4d229cf5a4665c3d164ae47b5feef37fad242342cc33d3e',
+ 'among-us':'df6a4798eec6a4f0792923f42dc0dbf1e7d223a91058e5c566c470f6ebcc38ab'
+};
+export const NEW_THIRTEEN_R_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
+ 'rabbit':'27a6b5c44f0a64a19dc82908ef3324a02facca26decb5ebc50a7857c4ad77f65',
+ 'religious':'ed0b15e878664f68325fd5b9e709418d39ac73a7a3badc09dc2e9a998244cd56',
+ 'reindeer':'5294e917d81a807457989d7554f4858bbf8a37592809f6f75bba85d212226d68',
+ 'red-panda':'ad1c1ae4a94e9d57adf128c3593d03d8d44c5b26e2bdcf5732e6fca6e6dba85c',
+ 'rat':'4d0582aa2b07a6daf2f20c0344e92ed5179041923a1f96a94f405a50c7d9a9c4',
+ 'rarity':'a1893d6e46074b6ccf8ceb3e44fae9cf002f690a3d092a08d4bcf05459c02790',
+ 'ramadan':'29806c35f90cd06978919aa18dfd9e24386cdf87afef6b9d3d5dec6dea05a1a7',
+ 'rainbow-friends':'407f676849b0d02021c58f70d4aac7148676b5307bb7d27c9bf2618ba90960c3',
+ 'rainbow-dash':'ee6fe387fc921fe3d21caa9009b9ac7999371777fcb550ec90945e1eadd7ba0b',
+ 'rainbow':'eff90864d663cfd989b950a162dbb68fee1189a69b708d19eb52ece80f5ef1d5',
+ 'rain':'ce93dbf606629978564ea8fd20dc95efd407a4afa6905e6b8c16b2201a98d0dd',
+ 'raccoon':'4ebc7ff2b87b02a0b7ffa49bc2165521dea0f5317e32387b9192f5ca3b44b29b',
+ 'race-car':'2dc96ca9fa04beb2e306d5fbdd1b3fd0bd3d3dc338aabaf55cb7b032c1893721'
+};
+export const ALL_52_ZIP_CHECKSUMS:Readonly<Record<string,string>>={...LETTERS_AND_ADDITIONAL_FIVE_ZIP_CHECKSUMS,...NEW_EIGHT_A_ZIP_CHECKSUMS,...NEW_THIRTEEN_R_ZIP_CHECKSUMS};
 export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
   "sugar-skull": "4217f71752b8f1481e338ebee58513c1aa4182a79071a57d82ad1d362abcda89",
   "veterans-day": "b65b687197c1488023c2431e85822425a174504f729d185361ed6c4449de69a5",
@@ -49,6 +81,12 @@ export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
 export const PUBLIC_FIGURE_TOPIC_COUNTS:Readonly<Record<string,number>>={'mrbeast':83,'elon-musk':100,'donald-trump':100};
 export const PUBLIC_FIGURE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={'mrbeast':'313351aa87beb697db6e44ee860eb2c2a5c7ea53ea26a7fbb901e5d02c62f908','elon-musk':'e8911bbf03ef4da43fd61342fbde7a143be734f7f355b5979c20bb855f2bbe92','donald-trump':'b877e04898603d52cd65a77b1b4db65f4a6d6307b8433c8e67af1fa41f2b5366'};
 export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):100;}
+export function matchesReviewedTopicLineage(releaseID:unknown,topic:string,categoryIDs:unknown){
+ if(releaseID!==ALL_52_RELEASE_ID)return true;
+ if(!Array.isArray(categoryIDs)||categoryIDs.some(id=>typeof id!=='string'))return false;
+ const lineage=categoryLineage(topic);
+ return lineage.at(-1)===topic&&lineage.every(id=>categoryIDs.includes(id));
+}
 
 export const NUMBER_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
   "number-1-coloring-pages": "05102be36f84a278cb1a34eca282d899252fb8a9daaa3dd66952f4c3da529132",
@@ -117,6 +155,9 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===NUMBER_RELEASE_ID)return {collections:30,designs:3000,topics:Object.keys(NUMBER_ZIP_CHECKSUMS) as readonly string[]};
  if(id===SEASONAL_TEN_RELEASE_ID)return {collections:10,designs:1000,topics:Object.keys(SEASONAL_TEN_ZIP_CHECKSUMS) as readonly string[]};
  if(id===LETTERS_26_RELEASE_ID)return {collections:26,designs:2600,topics:Object.keys(LETTERS_26_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===ADDITIONAL_FIVE_RELEASE_ID)return {collections:5,designs:500,topics:Object.keys(ADDITIONAL_FIVE_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===LETTERS_AND_ADDITIONAL_FIVE_RELEASE_ID)return {collections:31,designs:3100,topics:Object.keys(LETTERS_AND_ADDITIONAL_FIVE_ZIP_CHECKSUMS) as readonly string[]};
+ if(id===ALL_52_RELEASE_ID)return {collections:52,designs:5200,topics:Object.keys(ALL_52_ZIP_CHECKSUMS) as readonly string[]};
  if(id===PUBLIC_FIGURE_RELEASE_ID)return {collections:3,designs:283,topics:Object.keys(PUBLIC_FIGURE_TOPIC_COUNTS) as readonly string[]};
  if(id===COLLECTIBLE_CHARACTER_RELEASE_ID)return {collections:17,designs:1700,topics:Object.keys(COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS) as readonly string[]};
  throw Error('Unknown owner-authorized release scope');
@@ -133,6 +174,9 @@ export function matchesReviewedSourceArchives(release:{release_id?:unknown;sourc
  }
  if(release.release_id===SEASONAL_TEN_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===10&&Object.entries(SEASONAL_TEN_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===LETTERS_26_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===26&&Object.entries(LETTERS_26_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
+ if(release.release_id===ADDITIONAL_FIVE_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===5&&Object.entries(ADDITIONAL_FIVE_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
+ if(release.release_id===LETTERS_AND_ADDITIONAL_FIVE_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===31&&Object.entries(LETTERS_AND_ADDITIONAL_FIVE_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
+ if(release.release_id===ALL_52_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===52&&Object.entries(ALL_52_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===PUBLIC_FIGURE_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===3&&Object.entries(PUBLIC_FIGURE_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===COLLECTIBLE_CHARACTER_RELEASE_ID){
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;

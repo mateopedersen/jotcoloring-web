@@ -3,6 +3,12 @@ import {BRAND_VERSION,brandFooterLayout,brandLogoRGB,BRAND_LOGO_WIDTH,BRAND_LOGO
 export function pdfBrandBox(width:number,height:number){const layout=brandFooterLayout(Math.round(width),Math.round(height));return {x:layout.brand.x,y:height-layout.brand.y-layout.brand.height,width:layout.brand.width,height:layout.brand.height,footerHeight:layout.footer.height};}
 /** The supplied alphabet PDFs place the exact approved logo at this original A4 position. */
 export const SUPPLIED_A4_BRAND_BOX={x:491.811,y:25.51181,width:75.11811,height:26.70866};
+/** Measured in every immutable PDF in the five additional, eight A-topic and thirteen R-topic packages. */
+export const SUPPLIED_TOPIC_A4_BRAND_BOXES=[
+ {x:498.189,y:10,width:74.40945,height:26.45669},
+ {x:490.3937,y:28.34646,width:76.53543,height:27.2126},
+ {x:501.0236,y:19.84252,width:74.40945,height:26.45669},
+] as const;
 export async function drawPDFBrandFooter(doc:PDFDocument,page:PDFPage,approvedPosition?:{x:number;y:number;width:number;height:number}){const {width,height}=page.getSize(),b=approvedPosition||pdfBrandBox(width,height),stream=doc.context.flateStream(brandLogoRGB(),{Type:'XObject',Subtype:'Image',Width:BRAND_LOGO_WIDTH,Height:BRAND_LOGO_HEIGHT,ColorSpace:'DeviceRGB',BitsPerComponent:8}),ref=doc.context.register(stream),name=page.node.newXObject('JotBrand',ref);page.pushOperators(pushGraphicsState(),concatTransformationMatrix(b.width,0,0,b.height,b.x,b.y),drawObject(name),popGraphicsState());doc.setKeywords(['JotColoring',BRAND_VERSION,'grayscale artwork','approved 3D logo footer','personal and educational use; commercial use requires permission']);return {footerHeight:'footerHeight' in b?b.footerHeight:undefined};}
 export function pdfArtworkBox(width:number,height:number){const footer=brandFooterLayout(Math.round(width),Math.round(height)).footer.height;return {x:20,y:footer+20,width:width-40,height:height-footer-40};}
 /** An actual one-channel image prevents RGB JPEG chroma artifacts in blank art. */

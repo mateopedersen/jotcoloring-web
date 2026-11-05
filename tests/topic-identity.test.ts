@@ -12,6 +12,13 @@ test('topic checks preserve generic subjects and do not fabricate package age or
  assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Rounded Cat',description:'Squishy: A rounded cat stretches beneath a heart.',category_ids:['dolls-toys','squishy']}));
 });
 
+test('character subtopics retain both their exact character and franchise identity',()=>{
+ assert.throws(()=>requireSearchableTopicIdentity({title:'Amy Rose Holds a Hammer',description:'Amy Rose stands on a path.',category_ids:['video-games','sonic','amy-rose']}),/Sonic/);
+ assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Amy Rose Holds a Hammer',description:'Sonic character Amy Rose stands on a path.',category_ids:['video-games','sonic','amy-rose']}));
+ assert.throws(()=>requireSearchableTopicIdentity({title:'Rainbow Dash Flies Above Clouds',description:'Rainbow Dash spreads her wings.',category_ids:['cartoons','my-little-pony','rainbow-dash']}),/My Little Pony/);
+ assert.doesNotThrow(()=>requireSearchableTopicIdentity({title:'Rainbow Dash Flies Above Clouds',description:'My Little Pony character Rainbow Dash spreads her wings.',category_ids:['cartoons','my-little-pony','rainbow-dash']}));
+});
+
 
 test('FNAF and Bible metadata retain their reviewed searchable subject',()=>{
  assert.throws(()=>requireSearchableTopicIdentity({title:'Freddy Holds a Microphone',description:'Freddy stands beside a curtain.',category_ids:['video-games','fnaf']}),/Five Nights/);

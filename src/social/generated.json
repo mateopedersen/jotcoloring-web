@@ -621,5 +621,47 @@
     "sha256": "b33147d1969659bcc507f2faacb392da751b95d6903510627e746043be94f477",
     "title": "All Free Coloring Pages",
     "description": "Browse all free coloring pages in one gallery. Find printable drawings for kids and adults, filter by theme or detail, and download a PDF or image."
+  },
+  "category-faith": {
+    "src": "/og/pages/category-faith-1ba7f6c422fc44e4.png",
+    "alt": "JotColoring printable coloring pages share image: Religion coloring pages. ",
+    "sha256": "1ba7f6c422fc44e4c0c1fe054dd7eb1dc6d83d290548129905fd81fe77e0cd5d",
+    "title": "Religion coloring pages.",
+    "description": "Explore faith & religion drawings to print or color online."
+  },
+  "animals-rat": {
+    "src": "/og/pages/animals-rat-700b4f4fbd958199.png",
+    "alt": "JotColoring animal coloring collection share image: Rat coloring pages. ",
+    "sha256": "700b4f4fbd958199911b60b988965e77167e28bf80207438eba344618eba81bc",
+    "title": "Rat coloring pages.",
+    "description": "Explore rat coloring pages to download or color online."
+  },
+  "animals-rabbit": {
+    "src": "/og/pages/animals-rabbit-1a4159f0031faa98.png",
+    "alt": "JotColoring animal coloring collection share image: Rabbit coloring pages. ",
+    "sha256": "1a4159f0031faa9834d90bace9848da0afa195a7d1121991318a5863d10101ef",
+    "title": "Rabbit coloring pages.",
+    "description": "Explore rabbit coloring pages to download or color online."
+  },
+  "animals-reindeer": {
+    "src": "/og/pages/animals-reindeer-b95ffd70dfa8d322.png",
+    "alt": "JotColoring animal coloring collection share image: Reindeer coloring pages. ",
+    "sha256": "b95ffd70dfa8d3223ae4bfba89261d03d7f07cdb859ccfd14c5bb95c15c22f47",
+    "title": "Reindeer coloring pages.",
+    "description": "Explore reindeer coloring pages to download or color online."
+  },
+  "animals-red-panda": {
+    "src": "/og/pages/animals-red-panda-b5e6a72fdc6e1245.png",
+    "alt": "JotColoring animal coloring collection share image: Red Panda coloring pages. ",
+    "sha256": "b5e6a72fdc6e12453423cfd251e8670a7ddfa724e9bf229d802b37b2e28718c4",
+    "title": "Red Panda coloring pages.",
+    "description": "Explore red panda coloring pages to download or color online."
+  },
+  "animals-raccoon": {
+    "src": "/og/pages/animals-raccoon-b39b8009d57c6961.png",
+    "alt": "JotColoring animal coloring collection share image: Raccoon coloring pages. ",
+    "sha256": "b39b8009d57c696135f5c60c80c2e92d62ee98d3f323451838c3c16a9bd90258",
+    "title": "Raccoon coloring pages.",
+    "description": "Explore raccoon coloring pages to download or color online."
   }
 }
