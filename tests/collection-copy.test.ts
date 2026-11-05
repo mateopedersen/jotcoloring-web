@@ -65,6 +65,10 @@ test('the artwork label appends Coloring Page once without altering accepted nam
   assert.equal(coloringPageTitle(label),label);
  }
  assert.equal(coloringPageTitle('HUNTR/X Garden Concert'),'HUNTR/X Garden Concert Coloring Page');
+ for(const title of ['Letter A Coloring Page: Rounded Capital A','KPop Demon Hunters Coloring Page: Group On Stage']){
+  assert.equal(coloringPageTitle(title),title);
+  assert.equal(coloringPageTitle(coloringPageTitle(title)),title);
+ }
 });
 
 test('coloring invitations follow current accepted descriptions and remain suggestions',()=>{

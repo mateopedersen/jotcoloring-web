@@ -25,7 +25,7 @@ const breadcrumbs=contentBreadcrumbs(item);
 const text=artworkText(item);
 const favorite=JSON.stringify({id:item.id,title:item.title,slug:item.slug,thumbnail:item.thumbnail,revision:item.version});
 ---
-<Layout title={`${item.title} coloring page — JotColoring`} description={text.description} socialItem={item}><Fragment slot="head"><link rel="preload" as="image" href={item.preview} imagesrcset={item.previewSrcset} imagesizes="(max-width:850px) calc(100vw - 56px), 600px" fetchpriority="high"/></Fragment><ImageLicense item={item} assets={[item.preview,item.lineArtUrl]}/><Header active={item.category}/>
+<Layout title={`${coloringPageTitle(item.title)} — JotColoring`} description={text.description} socialItem={item}><Fragment slot="head"><link rel="preload" as="image" href={item.preview} imagesrcset={item.previewSrcset} imagesizes="(max-width:850px) calc(100vw - 56px), 600px" fetchpriority="high"/></Fragment><ImageLicense item={item} assets={[item.preview,item.lineArtUrl]}/><Header active={item.category}/>
 <main id="main" class="detail-main iv-detail hv-container jc-direct-detail"><nav class="breadcrumbs" aria-label="Breadcrumb">{breadcrumbs.slice(0,-1).map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.path}>{crumb.name}</a></>)}</nav>
 <div class="detail-grid jc-direct-grid">
  <header class="jc-detail-heading"><h1>{coloringPageTitle(item.title)}</h1></header>
