@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';
-import {assertReleaseTargets,assertCiPublication,createArtifactManifest,verifyArtifactManifest} from '../scripts/ops/deploy-release';
+import {assertReleaseTargets,assertCiPublication,assertCurrentReleaseCommit,createArtifactManifest,verifyArtifactManifest} from '../scripts/ops/deploy-release';
 const webRoot=JSON.parse(await fs.readFile('wrangler.jsonc','utf8')),jobs=JSON.parse(await fs.readFile('workers/jobs/wrangler.jsonc','utf8'));
 test('release allows only the exact web/jobs workers and environment resources',()=>{
   for(const stage of ['staging','production'] as const){const web={...webRoot,...webRoot.env[stage]};const plan=assertReleaseTargets(stage,web,jobs);assert.deepEqual(plan.order,[`jotcoloring-${stage}-jobs`,`jotcoloring-${stage}`]);
@@ -17,6 +17,34 @@ test('publication rejects PRs, forks, wrong branch/account and missing tokens',(
   assert.equal(assertCiPublication('production',env),'main');
   for(const [key,value]of [['GITHUB_EVENT_NAME','pull_request'],['GITHUB_EVENT_NAME','pull_request_target'],['GITHUB_REPOSITORY','fork-owner/jotcoloring-web'],['GITHUB_REF','refs/heads/staging'],['CLOUDFLARE_ACCOUNT_ID','unrelated'],['CLOUDFLARE_API_TOKEN','']])assert.throws(()=>assertCiPublication('production',{...env,[key]:value}));
 });
+test('reads the exact GitHub release ref with the scoped job token', async () => {
+  const commit = 'a'.repeat(40);
+  const request: typeof fetch = async (url, options) => {
+    assert.equal(url, 'https://api.github.com/repos/mateopedersen/jotcoloring-web/git/ref/heads/staging');
+    assert.equal(new Headers(options?.headers).get('Authorization'), 'Bearer test-job-token');
+    assert.equal(options?.redirect, 'error');
+    return Response.json({ ref: 'refs/heads/staging', object: { type: 'commit', sha: commit } });
+  };
+  await assertCurrentReleaseCommit('staging', commit, 'test-job-token', request);
+});
+
+test('stops publishing when the job token or exact remote release ref is unavailable', async () => {
+  const commit = 'a'.repeat(40);
+  const denied: typeof fetch = async () => new Response(null, { status: 404 });
+  const stale: typeof fetch = async () => Response.json({
+    ref: 'refs/heads/main', object: { type: 'commit', sha: 'b'.repeat(40) },
+  });
+  const wrongRef: typeof fetch = async () => Response.json({
+    ref: 'refs/heads/staging', object: { type: 'commit', sha: commit },
+  });
+  await assert.rejects(assertCurrentReleaseCommit('main', commit, undefined, async () => {
+    assert.fail('No GitHub request should be made without the job token');
+  }), /Missing GitHub token/);
+  await assert.rejects(assertCurrentReleaseCommit('main', commit, 'test-job-token', denied), /HTTP 404/);
+  await assert.rejects(assertCurrentReleaseCommit('main', commit, 'test-job-token', stale), /Branch advanced/);
+  await assert.rejects(assertCurrentReleaseCommit('main', commit, 'test-job-token', wrongRef), /unexpected reference/);
+});
+
 test('release artifact binds all bytes including hidden files to commit, lock and environment',async()=>{
   const root=await fs.mkdtemp(path.join(os.tmpdir(),'jot-release-')),commit='a'.repeat(40),lock='b'.repeat(64);
   try{await fs.mkdir(path.join(root,'server'));await fs.mkdir(path.join(root,'client'));await fs.writeFile(path.join(root,'server/wrangler.json'),'{}');await fs.writeFile(path.join(root,'server/entry.mjs'),'export default {};');await fs.writeFile(path.join(root,'client/.assetsignore'),'_worker.js');const manifest=await createArtifactManifest(root,'staging',commit,lock);assert.equal(manifest.files.length,3);await verifyArtifactManifest(root,manifest,'staging',commit,lock);await assert.rejects(()=>verifyArtifactManifest(root,manifest,'production',commit,lock));await assert.rejects(()=>verifyArtifactManifest(root,manifest,'staging','c'.repeat(40),lock));await fs.writeFile(path.join(root,'server/entry.mjs'),'export default {changed:true};');await assert.rejects(()=>verifyArtifactManifest(root,manifest,'staging',commit,lock));await fs.symlink(path.join(root,'server/entry.mjs'),path.join(root,'client/leak'));await assert.rejects(()=>createArtifactManifest(root,'staging',commit,lock),/symlinks/);}finally{await fs.rm(root,{recursive:true,force:true});}
