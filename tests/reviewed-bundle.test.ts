@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {validateReviewedBundle,bundleSignature,bundleReceiptKey,inlineReviewedImportEnvironment,ReviewedImportPending,type ReviewedBundle} from '../src/server/reviewed-bundle';
 import {canonicalJSON,sha256} from '../src/server/http';
 import {syntheticAgeReview} from './fixtures/age-review';
-import {preparedCategorySelection} from '../scripts/data/category-selection';import {SEASONAL_TEN_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID} from '../src/server/reviewed-release-scope';
+import {preparedCategorySelection} from '../scripts/data/category-selection';import {SEASONAL_TEN_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID,ALL_52_RELEASE_ID} from '../src/server/reviewed-release-scope';
 const secret='test-only-reviewed-bundle-secret-1234567890';
 async function fixture(){
  const source=await sha256('source'),line=await sha256('line');
@@ -29,6 +29,7 @@ test('supplied 17-topic transport preserves print containers and excludes color 
  b.editorial.render_review.assets=Object.fromEntries(b.manifest.assets.map(a=>[a.role,a.sha256]));
  const result=await checked(b);assert.equal(result.decoded.size,10);assert.equal(result.manifest.assets.length,8);assert.equal(result.bundle.native,undefined);
  const seasonal=structuredClone(b);seasonal.release={...b.release,id:SEASONAL_TEN_RELEASE_ID,collections:10,designs:1000};assert.equal((await checked(seasonal)).manifest.assets.length,8);const wrongSeasonal=structuredClone(seasonal);wrongSeasonal.release.designs=999;await assert.rejects(()=>checked(wrongSeasonal),/current release/);
+ const all52=structuredClone(b);all52.release={...b.release,id:ALL_52_RELEASE_ID,collections:52,designs:5200};assert.equal((await checked(all52)).manifest.assets.length,8);const incomplete52=structuredClone(all52);incomplete52.release.designs=5100;await assert.rejects(()=>checked(incomplete52),/current release/);
  const automatic=structuredClone(b);delete automatic.manifest.color_preview_policy;await assert.rejects(()=>checked(automatic),/no color previews/);
  const changed=structuredClone(b);changed.manifest.assets.find(a=>a.role==='printable_webp_bw')!.sha256='b'.repeat(64);await assert.rejects(()=>checked(changed));
  const missing=structuredClone(b);missing.manifest.assets=missing.manifest.assets.filter(a=>a.role!=='catalog_preview_mobile_bw');await assert.rejects(()=>checked(missing),/preserved/);

@@ -9,6 +9,34 @@ def register(ns):
     def eyes(xs,y,r=4.5):
         return ''.join(E(x,y,r,r*1.2,'#253135')+C(x-r*.3,y-r*.35,r*.33,'#fff') for x in xs)
     def smile(x=64,y=76):return P(f'M{x-9} {y}q9 8 18 0',stroke='#754832',sw=1.5)
+    # New animal topics retain their own recognizable anatomy at navigation size.
+    b=P('M39 94C5 120 7 63 27 79',stroke='#cf9692',sw=6)+E(72,84,34,25,M('stone'),'stroke="#897b71" stroke-width="1.5"')
+    b+=C(48,45,16,M('stone'))+C(48,45,10,M('pink'))+C(82,42,15,M('stone'))+C(82,42,9,M('pink'))
+    b+=P('M36 54Q59 37 86 54L99 78 74 87 46 81Z',M('stone'),'#897b71',1.5)+eyes([58,80],62,3)+E(96,77,5,4,M('pink'))
+    b+=P('M83 76 112 69m-28 12 29 3M51 101l-9 8m38-8 10 7',stroke='#9a7f77',sw=1.6)
+    add('rat','Rat · round ears, pointed muzzle and long curling tail',b)
+    b=E(70,85,33,29,M('cream'),'stroke="#aa9076" stroke-width="1.5"')+C(101,84,13,M('paper'),'stroke="#b6a48d" stroke-width="1.2"')
+    b+=E(43,29,10,24,M('cream'),'transform="rotate(-15 43 29)" stroke="#aa9076" stroke-width="1.4"')+E(68,28,10,24,M('cream'),'transform="rotate(9 68 28)" stroke="#aa9076" stroke-width="1.4"')
+    b+=E(43,29,4,17,M('pink'),'transform="rotate(-15 43 29)"')+E(68,28,4,17,M('pink'),'transform="rotate(9 68 28)"')
+    b+=E(56,64,30,25,M('cream'),'stroke="#aa9076" stroke-width="1.4"')+eyes([45,67],59,3)+E(57,70,4,3,M('pink'))+smile(57,77)
+    b+=E(40,108,15,7,M('cream'),'stroke="#aa9076" stroke-width="1"')+E(80,108,17,7,M('cream'),'stroke="#aa9076" stroke-width="1"')
+    add('rabbit','Rabbit · long upright ears and a round tail',b)
+    b=P('M36 45 25 25m5 9-15-4m13-2-1-17M81 44l14-20m-7 11 19-4m-15-3 2-17',stroke='#89684d',sw=5)
+    b+=E(64,83,30,29,M('wood'),'stroke="#89684d" stroke-width="1.4"')+P('M44 89v22h12V91m20-2v22h12V87',M('wood'),'#89684d',1.4)
+    b+=E(32,45,17,8,M('wood'),'transform="rotate(25 32 45)"')+E(90,45,17,8,M('wood'),'transform="rotate(-25 90 45)"')
+    b+=E(62,60,29,29,M('wood'),'stroke="#89684d" stroke-width="1.5"')+eyes([48,76],56,3.5)+E(62,76,18,11,M('cream'))+E(62,72,7,5,M('ink'))+smile(62,82)
+    add('reindeer','Reindeer · branching antlers and cloven hooves',b)
+    def masked_mammal(red=False):
+        fur='ginger' if red else 'stone'; edge='#95674e' if red else '#7e8385'
+        body=P('M81 99C120 105 122 55 99 56c10 23-5 27-21 26Z',M(fur),edge,1.5)
+        for y in [64,75,86]:body+=P(f'M100 {y}l15 4',stroke='#ab6a39' if red else '#505c63',sw=7)
+        body+=E(61,89,30,25,M(fur),f'stroke="{edge}" stroke-width="1.5"')+E(43,107,16,8,M('navy'))+E(77,107,16,8,M('navy'))
+        body+=(C(36,32,15,M(fur))+C(90,32,15,M(fur))+C(36,32,9,M('cream'))+C(90,32,9,M('cream')) if red else P('M29 44 25 20 46 30m33 0 21-10-3 25',M(fur),edge,1.7))+E(63,55,37,29,M(fur),f'stroke="{edge}" stroke-width="1.5"')
+        body+=P('M29 50q15-17 27-4l7 8 7-8q13-13 29 4L87 69 64 62 42 69Z',M('cream') if red else M('navy'))
+        body+=eyes([46,80],54,3.4)+E(63,72,17,11,M('cream'))+E(63,66,6,4,M('ink'))+smile(63,77)
+        return body
+    add('red-panda','Red panda · pale facial markings and a bushy ringed tail',masked_mammal(True))
+    add('raccoon','Raccoon · dark eye mask and a striped tail',masked_mammal())
     def cat():
         b=P('M82 100c33 5 37-20 21-29 10 16-3 18-17 15',M('ginger'),'#a6643c',1.7)
         b+=P('M41 67c-14 19-14 34-8 43h51c7-19-3-35-16-43Z',M('ginger'),'#a6643c',1.4)

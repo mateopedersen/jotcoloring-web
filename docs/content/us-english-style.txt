@@ -37,12 +37,11 @@ After copy changes, regenerate affected social covers; verify titles/description
 links, and open dialogs, then check layout at 320/390/768/1024/1440 CSS pixels.
 The style rules apply to new pages and imports as well as existing content.
 
-Collection header refinement, November 3: write a substantial, topic specific
-visitor introduction explaining what is in the reviewed collection and helping
-someone choose and color a drawing. About 60 to 110 words is a practical layout
-guide, not an SEO target. Preserve actual source observations; suggestions for
-coloring must remain advice. Vary openings and the advice itself across topics.
-Do not paste the same welcome or download paragraph onto every collection. Keep
-navigation summaries concise and free of these longer paragraphs. New topics
-must supply their own reviewed intro and tailored visitor guidance; the shared
-resolver must retain those facts and avoid invented details during fallback.
+Collection header refinement, November 5: introduce the printable collection
+first, using its actual topic and natural search language. Describe the reviewed
+drawing varieties and explain choosing a page, downloading its PDF or image, or
+coloring online. Each collection has its own opening and text. Do not prepend
+palette advice, generic encouragement, or a repeated Welcome/download paragraph.
+Read docs/content/collection-introductions.md. Keep the short SEO/social identity
+and individual artwork observations separate and intact. New topics need a
+source-bound introduction before release; missing or stale copy fails the tests.
