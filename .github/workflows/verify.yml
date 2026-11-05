@@ -74,9 +74,9 @@ jobs:
       vars.JOTCOLORING_DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment:
-      name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
-      url: ${{ github.ref_name == 'main' && 'https://jotcoloring.com' || 'https://staging.jotcoloring.com' }}
+    # GitHub Free private repositories support repository secrets, but not
+    # environment secrets. The existing scoped tokens retain separate names.
+    # This job and deploy-release.ts independently require the exact push/ref.
     steps:
       - uses: actions/checkout@v4
         with:

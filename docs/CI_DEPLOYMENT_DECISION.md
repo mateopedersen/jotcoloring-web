@@ -1,5 +1,48 @@
 # Tek otomatik yayın yolu: GitHub Actions
 
+## GitHub Free özel depo yayını — 6 Kasım 2026
+
+Sahip, GitHub Pro satın almadan depoyu private yapmayı ve önce gerçek içerik
+yükleme/site düzeltme akışlarını sınamayı istedi. Güncel yayın yapılandırması,
+GitHub Free private depolarında kullanılabilen **repository secrets** üzerinden
+aynı iki dar kapsamlı account-owned Cloudflare tokenını kullanır. Aşağıdaki
+28 Ekim environment-secret kurulumu tarihsel kayıttır; yeni işleyiş bu bölümdür.
+
+- `JOT_CF_STAGING_DEPLOY_TOKEN` ve `JOT_CF_PRODUCTION_DEPLOY_TOKEN` aynı hesap,
+  Worker ve zone kapsamlarını korur. Yeni geniş yetkili token, başka hesap,
+  R2/D1 veri yetkisi veya ücretli plan eklenmez.
+- Geçişte mevcut değerler, repository kodu çalıştırmayan tek kullanımlık işte
+  bu **aynı deponun** GitHub şifreleme anahtarına sealed-box ile kapatılır.
+  Yalnız şifreli çıktı GitHub repository-secret API'sine verilir. Açık değer
+  dışa aktarılmaz. Geçici aktarım workflow'u normal yayın yapılandırmasında yoktur.
+- `verify` başarılı olmadan yayın job'ı açılmaz. PR ve fork yayın yapamaz.
+  `main` yalnız production, `staging` yalnız staging tokenını seçer. Kesin
+  uzak branch SHA, artifact byte/hash, Worker/resource kimlikleri ve jobs→web
+  sürüm etkinleştirme/readback kontrolleri aynen zorunludur.
+- Workflow artık GitHub `environment:` özelliğine bağlı değildir. Free private
+  depoda platformun protected-branch/environment korumalarının Pro ile eşdeğer
+  olduğu iddia edilmez. Depoya yazma yetkisi yayın yetkisidir: geçişte tek yazan
+  kişi `mateopedersen` sahibidir. Yeni collaborator/app yetkisi vermeden önce
+  bu güven sınırı yeniden incelenmelidir. Değişiklikler PR + başarılı Verify
+  üzerinden alınmalı; workflow kontrolleri atlanmamalıdır.
+- Workers Builds ayrı yayıncı olarak açılmaz. Var olan Cloudflare web/jobs
+  Workers, R2, D1, kuyruk, route ve cron tetikleyicileri korunur. Konu yükleme
+  Cloudflare Access korumalı yönetim/import akışını kullanır; GitHub görünürlüğü
+  katalog dosyalarını değiştirmez. GitHub Free ortak Actions kotası sınırsız
+  değildir; kota engelinde mevcut site yayında kalır, yeni kod yayını durur.
+
+Geçiş öncesi staging `Verify` run42116679320 başarılıdır. Gerçek panelden
+802244-byte WebP private yükleme, `jc-cheetah-page-001` v2→v3 düzenleme,
+inceleme kuyruğu, staging yayını ve arama doğrulandı; Image ve PDF indirmeleri
+aynı SHA/baytlarla eşleşti. Bu testte bulunan kaynak kimliği hatası düzeltildi:
+yeni revision'da sosyal ve renkli türevlerin `source_asset_id` bağlantıları da
+yeni kaynak ID'sine taşınır; eski checksum onayı yenilenmez. Production katalog
+içeriği bu testte değiştirilmedi. Private sonrası gerçek release makbuzları
+operatörün geçiş raporunda ayrıca kaydedilir.
+
+[GitHub Actions secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) ·
+[GitHub deployment environments](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments)
+
 28 Ekim 2026 — `34d0da9` kaynak tabanında ilk gerçek Actions yayın denemesi yapıldı. Kullanıcı iki dar kapsamlı account-owned tokenı onayladı; operatör bunları ayrı ve branch kısıtlı GitHub environment secret'larına şifreli kaydetti ve repo aktivasyonunu açtı. **Staging run40696610833/attempt2: Verify PASS, jobs Worker upload PASS, ardından queue consumer uzlaştırmasındaki `GET /accounts/.../queues` isteği10000 ile reddedildi; web adımı çalışmadı.** Bu ilk denemenin tamamı başarısızdır; sonraki staging düzeltmesi aşağıda ayrı raporlanır. [İlk gerçek run](https://github.com/mateopedersen/jotcoloring-web/actions/runs/40696610833/attempts/2)
 
 Bu hataya yönelik version-only düzeltme gerçek staging run 40703500734 ve 40706443510 ile başarıyla yayımlandı; iki Worker için kesin version/deployment ID doğrulandı. Token kapsamı genişletilmez. İlk inceleme kaydı `evidence/ci-deploy-review.json` tarihsel taslaktır; güncel düzeltme kanıtı `evidence/ci-version-release-review.json` içindedir.
