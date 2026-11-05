@@ -2,7 +2,8 @@ import type {Content} from '../server/types';
 
 /** Display labels only. Accepted source titles, reviews and search identity stay intact. */
 export function coloringPageTitle(title:string){
- return `${title.trim().replace(/\s+coloring\s+pages?\s*[.!]?$/i,'').replace(/[.!]+$/,'')} Coloring Page`;
+ const label=title.trim().replace(/\s+coloring\s+pages?\s*[.!]?$/i,'').replace(/[.!]+$/,'');
+ return /\bcoloring\s+pages?\b/i.test(label)?label:`${label} Coloring Page`;
 }
 
 const suggestions:[RegExp,string][]=[
