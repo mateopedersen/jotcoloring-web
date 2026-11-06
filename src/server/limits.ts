@@ -1,4 +1,4 @@
-import type {Env} from './types';
+import type {Database,Env} from './types';
 import {AppError,sha256} from './http';
 /** Canonical D1 performs the increment atomically; no eventually-consistent cache counters. */
 export async function rateLimit(request:Request,env:Env,scope:string,maximum:number,windowSeconds=60){
@@ -7,5 +7,14 @@ export async function rateLimit(request:Request,env:Env,scope:string,maximum:num
  const key=await sha256(env.SESSION_SIGNING_SECRET+'\0'+ip),window=Math.floor(Date.now()/1000/windowSeconds)*windowSeconds;
  const result=await env.CATALOG_DB.prepare('INSERT INTO request_limit(scope,key_hash,window_start,count) VALUES(?,?,?,1) ON CONFLICT(scope,key_hash,window_start) DO UPDATE SET count=count+1 RETURNING count').bind(scope,key,window).first<{count:number}>();
  if(!result||result.count>maximum)throw new AppError('RATE_LIMITED','Too many requests. Please wait before trying again.',429);
+}
+export async function reservePhotoUpload(db:Database){
+ // The jobs Worker can expire 50 uploads every 10 minutes. Leave room to drain a missed batch.
+ const window=Math.floor(Date.now()/600000)*600;
+ const result=await db.prepare(`INSERT INTO request_limit(scope,key_hash,window_start,count)
+  VALUES('photo-upload-admission','global',?,1)
+  ON CONFLICT(scope,key_hash,window_start) DO UPDATE SET count=count+1 WHERE count<40
+  RETURNING count`).bind(window).first<{count:number}>();
+ if(!result)throw new AppError('RATE_LIMITED','Photo uploads are busy. Please wait before trying again.',429);
 }
 export async function verifyTurnstile(request:Request,env:Env,token:unknown){if(!env.TURNSTILE_SECRET_KEY)return;if(typeof token!=='string'||!token||token.length>2048)throw new AppError('CHALLENGE_REQUIRED','Complete the verification challenge.',403);const result=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({secret:env.TURNSTILE_SECRET_KEY,response:token,remoteip:request.headers.get('cf-connecting-ip'),idempotency_key:crypto.randomUUID()})});const body=await result.json() as {success:boolean;hostname?:string};if(!result.ok||!body.success||body.hostname!==new URL(request.url).hostname)throw new AppError('CHALLENGE_FAILED','Verification failed. Please try again.',403);}
