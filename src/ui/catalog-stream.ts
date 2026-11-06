@@ -3,16 +3,14 @@ export function mountCatalogStream(){
  const sentinel=document.querySelector<HTMLElement>('[data-catalog-stream]'),grid=document.querySelector<HTMLElement>('.jc-catalog-grid');
  if(!sentinel||!grid)return;
  const button=sentinel.querySelector<HTMLButtonElement>('button')!,status=sentinel.querySelector<HTMLElement>('[role=status]')!;
- const total=Number(sentinel.dataset.total);
  let cursor=sentinel.dataset.nextCursor||'',busy=false,done=!cursor,stopped=false,failures=0;
  let controller:AbortController|undefined,leaving=false,timer:ReturnType<typeof setTimeout>|undefined;
  const source=sentinel.dataset.source!;
  const seen=new Set([...grid.querySelectorAll<HTMLElement>('[data-content-id]')].map(e=>e.dataset.contentId));
- // Small series finish automatically. Large catalogs stay bounded and load ahead
- // of the reader, including enough cards to complete the current desktop row.
+ // Load ahead of the reader and complete the current desktop row. Even short
+ // collections are demand-driven so a visit does not drain every batch at once.
  const needed=()=>{
   if(leaving||done||stopped||document.visibilityState==='hidden')return false;
-  if(Number.isSafeInteger(total)&&total>0&&total<=240)return true;
   const columns=getComputedStyle(grid).gridTemplateColumns.split(' ').length;
   return seen.size%Math.max(1,columns)!==0||sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
  };

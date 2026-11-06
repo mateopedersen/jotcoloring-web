@@ -1,0 +1,62 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {publicCatalogDatabase} from '../src/server/catalog-reads';
+import type {Database,Statement} from '../src/server/types';
+
+function fixture(operation:()=>Promise<unknown>){
+ let calls=0,writes=0,batches=0;
+ const db:Database={
+  prepare(){
+   const execute=async()=>{calls++;return operation();};
+   const statement:Statement={bind(){return statement;},first:execute as Statement['first'],all:execute as Statement['all'],async run(){writes++;return{results:[],success:true,meta:{}};}};
+   return statement;
+  },
+  async batch(){batches++;return [];},async exec(){writes++;}
+ };
+ return{db,get calls(){return calls;},get writes(){return writes;},get batches(){return batches;}};
+}
+
+test('concurrent identical reads share the database operation, with independent returned objects',async()=>{
+ let release!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;});
+ const f=fixture(async()=>{await gate;return{count:42};}),db=publicCatalogDatabase(f.db);
+ assert.equal(db,publicCatalogDatabase(f.db));
+ const reads=Array.from({length:30},()=>db.prepare('SELECT COUNT(*) AS count FROM content WHERE status=?').bind('published').first<{count:number}>());
+ assert.equal(f.calls,1);release();const results=await Promise.all(reads);
+ assert.ok(results.every(value=>value?.count===42));results[0]!.count=0;assert.equal(results[1]!.count,42);
+ await db.prepare('SELECT COUNT(*) AS count FROM content WHERE status=?').bind('published').first();assert.equal(f.calls,2,'completed data is not cached');
+});
+
+test('parameters, result method, column selection and databases keep independent reads',async()=>{
+ const f=fixture(async()=>({count:1})),other=fixture(async()=>({count:2})),db=publicCatalogDatabase(f.db);
+ const results=await Promise.all([
+  db.prepare('SELECT count FROM content WHERE status=?').bind('published').first(),
+  db.prepare('SELECT count FROM content WHERE status=?').bind('draft').first(),
+  db.prepare('SELECT count FROM content WHERE status=?').bind('published').all(),
+  db.prepare('SELECT count FROM content WHERE status=?').bind('published').first('count'),
+  publicCatalogDatabase(other.db).prepare('SELECT count FROM content WHERE status=?').bind('published').first()
+ ]);
+ assert.equal(f.calls,4);assert.equal(other.calls,1);assert.deepEqual(results.at(-1),{count:2});
+});
+
+test('transient overload gets one shared retry and a later request reads fresh data',async()=>{
+ let attempts=0;const f=fixture(async()=>{if(++attempts===1)throw Error('D1_ERROR: D1 DB is overloaded. Too many resources consumed within a 10 second window');return{count:attempts};}),db=publicCatalogDatabase(f.db);
+ const results=await Promise.all(Array.from({length:20},()=>db.prepare('SELECT count FROM content').first()));
+ assert.equal(f.calls,2);assert.ok(results.every(value=>(value as {count:number}).count===2));
+ await db.prepare('SELECT count FROM content').first();assert.equal(f.calls,3);
+});
+
+test('persistent overload is bounded and rejected operations do not poison later requests',async()=>{
+ let failing=true;const f=fixture(async()=>{if(failing)throw Error('D1_ERROR: D1 DB is overloaded');return{count:7};}),db=publicCatalogDatabase(f.db);
+ await assert.rejects(()=>db.prepare('SELECT count FROM content').first(),/overloaded/);assert.equal(f.calls,2);
+ failing=false;assert.deepEqual(await db.prepare('SELECT count FROM content').first(),{count:7});assert.equal(f.calls,3);
+});
+
+test('validation, permanent failures, writes, CTE mutations and batches are never retried or coalesced',async()=>{
+ const f=fixture(async()=>{throw Error('SQLITE_ERROR: no such table');}),db=publicCatalogDatabase(f.db);
+ await assert.rejects(()=>db.prepare('SELECT * FROM missing').first(),/no such table/);assert.equal(f.calls,1);
+ await Promise.all([db.prepare('UPDATE content SET title=?').bind('one').run(),db.prepare('UPDATE content SET title=?').bind('one').run()]);
+ await db.exec('DELETE FROM content WHERE id=1');await db.batch([db.prepare('UPDATE content SET title=?').bind('two')]);
+ assert.equal(f.writes,3);assert.equal(f.batches,1);
+ const cte=db.prepare('WITH old AS (SELECT id FROM content) DELETE FROM content RETURNING id');
+ await assert.rejects(()=>cte.first(),/no such table/);assert.equal(f.calls,2);
+});
