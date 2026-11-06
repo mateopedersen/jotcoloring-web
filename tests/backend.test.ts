@@ -269,3 +269,23 @@ test('navigation collections deduplicate overlapping classifications and exact n
  const first=await repo.list({number:'111',limit:48});await assert.rejects(()=>repo.list({number:'222',limit:48,cursor:first.next_cursor!}),/cursor/);
  db.sql.close();search.sql.close();
 });
+
+test('scoped gallery queries start from indexed category membership rather than scanning unrelated content',async()=>{
+ const {db,search,env}=setup();
+ for(let i=0;i<8;i++)await add(db,search,'scoped-member-'+i,'Fox '+i);
+ const queries:{sql:string;values:unknown[]}[]=[];const prepare=db.prepare.bind(db);
+ db.prepare=(sql:string)=>{const statement=prepare(sql);const bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.includes('FROM content c WHERE')&&sql.includes('content_category'))queries.push({sql,values});return bind(...values);};return statement;};
+ const repo=new D1CatalogRepository(env,db),first=await repo.list({category:'animals',limit:3});
+ assert.equal(first.total,8);assert.equal(first.items.length,3);
+ for(const query of queries){
+  assert.match(query.sql,/c.id IN \(SELECT cc.content_id FROM content_category cc WHERE cc.category_id=/);
+  const plan=JSON.stringify(db.sql.prepare('EXPLAIN QUERY PLAN '+query.sql).all(...query.values as never[]));
+  assert.match(plan,/category_content/);
+  assert.doesNotMatch(plan,/CORRELATED.*SUBQUERY/,'category membership is computed once, not once per catalog row');
+ }
+ const next=await repo.list({category:'animals',limit:3,cursor:first.next_cursor!});assert.equal(next.total,8);
+ assert.ok(next.items.every(item=>!first.items.some(previous=>previous.id===item.id)));
+ await db.prepare("UPDATE content SET status='archived' WHERE id='scoped-member-0'").run();
+ assert.equal((await repo.list({category:'animals',limit:3})).total,7);
+ db.sql.close();search.sql.close();
+});
