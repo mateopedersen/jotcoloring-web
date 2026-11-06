@@ -1,3 +1,4 @@
+import {publicCatalogDatabase} from './catalog-reads';
 import {NAVIGATION_COLLECTIONS} from '../taxonomy/navigation';
 import {canonicalNumberSubject} from '../taxonomy/number-topics';
 import {seriesDirectory,type NumberSeries} from '../taxonomy/series-directory';
@@ -5,10 +6,10 @@ import type {CatalogLocation} from '../taxonomy/catalog-location';
 import type {CatalogRepository} from './catalog';
 import type {Content,Env} from './types';
 export async function loadSeriesDirectory(env:Env,repo:CatalogRepository,location:CatalogLocation,counts:{id:string;count:number}[]){
- let numbers:NumberSeries[]=[],groupTotals:Record<string,number>={};const db=env.CATALOG_DB;
+ let numbers:NumberSeries[]=[],groupTotals:Record<string,number>={};const db=env.CATALOG_DB?publicCatalogDatabase(env.CATALOG_DB):undefined;
  if(!db||location.number)return [];
  if(location.collection?.id==='education'||location.topic?.id==='numbers'){
-  numbers=(await db.prepare(`SELECT (${canonicalNumberSubject()}) AS number,COUNT(*) AS count,MIN(CASE WHEN EXISTS(SELECT 1 FROM asset a WHERE a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1) THEN c.id END) AS cover_id FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 AND EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers') GROUP BY number`).all<NumberSeries>()).results;
+  numbers=(await db.prepare(`SELECT (${canonicalNumberSubject()}) AS number,COUNT(*) AS count,MIN(CASE WHEN EXISTS(SELECT 1 FROM asset a WHERE a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1) THEN c.id END) AS cover_id FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 AND c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id='numbers') GROUP BY number`).all<NumberSeries>()).results;
  }
  if(!location.collection&&!location.topic){
   const groups=NAVIGATION_COLLECTIONS.map(c=>({id:c.id,roots:c.roots}));
