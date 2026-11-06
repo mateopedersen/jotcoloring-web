@@ -1,0 +1,30 @@
+-- Exact topic pages for the owner-authorized November 5 intake.
+-- Existing broad collections are reused; no new collection roots are created.
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('ambulance','Ambulance','vehicles',364) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('beyonce','Beyoncé','music',365) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('bmw','BMW','cars',366) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('blues-clues','Blue''s Clues','cartoons',367) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('blippi','Blippi','people',368) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('blaze','Blaze and the Monster Machines','cartoons',369) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('black-history-month','Black History Month','holidays',370) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('black-girl','Black Girl','people',371) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('bigfoot-yeti','Bigfoot and Yeti','fantasy',372) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('beyblade','Beyblade','dolls-toys',373) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('farm','Farm','farms',374) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('starbucks','Starbucks','drinks',375) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('star-trek','Star Trek','space',376) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('st-patricks-day','St. Patrick''s Day','holidays',377) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('peppa-pig','Peppa Pig','cartoons',378) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('milkshake','Milkshake','drinks',379) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('karate','Karate','sports',380) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('horse','Horse','farm-animals',381) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('horror','Horror','fantasy',382) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('home-alone','Home Alone','christmas',383) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('hocus-pocus','Hocus Pocus','halloween',384) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('ferrari','Ferrari','cars',385) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('fathers-day','Father''s Day','holidays',386) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('hot-air-balloon','Hot Air Balloon','vehicles',387) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('kawaii','Kawaii','art-patterns',388) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('jesus','Jesus','bible',389) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('jellyfish','Jellyfish','ocean',390) ON CONFLICT(id) DO NOTHING;
+PRAGMA foreign_keys = ON;

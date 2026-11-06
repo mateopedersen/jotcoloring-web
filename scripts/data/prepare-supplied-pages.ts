@@ -3,10 +3,9 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {createHash,createHmac} from 'node:crypto';
-import {inflateSync} from 'node:zlib';
 import sharp from 'sharp';
-import {PDFArray,PDFDocument,PDFDict,PDFName,PDFRawStream} from 'pdf-lib';
-import {SEASONAL_TEN_ZIP_CHECKSUMS,PUBLIC_FIGURE_TOPIC_COUNTS,COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS,LETTERS_26_ZIP_CHECKSUMS,ADDITIONAL_FIVE_ZIP_CHECKSUMS,NEW_EIGHT_A_ZIP_CHECKSUMS,NEW_THIRTEEN_R_ZIP_CHECKSUMS} from '../../src/server/reviewed-release-scope';
+import {PDFDocument,PDFDict,PDFName,PDFRawStream} from 'pdf-lib';
+import {SEASONAL_TEN_ZIP_CHECKSUMS,PUBLIC_FIGURE_TOPIC_COUNTS,COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS,LETTERS_26_ZIP_CHECKSUMS,ADDITIONAL_FIVE_ZIP_CHECKSUMS,NEW_EIGHT_A_ZIP_CHECKSUMS,NEW_THIRTEEN_R_ZIP_CHECKSUMS,NOVEMBER_27_TOPIC_COUNTS} from '../../src/server/reviewed-release-scope';
 import {inspectSuppliedPagePixels} from './supplied-page-validation';
 import {analyzeAgeImage,releaseAgeModel} from './age-vision';
 import {selectPreparedCategories,preparedCategorySelection} from './category-selection';
@@ -16,60 +15,22 @@ import {socialBinding,contentSocialSpec} from '../../src/social/model';
 import {BRAND_REVIEW_VERSION,brandLogoRGB,BRAND_LOGO_WIDTH,BRAND_LOGO_HEIGHT} from '../../src/server/branding';
 import {drawGrayscalePDFJPEG,drawPDFBrandFooter} from '../../src/server/pdf-branding';
 import {reviewPrintablePDF} from './pdf-review';
-import {decodePDFPNGPrediction} from './pdf-predictor';
+import {decodePDFImageBytes, sourceImagePlacement} from './supplied-pdf-source';
 import {canonicalJSON} from '../../src/server/http';
 import {validateManifest} from '../../src/server/manifest';
 import type {Asset,Manifest} from '../../src/server/types';
 const root=path.resolve(process.argv[2]);
 const shard=Number(process.argv[3]||0),shards=Number(process.argv[4]||1);
-const profile=process.argv[5]||'characters';if(!['characters','public-figures','seasonal-ten','letters','additional-five','new-eight','new-thirteen'].includes(profile))throw Error('Unknown supplied release profile');
-const seasonal=profile==='seasonal-ten',publicFigures=profile==='public-figures',letters=profile==='letters',additionalFive=profile==='additional-five',newEight=profile==='new-eight',newThirteen=profile==='new-thirteen';
-const expectedCount=seasonal?1000:publicFigures?283:letters?2600:additionalFive?500:newEight?800:newThirteen?1300:1700;
-const rowsFile=publicFigures?'private-release/editorial-candidates-public-figures.json':letters?'private-release/editorial-candidates-letters.json':additionalFive?'private-release/editorial-candidates-additional-five-20261104.json':newEight?'private-release/editorial-candidates-new-eight-20261104.json':newThirteen?'private-release/editorial-candidates-new-thirteen-20261104.json':'private-release/editorial-candidates.json';
+const profile=process.argv[5]||'characters';if(!['characters','public-figures','seasonal-ten','letters','additional-five','new-eight','new-thirteen','november-27'].includes(profile))throw Error('Unknown supplied release profile');
+const seasonal=profile==='seasonal-ten',publicFigures=profile==='public-figures',letters=profile==='letters',additionalFive=profile==='additional-five',newEight=profile==='new-eight',newThirteen=profile==='new-thirteen',november27=profile==='november-27';
+const expectedCount=seasonal?1000:publicFigures?283:letters?2600:additionalFive?500:newEight?800:newThirteen?1300:november27?Object.values(NOVEMBER_27_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0):1700;
+const rowsFile=publicFigures?'private-release/editorial-candidates-public-figures.json':letters?'private-release/editorial-candidates-letters.json':additionalFive?'private-release/editorial-candidates-additional-five-20261104.json':newEight?'private-release/editorial-candidates-new-eight-20261104.json':newThirteen?'private-release/editorial-candidates-new-thirteen-20261104.json':november27?'private-release/editorial-candidates-november-27.json':'private-release/editorial-candidates.json';
 const rows=JSON.parse(await fs.readFile(path.join(root,rowsFile),'utf8'));
-const expectedTopics=publicFigures?PUBLIC_FIGURE_TOPIC_COUNTS:Object.fromEntries(Object.keys(seasonal?SEASONAL_TEN_ZIP_CHECKSUMS:letters?LETTERS_26_ZIP_CHECKSUMS:additionalFive?ADDITIONAL_FIVE_ZIP_CHECKSUMS:newEight?NEW_EIGHT_A_ZIP_CHECKSUMS:newThirteen?NEW_THIRTEEN_R_ZIP_CHECKSUMS:COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS).map(t=>[t,100]));
+const expectedTopics=november27?NOVEMBER_27_TOPIC_COUNTS:publicFigures?PUBLIC_FIGURE_TOPIC_COUNTS:Object.fromEntries(Object.keys(seasonal?SEASONAL_TEN_ZIP_CHECKSUMS:letters?LETTERS_26_ZIP_CHECKSUMS:additionalFive?ADDITIONAL_FIVE_ZIP_CHECKSUMS:newEight?NEW_EIGHT_A_ZIP_CHECKSUMS:newThirteen?NEW_THIRTEEN_R_ZIP_CHECKSUMS:COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS).map(t=>[t,100]));
 const requestedTopic=process.argv[6];if(requestedTopic&&!(requestedTopic in expectedTopics))throw Error('Topic is outside this exact release.');
 if(Object.keys(expectedTopics).some(t=>rows.filter((r:any)=>r.topic===t).length!==expectedTopics[t])||rows.some((r:any)=>!(r.topic in expectedTopics)))throw Error('Complete exact topic inventory required');
 const secrets=JSON.parse(await fs.readFile(process.env.JOT_SECRETS_FILE!,'utf8')).production;
 const hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
-const sourcePlacementPattern=/q\s+([-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s+0\s+0\s+([-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s+([-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s+([-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+))\s+cm\s+\/([A-Za-z0-9_.+-]+)\s+Do\s+Q/g;
-function decodeASCII85(input:Uint8Array){
- const output:number[]=[],group:number[]=[];
- const emit=(values:number[],count=4)=>{let value=0;for(const digit of values)value=value*85+digit;if(value>0xffffffff)throw new Error('Invalid PDF ASCII85 value.');for(let shift=24;shift>=32-count*8;shift-=8)output.push(Math.floor(value/2**shift)&255);};
- for(let i=0;i<input.length;i++){
-  const b=input[i]!;if(b===0||b===9||b===10||b===12||b===13||b===32)continue;
-  if(b===126){if(input[i+1]===62)i++;break;}
-  if(b===122){if(group.length)throw new Error('Invalid PDF ASCII85 zero group.');output.push(0,0,0,0);continue;}
-  if(b<33||b>117)throw new Error('Invalid PDF ASCII85 character.');group.push(b-33);if(group.length===5){emit(group);group.length=0;}
- }
- if(group.length===1)throw new Error('Invalid final PDF ASCII85 group.');if(group.length>1){const count=group.length;while(group.length<5)group.push(84);emit(group,count-1);}
- return Buffer.from(output);
-}
-function decodePDFStream(stream:PDFRawStream,maxOutputLength:number){
- const raw=stream.dict.get(PDFName.of('Filter')),filters=raw instanceof PDFArray?raw.asArray().map(v=>v instanceof PDFName?v.toString().slice(1):''):raw instanceof PDFName?[raw.toString().slice(1)]:[];
- let bytes=Buffer.from(stream.getContents()),jpeg=false;
- for(const filter of filters){
-  if(filter==='ASCII85Decode'||filter==='A85')bytes=decodeASCII85(bytes);
-  else if(filter==='FlateDecode'||filter==='Fl')bytes=inflateSync(bytes,{maxOutputLength});
-  else if(filter==='DCTDecode'||filter==='DCT'){jpeg=true;break;}
-  else throw new Error('Unsupported PDF image filter: '+filter);
- }
- return{bytes,jpeg,filters};
-}
-function decodePDFImageBytes(stream:PDFRawStream,width:number,height:number){
- const decoded=decodePDFStream(stream,width*height*3+height),params=stream.dict.get(PDFName.of('DecodeParms'));
- if(!(params instanceof PDFDict))return decoded;
- const predictor=Number(params.get(PDFName.of('Predictor'))?.toString()||1);if(predictor===1)return decoded;
- if(decoded.jpeg||Number(params.get(PDFName.of('BitsPerComponent'))?.toString()||8)!==8||Number(params.get(PDFName.of('Columns'))?.toString()||1)!==width)throw Error('Unsupported supplied PDF predictor parameters');
- decoded.bytes=decodePDFPNGPrediction(decoded.bytes,width,height,Number(params.get(PDFName.of('Colors'))?.toString()||1),predictor);return decoded;
-}
-function sourceImagePlacement(doc:PDFDocument,name:PDFName){
- const found:{width:number;height:number;x:number;y:number}[]=[];
- for(const [,object] of doc.context.enumerateIndirectObjects())if(object instanceof PDFRawStream&&object.dict.get(PDFName.of('Subtype'))!==PDFName.of('Image')&&object.dict.get(PDFName.of('Filter'))?.toString().includes('FlateDecode')){
-  const text=decodePDFStream(object,100_000).bytes.toString('ascii');for(const match of text.matchAll(sourcePlacementPattern))if(match[5]===name.toString().slice(1))found.push({width:Number(match[1]),height:Number(match[2]),x:Number(match[3]),y:Number(match[4])});
- }
- if(found.length!==1)throw new Error('Could not uniquely locate supplied PDF image placement.');return found[0];
-}
 async function repairSuppliedPDF(bytes:Buffer,title:string){
  const source=await PDFDocument.load(bytes,{ignoreEncryption:false});if(source.getPageCount()!==1)throw Error('Supplied PDF must contain one page.');
  const sourcePage=source.getPage(0),size=sourcePage.getSize();if(Math.abs(size.width-595.2756)>1||Math.abs(size.height-841.8898)>1)throw Error('Supplied PDF is not A4.');
@@ -93,13 +54,13 @@ async function repairSuppliedPDF(bytes:Buffer,title:string){
  }
  if(!output)throw Error('Repaired grayscale PDF exceeds the 1 MB site limit.');return {bytes:output,artwork_dimensions:{width:artwork.width,height:artwork.height},artwork_position:artPlacement,logo_position:logoPlacement};
 }
-const auditFile=publicFigures?'public-figure-combined-pdf-audit.json':letters?'letters-pdf-pair-audit.json':additionalFive?'additional-pdf-pair-audit-20261104.json':newEight?'new-eight-source-inventory-20261104.json':newThirteen?'new-thirteen-media-audit-20261104.json':'pdf-pair-audit.json';
-const auditPath=additionalFive||newEight||newThirteen?path.join(root,'private-release',auditFile):path.join(root,auditFile);
+const auditFile=publicFigures?'public-figure-combined-pdf-audit.json':letters?'letters-pdf-pair-audit.json':additionalFive?'additional-pdf-pair-audit-20261104.json':newEight?'new-eight-source-inventory-20261104.json':newThirteen?'new-thirteen-media-audit-20261104.json':november27?'november-27-source-audit.json':'pdf-pair-audit.json';
+const auditPath=additionalFive||newEight||newThirteen||november27?path.join(root,'private-release',auditFile):path.join(root,auditFile);
 const audit=JSON.parse(await fs.readFile(auditPath,'utf8'));
 const auditedCount=newEight?audit.topics?.reduce((sum:number,t:any)=>sum+(t.paired_count||0),0):newThirteen?audit.design_count:audit.checked;
 if(audit.status!=='PASS'||auditedCount!==expectedCount||rows.length!==expectedCount)throw Error('Complete supplied-file audit required.');
 if(newEight&&audit.topics.some((t:any)=>t.crc_status!=='PASS'||t.issues.length||t.unmatched_stems.length||t.pdf_count!==100||t.webp_count!==100))throw Error('Exact complete paired source archives required.');
-if(newThirteen&&audit.topics.some((t:any)=>t.pdf_count!==100||t.webp_count!==100||t.a4_single_page_pdf_count!==100||t.decoded_webp_count!==100))throw Error('Exact complete decoded source archives required.');
+if((newThirteen||november27)&&audit.topics.some((t:any)=>t.pdf_count!==expectedTopics[t.topic]||t.webp_count!==expectedTopics[t.topic]||t.a4_single_page_pdf_count!==expectedTopics[t.topic]||t.decoded_webp_count!==expectedTopics[t.topic]))throw Error('Exact complete decoded source archives required.');
 try{for(const [i,row] of rows.entries()){
  if(requestedTopic&&row.topic!==requestedTopic)continue;
  if(i%shards!==shard)continue;

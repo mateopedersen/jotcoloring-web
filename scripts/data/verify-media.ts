@@ -10,9 +10,23 @@ import {socialBinding} from '../../src/social/model';
 import {canonicalJSON} from '../../src/server/http';
 import {validateManifest} from '../../src/server/manifest';
 import {inspectSuppliedPagePixels} from './supplied-page-validation';
+import {verifiedSuppliedPDFLogoPlacement, type SuppliedPDFSource} from './supplied-pdf-source';
 import {forEachInPairs} from '../../src/server/bounded';
 const args=process.argv.slice(2);let outputPath:string|undefined;
 if(args[0]==='--output'){outputPath=path.resolve(args[1]);args.splice(0,2)}
+type SourceRecord=SuppliedPDFSource & {design_id:string;source_sha256:string;original_webp_sha256:string};
+const suppliedSources=new Map<string,SourceRecord>();
+if(args[0]==='--supplied-sources'){
+ const sources=JSON.parse(await fs.readFile(args[1]!, 'utf8')) as SourceRecord[];
+ if(!Array.isArray(sources)||!sources.length||sources.length>10000)throw Error('Explicit supplied PDF source records are required.');
+ for(const row of sources){
+  if(!/^[a-z0-9-]+__\d{3}$/.test(row.design_id)||!/^[a-f0-9]{64}$/.test(row.source_sha256)||row.source_sha256!==row.original_webp_sha256)throw Error('Invalid supplied source identity.');
+  const id='jc-'+row.design_id.replace('__','-');
+  if(suppliedSources.has(id))throw Error('Duplicate supplied source identity.');
+  suppliedSources.set(id,row);
+ }
+ args.splice(0,2);
+}
 const explicit=args[0]==='--folders-json',folderList=explicit?JSON.parse(await fs.readFile(args[1]!, 'utf8')):undefined;
 if(explicit&&(!Array.isArray(folderList)||!folderList.length||folderList.length>10000||folderList.some((v:unknown)=>typeof v!=='string'||!path.isAbsolute(v))||new Set(folderList).size!==folderList.length))throw Error('Explicit unique prepared folders are required.');
 const roots=(explicit?[]:args.length?args:['../../media']).map(root=>path.resolve(root));const folders:string[]=explicit?folderList:[];const entries:any[]=[];
@@ -23,11 +37,18 @@ async function verifyFolder(folder:string){
  const files=JSON.parse(await fs.readFile(path.join(folder,'files.json'),'utf8'));
  const sourceBound=manifest.provenance.reference?.includes('supplied JotColoring logo')===true;
  const sourceBytes=sourceBound?await fs.readFile(files.source_original):undefined;
+ let sourceLogoPlacement;
+ if(sourceBound&&suppliedSources.size){
+  const source=suppliedSources.get(manifest.content_id);
+  const line=manifest.assets.find(asset=>asset.role==='printable_webp_bw');
+  if(!source||line?.sha256!==source.source_sha256||!manifest.provenance.reference?.includes('supplied PDF SHA-256 '+source.original_pdf_sha256))throw Error('Supplied source record does not match '+manifest.content_id);
+  sourceLogoPlacement=await verifiedSuppliedPDFLogoPlacement(source);
+ }
  for(const a of manifest.assets){
   const bytes=await fs.readFile(files[a.role]);
   if(bytes.length!==a.bytes||createHash('sha256').update(bytes).digest('hex')!==a.sha256)throw new Error('Checksum mismatch '+a.asset_id);
   if(a.mime==='application/pdf'){
-   await reviewPrintablePDF(bytes,a.role,true,manifest.title);
+   await reviewPrintablePDF(bytes,a.role,true,manifest.title,sourceLogoPlacement);
    entries.push({id:manifest.content_id,role:a.role,bytes:bytes.length,pages:1,artwork_grayscale:true,brand_version:BRAND_VERSION});
   }else{
    const {data,info}=await sharp(bytes,{limitInputPixels:25_000_000}).toColourspace('srgb').removeAlpha().raw().toBuffer({resolveWithObject:true});
