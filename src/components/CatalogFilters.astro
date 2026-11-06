@@ -9,8 +9,8 @@ import CategoryIcon from './CategoryIcon.astro';
 import VectorIcon from './VectorIcon.astro';
 import Icon from './HomeIcon.astro';
 import '../styles/catalog-filters.css';
-interface Props {total:number;query:CatalogQuery;category?:string;currentURL:string;ageCollection?:boolean;counts?:{id:string;count:number}[]}
-const {total,query,category='',currentURL,ageCollection=false,counts=[]}=Astro.props;
+interface Props {total:number;unavailable?:boolean;query:CatalogQuery;category?:string;currentURL:string;ageCollection?:boolean;counts?:{id:string;count:number}[]}
+const {total,unavailable=false,query,category='',currentURL,ageCollection=false,counts=[]}=Astro.props;
 const url=new URL(currentURL),reset=clearFilterURL(currentURL);
 const selectedTopic=query.subcategory?categoryById(query.subcategory):undefined;
 const selectedCategory=query.number?'number-'+query.number:selectedTopic?.parent?selectedTopic.parent+'/'+selectedTopic.id:query.collection||category;
@@ -21,7 +21,7 @@ if(ageCollection)for(const key of ['collection','category','subcategory','number
 const active=!!query.q||!!query.recommended_age&&!ageCollection||!!query.age?.length||!!query.difficulty?.length||query.sort==='newest'||query.sort==='title'||ageCollection&&!!selectedCategory;
 const searchHelp=ageCollection?'Search within '+AGE_BANDS.find(b=>b.id===query.recommended_age)?.label.toLowerCase()+'. Your age selection stays applied.':'Search these coloring pages. Your topic, age and detail choices stay applied.';
 ---
-<div class="jc-browse-toolbar" id={ageCollection?'age-results':'catalog-results'}><p class="jc-result-count"><Icon name="grid" size={20}/><strong>{total.toLocaleString('en-US')}</strong> {total===1?'Coloring Page':'Coloring Pages'}</p><details class="jc-filter-disclosure" open={active}><summary><Icon name="filter" size={18}/>Filter & Sort{active&&<span class="jc-filter-active">Active</span>}<Icon name="chevron" size={14}/></summary><form class:list={['jc-catalog-filters',ageCollection&&'jc-catalog-filters--age']} id="catalog-filters" action="/api/catalog-filters" method="get">
+<div class="jc-browse-toolbar" id={ageCollection?'age-results':'catalog-results'}><p class="jc-result-count"><Icon name="grid" size={20}/>{unavailable?'Coloring Pages':<><strong>{total.toLocaleString('en-US')}</strong> {total===1?'Coloring Page':'Coloring Pages'}</>}</p><details class="jc-filter-disclosure" open={active}><summary><Icon name="filter" size={18}/>Filter & Sort{active&&<span class="jc-filter-active">Active</span>}<Icon name="chevron" size={14}/></summary><form class:list={['jc-catalog-filters',ageCollection&&'jc-catalog-filters--age']} id="catalog-filters" action="/api/catalog-filters" method="get">
  <input type="hidden" name="source" value={url.pathname+url.search}/>
  <input type="hidden" name="initial_category" value={selectedCategory}/>
  <label class="jc-filter-search" for="catalog-search"><span class="jc-filter-field-heading"><Icon name="search" size={24}/><span>Search These Pages</span></span><span class="jc-filter-search-row"><input id="catalog-search" aria-label="Search These Pages" type="search" name="q" value={query.q||''} maxlength="160" placeholder="Try cats, flowers, or a number" aria-describedby="catalog-search-help"/><button type="submit"><Icon name="search" size={20}/>Search</button></span><small id="catalog-search-help">{searchHelp}</small></label>
