@@ -7,12 +7,10 @@ export function mountCatalogStream(){
  let controller:AbortController|undefined,leaving=false,timer:ReturnType<typeof setTimeout>|undefined;
  const source=sentinel.dataset.source!;
  const seen=new Set([...grid.querySelectorAll<HTMLElement>('[data-content-id]')].map(e=>e.dataset.contentId));
- // Load ahead of the reader and complete the current desktop row. Even short
- // collections are demand-driven so a visit does not drain every batch at once.
+ // A partly filled row is normal. Fetch the next batch as the reader approaches it.
  const needed=()=>{
   if(leaving||done||stopped||document.visibilityState==='hidden')return false;
-  const columns=getComputedStyle(grid).gridTemplateColumns.split(' ').length;
-  return seen.size%Math.max(1,columns)!==0||sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
+  return sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
  };
  const schedule=()=>{if(!timer&&needed())timer=setTimeout(()=>{timer=undefined;void load();},80);};
  const load=async()=>{
