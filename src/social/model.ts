@@ -1,10 +1,11 @@
 import {catalogLocation} from '../taxonomy/catalog-location';
-import {categoryPath} from '../taxonomy/catalog';
+import {categoryPath,COLORING_TAXONOMY} from '../taxonomy/catalog';
 import {categories,animalCategories,coloringTopic} from '../ui/categories';
 import {AGE_BANDS} from '../age/model';
 import {displayTitle} from '../ui/titles';
 import {PHOTO_SEO,DIRECTORY_SEO,ALL_PAGES_SEO} from '../seo/catalog-copy';
 import {NOVEMBER_07_FIVE_TOPICS} from '../taxonomy/november-07-five-topics';
+import {NOVEMBER_07_ADDITIONAL_TOPICS} from '../taxonomy/november-07-additional-topics';
 export const OG_WIDTH=1200,OG_HEIGHT=630,OG_VERSION='jot-social-editorial-v1';
 export type SocialKind='home'|'collection'|'category'|'age'|'studio'|'photo'|'ai'|'artwork'|'guide'|'about'|'license'|'privacy'|'help'|'contact'|'terms'|'cookies'|'accessibility'|'notfound'|'admin'|'export'|'detail';
 export interface SocialSpec {key:string;paths:string[];kind:SocialKind;label:string;headline:string;description:string;icon:string;art:string[];badges:string[];screen?:string;age?:string;}
@@ -34,9 +35,10 @@ export const SOCIAL_PAGES:SocialSpec[]=[
  page('notfound','/404/','notfound','THIS PAGE WANDERED OFF','Let’s find a fresh page.','A little detour can lead to your next coloring adventure.','all',['woodland-friends'],['Explore pages','Find a new favorite']),
  page('admin','/admin/','admin','JOTCOLORING MANAGEMENT','A well-kept creative collection.','The authorized workspace for content, files, publishing and recovery.','license',['botanical-mandala'],['Content','Files','Publishing'])
 ];
-const sourceSpecificCoverCategories=new Set(['social-media','kangaroo','rhino','dogs']);;
-for(const c of categories)SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,({bible:'Bible scenes, outline lettering, and illustrated parables to color.',cartoons:'Hello Kitty, Bluey, Descendants, and KPop Demon Hunters characters.','dolls-toys':'Barbie scenes and rounded squishy-style animal and food mascots.','video-games':'Sonic, Minecraft, and Five Nights at Freddy’s scenes to print or color online.'} as Record<string,string>)[c.id]||(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${c.name.toLowerCase()} drawings to print or color online.`),c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
+const sourceSpecificCoverCategories=new Set(['social-media','kangaroo','rhino','dogs',...NOVEMBER_07_ADDITIONAL_TOPICS.map(c=>c.id)]);
+for(const c of categories)SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,({bible:'Bible scenes, outline lettering, and illustrated parables to color.',cartoons:'Hello Kitty, Bluey, Descendants, and KPop Demon Hunters characters.','dolls-toys':'Barbie scenes and rounded squishy-style animal and food mascots.','video-games':'Sonic, Minecraft, and Five Nights at Freddy’s scenes to print or color online.'} as Record<string,string>)[c.id]||(c.editorial_only||sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${c.name.toLowerCase()} drawings to print or color online.`),c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
 for(const c of animalCategories)if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('animals-'+c.id,categoryPath(c.id),'category','ANIMAL COLORING COLLECTION',`${coloringTopic(c.id)} coloring pages.`,(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${coloringTopic(c.id).toLowerCase()} coloring pages to download or color online.`),c.icon,c.sample?[c.sample]:[],['Explore the theme','Print or color']));
+for(const c of COLORING_TAXONOMY.filter(category=>category.editorial_only&&category.parent))if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('topic-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,c.intro.split(/(?<=[.!?])\s/)[0]+'.',c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
 const november07CategoryDescriptions:Record<string,string>={
  rhino:'Rhino pages show adults, calves, grasslands, ponds, and leafy habitats.',
  dogs:'Dogs and puppies appear in portraits, gardens, homes, and playful scenes.',
