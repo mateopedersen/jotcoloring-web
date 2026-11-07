@@ -385,11 +385,11 @@
     "description": "Explore cats & kittens coloring pages to download or color online."
   },
   "animals-dogs": {
-    "src": "/og/pages/animals-dogs-b72530952d2065e8.png",
-    "alt": "JotColoring animal coloring collection share image: Dogs & Puppies coloring pages. ",
-    "sha256": "b72530952d2065e802004e89b3ad006020efc2422ad5fa189d89a1db5cc9303b",
+    "src": "/og/pages/animals-dogs-efd4d5eef9d52fe9.png",
+    "alt": "JotColoring animal coloring collection share image: Dogs & Puppies coloring pages. Featuring Puppy Meeting a Rain Boot Coloring Page 001, Puppy Playing with a Ball Coloring Page 002, Puppy Curled Up Asleep Coloring Page 003.",
+    "sha256": "efd4d5eef9d52fe9198b3bbbb34df1d66788ac240ecd793656fc2b571ce6678c",
     "title": "Dogs & Puppies coloring pages.",
-    "description": "Explore dogs & puppies coloring pages to download or color online."
+    "description": "Dogs and puppies appear in portraits, gardens, homes, and playful scenes."
   },
   "animals-ocean-life": {
     "src": "/og/pages/animals-ocean-life-6ff00c580ab9bd50.png",
@@ -677,5 +677,33 @@
     "sha256": "59fc98e48cc07c4b217a65a5ca85bac705123b1abb148083fedae1889f34a05d",
     "title": "Kangaroo coloring pages.",
     "description": "Kangaroos & joeys."
+  },
+  "animals-rhino": {
+    "src": "/og/pages/animals-rhino-d428dd03073ce2da.png",
+    "alt": "JotColoring animal coloring collection share image: Rhino coloring pages. Featuring Rhino Grazing Beneath an Acacia Coloring Page 001, Rhino Browsing a Leafy Sprig Coloring Page 002, Rhino Standing Beside a Rock Coloring Page 003.",
+    "sha256": "d428dd03073ce2da9c2472e567b4726706b41bf422ab0ea3a58cdb7ec83975bf",
+    "title": "Rhino coloring pages.",
+    "description": "Rhino themes to explore."
+  },
+  "category-gymnastics": {
+    "src": "/og/pages/category-gymnastics-b3a9cfbb9b17f859.png",
+    "alt": "JotColoring printable coloring pages share image: Gymnastics coloring pages. Featuring Gymnastics Arms Raised on a Floor Mat Coloring Page 001, Gymnastics Balancing Beside a Vault Coloring Page 002, Gymnastics Circular Hoop Routine Coloring Page 003.",
+    "sha256": "b3a9cfbb9b17f859aaae7f68f72de27a11e1c90aa5ccd6886935c1256dc04e2a",
+    "title": "Gymnastics coloring pages.",
+    "description": "Gymnastics pages feature beams, vaults, bars, rings, ribbons, and routines."
+  },
+  "category-rescue-bots": {
+    "src": "/og/pages/category-rescue-bots-a7da69b6755a563f.png",
+    "alt": "JotColoring printable coloring pages share image: Transformers Rescue Bots coloring pages. Featuring Transformers Rescue Bots Robot Carrying a Hose Coloring Page 001, Transformers Rescue Bots Waving Rescue Robot Coloring Page 002, Transformers Rescue Bots Helicopter Over the Hills Coloring Page 003.",
+    "sha256": "a7da69b6755a563fba6e9899ff614f2d6da000e4dd11cbacc75064e562b6c44c",
+    "title": "Transformers Rescue Bots coloring pages.",
+    "description": "Transformers Rescue Bots appear as robots, vehicles, and community helpers."
+  },
+  "category-pusheen": {
+    "src": "/og/pages/category-pusheen-bf3be98aa3cf7c8c.png",
+    "alt": "JotColoring printable coloring pages share image: Pusheen coloring pages. Featuring Pusheen Holding a Strawberry Coloring Page 001, Pusheen Lounging on a Pillow Coloring Page 002, Pusheen Sleeping with Curled Tail Coloring Page 003.",
+    "sha256": "bf3be98aa3cf7c8c62223da95f894806f1a9e652747def0cc1f59b6a38d21c5d",
+    "title": "Pusheen coloring pages.",
+    "description": "Pusheen appears with treats, crafts, books, plants, and playful settings."
   }
 }

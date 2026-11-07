@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-770e047bc938.svg",
+  "url": "/illustrations/jotcoloring-icons-afbb244d05ef.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -35,6 +35,11 @@
     {
       "id": "animals",
       "label": "Animals · red fox",
+      "group": "Categories"
+    },
+    {
+      "id": "rhino",
+      "label": "Rhinoceros · broad muzzle and horn",
       "group": "Categories"
     },
     {
