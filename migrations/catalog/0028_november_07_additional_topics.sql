@@ -1,0 +1,25 @@
+-- Owner-authorized November 7 artwork topics. Parent categories match the reviewed subject.
+PRAGMA foreign_keys = ON;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('guinea-pig','Guinea Pig','pets',460) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('gundam','Gundam','robots',461) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('seahorse','Seahorse','ocean',462) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('guitar','Guitar','instruments',463) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('science','Science','education',464) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('school-bus','School Bus','vehicles',465) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('samurai','Samurai','people',466) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('sad','Sad Feelings','people',467) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('groundhog-day','Groundhog Day','holidays',468) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('santa','Santa Claus','christmas',469) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rudolph','Rudolph the Red-Nosed Reindeer','christmas',470) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('seal','Seal','ocean',471) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('robin','Robin','birds',472) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('gudetama','Gudetama','cartoons',473) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rugrats','Rugrats','cartoons',474) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('roblox','Roblox','video-games',475) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rio','Rio','cartoons',476) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rilakkuma','Rilakkuma','cartoons',477) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rick-and-morty','Rick and Morty','cartoons',478) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('scarecrow','Scarecrow','seasons',479) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('sanrio','Sanrio Characters','cartoons',480) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('saint','Saints','faith',481) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,name,parent_id,sort_order) VALUES('rocket-league','Rocket League','video-games',482) ON CONFLICT(id) DO NOTHING;

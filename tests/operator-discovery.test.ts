@@ -1,10 +1,10 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';
 import {remoteContext} from '../scripts/ops/release-context';
 test('operator sitemap wakes use the real scoped queue while inline import/projection delivery remains suppressed',async(t)=>{
- const temp=await fs.mkdtemp(path.join(os.tmpdir(),'jot-discovery-adapter-')),auth=process.env.JOT_WRANGLER_AUTH_FILE,secrets=process.env.JOT_SECRETS_FILE,native=globalThis.fetch;
- t.after(async()=>{globalThis.fetch=native;if(auth===undefined)delete process.env.JOT_WRANGLER_AUTH_FILE;else process.env.JOT_WRANGLER_AUTH_FILE=auth;if(secrets===undefined)delete process.env.JOT_SECRETS_FILE;else process.env.JOT_SECRETS_FILE=secrets;await fs.rm(temp,{recursive:true,force:true});});
- process.env.JOT_WRANGLER_AUTH_FILE=path.join(temp,'auth.toml');process.env.JOT_SECRETS_FILE=path.join(temp,'secrets.json');
- await fs.writeFile(process.env.JOT_WRANGLER_AUTH_FILE,'oauth_token = "test-only"\nexpiration_time = "'+new Date(Date.now()+3600000).toISOString()+'"\n');await fs.writeFile(process.env.JOT_SECRETS_FILE,JSON.stringify({staging:{MEDIA_VALIDATION_SECRET:'test-only',CURSOR_SIGNING_SECRET:'test-only'}}));
+ const temp=await fs.mkdtemp(path.join(os.tmpdir(),'jot-discovery-adapter-')),credentialFile=process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE,secrets=process.env.JOT_SECRETS_FILE,native=globalThis.fetch;
+ t.after(async()=>{globalThis.fetch=native;if(credentialFile===undefined)delete process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE;else process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE=credentialFile;if(secrets===undefined)delete process.env.JOT_SECRETS_FILE;else process.env.JOT_SECRETS_FILE=secrets;await fs.rm(temp,{recursive:true,force:true});});
+ process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE=path.join(temp,'cloudflare-credentials.json');process.env.JOT_SECRETS_FILE=path.join(temp,'secrets.json');
+ await fs.writeFile(process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE,JSON.stringify({staging:{apiToken:'test-only',r2AccessKeyId:'test-only',r2SecretAccessKey:'test-only'}}));await fs.writeFile(process.env.JOT_SECRETS_FILE,JSON.stringify({staging:{MEDIA_VALIDATION_SECRET:'test-only',CURSOR_SIGNING_SECRET:'test-only'}}));
  const calls:{url:string;body:any}[]=[];
  globalThis.fetch=async(input,init)=>{const url=String(input),body=init?.body?JSON.parse(String(init.body)):null;calls.push({url,body});return new Response(JSON.stringify({success:true,result:url.includes('/messages')?{message_id:'test-only'}:[{queue_name:'jotcoloring-staging-ingest',queue_id:'existing-staging-queue'}]}),{headers:{'Content-Type':'application/json'}});};
  const {env}=await remoteContext('staging',{requestLimit:10});assert.equal(env.DISCOVERY_ENABLED,'true');
