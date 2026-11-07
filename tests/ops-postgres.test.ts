@@ -9,9 +9,9 @@ import {inspectSnapshot,importSnapshot,compareSnapshot,TABLES,type Pg} from '../
 
 // Historical snapshots stop before the color/discovery schema; later migrations
 // must not be applied to a database that intentionally omits those tables.
-async function fixture(legacy=false,preColor=false,preQueue=false){
+async function fixture(legacy=false,preColor=false,preQueue=false,preLease=false){
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'jotcoloring-migration-test-')),sqlite=path.join(dir,'source.sqlite'),snapshot=path.join(dir,'catalog.ndjson');
- const cutoff=legacy||preColor?12:preQueue?15:null;
+ const cutoff=legacy||preColor?12:preQueue?15:preLease?24:null;
  const script=`import sqlite3,pathlib,sys\ndb=sqlite3.connect(sys.argv[1])\nfor p in sorted(pathlib.Path('migrations/catalog').glob('*.sql')): \n if ${cutoff===null?"True":`int(p.name.split('_',1)[0])<=${cutoff}`}: db.executescript(p.read_text())\ndb.execute("INSERT INTO content(id,slug,title,status,provenance_json) VALUES(?,?,?,?,?)",('fixture-id','unicode-fixture','Çiçek 🐇 \\\"quoted\\\"\\nsecond line','draft','{\\\"source\\\":\\\"test\\\"}'))\ndb.execute("INSERT INTO outbox_event(seq,event_id,content_id,version,event_type) VALUES(?,?,?,?,?)",(9007199254740995,'large-sequence','fixture-id',1,'draft'))\ndb.execute("INSERT INTO age_recommendation(content_id,content_version,source_sha256,band,score_hundredths,method_version) VALUES(?,?,?,?,?,?)",('fixture-id',1,'a'*64,'adults',8347,'jot-age-vision-1.0.0'))\n${!legacy&&!preColor?`db.execute("INSERT INTO color_reference_job(job_key,content_id,source_sha256,preview_sha256,engine) VALUES(?,?,?,?,?)",('color-fixture','fixture-id','a'*64,'b'*64,'pixel-conditioned-v3'))\ndb.execute("INSERT INTO color_ai_reservation(request_id,job_key,day,neurons,daily_limit) VALUES(?,?,?,?,?)",('vision-fixture','color-fixture','2026-11-01',600,9000))\n`:""}${legacy?'db.execute("DROP TABLE age_recommendation")\n':''}db.commit();db.close()\n`;
  const made=spawnSync('python3',['-c',script,sqlite],{encoding:'utf8'});assert.equal(made.status,0,made.stderr);
  const exported=spawnSync('python3',['scripts/ops/catalog-transfer.py',sqlite,snapshot],{encoding:'utf8'});assert.equal(exported.status,0,exported.stderr);
@@ -64,4 +64,46 @@ test('snapshot version and additive restore reject unreviewed columns or target 
   const altered=spawnSync('python3',['-c',"import sqlite3,sys;db=sqlite3.connect(sys.argv[1]);db.execute(\"ALTER TABLE discovery_state ADD COLUMN rebuild_state TEXT NOT NULL DEFAULT 'idle'\");db.commit()",path.join(f.dir,'source.sqlite')],{encoding:'utf8'});assert.equal(altered.status,0,altered.stderr);
   const exported=spawnSync('python3',['scripts/ops/catalog-transfer.py',path.join(f.dir,'source.sqlite'),path.join(f.dir,'partial-schema.ndjson')],{encoding:'utf8'});assert.notEqual(exported.status,0);assert.match(exported.stderr,/Unreviewed discovery_state schema/);assert.equal(await fs.stat(path.join(f.dir,'partial-schema.ndjson')).then(()=>true,()=>false),false);
  }finally{await db.close();await fs.rm(f.dir,{recursive:true,force:true});}
+});
+
+
+test('current processing lease fields transfer as nullable TEXT and preserve exact source values',async()=>{
+ const f=await fixture(),db=await database();
+ try{
+  const seeded=spawnSync('python3',['-c',`import sqlite3,sys
+db=sqlite3.connect(sys.argv[1])
+db.execute("INSERT INTO creator_job(id,owner_id,idempotency_key,payload_sha256,parameters_json,source_revision,model,status,reservation_micros,daily_limit_micros,monthly_limit_micros,concurrent_limit,session_limit,created_at,expires_at,processing_token,processing_lease_until) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",('lease-job','dummy-owner','lease-request','a'*64,'{}','source','dummy-model','processing',0,1000,1000,10,10,'2026-11-01T00:00:00.000Z','2026-11-08T00:00:00.000Z','dummy-lease-token','2026-11-07T13:24:56.123Z'))
+db.commit();db.close()
+`,path.join(f.dir,'source.sqlite')],{encoding:'utf8'});assert.equal(seeded.status,0,seeded.stderr);
+  const snapshot=path.join(f.dir,'lease.ndjson'),exported=spawnSync('python3',['scripts/ops/catalog-transfer.py',path.join(f.dir,'source.sqlite'),snapshot],{encoding:'utf8'});assert.equal(exported.status,0,exported.stderr);
+  const imported=await importSnapshot(db as unknown as Pg,snapshot);assert.ok((await compareSnapshot(db as unknown as Pg,imported.snapshot)).every(row=>row.status==='PASS'));
+  assert.deepEqual((await db.query<{processing_token:string;processing_lease_until:string}>("SELECT processing_token,processing_lease_until FROM creator_job WHERE id='lease-job'")).rows[0],{processing_token:'dummy-lease-token',processing_lease_until:'2026-11-07T13:24:56.123Z'});
+  const fields=(await db.query<{column_name:string;data_type:string;is_nullable:string;column_default:string|null}>("SELECT column_name,data_type,is_nullable,column_default FROM information_schema.columns WHERE table_name='creator_job' AND column_name IN ('processing_token','processing_lease_until') ORDER BY column_name")).rows;
+  assert.equal(fields.length,2);assert.ok(fields.every(field=>field.data_type==='text'&&field.is_nullable==='YES'&&field.column_default===null));
+ }finally{await db.close();await fs.rm(f.dir,{recursive:true,force:true});}
+});
+
+test('historical pre-lease version5 snapshots restore without inventing a processing owner',async()=>{
+ const f=await fixture(false,false,false,true),db=await database();
+ try{
+  const seeded=spawnSync('python3',['-c',`import sqlite3,sys
+db=sqlite3.connect(sys.argv[1])
+db.execute("INSERT INTO creator_job(id,owner_id,idempotency_key,payload_sha256,parameters_json,source_revision,model,status,reservation_micros,daily_limit_micros,monthly_limit_micros,concurrent_limit,session_limit,created_at,expires_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",('old-job','dummy-owner','old-request','a'*64,'{}','source','dummy-model','processing',0,1000,1000,10,10,'2026-11-01T00:00:00.000Z','2026-11-08T00:00:00.000Z'))
+db.commit();db.close()
+`,path.join(f.dir,'source.sqlite')],{encoding:'utf8'});assert.equal(seeded.status,0,seeded.stderr);
+  const snapshot=path.join(f.dir,'old-lease.ndjson'),exported=spawnSync('python3',['scripts/ops/catalog-transfer.py',path.join(f.dir,'source.sqlite'),snapshot],{encoding:'utf8'});assert.equal(exported.status,0,exported.stderr);
+  const inspected=await inspectSnapshot(snapshot);assert.equal(inspected.schema,'jotcoloring-catalog-transfer/5');
+  const imported=await importSnapshot(db as unknown as Pg,snapshot);assert.ok((await compareSnapshot(db as unknown as Pg,imported.snapshot)).every(row=>row.status==='PASS'));
+  assert.deepEqual((await db.query<{processing_token:null;processing_lease_until:null}>("SELECT processing_token,processing_lease_until FROM creator_job WHERE id='old-job'")).rows[0],{processing_token:null,processing_lease_until:null});
+ }finally{await db.close();await fs.rm(f.dir,{recursive:true,force:true});}
+});
+
+test('historical lease restore refuses nonnullable fields, fabricated owners and unreviewed columns before writes',async()=>{
+ for(const altered of ["ALTER TABLE creator_job ALTER COLUMN processing_token SET NOT NULL","ALTER TABLE creator_job ALTER COLUMN processing_token SET DEFAULT 'invented-owner'","ALTER TABLE creator_job ADD COLUMN unreviewed_lease TEXT"]){
+  const f=await fixture(false,false,false,true),db=await database();
+  try{
+   await db.exec(altered);await assert.rejects(importSnapshot(db as unknown as Pg,f.snapshot),/Target (schema|creator_job lease defaults) mismatch/);
+   assert.equal((await db.query<{n:number}>('SELECT COUNT(*)::int AS n FROM transfer_checkpoint')).rows[0].n,0);
+  }finally{await db.close();await fs.rm(f.dir,{recursive:true,force:true});}
+ }
 });
