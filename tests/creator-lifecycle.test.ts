@@ -35,7 +35,7 @@ function fixture(){
  const db=new TestD1(),objects=new Map<string,Uint8Array>(),puts:string[]=[],deleted:string[]=[];
  let failPut=false,failDelete=false,providerCalls=0;
  const bucket:Bucket={
-  get:async key=>{const bytes=objects.get(key);return bytes?{key,size:bytes.length,etag:'test',body:new Response(bytes).body!,arrayBuffer:async()=>bytes.slice().buffer,text:async()=>new TextDecoder().decode(bytes)} as StoredObject:null;},
+  get:async key=>{const bytes=objects.get(key);return bytes?{key,size:bytes.length,etag:'test',body:new Response(new Uint8Array(bytes).buffer).body!,arrayBuffer:async()=>bytes.slice().buffer,text:async()=>new TextDecoder().decode(bytes)} as StoredObject:null;},
   head:async key=>bucket.get(key),
   put:async(key,value)=>{if(failPut)throw Error('simulated R2 put failure');const bytes=typeof value==='string'?new TextEncoder().encode(value):new Uint8Array(await new Response(value as BodyInit).arrayBuffer());objects.set(key,bytes);puts.push(key);},
   delete:async keys=>{if(failDelete)throw Error('simulated R2 delete failure');for(const key of typeof keys==='string'?[keys]:keys){objects.delete(key);deleted.push(key);}},
