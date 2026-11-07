@@ -80,6 +80,20 @@ def fox():
  b+=path('m31 60 10 2m-9 4 10-1m42-3 9-3m-8 7 9-1M47 28l4-4m4 3 4-5m5 5 4-4',stroke='#ffcc7d',sw=1.2)
  return b
 
+def rhino():
+ b=shadow(rx=42)
+ b+=path('M28 66q-12 13-17 4l-2 12q10 8 23-4',mat('metal'),'#63746e',1.4)
+ b+=path('M27 58q5-25 33-27 20-3 32 8 17 1 24 14l5 14-13 9-7 23q-1 6-7 6H82l-2-23H57l-3 23H40q-6 0-7-7l-4-23-8-6Z',mat('metal'),'#60726e',1.6)
+ b+=path('M72 42q-2-15 8-20 8-4 14 5l-5 15m9 0q4-15 14-12 8 3 4 15',mat('cream'),'#78847d',1.4)
+ b+=path('M83 47q16-11 29 1 9 9 8 21-1 13-15 18l-16 2-9-11-12-6 5-13Z',mat('metal'),'#5c6e69',1.5)
+ b+=path('M103 59 114 42q3-4 5 1l2 18Z',mat('cream'),'#8b7761',1.2)
+ b+=path('M95 62 100 52q2-3 4 0l2 12Z',mat('gold'),'#90754e',1)
+ b+=ellipse(100,71,2.3,3.2,'#263638')+circle(99.3,70,1,'#fff')
+ b+=path('M107 79q7 3 12-1m-25 8q8 3 14 0',stroke='#596a65',sw=1.5)
+ b+=path('M33 75q8 7 19 5m34-33q5-3 10-1',stroke='#a9b8aa',sw=2,extra='opacity=".8"')
+ b+=path('M41 104v8m13-8v8m28-8v8m15-8v8',stroke='#5d6e69',sw=1.4)
+ return b
+
 def mandala():
  b=circle(64,61,49,mat('cream'),'stroke="#cd9d5c" stroke-width="1.4"')+circle(64,61,43,'none','stroke="#c79659" stroke-width="1"')
  for a in range(0,360,30):
@@ -92,6 +106,7 @@ def landscape(line=False):
 
 # Categories: a separate silhouette for every subject, not a generic tile.
 add('animals','Animals · red fox',shadow()+fox(),'Categories')
+add('rhino','Rhinoceros · broad muzzle and horn',rhino(),'Categories')
 add('flowers','Flowers · garden dahlia',shadow(rx=29)+flower(),'Categories')
 add('mandalas','Mandalas · layered rosette',shadow()+mandala(),'Categories')
 add('all','All coloring pages',shadow()+g(paper(), 'translate(-6 7) rotate(-12 60 60) scale(.92)')+g(paper(),'translate(13 3) rotate(7 60 60) scale(.89)')+g(flower(),'translate(20 31) scale(.53)')+g(pencil(),'translate(54 22) rotate(29 35 44) scale(.72)'),'Categories')

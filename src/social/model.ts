@@ -4,6 +4,7 @@ import {categories,animalCategories,coloringTopic} from '../ui/categories';
 import {AGE_BANDS} from '../age/model';
 import {displayTitle} from '../ui/titles';
 import {PHOTO_SEO,DIRECTORY_SEO,ALL_PAGES_SEO} from '../seo/catalog-copy';
+import {NOVEMBER_07_FIVE_TOPICS} from '../taxonomy/november-07-five-topics';
 export const OG_WIDTH=1200,OG_HEIGHT=630,OG_VERSION='jot-social-editorial-v1';
 export type SocialKind='home'|'collection'|'category'|'age'|'studio'|'photo'|'ai'|'artwork'|'guide'|'about'|'license'|'privacy'|'help'|'contact'|'terms'|'cookies'|'accessibility'|'notfound'|'admin'|'export'|'detail';
 export interface SocialSpec {key:string;paths:string[];kind:SocialKind;label:string;headline:string;description:string;icon:string;art:string[];badges:string[];screen?:string;age?:string;}
@@ -33,9 +34,18 @@ export const SOCIAL_PAGES:SocialSpec[]=[
  page('notfound','/404/','notfound','THIS PAGE WANDERED OFF','Let’s find a fresh page.','A little detour can lead to your next coloring adventure.','all',['woodland-friends'],['Explore pages','Find a new favorite']),
  page('admin','/admin/','admin','JOTCOLORING MANAGEMENT','A well-kept creative collection.','The authorized workspace for content, files, publishing and recovery.','license',['botanical-mandala'],['Content','Files','Publishing'])
 ];
-const sourceSpecificCoverCategories=new Set(['social-media','kangaroo']);;
+const sourceSpecificCoverCategories=new Set(['social-media','kangaroo','rhino','dogs']);;
 for(const c of categories)SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,({bible:'Bible scenes, outline lettering, and illustrated parables to color.',cartoons:'Hello Kitty, Bluey, Descendants, and KPop Demon Hunters characters.','dolls-toys':'Barbie scenes and rounded squishy-style animal and food mascots.','video-games':'Sonic, Minecraft, and Five Nights at Freddy’s scenes to print or color online.'} as Record<string,string>)[c.id]||(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${c.name.toLowerCase()} drawings to print or color online.`),c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
 for(const c of animalCategories)if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('animals-'+c.id,categoryPath(c.id),'category','ANIMAL COLORING COLLECTION',`${coloringTopic(c.id)} coloring pages.`,(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${coloringTopic(c.id).toLowerCase()} coloring pages to download or color online.`),c.icon,c.sample?[c.sample]:[],['Explore the theme','Print or color']));
+const november07CategoryDescriptions:Record<string,string>={
+ rhino:'Rhino pages show adults, calves, grasslands, ponds, and leafy habitats.',
+ dogs:'Dogs and puppies appear in portraits, gardens, homes, and playful scenes.',
+ gymnastics:'Gymnastics pages feature beams, vaults, bars, rings, ribbons, and routines.',
+ 'rescue-bots':'Transformers Rescue Bots appear as robots, vehicles, and community helpers.',
+ pusheen:'Pusheen appears with treats, crafts, books, plants, and playful settings.'
+};
+for(const c of NOVEMBER_07_FIVE_TOPICS)if(c.id!=='rhino'&&!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,november07CategoryDescriptions[c.id]||c.intro,c.icon,[],['PDF & Image','Color online']));
+const dogsSocialPage=SOCIAL_PAGES.find(spec=>spec.key==='animals-dogs');if(dogsSocialPage)dogsSocialPage.description=november07CategoryDescriptions.dogs;
 for(const b of AGE_BANDS){const spec=page('age-'+b.id,`/coloring-by-age/${b.id}/`,'age','BROWSE BY RECOMMENDED AGE',b.id==='adults'?'Coloring pages for adults.':`Coloring pages for ages ${b.short}.`,b.description,b.id==='3-5'?'kids':b.id==='6-8'?'all':b.id==='9-12'?'studio':b.id==='13-17'?'photo':'mandalas',[],['Recommended age','Drawing detail']);spec.age=b.id;SOCIAL_PAGES.push(spec);}
 export function normalizeSocialPath(path:string){try{const url=new URL(path,'https://jotcoloring.com');if(url.origin!=='https://jotcoloring.com')return'/404/';let value=url.pathname;if(!value.startsWith('/')||value.includes('..'))return'/404/';return value==='/'?'/':value.replace(/\/+$/,'')+'/';}catch{return'/404/';}}
 export function socialPageKey(path:string,status=200){if(status===404)return'notfound';const raw=normalizeSocialPath(path),normalized=catalogLocation(raw)?.path||raw;if(/^\/studio\/[^/]+\/download\/$/.test(normalized))return'studio-export';if(normalized.startsWith('/studio/'))return'studio';if(normalized==='/create/')return'ai';return SOCIAL_PAGES.find(p=>p.paths.includes(normalized))?.key||(catalogLocation(normalized)?'collection':'home');}
