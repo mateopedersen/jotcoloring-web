@@ -16,6 +16,8 @@ const SCHEMA_TABLES:Record<string,string[]>={'jotcoloring-catalog-transfer/1':LE
 const DISCOVERY_BASE:Column[]=[{name:'id',type:'INTEGER',primary_position:1},{name:'epoch',type:'INTEGER',primary_position:0},{name:'reconcile_after',type:'INTEGER',primary_position:0}];
 const DISCOVERY_DEFAULTS:Record<string,string>={rebuild_state:'idle',rebuild_token:'',rebuild_lease_until:'',rebuild_queued_at:'',rebuild_completed_at:'',rebuild_completed_by:'',rebuild_last_error:''};
 const DISCOVERY_QUEUE:Column[]=Object.keys(DISCOVERY_DEFAULTS).map(name=>({name,type:'TEXT',primary_position:0}));
+// Migration0025 adds optional TEXT lease fields; historical rows retain NULL.
+const CREATOR_LEASE:Column[]=['processing_token','processing_lease_until'].map(name=>({name,type:'TEXT',primary_position:0}));
 export const canonical=(value:unknown):string=>JSON.stringify(value,(_key,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a<b?-1:a>b?1:0)):v);
 export const sha=(value:string)=>createHash('sha256').update(value).digest('hex');
 const ident=(value:string)=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw new Error('Unsafe SQL identifier');return '"'+value+'"';};
@@ -53,12 +55,14 @@ async function targetSchema(db:Pg,snapshot:Snapshot){
  for(const table of snapshot.tables){
   const result=await db.query<{column_name:string;data_type:string;is_nullable:string;column_default:string|null}>('SELECT column_name,data_type,is_nullable,column_default FROM information_schema.columns WHERE table_schema=\'public\' AND table_name=$1 ORDER BY ordinal_position',[table.name]);
   const found=new Map(result.rows.map(r=>[r.column_name,r]));
-  // Only the exact reviewed v4→v5 additive shape may use target defaults.
+  // Only reviewed additive fields may use exact safe target defaults.
   // Original snapshot rows, checksums and checkpoint identity stay untouched.
   const legacyDiscovery=snapshot.schema==='jotcoloring-catalog-transfer/4'&&table.name==='discovery_state'&&found.size===DISCOVERY_BASE.length+DISCOVERY_QUEUE.length;
-  const expected=legacyDiscovery?[...table.columns,...DISCOVERY_QUEUE]:table.columns;
+  const legacyCreator=table.name==='creator_job'&&found.size===table.columns.length+CREATOR_LEASE.length&&CREATOR_LEASE.every(c=>!table.columns.some(source=>source.name===c.name));
+  const expected=legacyDiscovery?[...table.columns,...DISCOVERY_QUEUE]:legacyCreator?[...table.columns,...CREATOR_LEASE]:table.columns;
   if(found.size!==expected.length||expected.some(c=>found.get(c.name)?.data_type!==(c.type==='INTEGER'?'bigint':'text')))throw new Error('Target schema mismatch: '+table.name);
   if(legacyDiscovery&&DISCOVERY_QUEUE.some(c=>{const r=found.get(c.name)!;const literal="'"+DISCOVERY_DEFAULTS[c.name]+"'";return r.is_nullable!=='NO'||![literal,literal+'::text'].includes(r.column_default||'');}))throw new Error('Target discovery_state defaults mismatch');
+  if(legacyCreator&&CREATOR_LEASE.some(c=>{const r=found.get(c.name)!;return r.is_nullable!=='YES'||r.column_default!==null;}))throw new Error('Target creator_job lease defaults mismatch');
  }
 }
 function keys(table:Table){return table.columns.filter(c=>c.primary_position).sort((a,b)=>a.primary_position-b.primary_position).map(c=>c.name);}

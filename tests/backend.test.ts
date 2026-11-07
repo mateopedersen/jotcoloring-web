@@ -12,7 +12,7 @@ import {requireAdmin,session,adminIdentity} from '../src/server/auth';
 import {AppError,requireOrigin,canonicalJSON,sha256} from '../src/server/http';
 import {sniffMime} from '../src/server/assets';
 import {aiConfiguration,validateGeneration,generationPrompt,WorkersAIProvider} from '../src/server/ai';
-import {rateLimit} from '../src/server/limits';
+import {rateLimit,reservePhotoUpload} from '../src/server/limits';
 import {buildSitemapIndex as sitemapIndex,buildSitemapSegment as sitemapSegment} from '../src/server/sitemap';
 import {colorRegions,imageDimensions,normalizePhoto} from '../src/server/image-processing';
 import type {Database,Statement,D1Result,Env,Manifest} from '../src/server/types';
@@ -170,6 +170,18 @@ test('AI outline processing opens a broad black mass while preserving contour, t
 
 test('AI outline processing bounds memory by validated image dimensions',async()=>{
  const {openDarkInteriors}=await import('../src/server/line-art');assert.throws(()=>openDarkInteriors(new Uint8Array(4),2048,2048));assert.throws(()=>openDarkInteriors(new Uint8Array(3),1,1));assert.throws(()=>openDarkInteriors(new Uint8Array(4),0,1));
+});
+
+test('photo upload admission caps aggregate writes below cleanup capacity',async(t)=>{
+ const {db}=setup();
+ let now=600000;
+ t.mock.method(Date,'now',()=>now);
+ const results=await Promise.allSettled(Array.from({length:41},()=>reservePhotoUpload(db)));
+ assert.equal(results.filter(result=>result.status==='fulfilled').length,40);
+ const denied=results.find(result=>result.status==='rejected');
+ assert.ok(denied?.status==='rejected'&&denied.reason instanceof AppError&&denied.reason.status===429);
+ now=1200000;
+ await reservePhotoUpload(db);
 });
 
 test('expired private jobs scrub prompts and pointers only after every result revision is deleted',async()=>{
