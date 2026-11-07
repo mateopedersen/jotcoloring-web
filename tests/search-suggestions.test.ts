@@ -36,7 +36,7 @@ test('nested collection suggestions use their topic illustration instead of an i
   assert.ok(!illustrationImageHref(collection.icon!).endsWith('/info.svg'));
  }
  for(const category of options){
-  const result=buildSuggestions(category.name,[],[category])[0];
+  const result=buildSuggestions(category.id==='x'?'X coloring pages':category.name,[],[category])[0];
   assert.ok(result,category.id);
   assert.ok(hasIllustration(result.icon!),category.id);
   assert.notEqual(result.icon,'info',category.id);

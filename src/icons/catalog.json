@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-69d63dd7f118.svg",
+  "url": "/illustrations/jotcoloring-icons-770e047bc938.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -475,6 +475,11 @@
     {
       "id": "rabbit",
       "label": "Rabbit · long upright ears and a round tail",
+      "group": "Subjects"
+    },
+    {
+      "id": "kangaroo",
+      "label": "Kangaroo · upright ears, long tail and pouch joey",
       "group": "Subjects"
     },
     {

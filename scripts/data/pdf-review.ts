@@ -3,13 +3,18 @@ import {inflateSync} from 'node:zlib';
 import sharp from 'sharp';
 import {BRAND_VERSION,brandLogoRGB,BRAND_LOGO_WIDTH,BRAND_LOGO_HEIGHT} from '../../src/server/branding';
 import {pdfBrandBox,SUPPLIED_A4_BRAND_BOX,SUPPLIED_TOPIC_A4_BRAND_BOXES} from '../../src/server/pdf-branding';
+export function isA4PageSize(size:{width:number;height:number}){
+ const portrait=Math.abs(size.width-595.2756)<1&&Math.abs(size.height-841.8898)<1;
+ const landscape=Math.abs(size.width-841.8898)<1&&Math.abs(size.height-595.2756)<1;
+ return portrait||landscape;
+}
 /** Permit one inert grayscale artwork image and only the exact approved RGB logo in its footer. */
 export async function reviewPrintablePDF(bytes:Uint8Array,role:string,requireBrand=true,expectedTitle?:string,sourceLogoPosition?:{x:number;y:number;width:number;height:number}){
  if(bytes.length>1_000_000)throw new Error('PDF exceeds 1,000,000 bytes.');
  const doc=await PDFDocument.load(bytes,{ignoreEncryption:false});if(doc.getPageCount()!==1)throw new Error('Printable PDF must contain exactly one page.');
  if(expectedTitle!==undefined&&doc.getTitle()!==expectedTitle)throw new Error('PDF document title differs from the reviewed artwork title.');
- const page=doc.getPage(0),size=page.getSize(),expected=role==='printable_pdf_letter_bw'?[612,792]:[595.2756,841.8898];if(Math.abs(size.width-expected[0])>1||Math.abs(size.height-expected[1])>1)throw new Error('Incorrect PDF paper size.');
- const b=pdfBrandBox(size.width,size.height),isA4=Math.abs(size.width-595.2756)<1&&Math.abs(size.height-841.8898)<1,allowedLogoBoxes=[b,...(isA4?[SUPPLIED_A4_BRAND_BOX,...SUPPLIED_TOPIC_A4_BRAND_BOXES]:[])],forbidden=['JS','JavaScript','OpenAction','AA','Launch','EmbeddedFiles','RichMedia','XFA','AcroForm','Encrypt'];if(sourceLogoPosition){const p=sourceLogoPosition;if(!isA4||p.x<0||p.y<0||p.width<=0||p.height<=0||p.x+p.width>size.width+.001||p.y+p.height>size.height+.001)throw new Error('Source logo position is outside the printable page.');allowedLogoBoxes.push(p);}let images=0,logos=0,streams=0,brands=0,artworkDraws=0;const logoRefs=new Set<string>();
+ const page=doc.getPage(0),size=page.getSize(),isA4=isA4PageSize(size),isLetter=Math.abs(size.width-612)<1&&Math.abs(size.height-792)<1;if(role==='printable_pdf_letter_bw'?!isLetter:!isA4)throw new Error('Incorrect PDF paper size.');
+ const b=pdfBrandBox(size.width,size.height),allowedLogoBoxes=[b,...(isA4?[SUPPLIED_A4_BRAND_BOX,...SUPPLIED_TOPIC_A4_BRAND_BOXES]:[])],forbidden=['JS','JavaScript','OpenAction','AA','Launch','EmbeddedFiles','RichMedia','XFA','AcroForm','Encrypt'];if(sourceLogoPosition){const p=sourceLogoPosition;if(!isA4||p.x<0||p.y<0||p.width<=0||p.height<=0||p.x+p.width>size.width+.001||p.y+p.height>size.height+.001)throw new Error('Source logo position is outside the printable page.');allowedLogoBoxes.push(p);}let images=0,logos=0,streams=0,brands=0,artworkDraws=0;const logoRefs=new Set<string>();
  for(const [ref,object] of doc.context.enumerateIndirectObjects()){
   const dict=object instanceof PDFDict?object:object instanceof PDFRawStream?object.dict:null;
   if(dict?.has(PDFName.of('Annots'))){const annotations=doc.context.lookup(dict.get(PDFName.of('Annots')));if(!(annotations instanceof PDFArray)||annotations.size()>0)throw new Error('PDF annotations are not supported.');}
