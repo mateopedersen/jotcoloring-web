@@ -5,6 +5,7 @@
   "main": "index.ts",
   "compatibility_date": "2026-10-26",
   "workers_dev": true,
+  "preview_urls": false,
   "observability": {"enabled": false},
   "ai": {"binding": "AI"},
   "vars": {
