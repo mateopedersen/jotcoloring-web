@@ -8,7 +8,7 @@ import {parseCatalogQuery} from '../src/server/catalog';
 import {discoveryPath} from '../src/server/discovery';
 import {buildSuggestions} from '../src/ui/search-suggestions-model';
 test('every reviewed classification has one public navigation home and a unique routable canonical URL',()=>{
- assert.equal(NAVIGATION_COLLECTIONS.length,12);assert.deepEqual(NAVIGATION_COLLECTIONS.map(c=>c.id).sort(),[...PUBLIC_COLLECTION_IDS].sort());const roots=NAVIGATION_COLLECTIONS.flatMap(c=>c.roots);assert.equal(new Set(roots).size,roots.length);assert.deepEqual([...roots].sort(),ROOT_CATEGORIES.map(c=>c.id).sort());
+ assert.equal(NAVIGATION_COLLECTIONS.length,13);assert.deepEqual(NAVIGATION_COLLECTIONS.map(c=>c.id).sort(),[...PUBLIC_COLLECTION_IDS].sort());const roots=NAVIGATION_COLLECTIONS.flatMap(c=>c.roots);assert.equal(new Set(roots).size,roots.length);assert.deepEqual([...roots].sort(),ROOT_CATEGORIES.map(c=>c.id).sort());
  for(const group of NAVIGATION_COLLECTIONS)for(const topic of group.cover_topics){const c=COLORING_TAXONOMY.find(t=>t.id===topic);assert.ok(c&&group.roots.includes(c.parent||c.id),'representative topic must belong to '+group.id);}
  const urls=COLORING_TAXONOMY.map(c=>{assert.ok(collectionForRoot(c.parent||c.id),c.id);const path=categoryPath(c.id);assert.equal(catalogLocation(path)?.path,path);assert.equal(catalogRedirect(new URL('https://jotcoloring.com'+path)),undefined);return path;});assert.equal(new Set(urls).size,urls.length);
 });

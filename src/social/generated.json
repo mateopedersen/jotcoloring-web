@@ -663,5 +663,19 @@
     "sha256": "b39b8009d57c696135f5c60c80c2e92d62ee98d3f323451838c3c16a9bd90258",
     "title": "Raccoon coloring pages.",
     "description": "Explore raccoon coloring pages to download or color online."
+  },
+  "category-social-media": {
+    "src": "/og/pages/category-social-media-84611d6ec3245500.png",
+    "alt": "JotColoring printable coloring pages share image: Social Media coloring pages. Featuring Instagram Coloring Page #001: Camera icon in a folded square, Snapchat Coloring Page #001: Ghost symbol with a balloon tail, Tiktok Coloring Page #001: Music note above a small base.",
+    "sha256": "84611d6ec324550094c69a676ca9a4cbeab9503a3741c1a4b8f6d58af9e96721",
+    "title": "Social Media coloring pages.",
+    "description": "Platform symbols & illustrated scenes."
+  },
+  "animals-kangaroo": {
+    "src": "/og/pages/animals-kangaroo-59fc98e48cc07c4b.png",
+    "alt": "JotColoring animal coloring collection share image: Kangaroo coloring pages. Featuring Kangaroo Coloring Page #001: Upright kangaroo on grass, Kangaroo Coloring Page #002: Kangaroo with joey, Kangaroo Coloring Page #003: Close-up kangaroo face.",
+    "sha256": "59fc98e48cc07c4b217a65a5ca85bac705123b1abb148083fedae1889f34a05d",
+    "title": "Kangaroo coloring pages.",
+    "description": "Kangaroos & joeys."
   }
 }
