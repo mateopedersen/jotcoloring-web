@@ -20,7 +20,7 @@ export default {async fetch(request:Request,env:GatewayEnv){
  const url=new URL(request.url);if(url.pathname!=='/inference'||request.method!=='POST')return json({error:'NOT_FOUND'},404);
  if(env.ACCOUNT_BILLING_PLAN!=='workers_free'||!/^\w{32}$/.test(env.ENFORCED_ACCOUNT_ID||'')||!env.AI_FREE_GATEWAY_SECRET||env.AI_FREE_GATEWAY_SECRET.length<32||!env.AI)return json({error:'FREE_ONLY_NOT_CONFIGURED'},503);
  const timestamp=request.headers.get('X-Request-Timestamp')||'',id=request.headers.get('Idempotency-Key')||'',model=request.headers.get('X-AI-Model')||'',cap=request.headers.get('X-Max-Neurons')||'',signature=request.headers.get('X-Request-Signature')||'';
- if(!/^\d{13}$/.test(timestamp)||Math.abs(Date.now()-Number(timestamp))>60000||!/^[0-9a-f-]{36}$/.test(id)||![GATEWAY_MODEL,COLOR_VISION_MODEL].includes(model)||!/^\d{3,5}$/.test(cap)||Number(cap)<(model===COLOR_VISION_MODEL?600:300)||Number(cap)>10000)return json({error:'UNAUTHORIZED'},401);
+ if(!/^[a-f0-9]{64}$/.test(signature)||!/^\d{13}$/.test(timestamp)||Math.abs(Date.now()-Number(timestamp))>60000||!/^[0-9a-f-]{36}$/.test(id)||![GATEWAY_MODEL,COLOR_VISION_MODEL].includes(model)||!/^\d{3,5}$/.test(cap)||Number(cap)<(model===COLOR_VISION_MODEL?600:300)||Number(cap)>10000)return json({error:'UNAUTHORIZED'},401);
  let inferenceAttempted=false;
  try{const bytes=await boundedBody(request),data=signatureData(timestamp,id,model,cap,await gatewayDigest(bytes));if(!await verifyGatewaySignature(env.AI_FREE_GATEWAY_SECRET,data,signature))return json({error:'UNAUTHORIZED'},401);
  const contentType=request.headers.get('Content-Type')||'';if(!contentType.startsWith('multipart/form-data;'))return json({error:'INVALID_INPUT'},422);
