@@ -1,0 +1,52 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import sharp from 'sharp';
+import {SOCIAL_PAGES,OG_VERSION} from '../../src/social/model';
+import {renderSocial,siteIcon} from './render';
+const digest=(bytes:Uint8Array)=>createHash('sha256').update(bytes).digest('hex');
+const repo=process.cwd();
+const intake=path.resolve(repo,'../incoming-2026-11-06/private-release');
+type Candidate={design_id:string;topic:string;design_number:number;slug:string;title:string;alt_text:string;source_sha256:string};
+type Source={design_id:string;private_webp_path:string;original_webp_sha256:string};
+const candidates=JSON.parse(await fs.readFile(path.join(intake,'editorial-candidates-november-06.json'),'utf8')) as Candidate[];
+const inventory=JSON.parse(await fs.readFile(path.join(intake,'november-06-original-source-inventory.json'),'utf8')) as Source[];
+const byId=new Map<string,Candidate>(candidates.map((item):[string,Candidate]=>[item.design_id,item]));
+const sourceById=new Map<string,Source>(inventory.map((item):[string,Source]=>[item.design_id,item]));
+const generatedPath=path.join(repo,'src/social/generated.json');
+const generated=JSON.parse(await fs.readFile(generatedPath,'utf8'));
+const logo=new Uint8Array(await fs.readFile(path.join(repo,'public/logo-3d.webp')));
+const work=['social-media','animals-kangaroo'];
+const outputs:any[]=[];
+for(const topic of work){
+ const key=topic==='animals-kangaroo'?topic:'category-'+topic;
+ const spec=SOCIAL_PAGES.find(page=>page.key===key);
+ if(!spec)throw new Error('Missing share-card identity '+key);
+ if(generated[key])throw new Error('Refusing to overwrite accepted share card '+key);
+ const sourceTopic=topic==='animals-kangaroo'?'kangaroo':topic;
+ const chosen:string[]=topic==='social-media'?['instagram__001','snapchat__001','tiktok__001']:candidates.filter(item=>item.topic===sourceTopic).sort((a,b)=>a.design_number-b.design_number).slice(0,3).map(item=>item.design_id);
+ if(chosen.length!==3)throw new Error('Need three source drawings for '+topic);
+ const art:any[]=[];
+ for(const id of chosen){
+  const item=byId.get(id),source=sourceById.get(id);
+  if(!item||!source||!source.private_webp_path)throw new Error('Missing preserved WebP source '+id);
+  const line=new Uint8Array(await fs.readFile(source.private_webp_path));
+  const sha=digest(line);
+  if(sha!==item.source_sha256||sha!==source.original_webp_sha256)throw new Error('Source checksum mismatch '+id);
+  art.push({slug:item.slug,title:item.title,alt:item.alt_text,line,sourceSHA256:sha});
+ }
+ const result=await renderSocial(spec,{art,logo,icon:await siteIcon(spec.icon)},{version:OG_VERSION,key:spec.key,path:spec.paths[0]});
+ const sha=result.report.sha256;
+ const src='/og/pages/'+spec.key+'-'+sha.slice(0,16)+'.png';
+ await fs.writeFile(path.join(repo,'public',src),result.bytes);
+ generated[key]={src,alt:result.alt,sha256:sha,title:spec.headline,description:spec.description};
+ const sources=chosen.map((id:string)=>{const item=byId.get(id);if(!item)throw new Error('Missing reviewed source design '+id);return{design_id:id,slug:item.slug,sha256:item.source_sha256};});
+ outputs.push({topic,key,path:src,sha256:sha,bytes:result.bytes.length,alt:result.alt,title:spec.headline,description:spec.description,descriptionTruncated:result.report.descriptionTruncated,sources});
+}
+await fs.writeFile(generatedPath,JSON.stringify(generated,null,2)+'\n');
+const tiles=await Promise.all(outputs.map(async(item,index)=>({input:await sharp(path.join(repo,'public',item.path)).resize(300,158).png().toBuffer(),left:(index%4)*300,top:Math.floor(index/4)*158})));
+const contact=await sharp({create:{width:1200,height:Math.ceil(outputs.length/4)*158,channels:3,background:'#fff'}}).composite(tiles).png().toBuffer();
+const report={status:'rendered_pending_visual_review',release_id:'november-06-social-and-vehicle-topics-20261106',created_at:new Date().toISOString(),topic_count:outputs.length,outputs};
+await fs.writeFile(path.join(intake,'november-06-social-cover-audit.json'),JSON.stringify(report,null,2)+'\n');
+await fs.writeFile(path.join(intake,'november-06-social-covers-contact-sheet.png'),contact);
+console.log(JSON.stringify({cards:outputs.length,descriptionTruncated:outputs.filter(x=>x.descriptionTruncated).map(x=>x.topic),contact:path.join(intake,'november-06-social-covers-contact-sheet.png')}));
