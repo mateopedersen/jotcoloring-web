@@ -48,7 +48,11 @@ for(const path of paths){
  assert.ok(/id="catalog-search"/.test(html),path+' scoped search');
  assert.ok(/id="category-filter"/.test(html),path+' topic choices');
  assert.ok(/<optgroup\s/.test(html),path+' grouped published topics');
- const initial=html.match(/name="initial_category"[^>]*value="([^"]*)"/)?.[1];
+ const initialField=html.match(/<input\b[^>]*name="initial_category"[^>]*>/)?.[0];
+ assert.ok(initialField,path+' initial topic scope field');
+ // Astro may minimize an empty value to `value`; native form submission still
+ // sends an empty string for the all-topics scope.
+ const initial=initialField.match(/\bvalue="([^"]*)"/)?.[1]??'';
  const choices=html.match(/<select\b[^>]*id="category-filter"[^>]*>([\s\S]*?)<\/select>/)?.[1]||'';
  const selected=[...choices.matchAll(/<option\b([^>]*)>/g)].filter(m=>/\bselected(?:\s|=|$)/.test(m[1]));
  assert.equal(selected.length,1,path+' must render one explicit topic selection');
