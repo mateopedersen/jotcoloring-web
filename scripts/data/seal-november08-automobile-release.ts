@@ -93,7 +93,7 @@ for(const topic of Object.keys(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS)){
   }
   if(manifest.assets.length!==8||Object.keys(assetHashes).length!==manifest.assets.length||!assetHashes.social_og||!assetHashes.printable_pdf_a4_bw||!assetHashes.printable_webp_bw)throw Error('Required prepared artwork assets missing: '+contentId);
   topicPrepared.push({id:r.design_id,content_id:contentId,folder,source_sha256:r.source_sha256});
-  topicReviews.push({...r,pdf_sha256:source.original_pdf_sha256,webp_sha256:source.original_webp_sha256,prepared_source_sha256:r.source_sha256,status:'approved_for_publication',render_review:{status:'approved',assets:assetHashes,reviewed_at:'2026-11-07',method:'Per-item checks verify all prepared asset bytes and hashes. Each printable was parsed as a single-page A4 grayscale PDF with the exact approved JotColoring logo and footer placement; its document title matches reviewed metadata. Supplied source PDF/WebP containers were checksum-read from their immutable archives. All 36 source overview sheets and 232 flagged original pairs were visually checked. Final PDF and cover samples are bound to the separate checksum-verified final visual review; all derivative bytes, logo, placement, document titles, and source-container hashes were validated per item.'}});
+  topicReviews.push({...r,pdf_sha256:source.original_pdf_sha256,webp_sha256:source.original_webp_sha256,prepared_source_sha256:r.source_sha256,status:'approved_for_publication',render_review:{status:'approved',assets:assetHashes,reviewed_at:new Date().toISOString(),method:'Per-item checks verify all prepared asset bytes and hashes. Each printable was parsed as a single-page A4 grayscale PDF with the exact approved JotColoring logo and footer placement; its document title matches reviewed metadata. Supplied source PDF/WebP containers were checksum-read from their immutable archives. All 36 source overview sheets and 232 flagged original pairs were visually checked. Final PDF and cover samples are bound to the separate checksum-verified final visual review; all derivative bytes, logo, placement, document titles, and source-container hashes were validated per item.'}});
  }
  reviewByTopic.set(topic,topicReviews);
  preparationByTopic.set(topic,topicPrepared);
@@ -101,6 +101,14 @@ for(const topic of Object.keys(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS)){
 
 const scope=reviewedReleaseScope(NOVEMBER_08_AUTOMOBILE_RELEASE_ID);
 if(scope.collections!==36||scope.designs!==3600)throw Error('Exact authorized 36-topic scope mismatch');
+const visualPath=path.join(privateRoot,'november-08-automobiles-36-final-visual-review.json');
+const visual=JSON.parse(await fs.readFile(visualPath,'utf8'));
+if(visual.status!=='PASS'||visual.release_id!==NOVEMBER_08_AUTOMOBILE_RELEASE_ID||visual.topics?.length!==36||new Set(visual.topics.map((t:any)=>t.topic)).size!==36)throw Error('Actual final sample visual review required');
+for(const item of visual.topics){
+ if(!NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS[item.topic]||!item.cover_sheet||!item.pdf_sheet||await hashFile(item.cover_sheet)!==item.cover_sheet_sha256||await hashFile(item.pdf_sheet)!==item.pdf_sheet_sha256||!Array.isArray(item.samples)||item.samples.length<3)throw Error('Final visual review is stale: '+item.topic);
+ for(const sample of item.samples){const r=candidates.find(r=>r.design_id===sample.design_id);if(!r||r.topic!==item.topic||r.source_sha256!==sample.source_sha256||r.metadata_sha256!==sample.metadata_sha256||await hashFile(path.join(r.preparation_folder,'manifest.json'))!==sample.manifest_sha256)throw Error('Final sample no longer matches the approved source and metadata: '+sample.design_id);const m=JSON.parse(await fs.readFile(path.join(r.preparation_folder,'manifest.json'),'utf8'));if(m.assets.find((a:any)=>a.role==='printable_pdf_a4_bw')?.sha256!==sample.pdf_sha256||m.assets.find((a:any)=>a.role==='social_og')?.sha256!==sample.cover_sha256)throw Error('Final sampled render changed: '+sample.design_id);}
+}
+
 const collections:any[]=[];
 for(const topic of Object.keys(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS)){
  const review=reviewByTopic.get(topic)!,prepared=preparationByTopic.get(topic)!;
@@ -118,10 +126,6 @@ for(const [name,expected] of Object.entries(NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE
  const actual=await hashFile(path.join(work,'private-zips',name));if(actual!==expected)throw Error('Immutable outer archive changed: '+name);outerHashes[name]=actual;
 }
 if(!matchesReviewedSourceArchives({release_id:NOVEMBER_08_AUTOMOBILE_RELEASE_ID,source_zip_sha256s:sourceZipHashes,source_outer_zip_sha256s:outerHashes}))throw Error('Exact 36-brand / 28-container source scope mismatch');
-const visualPath=path.join(privateRoot,'november-08-automobiles-36-final-visual-review.json');
-const visual=JSON.parse(await fs.readFile(visualPath,'utf8'));
-if(visual.status!=='PASS'||visual.release_id!==NOVEMBER_08_AUTOMOBILE_RELEASE_ID||visual.topics?.length!==36||new Set(visual.topics.map((t:any)=>t.topic)).size!==36)throw Error('Actual final sample visual review required');
-for(const item of visual.topics){if(!NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS[item.topic]||!item.cover_sheet||!item.pdf_sheet||await hashFile(item.cover_sheet)!==item.cover_sheet_sha256||await hashFile(item.pdf_sheet)!==item.pdf_sheet_sha256)throw Error('Final visual review is stale: '+item.topic);}
 const release={release_id:NOVEMBER_08_AUTOMOBILE_RELEASE_ID,status:'ready_for_publication',expected_collections:scope.collections,expected_designs:scope.designs,source_outer_zip_sha256s:outerHashes,source_zip_sha256s:sourceZipHashes,source_inventory_path:inventoryPath,source_inventory_sha256:digest(inventoryBytes),final_visual_review_sha256:await hashFile(visualPath),sealed_at:new Date().toISOString(),collections};
 const releasePath=path.join(privateRoot,'full-release.json');
 await fs.writeFile(releasePath,JSON.stringify(release,null,2)+'\n',{mode:0o600});
