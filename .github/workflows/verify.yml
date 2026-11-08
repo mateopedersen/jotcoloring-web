@@ -97,12 +97,13 @@ jobs:
       - name: Recheck artifact hashes and explicit environment targets
         run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV"
       # Secrets are absent from dependency installation, tests and builds.
-      # Selecting a secret NAME avoids falling back to staging if production is empty.
+      # Static names limit secret provisioning; independent branch guards prevent
+      # an empty production token from falling back to the staging token.
       - name: Publish exact jobs and web versions without changing existing triggers
         env:
           JOT_RELEASE_GITHUB_TOKEN: ${{ github.token }}
           CLOUDFLARE_ACCOUNT_ID: '48c779c8eaa80234e0bb9d57f96e588b'
-          CLOUDFLARE_API_TOKEN: ${{ secrets[github.ref_name == 'main' && 'JOT_CF_PRODUCTION_DEPLOY_TOKEN' || 'JOT_CF_STAGING_DEPLOY_TOKEN'] }}
+          CLOUDFLARE_API_TOKEN: ${{ (github.ref_name == 'main' && secrets.JOT_CF_PRODUCTION_DEPLOY_TOKEN) || (github.ref_name == 'staging' && secrets.JOT_CF_STAGING_DEPLOY_TOKEN) || '' }}
         run: node --import tsx scripts/ops/deploy-release.ts "$JOT_DEPLOY_ENV" --apply
       - name: Verify public media and cached browser-download headers after production releases
         if: env.JOT_DEPLOY_ENV == 'production'

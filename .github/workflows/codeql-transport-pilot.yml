@@ -12,7 +12,7 @@ name: CodeQL verified official bundles
 permissions:
   contents: read
 concurrency:
-  group: codeql-transport-pilot-${{ github.event_name }}-${{ github.ref }}
+  group: codeql-official-transport-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   analyze:
@@ -193,6 +193,6 @@ jobs:
               print(f'{file.name}: {count} results; SHA-256 {hashlib.sha256(data).hexdigest()}')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write(f"### CodeQL transport pilot: {os.environ['EXPECTED_LANGUAGE']}\n")
-              summary.write(f'CLI 2.27.4; {len(files)} SARIF file(s); {total} findings. SARIF and database upload disabled.\n')
+              summary.write(f'CLI 2.27.4; {len(files)} SARIF file(s); {total} findings. SARIF upload enabled: {os.environ["UPLOAD_ENABLED"]}; database upload disabled.\n')
               summary.write('A successful pilot demonstrates completed analysis, not absence of vulnerabilities.\n')
           PY
