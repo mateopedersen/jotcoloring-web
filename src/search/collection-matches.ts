@@ -23,7 +23,9 @@ export function parseSearchCollectionOptions(value:unknown):SearchCollectionOpti
 type Prepared={option:SearchCollectionOption;primary:string[][];names:string[][]};
 const prepared=new WeakMap<readonly SearchCollectionOption[],Prepared[]>();
 export function matchingSearchCollections(query:string,options:readonly SearchCollectionOption[],limit=3):SearchCollectionOption[]{
- const terms=words(query);if(!terms.length)return [];
+ // Two letters can be an unfinished name (for example "by" → BYD), even
+ // when the same letters are a stopword inside a complete sentence.
+ const terms=words(query);if(!terms.length&&/^[a-z]{2}$/i.test(query.trim()))terms.push(query.trim().toLowerCase());if(!terms.length)return [];
  let entries=prepared.get(options);
  if(!entries){entries=options.filter(option=>validHref(searchCollectionHref(option))).map(option=>{
   const primary=[option.name,option.topic||'',option.id].map(words).filter(p=>p.length);

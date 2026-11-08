@@ -2,17 +2,21 @@ import {illustrationImageHref,ICON_VIEWBOX} from '../icons/registry';
 import type {SearchMatch} from '../search/intent';
 import {parseSearchCollectionOptions,type SearchCollectionOption} from '../search/collection-matches';
 import {LatestRequest} from './latest-request';
+import {SearchRequestPool} from './search-request-pool';
 import {buildSuggestions,type Suggestion} from './search-suggestions-model';
 
+interface SearchResponse{at:number;items:Suggestion[];total:number;match?:SearchMatch}
 export function initSearchSuggestions(){
- const cache=new Map<string,{at:number;items:Suggestion[];total:number;match?:SearchMatch}>();
+ const cache=new Map<string,SearchResponse>(),transport=new SearchRequestPool<SearchResponse>();
  for(const form of document.querySelectorAll<HTMLFormElement>('[data-search-form]')){
   if(form.dataset.searchReady)continue;
   let categories:SearchCollectionOption[]=[];try{categories=parseSearchCollectionOptions(JSON.parse(form.dataset.categoryOptions||'[]'));}catch{ /* Native search still works if optional suggestions are unavailable. */ }
   const input=form.querySelector<HTMLInputElement>('input[name=q]'),clear=form.querySelector<HTMLButtonElement>('[data-search-clear]'),panel=form.querySelector<HTMLElement>('[data-search-panel]'),list=panel?.querySelector<HTMLElement>('[role=listbox]'),status=panel?.querySelector<HTMLElement>('[data-search-status]');
   if(!input||!clear||!panel||!list||!status)continue;
   form.dataset.searchReady='true';input.setAttribute('role','combobox');input.setAttribute('aria-autocomplete','list');input.setAttribute('aria-controls',list.id);input.setAttribute('aria-expanded','false');input.setAttribute('aria-haspopup','listbox');
-  const requests=new LatestRequest();let timer:ReturnType<typeof setTimeout>|undefined,active=-1,composing=false;
+  // Sequence checks still discard stale results. Let bounded in-flight search
+  // requests finish instead of aborting the browser connection on each key.
+  const requests=new LatestRequest({abortOnCancel:false});let timer:ReturnType<typeof setTimeout>|undefined,active=-1,composing=false;
   const syncClear=()=>{clear.hidden=!input.value;};
   const fitPanel=()=>{if(panel.hidden)return;const rect=form.getBoundingClientRect(),viewport=window.visualViewport,top=viewport?.offsetTop||0,notice=document.querySelector<HTMLElement>('[data-storage-notice]:not([hidden])'),bottom=Math.min(top+(viewport?.height||innerHeight),notice?.getBoundingClientRect().top??Infinity),below=bottom-rect.bottom-22,above=rect.top-top-22,useAbove=below<220&&above>below;panel.classList.toggle('is-above',useAbove);panel.style.maxHeight=Math.max(115,Math.min(540,useAbove?above:below))+'px';};
   window.addEventListener('resize',fitPanel,{passive:true});window.addEventListener('scroll',fitPanel,{passive:true,capture:true});window.visualViewport?.addEventListener('resize',fitPanel,{passive:true});
@@ -39,8 +43,9 @@ export function initSearchSuggestions(){
    const collections=buildSuggestions(query,[],categories);if(collections.length)show(collections,query);
    timer=setTimeout(()=>{
     panel.hidden=false;fitPanel();panel.setAttribute('aria-busy','true');input.setAttribute('aria-expanded','true');status.textContent='Finding matching coloring pages…';if(!collections.length)list.replaceChildren();
-    void requests.run(async signal=>{
-     const params=new URLSearchParams({q:query,limit:'5'});if(form.dataset.recommendedAge)params.set('recommended_age',form.dataset.recommendedAge);const saved=cache.get(params.toString());if(saved&&Date.now()-saved.at<15000)return saved;const response=await fetch(`/api/search?${params}`,{signal});if(!response.ok)throw new Error('Search unavailable');const data=await response.json();if(!Array.isArray(data.items))throw new Error('Search results unavailable');const result={at:Date.now(),items:buildSuggestions(data.search_match?.mode==='corrected'?data.search_match.interpreted:query,data.items,categories),total:Number(data.total)||0,match:data.search_match as SearchMatch|undefined};cache.set(params.toString(),result);if(cache.size>24)cache.delete(cache.keys().next().value!);return result;
+    void requests.run(async()=>{
+     const params=new URLSearchParams({q:query,limit:'5'});if(form.dataset.recommendedAge)params.set('recommended_age',form.dataset.recommendedAge);const saved=cache.get(params.toString());if(saved&&Date.now()-saved.at<15000)return saved;
+     return transport.run(params.toString(),async signal=>{const response=await fetch(`/api/search?${params}`,{signal});if(!response.ok)throw new Error('Search unavailable');const data=await response.json();if(!Array.isArray(data.items))throw new Error('Search results unavailable');const result={at:Date.now(),items:buildSuggestions(data.search_match?.mode==='corrected'?data.search_match.interpreted:query,data.items,categories),total:Number(data.total)||0,match:data.search_match as SearchMatch|undefined};cache.set(params.toString(),result);if(cache.size>24)cache.delete(cache.keys().next().value!);return result;});
     },data=>{if(document.activeElement===input)show(data.items,query,false,data.total,data.match);},()=>{if(document.activeElement===input)show(collections,query,true);},()=>panel.setAttribute('aria-busy','false'));
    },140);
   };
