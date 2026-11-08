@@ -1,7 +1,7 @@
 import {canonicalSubject,intentWords} from './intent';
 import {publicCategoryPath} from '../taxonomy/routes';
 
-export interface SearchCollectionOption {id:string;name:string;href?:string;aliases?:string[];icon?:string;topic?:string;parent?:string|null;roots?:string[]}
+export interface SearchCollectionOption {id:string;name:string;href?:string;aliases?:readonly string[];icon?:string;topic?:string;parent?:string|null;roots?:string[]}
 const words=(text:string)=>intentWords(text).map(canonicalSubject);
 const phrase=(haystack:string[],needle:string[])=>needle.length>0&&haystack.some((_,i)=>needle.every((word,j)=>haystack[i+j]===word));
 export const searchCollectionHref=(option:SearchCollectionOption)=>option.href||publicCategoryPath(option.id);
@@ -36,6 +36,7 @@ export function matchingSearchCollections(query:string,options:readonly SearchCo
    else if(terms.every((word,i)=>name.some(token=>token===word||(i===terms.length-1&&word.length>=2&&!/^\d+$/.test(word)&&token.startsWith(word)))))score=Math.max(score,800+terms.length*10);
   }
   for(const name of primary)if(phrase(terms,name))score=Math.max(score,600+name.length*40+(option.parent==='cars'?300:0));
+  for(const name of names)if(phrase(terms,name))score=Math.max(score,520+name.length*40);
   return score?[{option,score}]:[];
  }).sort((a,b)=>b.score-a.score||a.option.name.localeCompare(b.option.name,'en-US'));
  const minimum=(ranked[0]?.score||0)*.8;

@@ -34,7 +34,7 @@ export class D1SearchProvider implements SearchProvider{
  const words=intent.words,hasWords=words.length>0;if(!hasWords&&!intent.ages.length&&!intent.bands.length&&!intent.difficulty.length)return{ids:[],total:0,has_more:false,next_cursor:null,search_match:{mode:'none' as const,query,interpreted:''}};
  limit=Math.min(48,Math.max(1,limit));const sort=options.sort||'trending',page=Math.min(100,Math.max(1,options.page||1));
  const candidates=[...new Set(words.flatMap(word=>[...wordCandidates(word),...compactModelParts(word)]))],knownRows=hasWords?await this.db.prepare('SELECT term FROM search_terms WHERE term IN (SELECT value FROM json_each(?))').bind(JSON.stringify(candidates)).all<{term:string}>():{results:[]},known=new Set(knownRows.results.map(r=>r.term));
- let chosen=words.flatMap(word=>{const parts=compactModelParts(word);return!known.has(word)&&parts.length>1&&parts.every(part=>known.has(part))?parts:[word];}),expression=withTopicExpression(intentExpression(chosen,known),chosen.join(' ')),mode:SearchMatch['mode']=chosen.join(' ')!==words.join(' ')||words.some(w=>equivalents(w).length>1)?'related-words':'direct';
+ let chosen=words.flatMap(word=>{const parts=compactModelParts(word);return!known.has(word)&&parts.length>1&&parts.every(part=>known.has(part))?parts:[word];}),expression=withTopicExpression(intentExpression(chosen,known),chosen.join(' '),known),mode:SearchMatch['mode']=chosen.join(' ')!==words.join(' ')||words.some(w=>equivalents(w).length>1)?'related-words':'direct';
  const scopes=["d.visibility='published'"],scopeValues:unknown[]=[];
  if(options.collection){const roots=navigationCollection(options.collection)?.roots;if(!roots)throw new AppError('VALIDATION_ERROR','Unknown collection.');scopes.push('EXISTS(SELECT 1 FROM json_each(d.category_ids) WHERE value IN (SELECT value FROM json_each(?)))');scopeValues.push(JSON.stringify(roots));}
  if(options.number){if(!numberTopic(options.number))throw new AppError('VALIDATION_ERROR','Unknown number topic.');scopes.push("EXISTS(SELECT 1 FROM json_each(d.category_ids) WHERE value='numbers') AND ("+searchNumberSubject()+')=?');scopeValues.push(options.number);}
@@ -64,7 +64,7 @@ export class D1SearchProvider implements SearchProvider{
     this.db.prepare('SELECT term,doc FROM search_terms WHERE term IN (SELECT value FROM json_each(?))').bind(JSON.stringify([...commonSearchTerms,...topicSearchVocabulary])).all<{term:string;doc:number}>()
    ]);
    let changed=false;for(let i=0;i<chosen.length;i++){if(!unknown.includes(chosen[i]))continue;const fixed=correctionFor(chosen[i],[...near.results,...common.results]);if(fixed){chosen[i]=fixed;changed=true;}}
-   if(changed){expression=withTopicExpression(intentExpression(chosen,new Set(chosen)),chosen.join(' '));total=await count();if(total)mode='corrected';}
+   if(changed){expression=withTopicExpression(intentExpression(chosen,new Set(chosen)),chosen.join(' '),new Set(chosen));total=await count();if(total)mode='corrected';}
   }
  }
  if(!total&&options.cursor)throw new AppError('INVALID_CURSOR','These search results changed. Start from the first page.');

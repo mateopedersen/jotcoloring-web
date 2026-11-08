@@ -26,7 +26,7 @@ test('every registered topic and numeral stays discoverable after the old 200-op
 
 test('short prefixes, branded model queries and long natural requests expose the proper collection',()=>{
  const options=parseSearchCollectionOptions(SEARCH_COLLECTION_OPTIONS);
- for(const [query,id] of [['byd','byd'],['BYD Dolphin rear view','byd'],['Please help me find free printable BYD Dolphin coloring pages for kids','byd'],['chrys','chrysler'],['mercedes benz','mercedes-benz'],['HUNTR/X','huntrix'],['disney descendants','descendants'],['number one thousand one','1001']]){
+ for(const [query,id] of [['byd','byd'],['BYD Dolphin rear view','byd'],['Please help me find free printable BYD Dolphin coloring pages for kids','byd'],['chrys','chrysler'],['mercedes benz','mercedes-benz'],['HUNTR/X','huntrix'],['kpop rumi stage','k-pop-demon-hunters'],['HUNTR/X Rumi stage','huntrix'],['disney descendants','descendants'],['number one thousand one','1001']]){
   const matches=matchingSearchCollections(query,options);
   if(id==='1001')assert.ok(matches.some(c=>c.href==='/coloring-pages/numbers/1001/'),query);
   else assert.equal(matches[0]?.id,id,query);

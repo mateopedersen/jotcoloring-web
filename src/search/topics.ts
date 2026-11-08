@@ -1,5 +1,7 @@
 import {COLORING_TAXONOMY} from '../taxonomy/catalog';
-import {canonicalSubject,intentWords,searchWords} from './intent';
+import {canonicalSubject,intentWords,intentExpression,searchWords} from './intent';
+import {numberSubjects} from './number-subjects';
+import {SEARCH_TOPIC_ALIASES} from './topic-aliases';
 
 const key=(value:string)=>searchWords(value).join(' ');
 export const topicSearchVocabulary=[...new Set(COLORING_TAXONOMY.flatMap(c=>[c.id,c.name,...c.aliases].flatMap(name=>searchWords(name))))];
@@ -26,8 +28,7 @@ for(const category of COLORING_TAXONOMY){
  }
 }
 // Film searches include its reviewed HUNTR/X collection. Group searches stay specific.
-for(const name of ['kpop','k pop','kpop demon hunters','k pop demon hunters','demon hunters'])topicAliases.set(key(name),new Set(['k-pop-demon-hunters','huntrix']));
-for(const name of ['huntrix','huntrx','huntr/x'])topicAliases.set(key(name),new Set(['huntrix']));
+for(const alias of SEARCH_TOPIC_ALIASES)for(const name of alias.names)topicAliases.set(key(name),new Set(alias.ids));
 
 /** Only taxonomy membership supplies topic expansions; no artwork identity is inferred. */
 export function searchTopicIds(query:string):string[]{
@@ -43,9 +44,20 @@ export function containsSearchTopicIdentity(words:string[]){
  }
  return false;
 }
-export function withTopicExpression(expression:string,query:string){
+export function withTopicExpression(expression:string,query:string,known:ReadonlySet<string>=new Set()){
  const ids=searchTopicIds(query);
- if(!ids.length)return expression;
- const phrases=ids.map(id=>'"'+key(id)+'"');
- return '('+expression+' OR categories:('+phrases.join(' OR ')+'))';
+ const expand=(literal:string,values:string[])=>'('+literal+' OR categories:('+values.map(id=>'"'+key(id)+'"').join(' OR ')+'))';
+ if(ids.length)return expand(expression,ids);
+ const words=intentWords(query);if(numberSubjects(words).length)return expression;
+ // A known alias can occupy part of a longer request. Expand that identity
+ // alone; every requested character, model and scene term stays an AND clause.
+ const clauses:string[]=[];let plain:string[]=[];let found=false;
+ const flush=(last=false)=>{if(plain.length){clauses.push(intentExpression(plain,known,last));plain=[];}};
+ for(let start=0;start<words.length;){
+  let length=0,topics:string[]=[];
+  for(let size=words.length-start;size>0;size--){const values=topicAliases.get(words.slice(start,start+size).join(' '));if(values&&(values.size===1||values.has('k-pop-demon-hunters'))){length=size;topics=[...values];break;}}
+  if(length){flush();clauses.push(expand(intentExpression(words.slice(start,start+length),known,start+length===words.length),topics));start+=length;found=true;}
+  else plain.push(words[start++]);
+ }
+ flush(true);return found?clauses.join(' AND '):expression;
 }
