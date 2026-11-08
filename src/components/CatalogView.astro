@@ -8,7 +8,6 @@ import CreatePlayground from '../components/CreatePlayground.astro';
 import RelatedCollections from '../components/RelatedCollections.astro';
 import AgeNavigation from '../components/AgeNavigation.astro';
 import {AGE_BANDS} from '../age/model';
-import {env} from 'cloudflare:workers';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Card from '../components/Card.astro';
@@ -16,40 +15,22 @@ import CategoryIcon from '../components/CategoryIcon.astro';
 import Icon from '../components/HomeIcon.astro';
 import {clearFilterURL} from '../ui/filter-url';
 import {displayTitle} from '../ui/titles';
-import {createCatalog,parseCatalogQuery} from '../server/catalog';
-import {AppError} from '../server/http';
-import type {Env,CatalogPage,CatalogQuery} from '../server/types';
-const repo=createCatalog(env as unknown as Env);
 import type {CatalogLocation} from '../taxonomy/catalog-location';
 import {collectionForRoot,collectionPath} from '../taxonomy/navigation';
 import {categoryPath} from '../taxonomy/catalog';
-import {loadSeriesDirectory} from '../server/series-directory';
 import SeriesDirectory from './SeriesDirectory.astro';
 import CatalogStream from './CatalogStream.astro';
 import {GALLERY_IMAGE_SIZES,COLLECTION_COVER_SIZES,FIRST_ROW_IMAGES} from '../ui/artwork-loading';
 import {collectionCover} from '../ui/collection-cover';
 import {landingIdentity} from '../taxonomy/landing-identity';
 import {landingSummary} from '../taxonomy/landing-summary';
-import {catalogParameters} from '../taxonomy/catalog-query';
 import {catalogAllPath} from '../taxonomy/routes';
 import {DIRECTORY_SEO,ALL_PAGES_SEO} from '../seo/catalog-copy';
 import {catalogBreadcrumbs} from '../taxonomy/catalog-breadcrumbs';
-const {location}=Astro.props as {location:CatalogLocation};
-const collection=location.collection,topic=location.topic,number=location.number;
-const category=collection?.roots[0]||topic?.parent||topic?.id||(number?'education':'');
-const subcategory=topic?.parent?topic.id:number?'numbers':'';
+import type {CatalogViewData} from '../server/catalog-view';
+const {location,data}=Astro.props as {location:CatalogLocation;data:CatalogViewData};
+const {collection,topic,number,category,subcategory,filtered,categoryCounts,series,directoryMode,result,query,error,cover,relatedCollections}=data;
 const clearFilters=clearFilterURL(Astro.url.href);
-const params=catalogParameters(location,Astro.url.searchParams);
-const categoryCountsPromise=repo.categories().catch(()=>[]);
-const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
-const categoryCounts=await categoryCountsPromise;
-let series:Awaited<ReturnType<typeof loadSeriesDirectory>>=[];
-if(!filtered&&!location.allPages)try{series=await loadSeriesDirectory(env as unknown as Env,repo,location,categoryCounts)}catch(e){console.error('Collection directory unavailable',e instanceof Error?e.message:'unknown');}
-const directoryMode=series.length>0;
-const independentCover=directoryMode?Promise.resolve(series.find(entry=>entry.cover)?.cover||null):number?Promise.resolve(null):(collection?repo.categoryCovers(collection.roots).then(c=>c.find(Boolean)||null):repo.categoryCover(subcategory||category||undefined)).catch(()=>null);
-let error='';let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
-try{query=parseCatalogQuery(params);if(!directoryMode)result=await repo.list(query)}catch(e){const invalid=e instanceof AppError&&e.status<500;error=invalid?e.message:'These coloring pages are temporarily busy. Please try again in a moment.';Astro.response.status=invalid?e.status:503;if(!invalid){Astro.response.headers.set('Retry-After','2');console.error('Catalog request failed',e);}}
-const cover=number?result.items[0]||null:await independentCover;
 const emptyHref=cover?Astro.url.pathname:subcategory?categoryPath(category):'/coloring-pages/';
 const identity=landingIdentity(location);
 const heading=query.q?`Coloring pages for “${query.q}”`:identity.heading;
@@ -59,7 +40,6 @@ const directoryRoot=!collection&&!topic&&!number;
 const focusedSEO=directoryRoot&&!query.q?(location.allPages?ALL_PAGES_SEO:DIRECTORY_SEO):undefined;
 
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
-if(number&&!result.total&&!filtered)Astro.response.status=404;
 const mainCollection=collection||collectionForRoot(category);
 const shortcutTopics=collection?collection.roots.map(categoryById).filter(t=>t&&categoryPath(t.id)!==collectionPath(collection.id)&&categoryCounts.some(c=>c.id===t.id&&c.count>0)):[];
 const crumbs=catalogBreadcrumbs(location).map(crumb=>({name:crumb.name,href:crumb.path}));
@@ -67,8 +47,7 @@ const paginationTitle=result.page>1?` — Page ${result.page}`:'';
 const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');
 const firstImage=directoryMode?collectionCover(series[0]?.cover):result.items[0]?{src:result.items[0].thumbnail,srcset:result.items[0].thumbnailSrcset}:undefined;
 const firstImageSizes=directoryMode?COLLECTION_COVER_SIZES:GALLERY_IMAGE_SIZES;
-let relatedCollections:Awaited<ReturnType<typeof repo.relatedCollections>>|undefined;
-if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedCollections(query,result)}catch(e){console.error('Optional collection recommendations unavailable',e instanceof Error?e.message:'unknown');}
+
 ---
 <Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||(!directoryMode&&!result.total)}><Fragment slot="head">{firstImage&&<link rel="preload" as="image" href={firstImage.src} imagesrcset={firstImage.srcset} imagesizes={firstImage.srcset?firstImageSizes:undefined} fetchpriority="high"/>}</Fragment><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>

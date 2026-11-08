@@ -10,4 +10,6 @@ The catalog continues through bounded signed batches on the same page. While the
 
 The shared layout preconnects only to the configured public JotColoring media host. No image transformation service, new R2 objects, paid inference or new cache rules are required.
 
+Catalog pages resolve their required reads in top-level page frontmatter before Astro commits streamed response headers. Invalid filters return 400 without catalog queries; temporary required-read failures return 503 with Retry-After and no-store. An ordinary empty filter remains a successful document. Never set the page's HTTP status from the nested gallery component or allow a temporary error gallery to enter the public HTML cache.
+
 Verification: image-policy, source-binding, media fallback and download integrity tests; Astro check/build and bundle budgets; Chromium and WebKit on mobile and desktop; actual public rendition responses and scroll/download interactions after deployment.
