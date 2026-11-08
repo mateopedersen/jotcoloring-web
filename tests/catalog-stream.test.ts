@@ -14,15 +14,17 @@ test('collection batches preserve real curated grouping and search filters',()=>
 });
 
 test('an incomplete row on a five-column desktop does not request batches until the reader approaches',()=>{
- let nextTop=4000,scheduled=0;
+ let nextTop=4000,scheduled=0,requests=0;const callbacks:(()=>void)[]=[];
  const listeners=new Map<string,()=>void>();
- const sentinel={dataset:{source:'/coloring-pages/pandas/',total:'52',nextCursor:'cursor'},querySelector:()=>({addEventListener(){}}),getBoundingClientRect:()=>({top:nextTop})};
+ const sentinel={dataset:{source:'/coloring-pages/pandas/',total:'52',nextCursor:'cursor'},querySelector:()=>({addEventListener(){}}),setAttribute(){},getBoundingClientRect:()=>({top:nextTop})};
  const grid={getBoundingClientRect:()=>({bottom:nextTop}),querySelectorAll:()=>Array.from({length:12},(_,i)=>({dataset:{contentId:String(i)}}))};
  const globals={
   document:{visibilityState:'visible',querySelector:(selector:string)=>selector==='[data-catalog-stream]'?sentinel:grid,addEventListener(){}},
   window:{addEventListener:(event:string,callback:()=>void)=>listeners.set(event,callback)},
+  location:new URL('https://jotcoloring.com/coloring-pages/pandas/'),
   scrollY:0,innerHeight:900,getComputedStyle:()=>({gridTemplateColumns:'200px 200px 200px 200px 200px'}),
-  setTimeout:()=>++scheduled
+  setTimeout:(callback:()=>void)=>{callbacks.push(callback);return ++scheduled;},
+  fetch:()=>{requests++;return new Promise(()=>{});}
  };
  const originals=Object.getOwnPropertyDescriptors(globalThis);
  try{
@@ -31,6 +33,10 @@ test('an incomplete row on a five-column desktop does not request batches until 
   nextTop=1700;listeners.get('resize')!();assert.equal(scheduled,0,'initial images must not compete with another offscreen batch');
   globalThis.scrollY=200;listeners.get('scroll')!();assert.equal(scheduled,1,'approaching the next group must schedule one request');
   listeners.get('scroll')!();assert.equal(scheduled,1,'a scheduled batch must not be duplicated');
+  nextTop=4000;globalThis.scrollY=0;callbacks[0]();
+  assert.equal(requests,0,'scrolling away before the timer fires must cancel unnecessary look-ahead');
+  nextTop=1700;globalThis.scrollY=200;listeners.get('scroll')!();callbacks[1]();
+  assert.equal(requests,1,'returning to the next group must still load its pages');
  }finally{
   for(const name of Object.keys(globals)){if(originals[name])Object.defineProperty(globalThis,name,originals[name]);else Reflect.deleteProperty(globalThis,name);}
  }

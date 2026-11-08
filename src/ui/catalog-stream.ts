@@ -15,7 +15,7 @@ export function mountCatalogStream(){
   if(scrollY<8&&grid.getBoundingClientRect().bottom>innerHeight+200)return false;
   return sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
  };
- const schedule=()=>{if(!timer&&needed())timer=setTimeout(()=>{timer=undefined;void load();},80);};
+ const schedule=()=>{if(!timer&&needed())timer=setTimeout(()=>{timer=undefined;if(needed())void load();},80);};
  const load=async()=>{
   if(busy||done||stopped||leaving)return;busy=true;button.hidden=true;button.disabled=true;status.textContent='Loading coloring pages…';sentinel.setAttribute('aria-busy','true');
   controller=new AbortController();const active=controller,deadline=setTimeout(()=>active.abort(),20000);
