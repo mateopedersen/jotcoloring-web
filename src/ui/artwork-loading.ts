@@ -2,7 +2,6 @@
  * shared by the image and its preload so browsers do not fetch two candidates. */
 export const GALLERY_IMAGE_SIZES='(max-width:600px) 40vw, (max-width:850px) 44vw, 280px';
 export const DETAIL_IMAGE_SIZES='(min-width:1536px) 680px, (min-width:851px) calc((100vw - 160px) / 2), calc(100vw - 60px)';
-export const DOWNLOAD_IMAGE_SIZES='(max-width:650px) calc(100vw - 64px), (max-width:1000px) 44vw, 480px';
 export const COLLECTION_COVER_SIZES='(max-width:600px) 24vw, 200px';
 export const FIRST_ROW_IMAGES=4;
 

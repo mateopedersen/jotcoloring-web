@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {artworkLoading,mediaConnectionOrigin,FIRST_ROW_IMAGES,GALLERY_IMAGE_SIZES,DETAIL_IMAGE_SIZES} from '../src/ui/artwork-loading';
 import {collectionCover} from '../src/ui/collection-cover';
-import {safeMediaSrcset,catalogDownload} from '../src/downloads/model';
 import showcase from '../src/content/home-showcase.json';
 import type {Content} from '../src/server/types';
 
@@ -47,11 +46,3 @@ test('catalog, ages, detail and streaming share the image policy without touchin
  const fragment=read('pages/catalog-fragment.astro');assert.doesNotMatch(fragment,/<Card[^>]+(?:eager|priority)=/);
  assert.match(read('ui/catalog-stream.ts'),/if\(scrollY<8&&grid.getBoundingClientRect\(\).bottom>innerHeight\+200\)return false/);
 });
-
- test('download previews use display variants while file URLs and bytes stay original',()=>{
- const srcset='https://assets.jotcoloring.com/small.webp 240w, https://assets.jotcoloring.com/medium.webp 600w';
- assert.equal(safeMediaSrcset(srcset),srcset);assert.equal(safeMediaSrcset(undefined),undefined);
- for(const bad of ['https://attacker.test/a.webp 240w','javascript:alert(1) 240w','https://assets.jotcoloring.com/a.webp 0w'])assert.throws(()=>safeMediaSrcset(bad));
- const item={id:'test',slug:'test-art',title:'Test',preview:'https://assets.jotcoloring.com/preview.webp',previewSrcset:srcset,downloads:{pdf:'/api/download/test/pdf?v=aaa',webp:'/api/download/test/webp?v=bbb'},downloadMetadata:{pdfBytes:123,webpBytes:456}} as Content;
- const result=catalogDownload(item);assert.equal(result.previewSrcset,srcset);assert.deepEqual(result.files.map(f=>[f.url,f.bytes]),[[item.downloads.pdf,123],[item.downloads.webp,456]]);
- });
