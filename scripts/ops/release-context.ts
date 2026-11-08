@@ -24,7 +24,16 @@ if(existingSession){
 }
 const accessKeyId=scoped?.r2AccessKeyId,secretAccessKey=scoped?.r2SecretAccessKey;
 const privateConfig=JSON.parse(await fs.readFile(process.env.JOT_SECRETS_FILE||'../jotcoloring-private/secrets.json','utf8'))[environment];
-let requests=0;const request=async(endpoint:string,init:RequestInit={})=>{if(++requests>requestLimit)throw new Error('Bounded request limit exceeded.');return fetch(`https://api.cloudflare.com/client/v4/accounts/${account}${endpoint}`,{...init,headers:{Authorization:`Bearer ${token}`,...init.headers},redirect:'error',signal:AbortSignal.timeout(60000)});};
+let requests=0;const request=async(endpoint:string,init:RequestInit={})=>{
+ for(let attempt=0;;attempt++){
+  if(existingSession){const auth=await fs.readFile(existingSession,'utf8'),current=auth.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1];if(!current)throw new Error('Existing Jot session token unavailable.');token=current;}
+  if(++requests>requestLimit)throw new Error('Bounded request limit exceeded.');
+  const response=await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}${endpoint}`,{...init,headers:{Authorization:`Bearer ${token}`,...init.headers},redirect:'error',signal:AbortSignal.timeout(60000)});
+  if(response.status!==429||attempt>=5)return response;
+  const retryAfter=Number(response.headers.get('retry-after')),delay=Number.isFinite(retryAfter)&&retryAfter>0?Math.min(60,retryAfter):Math.min(60,10*2**attempt);
+  await response.body?.cancel();await new Promise(resolve=>setTimeout(resolve,delay*1000));
+ }
+};
 const r2request=async(bucket:string,key:string,method:'GET'|'PUT',body?:Uint8Array,headers:Record<string,string>={})=>{const allowedBuckets=new Set([`jotcoloring-${environment}-originals`,`jotcoloring-${environment}-published`,`jotcoloring-${environment}-backups`]);if(!allowedBuckets.has(bucket))throw new Error('R2 bucket is outside this release scope.');if(!/^[a-zA-Z0-9][a-zA-Z0-9_./-]*$/.test(key)||key.includes('..'))throw new Error('Invalid scoped object key.');const requestBody=body?new Blob([new Uint8Array(body)]):undefined;
  if(existingSession)return request(`/r2/buckets/${bucket}/objects/${key.split('/').map(encodeURIComponent).join('/')}`,{method,headers,...(requestBody?{body:requestBody}:{})});
  if(++requests>requestLimit)throw new Error('Bounded request limit exceeded.');const signed=signedR2Request({accountId:account,bucket,key,method,accessKeyId,secretAccessKey,...(body?{body}:{}),headers});return fetch(signed.url,{method,headers:signed.headers,...(requestBody?{body:requestBody}:{}),redirect:'error',signal:AbortSignal.timeout(60000)});};
