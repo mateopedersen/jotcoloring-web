@@ -1,6 +1,7 @@
 ---
 import CategoryDirectory from '../components/CategoryDirectory.astro';
 import CatalogFilters from './CatalogFilters.astro';
+import SearchCollections from './SearchCollections.astro';
 import '../styles/catalog-listing.css';
 import {categoryById} from '../taxonomy/catalog';
 import DifficultyNavigation from '../components/DifficultyNavigation.astro';
@@ -56,6 +57,7 @@ const firstImageSizes=directoryMode?COLLECTION_COVER_SIZES:GALLERY_IMAGE_SIZES;
 <div class="jc-catalog-shell"><section class="iv-catalog-main jc-catalog-results">
 {directoryMode?<><SeriesDirectory entries={series} title={category==='education'?(series.every(entry=>entry.number)?'Choose A Number Collection':'Choose A Learning Collection'):'Choose Your Next Collection'}/><nav class="jc-browse-all" aria-label="All drawings in this collection"><a href={catalogAllPath(location.path)}>Browse All Coloring Pages<Icon name="arrow" size={18}/></a></nav></>:<>
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
+{query.q&&<SearchCollections query={result.search_match?.mode==='corrected'?result.search_match.interpreted:query.q} counts={categoryCounts} recommendedAge={query.recommended_age}/>}
 <CatalogFilters total={result.total} unavailable={!!error} query={query} category={subcategory||collection?.id||category} currentURL={Astro.url.href} counts={categoryCounts}/>
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
 {error?<div class="empty" role="alert">{error} <a href={Astro.url.pathname+Astro.url.search+'#catalog-results'}>Try Again</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map((item,index)=><Card item={item} showCategory={!topic&&!number} filterURL={Astro.url.href} eager={index<FIRST_ROW_IMAGES} priority={index===0}/>)}</div>}

@@ -1,5 +1,5 @@
 import {retryCurrentMedia} from './media-retry';
-import {initSearchSuggestions} from './search-suggestions';
+import './search-loader';
 /** Shared controls are delegated so local hot updates and lazy images remain usable. */
 const updateComparison=(input:HTMLInputElement)=>{const value=Math.max(0,Math.min(100,Number(input.value)));input.closest<HTMLElement>('.compare')?.style.setProperty('--split',`${value}%`);input.setAttribute('aria-valuetext',`${value}% color preview`);};
 document.addEventListener('input',event=>{const input=event.target;if(input instanceof HTMLInputElement&&input.matches('.compare input'))updateComparison(input);});
@@ -14,7 +14,6 @@ for(const type of ['pointerup','pointercancel','lostpointercapture'])document.ad
 document.addEventListener('error',event=>{if(!(event.target instanceof HTMLImageElement))return;const comparison=event.target.closest('.compare');if(comparison)comparison.querySelectorAll<HTMLImageElement>('img').forEach(image=>retryCurrentMedia(image));else retryCurrentMedia(event.target);},true);
 const retryBrokenImages=()=>{for(const image of document.images)if(image.complete&&image.naturalWidth===0)retryCurrentMedia(image);};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',retryBrokenImages,{once:true});else retryBrokenImages();
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initSearchSuggestions,{once:true});else initSearchSuggestions();
 
 let menuOpener:HTMLButtonElement|undefined;
 document.addEventListener('click',event=>{

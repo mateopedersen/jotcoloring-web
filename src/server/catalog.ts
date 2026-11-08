@@ -5,7 +5,7 @@ import {numberTopic,canonicalNumberSubject,searchNumberSubject} from '../taxonom
 import {numberSubjects} from '../search/number-subjects';
 import {displayCopies} from './responsive-assets';
 import {difficultyForScore,searchDifficultyValues,catalogDifficultyFilter,scopedCatalogReviewFilter,searchDifficultySQL} from '../age/difficulty';
-import {parseSearchIntent,intentWords,intentExpression,equivalents,correctionFor,commonSearchTerms,wordCandidates,SEARCH_VERSION,type SearchMatch} from '../search/intent';
+import {parseSearchIntent,intentWords,intentExpression,equivalents,correctionFor,commonSearchTerms,wordCandidates,compactModelParts,SEARCH_VERSION,type SearchMatch} from '../search/intent';
 import {ageBand,type AgeBand} from '../age/model';
 import type {Asset,CatalogPage,CatalogQuery,Content,Database,Env} from './types';
 import {AppError,canonicalJSON,sha256} from './http';
@@ -13,7 +13,7 @@ import {displayTitle} from '../ui/titles';
 import {collectionDefinitions,rankCollections,subjectFocus,collectionTopics,type CollectionDiscovery} from '../content/collection-matching';
 import {canonicalSubject} from '../search/intent';
 import {collectionScope} from './collection-scope';
-import {searchTopicIds,withTopicExpression,topicSearchVocabulary} from '../search/topics';
+import {searchTopicIds,withTopicExpression,topicSearchVocabulary,containsSearchTopicIdentity} from '../search/topics';
 import {candidateTags,candidateTagWeight,rankRelated,collectionOverview,type RelatedResult} from '../content/related';
 export type {Content,CatalogPage,CatalogQuery} from './types';
 export interface CatalogRepository {list(query?:CatalogQuery):Promise<CatalogPage>;get(idOrSlug:string):Promise<Content|null>;getMany(keys:string[]):Promise<(Content|null)[]>;categoryCover(category?:string):Promise<Content|null>;categoryCovers(categories:string[]):Promise<(Content|null)[]>;related(source:Content):Promise<RelatedResult>;relatedCollections(query:CatalogQuery,page:CatalogPage):Promise<CollectionDiscovery>;categories():Promise<{id:string;name:string;parent_id:string|null;count:number}[]>;redirect(slug:string):Promise<string|null>}
@@ -33,8 +33,8 @@ export class D1SearchProvider implements SearchProvider{
  }
  const words=intent.words,hasWords=words.length>0;if(!hasWords&&!intent.ages.length&&!intent.bands.length&&!intent.difficulty.length)return{ids:[],total:0,has_more:false,next_cursor:null,search_match:{mode:'none' as const,query,interpreted:''}};
  limit=Math.min(48,Math.max(1,limit));const sort=options.sort||'trending',page=Math.min(100,Math.max(1,options.page||1));
- const candidates=[...new Set(words.flatMap(wordCandidates))],knownRows=hasWords?await this.db.prepare(`SELECT term FROM search_terms WHERE term IN (${candidates.map(()=>'?').join(',')})`).bind(...candidates).all<{term:string}>():{results:[]},known=new Set(knownRows.results.map(r=>r.term));
- let chosen=[...words],expression=withTopicExpression(intentExpression(chosen,known),chosen.join(' ')),mode:SearchMatch['mode']=words.some(w=>equivalents(w).length>1)?'related-words':'direct';
+ const candidates=[...new Set(words.flatMap(word=>[...wordCandidates(word),...compactModelParts(word)]))],knownRows=hasWords?await this.db.prepare('SELECT term FROM search_terms WHERE term IN (SELECT value FROM json_each(?))').bind(JSON.stringify(candidates)).all<{term:string}>():{results:[]},known=new Set(knownRows.results.map(r=>r.term));
+ let chosen=words.flatMap(word=>{const parts=compactModelParts(word);return!known.has(word)&&parts.length>1&&parts.every(part=>known.has(part))?parts:[word];}),expression=withTopicExpression(intentExpression(chosen,known),chosen.join(' ')),mode:SearchMatch['mode']=chosen.join(' ')!==words.join(' ')||words.some(w=>equivalents(w).length>1)?'related-words':'direct';
  const scopes=["d.visibility='published'"],scopeValues:unknown[]=[];
  if(options.collection){const roots=navigationCollection(options.collection)?.roots;if(!roots)throw new AppError('VALIDATION_ERROR','Unknown collection.');scopes.push('EXISTS(SELECT 1 FROM json_each(d.category_ids) WHERE value IN (SELECT value FROM json_each(?)))');scopeValues.push(JSON.stringify(roots));}
  if(options.number){if(!numberTopic(options.number))throw new AppError('VALIDATION_ERROR','Unknown number topic.');scopes.push("EXISTS(SELECT 1 FROM json_each(d.category_ids) WHERE value='numbers') AND ("+searchNumberSubject()+')=?');scopeValues.push(options.number);}
@@ -53,8 +53,19 @@ export class D1SearchProvider implements SearchProvider{
  const boundScopes=()=>[...scopeValues,...numberScope().flatMap(scope=>scope.values)];
  const count=async()=>((await this.db.prepare('SELECT COUNT(*) AS total'+from()).bind(...(hasWords?[expression,...boundScopes()]:boundScopes())).first<{total:number}>())?.total||0);
  let total=await count();
- if(!total){let changed=false;for(let i=0;i<chosen.length;i++){const word=chosen[i];if(known.has(word)||word.length<4)continue;const prefix=word.slice(0,2),rows=await this.db.prepare('SELECT term,doc FROM search_terms WHERE term>=? AND term<? LIMIT 128').bind(prefix,prefix+'\uffff').all<{term:string;doc:number}>();const common=await this.db.prepare('SELECT term,doc FROM search_terms WHERE term IN (SELECT value FROM json_each(?))').bind(JSON.stringify([...commonSearchTerms,...topicSearchVocabulary])).all<{term:string;doc:number}>();const fixed=correctionFor(word,[...rows.results,...common.results]);if(fixed){chosen[i]=fixed;changed=true;}}
-  if(changed){expression=withTopicExpression(intentExpression(chosen,new Set(chosen)),chosen.join(' '));total=await count();if(total)mode='corrected';}
+ if(!total){
+  const unknown=[...new Set(chosen.filter(word=>!known.has(word)&&word.length>=4&&!/^\d+$/.test(word)))];
+  // At most two bounded vocabulary reads, even for a long failed query. Never
+  // retry each word separately or broaden a missing model into the whole brand.
+  if(unknown.length&&unknown.length<=4){
+   const prefixes=[...new Set(unknown.map(word=>word.slice(0,2)))];
+   const [near,common]=await Promise.all([
+    this.db.prepare(prefixes.map(()=>'(SELECT term,doc FROM search_terms WHERE term>=? AND term<? LIMIT 128)').map(sql=>'SELECT * FROM '+sql).join(' UNION ALL ')).bind(...prefixes.flatMap(prefix=>[prefix,prefix+'\uffff'])).all<{term:string;doc:number}>(),
+    this.db.prepare('SELECT term,doc FROM search_terms WHERE term IN (SELECT value FROM json_each(?))').bind(JSON.stringify([...commonSearchTerms,...topicSearchVocabulary])).all<{term:string;doc:number}>()
+   ]);
+   let changed=false;for(let i=0;i<chosen.length;i++){if(!unknown.includes(chosen[i]))continue;const fixed=correctionFor(chosen[i],[...near.results,...common.results]);if(fixed){chosen[i]=fixed;changed=true;}}
+   if(changed){expression=withTopicExpression(intentExpression(chosen,new Set(chosen)),chosen.join(' '));total=await count();if(total)mode='corrected';}
+  }
  }
  if(!total&&options.cursor)throw new AppError('INVALID_CURSOR','These search results changed. Start from the first page.');
  if(!total)return{ids:[],total:0,has_more:false,next_cursor:null,search_match:{mode:'none' as const,query,interpreted:words.join(' ')}};
@@ -63,7 +74,7 @@ export class D1SearchProvider implements SearchProvider{
  // Corpus-wide BM25 changes as unrelated drawings publish, moving existing
  // members across cursor boundaries. Keep literal-title/category boosts and
  // the stable ID tie-break for these queries; free-text searches retain BM25.
- const lexicalRank=numberSubjects(chosen).length||categoryTerms.length?'0':'-bm25(search_fts,0,16,8,22,1,.6)*1000';
+ const lexicalRank=numberSubjects(chosen).length||containsSearchTopicIdentity(chosen)?'0':'-bm25(search_fts,0,16,8,22,1,.6)*1000';
  const cte="WITH matched AS MATERIALIZED (SELECT d.id,d.title,d.published_at,d.sort_score,"+(hasWords?"CASE WHEN lower(d.title)=? THEN 100000 WHEN instr(lower(d.title),?)=1 THEN 10000 ELSE 0 END+CASE WHEN instr(' '||lower(replace(d.title,'-',' '))||' ',?)>0 THEN 20000 ELSE 0 END+CASE WHEN EXISTS(SELECT 1 FROM json_each(d.category_ids) cat JOIN json_each(?) term ON cat.value=term.value) THEN 80000 ELSE 0 END+"+lexicalRank:'d.sort_score')+" AS relevance"+from()+')';
  const column=sort==='newest'?'published_at':sort==='title'?'title COLLATE NOCASE':'relevance',direction=sort==='title'?'ASC':'DESC',compare=sort==='title'?'>':'<',fingerprint=await sha256(canonicalJSON({...options,q:query,interpreted:phrase,version:SEARCH_VERSION,limit,page:undefined,cursor:undefined}));const where:string[]=[],values:unknown[]=hasWords?[phrase,phrase, ' '+phrase+' ',JSON.stringify(categoryTerms),expression,...boundScopes()]:boundScopes();
  if(options.cursor){if(!this.secret)throw new AppError('CURSOR_UNAVAILABLE','Cursor signing is not configured.',503);try{const [payload,sig]=options.cursor.split('.');if(!payload||!sig||sig!==await signCursor(payload,this.secret))throw new Error();const c=JSON.parse(decode(payload)) as Cursor;if(c.query!==fingerprint||c.sort!==sort||c.exp<Date.now())throw new Error();where.push(`(${column} ${compare} ? OR (${column}=? AND id ${compare} ?))`);values.push(c.value,c.value,c.id);}catch{throw new AppError('INVALID_CURSOR','This search cursor is invalid or expired.');}}
