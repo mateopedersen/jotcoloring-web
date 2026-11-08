@@ -1,4 +1,4 @@
-import {isPublicCollection,collectionPath,publicCategoryPath,catalogAllPath,ROOT_COLLECTION_IDS} from '../taxonomy/routes';
+import {isPublicCollection,collectionPath,publicCategoryPath,catalogAllPath} from '../taxonomy/routes';
 type Filter='category'|'age'|'recommended_age'|'difficulty'|'sort';
 export function selectFilterURL(current:string,name:Filter,values:string[]):URL {
  const url=new URL(current);url.searchParams.delete('page');url.searchParams.delete('cursor');
@@ -12,7 +12,8 @@ export function selectFilterURL(current:string,name:Filter,values:string[]):URL 
  }
  if(name==='category'){
   const selection=values[0]||'',parts=selection.split('/'),category=parts.at(-1)||'',parent=parts.length===2?parts[0]:undefined;
-  if(selection&&(!/^[a-z0-9-]+(?:\/[a-z0-9-]+)?$/.test(selection)||parent&&!(ROOT_COLLECTION_IDS as readonly string[]).includes(parent)))throw new Error('Invalid category.');
+  // A subject's parent may itself be a subject (for example cars/chrysler).
+  if(selection&&!/^[a-z0-9-]+(?:\/[a-z0-9-]+)?$/.test(selection))throw new Error('Invalid category.');
   if(ageCollection){
    for(const key of ['category','subcategory','collection','number'])url.searchParams.delete(key);
    if(category){if(!parent&&isPublicCollection(category))url.searchParams.set('collection',category);else{url.searchParams.set('category',parent||category);if(parent)url.searchParams.set('subcategory',category);}}

@@ -5,9 +5,10 @@ import {createCatalog,parseCatalogQuery} from '../server/catalog';
 import type {Env} from '../server/types';
 import Card from '../components/Card.astro';
 const source=Astro.url.searchParams.get('source')||'';
+const filterURL=new URL(Astro.url);filterURL.pathname=source;filterURL.searchParams.delete('source');filterURL.searchParams.delete('cursor');
 Astro.response.headers.set('X-Robots-Tag','noindex,follow');
 Astro.response.headers.set('Cache-Control','private,no-store');
 let result;let error='',showCategory=true;
 try{if(!Astro.url.searchParams.get('cursor'))throw Error('Choose a collection to continue.');const scope=streamQuery(source,Astro.url.searchParams);showCategory=scope.showCategory;const query=parseCatalogQuery(scope.params);result=await createCatalog(env as unknown as Env).list(query);}catch{Astro.response.status=400;error='These pages could not load. Please retry from the collection.';}
 ---
-<section data-catalog-fragment data-next-cursor={result?.next_cursor||''} data-has-more={result?.has_more?'true':'false'}>{result?.items.map(item=><Card item={item} showCategory={showCategory}/>)}{error&&<p>{error}</p>}</section>
+<section data-catalog-fragment data-next-cursor={result?.next_cursor||''} data-has-more={result?.has_more?'true':'false'}>{result?.items.map(item=><Card item={item} showCategory={showCategory} filterURL={filterURL.href}/>)}{error&&<p>{error}</p>}</section>

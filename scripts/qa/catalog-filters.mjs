@@ -19,6 +19,9 @@ const paths=[
  '/coloring-by-age/6-8/?collection=nature&q=flower',
  '/coloring-by-age/6-8/?category=animals&subcategory=cats&q=kitten',
  '/coloring-pages/?difficulty=very-hard&q=mandala',
+ '/coloring-pages/chrysler/?recommended_age=6-8&difficulty=medium&sort=title',
+ '/coloring-pages/gmc/?recommended_age=3-5&difficulty=easy',
+ '/coloring-by-age/6-8/?category=cars&subcategory=chrysler&difficulty=medium',
 ];
 const checks=[];
 // Workers propagation may briefly reach the previous release in another region.
@@ -45,6 +48,13 @@ for(const path of paths){
  assert.ok(/id="catalog-search"/.test(html),path+' scoped search');
  assert.ok(/id="category-filter"/.test(html),path+' topic choices');
  assert.ok(/<optgroup\s/.test(html),path+' grouped published topics');
+ const initial=html.match(/name="initial_category"[^>]*value="([^"]*)"/)?.[1];
+ const choices=html.match(/<select\b[^>]*id="category-filter"[^>]*>([\s\S]*?)<\/select>/)?.[1]||'';
+ const selected=[...choices.matchAll(/<option\b([^>]*)>/g)].filter(m=>/\bselected(?:\s|=|$)/.test(m[1]));
+ assert.equal(selected.length,1,path+' must render one explicit topic selection');
+ assert.equal(selected[0][1].match(/\bvalue="([^"]*)"/)?.[1],initial,path+' selected topic must match form scope');
+ if(path.includes('/chrysler/')||path.includes('subcategory=chrysler'))assert.equal(initial,'cars/chrysler',path+' Chrysler scope');
+ if(path.includes('/gmc/'))assert.equal(initial,'cars/gmc',path+' GMC scope');
  const cards=[...html.matchAll(/data-content-id="([^"]+)"/g)].map(m=>m[1]);
  assert.equal(cards.length,new Set(cards).size,path+' duplicate gallery cards');
  assert.ok(cards.length||/class="[^"]*(?:iv-empty|jc-age-empty)/.test(html),path+' missing gallery and empty selection message');
@@ -61,6 +71,15 @@ for(const source of ['/coloring-by-age/6-8/?difficulty=medium','/coloring-pages/
  assert.equal(target.pathname,source.includes('coloring-by-age')?'/coloring-by-age/6-8/':'/coloring-pages/cats/');
  if(source.includes('coloring-by-age'))assert.equal(target.searchParams.get('subcategory'),'cats');
  checks.push({path:'/api/catalog-filters (native form: '+source+')',status:response.status,location:target.pathname+target.search+target.hash});
+}
+for(const topic of ['chrysler','gmc']){
+ const source='/coloring-pages/'+topic+'/',selection='cars/'+topic;
+ const fields=new URLSearchParams({source,initial_category:selection,category:selection,recommended_age:'3-5',difficulty:'easy',sort:'title',q:''});
+ const response=await releaseFetch(base+'/api/catalog-filters?'+fields,{redirect:'manual'});
+ assert.equal(response.status,303,'Scoped native brand filter');
+ const target=new URL(response.headers.get('location')||'',base);
+ assert.equal(target.pathname,source);assert.equal(target.searchParams.get('recommended_age'),'3-5');assert.equal(target.searchParams.get('difficulty'),'easy');
+ checks.push({path:'/api/catalog-filters (brand: '+topic+')',status:response.status,location:target.pathname+target.search+target.hash});
 }
 const invalid=await releaseFetch(base+'/api/catalog-filters?source=https%3A%2F%2Foutside.invalid%2F',{redirect:'manual'});
 assert.equal(invalid.status,400,'Reject external filter form source');checks.push({path:'/api/catalog-filters (invalid source)',status:invalid.status});
