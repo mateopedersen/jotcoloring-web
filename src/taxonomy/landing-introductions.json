@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 68769)
-Total output lines: 1486
-
 {
   "collection:animals": {
     "sourceIntro": "Explore pets, wild animals, and dinosaurs. Browse a subject for single animals, patterned details, and illustrated habitats.",
@@ -580,7 +577,455 @@ Total output lines: 1486
   },
   "topic:labubu": {
     "sourceIntro": "Labubu from The Monsters appears with flowers, kites, treats, toys, and small outdoor scenes. The drawings range from open character poses to detailed story-like settings.",
-    "text": "Explore free Labubu coloring pages featuring The Monsters character in playful illustrated scenes. Labubu from The Monsters appears with flowers, kites, treats, toys, and small outdoor scenes. The drawings range fr…18769 tokens truncated…ach individual page, then choose a printable PDF, save an image, or color the drawing online."
+    "text": "Explore free Labubu coloring pages featuring The Monsters character in playful illustrated scenes. Labubu from The Monsters appears with flowers, kites, treats, toys, and small outdoor scenes. The drawings range from open character poses to detailed story like settings. Choose a character pose or wider setting after viewing the complete drawing. Download a printable PDF or image, or open the same Labubu outline in Studio for online coloring."
+  },
+  "topic:crybaby": {
+    "sourceIntro": "CRYBABY appears in expressive scenes with cushions, bubbles, rain gear, toys, and everyday activities. Each page keeps the figure and its surrounding objects clear to color.",
+    "text": "Find free CRYBABY coloring pages with expressive character drawings and illustrated everyday activities. CRYBABY appears in expressive scenes with cushions, bubbles, rain gear, toys, and everyday activities. Each page keeps the figure and its surrounding objects clear to color. Compare the full poses and settings before choosing a page to print or save. Each drawing includes PDF and image downloads, alongside an online coloring option through Studio."
+  },
+  "topic:pompompurin": {
+    "sourceIntro": "Pompompurin appears with pudding, fruit, flowers, gifts, toys, and cozy everyday objects. Choose a simple character pose or a scene with more details around the page.",
+    "text": "Browse free Pompompurin coloring pages featuring the character with illustrated treats, toys, and everyday objects. Pompompurin appears with pudding, fruit, flowers, gifts, toys, and cozy everyday objects. Choose a simple character pose or a scene with more details around the page. Choose a pose or scene after checking its complete outline. Download a printable PDF or image from the individual page, or color the same Pompompurin drawing online in Studio."
+  },
+  "topic:cinnamoroll": {
+    "sourceIntro": "Cinnamoroll floats among clouds, plays with toys, and appears with treats, cushions, and small garden objects. Open outlines sit alongside scenes with more background details.",
+    "text": "Explore free Cinnamoroll coloring pages with floating poses and playful illustrated surroundings. Cinnamoroll floats among clouds, plays with toys, and appears with treats, cushions, and small garden objects. Open outlines sit alongside scenes with more background details. Look through the complete character drawings to select the activity or setting you prefer. PDF and image downloads are available from each page, together with online coloring in Studio."
+  },
+  "topic:kuromi": {
+    "sourceIntro": "Kuromi appears with a heart diary, moon shapes, tea, gifts, bubbles, and playful everyday objects. Browse character drawings and more detailed imaginative scenes.",
+    "text": "Find free Kuromi coloring pages featuring character poses and imaginative illustrated activities. Kuromi appears with a heart diary, moon shapes, tea, gifts, bubbles, and playful everyday objects. Browse character drawings and more detailed imaginative scenes. Compare the complete outlines and surrounding objects before choosing your page. Download a printable PDF or image, or open the selected Kuromi drawing in Studio to color online."
+  },
+  "topic:monchhichi": {
+    "sourceIntro": "Monchhichi is shown with books, toys, gifts, fruit, and rainy-day accessories. Look for the familiar bib and pacifier details in simple poses and playful settings.",
+    "text": "Browse free Monchhichi coloring pages with recognizable character details and playful illustrated settings. Monchhichi is shown with books, toys, gifts, fruit, and rainy day accessories. Look for the familiar bib and pacifier details in simple poses and playful settings. Choose a Monchhichi drawing after viewing its complete pose and props. Each individual page offers a printable PDF, an image download, and an option to color the outline online."
+  },
+  "topic:mofusand": {
+    "sourceIntro": "Mofusand cats wear playful animal and food costumes in scenes with shells, flowers, fruit, and toys. The drawings pair expressive cats with large, clearly outlined props.",
+    "text": "Explore free Mofusand coloring pages featuring costumed cats and playful illustrated objects. Mofusand cats wear playful animal and food costumes in scenes with shells, flowers, fruit, and toys. The drawings pair expressive cats with large, clearly outlined props. Look through the full drawings to choose the cat, costume, or setting you want. Download a printable PDF or image, or use the Studio link to color the same Mofusand outline online."
+  },
+  "topic:chiikawa": {
+    "sourceIntro": "Chiikawa characters appear with heart-shaped treats, food, flowers, umbrellas, and outdoor objects. Find calm single-character drawings and scenes with extra details.",
+    "text": "Find free Chiikawa coloring pages with rounded characters and illustrated small adventures. Chiikawa characters appear with heart shaped treats, food, flowers, umbrellas, and outdoor objects. Find calm single character drawings and scenes with extra details. Compare the complete character drawings and the objects around them before choosing. PDF and image downloads let you print or save a page, while Studio offers online coloring for its outline."
+  },
+  "topic:smiski": {
+    "sourceIntro": "Smiski figures peek around books, hide in cups, sit among household objects, and try small activities. Their rounded outlines make the figures easy to spot in each scene.",
+    "text": "Browse free Smiski coloring pages with curious poses and illustrated household settings. Smiski figures peek around books, hide in cups, sit among household objects, and try small activities. Their rounded outlines make the figures easy to spot in each scene. Choose a figure or activity after inspecting the full drawing and its surrounding objects. Download a printable PDF or image, or open the same Smiski outline to color online in Studio."
+  },
+  "topic:sonny-angel": {
+    "sourceIntro": "Sonny Angel figures wear animal and fruit headpieces while holding flowers, playing with toys, and exploring small scenes. Each drawing gives the figure and its accessories a clear outline.",
+    "text": "Explore free Sonny Angel coloring pages featuring distinctive headpieces and illustrated character activities. Sonny Angel figures wear animal and fruit headpieces while holding flowers, playing with toys, and exploring small scenes. Each drawing gives the figure and its accessories a clear outline. Compare the full figure drawings before choosing the Sonny Angel page you want to use. Download a printable PDF or image, or take the same outline into Coloring Studio for online coloring."
+  },
+  "topic:zimomo": {
+    "sourceIntro": "Zimomo from The Monsters appears with a long tail in scenes with balloons, toys, leaves, and everyday props. Choose a clear character drawing or a more detailed playful setting.",
+    "text": "Find free Zimomo coloring pages featuring The Monsters character and playful illustrated props. Zimomo from The Monsters appears with a long tail in scenes with balloons, toys, leaves, and everyday props. Choose a clear character drawing or a more detailed playful setting. Browse the complete poses and scenes, then open the drawing you choose. PDF and image downloads are available for printing or saving, with the same Zimomo outline also ready to color online."
+  },
+  "topic:pucky": {
+    "sourceIntro": "Pucky appears in imaginative scenes with mushroom and leaf shapes, flowers, tiny companions, and nature-inspired props. Open figures and more detailed fantasy settings are included.",
+    "text": "Browse free Pucky coloring pages with imaginative characters and decorative natural shapes. Pucky appears in imaginative scenes with mushroom and leaf shapes, flowers, tiny companions, and nature inspired props. Open figures and more detailed fantasy settings are included. Choose a drawing by its figure or setting and inspect the complete outline. Download a printable PDF or image from the individual page, or color the same Pucky design online in Studio."
+  },
+  "topic:hacipupu": {
+    "sourceIntro": "Hacipupu appears in gentle scenes with books, toys, fruit, clothes, and everyday objects. The set includes clear character poses and small, simple backgrounds.",
+    "text": "Explore free Hacipupu coloring pages with character poses and illustrated everyday objects. Hacipupu appears in gentle scenes with books, toys, fruit, clothes, and everyday objects. The set includes clear character poses and small, simple backgrounds. Look at the full drawing to compare the figure, props, and background before choosing a page. Download a PDF or image, or use its Studio link for online coloring."
+  },
+  "topic:twinkle-twinkle": {
+    "sourceIntro": "Twinkle Twinkle explores stars, clouds, moons, flowers, shells, and small imaginative activities. Rounded characters and open celestial shapes give each page a distinct scene.",
+    "text": "Find free Twinkle Twinkle coloring pages featuring rounded characters and celestial themed drawings. Twinkle Twinkle explores stars, clouds, moons, flowers, shells, and small imaginative activities. Rounded characters and open celestial shapes give each page a distinct scene. Compare the complete scenes and decorative shapes to select a page for your activity. Each drawing offers a printable PDF and image download, plus an option to color online in Studio."
+  },
+  "topic:hirono": {
+    "sourceIntro": "Hirono appears in quiet scenes with books, plants, rainy-day objects, toys, and small household details. Character-focused poses sit beside more composed settings.",
+    "text": "Browse free Hirono coloring pages with expressive figures and illustrated everyday settings. Hirono appears in quiet scenes with books, plants, rainy day objects, toys, and small household details. Character focused poses sit beside more composed settings. Choose a portrait style pose or wider scene by viewing the complete drawings. Download a printable PDF or image, or open the selected Hirono outline in Coloring Studio."
+  },
+  "topic:skullpanda": {
+    "sourceIntro": "SKULLPANDA appears in imaginative poses with geometric flowers, stars, accessories, and decorative settings. The collection balances character outlines with detailed props.",
+    "text": "Explore free SKULLPANDA coloring pages featuring distinctive character silhouettes and decorative scenes. SKULLPANDA appears in imaginative poses with geometric flowers, stars, accessories, and decorative settings. The collection balances character outlines with detailed props. Compare the full poses and props before choosing a drawing to print or save. PDF and image downloads are available from each page, with the same outline also offered for online coloring."
+  },
+  "topic:mrbeast": {
+    "sourceIntro": "MrBeast appears in portraits and imagined activities with gift boxes, video equipment, maps, games, and outdoor scenes. Choose open character outlines or more detailed settings.",
+    "text": "Find free MrBeast coloring pages with illustrated portraits and imagined activities. MrBeast appears in portraits and imagined activities with gift boxes, video equipment, maps, games, and outdoor scenes. Choose open character outlines or more detailed settings. Check each complete drawing and its description before choosing a printable PDF or image. These creative scenes do not document real events, and the outlines can also be colored online in Studio."
+  },
+  "topic:elon-musk": {
+    "sourceIntro": "Elon Musk appears in portrait drawings and imagined scenes with model rockets, robots, telescopes, and everyday activities. Some pages explore fantasy space settings.",
+    "text": "Browse free Elon Musk coloring pages featuring illustrated portraits and imagined scenes. Elon Musk appears in portrait drawings and imagined scenes with model rockets, robots, telescopes, and everyday activities. Some pages explore fantasy space settings. Choose a drawing after viewing its complete setting and description. The scenes are creative illustrations rather than records of real events; download a PDF or image, or color the outline online in Studio."
+  },
+  "topic:donald-trump": {
+    "sourceIntro": "Portrait drawings and imagined scenes depict Donald Trump with books, golf equipment, plants, and musical instruments. Choose open outlines or scenes with more background detail.",
+    "text": "Explore free Donald Trump coloring pages with portrait drawings and imagined illustrated activities. Portrait drawings and imagined scenes depict Donald Trump with books, golf equipment, plants, and musical instruments. Choose open outlines or scenes with more background detail. Compare the complete drawings before choosing a page to print or save. The creative scenes do not establish real events; PDF and image downloads and online coloring are available for each outline."
+  },
+  "topic:letter-a": {
+    "sourceIntro": "These Letter A coloring pages pair uppercase and lowercase forms with pictures of apples, ants, and alligators. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter A coloring pages with uppercase letters, lowercase forms, and illustrated word examples. These Letter A coloring pages pair uppercase and lowercase forms with pictures of apples, ants, and alligators. Choose an A outline or a picture based activity, then download a printable PDF or image. The same letter drawing can also be colored online in Studio."
+  },
+  "topic:letter-b": {
+    "sourceIntro": "These Letter B coloring pages pair uppercase and lowercase forms with pictures of bears, balloons, and bees. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter B coloring pages for comparing the letter with familiar picture examples. These Letter B coloring pages pair uppercase and lowercase forms with pictures of bears, balloons, and bees. Browse the B designs to choose an outlined letter or illustrated scene. Save the page as a printable PDF or image, or open the original in Studio to color online."
+  },
+  "topic:letter-c": {
+    "sourceIntro": "These Letter C coloring pages pair uppercase and lowercase forms with pictures of cats, cars, and cakes. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter C coloring pages with curved letter outlines and illustrated alphabet activities. These Letter C coloring pages pair uppercase and lowercase forms with pictures of cats, cars, and cakes. Compare the C drawings and choose the page you want to use. Download its PDF to print, save an image, or color the same letter and pictures online in Studio."
+  },
+  "topic:letter-d": {
+    "sourceIntro": "These Letter D coloring pages pair uppercase and lowercase forms with pictures of dogs, ducks, and dolphins. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Discover free Letter D coloring pages featuring letter studies and pictures linked to D words. These Letter D coloring pages pair uppercase and lowercase forms with pictures of dogs, ducks, and dolphins. Choose a plain letter outline or a drawing with more surrounding detail. Each D page includes printable PDF and image downloads, with an online coloring option through Studio."
+  },
+  "topic:letter-e": {
+    "sourceIntro": "These Letter E coloring pages pair uppercase and lowercase forms with pictures of elephants, eggs, and eagles. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter E coloring pages that bring letter forms and pictured examples together. These Letter E coloring pages pair uppercase and lowercase forms with pictures of elephants, eggs, and eagles. Look through the E designs before choosing a printable alphabet activity. Download a PDF or image from the selected page, or color the same outline online in Studio."
+  },
+  "topic:letter-f": {
+    "sourceIntro": "These Letter F coloring pages pair uppercase and lowercase forms with pictures of fish, foxes, and frogs. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter F coloring pages with decorative letters and illustrated word connections. These Letter F coloring pages pair uppercase and lowercase forms with pictures of fish, foxes, and frogs. Choose an F drawing by its letter shapes or accompanying pictures. Each page provides a printable PDF, an image file, and a Studio link for coloring online."
+  },
+  "topic:letter-g": {
+    "sourceIntro": "These Letter G coloring pages pair uppercase and lowercase forms with pictures of goats, giraffes, and geese. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter G coloring pages with rounded forms and illustrated alphabet scenes. These Letter G coloring pages pair uppercase and lowercase forms with pictures of goats, giraffes, and geese. Open a G page to compare its complete letter and picture details. Download a printable PDF or image, or use the online coloring option to work on the same outline in Studio."
+  },
+  "topic:letter-h": {
+    "sourceIntro": "These Letter H coloring pages pair uppercase and lowercase forms with pictures of horses, houses, and hats. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter H coloring pages through outlined letters and familiar illustrated subjects. These Letter H coloring pages pair uppercase and lowercase forms with pictures of horses, houses, and hats. Select an H design that fits your alphabet activity, then open its full drawing. Printable PDF and image downloads are available, as well as online coloring in Studio."
+  },
+  "topic:letter-i": {
+    "sourceIntro": "These Letter I coloring pages pair uppercase and lowercase forms with pictures of ice cream, igloos, and iguanas. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter I coloring pages with letter forms and pictures that connect I with words. These Letter I coloring pages pair uppercase and lowercase forms with pictures of ice cream, igloos, and iguanas. Compare the I outlines and illustrated scenes before choosing your page. Download a PDF to print or an image to save, or color the original drawing online in Studio."
+  },
+  "topic:letter-j": {
+    "sourceIntro": "These Letter J coloring pages pair uppercase and lowercase forms with pictures of jars, jam, and jellyfish. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter J coloring pages with curved letter shapes and illustrated word examples. These Letter J coloring pages pair uppercase and lowercase forms with pictures of jars, jam, and jellyfish. Pick a J outline or a picture scene from the complete drawings. Save a printable PDF or image, or open the same letter activity in Coloring Studio."
+  },
+  "topic:letter-k": {
+    "sourceIntro": "These Letter K coloring pages pair uppercase and lowercase forms with pictures of kites, koalas, and kangaroos. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Discover free Letter K coloring pages with distinctive letter forms and pictured K subjects. These Letter K coloring pages pair uppercase and lowercase forms with pictures of kites, koalas, and kangaroos. Choose a K design after checking the whole drawing and its details. Download the page as a printable PDF or image, or color the outline online in Studio."
+  },
+  "topic:letter-l": {
+    "sourceIntro": "These Letter L coloring pages pair uppercase and lowercase forms with pictures of lions, leaves, and lemons. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter L coloring pages with alphabet outlines and recognizable picture examples. These Letter L coloring pages pair uppercase and lowercase forms with pictures of lions, leaves, and lemons. Compare the L drawings to find a page for your letter activity. Each design offers a PDF to print, an image to save, and an online coloring option in Studio."
+  },
+  "topic:letter-m": {
+    "sourceIntro": "These Letter M coloring pages pair uppercase and lowercase forms with pictures of moons, mice, and monkeys. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter M coloring pages that combine letter shapes with illustrated M words. These Letter M coloring pages pair uppercase and lowercase forms with pictures of moons, mice, and monkeys. Browse the available M outlines and scenes before selecting your drawing. Download a printable PDF or image, or use Studio to color the same letter page online."
+  },
+  "topic:letter-n": {
+    "sourceIntro": "These Letter N coloring pages pair uppercase and lowercase forms with pictures of nests, narwhals, and newts. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter N coloring pages with alphabet studies and pictured subjects beginning with N. These Letter N coloring pages pair uppercase and lowercase forms with pictures of nests, narwhals, and newts. Open a letter drawing to see its complete outline, then choose a PDF or image download. Every N design also has a Studio option for coloring digitally."
+  },
+  "topic:letter-o": {
+    "sourceIntro": "These Letter O coloring pages pair uppercase and lowercase forms with pictures of octopuses, owls, and oranges. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter O coloring pages with circular letter outlines and illustrated alphabet examples. These Letter O coloring pages pair uppercase and lowercase forms with pictures of octopuses, owls, and oranges. Choose an O study or picture based scene after comparing the full drawings. Download a printable PDF or image from its page, or color the same outline online in Studio."
+  },
+  "topic:letter-p": {
+    "sourceIntro": "These Letter P coloring pages pair uppercase and lowercase forms with pictures of pandas, penguins, and pineapples. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter P coloring pages featuring letter forms and illustrated P subjects. These Letter P coloring pages pair uppercase and lowercase forms with pictures of pandas, penguins, and pineapples. Look through the P drawings to choose an alphabet activity you want to print or save. PDF and image downloads are available, alongside online coloring for the original outline."
+  },
+  "topic:letter-q": {
+    "sourceIntro": "These Letter Q coloring pages pair uppercase and lowercase forms with pictures of queens, quail, and quilts. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter Q coloring pages with distinctive alphabet shapes and related picture examples. These Letter Q coloring pages pair uppercase and lowercase forms with pictures of queens, quail, and quilts. Compare the Q designs before choosing a letter outline or illustrated scene. Download a printable PDF or image, or use the Studio link to color the selected page online."
+  },
+  "topic:letter-r": {
+    "sourceIntro": "These Letter R coloring pages pair uppercase and lowercase forms with pictures of rabbits, robots, and rainbows. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter R coloring pages with letter studies and illustrated connections to R words. These Letter R coloring pages pair uppercase and lowercase forms with pictures of rabbits, robots, and rainbows. Choose the R drawing that fits your alphabet activity and open its complete outline. Save a printable PDF or image, or begin coloring the same design online in Studio."
+  },
+  "topic:letter-s": {
+    "sourceIntro": "These Letter S coloring pages pair uppercase and lowercase forms with pictures of the sun, snails, and stars. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter S coloring pages with flowing letter shapes and illustrated word examples. These Letter S coloring pages pair uppercase and lowercase forms with pictures of the sun, snails, and stars. Browse the S outlines and picture scenes before deciding which page to use. Each drawing includes PDF and image downloads, plus a link to color the original online."
+  },
+  "topic:letter-t": {
+    "sourceIntro": "These Letter T coloring pages pair uppercase and lowercase forms with pictures of turtles, tigers, and trains. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter T coloring pages featuring alphabet outlines and pictured T subjects. These Letter T coloring pages pair uppercase and lowercase forms with pictures of turtles, tigers, and trains. Select a T design after comparing the full drawings and their details. Download a printable PDF or image for your activity, or open the outline in Coloring Studio."
+  },
+  "topic:letter-u": {
+    "sourceIntro": "These Letter U coloring pages pair uppercase and lowercase forms with pictures of umbrellas, unicorns, and ukuleles. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter U coloring pages with curved alphabet forms and familiar picture examples. These Letter U coloring pages pair uppercase and lowercase forms with pictures of umbrellas, unicorns, and ukuleles. Choose a letter study or illustrated U scene from the available drawings. PDF and image downloads let you print or save the page, while Studio offers online coloring."
+  },
+  "topic:letter-v": {
+    "sourceIntro": "These Letter V coloring pages pair uppercase and lowercase forms with pictures of violins, vases, and vans. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter V coloring pages with angular letter outlines and illustrated V words. These Letter V coloring pages pair uppercase and lowercase forms with pictures of violins, vases, and vans. Look through the complete designs and choose a V page for your activity. Download its printable PDF or image, or color the same letter and pictures online in Studio."
+  },
+  "topic:letter-w": {
+    "sourceIntro": "These Letter W coloring pages pair uppercase and lowercase forms with pictures of whales, watermelons, and wagons. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter W coloring pages combining alphabet forms with pictured subjects. These Letter W coloring pages pair uppercase and lowercase forms with pictures of whales, watermelons, and wagons. Compare the W outlines and scenes to select the drawing you want. Each page offers printable PDF and image downloads, along with a Studio option for coloring online."
+  },
+  "topic:letter-x": {
+    "sourceIntro": "These Letter X coloring pages pair uppercase and lowercase forms with pictures of xylophones, x-ray displays, and x-ray tetras. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Explore free Letter X coloring pages featuring crossing letter shapes and illustrated X examples. These Letter X coloring pages pair uppercase and lowercase forms with pictures of xylophones, x ray displays, and x ray tetras. Choose an X design after checking its full alphabet outline and accompanying pictures. Download a printable PDF or image, or open the same page to color digitally in Studio."
+  },
+  "topic:letter-y": {
+    "sourceIntro": "These Letter Y coloring pages pair uppercase and lowercase forms with pictures of yaks, yarn, and yachts. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Find free Letter Y coloring pages with outlined letters and pictures connected to Y words. These Letter Y coloring pages pair uppercase and lowercase forms with pictures of yaks, yarn, and yachts. Browse the Y drawings and pick a letter study or illustrated scene. Download the complete page as a printable PDF or image, or color its original outline online."
+  },
+  "topic:letter-z": {
+    "sourceIntro": "These Letter Z coloring pages pair uppercase and lowercase forms with pictures of zebras, zippers, and zeros. Compare the letter shapes across simple outlines, decorative designs, and illustrated scenes as you choose a page to color.",
+    "text": "Browse free Letter Z coloring pages with angular alphabet outlines and illustrated Z subjects. These Letter Z coloring pages pair uppercase and lowercase forms with pictures of zebras, zippers, and zeros. Compare the full Z designs to find a page for your alphabet activity. Save a printable PDF or image, or use Coloring Studio to complete the same outline online."
+  },
+  "number:1": {
+    "sourceIntro": "An outlined number 1 joins a pond-side turtle, a raccoon baker, and other illustrated scenes. Geometric versions divide the digit into curved and straight-sided sections.",
+    "text": "Find free number 1 coloring pages with numeral outlines, decorative versions, and illustrated scenes. An outlined number 1 joins a pond side turtle, a raccoon baker, and other illustrated scenes. Geometric versions divide the digit into curved and straight sided sections. Choose a clear digit or a picture based number activity, then download a printable PDF or image. The same number drawing also opens in Studio for online coloring."
+  },
+  "number:2": {
+    "sourceIntro": "Penguins, a gem-patterned digit beneath a castle arch, and sectioned outlines explore the number 2. Counting scenes and decorative versions give the curved numeral different settings.",
+    "text": "Explore free number 2 coloring pages with curved numeral designs and illustrated counting subjects. Penguins, a gem patterned digit beneath a castle arch, and sectioned outlines explore the number 2. Counting scenes and decorative versions give the curved numeral different settings. Compare the complete drawings to choose a number outline or scene. Download a PDF to print, save the image, or use Studio to color the selected two online."
+  },
+  "number:3": {
+    "sourceIntro": "A lamb in an apple orchard and a bear with a snowflake-patterned digit are among these number 3 scenes. Other designs divide its rounded outline into curved and angular spaces.",
+    "text": "Browse free number 3 coloring pages featuring rounded digits and decorative illustrated settings. A lamb in an apple orchard and a bear with a snowflake patterned digit are among these number 3 scenes. Other designs divide its rounded outline into curved and angular spaces. Choose a numeral study or a scene from the complete drawings. Each number 3 page includes a printable PDF, an image download, and an option to color online in Studio."
+  },
+  "number:4": {
+    "sourceIntro": "A dinosaur in a prehistoric landscape and an elephant with ice cream cones accompany number 4. The collection also includes geometric sections inside the numeral.",
+    "text": "Find free number 4 coloring pages with outlined digits and pictured number activities. A dinosaur in a prehistoric landscape and an elephant with ice cream cones accompany number 4. The collection also includes geometric sections inside the numeral. Look at the full drawings to compare plain shapes, patterned numerals, and illustrated scenes. Download your chosen four as a printable PDF or image, or color it online in Studio."
+  },
+  "number:5": {
+    "sourceIntro": "Lunch boxes, a ladybug at a garden entrance, and books bring counting details to number 5. Decorative versions fill the digit with rounded arcs and irregular sections.",
+    "text": "Explore free number 5 coloring pages that combine decorative digits and illustrated counting details. Lunch boxes, a ladybug at a garden entrance, and books bring counting details to number 5. Decorative versions fill the digit with rounded arcs and irregular sections. Browse the complete five designs before choosing a page for your activity. Save a printable PDF or image, or use the Studio link to color the same outline online."
+  },
+  "number:6": {
+    "sourceIntro": "Socks, toy airplanes, and a squirrel appear in scenes built around number 6. Curved and angular divisions turn its looped outline into decorative coloring spaces.",
+    "text": "Browse free number 6 coloring pages with looped numeral outlines and illustrated subjects. Socks, toy airplanes, and a squirrel appear in scenes built around number 6. Curved and angular divisions turn its looped outline into decorative coloring spaces. Compare the six designs and surrounding details to choose your drawing. PDF and image downloads are available from each page, alongside an online coloring option through Studio."
+  },
+  "number:7": {
+    "sourceIntro": "Buttons, clocks, a dog, and a pond setting accompany number 7. Other drawings explore the angular digit through curved and straight-sided geometric sections.",
+    "text": "Find free number 7 coloring pages featuring angular digits and illustrated number scenes. Buttons, clocks, a dog, and a pond setting accompany number 7. Other drawings explore the angular digit through curved and straight sided geometric sections. Choose a seven by its outline, pattern, or accompanying pictures. Download the full drawing as a printable PDF or image, or open it in Studio to color digitally."
+  },
+  "number:8": {
+    "sourceIntro": "Bows, kites, and a pond-side turtle are among the counting details beside number 8. Sectioned versions offer decorative shapes within its two rounded loops.",
+    "text": "Explore free number 8 coloring pages with double loop numeral shapes and decorative details. Bows, kites, and a pond side turtle are among the counting details beside number 8. Sectioned versions offer decorative shapes within its two rounded loops. Look through the complete eight drawings to find a page for your number activity. Download its printable PDF or image, or color the same design online in Studio."
+  },
+  "number:9": {
+    "sourceIntro": "Ice cream cones, pears, and a puffin beside a seaside cave appear with number 9. Geometric designs divide its loop and stem into smaller outlined spaces.",
+    "text": "Browse free number 9 coloring pages combining curved digit outlines and illustrated counting subjects. Ice cream cones, pears, and a puffin beside a seaside cave appear with number 9. Geometric designs divide its loop and stem into smaller outlined spaces. Choose a nine outline or a wider scene after checking each full drawing. Save a PDF to print or an image to keep, or open the original page for online coloring."
+  },
+  "number:10": {
+    "sourceIntro": "Kites, folding fans, and an orchard scene with a lamb explore number 10. The paired digits also appear with curved and angular sections to color.",
+    "text": "Find free number 10 coloring pages with paired numeral outlines and illustrated counting scenes. Kites, folding fans, and an orchard scene with a lamb explore number 10. The paired digits also appear with curved and angular sections to color. Compare how each drawing presents one and zero before choosing your page. Download a printable PDF or image, or color the same number 10 design digitally in Studio."
+  },
+  "number:11": {
+    "sourceIntro": "Toy airplanes, backpacks, and a dinosaur beside a cave accompany number 11. Decorative designs break the repeated digits into varied geometric sections.",
+    "text": "Explore free number 11 coloring pages with repeated digits, patterns, and illustrated subjects. Toy airplanes, backpacks, and a dinosaur beside a cave accompany number 11. Decorative designs break the repeated digits into varied geometric sections. Browse the full eleven drawings and choose a numeral design or picture based activity. Each page offers a printable PDF, an image download, and an option to color online."
+  },
+  "number:12": {
+    "sourceIntro": "Alarm clocks, paint palettes, and an astronaut at an imagined space cave appear with number 12. Other pages use sectioned outlines within both digits.",
+    "text": "Browse free number 12 coloring pages featuring numeral pairs and illustrated number activities. Alarm clocks, paint palettes, and an astronaut at an imagined space cave appear with number 12. Other pages use sectioned outlines within both digits. Choose a twelve outline or a scene after inspecting the full drawing. Download the PDF to print, save its image, or use Studio for online coloring of the same design."
+  },
+  "number:13": {
+    "sourceIntro": "Kites and ducklings appear in counting scenes around number 13, including a robot character. Geometric versions add curved and angular sections inside the digits.",
+    "text": "Find free number 13 coloring pages with decorative numerals and pictured counting subjects. Kites and ducklings appear in counting scenes around number 13, including a robot character. Geometric versions add curved and angular sections inside the digits. Compare the complete thirteen designs to choose a page for your activity. Download a printable PDF or image, or open the selected number outline in Coloring Studio."
+  },
+  "number:14": {
+    "sourceIntro": "Pears, snow globes, and a rabbit at a musical stage accompany number 14. The numeral pair also appears in sectioned decorative designs.",
+    "text": "Explore free number 14 coloring pages with paired digit outlines and imaginative scenes. Pears, snow globes, and a rabbit at a musical stage accompany number 14. The numeral pair also appears in sectioned decorative designs. Look through the fourteen drawings for a numeral study or illustrated activity. PDF and image downloads are available from each page, alongside the option to color online in Studio."
+  },
+  "number:15": {
+    "sourceIntro": "Folding fans and an otter on a dock with watering cans are among these number 15 scenes. Curved and angular patterns provide another way to explore the two digits.",
+    "text": "Browse free number 15 coloring pages featuring decorative digits and illustrated counting details. Folding fans and an otter on a dock with watering cans are among these number 15 scenes. Curved and angular patterns provide another way to explore the two digits. Choose a fifteen design after checking the full drawing and its surrounding pictures. Download a printable PDF or image, or color the same number page online in Studio."
+  },
+  "number:99": {
+    "sourceIntro": "Rounded number 99 outlines sit alongside imagined stone formations, including a waterfall between two nines. Ornamental arithmetic displays add equations and decorative details.",
+    "text": "Find free number 99 coloring pages with repeated nines and decorative numeral scenes. Rounded number 99 outlines sit alongside imagined stone formations, including a waterfall between two nines. Ornamental arithmetic displays add equations and decorative details. Compare the full 99 designs to select a clear outline or an illustrated composition. Download its printable PDF or image, or open the number drawing for online coloring in Studio."
+  },
+  "number:100": {
+    "sourceIntro": "Explore number 100 through clear digit outlines, a dinosaur museum scene, and floral arithmetic displays. Some drawings arrange ten groups of ten around the number.",
+    "text": "Explore free number 100 coloring pages with numeral outlines, counting details, and illustrated settings. Explore number 100 through clear digit outlines, a dinosaur museum scene, and floral arithmetic displays. Some drawings arrange ten groups of ten around the number. Browse the complete hundred designs and choose a page for your number activity. Save a printable PDF or image, or color the same outline digitally in Studio."
+  },
+  "number:101": {
+    "sourceIntro": "Bold outlined digits and crystalline cave formations give number 101 different shapes and settings. Place-value designs show how hundreds, tens, and ones form the number.",
+    "text": "Browse free number 101 coloring pages with decorative digits and illustrated place value subjects. Bold outlined digits and crystalline cave formations give number 101 different shapes and settings. Place value designs show how hundreds, tens, and ones form the number. Choose a numeral outline or a wider 101 composition after viewing the full drawings. Download a PDF to print or an image to save, or use Studio for online coloring."
+  },
+  "number:111": {
+    "sourceIntro": "Rounded number 111 outlines appear alongside an apple tree and ladder and other illustrated scenes. Place-value displays show 100 + 10 + 1 within decorative compositions.",
+    "text": "Find free number 111 coloring pages featuring repeated ones and illustrated number designs. Rounded number 111 outlines appear alongside an apple tree and ladder and other illustrated scenes. Place value displays show 100 + 10 + 1 within decorative compositions. Compare the full 111 drawings before choosing a clear numeral or decorative scene. Each page includes printable PDF and image downloads, alongside an online coloring option in Studio."
+  },
+  "number:222": {
+    "sourceIntro": "Broad number 222 outlines share the collection with an imagined floating island and wind turbine. Place-value drawings arrange hundreds, tens, and ones around the repeated digits.",
+    "text": "Explore free number 222 coloring pages with repeated twos, decorative outlines, and illustrated number scenes. Broad number 222 outlines share the collection with an imagined floating island and wind turbine. Place value drawings arrange hundreds, tens, and ones around the repeated digits. Choose a 222 design by its digit shapes or surrounding details. Download the full drawing as a printable PDF or image, or open the same number page to color online in Studio."
+  },
+  "number:333": {
+    "sourceIntro": "Rounded number 333 outlines join an underwater bookshelf with a sea turtle and other imaginative settings. Basket arrangements illustrate three groups of 111.",
+    "text": "Browse free number 333 coloring pages featuring rounded digits and imaginative illustrated arrangements. Rounded number 333 outlines join an underwater bookshelf with a sea turtle and other imaginative settings. Basket arrangements illustrate three groups of 111. Look through the full 333 designs to choose a numeral study or picture based activity. Download a printable PDF or image, or use the Studio link to color the outline online."
+  },
+  "number:444": {
+    "sourceIntro": "Explore number 444 in rounded outlines, an owl library lift, and a place-value building. Architectural and decorative details surround the repeated fours.",
+    "text": "Find free number 444 coloring pages with repeated fours and illustrated number settings. Explore number 444 in rounded outlines, an owl library lift, and a place value building. Architectural and decorative details surround the repeated fours. Compare the complete 444 drawings before selecting a plain outline or detailed scene. PDF and image downloads are available for your choice, with online coloring in Studio as another option."
+  },
+  "number:555": {
+    "sourceIntro": "Broad outlined fives appear with a parcel-filled house and other illustrated settings. Place-value charts show 500 + 50 + 5 among decorative number designs.",
+    "text": "Explore free number 555 coloring pages combining repeated digits and decorative number activities. Broad outlined fives appear with a parcel filled house and other illustrated settings. Place value charts show 500 + 50 + 5 among decorative number designs. Choose a five filled composition or clear numeral outline by inspecting the complete drawing. Download the 555 page as a printable PDF or image, or color the original online in Studio."
+  },
+  "number:666": {
+    "sourceIntro": "Rounded number 666 outlines join scenes such as a fox with a wheelbarrow. An imagined castle displays addition and subtraction facts around the repeated digits.",
+    "text": "Browse free number 666 coloring pages with repeated sixes and illustrated arithmetic designs. Rounded number 666 outlines join scenes such as a fox with a wheelbarrow. An imagined castle displays addition and subtraction facts around the repeated digits. Compare the complete numeral drawings to choose a 666 page for your activity. Save a printable PDF or image, or open the same outlined design in Coloring Studio."
+  },
+  "number:777": {
+    "sourceIntro": "Number 777 appears in rounded outlines and beneath a harp-shaped structure. Other compositions arrange its hundreds, tens, and ones in decorative place-value displays.",
+    "text": "Find free number 777 coloring pages featuring decorative sevens and illustrated number compositions. Number 777 appears in rounded outlines and beneath a harp shaped structure. Other compositions arrange its hundreds, tens, and ones in decorative place value displays. Choose a 777 drawing after comparing the full digits and surrounding details. Each page provides a printable PDF, an image download, and an option to color online in Studio."
+  },
+  "number:888": {
+    "sourceIntro": "Rounded number 888 outlines join a reading scene with a child and bookcase. An imagined castle presents an arithmetic design using 888 and 900.",
+    "text": "Explore free number 888 coloring pages with repeated loops and imaginative numeral scenes. Rounded number 888 outlines join a reading scene with a child and bookcase. An imagined castle presents an arithmetic design using 888 and 900. Browse the complete 888 designs before selecting a clear digit study or illustrated setting. Download a printable PDF or image, or color the same outline digitally in Studio."
+  },
+  "number:999": {
+    "sourceIntro": "Explore number 999 through rounded digit outlines, a skateboard park, and decorative place-value displays. Equations and scene details give the repeated nines different contexts.",
+    "text": "Browse free number 999 coloring pages with decorative nines and illustrated place value subjects. Explore number 999 through rounded digit outlines, a skateboard park, and decorative place value displays. Equations and scene details give the repeated nines different contexts. Compare the full 999 drawings to find the page you want to use. Download a PDF to print, save an image, or use Coloring Studio to color the selected number design online."
+  },
+  "number:1000": {
+    "sourceIntro": "Number 1000 appears in rounded outlines, a pelican mailbox scene, and an owl arithmetic display. Four-digit compositions range from broad shapes to illustrated settings.",
+    "text": "Find free number 1000 coloring pages featuring four digit outlines and illustrated number scenes. Number 1000 appears in rounded outlines, a pelican mailbox scene, and an owl arithmetic display. Four digit compositions range from broad shapes to illustrated settings. Look through the complete thousand designs to choose your page. Printable PDF and image downloads are available from every drawing, with a Studio option for online coloring of the same outline."
+  },
+  "number:1001": {
+    "sourceIntro": "Rounded number 1001 outlines join a painting chameleon and a garden number path. Addition and subtraction designs explore the relationship between 1000 and 1001.",
+    "text": "Explore free number 1001 coloring pages with decorative digit arrangements and illustrated number activities. Rounded number 1001 outlines join a painting chameleon and a garden number path. Addition and subtraction designs explore the relationship between 1000 and 1001. Compare the complete 1001 outlines and scenes before choosing a printable PDF or image. Each drawing also opens in Coloring Studio so you can color the original number design online."
+  },
+  "number:2222": {
+    "sourceIntro": "Rounded number 2222 outlines appear with a telescope scene and a penguin number path. Addition and subtraction by two accompany some of the four-digit designs.",
+    "text": "Browse free number 2222 coloring pages with four repeated twos and illustrated numeral compositions. Rounded number 2222 outlines appear with a telescope scene and a penguin number path. Addition and subtraction by two accompany some of the four digit designs. Choose a 2222 drawing by its outline, pattern, or surrounding scene. Download a printable PDF or image, or open the full number design for online coloring in Studio."
+  },
+  "collection:faith": {
+    "sourceIntro": "Browse drawings connected with different faith traditions, including visible symbols, places of worship, and community scenes. Each subject page keeps its own context and imagery.",
+    "text": "Explore free faith and religion coloring pages through collections focused on particular traditions and celebrations. Symbols, places of worship, family gatherings, and illustrated stories provide different starting points. Open a subject to see its individual drawings and their descriptions, then choose a printable PDF or image download. Each drawing keeps its own religious context and can also be opened for online coloring."
+  },
+  "topic:jurassic-park": {
+    "sourceIntro": "Dinosaurs, park gates, tour vehicles, fenced habitats, and research spaces shape these Jurassic Park inspired drawings. Look for single dinosaur outlines as well as visitor paths, laboratories, fossils, bridges, and broad tropical settings. The scenes are original coloring illustrations; specific film characters and events are not identified unless they are visibly present.",
+    "text": "Enter a prehistoric park with free Jurassic Park coloring pages inspired by dinosaurs and imagined visitor attractions. Browse armored dinosaurs, towering gates, tour vehicles, laboratories, and tropical enclosures. Individual descriptions identify the visible scene without assigning an unsupported film event or vehicle model. Choose a drawing to download as a printable PDF or image, or open its outline in Coloring Studio."
+  },
+  "topic:juneteenth": {
+    "sourceIntro": "The Juneteenth pages include flags, June 19 lettering, family and community gatherings, readings, music, food, and history activities. Some drawings are simple symbols while others show larger celebrations, teaching scenes, and neighborhood events. Read any dates printed in an individual illustration carefully and choose colors that keep the words, flag details, and people easy to distinguish.",
+    "text": "Find free Juneteenth coloring pages featuring June 19 lettering, flags, community celebrations, music, and family gatherings. The collection brings simple symbolic designs together with fuller neighborhood and educational scenes. Read the individual description to choose a page for your activity, then open the drawing for a printable PDF or image download. Online coloring offers another way to work with the same illustration."
+  },
+  "topic:john-deere": {
+    "sourceIntro": "John Deere machines include tractors, lawn equipment, utility vehicles, loaders, excavators, harvesters, and other farm or worksite equipment. Some drawings show one machine and its operator; others add fields, barns, crops, workshops, trailers, or service details. The artwork does not identify exact machine models, so compare visible shapes and attachments rather than relying on a model name.",
+    "text": "Browse free John Deere coloring pages showing farm machines and work equipment in illustrated settings. Tractors, harvesters, loaders, and other vehicles appear beside fields, barns, trailers, and workshops. The drawings are identified by visible equipment type rather than an assumed model number. Select a scene to download its printable PDF or image, or explore the outline in Coloring Studio."
+  },
+  "topic:ant": {
+    "sourceIntro": "Ant coloring pages show small insects among leaves, flowers, acorns, mushrooms, and other natural details. Some drawings focus on a single ant while others build a larger scene around the colony or habitat. Choose colors for the insect first, then bring the surrounding plants and ground details to life.",
+    "text": "Discover free ant coloring pages that bring a tiny insect world into view. Ants carry seeds, explore leaves, cross branches, and gather around woodland nests, with playful portraits alongside detailed habitats. Compare the individual scenes to choose your next drawing. Each page has a printable PDF and image download, with online coloring available from the drawing page."
+  },
+  "topic:american-flag": {
+    "sourceIntro": "American Flag drawings pair stars-and-stripes flag outlines with school, community, and civic scenes. Look for children carrying or raising a flag, public buildings, gardens, landmarks, and decorative frames. Some pages leave broad open bands to color, while others add people, architecture, and detailed surroundings.",
+    "text": "Browse free American flag coloring pages with stars and stripes in school, garden, landmark, and community scenes. Some drawings center on a single flag, while others include people, buildings, animals, or decorative borders. Open the scene you want to inspect its details and download a printable PDF or image. The same outline is available for coloring online."
+  },
+  "topic:anpanman": {
+    "sourceIntro": "Anpanman and friends appear in character portraits, playful activities, and imagined adventures. Browse clear outlines of the familiar round-headed hero alongside scenes with supporting characters and background details.",
+    "text": "Meet the round faced hero in free Anpanman coloring pages featuring friendly poses and imagined everyday adventures. Follow him through gardens, bakeries, village paths, and scenes with animal companions. Individual page descriptions explain what is visible in each drawing. Choose a favorite illustration for a printable PDF or image download, or open it in Coloring Studio."
+  },
+  "topic:angry-birds": {
+    "sourceIntro": "Angry Birds characters appear in expressive poses, group scenes, and playful game-inspired settings. Look for the birds’ distinctive shapes and facial expressions, with occasional pigs and props adding more areas to color.",
+    "text": "Explore free Angry Birds coloring pages with expressive birds, mischievous pigs, and playful illustrated activities. The collection includes character portraits, music, games, workshops, gardens, and group adventures. Browse the individual drawings to find a character or setting you enjoy, then download the printable PDF or image. You can also color the original outline online without changing the downloaded page."
+  },
+  "topic:among-us": {
+    "sourceIntro": "Among Us crewmates appear in their rounded spacesuits with large visors, sometimes alone and sometimes in group or task scenes. The pages range from simple character outlines to busier game-inspired settings with equipment and props.",
+    "text": "Step into an illustrated crewmate world with free Among Us coloring pages. Rounded visors and backpacks appear in character portraits, spaceship tasks, science rooms, and imagined outdoor adventures. Page descriptions distinguish the visible activity in each scene. Open a drawing to get its printable PDF or image download, or use Coloring Studio to add color online."
+  },
+  "topic:religious": {
+    "sourceIntro": "These Religious coloring pages bring together visible symbols, people, and places from several traditions, including Christian, Jewish, Muslim, Sikh, Buddhist, and Hindu scenes. Each drawing should be described from its own visible details; the collection does not present one tradition as interchangeable with another.",
+    "text": "Browse free religious coloring pages representing several faith traditions through their own symbols, practices, people, and places. Christian, Jewish, Muslim, Sikh, Buddhist, and Hindu subjects appear within this varied collection. Use each drawing's description to select an appropriate scene rather than treating the traditions as interchangeable. Printable PDF and image downloads are available from individual pages, alongside online coloring."
+  },
+  "topic:rat": {
+    "sourceIntro": "Rat drawings show expressive rodents among leaves, flowers, food, and natural surroundings. Clear single-animal outlines sit beside fuller scenes with plant details, small companions, and layered habitats.",
+    "text": "Find free rat coloring pages with curious rodents exploring plants, food, shelters, and woodland surroundings. Simple animal poses sit alongside scenes filled with leaves, companions, and small environmental details. Browse the drawings to choose a portrait or a fuller setting. Open your selection for a printable PDF or image download, or color its outline online."
+  },
+  "topic:my-little-pony": {
+    "sourceIntro": "My Little Pony pages bring together character portraits and imagined scenes from the series. Open a character topic for drawings focused on one pony.",
+    "text": "Visit familiar pony characters through free My Little Pony coloring pages and their individual collections. Rarity and Rainbow Dash bring different personalities, appearances, and imagined activities to the drawings. Follow a character topic to compare its portraits and story scenes, then select a printable PDF or image download. Coloring Studio provides an online option for each available drawing."
+  },
+  "topic:ramadan": {
+    "sourceIntro": "Ramadan drawings include crescent moons, lanterns, family and community scenes, and other decorations associated with the month. The pages range from simple symbols and lettering to more detailed settings; descriptions should name only details visible in each image.",
+    "text": "Explore free Ramadan coloring pages with crescent moons, lanterns, shared meals, family scenes, and places of prayer. Decorative designs and fuller community illustrations offer different subjects to browse. Read each page description to find the scene that fits your activity, then download a printable PDF or image. The original outlines can also be opened for online coloring."
+  },
+  "topic:rainbow-friends": {
+    "sourceIntro": "Rainbow Friends characters appear in expressive poses and game-inspired scenes. Browse the recognizable monster figures individually or in groups, with pages ranging from simple outlines to settings with more props and background detail.",
+    "text": "Browse free Rainbow Friends coloring pages inspired by the recognizable game characters and their imagined surroundings. Choose among individual monster poses, groups, props, and scenes with more background detail. The description on each drawing page identifies the visible subject and action. Download the printable PDF or image for your selection, or explore the same outline in Coloring Studio."
+  },
+  "topic:jet": {
+    "sourceIntro": "Jet coloring pages show aircraft in clear profiles, flight scenes, and settings with more background detail. Explore the silhouette, wings, engines, and windows visible in each drawing.",
+    "text": "Take flight with free jet coloring pages showing aircraft on the ground and in the sky. Browse different wing shapes, engines, windows, landing scenes, and airport surroundings without assuming an exact manufacturer or model. Open an individual drawing to inspect its visible details, then download a printable PDF or image. Online coloring is available from the same page."
+  },
+  "topic:jungle": {
+    "sourceIntro": "Jungle coloring pages combine tropical foliage, wildlife, and imagined forest settings. Browse clear animal outlines and fuller scenes with layered leaves, paths, and habitats.",
+    "text": "Explore free jungle coloring pages filled with tropical plants, wildlife, winding paths, and imagined forest habitats. Individual animal scenes share the collection with fuller landscapes of layered leaves and trees. Browse the illustrations to find a setting you want to work on, then choose its printable PDF or image download. Each drawing also opens in Coloring Studio."
+  },
+  "topic:ankylosaurus": {
+    "sourceIntro": "Ankylosaurus coloring pages feature the armored dinosaur in character poses and prehistoric settings. Look for its broad body, bony back plates, and tail club where those features appear in the drawing.",
+    "text": "Discover free Ankylosaurus coloring pages featuring an armored dinosaur with a broad body and a clubbed tail. The drawings include individual poses, hatchlings, forest paths, ponds, and prehistoric landscapes. Compare the scenes to choose a dinosaur portrait or a detailed habitat. Printable PDF and image downloads are available on each drawing page, together with an online coloring option."
+  },
+  "topic:angel": {
+    "sourceIntro": "Angel coloring pages show winged figures in simple poses and imagined scenes with clouds, stars, or other decorative details. This topic stays separate from Bible illustrations unless a specific drawing depicts a Bible story.",
+    "text": "Browse free angel coloring pages with feathered wings, halos, flowing robes, and imagined garden or cloud scenes. Some figures appear alone, while others play music, care for animals, or take part in gentle everyday activities. Select an illustration to see its specific description and download a printable PDF or image. You can also add color online in Coloring Studio."
+  },
+  "topic:amy-rose": {
+    "sourceIntro": "Amy Rose appears in character poses and imagined activities from the Sonic series. Browse her individual drawings and use each image description for the visible accessories and setting.",
+    "text": "Find free Amy Rose coloring pages featuring the Sonic character in expressive poses and imagined adventures. Her dress, boots, hammer, and familiar silhouette appear in gardens, workshops, playful activities, and fantasy settings. Open a drawing to see the scene described in detail, then choose a printable PDF or image download. The same outline is available for online coloring."
+  },
+  "topic:rabbit": {
+    "sourceIntro": "Rabbit coloring pages show single rabbits and groups among plants, woodland paths, bridges, and natural shelters. The set ranges from open outlines to scenes with layered foliage and habitat details.",
+    "text": "Explore free rabbit coloring pages with long ears, small paws, and a range of woodland settings. Rabbits rest beside plants, investigate paths, and appear with companions among bridges, shelters, and leafy surroundings. Browse single animal portraits or fuller scenes before choosing a drawing. Each selection provides a printable PDF and image download, plus access to online coloring."
+  },
+  "topic:reindeer": {
+    "sourceIntro": "Reindeer coloring pages include individual animals, woodland settings, and seasonal scenes with decorations and village details. Look for antlers, hooves, and habitat features visible in each drawing.",
+    "text": "Browse free reindeer coloring pages featuring antlers, hooves, forest scenes, and seasonal decorations. Individual animals appear alongside groups, village settings, and illustrations with more detailed surroundings. Look through the page descriptions to choose the animal pose or scene you prefer. Open your selection for a printable PDF or image download, or add color to the outline online."
+  },
+  "topic:red-panda": {
+    "sourceIntro": "Red panda coloring pages feature the animal in forest settings, among branches and leafy plants, and in imagined sanctuary scenes. Choose a single pose or a more detailed habitat.",
+    "text": "Find free red panda coloring pages with ringed tails, rounded faces, leafy branches, and forest surroundings. The collection moves from individual animal poses to imagined habitats and sanctuary scenes with more environmental detail. Choose a drawing after checking its description, then download the printable PDF or image. Coloring Studio lets you work with that same outline online."
+  },
+  "topic:rarity": {
+    "sourceIntro": "Rarity from My Little Pony appears in character poses, fashion activities, and imaginative scenes. Look for her curled mane and diamond mark where they are visible in the drawing.",
+    "text": "Explore free Rarity coloring pages featuring the My Little Pony unicorn with her curled mane and elegant character design. Browse portraits, fashion activities, and imagined scenes that show different accessories and settings. Each drawing has its own description to help you choose. Download a printable PDF or image from the individual page, or color the outline in Coloring Studio."
+  },
+  "topic:rainbow-dash": {
+    "sourceIntro": "Rainbow Dash from My Little Pony appears in character poses, flight scenes, and imagined activities. Look for her wings and cloud-and-lightning mark where they are visible in the drawing.",
+    "text": "Browse free Rainbow Dash coloring pages featuring the winged My Little Pony character in expressive poses and imagined adventures. Flight scenes, clouds, activities, and detailed surroundings offer different ways to enjoy her character. Select a drawing and read its scene description before downloading a printable PDF or image. You can also open the same illustration for online coloring."
+  },
+  "topic:rainbow": {
+    "sourceIntro": "Rainbow coloring pages range from broad arcs between clouds to colorful skies above homes, gardens, and imagined settings. Choose a simple open outline or a scene with more background details.",
+    "text": "Find free rainbow coloring pages ranging from broad arcs between clouds to detailed skies above homes, gardens, and imagined landscapes. Browse simple rainbow outlines or choose a scene with more surroundings to explore. Each drawing page explains what is pictured and provides a printable PDF or image download. Online coloring is available for the original outline as well."
+  },
+  "topic:rain": {
+    "sourceIntro": "Rain coloring pages show umbrellas, boots, coats, puddles, and rainy outdoor settings. Browse simple weather objects and fuller scenes with gardens, paths, or neighborhood details.",
+    "text": "Explore free rain coloring pages with umbrellas, boots, puddles, raindrops, and wet outdoor scenes. Single weather objects appear alongside gardens, paths, and neighborhood illustrations. Compare the drawings to choose the rainy subject that fits your activity, then open its printable PDF or image download. The same page gives you access to Coloring Studio for coloring online."
+  },
+  "topic:raccoon": {
+    "sourceIntro": "Raccoon coloring pages show the animal in woodland, shoreline, and marsh settings. Look for its dark facial mask, ringed tail, and the habitat details visible in each drawing.",
+    "text": "Browse free raccoon coloring pages with ringed tails, distinctive faces, and woodland or waterside surroundings. Individual animals explore branches, marshes, shorelines, and other illustrated habitats. Read the scene descriptions to choose a portrait or a more detailed setting. Each drawing is available as a printable PDF and image download, with an option to add color online."
+  },
+  "topic:race-car": {
+    "sourceIntro": "Race car coloring pages include open-wheel and streamlined designs, race circuits, paddocks, and workshops. Explore each vehicle’s visible body shape, wheels, wing, and racing setting without assuming a real model.",
+    "text": "Explore free race car coloring pages featuring open wheel cars, streamlined bodies, tracks, paddocks, and workshops. The collection focuses on visible shapes and racing settings without assigning unsupported makes or technical specifications. Browse the individual scenes, then open your chosen drawing for a printable PDF or image download. You can also color its outline online in Coloring Studio."
+  },
+  "topic:ambulance": {
+    "sourceIntro": "Ambulance coloring pages show emergency vehicles, care teams, patients, and equipment used in rescue and transport scenes.",
+    "text": "Browse free ambulance coloring pages with emergency transport vehicles, marked vans and trucks, and rescue scenes. Some drawings focus on the vehicle outline; others include a care team, patient, medical symbol, or outdoor setting. Check each page for its visible details, then download the printable PDF or image or color the outline online."
+  },
+  "topic:beyonce": {
+    "sourceIntro": "Beyoncé coloring pages include portrait and music themed illustrations. The set keeps each scene focused on what is visibly drawn, without assuming a specific concert, outfit, or event.",
+    "text": "Explore free Beyoncé coloring pages with portrait and music themed artwork. The drawings show varied hair, clothing, poses, and music accessories, without identifying a particular concert, song, or real event. Open each illustration to inspect the details it actually shows, then download a printable PDF or image or color the outline online."
+  },
+  "topic:bmw": {
+    "sourceIntro": "BMW coloring pages feature cars in clear outlines and illustrated driving settings. Compare the visible body shapes and details in each drawing; no exact model is assumed when the artwork does not establish one.",
+    "text": "Find free BMW coloring pages with branded cars and illustrated driving settings. Some designs focus on a vehicle silhouette; others add a road, a driver, or surrounding scenery. Exact model names are left out when a drawing does not show enough detail to support them. Open a page to download its PDF or image, or color it online."
+  },
+  "topic:blues-clues": {
+    "sourceIntro": "Blue's Clues coloring pages bring together Blue, familiar characters, clue-solving activities, and playful settings. Choose a character portrait or a wider scene, then open the drawing to see its details before printing or coloring online.",
+    "text": "Browse free Blue's Clues coloring pages with Blue, familiar characters, clue finding activities, and playful settings. The collection includes individual character drawings as well as broader scenes with more objects to color. Review each page for its visible clues and surroundings, then choose a printable PDF, an image download, or the online coloring option."
+  },
+  "topic:blippi": {
+    "sourceIntro": "Blippi coloring pages show the recognizable character in learning, play, and exploration scenes. Look through the individual drawings to see which people, places, vehicles, or objects appear, then choose a page to print or color online.",
+    "text": "Explore free Blippi coloring pages showing the familiar character in learning, play, and exploration scenes. Across the collection, the drawings include people, vehicles, places, and everyday objects; each page has its own visible details. Browse the scenes, then open an individual design for a printable PDF, image download, or online coloring."
+  },
+  "topic:blaze": {
+    "sourceIntro": "Blaze and the Monster Machines coloring pages feature the animated monster truck and other machine characters in playful action scenes. Browse the individual drawings for vehicle poses, race settings, and background details, then pick a printable page or color online.",
+    "text": "Find free Blaze and the Monster Machines coloring pages featuring the animated monster truck and other machine characters. The illustrations range from character poses to playful vehicle scenes, with different tracks and backgrounds. Check each drawing for the machines and details actually shown, then download its printable PDF or image or color it online."
+  },
+  "topic:black-history-month": {
+    "sourceIntro": "Black History Month coloring pages feature portraits and people in work, learning, family, and community settings. Review each drawing for the people and surroundings it actually shows, then choose a page to print or color online.",
+    "text": "Explore free Black History Month coloring pages featuring portraits and scenes of people in work, learning, family, and community settings. Each drawing shows its own people and surroundings; the collection avoids assigning a named historical figure or event when the artwork does not establish one. Browse individual outlines, then download a printable PDF or image or color online."
+  },
+  "topic:black-girl": {
+    "sourceIntro": "Black girl coloring pages include character portraits and illustrated everyday scenes. Notice the hairstyles, clothing, poses, and surrounding details in each drawing, and choose the page that best fits the coloring activity you have in mind.",
+    "text": "Browse free Black girl coloring pages with portrait illustrations, varied hairstyles, clothing, and everyday scenes. The drawings include different poses and surrounding details rather than a single character or setting. Look through the collection to choose an outline, then open its page for a printable PDF, an image download, or coloring online."
+  },
+  "topic:bigfoot-yeti": {
+    "sourceIntro": "Bigfoot and Yeti coloring pages feature legendary creatures in imagined settings. Explore the poses, scenery, and small details shown in each illustration, from open character outlines to busier outdoor compositions.",
+    "text": "Explore free Bigfoot and Yeti coloring pages featuring legendary creatures in imagined outdoor and playful settings. The drawings vary from open character outlines to scenes with trees, snow, and other background details. Browse each page for the creature and setting it actually shows, then choose a PDF, image download, or online coloring page."
+  },
+  "topic:beyblade": {
+    "sourceIntro": "Beyblade coloring pages include spinning top designs, arenas, and illustrated characters. Compare the shapes and patterns in each drawing, then select an individual page to print or open for online coloring.",
+    "text": "Browse free Beyblade coloring pages with spinning top designs, arenas, and character illustrations. The collection brings together different blade shapes and action settings without assuming a particular toy model or episode. Compare the artwork on each individual page, then choose a printable PDF, save an image, or color the drawing online."
   },
   "topic:farm": {
     "sourceIntro": "Farm coloring pages combine animals, buildings, equipment, and outdoor work scenes. Some drawings focus on a single farm subject while others show a wider yard or field. Browse the complete outlines and choose a page to print, save as an image, or color online.",
