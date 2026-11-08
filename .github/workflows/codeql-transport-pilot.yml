@@ -1,6 +1,6 @@
-# DRAFT ONLY. Do not enable SARIF/database uploads or disable managed default setup for this pilot.
-# Suggested destination after owner/publisher review: .github/workflows/codeql-transport-pilot.yml
-name: CodeQL official transport pilot
+# Keep managed default setup until all languages pass on the exact main head.
+# Set the nonsecret upload gate only after the controlled setup transition.
+name: CodeQL verified official bundles
 'on':
   workflow_dispatch:
   push:
@@ -16,7 +16,10 @@ concurrency:
   cancel-in-progress: false
 jobs:
   analyze:
-    name: Pilot (${{ matrix.language }})
+    name: Analyze (${{ matrix.language }})
+    permissions:
+      contents: read
+      security-events: write
     # Managed default setup excludes fork PRs. Do not widen that source boundary here.
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
@@ -151,15 +154,16 @@ jobs:
         with:
           category: /language:${{ matrix.language }}
           output: ${{ runner.temp }}/codeql-pilot-results/${{ matrix.language }}
-          upload: never # Documented v4 value; avoids even failed-run SARIF uploads.
+          upload: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' && 'always' || 'never' }}
           upload-database: false
           skip-queries: false
-          wait-for-processing: false
+          wait-for-processing: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' }}
       - name: Record local result integrity without storing artifacts
         shell: bash
         env:
           RESULT_DIRECTORY: ${{ steps.analyze.outputs.sarif-output }}
           EXPECTED_LANGUAGE: ${{ matrix.language }}
+          UPLOAD_ENABLED: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' }}
         run: |
           python3 - <<'PY'
           import hashlib, json, os, pathlib
