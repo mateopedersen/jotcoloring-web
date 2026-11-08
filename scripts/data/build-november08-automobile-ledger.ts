@@ -168,13 +168,13 @@ function cleanModel(row:any,brandName:string){
  if(row.topic==='citroen')raw=raw.replace(/\b(?:e|ë)-?c(3|4|5)\b/ig,(_,n)=>`ë-C${n}`).replace(/\be\s+(berlingo|spacetourer|jumpy|traveller|rifter|expert)\b/ig,(_,m)=>`ë-${m}`);
  if(row.topic==='ds-automobiles')raw=raw.replace(/\bn\s*(4|7|8)\b/ig,(_,n)=>`N°${n}`).replace(/\betoile\b/ig,'Étoile').replace(/\b3\s+e-tense\b/ig,'3 E-TENSE').replace(/\b([3479])\s+e-tense\b/ig,'$1 E-TENSE');
  raw=raw.replace(/\bdmc-?12\b/ig,'DMC-12').replace(/\be-?m3\b/ig,'e-M3').replace(/\b9-3x\b/ig,'9-3X').replace(/\b2cv6\b/ig,'2CV6').replace(/\bfr-s\b/ig,'FR-S').replace(/\bscout ii\b/ig,'Scout II').replace(/\b9x8\b/ig,'9X8').replace(/\bone:1\b/ig,'One:1').replace(/\bz9\s*gt\b/ig,'Z9GT').replace(/\bem-i\b/ig,'EM-i').replace(/\bdm-i\b/ig,'DM-i').replace(/\bgx\b/ig,'GX').replace(/\b1-9\b/g,'1.9').replace(/\bmonjaro\b/ig,'Monjaro').replace(/\ba110\s+r70\b/ig,'A110 R 70');
- raw=raw.replace(/\bspacetourer\b/ig,'SpaceTourer').replace(/\b2cv6\b/ig,'2CV6').replace(/\bemei\b/ig,'EM-i').replace(/\bem-p\b/ig,'EM-P').replace(/\bgx\b/ig,'GX').replace(/\b1-9\b/g,'1.9').replace(/\bone-1\b/ig,'One:1').replace(/\b11\b/g,'11');
+ raw=raw.replace(/\bspacetourer\b/ig,'SpaceTourer').replace(/\b2cv6\b/ig,'2CV6').replace(/\bemei\b/ig,'EM-i').replace(/\bem-p\b/ig,'EM-P').replace(/\bgx\b/ig,'GX').replace(/\b1-9\b/g,'1.9').replace(/\bone-1\b/ig,'One:1');
  if(row.topic==='polestar')raw=raw.replace(/\b2 bst 270\b/ig,'2 BST edition 270');
  if(!raw||raw.toLowerCase()===brandName.toLowerCase())return '';
  return raw.split(' ').map((word:string,i:number)=>{
   if(word.includes('-'))return word.split('-').map((part:string,j:number)=>j===0?titleWord(part):titleWord(part)).join('-');
   return titleWord(word);
- }).join(' ').replace(/Ë-/g,'ë-').replace(/E-Tense/g,'E-TENSE').replace(/DM-I/g,'DM-i').replace(/Em-I/g,'EM-i').replace(/EM-P/g,'EM-P').replace(/E-Tech/g,'E-Tech').replace(/\bEm-P\b/g,'EM-P').replace(/\bCcx\b/g,'CCX').replace(/\bCcr\b/g,'CCR').replace(/\bI([689])\b/g,'i$1').replace(/\bP7I\b/g,'P7i').replace(/\bG3I\b/g,'G3i').replace(/\bSx\/4\b/g,'SX/4').replace(/\bHemi\b/g,'HEMI').replace(/'cuda/ig,"'Cuda").replace(/\bLemans\b/g,'LeMans').replace(/\b35Th\b/ig,'35th').replace(/\b15Th\b/ig,'15th').replace(/\bRelease Series (\d+)-0\b/g,'Release Series $1.0');
+ }).join(' ').replace(/Ë-/g,'ë-').replace(/E-Tense/g,'E-TENSE').replace(/DM-I/g,'DM-i').replace(/Em-I/g,'EM-i').replace(/\bEm-P\b/g,'EM-P').replace(/\bCcx\b/g,'CCX').replace(/\bCcr\b/g,'CCR').replace(/\bI([689])\b/g,'i$1').replace(/\bP7I\b/g,'P7i').replace(/\bG3I\b/g,'G3i').replace(/\bSx\/4\b/g,'SX/4').replace(/\bHemi\b/g,'HEMI').replace(/'cuda/ig,"'Cuda").replace(/\bLemans\b/g,'LeMans').replace(/\b35Th\b/ig,'35th').replace(/\b15Th\b/ig,'15th').replace(/\bRelease Series (\d+)-0\b/g,'Release Series $1.0');
 }
 function subjectCue(stem:string){
  const s=stem.toLowerCase().replace(/[_-]+/g,' ');
