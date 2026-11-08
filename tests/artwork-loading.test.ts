@@ -36,7 +36,7 @@ test('collection covers use reviewed small variants and invalidate replaced cura
 
 test('catalog, ages, detail and streaming share the image policy without touching download sources',()=>{
  const read=(p:string)=>readFileSync(new URL('../src/'+p,import.meta.url),'utf8');
- for(const path of ['components/CatalogView.astro','pages/coloring-by-age/[band].astro']){
+ for(const path of ['components/CatalogView.astro','pages/coloring-by-age/[band].astro','pages/coloring-by-age/index.astro']){
   const source=read(path);assert.match(source,/eager=\{index<FIRST_ROW_IMAGES\}/);assert.match(source,/priority=\{index===0\}/);assert.match(source,/rel="preload" as="image"/);assert.match(source,/GALLERY_IMAGE_SIZES/);
  }
  const detail=read('pages/coloring/[slug].astro');assert.match(detail,/imagesizes=\{DETAIL_IMAGE_SIZES\}/);assert.match(detail,/sizes=\{DETAIL_IMAGE_SIZES\}/);assert.ok(DETAIL_IMAGE_SIZES.includes('100vw'));
