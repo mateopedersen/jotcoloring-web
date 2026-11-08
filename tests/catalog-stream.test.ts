@@ -2,6 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
 import {catalogParameters} from '../src/taxonomy/catalog-query';
 import {parseCatalogQuery} from '../src/server/catalog';
+import {mountCatalogStream} from '../src/ui/catalog-stream';
 test('later gallery batches retain the landing topic instead of trusting a mismatched requested scope',()=>{
  const params=catalogParameters(catalogLocation('/coloring-pages/cats/')!,new URLSearchParams('category=vehicles&collection=vehicles&subcategory=cars&limit=48&cursor=signed&difficulty=hard&page=99'));
  const q=parseCatalogQuery(params);assert.equal(q.category,'animals');assert.equal(q.subcategory,'cats');assert.equal(q.collection,undefined);assert.equal(q.limit,12);assert.equal(q.cursor,'signed');assert.equal(q.page,1);assert.deepEqual(q.difficulty,['hard']);
