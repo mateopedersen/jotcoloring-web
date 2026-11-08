@@ -1,4 +1,7 @@
 ---
+import {env} from 'cloudflare:workers';
+import type {Env} from '../../server/types';
+import {loadCatalogView} from '../../server/catalog-view';
 import CatalogView from '../../components/CatalogView.astro';
 import {categoryById} from '../../taxonomy/catalog';
 import {catalogLocation,catalogRedirect} from '../../taxonomy/catalog-location';
@@ -10,5 +13,8 @@ const redirect=catalogRedirect(Astro.url);if(redirect)return Astro.redirect(redi
 const chosen=Astro.url.searchParams.get('category');
 const current=location.collection?.id||collectionForRoot(location.topic?.parent||location.topic?.id||(location.number?'education':''))?.id;
 if(chosen!==null&&chosen!==current&&(!chosen||navigationCollection(chosen)||categoryById(chosen))){const next=selectFilterURL(Astro.url.href,'category',[chosen]);if(next.pathname!==Astro.url.pathname){next.searchParams.delete('category');return Astro.redirect(next.pathname+next.search+next.hash,302);}}
+const data=await loadCatalogView(env as unknown as Env,location,Astro.url);
+Astro.response.status=data.status;
+for(const [name,value] of Object.entries(data.headers))Astro.response.headers.set(name,value);
 ---
-<CatalogView location={location}/>
+<CatalogView location={location} data={data}/>
