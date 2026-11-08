@@ -17,18 +17,19 @@ test('an incomplete row on a five-column desktop does not request batches until 
  let nextTop=4000,scheduled=0;
  const listeners=new Map<string,()=>void>();
  const sentinel={dataset:{source:'/coloring-pages/pandas/',total:'52',nextCursor:'cursor'},querySelector:()=>({addEventListener(){}}),getBoundingClientRect:()=>({top:nextTop})};
- const grid={querySelectorAll:()=>Array.from({length:12},(_,i)=>({dataset:{contentId:String(i)}}))};
+ const grid={getBoundingClientRect:()=>({bottom:nextTop}),querySelectorAll:()=>Array.from({length:12},(_,i)=>({dataset:{contentId:String(i)}}))};
  const globals={
   document:{visibilityState:'visible',querySelector:(selector:string)=>selector==='[data-catalog-stream]'?sentinel:grid,addEventListener(){}},
   window:{addEventListener:(event:string,callback:()=>void)=>listeners.set(event,callback)},
-  innerHeight:900,getComputedStyle:()=>({gridTemplateColumns:'200px 200px 200px 200px 200px'}),
+  scrollY:0,innerHeight:900,getComputedStyle:()=>({gridTemplateColumns:'200px 200px 200px 200px 200px'}),
   setTimeout:()=>++scheduled
  };
  const originals=Object.getOwnPropertyDescriptors(globalThis);
  try{
   for(const [name,value] of Object.entries(globals))Object.defineProperty(globalThis,name,{value,configurable:true,writable:true});
   mountCatalogStream();assert.equal(scheduled,0,'a far-away incomplete row must not trigger an eager request');
-  nextTop=1700;listeners.get('scroll')!();assert.equal(scheduled,1,'approaching the next group must schedule one request');
+  nextTop=1700;listeners.get('resize')!();assert.equal(scheduled,0,'initial images must not compete with another offscreen batch');
+  globalThis.scrollY=200;listeners.get('scroll')!();assert.equal(scheduled,1,'approaching the next group must schedule one request');
   listeners.get('scroll')!();assert.equal(scheduled,1,'a scheduled batch must not be duplicated');
  }finally{
   for(const name of Object.keys(globals)){if(originals[name])Object.defineProperty(globalThis,name,originals[name]);else Reflect.deleteProperty(globalThis,name);}

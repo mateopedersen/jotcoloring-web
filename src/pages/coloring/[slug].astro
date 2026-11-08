@@ -5,6 +5,8 @@ import {coloringPageTitle,coloringInvitation} from '../../ui/coloring-copy';
 import {env} from 'cloudflare:workers';
 import ImageLicense from '../../components/ImageLicense.astro';
 import Layout from '../../layouts/Layout.astro';
+import ArtworkImage from '../../components/ArtworkImage.astro';
+import {DETAIL_IMAGE_SIZES} from '../../ui/artwork-loading';
 import Header from '../../components/Header.astro';
 import ColorIdeas from '../../components/ColorIdeas.astro';
 import DifficultyBadge from '../../components/DifficultyBadge.astro';
@@ -25,12 +27,12 @@ const breadcrumbs=contentBreadcrumbs(item);
 const text=artworkText(item);
 const favorite=JSON.stringify({id:item.id,title:item.title,slug:item.slug,thumbnail:item.thumbnail,revision:item.version});
 ---
-<Layout title={`${coloringPageTitle(item.title)} — JotColoring`} description={text.description} socialItem={item}><Fragment slot="head"><link rel="preload" as="image" href={item.preview} imagesrcset={item.previewSrcset} imagesizes="(max-width:850px) calc(100vw - 56px), 600px" fetchpriority="high"/></Fragment><ImageLicense item={item} assets={[item.preview,item.lineArtUrl]}/><Header active={item.category}/>
+<Layout title={`${coloringPageTitle(item.title)} — JotColoring`} description={text.description} socialItem={item}><Fragment slot="head"><link rel="preload" as="image" href={item.preview} imagesrcset={item.previewSrcset} imagesizes={DETAIL_IMAGE_SIZES} fetchpriority="high"/></Fragment><ImageLicense item={item} assets={[item.preview,item.lineArtUrl]}/><Header active={item.category}/>
 <main id="main" class="detail-main iv-detail hv-container jc-direct-detail"><nav class="breadcrumbs" aria-label="Breadcrumb">{breadcrumbs.slice(0,-1).map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.path}>{crumb.name}</a></>)}</nav>
 <div class="detail-grid jc-direct-grid">
  <header class="jc-detail-heading"><h1>{coloringPageTitle(item.title)}</h1></header>
  <section class="jc-detail-actions" aria-label="Download or color this page"><FileActions item={item} variant="detail" compact/><a class="button primary wide studio-cta" href={`/studio/?page=${item.id}`}><span class="jc-studio-illustration" aria-hidden="true"><ActionIcon name="brush" size={56}/></span><span class="jc-studio-label"><strong>Color Online</strong><small>Pick a color. Tap a space. Make it yours.</small></span><Icon name="arrow" size={22}/></a><p class="jc-use-note">Free for personal & classroom use. <a href="/license/">View License</a></p></section>
- <section class="detail-art" aria-label="Coloring page preview"><div class="detail-viewport jc-full-artwork" data-image-title={text.title} data-image-description={text.description}><img id="detail-image" tabindex="0" src={item.preview} srcset={item.previewSrcset} sizes="(max-width:850px) calc(100vw - 56px), 600px" alt={text.alt} width={item.width} height={item.height} fetchpriority="high"/></div><ColorIdeas item={item}/></section>
+ <section class="detail-art" aria-label="Coloring page preview"><div class="detail-viewport jc-full-artwork" data-image-title={text.title} data-image-description={text.description}><ArtworkImage id="detail-image" tabindex="0" src={item.preview} srcset={item.previewSrcset} sizes={DETAIL_IMAGE_SIZES} alt={text.alt} width={item.width} height={item.height} priority/></div><ColorIdeas item={item}/></section>
  <section class="detail-copy jc-detail-more" aria-label="About this coloring page"><p class="detail-description">{item.description}</p><p class="jc-coloring-invitation">{coloringInvitation(item)}</p><div class="iv-save-share"><button type="button" class="favorite" data-favorite={favorite} aria-pressed="false"><ActionIcon name="heart" size={26}/><b>Save to favorites</b></button><ShareButton item={item} variant="detail"/></div><section class="jc-detail-information" aria-labelledby="page-details-title"><h2 id="page-details-title">Page Details & Suggested Ages</h2><DifficultyBadge item={item} large/><AgeRecommendation item={item}/><ArtworkFacts item={item}/><p class="iv-license-note">Free for personal and non-commercial educational use. <a href="/license/">Read the license</a> or <a href={`/licensing/?image=${item.slug}`}>ask about commercial use</a>.</p></section></section>
 </div>
 <RelatedPages item={item} result={related}/></main>
