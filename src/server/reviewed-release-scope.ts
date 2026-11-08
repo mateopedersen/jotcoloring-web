@@ -2,8 +2,10 @@
 import {categoryLineage} from '../taxonomy/catalog';
 import {NOVEMBER_07_ALL_67_RELEASE_ID,NOVEMBER_07_ALL_67_TOPIC_COUNTS,NOVEMBER_07_ALL_67_ZIP_CHECKSUMS} from './november-07-all-67-source';
 import {SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256} from './scooby-doo-40-source';
+import {NOVEMBER_08_AUTOMOBILE_RELEASE_ID,NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS,NOVEMBER_08_AUTOMOBILE_BRAND_ARCHIVE_SHA256S,NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE_SHA256S} from './november-08-automobile-scope';
 export {NOVEMBER_07_ALL_67_RELEASE_ID,NOVEMBER_07_ALL_67_TOPIC_COUNTS,NOVEMBER_07_ALL_67_ZIP_CHECKSUMS};
 export {SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256};
+export {NOVEMBER_08_AUTOMOBILE_RELEASE_ID,NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS,NOVEMBER_08_AUTOMOBILE_BRAND_ARCHIVE_SHA256S,NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE_SHA256S};
 export const FOLLOWUP_RELEASE_ID='descendants-squishy-kpop-20261101';
 export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
 export const NUMBER_RELEASE_ID='numbers-30-20261102';
@@ -97,9 +99,9 @@ export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
 };
 export const PUBLIC_FIGURE_TOPIC_COUNTS:Readonly<Record<string,number>>={'mrbeast':83,'elon-musk':100,'donald-trump':100};
 export const PUBLIC_FIGURE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={'mrbeast':'313351aa87beb697db6e44ee860eb2c2a5c7ea53ea26a7fbb901e5d02c62f908','elon-musk':'e8911bbf03ef4da43fd61342fbde7a143be734f7f355b5979c20bb855f2bbe92','donald-trump':'b877e04898603d52cd65a77b1b4db65f4a6d6307b8433c8e67af1fa41f2b5366'};
-export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===SCOOBY_DOO_RELEASE_ID?(SCOOBY_DOO_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_ALL_67_RELEASE_ID?(NOVEMBER_07_ALL_67_TOPIC_COUNTS[topic]??0):releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_27_RELEASE_ID?(NOVEMBER_27_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_06_RELEASE_ID?(NOVEMBER_06_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_CAR_BRANDS_RELEASE_ID?(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID?(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS[topic]??0):100;}
+export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===NOVEMBER_08_AUTOMOBILE_RELEASE_ID?(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS[topic]??0):releaseID===SCOOBY_DOO_RELEASE_ID?(SCOOBY_DOO_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_ALL_67_RELEASE_ID?(NOVEMBER_07_ALL_67_TOPIC_COUNTS[topic]??0):releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_27_RELEASE_ID?(NOVEMBER_27_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_06_RELEASE_ID?(NOVEMBER_06_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_CAR_BRANDS_RELEASE_ID?(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID?(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS[topic]??0):100;}
 export function matchesReviewedTopicLineage(releaseID:unknown,topic:string,categoryIDs:unknown){
- if(releaseID!==SCOOBY_DOO_RELEASE_ID&&releaseID!==NOVEMBER_07_ALL_67_RELEASE_ID&&releaseID!==ALL_52_RELEASE_ID&&releaseID!==NOVEMBER_27_RELEASE_ID&&releaseID!==NOVEMBER_06_RELEASE_ID&&releaseID!==NOVEMBER_07_CAR_BRANDS_RELEASE_ID&&releaseID!==NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return true;
+ if(releaseID!==NOVEMBER_08_AUTOMOBILE_RELEASE_ID&&releaseID!==SCOOBY_DOO_RELEASE_ID&&releaseID!==NOVEMBER_07_ALL_67_RELEASE_ID&&releaseID!==ALL_52_RELEASE_ID&&releaseID!==NOVEMBER_27_RELEASE_ID&&releaseID!==NOVEMBER_06_RELEASE_ID&&releaseID!==NOVEMBER_07_CAR_BRANDS_RELEASE_ID&&releaseID!==NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return true;
  if(!Array.isArray(categoryIDs)||categoryIDs.some(id=>typeof id!=='string'))return false;
  const lineage=categoryLineage(topic);
  return lineage.at(-1)===topic&&lineage.every(id=>categoryIDs.includes(id));
@@ -178,6 +180,7 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===NOVEMBER_27_RELEASE_ID)return {collections:27,designs:Object.values(NOVEMBER_27_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_27_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_06_RELEASE_ID)return {collections:18,designs:Object.values(NOVEMBER_06_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_06_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_07_CAR_BRANDS_RELEASE_ID)return {collections:6,designs:Object.values(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS) as readonly string[]};
+ if(id===NOVEMBER_08_AUTOMOBILE_RELEASE_ID)return {collections:36,designs:Object.values(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return {collections:5,designs:Object.values(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS) as readonly string[]};
  if(id===SCOOBY_DOO_RELEASE_ID)return {collections:1,designs:40,topics:Object.keys(SCOOBY_DOO_TOPIC_COUNTS) as readonly string[]};
   if(id===NOVEMBER_07_ALL_67_RELEASE_ID)return {collections:67,designs:Object.values(NOVEMBER_07_ALL_67_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_07_ALL_67_TOPIC_COUNTS) as readonly string[]};
@@ -188,7 +191,7 @@ export function reviewedReleaseScope(id?:unknown){
 export function matchesReviewedReleaseScope(release:{id?:unknown;collections?:unknown;designs?:unknown}){
  try{const scope=reviewedReleaseScope(release.id);return release.collections===scope.collections&&release.designs===scope.designs;}catch{return false;}
 }
-export function matchesReviewedSourceArchives(release:{release_id?:unknown;source_zip_sha256?:unknown;source_zip_sha256s?:unknown}){
+export function matchesReviewedSourceArchives(release:{release_id?:unknown;source_zip_sha256?:unknown;source_zip_sha256s?:unknown;source_outer_zip_sha256s?:unknown}){
  if(release.release_id===undefined)return true;
  if(release.release_id===FOLLOWUP_RELEASE_ID)return release.source_zip_sha256==='d45545c97ec95111b93c311321c0c886482cc59e2a1d68d5262bf983b9060896';
  if(release.release_id===NUMBER_RELEASE_ID){
@@ -203,6 +206,10 @@ export function matchesReviewedSourceArchives(release:{release_id?:unknown;sourc
  if(release.release_id===NOVEMBER_27_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===27&&Object.entries(NOVEMBER_27_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===NOVEMBER_06_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===18&&Object.entries(NOVEMBER_06_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===NOVEMBER_07_CAR_BRANDS_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===6&&Object.entries(NOVEMBER_07_CAR_BRANDS_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
+ if(release.release_id===NOVEMBER_08_AUTOMOBILE_RELEASE_ID){
+  const actual=release.source_zip_sha256s as Record<string,unknown>|undefined,outer=release.source_outer_zip_sha256s as Record<string,unknown>|undefined;
+  return !!actual&&Object.keys(actual).length===36&&Object.entries(NOVEMBER_08_AUTOMOBILE_BRAND_ARCHIVE_SHA256S).every(([topic,sha])=>actual[topic]===sha)&&!!outer&&Object.keys(outer).length===28&&Object.entries(NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE_SHA256S).every(([name,sha])=>outer[name]===sha);
+ }
  if(release.release_id===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===5&&Object.entries(NOVEMBER_07_FIVE_TOPIC_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
  if(release.release_id===NOVEMBER_07_ALL_67_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===67&&Object.entries(NOVEMBER_07_ALL_67_ZIP_CHECKSUMS).every(([topic,sha])=>actual[topic]===sha);}
   if(release.release_id===SCOOBY_DOO_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===1&&actual['scooby-doo']===SCOOBY_DOO_ZIP_SHA256;}
