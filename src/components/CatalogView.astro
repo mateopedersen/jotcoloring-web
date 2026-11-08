@@ -26,6 +26,8 @@ import {categoryPath} from '../taxonomy/catalog';
 import {loadSeriesDirectory} from '../server/series-directory';
 import SeriesDirectory from './SeriesDirectory.astro';
 import CatalogStream from './CatalogStream.astro';
+import {GALLERY_IMAGE_SIZES,COLLECTION_COVER_SIZES,FIRST_ROW_IMAGES} from '../ui/artwork-loading';
+import {collectionCover} from '../ui/collection-cover';
 import {landingIdentity} from '../taxonomy/landing-identity';
 import {landingSummary} from '../taxonomy/landing-summary';
 import {catalogParameters} from '../taxonomy/catalog-query';
@@ -63,10 +65,12 @@ const shortcutTopics=collection?collection.roots.map(categoryById).filter(t=>t&&
 const crumbs=catalogBreadcrumbs(location).map(crumb=>({name:crumb.name,href:crumb.path}));
 const paginationTitle=result.page>1?` — Page ${result.page}`:'';
 const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');
+const firstImage=directoryMode?collectionCover(series[0]?.cover):result.items[0]?{src:result.items[0].thumbnail,srcset:result.items[0].thumbnailSrcset}:undefined;
+const firstImageSizes=directoryMode?COLLECTION_COVER_SIZES:GALLERY_IMAGE_SIZES;
 let relatedCollections:Awaited<ReturnType<typeof repo.relatedCollections>>|undefined;
 if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedCollections(query,result)}catch(e){console.error('Optional collection recommendations unavailable',e instanceof Error?e.message:'unknown');}
 ---
-<Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||(!directoryMode&&!result.total)}><Header active={category} search={query.q||''}/>
+<Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||(!directoryMode&&!result.total)}><Fragment slot="head">{firstImage&&<link rel="preload" as="image" href={firstImage.src} imagesrcset={firstImage.srcset} imagesizes={firstImage.srcset?firstImageSizes:undefined} fetchpriority="high"/>}</Fragment><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>
 <section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} size={76}/></span><div class="jc-collection-heading"><h1>{query.q?heading:displayTitle(heading)}</h1><a class="jc-view-pages" href={directoryMode?'#collection-series':'#catalog-results'}>{directoryMode?'View Collections':'View Coloring Pages'}<Icon name="arrow" size={17}/></a></div><div class="jc-collection-overview"><p>{summary}</p></div></section>
 {!directoryMode&&shortcutTopics.length>0&&<nav class="jc-subject-shortcuts" aria-label="Subjects in this collection">{shortcutTopics.map(t=><a href={categoryPath(t!.id)}><CategoryIcon name={t!.icon} size={24}/>{t!.name}<Icon name="arrow" size={14}/></a>)}</nav>}
@@ -75,7 +79,7 @@ if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedColl
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
 <CatalogFilters total={result.total} unavailable={!!error} query={query} category={subcategory||collection?.id||category} currentURL={Astro.url.href} counts={categoryCounts}/>
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
-{error?<div class="empty" role="alert">{error} <a href={Astro.url.pathname+Astro.url.search+'#catalog-results'}>Try Again</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory={!topic&&!number} filterURL={Astro.url.href}/>)}</div>}
+{error?<div class="empty" role="alert">{error} <a href={Astro.url.pathname+Astro.url.search+'#catalog-results'}>Try Again</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map((item,index)=><Card item={item} showCategory={!topic&&!number} filterURL={Astro.url.href} eager={index<FIRST_ROW_IMAGES} priority={index===0}/>)}</div>}
 <CatalogStream result={result} source={location.path}/>
 
 <div class="iv-catalog-explore" aria-label="More ways to browse">

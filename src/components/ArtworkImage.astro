@@ -1,0 +1,8 @@
+---
+import type {HTMLAttributes} from 'astro/types';
+import {artworkLoading} from '../ui/artwork-loading';
+interface Props extends Omit<HTMLAttributes<'img'>,'loading'|'decoding'|'fetchpriority'> {eager?:boolean;priority?:boolean}
+const {eager=false,priority=false,sizes,srcset,...attributes}=Astro.props;
+const loading=artworkLoading({eager,priority,sizes:sizes??undefined,srcset:typeof srcset==='string'?srcset:undefined});
+---
+<img {...attributes} srcset={srcset} {...loading}/>
