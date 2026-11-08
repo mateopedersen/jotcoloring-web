@@ -11,8 +11,10 @@ export function mountCatalogStream(){
  // collections are demand-driven so a visit does not drain every batch at once.
  const needed=()=>{
   if(leaving||done||stopped||document.visibilityState==='hidden')return false;
-  const columns=getComputedStyle(grid).gridTemplateColumns.split(' ').length;
-  return seen.size%Math.max(1,columns)!==0||sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
+  // Keep additional HTML/images off the initial connection. Once the reader
+  // scrolls, the existing look-ahead continues the complete collection.
+  if(scrollY<8&&grid.getBoundingClientRect().bottom>innerHeight+200)return false;
+  return sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
  };
  const schedule=()=>{if(!timer&&needed())timer=setTimeout(()=>{timer=undefined;void load();},80);};
  const load=async()=>{

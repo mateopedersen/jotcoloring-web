@@ -2,6 +2,7 @@
 import {coloringPageTitle} from '../ui/coloring-copy';
 import {artworkText} from '../ui/artwork-text';
 import Compare from './Compare.astro';
+import ArtworkImage from './ArtworkImage.astro';
 import ImageLicense from './ImageLicense.astro';
 import Icon from './HomeIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
@@ -11,10 +12,10 @@ import AgeBadge from './AgeBadge.astro';
 import ShareButton from './ShareButton.astro';
 import CategoryLabel from './CategoryLabel.astro';
 import type {Content} from '../server/types';
-const {item,marketing=false,quick=false,selected=false,showCategory=false,showDescription=false,matchReasons=[]}=Astro.props as {item:Content;marketing?:boolean;quick?:boolean;selected?:boolean;showCategory?:boolean;showDescription?:boolean;matchReasons?:string[]};
+const {item,marketing=false,quick=false,selected=false,showCategory=false,showDescription=false,matchReasons=[],eager=false,priority=false}=Astro.props as {item:Content;marketing?:boolean;quick?:boolean;selected?:boolean;showCategory?:boolean;showDescription?:boolean;matchReasons?:string[];eager?:boolean;priority?:boolean};
 const text=artworkText(item);
 ---
 <article class:list={['art-card','iv-card',selected&&'selected']} data-content-id={item.id}><ImageLicense item={item} assets={marketing?[item.thumbnail,item.home_color]:[item.thumbnail]}/>
- <div class="iv-card-picture" data-image-title={text.title} data-image-description={text.description}><div class="jc-artwork-tools"><DifficultyBadge item={item}/><ShareButton item={item}/></div>{marketing?<Compare line={item.thumbnail} color={item.home_color} alt={text.alt}/>:quick?<button type="button" aria-controls="quick-preview" class="art-picture jc-artwork-frame select-preview" data-id={item.id} aria-label={`Preview ${item.title}`} aria-pressed={selected}><img src={item.thumbnail} srcset={item.thumbnailSrcset} sizes="auto, (max-width:768px) 45vw, 240px" alt={text.alt} width={item.width||1024} height={item.height||1536} loading="lazy"/><span class="iv-preview-label"><Icon name="search" size={14}/>Quick preview</span></button>:<a class="art-picture jc-artwork-frame" href={`/coloring/${item.slug}/`}><img src={item.thumbnail} srcset={item.thumbnailSrcset} sizes="auto, (max-width:768px) 45vw, 240px" alt={text.alt} width={item.width||1024} height={item.height||1536} loading="lazy"/></a>}</div>
+ <div class="iv-card-picture" data-image-title={text.title} data-image-description={text.description}><div class="jc-artwork-tools"><DifficultyBadge item={item}/><ShareButton item={item}/></div>{marketing?<Compare line={item.thumbnail} color={item.home_color} lineSrcset={item.thumbnailSrcset} colorSrcset={item.homeColorSrcset} alt={text.alt} eager={eager} priority={priority}/>:quick?<button type="button" aria-controls="quick-preview" class="art-picture jc-artwork-frame select-preview" data-id={item.id} aria-label={`Preview ${item.title}`} aria-pressed={selected}><ArtworkImage src={item.thumbnail} srcset={item.thumbnailSrcset} alt={text.alt} width={item.width||1024} height={item.height||1536} eager={eager} priority={priority}/><span class="iv-preview-label"><Icon name="search" size={14}/>Quick preview</span></button>:<a class="art-picture jc-artwork-frame" href={`/coloring/${item.slug}/`}><ArtworkImage src={item.thumbnail} srcset={item.thumbnailSrcset} alt={text.alt} width={item.width||1024} height={item.height||1536} eager={eager} priority={priority}/></a>}</div>
  <div class="art-info"><AgeBadge item={item}/>{showCategory&&<CategoryLabel category={item.category} label={item.categoryName} class="iv-card-category"/>}<a class="art-title" href={`/coloring/${item.slug}/`}><span class="iv-card-title-text">{coloringPageTitle(item.title)}</span><span class="iv-card-title-arrow" aria-hidden="true"><ArrowIcon size={17}/></span></a>{showDescription&&<p class="jc-card-description">{text.description}</p>}{matchReasons.length>0&&<ul class="jc-match-reasons" aria-label="Why this page is related">{matchReasons.map(reason=><li>{reason}</li>)}</ul>}<FileActions item={item}/></div>
 </article>
