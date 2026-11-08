@@ -44,6 +44,7 @@ jobs:
           persist-credentials: false
       - name: Fetch official bundle using the public release asset API
         id: bundle
+        timeout-minutes: 5
         shell: bash
         env:
           BUNDLE_LANGUAGE: ${{ matrix.language }}
@@ -180,6 +181,10 @@ jobs:
                       if invocation.get('executionSuccessful') is False:
                           raise SystemExit('CodeQL reported an unsuccessful invocation')
               count = sum(len(run.get('results', [])) for run in runs)
+              for run in runs:
+                  for result in run.get('results', [])[:100]:
+                      locations = [v.get('physicalLocation', {}) for v in result.get('locations', [])[:3]]
+                      print(json.dumps({'rule': result.get('ruleId'), 'message': result.get('message', {}).get('text', '')[:1800], 'locations': locations}, ensure_ascii=True))
               total += count
               print(f'{file.name}: {count} results; SHA-256 {hashlib.sha256(data).hexdigest()}')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
