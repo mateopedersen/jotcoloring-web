@@ -1,4 +1,4 @@
-import {forEachInPairs} from './bounded';
+import {forEachInPairs,forEachInFours} from './bounded';
 import {immutableReadCache} from './immutable-read-cache';
 /** Authenticated, one-artwork transport for an already sealed editorial release. */
 import {ALL_52_RELEASE_ID,NOVEMBER_08_AUTOMOBILE_RELEASE_ID,NOVEMBER_27_RELEASE_ID,NOVEMBER_06_RELEASE_ID,NOVEMBER_07_CAR_BRANDS_RELEASE_ID,NOVEMBER_07_FIVE_TOPICS_RELEASE_ID,NOVEMBER_07_ALL_67_RELEASE_ID,SCOOBY_DOO_RELEASE_ID,SEASONAL_TEN_RELEASE_ID,PUBLIC_FIGURE_RELEASE_ID,COLLECTIBLE_CHARACTER_RELEASE_ID,LETTERS_26_RELEASE_ID,ADDITIONAL_FIVE_RELEASE_ID,LETTERS_AND_ADDITIONAL_FIVE_RELEASE_ID,matchesReviewedReleaseScope} from './reviewed-release-scope';
@@ -77,8 +77,8 @@ export async function processReviewedBundle(env:Env,message:ReviewedBundleMessag
   }
  }
  const source=b.source_file||b.native!;await forEachInPairs([source,...b.supplied],async f=>{const data=decoded.get(f.key)!;await immutable(env.ORIGINALS!,f,data);await backupBytes(env,f.key,data,f.mime);});
- await forEachInPairs(m.assets,async a=>{const source=prepared.assets.find(s=>s.role===a.role)!;await immutable(env.ORIGINALS!,{...b.assets.find(f=>f.key===source.object_key)!,key:a.object_key},decoded.get(source.object_key)!);});
- for(const review of b.reviews)await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));
+ await forEachInFours(m.assets,async a=>{const source=prepared.assets.find(s=>s.role===a.role)!;await immutable(env.ORIGINALS!,{...b.assets.find(f=>f.key===source.object_key)!,key:a.object_key},decoded.get(source.object_key)!);});
+ await forEachInFours(b.reviews,async review=>{await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));});
  const inlineEnv=inlineReviewedImportEnvironment(env);const job=await createImport(inlineEnv,m,IMPORT_ACTOR);await processImport(inlineEnv,job.job_id,`imports/${job.job_id}/manifest.json`);
  const events=await db.prepare('SELECT event_id FROM outbox_event WHERE content_id=? AND version=? AND processed_at IS NULL').bind(m.content_id,version).all<{event_id:string}>();for(const e of events.results)await projectEvent(env,e.event_id);
  const current=await db.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published'){
@@ -86,7 +86,7 @@ export async function processReviewedBundle(env:Env,message:ReviewedBundleMessag
   if(pending?.status==='processing'&&Number.isFinite(Date.parse(pending.updated_at)))throw new ReviewedImportPending(pending.updated_at);
   throw Error('Publication readback failed');
  }
- await forEachInPairs(m.assets,async a=>{const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');});
+ await forEachInFours(m.assets,async a=>{const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published readback failed');});
  const receipt={status:'published_pending_public_http_verification',id:m.content_id,slug:m.slug,version,release_sha256:b.release.sha256,transport_sha256:message.sha256,assetsVerified:m.assets.length,sourceFileBackedUp:true,nativeSourceBackedUp:!b.source_file,suppliedPdfAndWebpBackedUp:true};
  await backupBytes(env,receiptKey,new TextEncoder().encode(canonicalJSON(receipt)),'application/json');return receipt;
 }
