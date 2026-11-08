@@ -1,0 +1,190 @@
+# Manual read-only diagnostic for official bundle download incidents.
+# Normal managed CodeQL remains enabled; this workflow never uploads results.
+name: CodeQL official transport diagnostic
+'on':
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: codeql-official-transport-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  analyze:
+    name: Diagnose (${{ matrix.language }})
+    permissions:
+      contents: read
+    # Managed default setup excludes fork PRs. Do not widen that source boundary here.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: actions
+            asset: '692238277'
+            bytes: '97007028'
+            sha256: f12b84c1ed3540c54691257ddea1b72b62f785c8bb3eca907562c6a8a2361d32
+          - language: javascript-typescript
+            asset: '692239234'
+            bytes: '136296871'
+            sha256: 082e798c97831283a2a5f69e9198c51270e5767013d5333daeeab6520af9ce72
+          - language: python
+            asset: '692239340'
+            bytes: '111263054'
+            sha256: d862cb11aff035988f178703b69751be072f2aa7e76616f16bb725a207b50b7d
+    steps:
+      - name: Read source without retaining repository credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # Official v4, verified 2026-11-08
+        with:
+          persist-credentials: false
+      - name: Fetch official bundle using the public release asset API
+        id: bundle
+        timeout-minutes: 5
+        shell: bash
+        env:
+          BUNDLE_LANGUAGE: ${{ matrix.language }}
+          BUNDLE_ASSET: ${{ matrix.asset }}
+          BUNDLE_BYTES: ${{ matrix.bytes }}
+          BUNDLE_SHA256: ${{ matrix.sha256 }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, http.client, os, pathlib, re, socket, time
+          import urllib.error, urllib.parse, urllib.request
+          language = os.environ['BUNDLE_LANGUAGE']
+          asset = os.environ['BUNDLE_ASSET']
+          size = int(os.environ['BUNDLE_BYTES'])
+          digest = os.environ['BUNDLE_SHA256']
+          if language not in {'actions', 'javascript-typescript', 'python'}:
+              raise SystemExit('Unexpected language')
+          if not re.fullmatch(r'[0-9]+', asset) or not re.fullmatch(r'[0-9a-f]{64}', digest):
+              raise SystemExit('Unexpected trusted bundle metadata')
+          allowed = {'api.github.com', 'github.com', 'release-assets.githubusercontent.com', 'objects.githubusercontent.com'}
+          class OfficialRedirects(urllib.request.HTTPRedirectHandler):
+              max_redirections = 5
+              def redirect_request(self, request, fp, code, message, headers, newurl):
+                  parsed = urllib.parse.urlsplit(newurl)
+                  if parsed.scheme != 'https' or parsed.hostname not in allowed or parsed.username or parsed.password or parsed.port not in (None, 443):
+                      raise RuntimeError('Rejected non-official redirect')
+                  return super().redirect_request(request, fp, code, message, headers, newurl)
+          opener = urllib.request.build_opener(OfficialRedirects())
+          destination = pathlib.Path(os.environ['RUNNER_TEMP']) / f'codeql-bundle-{language}-2.27.4.tar.zst'
+          partial = destination.with_suffix('.part')
+          deadline = time.monotonic() + 240
+          url = f'https://api.github.com/repos/github/codeql-action/releases/assets/{asset}'
+          # Public official release asset: no Authorization header and no repository secrets.
+          for attempt in range(1, 4):
+              partial.unlink(missing_ok=True)
+              try:
+                  request = urllib.request.Request(url, headers={'Accept': 'application/octet-stream', 'User-Agent': 'jotcoloring-codeql-transport-pilot'})
+                  remaining = deadline - time.monotonic()
+                  if remaining <= 0:
+                      raise RuntimeError('Bundle download deadline reached')
+                  with opener.open(request, timeout=min(30, remaining)) as response, partial.open('wb') as output:
+                      if response.status != 200:
+                          raise RuntimeError('Unexpected asset response')
+                      declared = response.headers.get('Content-Length')
+                      if declared is not None and int(declared) != size:
+                          raise RuntimeError('Asset byte count differs from pinned metadata')
+                      count, checksum = 0, hashlib.sha256()
+                      while True:
+                          if time.monotonic() >= deadline:
+                              raise RuntimeError('Bundle download deadline reached')
+                          block = response.read(1024 * 1024)
+                          if not block:
+                              break
+                          count += len(block)
+                          if count > size:
+                              raise RuntimeError('Asset exceeds pinned byte count')
+                          checksum.update(block)
+                          output.write(block)
+                  if count != size or checksum.hexdigest() != digest:
+                      raise RuntimeError('Asset length or SHA-256 verification failed')
+                  partial.replace(destination)
+                  with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+                      output.write(f'bundle={destination}\n')
+                  print(f'Official {language} bundle verified: {count} bytes; SHA-256 {digest}')
+                  break
+              except urllib.error.HTTPError as error:
+                  if error.code not in {429, 500, 502, 503, 504}:
+                      raise SystemExit(f'Asset request failed with HTTP {error.code}') from None
+                  reason = f'HTTP {error.code}'
+              except (urllib.error.URLError, TimeoutError, socket.timeout, http.client.IncompleteRead, ConnectionError):
+                  reason = 'temporary transport failure'
+              except Exception:
+                  # Never print signed redirect URLs, headers, response bodies or unexpected exception text.
+                  partial.unlink(missing_ok=True)
+                  raise SystemExit('Bundle verification failed; refusing to initialize CodeQL') from None
+              partial.unlink(missing_ok=True)
+              if attempt == 3 or time.monotonic() + 10 >= deadline:
+                  raise SystemExit(f'Official asset download unavailable after {attempt} bounded attempts ({reason})')
+              print(f'Official asset retry {attempt}/3 ({reason})')
+              time.sleep(5)
+          PY
+      - name: Initialize the verified local bundle
+        id: init
+        uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # Official v4.39.3
+        with:
+          tools: ${{ steps.bundle.outputs.bundle }} # Supported local .tar.zst, NOT extracted directory
+          languages: ${{ matrix.language }}
+          build-mode: none
+          # Default queries remain enabled, default remote threat model remains enabled.
+          # No paths-ignore, custom packs, external repositories or project build commands.
+          config: |
+            name: JotColoring default-query transport pilot
+          trap-caching: false
+          dependency-caching: false
+          debug: false
+      - name: Verify pinned CLI version
+        shell: bash
+        env:
+          ACTUAL_CODEQL_VERSION: ${{ steps.init.outputs.codeql-version }}
+        run: |
+          test "$ACTUAL_CODEQL_VERSION" = '2.27.4'
+      - name: Analyze all default queries without uploading results
+        id: analyze
+        uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # Official v4.39.3
+        with:
+          category: /language:${{ matrix.language }}
+          output: ${{ runner.temp }}/codeql-pilot-results/${{ matrix.language }}
+          upload: never
+          upload-database: false
+          skip-queries: false
+          wait-for-processing: false
+      - name: Record local result integrity without storing artifacts
+        shell: bash
+        env:
+          RESULT_DIRECTORY: ${{ steps.analyze.outputs.sarif-output }}
+          EXPECTED_LANGUAGE: ${{ matrix.language }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          directory = pathlib.Path(os.environ['RESULT_DIRECTORY'])
+          files = sorted(directory.glob('*.sarif'))
+          if not files:
+              raise SystemExit('No SARIF result was produced')
+          total = 0
+          for file in files:
+              data = file.read_bytes()
+              sarif = json.loads(data)
+              runs = sarif.get('runs', [])
+              if sarif.get('version') != '2.1.0' or not runs:
+                  raise SystemExit('Invalid SARIF result')
+              if any(run.get('tool', {}).get('driver', {}).get('name') != 'CodeQL' for run in runs):
+                  raise SystemExit('Unexpected SARIF tool')
+              for run in runs:
+                  for invocation in run.get('invocations', []):
+                      if invocation.get('executionSuccessful') is False:
+                          raise SystemExit('CodeQL reported an unsuccessful invocation')
+              count = sum(len(run.get('results', [])) for run in runs)
+              for run in runs:
+                  for result in run.get('results', [])[:100]:
+                      locations = [v.get('physicalLocation', {}) for v in result.get('locations', [])[:3]]
+                      print(json.dumps({'rule': result.get('ruleId'), 'message': result.get('message', {}).get('text', '')[:1800], 'locations': locations}, ensure_ascii=True))
+              total += count
+              print(f'{file.name}: {count} results; SHA-256 {hashlib.sha256(data).hexdigest()}')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(f"### CodeQL transport pilot: {os.environ['EXPECTED_LANGUAGE']}\n")
+              summary.write(f'CLI 2.27.4; {len(files)} SARIF file(s); {total} findings. SARIF and database uploads disabled.\n')
+              summary.write('A successful pilot demonstrates completed analysis, not absence of vulnerabilities.\n')
+          PY
