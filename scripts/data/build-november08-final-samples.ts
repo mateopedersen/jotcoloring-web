@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';import path from 'node:path';import {execFileS
 import {NOVEMBER_08_AUTOMOBILE_RELEASE_ID as release_id,NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS as counts} from '../../src/server/reviewed-release-scope';
 const root=path.resolve('../incoming-2026-11-08/automobiles/private-release'),out=path.join(root,'final-samples');await fs.mkdir(out,{recursive:true,mode:0o700});
 const rows=JSON.parse(await fs.readFile(root+'/editorial-candidates-november-08-automobiles-36-reviewed.json','utf8')) as any[],digest=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
-const renderer='/Users/melihozcan/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/pdftoppm';const topics=[];
+const renderer=process.env.JOT_PDFTOPPM||'pdftoppm';const topics=[];
 for(const topic of Object.keys(counts)){const selected=rows.filter(r=>r.topic===topic),longest=[...selected].sort((a,b)=>b.title.length-a.title.length)[0],ids=[...new Set([topic+'__001',topic+'__050',topic+'__100',longest.design_id,selected.find(r=>r.composition_review?.kind!=='vehicle')?.design_id].filter(Boolean))],chosen=ids.map(id=>selected.find(r=>r.design_id===id));
  let ready=true;for(const r of chosen){try{await fs.access(r.preparation_folder+'/manifest.json');}catch{ready=false;}}if(!ready)continue;
  const covers=[],pdfs=[],samples=[];
