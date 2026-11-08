@@ -75,12 +75,12 @@ if(!directoryMode&&!error&&!number)try{relatedCollections=await repo.relatedColl
 <div class="jc-search-result-note" role="status">{result.search_match?.mode==='corrected'&&<>Showing results for <strong>{result.search_match.interpreted}</strong>. Your search: “{query.q}”.</>}{query.q&&result.total>0&&result.search_match?.mode!=='corrected'&&<>Best matches for <strong>“{query.q}”</strong> · {result.total} {result.total===1?'page':'pages'}</>}</div>
 <CatalogFilters total={result.total} unavailable={!!error} query={query} category={subcategory||collection?.id||category} currentURL={Astro.url.href} counts={categoryCounts}/>
 {activeFilters.length>0&&<div class="iv-active-filters"><span>Showing: {activeFilters.join(' · ')}</span><a href={clearFilters.pathname+clearFilters.search+clearFilters.hash}>Clear filters ×</a></div>}
-{error?<div class="empty" role="alert">{error} <a href={Astro.url.pathname+Astro.url.search+'#catalog-results'}>Try Again</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory={!topic&&!number}/>)}</div>}
+{error?<div class="empty" role="alert">{error} <a href={Astro.url.pathname+Astro.url.search+'#catalog-results'}>Try Again</a></div>:result.items.length===0?<div class="empty iv-empty"><Icon name="search" size={34}/><h2>A different little adventure?</h2><p>No pages match this selection yet. Try another word or fewer filters.</p><a class="hv-button hv-outline" href={emptyHref}>Explore more pages <Icon name="arrow" size={16}/></a></div>:<div class="catalog-grid jc-catalog-grid">{result.items.map(item=><Card item={item} showCategory={!topic&&!number} filterURL={Astro.url.href}/>)}</div>}
 <CatalogStream result={result} source={location.path}/>
 
 <div class="iv-catalog-explore" aria-label="More ways to browse">
 <CategoryDirectory counts={categoryCounts} collectionId={mainCollection?.id}/>
-<DifficultyNavigation active={query.difficulty} currentURL={Astro.url.href}/><AgeNavigation compact active={query.recommended_age}/>
+<DifficultyNavigation active={query.difficulty} currentURL={Astro.url.href}/><AgeNavigation compact active={query.recommended_age} currentURL={Astro.url.href}/>
 </div>
 {relatedCollections&&<RelatedCollections result={relatedCollections} query={query}/>}
 </>}
