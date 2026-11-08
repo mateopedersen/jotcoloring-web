@@ -4,12 +4,13 @@ import {seriesCaption} from '../taxonomy/series-directory';
 import type {Content} from '../server/types';
 import CategoryIcon from './CategoryIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
-import showcase from '../content/home-showcase.json';
+import ArtworkImage from './ArtworkImage.astro';
+import {collectionCover} from '../ui/collection-cover';
+import {COLLECTION_COVER_SIZES,FIRST_ROW_IMAGES} from '../ui/artwork-loading';
 import '../styles/series-directory.css';
 const {entries,title='Choose Your Next Collection'}=Astro.props as {entries:(SeriesEntry&{cover?:Content})[];title?:string};
 ---
 <section id="collection-series" class="jc-series-directory" aria-labelledby="series-heading"><header><div><h2 id="series-heading">{title}</h2><p>Choose a collection to see its coloring pages.</p></div><span>{entries.length.toLocaleString('en-US')} Collections</span></header><div class="jc-series-grid">{entries.map((entry,index)=>{
- const pin=entry.cover&&showcase.find(p=>p.id===entry.cover!.id&&entry.cover!.lineArtUrl.includes(p.sourceHash));
- const image=pin?.home_color||entry.cover?.thumbnail;
- return <a class="jc-series-card" href={entry.path} data-series-id={entry.id} data-series-count={entry.count}><div class="jc-series-cover" data-theme={entry.number?'number':entry.icon} data-tone={index%6}><span class="jc-series-cover-kicker">{entry.number?'Number Collection':'Coloring Collection'}</span><span class="jc-series-cover-symbol" data-digits={entry.number?String(entry.number).length:undefined} aria-hidden="true">{entry.number?<span>{entry.number}</span>:<CategoryIcon name={entry.icon} size={92}/>}</span>{image?<span class="jc-series-paper"><img src={image} alt={entry.cover!.alt} width="400" height="600" loading="lazy" decoding="async"/></span>:<span class="jc-series-cover-fallback" aria-hidden="true"><CategoryIcon name={entry.icon} size={130}/></span>}<span class="jc-series-cover-label">JotColoring</span></div><div class="jc-series-copy"><h3>{entry.name}<ArrowIcon size={20}/></h3><strong>{entry.count.toLocaleString('en-US')} Coloring {entry.count===1?'Page':'Pages'}</strong><p>{seriesCaption(entry.intro)}</p><span class="jc-series-open">Explore Collection<ArrowIcon size={17}/></span></div></a>;
+ const image=collectionCover(entry.cover);
+ return <a class="jc-series-card" href={entry.path} data-series-id={entry.id} data-series-count={entry.count}><div class="jc-series-cover" data-theme={entry.number?'number':entry.icon} data-tone={index%6}><span class="jc-series-cover-kicker">{entry.number?'Number Collection':'Coloring Collection'}</span><span class="jc-series-cover-symbol" data-digits={entry.number?String(entry.number).length:undefined} aria-hidden="true">{entry.number?<span>{entry.number}</span>:<CategoryIcon name={entry.icon} size={92}/>}</span>{image?<span class="jc-series-paper"><ArtworkImage src={image.src} srcset={image.srcset} sizes={COLLECTION_COVER_SIZES} alt={image.alt} width={image.width} height={image.height} eager={index<FIRST_ROW_IMAGES} priority={index===0}/></span>:<span class="jc-series-cover-fallback" aria-hidden="true"><CategoryIcon name={entry.icon} size={130}/></span>}<span class="jc-series-cover-label">JotColoring</span></div><div class="jc-series-copy"><h3>{entry.name}<ArrowIcon size={20}/></h3><strong>{entry.count.toLocaleString('en-US')} Coloring {entry.count===1?'Page':'Pages'}</strong><p>{seriesCaption(entry.intro)}</p><span class="jc-series-open">Explore Collection<ArrowIcon size={17}/></span></div></a>;
 })}</div></section>

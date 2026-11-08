@@ -10,6 +10,9 @@ export function mountCatalogStream(){
  // A partly filled row is normal. Fetch the next batch as the reader approaches it.
  const needed=()=>{
   if(leaving||done||stopped||document.visibilityState==='hidden')return false;
+  // Keep additional HTML/images off the initial connection. Once the reader
+  // scrolls, the existing look-ahead continues the complete collection.
+  if(scrollY<8&&grid.getBoundingClientRect().bottom>innerHeight+200)return false;
   return sentinel.getBoundingClientRect().top<innerHeight+Math.max(1000,innerHeight*1.5);
  };
  const schedule=()=>{if(!timer&&needed())timer=setTimeout(()=>{timer=undefined;void load();},80);};
