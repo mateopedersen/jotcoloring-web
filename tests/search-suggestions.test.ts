@@ -22,7 +22,7 @@ test('new CDN artwork keeps its thumbnail and nested collections keep their cano
  const thumb='https://assets.jotcoloring.com/published/cartoons/bluey/catalog_thumb_bw.123.webp';
  const result=buildSuggestions('blu',[item('new','bluey-in-the-garden','Bluey in the Garden',thumb)],[{id:'bluey',name:'Bluey',href:'/coloring-pages/cartoons/bluey/',aliases:['bluey heeler']}]);
  assert.equal(result[0].href,'/coloring-pages/cartoons/bluey/');assert.equal(result[1].thumbnail,thumb);
- assert.deepEqual(buildSuggestions('fox moon',[],[{id:'animals',name:'Foxes',aliases:['fox']}]),[]);
+ assert.equal(buildSuggestions('fox moon',[],[{id:'foxes',name:'Foxes',aliases:['fox']}])[0].href,'/coloring-pages/foxes/');
  assert.equal(buildSuggestions('bluey',[],[{id:'bluey',name:'Bluey',href:'https://outside.invalid/'}]).length,0);
 });
 
@@ -31,7 +31,7 @@ test('nested collection suggestions use their topic illustration instead of an i
  for(const [query,expectedIcon] of [['Floral Mandalas','mandalas'],['Flower Bouquets','flowers']]){
   const [collection]=buildSuggestions(query,[],options);
   assert.equal(collection.kind,'category');
-  assert.equal(collection.detail,'Topic');
+  assert.equal(collection.detail,'Coloring Pages Collection');
   assert.equal(collection.icon,expectedIcon);
   assert.ok(!illustrationImageHref(collection.icon!).endsWith('/info.svg'));
  }
@@ -46,7 +46,7 @@ test('future collections without an illustration use a coloring-page stack',()=>
  for(const icon of [undefined,'missing-future-icon','info']){
   const [collection]=buildSuggestions('Future Theme',[],[{id:'future-theme',name:'Future Theme',icon}]);
   assert.equal(collection.icon,'nav-all-pages');
-  assert.equal(collection.detail,'Topic');
+  assert.equal(collection.detail,'Coloring Pages Collection');
  }
 });
 

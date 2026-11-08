@@ -1,0 +1,25 @@
+---
+import {SEARCH_COLLECTION_OPTIONS} from '../search/collection-options';
+import {matchingSearchCollections,searchCollectionHref} from '../search/collection-matches';
+import CategoryIcon from './CategoryIcon.astro';
+import Icon from './HomeIcon.astro';
+interface Props {query:string;counts:{id:string;count:number}[];recommendedAge?:string}
+const {query,counts,recommendedAge}=Astro.props;
+const published=new Set(counts.filter(c=>c.count>0).map(c=>c.id));
+const options=SEARCH_COLLECTION_OPTIONS.filter(c=>published.has(c.id)||c.parent==='numbers'&&published.has('numbers')||c.roots?.some(id=>published.has(id)));
+const matches=matchingSearchCollections(query,options);
+const href=(option:(typeof matches)[number])=>{const url=new URL(searchCollectionHref(option),Astro.url);if(recommendedAge){url.searchParams.set('recommended_age',recommendedAge);url.hash='catalog-results';}return url.pathname+url.search+url.hash;};
+---
+{matches.length>0&&<nav class="jc-search-collections" aria-label="Matching coloring page collections"><span>Explore Collections</span><div>{matches.map(option=><a href={href(option)} data-search-collection={option.id}><CategoryIcon name={option.icon||'all'} size={32}/><span><strong>{option.name}</strong><small>Coloring Pages Collection</small></span><Icon name="arrow" size={16}/></a>)}</div></nav>}
+<style>
+.jc-search-collections{display:grid;gap:10px;margin:0 0 18px;min-width:0}
+.jc-search-collections>span{font-size:15px;font-weight:700;line-height:1.5;color:#713b1c}
+.jc-search-collections>div{display:flex;flex-wrap:wrap;gap:10px;min-width:0}
+.jc-search-collections a{display:flex;align-items:center;gap:11px;flex:0 1 310px;min-width:0;max-width:100%;padding:12px 15px;border:1px solid #edc6a9;border-radius:14px;background:#fff8ef;color:#1d1713;text-decoration:none}
+.jc-search-collections a>svg{flex:none}
+.jc-search-collections a>span{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}
+.jc-search-collections strong{font-family:'Avenir Next','Manrope Variable',sans-serif;font-size:17px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
+.jc-search-collections small{font-size:13px;font-weight:550;line-height:1.4;color:#713b1c}
+.jc-search-collections a:hover{background:#ffedda;border-color:#b95323}
+@media(max-width:600px){.jc-search-collections a{flex-basis:100%}}
+</style>

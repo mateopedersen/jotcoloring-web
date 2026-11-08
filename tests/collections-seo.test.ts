@@ -39,7 +39,7 @@ test('collection directory, search suggestions and breadcrumbs communicate the s
  const ocean=catalogLocation('/collections/ocean/')!;assert.equal(landingIdentity(ocean).heading,'Ocean Coloring Pages Collection');
  const children=seriesDirectory(ocean,[{id:'fish',count:1},{id:'sharks',count:2}]);assert.deepEqual(children.map(c=>c.path).sort(),['/coloring-pages/fish/','/coloring-pages/sharks/']);
  const fish=catalogBreadcrumbs(catalogLocation('/coloring-pages/fish/')!);assert.deepEqual(fish.map(c=>c.path),['/','/coloring-pages/','/collections/ocean/','/coloring-pages/fish/']);
- assert.equal(buildSuggestions('ocean',[],[{id:'ocean',name:'Ocean',href:categoryPath('ocean'),icon:'ocean'}])[0].detail,'Collection');
+ assert.equal(buildSuggestions('ocean',[],[{id:'ocean',name:'Ocean',href:categoryPath('ocean'),icon:'ocean'}])[0].detail,'Coloring Pages Collection');
  const animals=seriesDirectory(catalogLocation('/collections/animals/')!,[{id:'woodland',count:3},{id:'dinosaurs',count:2},{id:'long-neck-dinosaurs',count:2}]);assert.ok(animals.some(c=>c.id==='dinosaurs'));assert.ok(!animals.some(c=>c.id==='long-neck-dinosaurs'));
 });
 test('photo and catalog entry pages have distinct descriptive metadata and truthful visible FAQ schema',()=>{
