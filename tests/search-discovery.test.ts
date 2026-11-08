@@ -213,3 +213,15 @@ test('compact model spelling preserves its numeric identity and meaningful class
  assert.deepEqual((await search.search('byd atto3')).ids,['atto-3']);assert.deepEqual((await search.search('bmw i4')).ids,['i-4']);
  assert.deepEqual((await search.search('bmw i 4')).ids,['i-4']);assert.equal((await search.search('ferrari f458')).total,0,'correction cannot change the requested model number');
 });
+
+test('franchise aliases inside longer requests preserve character and scene constraints',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08'});
+ await add('rumi-stage','Rumi On Stage','cartoons huntrix');await add('rumi-garden','Rumi In A Garden','cartoons huntrix');
+ await add('jinu-stage','Jinu On Stage','cartoons k-pop-demon-hunters');await add('other-rumi','Rumi On Stage','people');
+ await add('mal','Mal With A Spellbook','cartoons descendants');
+ for(const query of ['kpop rumi stage','please find free k pop Rumi stage coloring pages','rumi on stage kpop','HUNTR/X Rumi stage'])assert.deepEqual((await search.search(query)).ids,['rumi-stage'],query);
+ assert.deepEqual((await search.search('Disney Descendants Mal spellbook')).ids,['mal']);
+ assert.equal((await search.search('kpop rumi missingvolcanoscene')).total,0,'an alias must never remove scene constraints');
+ assert.equal((await search.search('rum kpop')).total,0,'only the actual final word gets prefix completion');
+});

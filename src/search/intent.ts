@@ -1,6 +1,6 @@
 import {numberSubjects} from './number-subjects';
 /** Shared lexical intent. No network, paid model or inferred facts about unseen images. */
-export const SEARCH_VERSION='jot-search-11-complete-topics-specific-models';
+export const SEARCH_VERSION='jot-search-12-compound-identities-specific-modifiers';
 const groups=[['panda','pandas'],['shark','sharks'],['horse','horses'],['bear','bears'],['truck','trucks'],['train','trains'],['tree','trees'],['unicorn','unicorns'],['dragon','dragons'],['robot','robots'],['cat','cats','kitten','kittens','kitty','kitties'],['dog','dogs','puppy','puppies','pup'],['rabbit','rabbits','bunny','bunnies'],['fox','foxes'],['deer','fawn','fawns'],['bird','birds'],['owl','owls'],['hedgehog','hedgehogs'],['flower','flowers','floral','bloom','blooms'],['dinosaur','dinosaurs','dino','dinos'],['car','cars','automobile','automobiles'],['camper','campers','campervan','van','vans'],['ocean','underwater','marine'],['turtle','turtles'],['fish','fishes'],['space','outerspace'],['astronaut','astronauts'],['planet','planets'],['mandala','mandalas'],['butterfly','butterflies'],['cupcake','cupcakes'],['dessert','desserts','sweets'],['snowman','snowmen'],['christmas','xmas'],['woodland','forest'],['bookshop','bookstore'],['color','colour']];
 const aliases=new Map(groups.flatMap(group=>group.map(term=>[term,group] as const)));
 const filler=new Set(['a','an','the','of','and','for','with','to','please','find','show','me','some','free','printable','printables','coloring','colouring','page','pages','sheet','sheets','picture','pictures','cute','help','looking','want','would','like','can','could','need','am','any','you','i','my','this','that','is','are','in','on','at','by','from','near','under','above','around','beside','behind','between','among','into','over','along','through','its','their','download','downloads','print','printing','image','images','drawing','drawings','outline','outlines']);
@@ -30,7 +30,7 @@ export function wordCandidates(word:string){
  }
  return [...forms];
 }
-export function intentExpression(words:string[],known:ReadonlySet<string>=new Set()){
+export function intentExpression(words:string[],known:ReadonlySet<string>=new Set(),prefixLast=true){
  const subjects=new Map(numberSubjects(words).map(subject=>[subject.start,subject]));
  const expressions:string[]=[];
  for(let index=0;index<words.length;index++){
@@ -42,7 +42,7 @@ export function intentExpression(words:string[],known:ReadonlySet<string>=new Se
    index=subject.end-1;continue;
   }
   const synonyms=equivalents(word),forms=[...new Set([...synonyms,...wordCandidates(word).filter(form=>known.has(form))])];
-  const prefix=synonyms.length===1&&index===words.length-1&&word.length>=2&&!/^\d+$/.test(word);
+  const prefix=prefixLast&&synonyms.length===1&&index===words.length-1&&word.length>=2&&!/^\d+$/.test(word);
   const terms=forms.map(form=>quote(form)+(prefix&&form===word?'*':''));
   expressions.push(terms.length>1?'('+terms.join(' OR ')+')':terms[0]);
  }

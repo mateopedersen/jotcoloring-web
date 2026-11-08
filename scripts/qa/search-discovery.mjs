@@ -34,6 +34,7 @@ for(const [query,ids] of [
  const data=await search(query);assert.ok(data.total>0,query);
  assert.ok(data.items.every(item=>ids.some(id=>item.category_ids.includes(id))),query+' topic identity');
 }
+const compound=await search('kpop rumi');assert.ok(compound.total>0);assert.ok(compound.items.every(item=>item.category_ids.some(id=>['k-pop-demon-hunters','huntrix'].includes(id))&&/\brumi\b/i.test(item.title+' '+item.description)),'Compound franchise query preserves its character');
 const scoped=await search('byd',{category:'cars',subcategory:'byd',difficulty:'medium'});
 assert.ok(scoped.items.every(item=>item.category_ids.includes('byd')&&item.difficulty==='medium'),'Search preserves topic and difficulty filters');
 for(const [query,id,path] of [
