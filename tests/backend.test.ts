@@ -301,3 +301,36 @@ test('scoped gallery queries start from indexed category membership rather than 
  assert.equal((await repo.list({category:'animals',limit:3})).total,7);
  db.sql.close();search.sql.close();
 });
+
+test('topic age and detail reads stay source-bound through every cursor and avoid catalog-wide review lists',async()=>{
+ const {db,search,env}=setup();
+ for(const [id,name,parent] of [['cars','Cars','vehicles'],['chrysler','Chrysler','cars'],['gmc','GMC','cars']])await db.prepare('INSERT OR IGNORE INTO category(id,name,parent_id) VALUES(?,?,?)').bind(id,name,parent).run();
+ const expected:{id:string;topic:string;band:string;score:number}[]=[];
+ for(let n=0;n<100;n++){
+  const id='brand-'+String(n).padStart(3,'0'),topic=n<64?(n%2?'gmc':'chrysler'):'animals',band=n%7?'6-8':'3-5',score=n%5?3100:1200,sha='a'.repeat(64);
+  await add(db,search,id,'Drawing '+String(100-n).padStart(3,'0'),'published',n%4);
+  if(topic!=='animals')for(const category of ['vehicles','cars',topic])await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,category).run();
+  await db.prepare("INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified) VALUES(?,?,1,'printable_webp_bw',?,?,'image/webp',100,?,1,1)").bind(id,id,id,id,sha).run();
+  await db.prepare('INSERT INTO age_recommendation(content_id,content_version,source_sha256,band,score_hundredths,method_version) VALUES(?,1,?,?,?,?)').bind(id,sha,band,score,'test-fixture').run();
+  expected.push({id,topic,band,score});
+ }
+ await db.prepare("UPDATE age_recommendation SET source_sha256=? WHERE content_id='brand-002'").bind('b'.repeat(64)).run();
+ await db.prepare("UPDATE age_recommendation SET content_version=2 WHERE content_id='brand-004'").run();
+ await db.prepare("UPDATE asset SET verified=0 WHERE content_id='brand-006'").run();
+ const queries:{sql:string;values:unknown[]}[]=[],prepare=db.prepare.bind(db);
+ db.prepare=(sql:string)=>{const statement=prepare(sql),bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.includes('FROM content c WHERE')&&sql.includes('EXISTS (SELECT 1 FROM age_recommendation'))queries.push({sql,values});return bind(...values);};return statement;};
+ const repo=new D1CatalogRepository(env,db);
+ for(const topic of ['chrysler','gmc'])for(const mode of ['age','detail','both'])for(const sort of ['title','newest','trending'] as const){
+  const selected=expected.filter(item=>item.topic===topic&&!['brand-002','brand-004'].includes(item.id)&&(mode==='detail'||item.band==='6-8')&&(mode==='age'||item.score===3100&&item.id!=='brand-006')).map(item=>item.id);
+  const query={category:'cars',subcategory:topic,...(mode!=='detail'?{recommended_age:'6-8' as const}:{}),...(mode!=='age'?{difficulty:['medium']}:{}),sort,limit:5};
+  const found:string[]=[];let cursor:string|undefined;
+  do{const result=await repo.list({...query,cursor});assert.equal(result.total,selected.length);found.push(...result.items.map(item=>item.id));cursor=result.next_cursor||undefined;assert.ok(found.length<=selected.length);}while(cursor);
+  assert.equal(new Set(found).size,found.length,'cursor must not repeat drawings');assert.deepEqual(new Set(found),new Set(selected));
+ }
+ for(const query of queries){
+  assert.doesNotMatch(query.sql,/IN \(SELECT ar.content_id/,'scoped reads must not build global age/detail lists');
+  const plan=JSON.stringify(db.sql.prepare('EXPLAIN QUERY PLAN '+query.sql).all(...query.values as never[]));
+  assert.match(plan,/category_content/);assert.match(plan,/SEARCH ar USING INDEX[^"\n]*content_id=\?/,'review lookup must use the candidate content key');
+ }
+ assert.ok(queries.length>18);db.sql.close();search.sql.close();
+});

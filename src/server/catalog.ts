@@ -4,7 +4,7 @@ import {categoryById} from '../taxonomy/catalog';
 import {numberTopic,canonicalNumberSubject,searchNumberSubject} from '../taxonomy/number-topics';
 import {numberSubjects} from '../search/number-subjects';
 import {displayCopies} from './responsive-assets';
-import {difficultyForScore,searchDifficultyValues,catalogDifficultyFilter,searchDifficultySQL} from '../age/difficulty';
+import {difficultyForScore,searchDifficultyValues,catalogDifficultyFilter,scopedCatalogReviewFilter,searchDifficultySQL} from '../age/difficulty';
 import {parseSearchIntent,intentWords,intentExpression,equivalents,correctionFor,commonSearchTerms,wordCandidates,SEARCH_VERSION,type SearchMatch} from '../search/intent';
 import {ageBand,type AgeBand} from '../age/model';
 import type {Asset,CatalogPage,CatalogQuery,Content,Database,Env} from './types';
@@ -164,7 +164,14 @@ export class D1CatalogRepository implements CatalogRepository{
  if(q.collection){const roots=navigationCollection(q.collection)?.roots;if(!roots)throw new AppError('VALIDATION_ERROR','Unknown collection.');where.push('c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id IN (SELECT value FROM json_each(?)))');values.push(JSON.stringify(roots));}
  if(q.number){if(!numberTopic(q.number))throw new AppError('VALIDATION_ERROR','Unknown number topic.');where.push("c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id='numbers') AND ("+canonicalNumberSubject()+')=?');values.push(q.number);}
  for(const category of [q.category,q.subcategory])if(category){where.push('c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id=?)');values.push(category)}
- if(q.recommended_age){where.push("c.id IN (SELECT ar.content_id FROM age_recommendation ar JOIN content ac ON ac.id=ar.content_id AND ac.active_version=ar.content_version JOIN asset a ON a.content_id=ar.content_id AND a.content_version=ar.content_version AND a.role='printable_webp_bw' AND a.sha256=ar.source_sha256 WHERE ar.band=?)");values.push(q.recommended_age);}if(q.age?.length){where.push(`c.id IN (SELECT ca.content_id FROM content_age ca WHERE ca.age IN (${q.age.map(()=>'?').join(',')}))`);values.push(...q.age)}if(q.difficulty?.length){where.push(catalogDifficultyFilter(q.difficulty))}
+ if((q.category||q.subcategory||q.collection||q.number)&&(q.recommended_age||q.difficulty?.length)){
+  where.push(scopedCatalogReviewFilter(q.difficulty||[],!!q.recommended_age));
+  if(q.recommended_age)values.push(q.recommended_age);
+ }else{
+  if(q.recommended_age){where.push("c.id IN (SELECT ar.content_id FROM age_recommendation ar JOIN content ac ON ac.id=ar.content_id AND ac.active_version=ar.content_version JOIN asset a ON a.content_id=ar.content_id AND a.content_version=ar.content_version AND a.role='printable_webp_bw' AND a.sha256=ar.source_sha256 WHERE ar.band=?)");values.push(q.recommended_age);}
+  if(q.difficulty?.length)where.push(catalogDifficultyFilter(q.difficulty));
+ }
+ if(q.age?.length){where.push(`c.id IN (SELECT ca.content_id FROM content_age ca WHERE ca.age IN (${q.age.map(()=>'?').join(',')}))`);values.push(...q.age)}
  if(q.q){if(!this.search)throw new AppError('SEARCH_UNAVAILABLE','Search is temporarily unavailable.',503);const result=await this.search.search(q.q,limit,q);let rows:Row[]=[];if(result.ids.length){const found=await this.db.prepare(`SELECT * FROM content WHERE status='published' AND id IN (${result.ids.map(()=>'?').join(',')})`).bind(...result.ids).all<Row>();rows=result.ids.map(id=>found.results.find(r=>r.id===id)).filter((r):r is Row=>!!r)}return {search_match:result.search_match,items:await this.hydrate(rows),total:result.total,page,page_size:limit,total_pages:Math.ceil(result.total/limit),next_cursor:result.next_cursor,has_more:result.has_more}}
  const count=await this.db.prepare(`SELECT COUNT(*) AS total FROM content c WHERE ${where.join(' AND ')}`).bind(...values).first<{total:number}>();const total=count?.total||0;
  const column=sort==='newest'?'c.published_at':sort==='title'?'c.title COLLATE NOCASE':'c.sort_score';const direction=sort==='title'?'ASC':'DESC';const comparison=sort==='title'?'>':'<';const fingerprint=await sha256(canonicalJSON({...q,cursor:undefined,page:undefined}));
