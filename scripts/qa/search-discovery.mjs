@@ -30,6 +30,7 @@ assert.equal((await search('BYD Dolphin unlikelyspaceshipword')).total,0,'Never 
 const seal=await search('byd seal');assert.ok(seal.total>0&&seal.total<byd.total);assert.ok(seal.items.every(item=>item.category_ids.includes('byd')&&/\bseal\b/i.test(item.title+' '+item.description)));
 assert.equal((await search('give me a BYD Seal coloring page')).total,seal.total,'Natural request words must not hide the requested model');
 assert.equal((await search('please can you suggest free printable BYD Seal coloring pages')).total,seal.total);
+assert.equal((await search("I'm looking for a printable BYD Seal coloring page")).total,seal.total);
 const prefix=await search('byd se');assert.ok(prefix.total>=seal.total&&prefix.items.every(item=>item.category_ids.includes('byd')));
 for(const [query,ids] of [
  ['pandas',['pandas']],['tesla',['tesla']],['chrysler',['chrysler']],

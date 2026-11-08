@@ -171,7 +171,7 @@ test('vehicle model queries retain every modifier instead of returning the whole
  assert.deepEqual(searchTopicIds('byd dolphin'),[]);
  assert.deepEqual(new Set((await search.search('byd dolphin')).ids),new Set(['dolphin-rear','dolphin-front']));
  for(const query of ['please help me find free printable BYD Dolphin coloring pages with the rear view for kids','BYD Dolphin rear view coloring page'])assert.deepEqual((await search.search(query)).ids,['dolphin-rear'],query);
- for(const query of ['give me a BYD seal coloring page','please can you suggest a BYD Seal coloring page','recommend a printable BYD Seal drawing'])assert.deepEqual((await search.search(query)).ids,['seal'],query);
+ for(const query of ['give me a BYD seal coloring page','please can you suggest a BYD Seal coloring page','recommend a printable BYD Seal drawing',"I'm looking for a printable BYD Seal coloring page",'I’d like to see a BYD Seal drawing','can I have a BYD Seal coloring page'])assert.deepEqual((await search.search(query)).ids,['seal'],query);
  assert.deepEqual((await search.search('byd se')).ids,['seal'],'an unfinished model remains discoverable');
  assert.equal((await search.search('BYD Dolphin flying spaceship')).total,0,'never silently drop requested scene details');
 });
