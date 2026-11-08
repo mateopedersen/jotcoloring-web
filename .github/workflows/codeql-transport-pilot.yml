@@ -1,14 +1,8 @@
-# Keep managed default setup until all languages pass on the exact main head.
-# Set the nonsecret upload gate only after the controlled setup transition.
-name: CodeQL verified official bundles
+# Manual read-only diagnostic for official bundle download incidents.
+# Normal managed CodeQL remains enabled; this workflow never uploads results.
+name: CodeQL official transport diagnostic
 'on':
   workflow_dispatch:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  schedule:
-    - cron: '31 4 * * 1' # Weekly cadence; managed setup's exact scheduler time is not exposed.
 permissions:
   contents: read
 concurrency:
@@ -16,10 +10,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
+    name: Diagnose (${{ matrix.language }})
     permissions:
       contents: read
-      security-events: write
     # Managed default setup excludes fork PRs. Do not widen that source boundary here.
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
@@ -154,16 +147,15 @@ jobs:
         with:
           category: /language:${{ matrix.language }}
           output: ${{ runner.temp }}/codeql-pilot-results/${{ matrix.language }}
-          upload: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' && 'always' || 'never' }}
+          upload: never
           upload-database: false
           skip-queries: false
-          wait-for-processing: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' }}
+          wait-for-processing: false
       - name: Record local result integrity without storing artifacts
         shell: bash
         env:
           RESULT_DIRECTORY: ${{ steps.analyze.outputs.sarif-output }}
           EXPECTED_LANGUAGE: ${{ matrix.language }}
-          UPLOAD_ENABLED: ${{ vars.CODEQL_OFFICIAL_TRANSPORT_UPLOAD == 'true' }}
         run: |
           python3 - <<'PY'
           import hashlib, json, os, pathlib
@@ -193,6 +185,6 @@ jobs:
               print(f'{file.name}: {count} results; SHA-256 {hashlib.sha256(data).hexdigest()}')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write(f"### CodeQL transport pilot: {os.environ['EXPECTED_LANGUAGE']}\n")
-              summary.write(f'CLI 2.27.4; {len(files)} SARIF file(s); {total} findings. SARIF upload enabled: {os.environ["UPLOAD_ENABLED"]}; database upload disabled.\n')
+              summary.write(f'CLI 2.27.4; {len(files)} SARIF file(s); {total} findings. SARIF and database uploads disabled.\n')
               summary.write('A successful pilot demonstrates completed analysis, not absence of vulnerabilities.\n')
           PY
