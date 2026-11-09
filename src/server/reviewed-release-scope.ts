@@ -4,10 +4,12 @@ import {NOVEMBER_07_ALL_67_RELEASE_ID,NOVEMBER_07_ALL_67_TOPIC_COUNTS,NOVEMBER_0
 import {SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256} from './scooby-doo-40-source';
 import {NOVEMBER_08_AUTOMOBILE_RELEASE_ID,NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS,NOVEMBER_08_AUTOMOBILE_BRAND_ARCHIVE_SHA256S,NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE_SHA256S} from './november-08-automobile-scope';
 import {NOVEMBER_09_AUTO29_RELEASE_ID,NOVEMBER_09_AUTO29_TOPIC_COUNTS,NOVEMBER_09_AUTO29_BRAND_ARCHIVE_SHA256S} from './november-09-automobile-29-source';
+import {GTA6_RELEASE_ID,GTA6_TOPIC_COUNTS,GTA6_SOURCE_ZIP_SHA256,GTA6_REPLACEMENT_042_PNG_SHA256,GTA6_REPLACEMENT_042_WEBP_SHA256,GTA6_REPLACEMENT_DESIGN_ID} from './gta6-120-source';
 export {NOVEMBER_07_ALL_67_RELEASE_ID,NOVEMBER_07_ALL_67_TOPIC_COUNTS,NOVEMBER_07_ALL_67_ZIP_CHECKSUMS};
 export {SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256};
 export {NOVEMBER_08_AUTOMOBILE_RELEASE_ID,NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS,NOVEMBER_08_AUTOMOBILE_BRAND_ARCHIVE_SHA256S,NOVEMBER_08_AUTOMOBILE_OUTER_ARCHIVE_SHA256S};
 export {NOVEMBER_09_AUTO29_RELEASE_ID,NOVEMBER_09_AUTO29_TOPIC_COUNTS,NOVEMBER_09_AUTO29_BRAND_ARCHIVE_SHA256S};
+export {GTA6_RELEASE_ID,GTA6_TOPIC_COUNTS,GTA6_SOURCE_ZIP_SHA256,GTA6_REPLACEMENT_042_PNG_SHA256,GTA6_REPLACEMENT_042_WEBP_SHA256,GTA6_REPLACEMENT_DESIGN_ID};
 export const FOLLOWUP_RELEASE_ID='descendants-squishy-kpop-20261101';
 export const SEVEN_TOPIC_RELEASE_ID='seven-topics-20261101';
 export const NUMBER_RELEASE_ID='numbers-30-20261102';
@@ -101,9 +103,9 @@ export const SEASONAL_TEN_ZIP_CHECKSUMS:Readonly<Record<string,string>>={
 };
 export const PUBLIC_FIGURE_TOPIC_COUNTS:Readonly<Record<string,number>>={'mrbeast':83,'elon-musk':100,'donald-trump':100};
 export const PUBLIC_FIGURE_ZIP_CHECKSUMS:Readonly<Record<string,string>>={'mrbeast':'313351aa87beb697db6e44ee860eb2c2a5c7ea53ea26a7fbb901e5d02c62f908','elon-musk':'e8911bbf03ef4da43fd61342fbde7a143be734f7f355b5979c20bb855f2bbe92','donald-trump':'b877e04898603d52cd65a77b1b4db65f4a6d6307b8433c8e67af1fa41f2b5366'};
-export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===NOVEMBER_09_AUTO29_RELEASE_ID?(NOVEMBER_09_AUTO29_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_08_AUTOMOBILE_RELEASE_ID?(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS[topic]??0):releaseID===SCOOBY_DOO_RELEASE_ID?(SCOOBY_DOO_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_ALL_67_RELEASE_ID?(NOVEMBER_07_ALL_67_TOPIC_COUNTS[topic]??0):releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_27_RELEASE_ID?(NOVEMBER_27_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_06_RELEASE_ID?(NOVEMBER_06_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_CAR_BRANDS_RELEASE_ID?(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID?(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS[topic]??0):100;}
+export function reviewedTopicCount(releaseID:unknown,topic:string){return releaseID===GTA6_RELEASE_ID?(GTA6_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_09_AUTO29_RELEASE_ID?(NOVEMBER_09_AUTO29_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_08_AUTOMOBILE_RELEASE_ID?(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS[topic]??0):releaseID===SCOOBY_DOO_RELEASE_ID?(SCOOBY_DOO_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_ALL_67_RELEASE_ID?(NOVEMBER_07_ALL_67_TOPIC_COUNTS[topic]??0):releaseID===PUBLIC_FIGURE_RELEASE_ID?(PUBLIC_FIGURE_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_27_RELEASE_ID?(NOVEMBER_27_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_06_RELEASE_ID?(NOVEMBER_06_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_CAR_BRANDS_RELEASE_ID?(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS[topic]??0):releaseID===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID?(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS[topic]??0):100;}
 export function matchesReviewedTopicLineage(releaseID:unknown,topic:string,categoryIDs:unknown){
- if(releaseID!==NOVEMBER_09_AUTO29_RELEASE_ID&&releaseID!==NOVEMBER_08_AUTOMOBILE_RELEASE_ID&&releaseID!==SCOOBY_DOO_RELEASE_ID&&releaseID!==NOVEMBER_07_ALL_67_RELEASE_ID&&releaseID!==ALL_52_RELEASE_ID&&releaseID!==NOVEMBER_27_RELEASE_ID&&releaseID!==NOVEMBER_06_RELEASE_ID&&releaseID!==NOVEMBER_07_CAR_BRANDS_RELEASE_ID&&releaseID!==NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return true;
+ if(releaseID!==GTA6_RELEASE_ID&&releaseID!==NOVEMBER_09_AUTO29_RELEASE_ID&&releaseID!==NOVEMBER_08_AUTOMOBILE_RELEASE_ID&&releaseID!==SCOOBY_DOO_RELEASE_ID&&releaseID!==NOVEMBER_07_ALL_67_RELEASE_ID&&releaseID!==ALL_52_RELEASE_ID&&releaseID!==NOVEMBER_27_RELEASE_ID&&releaseID!==NOVEMBER_06_RELEASE_ID&&releaseID!==NOVEMBER_07_CAR_BRANDS_RELEASE_ID&&releaseID!==NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return true;
  if(!Array.isArray(categoryIDs)||categoryIDs.some(id=>typeof id!=='string'))return false;
  const lineage=categoryLineage(topic);
  return lineage.at(-1)===topic&&lineage.every(id=>categoryIDs.includes(id));
@@ -183,6 +185,7 @@ export function reviewedReleaseScope(id?:unknown){
  if(id===NOVEMBER_06_RELEASE_ID)return {collections:18,designs:Object.values(NOVEMBER_06_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_06_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_07_CAR_BRANDS_RELEASE_ID)return {collections:6,designs:Object.values(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_09_AUTO29_RELEASE_ID)return {collections:29,designs:Object.values(NOVEMBER_09_AUTO29_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_09_AUTO29_TOPIC_COUNTS) as readonly string[]};
+ if(id===GTA6_RELEASE_ID)return {collections:1,designs:120,topics:Object.keys(GTA6_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_08_AUTOMOBILE_RELEASE_ID)return {collections:36,designs:Object.values(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_08_AUTOMOBILE_TOPIC_COUNTS) as readonly string[]};
  if(id===NOVEMBER_07_FIVE_TOPICS_RELEASE_ID)return {collections:5,designs:Object.values(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS).reduce((sum,count)=>sum+count,0),topics:Object.keys(NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS) as readonly string[]};
  if(id===SCOOBY_DOO_RELEASE_ID)return {collections:1,designs:40,topics:Object.keys(SCOOBY_DOO_TOPIC_COUNTS) as readonly string[]};
@@ -196,6 +199,7 @@ export function matchesReviewedReleaseScope(release:{id?:unknown;collections?:un
 }
 export function matchesReviewedSourceArchives(release:{release_id?:unknown;source_zip_sha256?:unknown;source_zip_sha256s?:unknown;source_outer_zip_sha256s?:unknown}){
  if(release.release_id===undefined)return true;
+ if(release.release_id===GTA6_RELEASE_ID){const actual=release.source_zip_sha256s as Record<string,unknown>|undefined;return !!actual&&Object.keys(actual).length===1&&actual['gta-6']===GTA6_SOURCE_ZIP_SHA256;}
  if(release.release_id===FOLLOWUP_RELEASE_ID)return release.source_zip_sha256==='d45545c97ec95111b93c311321c0c886482cc59e2a1d68d5262bf983b9060896';
  if(release.release_id===NUMBER_RELEASE_ID){
   if(!release.source_zip_sha256s||typeof release.source_zip_sha256s!=='object')return false;

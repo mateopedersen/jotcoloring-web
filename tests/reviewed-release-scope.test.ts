@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {reviewedReleaseScope,matchesReviewedReleaseScope,matchesReviewedSourceArchives,SEVEN_TOPIC_RELEASE_ID,SEVEN_TOPIC_ZIP_CHECKSUMS,COLLECTIBLE_CHARACTER_RELEASE_ID,COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS,ALL_52_RELEASE_ID,matchesReviewedTopicLineage,SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256,reviewedTopicCount} from '../src/server/reviewed-release-scope';
+import {reviewedReleaseScope,matchesReviewedReleaseScope,matchesReviewedSourceArchives,SEVEN_TOPIC_RELEASE_ID,SEVEN_TOPIC_ZIP_CHECKSUMS,COLLECTIBLE_CHARACTER_RELEASE_ID,COLLECTIBLE_CHARACTER_ZIP_CHECKSUMS,ALL_52_RELEASE_ID,matchesReviewedTopicLineage,SCOOBY_DOO_RELEASE_ID,SCOOBY_DOO_TOPIC_COUNTS,SCOOBY_DOO_ZIP_SHA256,reviewedTopicCount,GTA6_RELEASE_ID,GTA6_SOURCE_ZIP_SHA256,GTA6_TOPIC_COUNTS} from '../src/server/reviewed-release-scope';
 import {categoryLineage} from '../src/taxonomy/catalog';
 test('seven-topic release is exact and does not relax either accepted release gate',()=>{
  assert.equal(reviewedReleaseScope().designs,2400);assert.equal(reviewedReleaseScope('descendants-squishy-kpop-20261101').designs,300);
@@ -46,4 +46,12 @@ test('partial Scooby-Doo package stays bound to its exact 40 drawings, source ch
  assert.equal(matchesReviewedSourceArchives({...release,source_zip_sha256s:{...release.source_zip_sha256s,'scooby-doo':'0'.repeat(64)}}),false);
  assert.equal(matchesReviewedSourceArchives({...release,source_zip_sha256s:{...release.source_zip_sha256s,extra:'1'.repeat(64)}}),false);
  const lineage=categoryLineage('scooby-doo');assert.deepEqual(lineage,['cartoons','scooby-doo']);assert.ok(matchesReviewedTopicLineage(SCOOBY_DOO_RELEASE_ID,'scooby-doo',lineage));assert.equal(matchesReviewedTopicLineage(SCOOBY_DOO_RELEASE_ID,'scooby-doo',['cartoons']),false);
+});
+
+test('GTA 6 release is bound to the exact 120 supplied drawings, archive and Video Games lineage',()=>{
+ const scope=reviewedReleaseScope(GTA6_RELEASE_ID),release={release_id:GTA6_RELEASE_ID,source_zip_sha256s:{'gta-6':GTA6_SOURCE_ZIP_SHA256}};
+ assert.deepEqual(GTA6_TOPIC_COUNTS,{'gta-6':120});assert.equal(scope.collections,1);assert.equal(scope.designs,120);assert.deepEqual(scope.topics,['gta-6']);
+ assert.ok(matchesReviewedReleaseScope({id:GTA6_RELEASE_ID,collections:1,designs:120}));assert.equal(reviewedTopicCount(GTA6_RELEASE_ID,'gta-6'),120);assert.equal(reviewedTopicCount(GTA6_RELEASE_ID,'other'),0);assert.ok(matchesReviewedSourceArchives(release));
+ assert.equal(matchesReviewedReleaseScope({id:GTA6_RELEASE_ID,collections:1,designs:119}),false);assert.equal(matchesReviewedSourceArchives({...release,source_zip_sha256s:{'gta-6':'0'.repeat(64)}}),false);assert.equal(matchesReviewedSourceArchives({...release,source_zip_sha256s:{...release.source_zip_sha256s,extra:'1'.repeat(64)}}),false);
+ const lineage=categoryLineage('gta-6');assert.deepEqual(lineage,['video-games','gta-6']);assert.ok(matchesReviewedTopicLineage(GTA6_RELEASE_ID,'gta-6',lineage));assert.equal(matchesReviewedTopicLineage(GTA6_RELEASE_ID,'gta-6',['video-games']),false);
 });
