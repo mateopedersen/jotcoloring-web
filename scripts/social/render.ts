@@ -31,7 +31,7 @@ export async function componentArt(file:'CookieArt'|'LostColoringArt'){
  return sharp(Buffer.from(svg)).png().toBuffer();
 }
 async function halfColor(art:SocialArtwork){if(!art.color)return dataURI(art.line);const line=await sharp(art.line).resize(480,720,{fit:'fill'}).png().toBuffer(),color=await sharp(art.color).resize(480,720,{fit:'fill'}).extract({left:0,top:0,width:240,height:720}).png().toBuffer();return dataURI(await sharp(line).composite([{input:color,left:0,top:0}]).png().toBuffer());}
-export async function renderSocial(spec:SocialSpec,assets:RenderAssets,binding:SocialBinding|{version:string;key:string;path:string}){
+export async function renderSocial(spec:SocialSpec,assets:RenderAssets,binding:SocialBinding|{version:string;key:string;path:string;title?:string;description?:string;sources?:Array<{slug:string;sha256:string}>}){
  prepareSocialFont();if(['collection','all-pages'].includes(spec.key))return renderDirectory(spec,assets,binding as {version:string;key:string;path:string});let next=0;const boxes:Array<{text:string;x:number;y:number;width:number;height:number;size:number;truncated?:boolean}>=[];
  const text=(value:string,x:number,y:number,size:number,fill='#332a28',weight=800)=>{boxes.push({text:value,x,y:y-size*.95,width:measureCopy(value,size,weight),height:size*1.2,size});return `<text x="${x}" y="${y}" font-size="${size}" fill="${fill}" font-weight="${weight}" font-family="${weight>=800?'JotExtra':weight>=700?'JotBold':'JotMedium'}">${xml(value)}</text>`;};
  const logo=await dataURI(assets.logo,700),icon=await dataURI(assets.icon,400),pictures=await Promise.all(assets.art.map(a=>dataURI(a.line,700))),split=await Promise.all(assets.art.map(a=>halfColor(a)));
