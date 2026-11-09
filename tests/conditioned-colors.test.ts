@@ -37,6 +37,45 @@ test('source-owned regions keep spatial blue/green pigment, original ink and bra
 test('blank and geometrically unrelated output fails its quality gate',()=>{const r=raster();assert.equal(transferPasses(transferConditionedColor(r.source,new Uint8Array(r.prior.length).fill(255),r.w,r.h,r.bottom).metrics),false);const unrelated=new Uint8Array(r.prior.length).fill(255);for(let i=0;i<unrelated.length;i+=4){unrelated[i]=220;unrelated[i+1]=140;unrelated[i+2]=80;}assert.equal(transferPasses(transferConditionedColor(r.source,unrelated,r.w,r.h,r.bottom).metrics),false);assert.match(colorPrompt('Sea turtle','A turtle in the ocean.'),/actual|supplied/);assert.match(colorPrompt('Sea turtle','A turtle in the ocean.'),/water and clear sky blue/);});
 test('conditioning preserves portrait geometry; lossless WebP retains original ink',async()=>{const f=await fixtures(),input=prepareColorInput(f.sourceBytes),meta=await sharp(input.png).metadata();assert.deepEqual([meta.width,meta.height],[512,768]);const out=finishColorReference(f.sourceBytes,f.priorBytes);assert.deepEqual([out.width,out.height],[192,256]);assert.equal(out.metrics.changedInkPixels,0);assert.equal(out.metrics.footerUnchanged,true);await assert.rejects(async()=>finishColorReference(f.sourceBytes,f.sourceBytes),/dimensions/);});
 test('publication trigger and backfill are idempotent and include only current verified published images',async()=>{const f=await setup();assert.equal(f.job().state,'queued');await discoverColorReferences(f.env);await discoverColorReferences(f.env);assert.equal(f.db.sql.prepare('SELECT COUNT(*) n FROM color_reference_job').get()!.n,1);f.db.sql.exec("UPDATE asset SET sha256='cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc' WHERE role='catalog_preview_bw';UPDATE content SET active_version=1");assert.equal(f.db.sql.prepare('SELECT COUNT(*) n FROM color_reference_job').get()!.n,2);});
+test('discovery bounds source inspection before joins and advances across a fully omitted window',async()=>{
+ const db=new DB(),env={CATALOG_DB:db,COLOR_REFERENCES_ENABLED:'true'} as unknown as Env;
+ const invalid=new Set([121,122,123,124,125,126,127]),expected:string[]=[];
+ for(let i=0;i<225;i++){
+  const id='bounded-'+String(i).padStart(3,'0'),status=i===122?'draft':i===123?'archived':'published',active=i===127?null:i===124?2:1;
+  db.sql.prepare('INSERT INTO content(id,slug,title,status,active_version,provenance_json) VALUES(?,?,?,?,?,?)').run(id,id,id,status,active,'{}');
+  db.sql.prepare('INSERT INTO content_revision(content_id,version,manifest_json,manifest_sha256) VALUES(?,?,?,?)').run(id,active||1,JSON.stringify({color_preview_policy:i<100||i===125?'none':'automatic'}),'d'.repeat(64));
+  for(const role of ['printable_webp_bw','catalog_preview_bw']){
+   if(i===126&&role==='catalog_preview_bw')continue;
+   db.sql.prepare('INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified,width,height) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)').run(id+'-'+role,id,1,role,id+'/'+role,id+'/'+role,'image/webp',1234,role==='printable_webp_bw'?'a'.repeat(64):'b'.repeat(64),1,i===121?0:1,192,256);
+  }
+  if(i>=100&&!invalid.has(i))expected.push(id);
+ }
+ const statements:string[]=[],prepare=db.prepare.bind(db);db.prepare=(sql:string)=>{statements.push(sql);return prepare(sql);};
+ const after=()=>db.sql.prepare('SELECT after_id FROM color_reference_scan WHERE id=1').get()!.after_id;
+ const jobs=()=>db.sql.prepare('SELECT content_id FROM color_reference_job ORDER BY content_id').all().map(row=>row.content_id);
+ await discoverColorReferences(env);assert.equal(after(),'bounded-099');assert.deepEqual(jobs(),[]);
+ await discoverColorReferences(env);assert.equal(after(),'bounded-199');assert.deepEqual(jobs(),expected.filter(id=>id<'bounded-200'));
+ await discoverColorReferences(env);assert.equal(after(),'bounded-224');assert.deepEqual(jobs(),expected);
+ await discoverColorReferences(env);assert.equal(after(),'');
+ for(let round=0;round<3;round++)await discoverColorReferences(env);
+ assert.deepEqual(jobs(),expected,'a repeated scan does not duplicate source-bound jobs');
+ const windowSQL=statements.find(sql=>sql.startsWith('SELECT id FROM content WHERE'))!,sourceSQL=statements.find(sql=>sql.includes('p.sha256 AS preview_sha256'))!;
+ assert.ok(windowSQL);assert.ok(sourceSQL);
+ for(const [sql,args] of [[windowSQL,['']],[sourceSQL,[JSON.stringify(expected.slice(0,100))]]] as const){
+  const plan=db.sql.prepare('EXPLAIN QUERY PLAN '+sql).all(...args).map(row=>String(row.detail)).join('\n');
+  assert.match(plan,/SEARCH (?:content|c) USING (?:COVERING )?INDEX sqlite_autoindex_content_1/);
+  assert.doesNotMatch(plan,/USE TEMP B-TREE|SCAN (?:content|c)\b/);
+ }
+});
+test('failed discovery insertion keeps its cursor for a safe source-bound retry',async()=>{
+ const f=await setup();f.db.sql.exec('DELETE FROM color_reference_job');
+ const batch=f.db.batch.bind(f.db);f.db.batch=async()=>{throw Error('D1_ERROR: temporary write failure');};
+ await assert.rejects(()=>discoverColorReferences(f.env),/temporary write failure/);
+ assert.equal(f.db.sql.prepare('SELECT after_id FROM color_reference_scan WHERE id=1').get()!.after_id,'');
+ f.db.batch=batch;await discoverColorReferences(f.env);
+ assert.equal(f.db.sql.prepare('SELECT COUNT(*) n FROM color_reference_job').get()!.n,1);
+ assert.equal(f.db.sql.prepare('SELECT after_id FROM color_reference_scan WHERE id=1').get()!.after_id,'test-drawing');
+});
 test('one run backs up and verifies an automatic reference; repeats spend no inference; API uses exact source',async()=>{const f=await setup();await runColorReference(f.env,f.job().job_key);assert.equal(f.job().state,'ready',JSON.stringify(f.job()));assert.equal(f.calls(),3);assert.equal(f.backups.files.size,5);const key=automaticReferenceKey('test-drawing',f.source,f.preview),raw=JSON.parse(await(await f.pub.get(key))!.text()),record=validateAutomaticReference(raw,'test-drawing',f.source,f.preview);assert.equal(record.assessment.status,'machine_checked');assert.equal(await sha256(f.pub.files.get(record.key)!),record.reference_sha256);await runColorReference(f.env,f.job().job_key);assert.equal(f.calls(),3);const response=await publicColorReference(new Request('https://jot.test/api/color-reference/test-drawing?v='+f.source.slice(0,24)),f.env,'test-drawing');assert.equal((await response.json()).status,'ready');for(const mutated of [{...raw,key:'private/a.webp'},{...raw,preview_sha256:'b'.repeat(64)},{...raw,assessment:{...raw.assessment,status:'approved'}}])assert.throws(()=>validateAutomaticReference(mutated,'test-drawing',f.source,f.preview));});
 test('source replacement during inference never activates stale colors',async()=>{const f=await setup(),gateway=f.env.AI_FREE_ONLY_GATEWAY!;f.env.AI_FREE_ONLY_GATEWAY={fetch:async r=>{const result=await gateway.fetch(r);f.db.sql.exec("UPDATE content SET status='archived'");return result;}};await runColorReference(f.env,f.job().job_key);assert.equal(f.job().state,'obsolete');assert.equal([...f.pub.files.keys()].some(k=>k.includes('reference.json')),false);});
 test('missing free-only gateway and exhausted quota cannot send inference or exhaust attempt allowance',async()=>{for(const reason of ['gateway','quota']){const f=await setup();if(reason==='gateway')delete f.env.AI_FREE_ONLY_GATEWAY;else{f.env.AI_FREE_DAILY_NEURONS='300';f.db.sql.prepare('INSERT INTO color_ai_reservation(request_id,job_key,day,neurons,daily_limit) VALUES(?,?,?,?,?)').run('used',f.job().job_key,new Date().toISOString().slice(0,10),300,300);}await runColorReference(f.env,f.job().job_key);assert.equal(f.calls(),0);assert.equal(f.job().state,'retry');assert.equal(f.job().attempts,0);assert.ok(Date.parse(f.job().not_before)>Date.now());}});

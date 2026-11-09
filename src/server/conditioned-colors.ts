@@ -13,14 +13,23 @@ import {AppError,sha256} from './http';
 import type {Env} from './types';
 interface Job {engine:string;job_key:string;content_id:string;source_sha256:string;preview_sha256:string;state:string;attempts:number;request_id:string|null}
 interface Source {id:string;title:string;description:string;source_sha256:string;preview_sha256:string;object_key:string;width:number;height:number}
-const currentSQL="SELECT c.id,c.title,c.description,a.sha256 AS source_sha256,p.sha256 AS preview_sha256,p.object_key,p.width,p.height FROM content c JOIN asset a ON a.content_id=c.id AND a.content_version=c.active_version AND a.role='printable_webp_bw' AND a.verified=1 JOIN asset p ON p.content_id=c.id AND p.content_version=c.active_version AND p.role='catalog_preview_bw' AND p.verified=1 WHERE c.status='published' AND NOT EXISTS (SELECT 1 FROM content_revision cr WHERE cr.content_id=c.id AND cr.version=c.active_version AND json_extract(cr.manifest_json,'$.color_preview_policy')='none')";
+const currentSQL="SELECT c.id,c.title,c.description,a.sha256 AS source_sha256,p.sha256 AS preview_sha256,p.object_key,p.width,p.height FROM content c INDEXED BY sqlite_autoindex_content_1 JOIN asset a ON a.content_id=c.id AND a.content_version=c.active_version AND a.role='printable_webp_bw' AND a.verified=1 JOIN asset p ON p.content_id=c.id AND p.content_version=c.active_version AND p.role='catalog_preview_bw' AND p.verified=1 WHERE c.status='published' AND NOT EXISTS (SELECT 1 FROM content_revision cr WHERE cr.content_id=c.id AND cr.version=c.active_version AND json_extract(cr.manifest_json,'$.color_preview_policy')='none')";
 function hasPinnedReference(s:Pick<Source,'id'|'source_sha256'|'preview_sha256'>){return reviewed.some(r=>r.id===s.id&&r.sourceHash===s.source_sha256&&(!('previewHash' in r)||r.previewHash===s.preview_sha256))||showcase.some(r=>r.id===s.id&&r.sourceHash===s.source_sha256.slice(0,24));}
 export const nextFreeDay=(now=Date.now())=>new Date(Math.floor(now/86400000)*86400000+86400000+60000).toISOString();
 export async function discoverColorReferences(env:Env){
  if(env.COLOR_REFERENCES_ENABLED!=='true'||!env.CATALOG_DB)return;
  const db=env.CATALOG_DB,scan=await db.prepare('SELECT after_id FROM color_reference_scan WHERE id=1').first<{after_id:string}>();
- const rows=await db.prepare(currentSQL+' AND c.id>? ORDER BY c.id LIMIT 100').bind(scan?.after_id||'').all<Source>();
- if(rows.results.length){await db.batch(rows.results.map(r=>db.prepare('INSERT OR IGNORE INTO color_reference_job(job_key,content_id,source_sha256,preview_sha256,state,engine) VALUES(?,?,?,?,?,?)').bind(crypto.randomUUID(),r.id,r.source_sha256,r.preview_sha256,hasPinnedReference(r)?'ready':'queued',CONDITIONED_ENGINE)));await db.prepare('UPDATE color_reference_scan SET after_id=? WHERE id=1').bind(rows.results.at(-1)!.id).run();}
+ // Select a bounded ID window before joining assets or inspecting manifests.
+ // Filtering the whole published catalog before LIMIT made SQLite scan and sort
+ // every eligible row, blocking ordinary page reads for several seconds at cron.
+ const candidates=await db.prepare('SELECT id FROM content WHERE id>? ORDER BY id LIMIT 100').bind(scan?.after_id||'').all<{id:string}>();
+ if(candidates.results.length){
+  const rows=await db.prepare(currentSQL+' AND c.id IN (SELECT value FROM json_each(?)) ORDER BY c.id').bind(JSON.stringify(candidates.results.map(r=>r.id))).all<Source>();
+  if(rows.results.length)await db.batch(rows.results.map(r=>db.prepare('INSERT OR IGNORE INTO color_reference_job(job_key,content_id,source_sha256,preview_sha256,state,engine) VALUES(?,?,?,?,?,?)').bind(crypto.randomUUID(),r.id,r.source_sha256,r.preview_sha256,hasPinnedReference(r)?'ready':'queued',CONDITIONED_ENGINE)));
+  // Omitted, archived or incomplete rows must still advance the cursor. Otherwise
+  // a full skipped window can starve every valid source that follows it.
+  await db.prepare('UPDATE color_reference_scan SET after_id=? WHERE id=1').bind(candidates.results.at(-1)!.id).run();
+ }
  else await db.prepare("UPDATE color_reference_scan SET after_id='' WHERE id=1").run();
 }
 export async function scheduleColorReferences(env:Env){
