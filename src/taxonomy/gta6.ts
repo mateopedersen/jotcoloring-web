@@ -8,7 +8,7 @@ export const GTA6_TOPIC: ColoringCategory = {
   visual: 'independent fan illustrations inspired by Grand Theft Auto VI characters and the fictional Leonida setting',
   icon: 'video-games',
   sample: 'gta-6-palm-tree-vi-lettering-coloring-page',
-  intro: 'These GTA 6 coloring pages feature Grand Theft Auto VI fan illustrations of Jason, Lucia, Boobie Ike, other Leonida characters, cars, boats, music scenes, and coastal settings. The drawings range from open character portraits and lettering to detailed vehicles and waterfront scenes. Browse each full page to see its visible details, then choose the design you want. Open an individual drawing to download its printable PDF or image, or color the same artwork online.',
+  intro: 'Browse free GTA 6 coloring pages inspired by Grand Theft Auto VI and its fictional Leonida setting. The collection features character portraits, cars, boats, music scenes, lettering, and waterfront artwork, with each page showing its own illustrated details. Open a drawing to check the full design, then download its printable PDF or image, or color it online.',
   aliases: [
     'GTA 6',
     'GTA VI',
