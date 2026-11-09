@@ -282,23 +282,26 @@ test('navigation collections deduplicate overlapping classifications and exact n
  db.sql.close();search.sql.close();
 });
 
-test('scoped gallery queries start from indexed category membership rather than scanning unrelated content',async()=>{
+test('scoped gallery queries inspect the leaf membership without scanning a large published parent',async()=>{
  const {db,search,env}=setup();
- for(let i=0;i<8;i++)await add(db,search,'scoped-member-'+i,'Fox '+i);
+ await db.prepare("INSERT INTO category(id,name,parent_id) VALUES('small-topic','Small Topic','animals')").run();
+ for(let i=0;i<8;i++){const id='scoped-member-'+i;await add(db,search,id,'Fox '+i);await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,'small-topic').run();}
+ db.sql.exec('BEGIN');const insert=db.sql.prepare("INSERT INTO content(id,slug,title,status,active_version,provenance_json) VALUES(?,?,?,'published',1,'{}')"),member=db.sql.prepare("INSERT INTO content_category(content_id,category_id) VALUES(?,'animals')");
+ for(let i=0;i<8000;i++){const id='unrelated-'+i;insert.run(id,id,'Other '+i);member.run(id);}db.sql.exec('ANALYZE;COMMIT');
  const queries:{sql:string;values:unknown[]}[]=[];const prepare=db.prepare.bind(db);
- db.prepare=(sql:string)=>{const statement=prepare(sql);const bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.includes('FROM content c WHERE')&&sql.includes('content_category'))queries.push({sql,values});return bind(...values);};return statement;};
- const repo=new D1CatalogRepository(env,db),first=await repo.list({category:'animals',limit:3});
- assert.equal(first.total,8);assert.equal(first.items.length,3);
+ db.prepare=(sql:string)=>{const statement=prepare(sql);const bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.startsWith('SELECT COUNT(*) AS total FROM ')||sql.startsWith('SELECT c.id,c.slug'))queries.push({sql,values});return bind(...values);};return statement;};
+ const repo=new D1CatalogRepository(env,db),first=await repo.list({category:'animals',subcategory:'small-topic',limit:3});
+ assert.equal(first.total,8);assert.equal(first.items.length,3);assert.equal(queries.length,2,'both the count and drawing query must be inspected');
  for(const query of queries){
-  assert.match(query.sql,/c.id IN \(SELECT cc.content_id FROM content_category cc WHERE cc.category_id=/);
   const plan=JSON.stringify(db.sql.prepare('EXPLAIN QUERY PLAN '+query.sql).all(...query.values as never[]));
-  assert.match(plan,/category_content/);
-  assert.doesNotMatch(plan,/CORRELATED.*SUBQUERY/,'category membership is computed once, not once per catalog row');
+  assert.match(plan,/SEARCH content_category USING COVERING INDEX category_content[^"\n]*category_id=\?/);
+  assert.match(plan,/SEARCH c USING INDEX sqlite_autoindex_content_1[^"\n]*id=\?/);
+  assert.doesNotMatch(plan,/SCAN c(?: |")|SEARCH c USING INDEX content_published/,'the large published parent must not become the driving table');
  }
- const next=await repo.list({category:'animals',limit:3,cursor:first.next_cursor!});assert.equal(next.total,8);
+ const next=await repo.list({category:'animals',subcategory:'small-topic',limit:3,cursor:first.next_cursor!});assert.equal(next.total,8);
  assert.ok(next.items.every(item=>!first.items.some(previous=>previous.id===item.id)));
  await db.prepare("UPDATE content SET status='archived' WHERE id='scoped-member-0'").run();
- assert.equal((await repo.list({category:'animals',limit:3})).total,7);
+ assert.equal((await repo.list({category:'animals',subcategory:'small-topic',limit:3})).total,7);
  db.sql.close();search.sql.close();
 });
 
@@ -318,7 +321,7 @@ test('topic age and detail reads stay source-bound through every cursor and avoi
  await db.prepare("UPDATE age_recommendation SET content_version=2 WHERE content_id='brand-004'").run();
  await db.prepare("UPDATE asset SET verified=0 WHERE content_id='brand-006'").run();
  const queries:{sql:string;values:unknown[]}[]=[],prepare=db.prepare.bind(db);
- db.prepare=(sql:string)=>{const statement=prepare(sql),bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.includes('FROM content c WHERE')&&sql.includes('EXISTS (SELECT 1 FROM age_recommendation'))queries.push({sql,values});return bind(...values);};return statement;};
+ db.prepare=(sql:string)=>{const statement=prepare(sql),bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(/(?:FROM|JOIN) content c(?: INDEXED BY \w+)?(?: ON [^;]+)? WHERE/.test(sql)&&sql.includes('EXISTS (SELECT 1 FROM age_recommendation'))queries.push({sql,values});return bind(...values);};return statement;};
  const repo=new D1CatalogRepository(env,db);
  for(const topic of ['chrysler','gmc'])for(const mode of ['age','detail','both'])for(const sort of ['title','newest','trending'] as const){
   const selected=expected.filter(item=>item.topic===topic&&!['brand-002','brand-004'].includes(item.id)&&(mode==='detail'||item.band==='6-8')&&(mode==='age'||item.score===3100&&item.id!=='brand-006')).map(item=>item.id);
@@ -333,4 +336,21 @@ test('topic age and detail reads stay source-bound through every cursor and avoi
   assert.match(plan,/category_content/);assert.match(plan,/SEARCH ar USING INDEX[^"\n]*content_id=\?/,'review lookup must use the candidate content key');
  }
  assert.ok(queries.length>18);db.sql.close();search.sql.close();
+});
+
+test('known drawing IDs and slugs use point lookups even when almost the entire catalog is published',async()=>{
+ const {db,search,env}=setup(),sql=db.sql;
+ sql.exec('BEGIN');const insert=sql.prepare("INSERT INTO content(id,slug,title,status,active_version,provenance_json) VALUES(?,?,?,'published',1,'{}')");
+ for(let i=0;i<8000;i++)insert.run('indexed-'+i,'drawing-'+i,'Drawing '+i);
+ sql.exec("UPDATE content SET status='archived' WHERE id='indexed-7';ANALYZE;COMMIT");
+ const reads:{sql:string;values:unknown[]}[]=[],prepare=db.prepare.bind(db);
+ db.prepare=(query:string)=>{const statement=prepare(query),bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{reads.push({sql:query,values});return bind(...values);};return statement;};
+ const repo=new D1CatalogRepository(env,db),result=await repo.getMany(['indexed-3','drawing-6','indexed-3','indexed-7','missing']);
+ assert.deepEqual(result.map(item=>item?.id||null),['indexed-3','indexed-6','indexed-3',null,null]);
+ const known=reads.find(r=>r.sql.includes('slug IN'));assert.ok(known);
+ const plan=JSON.stringify(sql.prepare('EXPLAIN QUERY PLAN '+known.sql).all(...known.values as never[]));
+ assert.match(plan,/SEARCH content USING INDEX[^"\n]*\(id=\?\)/);assert.match(plan,/SEARCH content USING INDEX[^"\n]*\(slug=\?\)/);
+ assert.doesNotMatch(plan,/SCAN content|SEARCH content USING INDEX content_published/);
+ assert.doesNotMatch(known.sql,/SELECT \*/,'large private provenance is not selected for public cards');
+ sql.close();search.sql.close();
 });
