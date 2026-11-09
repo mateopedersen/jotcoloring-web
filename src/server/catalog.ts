@@ -156,11 +156,17 @@ export class D1CatalogRepository implements CatalogRepository{
  return result;
  }
  async related(source:Content):Promise<RelatedResult>{
- const tags=candidateTags(source),queries:Promise<{results:{id:string}[];weight:number}>[]=[];
- const window=(table:string,column:string,value:string,weight:number,size:number)=>{for(const direction of ['>','<='])queries.push(this.db.prepare(`SELECT ct.content_id AS id FROM ${table} ct JOIN content c ON c.id=ct.content_id WHERE ct.${column}=? AND ct.content_id ${direction} ? AND c.id<>? AND c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 ORDER BY ct.content_id ${direction==='>'?'ASC':'DESC'} LIMIT ?`).bind(value,source.id,source.id,size).all<{id:string}>().then(result=>({results:result.results,weight})));};
+ const tags=candidateTags(source),queries:{sql:string;values:unknown[]}[]=[];
+ const window=(table:string,column:string,value:string,weight:number,size:number)=>{for(const direction of ['>','<='])queries.push({sql:`SELECT * FROM (SELECT ct.content_id AS id,? AS weight FROM ${table} ct JOIN content c ON c.id=ct.content_id WHERE ct.${column}=? AND ct.content_id ${direction} ? AND c.id<>? AND c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 ORDER BY ct.content_id ${direction==='>'?'ASC':'DESC'} LIMIT ?)`,values:[weight,value,source.id,source.id,size]});};
  for(const tag of tags)window('content_tag','tag',tag,candidateTagWeight(source,tag),8);
  for(const category of [source.subcategory,source.category].filter((v):v is string=>!!v))window('content_category','category_id',category,category===source.subcategory?12:3,20);
- const scores=new Map<string,number>();for(const result of await Promise.all(queries))for(const row of result.results)scores.set(row.id,(scores.get(row.id)||0)+result.weight);
+ const scores=new Map<string,number>();
+ // Preserve both indexed windows and their exact weights without bursting up
+ // to 24 separate reads at D1 for every uncached drawing request.
+ for(let offset=0;offset<queries.length;offset+=4){
+  const batch=queries.slice(offset,offset+4),rows=await this.db.prepare(batch.map(q=>q.sql).join(' UNION ALL ')).bind(...batch.flatMap(q=>q.values)).all<{id:string;weight:number}>();
+  for(const row of rows.results)scores.set(row.id,(scores.get(row.id)||0)+row.weight);
+ }
  // Bounded indexed candidate retrieval, then one batch hydration; no full-catalog similarity scan.
  let ids=[...scores].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,80).map(([id])=>id);
  if(ids.length<8){const rows=await this.db.prepare("SELECT id FROM content WHERE status='published' AND active_version IS NOT NULL AND example_only=0 AND id<>? ORDER BY id LIMIT 8").bind(source.id).all<{id:string}>();ids=[...new Set([...ids,...rows.results.map(r=>r.id)])].slice(0,88);}

@@ -9,7 +9,7 @@ export const RELATED_VIEWS=['best','theme','detail','collection'] as const;
 export type RelatedView=typeof RELATED_VIEWS[number];
 export interface RelatedMatch {item:Content;score:number;reasons:string[];shared:string[];sameCollection:boolean;sameTheme:boolean;similarDetail:boolean;}
 export interface CollectionOverview {id:string;name:string;href:string;total:number|null;previews:Content[];}
-export interface RelatedResult {matches:RelatedMatch[];explore:Content[];theme:string;candidateCount:number;collection?:CollectionOverview;}
+export interface RelatedResult {matches:RelatedMatch[];explore:Content[];theme:string;candidateCount:number;collection?:CollectionOverview;unavailable?:boolean;}
 /** Reuse published candidates already loaded for this page; never pad the strip with duplicates. */
 export function collectionOverview(source:Content,candidates:Content[],metadata:{id:string;name:string;count:number|null;source_category?:string;href?:string}):CollectionOverview|undefined{
  const subject=metadata.source_category||metadata.id;if(metadata.source_category&&(!isPublicCollection(metadata.id)||metadata.href!==collectionPath(metadata.id)))return;

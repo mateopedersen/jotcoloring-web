@@ -18,11 +18,12 @@ import FileActions from '../../components/FileActions.astro';
 import ShareButton from '../../components/ShareButton.astro';
 import ArtworkFacts from '../../components/ArtworkFacts.astro';
 import {createCatalog} from '../../server/catalog';
+import {loadRelatedView} from '../../server/related-view';
 import type {Env} from '../../server/types';
 const repo=createCatalog(env as unknown as Env);
 const item=await repo.get(Astro.params.slug!);
 if(!item){const redirect=await repo.redirect(Astro.params.slug!);if(redirect)return Astro.redirect(`/coloring/${redirect}/`,301);return Astro.rewrite('/404/');}
-const related=await repo.related(item);
+const related=await loadRelatedView(repo,item);
 const breadcrumbs=contentBreadcrumbs(item);
 const text=artworkText(item);
 const favorite=JSON.stringify({id:item.id,title:item.title,slug:item.slug,thumbnail:item.thumbnail,revision:item.version});
