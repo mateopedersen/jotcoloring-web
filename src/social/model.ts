@@ -1,4 +1,5 @@
 import {NOVEMBER_08_AUTOMOBILE_COVER_COPY} from './november-08-automobile-copy';
+import {NOVEMBER_09_AUTO29_COVER_COPY} from './november-09-auto29-copy';
 import {catalogLocation} from '../taxonomy/catalog-location';
 import {categoryPath,COLORING_TAXONOMY} from '../taxonomy/catalog';
 import {categories,animalCategories,coloringTopic} from '../ui/categories';
@@ -41,6 +42,7 @@ for(const c of categories)SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c
 for(const c of animalCategories)if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('animals-'+c.id,categoryPath(c.id),'category','ANIMAL COLORING COLLECTION',`${coloringTopic(c.id)} coloring pages.`,(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${coloringTopic(c.id).toLowerCase()} coloring pages to download or color online.`),c.icon,c.sample?[c.sample]:[],['Explore the theme','Print or color']));
 for(const c of COLORING_TAXONOMY.filter(category=>category.editorial_only&&category.parent))if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('topic-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,c.intro.split(/(?<=[.!?])\s/)[0]+'.',c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
 for(const spec of SOCIAL_PAGES){const copy=NOVEMBER_08_AUTOMOBILE_COVER_COPY[spec.key.replace(/^topic-/, '')];if(spec.key.startsWith('topic-')&&copy)spec.description=copy;}
+for(const spec of SOCIAL_PAGES){const copy=NOVEMBER_09_AUTO29_COVER_COPY[spec.key.replace(/^topic-/, '')];if(spec.key.startsWith('topic-')&&copy)spec.description=copy;}
 const november07CategoryDescriptions:Record<string,string>={
  rhino:'Rhino pages show adults, calves, grasslands, ponds, and leafy habitats.',
  dogs:'Dogs and puppies appear in portraits, gardens, homes, and playful scenes.',
