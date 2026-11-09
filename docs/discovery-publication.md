@@ -89,3 +89,21 @@ The public sitemap index includes each prepared fragment's real modification
 time. Rebuilding identical XML preserves its previous modification time. A changed
 fragment advances the index body/ETag, so a crawler revalidating an old index
 receives the new child modification signal rather than an unchanged index.
+
+## Public read pressure and sitemap availability
+
+Sitemap generation still publishes immutable source fragments through the bounded
+queue. Public regrouping reads only fragment metadata and R2 objects, never the
+full artwork catalog. Fragment metadata and public file lookups share the existing
+simultaneous-read adapter and one bounded retry for a transient D1 overload.
+Completed rows are not retained, and errors must never become cacheable empty XML.
+
+Known artwork ID/slug hydration uses the unique indexes from catalog migration
+0001. Scoped gallery reads start at the most specific category membership and
+check parent, source-bound age, difficulty and visibility on those candidates.
+Collection count joins retain distinct membership but start at the requested
+roots. Do not restore published-status scans for known IDs or global age-review
+lists for a small topic. Backend regression checks use a large unrelated catalog,
+inspect both count and result query plans, and walk source-bound filter cursors.
+This changes public read plans only; imports, revisions, source checksums, queue
+bounds and publication writes keep their existing semantics.

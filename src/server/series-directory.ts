@@ -9,11 +9,11 @@ export async function loadSeriesDirectory(env:Env,repo:CatalogRepository,locatio
  let numbers:NumberSeries[]=[],groupTotals:Record<string,number>={};const db=env.CATALOG_DB?publicCatalogDatabase(env.CATALOG_DB):undefined;
  if(!db||location.number)return [];
  if(location.collection?.id==='education'||location.topic?.id==='numbers'){
-  numbers=(await db.prepare(`SELECT (${canonicalNumberSubject()}) AS number,COUNT(*) AS count,MIN(CASE WHEN EXISTS(SELECT 1 FROM asset a WHERE a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1) THEN c.id END) AS cover_id FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 AND c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id='numbers') GROUP BY number`).all<NumberSeries>()).results;
+  numbers=(await db.prepare(`SELECT (${canonicalNumberSubject()}) AS number,COUNT(*) AS count,MIN(CASE WHEN EXISTS(SELECT 1 FROM asset a WHERE a.content_id=c.id AND a.content_version=c.active_version AND a.role='catalog_thumb_bw' AND a.verified=1) THEN c.id END) AS cover_id FROM content c INDEXED BY sqlite_autoindex_content_1 WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 AND c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id='numbers') GROUP BY number`).all<NumberSeries>()).results;
  }
  if(!location.collection&&!location.topic){
   const groups=NAVIGATION_COLLECTIONS.map(c=>({id:c.id,roots:c.roots}));
-  const rows=(await db.prepare("SELECT json_extract(g.value,'$.id') AS id,COUNT(DISTINCT c.id) AS count FROM json_each(?) g JOIN json_each(g.value,'$.roots') root JOIN content_category cc ON cc.category_id=root.value JOIN content c ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 GROUP BY json_extract(g.value,'$.id')").bind(JSON.stringify(groups)).all<{id:string;count:number}>()).results;
+  const rows=(await db.prepare("SELECT json_extract(g.value,'$.id') AS id,COUNT(DISTINCT c.id) AS count FROM json_each(?) g CROSS JOIN json_each(g.value,'$.roots') root CROSS JOIN content_category cc INDEXED BY category_content ON cc.category_id=root.value CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 GROUP BY json_extract(g.value,'$.id')").bind(JSON.stringify(groups)).all<{id:string;count:number}>()).results;
   groupTotals=Object.fromEntries(rows.map(row=>[row.id,row.count]));
  }
  const entries=seriesDirectory(location,counts,numbers,groupTotals),covers=new Map<string,Content>();

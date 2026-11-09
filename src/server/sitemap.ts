@@ -6,6 +6,7 @@ import {AGE_BANDS} from '../age/model';
 import {AppError} from './http';
 import {ALL_COLORING_PAGES_PATH,catalogAllPath} from '../taxonomy/routes';
 import {COLORING_TAXONOMY} from '../taxonomy/catalog';
+import {publicCatalogDatabase} from './catalog-reads';
 export const SITEMAP_SEGMENT_SIZE=1000;
 // Public files have a tighter limit than the protocol's 50,000 URL ceiling.
 // Keep the publication fragments small: their durable ordinals and rebuild
@@ -26,8 +27,8 @@ export async function buildSitemapSegment(env:Env,url:URL,segment:string){
  if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog is unavailable.',503);
  const origin=originFor(env,url);let entries:SitemapItem[]=[];
  if(segment==='static'){
-  const categories=await env.CATALOG_DB.prepare("SELECT DISTINCT cc.category_id AS id FROM content_category cc JOIN content c ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL ORDER BY cc.category_id").all<{id:string}>();
-  const numbers=await env.CATALOG_DB.prepare("SELECT DISTINCT ("+canonicalNumberSubject()+") AS number FROM content c WHERE c.status='published' AND c.active_version IS NOT NULL AND EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers')").all<{number:string}>();
+  const categories=await env.CATALOG_DB.prepare("SELECT category.id AS id FROM category WHERE EXISTS(SELECT 1 FROM content_category cc INDEXED BY category_content CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=cc.content_id WHERE cc.category_id=category.id AND c.status='published' AND c.active_version IS NOT NULL) ORDER BY category.id").all<{id:string}>();
+  const numbers=await env.CATALOG_DB.prepare("SELECT DISTINCT ("+canonicalNumberSubject()+") AS number FROM content c INDEXED BY sqlite_autoindex_content_1 WHERE c.status='published' AND c.active_version IS NOT NULL AND c.id IN (SELECT cc.content_id FROM content_category cc WHERE cc.category_id='numbers')").all<{number:string}>();
   entries=[...AGE_BANDS.map(a=>({path:'/coloring-by-age/'+encodeURIComponent(a.id)+'/'})),{path:'/'},{path:'/coloring-pages/'},{path:'/coloring-by-age/'},{path:'/about/'},{path:'/privacy/'},{path:'/terms/'},{path:'/license/'},{path:'/licensing/'},{path:'/help/'},{path:'/faq/'},{path:'/cookies/'},{path:'/accessibility/'},{path:'/printing-guide/'},{path:'/how-to-use/'},{path:'/contact/'},{path:'/create/photo/'},{path:'/create/text/'},{path:'/studio/'},{path:'/drawing-board/'},...categories.results.filter(x=>categoryById(x.id)).map(x=>({path:categoryPath(x.id)})),...NAVIGATION_COLLECTIONS.filter(c=>c.roots.some(id=>categories.results.some(row=>row.id===id))).map(c=>({path:collectionPath(c.id)})),...numbers.results.flatMap(row=>{const topic=numberTopic(row.number);return topic?[{path:topic.path}]:[];})];
   const published=new Set(categories.results.map(row=>row.id));
   const directories=[...NAVIGATION_COLLECTIONS.filter(c=>COLORING_TAXONOMY.some(t=>t.parent&&c.roots.includes(t.parent)&&published.has(t.id))).map(c=>collectionPath(c.id)),...COLORING_TAXONOMY.filter(c=>published.has(c.id)&&(c.id==='numbers'||COLORING_TAXONOMY.some(child=>child.parent===c.id&&published.has(child.id)))).map(c=>categoryPath(c.id))];
@@ -60,7 +61,7 @@ const MAX_PUBLIC_XML_BYTES=40_000_000;
 const lastModified=(fragments:PreparedFragment[])=>Math.max(...fragments.map(r=>Date.parse(r.generated_at)));
 async function preparedFragments(env:Env){
  if(!env.CATALOG_DB)throw new AppError('CATALOG_UNAVAILABLE','Catalog unavailable.',503);
- const rows=(await env.CATALOG_DB.prepare('SELECT segment,object_key,etag,generated_at,url_count,bytes FROM discovery_fragment ORDER BY segment').all<PreparedFragment>()).results;
+ const rows=(await publicCatalogDatabase(env.CATALOG_DB).prepare('SELECT segment,object_key,etag,generated_at,url_count,bytes FROM discovery_fragment ORDER BY segment').all<PreparedFragment>()).results;
  if(!rows.some(r=>r.segment==='static'))throw new AppError('SITEMAP_PREPARING','Sitemap is being prepared.',503);
  if(rows.some(r=>!Number.isSafeInteger(r.url_count)||r.url_count<0||r.url_count>(r.segment==='static'?PUBLIC_SITEMAP_LIMIT:SITEMAP_SEGMENT_SIZE)||!Number.isSafeInteger(r.bytes)||r.bytes<0||r.bytes>MAX_PUBLIC_XML_BYTES||!Number.isFinite(Date.parse(r.generated_at))))throw new AppError('SITEMAP_UNAVAILABLE','Sitemap metadata is unavailable.',503);
  return rows;
@@ -118,7 +119,7 @@ export async function groupedSitemap(env:Env,url:URL,kind:string,part:string){
 }
 export async function sitemapSegment(env:Env,url:URL,segment:string){
  if(!/^(static|[1-9]\d{0,4})$/.test(segment))throw new AppError('NOT_FOUND','Sitemap not found.',404);
- const row=await env.CATALOG_DB?.prepare('SELECT object_key,etag,generated_at FROM discovery_fragment WHERE segment=?').bind(segment).first<{object_key:string;etag:string;generated_at:string}>();
+ const row=env.CATALOG_DB?await publicCatalogDatabase(env.CATALOG_DB).prepare('SELECT object_key,etag,generated_at FROM discovery_fragment WHERE segment=?').bind(segment).first<{object_key:string;etag:string;generated_at:string}>():null;
  if(!row)throw new AppError('NOT_FOUND','Sitemap not found.',404);
  const object=await env.PUBLISHED?.get(row.object_key);if(!object)throw new AppError('SITEMAP_UNAVAILABLE','Sitemap unavailable.',503);
  return new Response(object.body,{headers:{...headers,ETag:'"'+row.etag+'"','Last-Modified':new Date(row.generated_at).toUTCString()}});
