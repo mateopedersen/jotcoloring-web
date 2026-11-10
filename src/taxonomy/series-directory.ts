@@ -17,4 +17,17 @@ export function seriesDirectory(location:CatalogLocation,counts:{id:string;count
  const seen=new Set<string>();return [...numerals,...entries].filter(entry=>{if(seen.has(entry.path)||entry.path===location.path)return false;seen.add(entry.path);return true;});
 }
 /** Compact cards retain accepted subject observations, not invented visual details. */
-export function seriesCaption(intro:string){const first=intro.split(/(?<=[.!?])\s/)[0]||intro;return first.length<=170?first:first.slice(0,167).replace(/\s+\S*$/,'')+'…';}
+export function seriesCaption(intro:string){
+ const text=intro.replace(/\s+/gu,' ').trim();
+ let first=text;
+ for(const boundary of text.matchAll(/[.!?](?:["”’')\]]*)\s+/gu)){
+  if(boundary[0].startsWith('.')){
+   const token=text.slice(0,boundary.index).match(/(?:[A-Za-z]\.)*[A-Za-z]+$/u)?.[0]||'';
+   // A title or initial is part of the accepted subject, not a one-word caption.
+   if(/^(?:st|mr|mrs|ms|dr|prof|sr|jr|rev|fr|gen|sgt|capt|lt|col|no|fig|vs|etc|e\.g|i\.e)$/iu.test(token)||/^(?:[A-Z]\.)*[A-Z]$/u.test(token))continue;
+  }
+  first=text.slice(0,boundary.index+boundary[0].trimEnd().length);
+  break;
+ }
+ return first.length<=170?first:first.slice(0,167).replace(/\s+\S*$/u,'')+'…';
+}
