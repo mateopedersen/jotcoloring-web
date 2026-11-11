@@ -2805,5 +2805,33 @@
     "sha256": "6d76cd748e5fc1482e7492c83b48b4424a31b686a8d6290e8c3d45c6ebf16d35",
     "title": "Morgan Wallen coloring pages.",
     "description": "Acoustic guitars, music workshops and backstage activities."
+  },
+  "topic-police-car": {
+    "src": "/og/pages/topic-police-car-b3a9289621abc4b4.png",
+    "alt": "JotColoring printable coloring pages share image: Police Car Coloring Pages Featuring Police SUV beside a Road Cone Coloring Page, Officers Studying a Map beside Police Vehicles Coloring Page, Police Station Open Day with Four Vehicles Coloring Page.",
+    "sha256": "b3a9289621abc4b49f45063da13c8c75c5408d520159aa1aae4f4c9ddcc3bb4b",
+    "title": "Police Car Coloring Pages",
+    "description": "Police cars, SUVs and pickups appear in patrol and community scenes."
+  },
+  "topic-parties": {
+    "src": "/og/pages/topic-parties-c1d78c846d54a67e.png",
+    "alt": "JotColoring printable coloring pages share image: Parties Coloring Pages Featuring Birthday Cake with Balloons and a Present Coloring Page, Packing Party Favor Bags Together Coloring Page, Formal Dessert Party with a Tiered Cake Coloring Page.",
+    "sha256": "c1d78c846d54a67ef6156400a5ea0c1b1618243a22a1267b587c31c9139098d9",
+    "title": "Parties Coloring Pages",
+    "description": "Party pages feature cakes, costumes, family gatherings and decorated settings."
+  },
+  "topic-hanukkah": {
+    "src": "/og/pages/topic-hanukkah-8da864041036804a.png",
+    "alt": "JotColoring printable coloring pages share image: Hanukkah Coloring Pages Featuring Hanukkah Menorah with Nine Lit Candles Coloring Page, Hanukkah Oil Lamp with Jug and Olive Branch Coloring Page, Quiet Hanukkah Evening beside a Menorah Cabinet Coloring Page.",
+    "sha256": "8da864041036804a822030705a25ccfa6e4dde067b97bb53f56cca680e9aabd1",
+    "title": "Hanukkah Coloring Pages",
+    "description": "Hanukkah pages feature menorahs, dreidels, gelt and family celebrations."
+  },
+  "topic-christmas-eve": {
+    "src": "/og/pages/topic-christmas-eve-9c3f473c02e3c35a.png",
+    "alt": "JotColoring printable coloring pages share image: Christmas Eve Coloring Pages Featuring Christmas Eve Cookies and Milk Coloring Page, Christmas Eve Gifts at a Steam Train Platform Coloring Page, Family Preparing a Christmas Eve Feast Coloring Page.",
+    "sha256": "9c3f473c02e3c35a952118e4faca64d267079d81225e8521fbd62ca2f6b9f9c5",
+    "title": "Christmas Eve Coloring Pages",
+    "description": "Christmas Eve pages feature family traditions, Santa and nativity scenes."
   }
 }

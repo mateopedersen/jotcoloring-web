@@ -42,6 +42,18 @@ const sourceSpecificCoverCategories=new Set(['social-media','kangaroo','rhino','
 for(const c of categories)SOCIAL_PAGES.push(page('category-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,({bible:'Bible scenes, outline lettering, and illustrated parables to color.',cartoons:'Hello Kitty, Bluey, Descendants, and KPop Demon Hunters characters.','dolls-toys':'Barbie scenes and rounded squishy-style animal and food mascots.','video-games':'Sonic, Minecraft, and Five Nights at Freddy’s scenes to print or color online.'} as Record<string,string>)[c.id]||(c.editorial_only||sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${c.name.toLowerCase()} drawings to print or color online.`),c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
 for(const c of animalCategories)if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('animals-'+c.id,categoryPath(c.id),'category','ANIMAL COLORING COLLECTION',`${coloringTopic(c.id)} coloring pages.`,(sourceSpecificCoverCategories.has(c.id)?c.intro.split(/(?<=[.!?])\s/)[0]+'.':`Explore ${coloringTopic(c.id).toLowerCase()} coloring pages to download or color online.`),c.icon,c.sample?[c.sample]:[],['Explore the theme','Print or color']));
 for(const c of COLORING_TAXONOMY.filter(category=>category.editorial_only&&category.parent))if(!SOCIAL_PAGES.some(page=>page.paths.includes(categoryPath(c.id))))SOCIAL_PAGES.push(page('topic-'+c.id,categoryPath(c.id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(c.id)} coloring pages.`,c.intro.split(/(?<=[.!?])\s/)[0]+'.',c.icon,c.sample?[c.sample]:[],['PDF & Image','Color online']));
+const november11TopicCopy:Record<string,string>={
+ 'police-car':'Police cars, SUVs and pickups appear in patrol and community scenes.',
+ parties:'Party pages feature cakes, costumes, family gatherings and decorated settings.',
+ hanukkah:'Hanukkah pages feature menorahs, dreidels, gelt and family celebrations.',
+ 'christmas-eve':'Christmas Eve pages feature family traditions, Santa and nativity scenes.'
+};
+for(const [id,description]of Object.entries(november11TopicCopy)){
+ const category=COLORING_TAXONOMY.find(c=>c.id===id)!;
+ let spec=SOCIAL_PAGES.find(p=>p.paths.includes(categoryPath(id)));
+ if(!spec){spec=page('topic-'+id,categoryPath(id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(id)} Coloring Pages`,description,category.icon,[],['PDF & Image']);SOCIAL_PAGES.push(spec);}
+ spec.headline=`${coloringTopic(id)} Coloring Pages`;spec.description=description;if(id==='hanukkah')spec.icon='all';
+}
 const gta6Cover=SOCIAL_PAGES.find(spec=>spec.key==='topic-gta-6');if(gta6Cover){gta6Cover.headline='GTA 6 Coloring Pages';gta6Cover.description='Free GTA 6 coloring pages feature Grand Theft Auto VI fan art from fictional Leonida';}
 for(const spec of SOCIAL_PAGES){const copy={...NOVEMBER_08_AUTOMOBILE_COVER_COPY,...NOVEMBER_10_ARTIST_COVER_COPY}[spec.key.replace(/^topic-/, '')];if(spec.key.startsWith('topic-')&&copy)spec.description=copy;}
 for(const spec of SOCIAL_PAGES){const copy=NOVEMBER_09_AUTO29_COVER_COPY[spec.key.replace(/^topic-/, '')];if(spec.key.startsWith('topic-')&&copy)spec.description=copy;}

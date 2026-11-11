@@ -1,0 +1,6 @@
+import type {ColoringCategory} from './catalog';
+/** Two genuinely new subjects; Parties and Hanukkah retain their existing IDs. */
+export const NOVEMBER_11_NEW_TOPICS:readonly ColoringCategory[]=[
+ {id:'police-car',name:'Police Car',topic:'Police Car',parent:'vehicles',visual:'police sedans, SUVs, pickups, officers and community vehicle scenes',icon:'vehicles',sample:'police-suv-beside-a-road-cone-coloring-page',intro:'Police car drawings include patrol sedans, SUVs and pickups, with roadside visits, workshops, dog training and community open days. Compare vehicle outlines and the surrounding scene before choosing a drawing.',aliases:['police cars','police car coloring pages','police vehicles','patrol car'],editorial_only:true},
+ {id:'christmas-eve',name:'Christmas Eve',topic:'Christmas Eve',parent:'christmas',visual:'Christmas Eve preparations, family gatherings, Santa scenes and nativity illustrations',icon:'holidays',sample:'christmas-eve-cookies-and-milk-coloring-page',intro:'Christmas Eve drawings feature cookies and milk, family storytime, snowy journeys, Santa and his reindeer, and nativity scenes. Browse simple holiday objects alongside detailed homes, village streets and festive gatherings.',aliases:['Christmas Eve coloring pages','Christmas night','night before Christmas'],editorial_only:true}
+];
