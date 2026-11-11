@@ -121,3 +121,23 @@ The owner separately authorized Sugar Skull, Veterans Day, Christmas Tree, Janua
 
 ## Collection directory refinement, November 3
 Main collection pages present individual subject or number-series cards through the shared canonical resolver. Keep source-reviewed category membership, real published counts, a topic-specific accepted introduction and an accepted source-bound drawing cover. Do not mix all drawings into the main collection directory or invent counts, ages or numeral identities. Remove duplicate breadcrumb levels with the same target through the shared UI resolver. Preserve concurrent content intakes and avoid automatic coloring or paid inference.
+
+## Image-specific metadata without sequence labels — owner direction, November 11
+
+For all future JotColoring intakes and confirmed legacy corrections, do not put
+artificial drawing indices such as `#001`, `No. 78`, `design 003`, or an unqualified
+serial suffix into public titles, headings, descriptions, alt text, tags, image
+schema or share-cover copy. Use the actual visible subject, supported model or
+character identity, pose and distinguishing scene details. Meaningful numbers in
+an evidenced model name or numeral artwork are allowed; do not remove them as if
+they were sequence labels. Preserve existing content IDs, stable public URLs,
+accepted originals, logos and separate source-container checksums.
+
+Remove confirmed old numbering and generic boilerplate through the normal
+source-bound revision, backup, search and publication gates. Inspect the real
+pixels before adding visual claims; filenames are supplementary evidence and
+never establish an exact car model, trim, year, species or event on their own.
+Review metadata twice and check the final PDF and share cover for actual matching
+artwork and complete, readable copy. Verify the public page and real PDF/Image
+bytes twice. Prepared, publishing, R2-verified and publicly verified counts must
+remain separate; a local editorial seal does not mean a completed live release.
