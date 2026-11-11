@@ -227,3 +227,19 @@ test('franchise aliases inside longer requests preserve character and scene cons
  assert.equal((await search.search('kpop rumi missingvolcanoscene')).total,0,'an alias must never remove scene constraints');
  assert.equal((await search.search('rum kpop')).total,0,'only the actual final word gets prefix completion');
 });
+
+test('reviewed music artist qualifiers find the whole subject while scene modifiers remain required',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,topic:string,description='')=>search.project({id,title,description,categories:'music '+topic,category_ids:['music',topic],tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-11'});
+ await add('khalid-mic','Khalid with a Microphone','khalid','A visible microphone.');
+ await add('khalid-garden','Khalid in a Garden','khalid','Plants frame the portrait.');
+ await add('chappell','Chappell Roan Portrait','chappell-roan');
+ await add('ed','Ed Sheeran with a Guitar','ed-sheeran');
+ await add('luke','Luke Combs with a Guitar','luke-combs');
+ await add('future','Future at a Recording Desk','future');
+ for(const [q,ids] of [['Khalid singer',['khalid-mic','khalid-garden']],['Chappell Roan singer',['chappell']],['Ed Sheeran singer',['ed']],['Luke Combs country singer',['luke']],['Future rapper coloring pages',['future']]] as [string,string[]][]){assert.deepEqual(new Set((await search.search(q)).ids),new Set(ids),q);}
+ assert.deepEqual((await search.search('Khalid singer microphone')).ids,['khalid-mic']);
+ assert.equal((await search.search('Khalid singer missingvolcanoscene')).total,0);
+ assert.equal((await search.search('Khalid singer',48,{category:'animals'})).total,0);
+ assert.deepEqual(searchTopicIds('dog singer'),[]);
+});

@@ -7,21 +7,23 @@ const key=(value:string)=>searchWords(value).join(' ');
 export const topicSearchVocabulary=[...new Set(COLORING_TAXONOMY.flatMap(c=>[c.id,c.name,...c.aliases].flatMap(name=>searchWords(name))))];
 const topicAliases=new Map<string,Set<string>>();
 const broadQualifiers=new Set(['disney','pixar','sanrio','netflix','dreamworks','nickelodeon','car','vehicle','automobile','character','logo','emblem','brand','bear','electric']);
+// These words identify a reviewed music subject, rather than a pose or scene.
+const musicQualifiers=new Set(['musician','singer','rapper','country']);
 /** A submodel or scene alias can discover its collection, but cannot widen artwork results. */
-function isBroadAlias(alias:string,identities:string[]){
+function isBroadAlias(alias:string,identities:string[],parent?:string|null){
  const terms=intentWords(alias).map(canonicalSubject);
  for(const identity of identities){
   const base=intentWords(identity).map(canonicalSubject);if(!base.length)continue;
   const start=terms.findIndex((_,i)=>base.every((word,j)=>terms[i+j]===word));
   if(start<0)continue;
   const extra=[...terms.slice(0,start),...terms.slice(start+base.length)];
-  if(extra.some(word=>!broadQualifiers.has(word)))return false;
+  if(extra.some(word=>!broadQualifiers.has(word)&&!(parent==='music'&&musicQualifiers.has(word))))return false;
  }
  return true;
 }
 for(const category of COLORING_TAXONOMY){
  const identities=[category.id,category.name,category.topic];
- for(const name of [...identities,...category.aliases.filter(alias=>isBroadAlias(alias,identities))]){
+ for(const name of [...identities,...category.aliases.filter(alias=>isBroadAlias(alias,identities,category.parent))]){
   const normalized=intentWords(name).join(' ');if(!normalized)continue;
   if(!topicAliases.has(normalized))topicAliases.set(normalized,new Set());
   topicAliases.get(normalized)!.add(category.id);
