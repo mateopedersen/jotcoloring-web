@@ -1277,6 +1277,28 @@
       }
     ]
   },
+  "/coloring-pages/christmas-eve/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/70e01be3507f3d16a728b779157a3e4ae0947cd5b789295a8febb0001938bea9.png",
+    "alt": "JotColoring printable coloring pages share image: Christmas Eve Coloring Pages Featuring Christmas Eve Cookies and Milk Coloring Page, Christmas Eve Gifts at a Steam Train Platform Coloring Page, Family Preparing a Christmas Eve Feast Coloring Page.",
+    "title": "Christmas Eve Coloring Pages",
+    "description": "Christmas Eve drawings feature family preparations, Santa and reindeer, snowy journeys and nativity scenes.",
+    "sha256": "70e01be3507f3d16a728b779157a3e4ae0947cd5b789295a8febb0001938bea9",
+    "identity_sha256": "4c8be377baf1153b96fe47d13a3d1278fe048b91045dea941416379909fcb8f9",
+    "sources": [
+      {
+        "id": "jc-christmas-eve-001",
+        "sha256": "557a0e98a9920f7ff9880b494d0911b2835c3472499987c3c4d16369faa87852"
+      },
+      {
+        "id": "jc-christmas-eve-050",
+        "sha256": "e39edf945a3d77f239f031b37b8f2d2ef06a9279348b26b453f050dddff051ba"
+      },
+      {
+        "id": "jc-christmas-eve-100",
+        "sha256": "5bd4f8f0b05a92f7c8df65b0b297983f05f27309222b165cf47a9fe85d406da0"
+      }
+    ]
+  },
   "/coloring-pages/christmas-tree/": {
     "src": "https://assets.jotcoloring.com/published/navigation/v1/6fb33e9e8929223f179497bdd102cf787e0f822b59ffe43cee38a576f394be47.png",
     "alt": "JotColoring printable coloring pages share image: Christmas Tree Coloring Pages Featuring Christmas Tree: Star and Round Ornaments, Christmas Tree: Heart Ornaments and a Big Bow, Christmas Tree: Children Hanging Ornaments.",
@@ -1972,6 +1994,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/916407665dda90f4558d6254d9c3aaaa07baed22c1fb2b5a63d6df367eeaca4d.png",
     "title": "Halloween Coloring Pages"
+  },
+  "/coloring-pages/hanukkah/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/df7c7448ae4a063b6b6b51d98833c06506e9df112ab0cba5280a1d2568499fcb.png",
+    "alt": "JotColoring printable coloring pages share image: Hanukkah Coloring Pages Featuring Hanukkah Menorah with Nine Lit Candles Coloring Page, Hanukkah Oil Lamp with Jug and Olive Branch Coloring Page, Quiet Hanukkah Evening beside a Menorah Cabinet Coloring Page.",
+    "title": "Hanukkah Coloring Pages",
+    "description": "Hanukkah drawings feature nine-light menorahs, dreidels, gelt, latkes, doughnuts, paper stars and families celebrating together.",
+    "sha256": "df7c7448ae4a063b6b6b51d98833c06506e9df112ab0cba5280a1d2568499fcb",
+    "identity_sha256": "02c13c4ebc26c742e6fbdead0606389671daf5eeff9818b427341cf178f28f32",
+    "sources": [
+      {
+        "id": "jc-hanukkah-001",
+        "sha256": "781cad5e94707bcbe3773290c83404954624ae5d9e0b477ef742245f66838548"
+      },
+      {
+        "id": "jc-hanukkah-050",
+        "sha256": "daf18a1ca5ed4027ebfe308ffa4aa2a9e91f72a015fc3b2fb0de30086d3588f5"
+      },
+      {
+        "id": "jc-hanukkah-100",
+        "sha256": "41e58ef3c44e176825362d18561ba0bcb270c3a89937539d49378a84b6989e84"
+      }
+    ]
   },
   "/coloring-pages/hello-kitty/": {
     "alt": "JotColoring printable coloring pages share image: Hello Kitty Coloring Pages Featuring Hello Kitty Holds an Apple Beside a Basket, Hello Kitty Has Tea at a Small Table, Hello Kitty Waters a Potted Tulip.",
@@ -3138,18 +3182,26 @@
     "title": "Panda Coloring Pages"
   },
   "/coloring-pages/parties/": {
-    "alt": "JotColoring printable coloring pages share image: Parties Coloring Pages Featuring Plain Heart Balloon with a Ribbon.",
-    "description": "A heart-shaped balloon is tied with a ribbon. Its broad heart outline and curved bow provide a simple illustrated party motif.",
-    "identity_sha256": "eb89f49ef5a7f875f67a45d5bdd9c3f10a69196083c1600aa4ac58eebf8c6e06",
-    "sha256": "8bbfbd36e11e90938c8a2c24e695db464b4d453cf215b3371da8d3285d5f02d3",
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/cac546b9e4865867e900e0f90d5f348f311ef3767ccc27360827830b228008f1.png",
+    "alt": "JotColoring printable coloring pages share image: Parties Coloring Pages Featuring Birthday Cake with Balloons and a Present Coloring Page, Packing Party Favor Bags Together Coloring Page, Formal Dessert Party with a Tiered Cake Coloring Page.",
+    "title": "Parties Coloring Pages",
+    "description": "Party drawings range from balloons and birthday cakes to tea parties, graduations, costume gatherings and detailed celebrations with family and friends.",
+    "sha256": "cac546b9e4865867e900e0f90d5f348f311ef3767ccc27360827830b228008f1",
+    "identity_sha256": "9d855abac87433cbf58f0728b566ab19e5b5088e92829881d43569fab5f04c0f",
     "sources": [
       {
-        "id": "jc-easy-easy-014",
-        "sha256": "8930dc4e205750c3af02c17f35804b0882612cefb144c50190124d59d1fcc5a5"
+        "id": "jc-parties-001",
+        "sha256": "8de63d43695c3cf7bfcf0e35db48dd44441d8add2d0862bf03091604f4a567dd"
+      },
+      {
+        "id": "jc-parties-050",
+        "sha256": "18a05b6930630bf62b41ce2d9f2f9c713cf9ef0041087b11d598fc63aff2b0a5"
+      },
+      {
+        "id": "jc-parties-100",
+        "sha256": "6e5cc34fa3ded60aecd56d119bc2493a1447f696a540595cb54d3300663a8861"
       }
-    ],
-    "src": "https://assets.jotcoloring.com/published/navigation/v1/8bbfbd36e11e90938c8a2c24e695db464b4d453cf215b3371da8d3285d5f02d3.png",
-    "title": "Parties Coloring Pages"
+    ]
   },
   "/coloring-pages/people/": {
     "alt": "JotColoring printable coloring pages share image: People Coloring Pages Featuring Barbie Waters a Potted Tulip, Barbie Holds a Kitten in a Vet Coat, Barbie Presents a Cupcake.",
@@ -3230,6 +3282,28 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/427e453bbd2c44760903006e6f3c60a9f974c3c87391accdc91b5bafdc9b848f.png",
     "title": "Polar Animals Coloring Pages"
+  },
+  "/coloring-pages/police-car/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/7d841ad85ac97b95ed36ecd3f15ec9802e15d5f3e15abf51d3be7ac4dd848c13.png",
+    "alt": "JotColoring printable coloring pages share image: Police Car Coloring Pages Featuring Police SUV beside a Road Cone Coloring Page, Officers Studying a Map beside Police Vehicles Coloring Page, Police Station Open Day with Four Vehicles Coloring Page.",
+    "title": "Police Car Coloring Pages",
+    "description": "Police car drawings feature patrol sedans, SUVs and pickups in roadside, workshop and community scenes.",
+    "sha256": "7d841ad85ac97b95ed36ecd3f15ec9802e15d5f3e15abf51d3be7ac4dd848c13",
+    "identity_sha256": "56802e892b48ab3d5e971cb589769d3740a6abdf4677d49ba4161aee84ac3ca7",
+    "sources": [
+      {
+        "id": "jc-police-car-001",
+        "sha256": "32688e9939eec39312c53cb5a53f070763e20f727074c88d7fff327d50ade6af"
+      },
+      {
+        "id": "jc-police-car-050",
+        "sha256": "d8abf487dfd1258245bed4322d3f9c0a7401d6ac32f77dd490c3c101e361d6a9"
+      },
+      {
+        "id": "jc-police-car-100",
+        "sha256": "ac072c3ee0b5521bb03f176c6e9b2f3af5996d1acf3f955a43879ce4a4ca5f3a"
+      }
+    ]
   },
   "/coloring-pages/princesses/": {
     "alt": "JotColoring printable coloring pages share image: Princess Coloring Pages Featuring Princess with a Long-Stemmed Rose, Princess Holds a Closed Book, Princess Plays a Small Harp.",
