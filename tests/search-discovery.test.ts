@@ -159,3 +159,71 @@ test('animal ages and machine sizes are specific queries rather than whole-topic
  for(const query of ['cheetah cub','cheetah cubs']){assert.deepEqual(searchTopicIds(query),[]);assert.deepEqual((await search.search(query)).ids,['cub-cheetah']);}
  assert.deepEqual(searchTopicIds('mini excavator'),[]);assert.deepEqual((await search.search('mini excavator')).ids,['mini-excavator']);
 });
+
+test('vehicle model queries retain every modifier instead of returning the whole manufacturer collection',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,description:string,categories='vehicles cars byd')=>search.project({id,title,description,tags:'',categories,category_ids:categories.split(' '),source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08',age_groups:['kids']});
+ await add('dolphin-rear','BYD Dolphin Rear View Coloring Page','A compact hatchback viewed from behind.');
+ await add('dolphin-front','BYD Dolphin Front View Coloring Page','A compact hatchback viewed from the front.');
+ await add('seal','BYD Seal Coloring Page','An electric sedan in side profile.');
+ await add('fish','Dolphin Underwater Coloring Page','A dolphin swims near coral.','ocean');
+ assert.equal((await search.search('byd')).total,3);
+ assert.deepEqual(searchTopicIds('byd dolphin'),[]);
+ assert.deepEqual(new Set((await search.search('byd dolphin')).ids),new Set(['dolphin-rear','dolphin-front']));
+ for(const query of ['please help me find free printable BYD Dolphin coloring pages with the rear view for kids','BYD Dolphin rear view coloring page'])assert.deepEqual((await search.search(query)).ids,['dolphin-rear'],query);
+ for(const query of ['give me a BYD seal coloring page','please can you suggest a BYD Seal coloring page','recommend a printable BYD Seal drawing',"I'm looking for a printable BYD Seal coloring page",'I’d like to see a BYD Seal drawing','can I have a BYD Seal coloring page'])assert.deepEqual((await search.search(query)).ids,['seal'],query);
+ assert.deepEqual((await search.search('byd se')).ids,['seal'],'an unfinished model remains discoverable');
+ assert.equal((await search.search('BYD Dolphin flying spaceship')).total,0,'never silently drop requested scene details');
+});
+
+test('late words in a long scene query and explicit letter identities remain searchable',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08'});
+ await add('panda-bamboo','Panda Eating Bamboo','animals pandas');await add('panda-ball','Panda With A Ball','animals pandas');
+ await add('letter-a','Letter A With Apples','education alphabet letter-a');await add('letter-b','Letter B With Books','education alphabet letter-b');
+ assert.deepEqual((await search.search('please can you help me find some free printable coloring pages with a panda eating bamboo')).ids,['panda-bamboo']);
+ assert.deepEqual((await search.search('letter a')).ids,['letter-a']);
+});
+
+test('spelling correction uses bounded vocabulary queries for long misses',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ await addSearchDrawing(search,'kitty','Hello Kitty Watering Flowers');
+ let reads=0;const prepare=db.prepare.bind(db);db.prepare=(sql:string)=>{reads++;return prepare(sql);};
+ await search.search('unlikelyword anothermissing thirdmissing fourthmissing');
+ assert.ok(reads<=5,'one known-word lookup, one match count, two vocabulary reads, and at most one corrected count');
+ reads=0;await search.search('oneabsent twoabsent threeabsent fourabsent fiveabsent sixabsent');
+ assert.equal(reads,2,'gibberish cannot trigger one database retry per token');
+});
+
+test('a model-specific cursor remains complete while unrelated content is published',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08'});
+ for(let i=0;i<55;i++)await add('dolphin-'+i,i%2?'BYD Dolphin Front View':'Side View Of A BYD Dolphin','vehicles cars byd');
+ await add('other-byd','BYD Seal','vehicles cars byd');
+ const first=await search.search('BYD Dolphin',20),ids=new Set(first.ids);let cursor=first.next_cursor;
+ for(let i=0;i<80;i++)await add('unrelated-'+i,'Garden Flowers Beside A House '+i,'flowers');
+ while(cursor){const page=await search.search('BYD Dolphin',20,{cursor});assert.equal(page.total,55);for(const id of page.ids){assert.ok(!ids.has(id));ids.add(id);}cursor=page.next_cursor;}
+ assert.equal(ids.size,55);assert.ok(!ids.has('other-byd'));
+});
+
+test('compact model spelling preserves its numeric identity and meaningful class letters',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08'});
+ await add('atto-3','BYD Atto 3','vehicles cars byd');await add('atto-2','BYD Atto 2','vehicles cars byd');
+ await add('i-4','BMW i 4','vehicles cars bmw');await add('4-series','BMW 4 Series','vehicles cars bmw');
+ await add('f-488','Ferrari F488','vehicles cars ferrari');
+ assert.deepEqual((await search.search('byd atto3')).ids,['atto-3']);assert.deepEqual((await search.search('bmw i4')).ids,['i-4']);
+ assert.deepEqual((await search.search('bmw i 4')).ids,['i-4']);assert.equal((await search.search('ferrari f458')).total,0,'correction cannot change the requested model number');
+});
+
+test('franchise aliases inside longer requests preserve character and scene constraints',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-08'});
+ await add('rumi-stage','Rumi On Stage','cartoons huntrix');await add('rumi-garden','Rumi In A Garden','cartoons huntrix');
+ await add('jinu-stage','Jinu On Stage','cartoons k-pop-demon-hunters');await add('other-rumi','Rumi On Stage','people');
+ await add('mal','Mal With A Spellbook','cartoons descendants');
+ for(const query of ['kpop rumi stage','please find free k pop Rumi stage coloring pages','rumi on stage kpop','HUNTR/X Rumi stage'])assert.deepEqual((await search.search(query)).ids,['rumi-stage'],query);
+ assert.deepEqual((await search.search('Disney Descendants Mal spellbook')).ids,['mal']);
+ assert.equal((await search.search('kpop rumi missingvolcanoscene')).total,0,'an alias must never remove scene constraints');
+ assert.equal((await search.search('rum kpop')).total,0,'only the actual final word gets prefix completion');
+});

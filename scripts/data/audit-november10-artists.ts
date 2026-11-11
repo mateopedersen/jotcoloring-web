@@ -16,7 +16,7 @@ const topics=copyInventory.archives.map((a:any)=>({
   slug:path.basename(a.name,'.zip').replace(/^JotColoring[-_]/i,'').replace(/[-_]Coloring[-_]Pages$/i,'').replace(/[-_]100[-_]PDF[-_]100[-_]WebP$/i,'').replace(/_/g,'-').toLowerCase(),
   archive:a,
 }));
-if(onlyTopic&&!topics.some(t=>t.slug===onlyTopic))throw new Error('Topic outside the exact 25-archive intake.');
+if(onlyTopic&&!topics.some((t:any)=>t.slug===onlyTopic))throw new Error('Topic outside the exact 25-archive intake.');
 const hash=(b:Uint8Array|string)=>createHash('sha256').update(b).digest('hex');
 const audit:any={status:'PASS',release_id:'november-10-artists-20261110',archive_count:0,design_count:0,unique_webp_count:0,unique_pdf_count:0,failed_pairs:[],topics:[] as any[],created_at:new Date().toISOString()};
 const sourceRows:any[]=[];const allWebpHashes=new Set<string>(),allPdfHashes=new Set<string>();

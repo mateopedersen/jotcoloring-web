@@ -21,7 +21,8 @@ if(existingSession){
 }else{
  try{scoped=JSON.parse(await fs.readFile(credentialFile,'utf8'))[environment];}catch{throw new Error('Scoped Cloudflare credentials are not configured in the private local credential file.');}
  token=scoped?.apiToken;
- if(typeof token!=='string'||!token||typeof scoped?.r2AccessKeyId!=='string'||!scoped.r2AccessKeyId||typeof scoped?.r2SecretAccessKey!=='string'||!scoped.r2SecretAccessKey)throw new Error('The scoped Cloudflare API token and bucket-scoped R2 S3 credentials are required.');
+ if(typeof token!=='string'||!token)throw new Error('A scoped Cloudflare API token is required.');
+ if(Boolean(scoped?.r2AccessKeyId)!==Boolean(scoped?.r2SecretAccessKey))throw new Error('Incomplete bucket-scoped R2 S3 credentials.');
 }
 const accessKeyId=scoped?.r2AccessKeyId,secretAccessKey=scoped?.r2SecretAccessKey;
 const privateConfig=JSON.parse(await fs.readFile(options.secretsFile||processEnv.JOT_SECRETS_FILE||'../jotcoloring-private/secrets.json','utf8'))[environment];
@@ -36,7 +37,7 @@ let requests=0;const request=async(endpoint:string,init:RequestInit={})=>{
  }
 };
 const r2request=async(bucket:string,key:string,method:'GET'|'PUT',body?:Uint8Array,headers:Record<string,string>={})=>{const allowedBuckets=new Set([`jotcoloring-${environment}-originals`,`jotcoloring-${environment}-published`,`jotcoloring-${environment}-backups`]);if(!allowedBuckets.has(bucket))throw new Error('R2 bucket is outside this release scope.');if(!/^[a-zA-Z0-9][a-zA-Z0-9_./-]*$/.test(key)||key.includes('..'))throw new Error('Invalid scoped object key.');const requestBody=body?new Blob([new Uint8Array(body)]):undefined;
- if(existingSession)return request(`/r2/buckets/${bucket}/objects/${key.split('/').map(encodeURIComponent).join('/')}`,{method,headers,...(requestBody?{body:requestBody}:{})});
+ if(existingSession||!accessKeyId)return request(`/r2/buckets/${bucket}/objects/${key.split('/').map(encodeURIComponent).join('/')}`,{method,headers,...(requestBody?{body:requestBody}:{})});
  if(++requests>requestLimit)throw new Error('Bounded request limit exceeded.');const signed=signedR2Request({accountId:account,bucket,key,method,accessKeyId,secretAccessKey,...(body?{body}:{}),headers});return fetch(signed.url,{method,headers:signed.headers,...(requestBody?{body:requestBody}:{}),redirect:'error',signal:AbortSignal.timeout(60000)});};
 async function api(endpoint:string,body?:unknown){const r=await request(endpoint,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}),j:any=await r.json();if(!r.ok||j.success===false)throw new Error(`Cloudflare request failed (${r.status}; code ${j.errors?.[0]?.code||0}).`);return j.result;}
 class RemoteStatement implements Statement{constructor(readonly owner:RemoteDatabase,readonly sql:string,readonly params:unknown[]=[]){ }bind(...params:unknown[]){return new RemoteStatement(this.owner,this.sql,params);}async all<T>(){return (await this.owner.query([{sql:this.sql,params:this.params}]))[0] as D1Result<T>;}async run<T>(){return this.all<T>();}async first<T>(column?:string){const row=(await this.all<Record<string,unknown>>()).results[0];return (row?(column?row[column]:row):null) as T|null;}}
