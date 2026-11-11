@@ -1,0 +1,26 @@
+-- Owner-authorized artist topics; existing identities remain untouched.
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('post-malone','music','Post Malone',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('noah-kahan','music','Noah Kahan',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('khalid','music','Khalid',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('chappell-roan','music','Chappell Roan',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('ed-sheeran','music','Ed Sheeran',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('doja-cat','music','Doja Cat',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('lil-baby','music','Lil Baby',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('luke-combs','music','Luke Combs',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('tyler-the-creator','music','Tyler, the Creator',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('future','music','Future',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('kanye-west','music','Kanye West',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('lil-uzi-vert','music','Lil Uzi Vert',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('sabrina-carpenter','music','Sabrina Carpenter',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('sza','music','SZA',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('j-cole','music','J. Cole',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('olivia-rodrigo','music','Olivia Rodrigo',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('xxxtentacion','music','XXXTENTACION',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('travis-scott','music','Travis Scott',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('ariana-grande','music','Ariana Grande',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('zach-bryan','music','Zach Bryan',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('juice-wrld','music','Juice WRLD',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('bad-bunny','music','Bad Bunny',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('the-weeknd','music','The Weeknd',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('kendrick-lamar','music','Kendrick Lamar',600) ON CONFLICT(id) DO NOTHING;
+INSERT INTO category(id,parent_id,name,sort_order) VALUES('morgan-wallen','music','Morgan Wallen',600) ON CONFLICT(id) DO NOTHING;

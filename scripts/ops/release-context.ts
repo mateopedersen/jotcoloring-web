@@ -4,13 +4,14 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {signedR2Request} from './r2-sigv4';
 import type {Database,Statement,D1Result,Bucket,StoredObject,Env} from '../../src/server/types';
-export async function remoteContext(environment:'staging'|'production',options:{requestLimit?:number}={}){
+export async function remoteContext(environment:'staging'|'production',options:{requestLimit?:number;credentialsFile?:string;wranglerAuthFile?:string;secretsFile?:string;configFile?:string}={}){
 const requestLimit=options.requestLimit??2500;if(!Number.isInteger(requestLimit)||requestLimit<1||requestLimit>4000)throw new Error('Invalid bounded request limit.');
-const config=JSON.parse(await fs.readFile('wrangler.jsonc','utf8')),cfg=config.env[environment],account='48c779c8eaa80234e0bb9d57f96e588b';
+const config=JSON.parse(await fs.readFile(options.configFile||'wrangler.jsonc','utf8')),cfg=config.env[environment],account='48c779c8eaa80234e0bb9d57f96e588b';
 const allowed=environment==='production'?['d075722e-c698-4b6e-a5e4-f53ae5c9e411','59133e5c-f73a-42d2-8b8b-223720e8b6ec']:['835240f5-90d7-4bf2-8a41-b67cc484fb4b','1f4852c1-2b4d-4e80-99a3-f86be83858b6'];
 if(config.account_id!==account||cfg.d1_databases.some((d:any)=>!allowed.includes(d.database_id))||cfg.r2_buckets.some((b:any)=>b.bucket_name!==`jotcoloring-${environment}-${({ORIGINALS:'originals',PUBLISHED:'published',JOB_ASSETS:'jobs',BACKUPS:'backups'} as any)[b.binding]}`))throw new Error('Unreviewed resource target');
-const credentialFile=process.env.JOT_CLOUDFLARE_CREDENTIALS_FILE||path.resolve('.local/cloudflare-credentials.json');
-const existingSession=process.env.JOT_WRANGLER_AUTH_FILE;
+const processEnv=typeof process==='undefined'?{}:process.env;
+const credentialFile=options.credentialsFile||processEnv.JOT_CLOUDFLARE_CREDENTIALS_FILE||path.resolve('.local/cloudflare-credentials.json');
+const existingSession=options.wranglerAuthFile||processEnv.JOT_WRANGLER_AUTH_FILE;
 let scoped:any,token:string|undefined;
 if(existingSession){
  const auth=await fs.readFile(existingSession,'utf8');
@@ -23,7 +24,7 @@ if(existingSession){
  if(typeof token!=='string'||!token||typeof scoped?.r2AccessKeyId!=='string'||!scoped.r2AccessKeyId||typeof scoped?.r2SecretAccessKey!=='string'||!scoped.r2SecretAccessKey)throw new Error('The scoped Cloudflare API token and bucket-scoped R2 S3 credentials are required.');
 }
 const accessKeyId=scoped?.r2AccessKeyId,secretAccessKey=scoped?.r2SecretAccessKey;
-const privateConfig=JSON.parse(await fs.readFile(process.env.JOT_SECRETS_FILE||'../jotcoloring-private/secrets.json','utf8'))[environment];
+const privateConfig=JSON.parse(await fs.readFile(options.secretsFile||processEnv.JOT_SECRETS_FILE||'../jotcoloring-private/secrets.json','utf8'))[environment];
 let requests=0;const request=async(endpoint:string,init:RequestInit={})=>{
  for(let attempt=0;;attempt++){
   if(existingSession){const auth=await fs.readFile(existingSession,'utf8'),current=auth.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1];if(!current)throw new Error('Existing Jot session token unavailable.');token=current;}
