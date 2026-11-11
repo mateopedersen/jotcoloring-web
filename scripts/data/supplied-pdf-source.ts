@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {inflateSync} from 'node:zlib';
 import sharp from 'sharp';
-import {PDFArray, PDFDocument, PDFDict, PDFName, PDFRawStream} from 'pdf-lib';
+import {PDFArray, PDFDocument, PDFDict, PDFName, PDFRawStream, PDFRef} from 'pdf-lib';
 import {brandLogoRGB, BRAND_LOGO_WIDTH, BRAND_LOGO_HEIGHT} from '../../src/server/branding';
 import {decodePDFPNGPrediction} from './pdf-predictor';
 
@@ -120,10 +120,19 @@ export async function verifiedSuppliedPDFLogoPlacement(source: SuppliedPDFSource
   if (!resources) throw new Error('Supplied PDF has no image resources.');
   const expected = Buffer.from(brandLogoRGB());
   const placements = [];
+  const isRGB = (object: PDFRawStream) => {
+    const raw = object.dict.get(PDFName.of('ColorSpace'));
+    const space = raw instanceof PDFRef ? doc.context.lookup(raw) : raw;
+    if (space instanceof PDFName) return space.toString() === '/DeviceRGB';
+    if (!(space instanceof PDFArray) || space.get(0)?.toString() !== '/ICCBased') return false;
+    const ref = space.get(1);
+    const profile = ref instanceof PDFRef ? doc.context.lookup(ref) : ref;
+    return profile instanceof PDFRawStream && Number(profile.dict.get(PDFName.of('N'))?.toString()) === 3;
+  };
   for (const [name, ref] of resources.entries()) {
     const object = doc.context.lookup(ref);
     if (!(object instanceof PDFRawStream) || object.dict.get(PDFName.of('Subtype')) !== PDFName.of('Image')
-        || object.dict.get(PDFName.of('ColorSpace'))?.toString() !== '/DeviceRGB'
+        || !isRGB(object)
         || Number(object.dict.get(PDFName.of('Width'))?.toString()) !== BRAND_LOGO_WIDTH
         || Number(object.dict.get(PDFName.of('Height'))?.toString()) !== BRAND_LOGO_HEIGHT) continue;
     const encoded = decodePDFImageBytes(object, BRAND_LOGO_WIDTH, BRAND_LOGO_HEIGHT);

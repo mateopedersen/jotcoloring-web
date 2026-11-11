@@ -25,7 +25,7 @@ test('every canonical collection, subject and numeral has a distinct informative
    assert.equal(entry.sourceIntro,landingIdentity(location).intro,path);
    assert.match(summary,/\bfree\b/i,path);assert.match(summary,/\bcoloring pages\b/i,path);
    assert.match(summary,/\bPDF\b/,path);assert.match(summary,/\bimage\b/i,path);
-   const opening=summary.replace(/\bT\.\s+rex/gi,'T rex').split(/(?<=[.!?])\s/)[0];
+   const opening=summary.replace(/\bT\.\s+rex/gi,'T rex').replace(/\bJ\.\s+Cole/g,'J Cole').split(/(?<=[.!?])\s/)[0];
    assert.match(opening,/coloring pages/i,`${path}: introduce the collection first`);
    assert.ok(!openings.has(opening),`Repeated opening: ${path} and ${openings.get(opening)}`);
    openings.set(opening,path);
