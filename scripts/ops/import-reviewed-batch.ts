@@ -1,3 +1,4 @@
+import {forEachInFours} from '../../src/server/bounded';
 import {NOVEMBER_10_ARTISTS_RELEASE_ID} from '../../src/server/reviewed-release-scope';
 /** Bounded, resumable creates through the established import/backup/search pipeline. */
 import {reviewedReleaseScope,matchesReviewedSourceArchives,reviewedTopicCount,matchesReviewedTopicLineage} from '../../src/server/reviewed-release-scope';
@@ -93,14 +94,14 @@ if(useQueue){
  receipt.items.push({id:prepared.content_id,slug:prepared.slug,version,transport_sha256:hash,status:'queued_not_yet_published'});console.log(JSON.stringify(receipt.items.at(-1)));continue;
 }
 
-for(const original of supplied)for(const bucket of [env.ORIGINALS!,env.BACKUPS!]){await bucket.put(original.key,original.bytes,{httpMetadata:{contentType:original.mime}});const readback=await bucket.get(original.key);if(!readback||await sha256(new Uint8Array(await readback.arrayBuffer()))!==original.sha256)throw Error('Supplied PDF/WebP original backup failed');}
+await forEachInFours(supplied.flatMap(original=>[env.ORIGINALS!,env.BACKUPS!].map(bucket=>({original,bucket}))),async({original,bucket})=>{await bucket.put(original.key,original.bytes,{httpMetadata:{contentType:original.mime}});const readback=await bucket.get(original.key);if(!readback||await sha256(new Uint8Array(await readback.arrayBuffer()))!==original.sha256)throw Error('Supplied PDF/WebP original backup failed');});
 const sourceBytes=await readPreparedFile(files,'source_original',original),sourceFile=supplied.find((r:any)=>r.mime==='image/webp');if(!sourceFile||sourceFile.sha256!==entry.source_sha256||await sha256(sourceBytes)!==entry.source_sha256)throw Error('Reviewed source must match the supplied original WebP');
 for(const bucket of [env.ORIGINALS!,env.BACKUPS!]){const obj=await bucket.get(sourceFile.key);if(!obj||obj.size!==sourceFile.bytes.length||await sha256(new Uint8Array(await obj.arrayBuffer()))!==entry.source_sha256)throw Error('Supplied original WebP backup readback failed');}
-for(const a of m.assets)await env.ORIGINALS!.put(a.object_key,await readPreparedFile(files,a.role,original),{httpMetadata:{contentType:a.mime}});
-for(const signed of reviews){const review=signed.review;await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));}
+await forEachInFours(m.assets,async a=>env.ORIGINALS!.put(a.object_key,await readPreparedFile(files,a.role,original),{httpMetadata:{contentType:a.mime}}));
+await forEachInFours(reviews,async (signed:any)=>{const review=signed.review;await acceptReview(env,review,await reviewSignature(review,env.MEDIA_VALIDATION_SECRET!));});
 const job=await createImport(env,m,actor);await processImport(env,job.job_id,`imports/${job.job_id}/manifest.json`);
 const events=await env.CATALOG_DB!.prepare('SELECT event_id FROM outbox_event WHERE content_id=? AND version=? AND processed_at IS NULL').bind(m.content_id,version).all<{event_id:string}>();for(const e of events.results)await projectEvent(env,e.event_id);
 const current=await env.CATALOG_DB!.prepare('SELECT active_version,status FROM content WHERE id=?').bind(m.content_id).first<any>();if(current?.active_version!==version||current.status!=='published')throw Error('Publication readback failed');
-for(const a of m.assets){const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published object readback failed');}
+await forEachInFours(m.assets,async a=>{const o=await env.PUBLISHED!.get(publishedKey(m.content_id,version,a,m));if(!o||o.size!==a.bytes||await sha256(new Uint8Array(await o.arrayBuffer()))!==a.sha256)throw Error('Published object readback failed');});
 receipt.items.push({id:m.content_id,slug:m.slug,version,assetsVerified:m.assets.length,sourceFileBackedUp:true,nativeSourceBackedUp:false,suppliedPdfAndWebpBackedUp:true});console.log(JSON.stringify(receipt.items.at(-1)));}
 receipt.status=useQueue?'queued_pending_worker_receipts':'published_pending_public_http_verification';}catch(e){receipt.status='failed';receipt.error=(e as Error).message;throw e;}finally{receipt.finished=new Date().toISOString();receipt.requests=requests();await fs.writeFile(path.join(path.dirname(preparationPath),`publication-${environment}-${collectionName}-${start}-${limit}.json`),JSON.stringify(receipt,null,2));}
