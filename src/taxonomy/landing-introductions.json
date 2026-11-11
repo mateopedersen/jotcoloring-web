@@ -232,8 +232,8 @@
     "text": "Browse free Valentine's Day coloring pages with affectionate motifs and decorative scenes. Hearts, roses, paired animals, gift boxes, letters, and tea sets fill these Valentine designs. Choose a simple motif or an ornate floral frame with fine decorative details. Compare the hearts, characters, and arrangements in the full drawings before choosing a page. PDF and image downloads are available for printing or saving, with an online coloring option alongside them."
   },
   "topic:hanukkah": {
-    "sourceIntro": "Explore hanukkah coloring pages. Choose a PDF or image to print, or add your own colors in Studio.",
-    "text": "Find free Hanukkah coloring pages in this dedicated holiday collection. Check the available drawings for the subject and level of detail you need. Open a page to download a printable PDF or image, or use Coloring Studio to complete the outline digitally."
+    "sourceIntro": "Hanukkah drawings feature nine-light menorahs, dreidels, gelt, latkes, doughnuts, paper stars and families celebrating together.",
+    "text": "Explore free Hanukkah coloring pages with nine light menorahs, dreidels, gelt, latkes and doughnuts. Family scenes include baking, sharing meals, making paper stars, playing dreidel and preparing gifts. Decorative greetings and patterned lamp designs offer a different focus from the quieter household scenes. Open a drawing to see its details and choose a printable PDF or Image download."
   },
   "topic:eid": {
     "sourceIntro": "Explore eid coloring pages. Choose a PDF or image to print, or add your own colors in Studio.",
@@ -468,8 +468,8 @@
     "text": "Browse free birthday coloring pages featuring birthday messages, treats, and illustrated celebrations. Happy Birthday lettering tops cakes, gifts, playful animals, family celebrations, and imagined party settings. Open outlines and elaborate tea tables, gardens, bakeries, and fantasy scenes offer varied coloring detail. Compare the full drawings to find a page for your birthday activity. Download its printable PDF or image, or open the chosen outline in Studio to color it online."
   },
   "topic:parties": {
-    "sourceIntro": "A heart-shaped balloon is tied with a ribbon. Its broad heart outline and curved bow provide a simple illustrated party motif.",
-    "text": "Find free party coloring pages among the celebration themed drawings in this collection. A heart shaped balloon is tied with a ribbon. Its broad heart outline and curved bow provide a simple illustrated party motif. View each complete design before choosing a motif or scene for your activity. PDF and image downloads are available, and the same outline can also be colored online in Studio."
+    "sourceIntro": "Party drawings range from balloons and birthday cakes to tea parties, graduations, costume gatherings and detailed celebrations with family and friends.",
+    "text": "Browse free party coloring pages with birthday cakes, balloons, invitations, tea tables and costume props. The collection also includes family celebrations, graduations, garden gatherings, creative activities, dance floors and detailed wedding settings. Choose an open still life or a fuller scene with guests and decorations, then open the drawing for its printable PDF or Image download."
   },
   "topic:weddings": {
     "sourceIntro": "Explore weddings coloring pages. Choose a PDF or image to print, or add your own colors in Studio.",
@@ -1846,5 +1846,13 @@
   "topic:morgan-wallen": {
     "sourceIntro": "Morgan Wallen illustrations include portraits, acoustic-guitar and microphone scenes, and imagined performance settings. Each page has its own visible details.",
     "text": "Free Morgan Wallen coloring pages include microphones, guitars, caps, vinyl records, notebooks, and table scenes. Other drawings show an outdoor paper boat, a drink being poured, stage details, or a doorway view. Browse the entire illustration to choose a page, then download its PDF or image or color online in Studio."
+  },
+  "topic:police-car": {
+    "sourceIntro": "Police car drawings include patrol sedans, SUVs and pickups, with roadside visits, workshops, dog training and community open days. Compare vehicle outlines and the surrounding scene before choosing a drawing.",
+    "text": "Find free police car coloring pages featuring patrol sedans, SUVs and pickups. Some drawings focus on a single vehicle; others include officers at school crossings, workshops, harbor visits, dog training and community open days. Look at the body shape, equipment and surrounding details to choose your scene, then open its printable PDF or Image download."
+  },
+  "topic:christmas-eve": {
+    "sourceIntro": "Christmas Eve drawings feature cookies and milk, family storytime, snowy journeys, Santa and his reindeer, and nativity scenes. Browse simple holiday objects alongside detailed homes, village streets and festive gatherings.",
+    "text": "Find free Christmas Eve coloring pages featuring cookies and milk, stockings, gifts, family meals and bedtime stories. Other drawings show Santa and his reindeer, snowy villages, train journeys, carol singers and nativity scenes. Browse individual holiday objects or detailed festive settings, then open your chosen outline for a printable PDF or Image download."
   }
 }

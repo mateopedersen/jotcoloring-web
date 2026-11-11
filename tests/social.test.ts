@@ -34,3 +34,13 @@ test('media acceptance invalidates a social image after any original or editoria
 test('social headlines reduce font size before splitting a fitting hyphenated word',()=>{for(const title of ['Panda Flying A Diamond-Shaped Kite','Sea Turtle With A Flower-Patterned Shell','Two Little Trick-Or-Treaters In A Wagon']){const fit=fitCopy(title,{width:516,maxLines:3,maxSize:65,minSize:39});assert.equal(fit.truncated,false);assert.equal(fit.lines.join(' '),title);assert.ok(fit.lines.every(line=>measureCopy(line,fit.size)<=516));}});
 
 test('detail covers show the actual artwork without an unrelated category mascot',async()=>{const line=await sharp({create:{width:80,height:120,channels:3,background:'#fff'}}).webp().toBuffer();const actual={...binding,sourceSHA256:digest(line)},art=[{slug:binding.slug,title:binding.title,alt:binding.alt,line,sourceSHA256:actual.sourceSHA256}],logo=new Uint8Array(await fs.readFile('public/logo-3d.webp'));const a=await renderSocial(contentSocialSpec(actual),{logo,art,icon:await siteIcon('animals')},actual),b=await renderSocial(contentSocialSpec(actual),{logo,art,icon:await siteIcon('holidays')},actual);assert.equal(digest(a.bytes),digest(b.bytes));assert.deepEqual(a.report.sources,[{slug:binding.slug,sha256:actual.sourceSHA256}]);});
+
+test('a detailed scene description uses the free third line above file controls',async()=>{
+ const description='Two graduates in gowns and mortarboards hold diplomas beside cake, flowers and star balloons beneath Congratulations lettering.';
+ assert.equal(fitCopy(description,{width:507,maxLines:2,maxSize:21,minSize:18,weight:550}).truncated,true);
+ const line=await sharp({create:{width:80,height:120,channels:3,background:'#fff'}}).webp().toBuffer(),actual={...binding,description,sourceSHA256:digest(line)},logo=new Uint8Array(await fs.readFile('public/logo-3d.webp'));
+ const result=await renderSocial(contentSocialSpec(actual),{logo,art:[{slug:actual.slug,title:actual.title,alt:actual.alt,line,sourceSHA256:actual.sourceSHA256}],icon:await siteIcon('education')},actual);
+ assert.equal(result.report.descriptionTruncated,false);
+ const lines=result.report.textBoxes.filter(box=>box.x===58&&box.y>400&&box.y<490);
+ assert.equal(lines.length,3);assert.equal(lines.map(box=>box.text).join(' '),description);assert.ok(lines.every(box=>box.y+box.height<494));
+});
