@@ -43,7 +43,7 @@
 .taxonomy-group summary strong {
   display: block; font-size: 21px; font-weight: 800;
   line-height: 1.25; letter-spacing: -.4px; color: #000;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
 }
 .taxonomy-group summary small {
   display: flex; align-items: flex-start; gap: 7px; margin-top: 8px;
@@ -101,6 +101,12 @@
   .taxonomy-group summary strong { font-size: 21px; }
   .taxonomy-group summary small { font-size: 14px; }
   .taxonomy-heading p { font-size: 15px; }
+}
+@container topics (max-width:320px) {
+  .taxonomy-group summary { grid-template-columns: 44px minmax(0,1fr) 26px; gap: 9px; padding: 16px 14px; }
+  .taxonomy-group summary > .category-3d { width: 44px; height: 44px; }
+  .taxonomy-group summary strong { font-size: 20px; }
+  .taxonomy-group .taxonomy-expand { width: 26px; height: 26px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .taxonomy-group summary,.taxonomy-group .taxonomy-expand { transition: none; }
