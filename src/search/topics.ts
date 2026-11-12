@@ -21,10 +21,15 @@ function isBroadAlias(alias:string,identities:string[],parent?:string|null){
  }
  return true;
 }
+// A named subject outranks a broad parent collection that lists it as an alias.
+// For example, Guitar is its own topic even though Musical Instruments lists guitar.
+const explicitIdentities=new Map<string,Set<string>>();
+for(const category of COLORING_TAXONOMY)for(const value of [category.id,category.name,category.topic]){const normalized=intentWords(value).join(' ');if(!normalized)continue;if(!explicitIdentities.has(normalized))explicitIdentities.set(normalized,new Set());explicitIdentities.get(normalized)!.add(category.id);}
 for(const category of COLORING_TAXONOMY){
  const identities=[category.id,category.name,category.topic];
  for(const name of [...identities,...category.aliases.filter(alias=>isBroadAlias(alias,identities,category.parent))]){
   const normalized=intentWords(name).join(' ');if(!normalized)continue;
+  const explicit=explicitIdentities.get(normalized);if(explicit&&!explicit.has(category.id))continue;
   if(!topicAliases.has(normalized))topicAliases.set(normalized,new Set());
   topicAliases.get(normalized)!.add(category.id);
  }

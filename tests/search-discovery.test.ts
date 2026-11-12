@@ -258,3 +258,17 @@ test('X former-name queries find reviewed X artwork and retain scene and categor
  assert.deepEqual((await search.search('X formerly Twitter kite')).ids,['x-kite']);
  assert.equal((await search.search('X formerly Twitter',48,{category:'flowers'})).total,0);
 });
+
+
+test('a canonical subject wins over its parent alias and keeps every cursor member during publication',async(t)=>{
+ assert.deepEqual(searchTopicIds('Guitar'),['guitar']);
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=async(id:string,title:string,categories:string,description='')=>search.project({id,title,description,tags:'',categories,category_ids:categories.split(' '),source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-12'});
+ for(let i=0;i<100;i++)await add('guitar-'+String(i).padStart(3,'0'),i%17===0?'Seated Guitarist With a Footrest '+i:'An Acoustic Guitar With Strings '+i,'music instruments guitar','A musician plays an acoustic guitar.');
+ await add('piano-only','Piano beside a Window','music instruments','A keyboard instrument.');
+ const first=await search.search('Guitar',24,{category:'guitar'}),found=new Set(first.ids);assert.equal(first.total,100);let cursor=first.next_cursor;
+ for(let i=0;i<150;i++)await add('unrelated-'+i,'Young Scientist Holding a Microscope '+i,'education science','A child examines a leaf.');
+ while(cursor){const page=await search.search('Guitar',24,{category:'guitar',cursor});assert.equal(page.total,100);for(const id of page.ids){assert.ok(!found.has(id),'no repeats after unrelated publication');found.add(id);}cursor=page.next_cursor;}
+ assert.equal(found.size,100);assert.ok([...found].some(id=>id==='guitar-000'),'guitarist headings remain reachable through reviewed topic membership');
+ assert.ok(!(await search.search('Guitar',48)).ids.includes('piano-only'),'Guitar does not expand to all musical instruments');
+});
