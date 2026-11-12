@@ -23,7 +23,7 @@ const params=new URLSearchParams(Astro.url.search);params.set('recommended_age',
 const query=parseCatalogQuery(params),repo=createCatalog(env as unknown as Env);
 const categoryCountsPromise=repo.categories().catch(()=>[]);
 let catalogError=false;
-const result=await repo.list(query).catch(()=>{catalogError=true;Astro.response.status=503;return{items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};});
+const result=await repo.list(query).catch(error=>{console.error('Age gallery unavailable',error);catalogError=true;Astro.response.status=503;Astro.response.headers.set('Cache-Control','no-store');Astro.response.headers.set('Retry-After','2');return{items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};});
 const categoryCounts=await categoryCountsPromise;
 const filtered=[...Astro.url.searchParams.keys()].some(key=>key!=='page');
 const canonical=Astro.url.pathname+(!filtered&&result.page>1?`?page=${result.page}`:'');

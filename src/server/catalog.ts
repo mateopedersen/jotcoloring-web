@@ -4,7 +4,7 @@ import {categoryById} from '../taxonomy/catalog';
 import {numberTopic,canonicalNumberSubject,searchNumberSubject} from '../taxonomy/number-topics';
 import {numberSubjects} from '../search/number-subjects';
 import {displayCopies} from './responsive-assets';
-import {difficultyForScore,searchDifficultyValues,catalogDifficultyFilter,scopedCatalogReviewFilter,searchDifficultySQL} from '../age/difficulty';
+import {difficultyForScore,searchDifficultyValues,catalogReviewSeed,scopedCatalogReviewFilter,searchDifficultySQL} from '../age/difficulty';
 import {parseSearchIntent,intentWords,intentExpression,equivalents,correctionFor,commonSearchTerms,wordCandidates,compactModelParts,SEARCH_VERSION,type SearchMatch} from '../search/intent';
 import {ageBand,type AgeBand} from '../age/model';
 import type {Asset,CatalogPage,CatalogQuery,Content,Database,Env} from './types';
@@ -184,12 +184,12 @@ export class D1CatalogRepository implements CatalogRepository{
  if(q.collection){const roots=navigationCollection(q.collection)?.roots;if(!roots)throw new AppError('VALIDATION_ERROR','Unknown collection.');where.push('EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id IN (SELECT value FROM json_each(?)))');values.push(JSON.stringify(roots));}
  if(q.number){if(!numberTopic(q.number))throw new AppError('VALIDATION_ERROR','Unknown number topic.');where.push("EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id='numbers') AND ("+canonicalNumberSubject()+')=?');values.push(q.number);}
  for(const category of [q.category,q.subcategory])if(category){where.push('EXISTS(SELECT 1 FROM content_category cc WHERE cc.content_id=c.id AND cc.category_id=?)');values.push(category)}
+ const reviewSeed=!(q.category||q.subcategory||q.collection||q.number)&&(q.recommended_age||q.difficulty?.length)?catalogReviewSeed(q.difficulty||[],!!q.recommended_age):undefined;
  if((q.category||q.subcategory||q.collection||q.number)&&(q.recommended_age||q.difficulty?.length)){
   where.push(scopedCatalogReviewFilter(q.difficulty||[],!!q.recommended_age));
   if(q.recommended_age)values.push(q.recommended_age);
- }else{
-  if(q.recommended_age){where.push("c.id IN (SELECT ar.content_id FROM age_recommendation ar JOIN content ac ON ac.id=ar.content_id AND ac.active_version=ar.content_version JOIN asset a ON a.content_id=ar.content_id AND a.content_version=ar.content_version AND a.role='printable_webp_bw' AND a.sha256=ar.source_sha256 WHERE ar.band=?)");values.push(q.recommended_age);}
-  if(q.difficulty?.length)where.push(catalogDifficultyFilter(q.difficulty));
+ }else if(reviewSeed){
+  where.push(reviewSeed.sql);if(q.recommended_age)values.push(q.recommended_age);
  }
  if(q.age?.length){where.push(`c.id IN (SELECT ca.content_id FROM content_age ca WHERE ca.age IN (${q.age.map(()=>'?').join(',')}))`);values.push(...q.age)}
  if(q.q){if(!this.search)throw new AppError('SEARCH_UNAVAILABLE','Search is temporarily unavailable.',503);const result=await this.search.search(q.q,limit,q);let rows:Row[]=[];if(result.ids.length){const found=await this.db.prepare(`SELECT ${rowColumns()} FROM content INDEXED BY sqlite_autoindex_content_1 WHERE status='published' AND id IN (${result.ids.map(()=>'?').join(',')})`).bind(...result.ids).all<Row>();rows=result.ids.map(id=>found.results.find(r=>r.id===id)).filter((r):r is Row=>!!r)}return {search_match:result.search_match,items:await this.hydrate(rows),total:result.total,page,page_size:limit,total_pages:Math.ceil(result.total/limit),next_cursor:result.next_cursor,has_more:result.has_more}}
@@ -197,11 +197,16 @@ export class D1CatalogRepository implements CatalogRepository{
  // every other facet against that candidate. Never materialize the whole parent
  // category just to answer a 100-drawing child-topic request.
  const seedCategory=q.subcategory||q.category||(q.number?'numbers':undefined),seedValues:unknown[]=seedCategory?[seedCategory]:q.collection?[JSON.stringify(navigationCollection(q.collection)!.roots)]:[];
- const source=seedCategory?'(SELECT content_id FROM content_category INDEXED BY category_content WHERE category_id=?) seed CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=seed.content_id':q.collection?'(SELECT DISTINCT cc.content_id FROM json_each(?) root CROSS JOIN content_category cc INDEXED BY category_content ON cc.category_id=root.value) seed CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=seed.content_id':'content c';
+ const source=seedCategory?'(SELECT content_id FROM content_category INDEXED BY category_content WHERE category_id=?) seed CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=seed.content_id':q.collection?'(SELECT DISTINCT cc.content_id FROM json_each(?) root CROSS JOIN content_category cc INDEXED BY category_content ON cc.category_id=root.value) seed CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=seed.content_id':reviewSeed?.source||'content c';
  const count=await this.db.prepare(`SELECT COUNT(*) AS total FROM ${source} WHERE ${where.join(' AND ')}`).bind(...seedValues,...values).first<{total:number}>();const total=count?.total||0;
  const column=sort==='newest'?'c.published_at':sort==='title'?'c.title COLLATE NOCASE':'c.sort_score';const direction=sort==='title'?'ASC':'DESC';const comparison=sort==='title'?'>':'<';const fingerprint=await sha256(canonicalJSON({...q,cursor:undefined,page:undefined}));
  if(q.cursor){if(!this.env.CURSOR_SIGNING_SECRET)throw new AppError('CURSOR_UNAVAILABLE','Cursor signing is not configured.',503);try{const [payload,sig]=q.cursor.split('.');if(!payload||!sig||sig!==await signCursor(payload,this.env.CURSOR_SIGNING_SECRET))throw new Error();const c=JSON.parse(decode(payload)) as Cursor;if(c.query!==fingerprint||c.sort!==sort||c.exp<Date.now())throw new Error();where.push(`(${column} ${comparison} ? OR (${column} = ? AND c.id ${comparison} ?))`);values.push(c.value,c.value,c.id)}catch{throw new AppError('INVALID_CURSOR','This page cursor is invalid or expired. Start from the first page.')}}
- const offset=q.cursor?0:(page-1)*limit;const result=await this.db.prepare(`SELECT ${rowColumns('c.')} FROM ${source} WHERE ${where.join(' AND ')} ORDER BY ${column} ${direction},c.id ${direction} LIMIT ? OFFSET ?`).bind(...seedValues,...values,limit+1,offset).all<Row>();const hasMore=result.results.length>limit;const rows=result.results.slice(0,limit);let next:string|null=null;
+ // Counts walk the matching review range; the visible page instead walks its
+ // ordered content index and stops after enough current, source-bound matches.
+ // Materializing all matching IDs again defeats LIMIT on every first visit.
+ const itemSource=reviewSeed?`content c INDEXED BY ${sort==='newest'?'content_published_date':sort==='title'?'content_published_title':'content_published_score'}`:source;
+ const itemWhere=reviewSeed?where.map(clause=>clause===reviewSeed.sql?scopedCatalogReviewFilter(q.difficulty||[],!!q.recommended_age):clause):where;
+ const offset=q.cursor?0:(page-1)*limit;const result=await this.db.prepare(`SELECT ${rowColumns('c.')} FROM ${itemSource} WHERE ${itemWhere.join(' AND ')} ORDER BY ${column} ${direction},c.id ${direction} LIMIT ? OFFSET ?`).bind(...seedValues,...values,limit+1,offset).all<Row>();const hasMore=result.results.length>limit;const rows=result.results.slice(0,limit);let next:string|null=null;
  if(hasMore&&rows.length&&this.env.CURSOR_SIGNING_SECRET){const last=rows[rows.length-1];const data:Cursor={query:fingerprint,sort,value:sort==='newest'?last.published_at:sort==='title'?last.title:last.sort_score,id:last.id,exp:Date.now()+86400000};const payload=encode(JSON.stringify(data));next=payload+'.'+await signCursor(payload,this.env.CURSOR_SIGNING_SECRET)}
  return {items:await this.hydrate(rows),total,page,page_size:limit,total_pages:Math.ceil(total/limit),next_cursor:next,has_more:hasMore};
  }

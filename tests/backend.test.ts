@@ -338,6 +338,39 @@ test('topic age and detail reads stay source-bound through every cursor and avoi
  assert.ok(queries.length>18);db.sql.close();search.sql.close();
 });
 
+test('global age/detail totals and ordered cursor pages retain current source semantics',async()=>{
+ const {catalogDifficultyFilter}=await import('../src/age/difficulty');
+ const {db,search,env}=setup(),sha='a'.repeat(64);
+ for(let n=0;n<65;n++){
+  const id='global-'+String(n).padStart(3,'0');await add(db,search,id,'Drawing '+String(65-n).padStart(3,'0'),n===1?'archived':n===2?'draft':'published',n%4);
+  await db.prepare("INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,asset_version,verified) VALUES(?,?,1,'printable_webp_bw',?,?,'image/webp',100,?,1,1)").bind(id,id,id,id,sha).run();
+  await db.prepare('INSERT INTO age_recommendation(content_id,content_version,source_sha256,band,score_hundredths,method_version) VALUES(?,1,?,?,?,?)').bind(id,sha,n%3?'6-8':'3-5',n%4===0?1200:n%4===1?3100:n%4===2?5100:8900,'test-fixture').run();
+ }
+ await db.prepare("UPDATE age_recommendation SET source_sha256=? WHERE content_id='global-005'").bind('b'.repeat(64)).run();
+ await db.prepare("UPDATE age_recommendation SET content_version=2 WHERE content_id='global-006'").run();
+ await db.prepare("UPDATE asset SET verified=0 WHERE content_id='global-007'").run();
+ const reads:{sql:string;values:unknown[]}[]=[],prepare=db.prepare.bind(db);
+ db.prepare=(sql:string)=>{const statement=prepare(sql),bind=statement.bind.bind(statement);statement.bind=(...values:unknown[])=>{if(sql.includes('FROM age_recommendation ar INDEXED BY')||sql.includes('FROM content c INDEXED BY content_published_'))reads.push({sql,values});return bind(...values);};return statement;};
+ const repo=new D1CatalogRepository(env,db);
+ for(const filter of [{recommended_age:'6-8' as const},{difficulty:['medium']},{recommended_age:'6-8' as const,difficulty:['medium']},{difficulty:['easy','hard']},{recommended_age:'3-5' as const,difficulty:['detailed']},{recommended_age:'adults' as const}])for(const sort of ['title','newest','trending'] as const){
+  const scope=["c.status='published'","c.active_version IS NOT NULL"],params:unknown[]=[];
+  if(filter.recommended_age){scope.push("c.id IN (SELECT ar.content_id FROM age_recommendation ar JOIN content ac ON ac.id=ar.content_id AND ac.active_version=ar.content_version JOIN asset a ON a.content_id=ar.content_id AND a.content_version=ar.content_version AND a.role='printable_webp_bw' AND a.sha256=ar.source_sha256 WHERE ar.band=?)");params.push(filter.recommended_age);}
+  if(filter.difficulty)scope.push(catalogDifficultyFilter(filter.difficulty));
+  const column=sort==='newest'?'c.published_at':sort==='title'?'c.title COLLATE NOCASE':'c.sort_score',direction=sort==='title'?'ASC':'DESC';
+  const expected=db.sql.prepare(`SELECT c.id FROM content c WHERE ${scope.join(' AND ')} ORDER BY ${column} ${direction},c.id ${direction}`).all(...params as never[]).map(row=>row.id);
+  const found:string[]=[];let cursor:string|undefined;
+  do{const result=await repo.list({...filter,sort,limit:5,cursor});assert.equal(result.total,expected.length);found.push(...result.items.map(item=>item.id));cursor=result.next_cursor||undefined;assert.ok(found.length<=expected.length);}while(cursor);
+  assert.deepEqual(found,expected,JSON.stringify({filter,sort}));
+  const second=await repo.list({...filter,sort,limit:5,page:2});assert.deepEqual(second.items.map(item=>item.id),expected.slice(5,10));
+ }
+ assert.ok(reads.length>18);
+ for(const query of reads){const plan=JSON.stringify(db.sql.prepare('EXPLAIN QUERY PLAN '+query.sql).all(...query.values as never[]));
+  if(query.sql.startsWith('SELECT COUNT')){assert.match(plan,/age_recommendation_(?:detail|band)/);assert.doesNotMatch(query.sql,/IN \(SELECT ar.content_id/);}
+  else{assert.match(plan,/content_published_(?:title|date|score)/);assert.doesNotMatch(plan,/TEMP B-TREE FOR ORDER BY/);}
+ }
+ db.sql.close();search.sql.close();
+});
+
 test('known drawing IDs and slugs use point lookups even when almost the entire catalog is published',async()=>{
  const {db,search,env}=setup(),sql=db.sql;
  sql.exec('BEGIN');const insert=sql.prepare("INSERT INTO content(id,slug,title,status,active_version,provenance_json) VALUES(?,?,?,'published',1,'{}')");
