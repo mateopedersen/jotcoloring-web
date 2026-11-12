@@ -63,12 +63,23 @@
 .site-v3 .jc-catalog-page .jc-age-hero > svg { width: 56px; height: 56px; flex: none; }
 .site-v3 .jc-catalog-page .jc-age-hero h1 { font-size: clamp(28px, 3vw, 40px); }
 .site-v3 .jc-catalog-page .jc-age-hero p { font-size: 16px; line-height: 1.6; }
+.site-v3 .jc-catalog-page .jc-age-hero.jc-age-hero--descriptive { display: block; padding: 22px 24px; }
+.jc-age-hero-title { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.jc-age-hero-title > svg { width: 56px; height: 60px; flex: none; }
+.jc-age-hero-title > div { min-width: 0; flex: 1; }
+.site-v3 .jc-catalog-page .jc-age-hero--descriptive .jc-browse-introduction { width: 100%; max-width: none; margin-top: 16px; }
+.site-v3 .jc-catalog-page .jc-age-hero--descriptive .jc-browse-introduction p,
+.site-v3 .jc-catalog-page .jc-collection-overview .jc-browse-introduction p { width: 100%; max-width: none; font-weight: 500; line-height: 1.7; }
 @media (max-width: 850px) {
   .site-v3 .jc-catalog-page .iv-filter-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-v3 .jc-catalog-page .iv-filter-label { grid-column: 1 / -1; }
   .site-v3 .jc-catalog-page .jc-catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 }
 @media (max-width: 480px) {
+  .site-v3 .jc-catalog-page .jc-age-hero.jc-age-hero--descriptive { padding: 16px; }
+  .jc-age-hero-title { gap: 12px; }
+  .jc-age-hero-title > svg { width: 44px; height: 49px; }
+  .site-v3 .jc-catalog-page .jc-age-hero--descriptive .jc-browse-introduction p { font-size: 15px; }
   .site-v3 .jc-catalog-page .iv-category-hero--compact { padding: 16px; margin-bottom: 16px; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; }
   .jc-collection-symbol { width: 56px; height: 64px; border-radius: 16px; align-self: start; }
   .jc-collection-symbol > svg { width: 52px; height: 52px; }
