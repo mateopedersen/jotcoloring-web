@@ -92,7 +92,10 @@ checksum'lı indirme adresi, yalnız aynı içerik ve dosya rolünün halen yay�
 doğrulanmış ve R2'de doğru boyutta bulunan güncel dosyasına 302 ile gider.
 Bu kurtarma yanıtı `no-store` olur; sonraki arşivleme veya değiştirme gizlenmez.
 Güncel indirme dosya adı, byte'ları, ETag ve PDF canonical başlığı korunur.
-`/api/media/` checksum uyuşmazlıkları 410 kalır; sürümlü görsellere farklı byte'lar
-sessizce verilmez. Yayından kalkmış veya doğrulanmamış içerik geri açılmaz.
+Eski `/api/media/` önizleme adresleri de güncel, doğrulanmış rolün yeni checksum'lı
+adresine `no-store` yönlendirmesiyle ulaşır; eski checksum adresi altında farklı
+byte'lar sunulmaz. Halen gerekli ekran boyutu yoksa güncel rolün aslına gidilir;
+geçersiz boyutlar reddedilir. Biçimsiz checksum 410 kalır. Immutable R2 dosyaları,
+yayından kalkmış içerikler ve doğrulanmamış dosyalar bu yolla değiştirilmez/açılmaz.
 
 Ham PNG, veritabanı, özel fotoğraf, auth profili ve secret dosyaları public repo'ya konmaz. `python3 scripts/ops/secret_scan.py --working-tree` Git oluşmadan aday kaynakları kontrol eder; `python3 scripts/ops/secret_scan.py` Git indexindeki gerçek tracked dosyaları kontrol eder. Son push öncesi ikincisi çalıştırılmalı. Çıktı yalnız dosya/rule adı verir, bulunan secret değerini basmaz. Pattern taraması kapsamlı güvenlik denetimi değildir. Public iletişim **jotcoloring@gmail.com**.
