@@ -42,4 +42,34 @@ function pdfCanonicalLink(env:Env,asset:Pick<Asset,'mime'|'object_key'>):string|
  return `<https://assets.jotcoloring.com/${parts.map(encodeURIComponent).join('/')}>; rel="canonical"`;
 }
 export function publishedKey(contentId:string,version:number,asset:Asset,content?:Pick<Manifest,'slug'|'category_ids'>){const ext=asset.mime==='application/pdf'?'pdf':asset.mime.split('/')[1];if(content){const category=content.category_ids[0]||'coloring-pages';if(!/^[a-z0-9-]+$/.test(category)||!/^[a-z0-9-]+$/.test(content.slug))throw new AppError('VALIDATION_ERROR','Invalid public asset path.');return `published/${category}/${content.slug}/${asset.role}.${asset.sha256.slice(0,24)}.${ext}`;}return `published/${contentId}/${version}/${asset.role}-${asset.sha256.slice(0,24)}.${ext}`}
-export async function publicAsset(request:Request,env:Env,id:string,role:string,download=false){if(!env.CATALOG_DB||!env.PUBLISHED)throw new AppError('STORAGE_UNAVAILABLE','Published media storage is not configured.',503);let row=await publicCatalogDatabase(env.CATALOG_DB).prepare("SELECT a.*,c.slug FROM asset a JOIN content c ON c.id=a.content_id AND c.active_version=a.content_version WHERE c.id=? AND c.status='published' AND a.role=? AND a.verified=1").bind(id,role).first<Asset&{slug:string}>();if(!row)throw new AppError('NOT_FOUND','This file is not available.',404);const expected=new URL(request.url).searchParams.get('v');if(expected&&expected!==row.sha256&&expected!==row.sha256.slice(0,24))throw new AppError('ASSET_REVISION_GONE','This file revision is no longer current. Reload the coloring page.',410);const display=new URL(request.url).searchParams.get('display');if(display&&!download){const copy=displayCopies(row.sha256,row.role).find(c=>String(c.width)===display);if(!copy)throw new AppError('NOT_FOUND','Display size is not available.',404);row={...row,object_key:copy.key,sha256:copy.sha256,bytes:copy.bytes,width:copy.width,height:copy.height,mime:'image/webp'};}const object=request.method==='HEAD'?await env.PUBLISHED.head(row.object_key):await env.PUBLISHED.get(row.object_key);if(!object||object.size!==row.bytes)throw new AppError('ASSET_NOT_READY','This file is temporarily unavailable.',503);const etag=`\"${row.sha256}\"`,canonical=pdfCanonicalLink(env,row);if(request.headers.get('if-none-match')===etag)return new Response(null,{status:304,headers:{ETag:etag,...(canonical?{Link:canonical}:{})}});const headers:Record<string,string>={'Content-Type':row.mime,'Content-Length':String(row.bytes),'X-Content-Type-Options':'nosniff','Cache-Control':download?'public, max-age=60':'public, max-age=300','ETag':etag,'Cross-Origin-Resource-Policy':'same-origin'};if(canonical)headers.Link=canonical;if(download)headers['Content-Disposition']=`attachment; filename="${row.slug}.${row.mime==='application/pdf'?'pdf':row.mime.split('/')[1]}"`;return new Response(request.method==='HEAD'?null:object.body,{headers})}
+export async function publicAsset(request:Request,env:Env,id:string,role:string,download=false){
+ if(!env.CATALOG_DB||!env.PUBLISHED)throw new AppError('STORAGE_UNAVAILABLE','Published media storage is not configured.',503);
+ let row=await publicCatalogDatabase(env.CATALOG_DB).prepare("SELECT a.*,c.slug FROM asset a JOIN content c ON c.id=a.content_id AND c.active_version=a.content_version WHERE c.id=? AND c.status='published' AND a.role=? AND a.verified=1").bind(id,role).first<Asset&{slug:string}>();
+ if(!row)throw new AppError('NOT_FOUND','This file is not available.',404);
+ const url=new URL(request.url),expected=url.searchParams.get('v');
+ const changed=!!expected&&expected!==row.sha256&&expected!==row.sha256.slice(0,24);
+ const format=({printable_pdf_a4_bw:'pdf',printable_pdf_letter_bw:'letter',printable_webp_bw:'webp'} as Record<string,string>)[role];
+ // Search results, bookmarks and already-open pages can retain an older download.
+ // Recover only the download alias; immutable media must keep its exact identity.
+ const recover=changed&&download&&!!format&&/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(expected!);
+ if(changed&&!recover)throw new AppError('ASSET_REVISION_GONE','This file revision is no longer current. Reload the coloring page.',410);
+ const display=url.searchParams.get('display');
+ if(display&&!download){
+  const copy=displayCopies(row.sha256,row.role).find(c=>String(c.width)===display);
+  if(!copy)throw new AppError('NOT_FOUND','Display size is not available.',404);
+  row={...row,object_key:copy.key,sha256:copy.sha256,bytes:copy.bytes,width:copy.width,height:copy.height,mime:'image/webp'};
+ }
+ const object=request.method==='HEAD'||recover?await env.PUBLISHED.head(row.object_key):await env.PUBLISHED.get(row.object_key);
+ if(!object||object.size!==row.bytes)throw new AppError('ASSET_NOT_READY','This file is temporarily unavailable.',503);
+ if(recover)return new Response(null,{status:302,headers:{
+  Location:`/api/download/${encodeURIComponent(id)}/${format}?v=${row.sha256.slice(0,24)}`,
+  // Do not pin an obsolete alias: the drawing may be replaced or withdrawn again.
+  'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'
+ }});
+ const etag=`\"${row.sha256}\"`,canonical=pdfCanonicalLink(env,row);
+ if(request.headers.get('if-none-match')===etag)return new Response(null,{status:304,headers:{ETag:etag,...(canonical?{Link:canonical}:{})}});
+ const headers:Record<string,string>={'Content-Type':row.mime,'Content-Length':String(row.bytes),'X-Content-Type-Options':'nosniff','Cache-Control':download?'public, max-age=60':'public, max-age=300','ETag':etag,'Cross-Origin-Resource-Policy':'same-origin'};
+ if(canonical)headers.Link=canonical;
+ if(download)headers['Content-Disposition']=`attachment; filename="${row.slug}.${row.mime==='application/pdf'?'pdf':row.mime.split('/')[1]}"`;
+ return new Response(request.method==='HEAD'?null:object.body,{headers});
+}

@@ -86,4 +86,13 @@ AI ücretli çağrı bütçesi **0**. Ayrı ücretsiz hesap için9.000 günlük 
 
 ## Public dosya kontrolü
 
+Eski arama sonuçları, yer imleri ve açık sayfalar önceki dosya checksum'ını içeren
+`/api/download/ID/pdf?v=...` veya Image bağlantılarını tutabilir. Geçerli eski
+checksum'lı indirme adresi, yalnız aynı içerik ve dosya rolünün halen yayındaki,
+doğrulanmış ve R2'de doğru boyutta bulunan güncel dosyasına 302 ile gider.
+Bu kurtarma yanıtı `no-store` olur; sonraki arşivleme veya değiştirme gizlenmez.
+Güncel indirme dosya adı, byte'ları, ETag ve PDF canonical başlığı korunur.
+`/api/media/` checksum uyuşmazlıkları 410 kalır; sürümlü görsellere farklı byte'lar
+sessizce verilmez. Yayından kalkmış veya doğrulanmamış içerik geri açılmaz.
+
 Ham PNG, veritabanı, özel fotoğraf, auth profili ve secret dosyaları public repo'ya konmaz. `python3 scripts/ops/secret_scan.py --working-tree` Git oluşmadan aday kaynakları kontrol eder; `python3 scripts/ops/secret_scan.py` Git indexindeki gerçek tracked dosyaları kontrol eder. Son push öncesi ikincisi çalıştırılmalı. Çıktı yalnız dosya/rule adı verir, bulunan secret değerini basmaz. Pattern taraması kapsamlı güvenlik denetimi değildir. Public iletişim **jotcoloring@gmail.com**.
