@@ -53,7 +53,16 @@ for(const sample of downloads.slice(0,2)){
   const file=new Uint8Array(await canonical.arrayBuffer());
   assert.equal(createHash('sha256').update(file).digest('hex'),createHash('sha256').update(bytes).digest('hex'),'Canonical PDF must contain the identical download bytes');
  }
- else{assert.equal(new TextDecoder('latin1').decode(bytes.subarray(0,4)),'RIFF',sample.url);assert.equal(new TextDecoder('latin1').decode(bytes.subarray(8,12)),'WEBP',sample.url);}
+ else{
+  assert.equal(new TextDecoder('latin1').decode(bytes.subarray(0,4)),'RIFF',sample.url);assert.equal(new TextDecoder('latin1').decode(bytes.subarray(8,12)),'WEBP',sample.url);
+  const alias=new URL(`/api/media/${encodeURIComponent(items[0].id)}/printable_webp_bw`,origin);
+  alias.searchParams.set('v',stale.searchParams.get('v'));
+  const aliasRecovery=await request(alias,{redirect:'manual'});assert.equal(aliasRecovery.status,302);
+  assert.equal(aliasRecovery.headers.get('cache-control'),'no-store');
+  const target=new URL(aliasRecovery.headers.get('location'),origin);assert.equal(target.origin,origin);assert.equal(target.pathname,alias.pathname);assert.equal(target.searchParams.get('v'),current);
+  const image=await request(target,{redirect:'manual'});assert.equal(image.status,200);assert.equal(image.headers.get('content-type')?.split(';')[0],'image/webp');
+  assert.equal(createHash('sha256').update(new Uint8Array(await image.arrayBuffer())).digest('hex'),createHash('sha256').update(bytes).digest('hex'),'Recovered image alias must contain the current verified drawing');
+ }
 }
 let cacheHits=0;
 for(const url of [items[0].thumbnail,items[0].lineArtUrl,items[0].social_image]){
@@ -63,4 +72,4 @@ for(const url of [items[0].thumbnail,items[0].lineArtUrl,items[0].social_image])
 assert.ok(cacheHits>0,'At least one repeated public GET must demonstrate an edge-cache HIT.');
 const robots=await(await request(origin+'/robots.txt')).text();assert.ok(robots.includes('Allow: /'));assert.ok(!robots.includes('Disallow: /'));
 for(const [path,marker]of [['/contact/','data-contact-start'],['/drawing-board/','data-drawing-board="true"']]){const r=await request(origin+path);assert.equal(r.status,200);assert.ok((await r.text()).includes(marker));}
-console.log(JSON.stringify({status:'PASS',catalogTotal:total,itemsChecked:items.length,filesChecked:results.length,downloadsChecked:downloads.length,obsoleteDownloadsRecovered:Math.min(2,downloads.length),largestPdf:Math.max(...downloads.filter(x=>x.mime==='application/pdf').map(x=>x.bytes)),repeatedGetCacheHits:cacheHits,scope:'Bounded public-media and page smoke check; not a load test'}));
+console.log(JSON.stringify({status:'PASS',catalogTotal:total,itemsChecked:items.length,filesChecked:results.length,downloadsChecked:downloads.length,obsoleteDownloadsRecovered:Math.min(2,downloads.length),obsoleteMediaAliasesRecovered:1,largestPdf:Math.max(...downloads.filter(x=>x.mime==='application/pdf').map(x=>x.bytes)),repeatedGetCacheHits:cacheHits,scope:'Bounded public-media and page smoke check; not a load test'}));
