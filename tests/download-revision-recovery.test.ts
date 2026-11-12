@@ -74,15 +74,37 @@ test('HEAD recovers without a body, while current downloads preserve bytes, cano
   assert.equal((await unchanged.arrayBuffer()).byteLength,0);
 });
 
-test('immutable media and invalid revisions never silently change identity',async()=>{
+test('invalid revisions never silently change identity',async()=>{
   for(const download of [false,true]) {
     const f=fixture();
-    for(const expected of download?['not-a-checksum','b'.repeat(25)]:[f.old.slice(0,24),f.old]) {
+    for(const expected of ['not-a-checksum','b'.repeat(25)]) {
       await assert.rejects(publicAsset(new Request('https://jotcoloring.com/api/'+(download?'download':'media')+'/jc-facebook-071/pdf?v='+expected),f.env,'jc-facebook-071',f.role,download),
         (e:unknown)=>e instanceof AppError&&e.code==='ASSET_REVISION_GONE'&&e.status===410);
     }
     assert.deepEqual(f.reads(),{heads:0,gets:0});
   }
+});
+
+test('obsolete image aliases redirect explicitly without changing immutable source bytes',async()=>{
+ const f=fixture('home_half_color'),path='https://jotcoloring.com/api/media/jc-facebook-071/home_half_color';
+ for(const method of ['GET','HEAD'])for(const display of ['', '&display=240']){
+  const response=await publicAsset(new Request(path+'?v='+f.old.slice(0,24)+display,{method}),f.env,'jc-facebook-071',f.role);
+  assert.equal(response.status,302);assert.equal(response.headers.get('Cache-Control'),'no-store');assert.equal(response.headers.get('ETag'),null);
+  assert.equal(response.headers.get('Location'),'/api/media/jc-facebook-071/home_half_color?v='+f.hash.slice(0,24));
+  assert.equal((await response.arrayBuffer()).byteLength,0);
+  const current=await publicAsset(new Request(new URL(response.headers.get('Location')!,path)),f.env,'jc-facebook-071',f.role);
+  assert.equal(current.status,200);assert.deepEqual(new Uint8Array(await current.arrayBuffer()),f.bytes);
+ }
+ await assert.rejects(publicAsset(new Request(path+'?v='+f.old.slice(0,24)+'&display=9999'),f.env,'jc-facebook-071',f.role),(e:unknown)=>e instanceof AppError&&e.status===404);
+});
+
+test('image alias recovery cannot be cached past a withdrawal',async()=>{
+ const f=fixture('home_half_color'),pending:Promise<unknown>[]=[],entries=new Map<string,Response>();
+ const cache:ResponseCache={async match(key){return entries.get(key.url)?.clone();},async put(key,response){entries.set(key.url,response);}};
+ const request=new Request('https://jotcoloring.com/api/media/jc-facebook-071/home_half_color?v='+f.old.slice(0,24));
+ const run=()=>withPublicCache(request,f.env,'recovery-release',()=>publicAsset(request,f.env,'jc-facebook-071',f.role),cache,p=>pending.push(p));
+ assert.equal((await run()).status,302);await Promise.all(pending);assert.equal(entries.size,0);
+ f.sql.exec("UPDATE content SET status='archived'");await assert.rejects(run(),(e:unknown)=>e instanceof AppError&&e.status===404);
 });
 
 test('recovery never exposes withdrawn, unverified, unavailable or wrong-sized files',async()=>{

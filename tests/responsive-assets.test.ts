@@ -19,7 +19,7 @@ test('legacy display copies are bound to the exact source checksum and role',()=
 test('display variants use their own length and ETag while downloads retain the source',async()=>{
  const source=(registry as DisplaySource[])[0],copy=source.copies[0],keys:string[]=[];
  let sourceSHA=source.source_sha256;
- const env={CATALOG_DB:{prepare(){return{bind(){return{async first(){return{slug:'test-artwork',object_key:'published/original.webp',sha256:sourceSHA,bytes:123,mime:'image/webp',role:source.source_role};}}}}}},PUBLISHED:{async get(key:string){keys.push(key);const size=key===copy.key?copy.bytes:123;return{size,body:new Blob([new Uint8Array(size)]).stream()};}}} as unknown as Env;
+ const env={CATALOG_DB:{prepare(){return{bind(){return{async first(){return{slug:'test-artwork',object_key:'published/original.webp',sha256:sourceSHA,bytes:123,mime:'image/webp',role:source.source_role};}}}}}},PUBLISHED:{async head(key:string){keys.push(key);return{size:key===copy.key?copy.bytes:123};},async get(key:string){keys.push(key);const size=key===copy.key?copy.bytes:123;return{size,body:new Blob([new Uint8Array(size)]).stream()};}}} as unknown as Env;
  const url=`https://jot.test/api/media/test-artwork/${source.source_role}?v=${source.source_sha256.slice(0,24)}&display=${copy.width}`;
  const response=await publicAsset(new Request(url),env,'test-artwork',source.source_role);
  assert.equal(response.headers.get('Content-Length'),String(copy.bytes));assert.equal(response.headers.get('ETag'),`"${copy.sha256}"`);assert.equal(keys.at(-1),copy.key);
@@ -28,5 +28,6 @@ test('display variants use their own length and ETag while downloads retain the 
  const cached=await publicAsset(new Request(url,{headers:{'If-None-Match':`"${copy.sha256}"`}}),env,'test-artwork',source.source_role);assert.equal(cached.status,304);
  await assert.rejects(()=>publicAsset(new Request(url.replace('display='+copy.width,'display=9999')),env,'test-artwork',source.source_role),(e:unknown)=>e instanceof AppError&&e.status===404);
  sourceSHA='0'.repeat(64);
- await assert.rejects(()=>publicAsset(new Request(url),env,'test-artwork',source.source_role),(e:unknown)=>e instanceof AppError&&e.status===410);
+ const changed=await publicAsset(new Request(url),env,'test-artwork',source.source_role);
+ assert.equal(changed.status,302);assert.equal(changed.headers.get('Cache-Control'),'no-store');assert.equal(changed.headers.get('Location'),`/api/media/test-artwork/${source.source_role}?v=${sourceSHA.slice(0,24)}`);assert.equal(keys.at(-1),'published/original.webp');
 });

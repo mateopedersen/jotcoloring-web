@@ -48,21 +48,27 @@ export async function publicAsset(request:Request,env:Env,id:string,role:string,
  if(!row)throw new AppError('NOT_FOUND','This file is not available.',404);
  const url=new URL(request.url),expected=url.searchParams.get('v');
  const changed=!!expected&&expected!==row.sha256&&expected!==row.sha256.slice(0,24);
+ const currentVersion=row.sha256.slice(0,24);
  const format=({printable_pdf_a4_bw:'pdf',printable_pdf_letter_bw:'letter',printable_webp_bw:'webp'} as Record<string,string>)[role];
  // Search results, bookmarks and already-open pages can retain an older download.
- // Recover only the download alias; immutable media must keep its exact identity.
- const recover=changed&&download&&!!format&&/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(expected!);
+ // API media URLs are aliases too. Change the URL explicitly; never send new
+ // bytes under an older checksum or change an immutable R2 object.
+ const recover=changed&&(!download||!!format)&&/^[a-f0-9]{24}(?:[a-f0-9]{40})?$/.test(expected!);
  if(changed&&!recover)throw new AppError('ASSET_REVISION_GONE','This file revision is no longer current. Reload the coloring page.',410);
- const display=url.searchParams.get('display');
+ let display=url.searchParams.get('display');
  if(display&&!download){
   const copy=displayCopies(row.sha256,row.role).find(c=>String(c.width)===display);
-  if(!copy)throw new AppError('NOT_FOUND','Display size is not available.',404);
-  row={...row,object_key:copy.key,sha256:copy.sha256,bytes:copy.bytes,width:copy.width,height:copy.height,mime:'image/webp'};
+  if(!copy){
+   if(!recover||!['240','320','400','600'].includes(display))throw new AppError('NOT_FOUND','Display size is not available.',404);
+   // A former display rendition may not exist after replacement. The current
+   // verified role itself remains a safe fallback at its own URL.
+   display=null;
+  }else row={...row,object_key:copy.key,sha256:copy.sha256,bytes:copy.bytes,width:copy.width,height:copy.height,mime:'image/webp'};
  }
  const object=request.method==='HEAD'||recover?await env.PUBLISHED.head(row.object_key):await env.PUBLISHED.get(row.object_key);
  if(!object||object.size!==row.bytes)throw new AppError('ASSET_NOT_READY','This file is temporarily unavailable.',503);
  if(recover)return new Response(null,{status:302,headers:{
-  Location:`/api/download/${encodeURIComponent(id)}/${format}?v=${row.sha256.slice(0,24)}`,
+  Location:download?`/api/download/${encodeURIComponent(id)}/${format}?v=${currentVersion}`:`/api/media/${encodeURIComponent(id)}/${encodeURIComponent(role)}?v=${currentVersion}${display?'&display='+encodeURIComponent(display):''}`,
   // Do not pin an obsolete alias: the drawing may be replaced or withdrawn again.
   'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'
  }});
