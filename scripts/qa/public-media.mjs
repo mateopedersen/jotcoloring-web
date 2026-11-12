@@ -38,6 +38,15 @@ for(const sample of downloads.slice(0,2)){
  const response=await request(sample.url);assert.equal(response.status,200,sample.url);
  assert.equal(response.headers.get('content-type')?.split(';')[0],sample.mime,sample.url);
  const bytes=new Uint8Array(await response.arrayBuffer());assert.equal(bytes.byteLength,sample.bytes,sample.url);
+ const stale=new URL(sample.url),current=stale.searchParams.get('v');assert.match(current,/^[a-f0-9]{24}$/);
+ stale.searchParams.set('v',(current[0]==='0'?'1':'0')+current.slice(1));
+ const recovery=await request(stale,{redirect:'manual'});assert.equal(recovery.status,302,stale.href);
+ assert.equal(recovery.headers.get('cache-control'),'no-store','Old download aliases must not outlive future changes');
+ const recoveredURL=new URL(recovery.headers.get('location'),origin);assert.equal(recoveredURL.href,sample.url);
+ const recovered=await request(recoveredURL,{redirect:'manual'});assert.equal(recovered.status,200);
+ assert.ok(recovered.headers.get('content-disposition')?.startsWith('attachment;'));
+ const recoveredBytes=new Uint8Array(await recovered.arrayBuffer());
+ assert.equal(createHash('sha256').update(recoveredBytes).digest('hex'),createHash('sha256').update(bytes).digest('hex'),'Recovered download must contain the exact current file bytes');
  if(sample.mime==='application/pdf'){
   assert.equal(new TextDecoder().decode(bytes.subarray(0,5)),'%PDF-',sample.url);
   const canonical=await request(sample.canonical);assert.equal(canonical.status,200);
@@ -54,4 +63,4 @@ for(const url of [items[0].thumbnail,items[0].lineArtUrl,items[0].social_image])
 assert.ok(cacheHits>0,'At least one repeated public GET must demonstrate an edge-cache HIT.');
 const robots=await(await request(origin+'/robots.txt')).text();assert.ok(robots.includes('Allow: /'));assert.ok(!robots.includes('Disallow: /'));
 for(const [path,marker]of [['/contact/','data-contact-start'],['/drawing-board/','data-drawing-board="true"']]){const r=await request(origin+path);assert.equal(r.status,200);assert.ok((await r.text()).includes(marker));}
-console.log(JSON.stringify({status:'PASS',catalogTotal:total,itemsChecked:items.length,filesChecked:results.length,downloadsChecked:downloads.length,largestPdf:Math.max(...downloads.filter(x=>x.mime==='application/pdf').map(x=>x.bytes)),repeatedGetCacheHits:cacheHits,scope:'Bounded public-media and page smoke check; not a load test'}));
+console.log(JSON.stringify({status:'PASS',catalogTotal:total,itemsChecked:items.length,filesChecked:results.length,downloadsChecked:downloads.length,obsoleteDownloadsRecovered:Math.min(2,downloads.length),largestPdf:Math.max(...downloads.filter(x=>x.mime==='application/pdf').map(x=>x.bytes)),repeatedGetCacheHits:cacheHits,scope:'Bounded public-media and page smoke check; not a load test'}));
