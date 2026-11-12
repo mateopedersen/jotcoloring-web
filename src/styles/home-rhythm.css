@@ -1,6 +1,7 @@
 /* Shared rhythm for the homepage, including sparse filtered galleries. */
 .home-v3{--home-section-gap:32px}
 .home-v3 .hv-hero{padding-block:38px 36px}
+.home-v3 .hv-hero-description{max-width:none}
 .home-v3 .hv-discovery-layout{align-items:start;padding-bottom:24px;gap:24px}
 .home-v3 .taxonomy-directory{margin-block:var(--home-section-gap);padding:26px}
 .home-v3 .create-playground{padding-block:20px 24px}
