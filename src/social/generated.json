@@ -2833,5 +2833,47 @@
     "sha256": "9c3f473c02e3c35a952118e4faca64d267079d81225e8521fbd62ca2f6b9f9c5",
     "title": "Christmas Eve Coloring Pages",
     "description": "Christmas Eve pages feature family traditions, Santa and nativity scenes."
+  },
+  "topic-elf-on-the-shelf": {
+    "src": "/og/pages/topic-elf-on-the-shelf-0265f8473b3d3a98.png",
+    "alt": "JotColoring printable coloring pages share image: Elf on the Shelf coloring pages. Featuring Elf on the Shelf Beside a Wrapped Gift Coloring Page, Elf on the Shelf Peeking from a Stocking Coloring Page, Elf on the Shelf Holding a Giant Candy Cane Coloring Page.",
+    "sha256": "0265f8473b3d3a9813bfc7dc7a2258b7f1b81a888e160d98925531ab37726d60",
+    "title": "Elf on the Shelf coloring pages.",
+    "description": "Elf on the Shelf drawings follow pointed-hat Scout Elf characters through gift wrapping, playful hideaways and festive workshops."
+  },
+  "topic-nutcracker": {
+    "src": "/og/pages/topic-nutcracker-e3cc396486d04ccc.png",
+    "alt": "JotColoring printable coloring pages share image: Nutcracker coloring pages. Featuring Nutcracker Soldier on a Round Stand Coloring Page, Nutcracker King Holding a Scepter Coloring Page, Nutcracker Drummer with Ballet Dancers Coloring Page.",
+    "sha256": "e3cc396486d04cccea14fe575adbde26ba70df989b1841aae6e26989904b0cf2",
+    "title": "Nutcracker coloring pages.",
+    "description": "Nutcracker drawings include wooden toy soldiers, dancers, mouse characters and festive music scenes."
+  },
+  "topic-the-nightmare-before-christmas": {
+    "src": "/og/pages/topic-the-nightmare-before-christmas-f0adfd467d102b56.png",
+    "alt": "JotColoring printable coloring pages share image: The Nightmare Before Christmas coloring pages. Featuring Zero’s Stone House with a Christmas Bow Coloring Page, Nightmare Before Christmas Toothy Toy Duck Coloring Page, Nightmare Before Christmas Pumpkin Tree Door Coloring Page.",
+    "sha256": "f0adfd467d102b5609ccbcb8a2389e2b80d1879fb1563af50fa5b4f9c385987b",
+    "title": "The Nightmare Before Christmas coloring pages.",
+    "description": "The Nightmare Before Christmas drawings feature Jack Skellington, Sally, Zero and other Halloween Town characters."
+  },
+  "topic-nativity": {
+    "src": "/og/pages/topic-nativity-1c6d4d3f11f68f47.png",
+    "alt": "JotColoring printable coloring pages share image: Nativity coloring pages. Featuring Nativity Family beneath the Christmas Star Coloring Page, Nativity Figure with a Staff and Oil Lamp Coloring Page, Baby Jesus beneath a Stable Roof Coloring Page.",
+    "sha256": "1c6d4d3f11f68f4714184576cc9cfcc661d7418ab3a89152dd0e8c9897125bf7",
+    "title": "Nativity coloring pages.",
+    "description": "Nativity drawings show Mary, Joseph and baby Jesus with manger scenes, shepherds, animals and visiting figures."
+  },
+  "topic-gingerbread-man": {
+    "src": "/og/pages/topic-gingerbread-man-eb1b1cfd011d125d.png",
+    "alt": "JotColoring printable coloring pages share image: Gingerbread Man coloring pages. Featuring Gingerbread Man beside a Snowflake Coloring Page, Gingerbread Girl Holding a Star Coloring Page, Gingerbread Baker Stirring a Bowl Coloring Page.",
+    "sha256": "eb1b1cfd011d125d5b3592936a3eaf4cdd74d805c879b4206f7d39ea61eca527",
+    "title": "Gingerbread Man coloring pages.",
+    "description": "Gingerbread man drawings range from smiling icing-decorated cookies to imagined bakers, musicians and travelers in candy villages."
+  },
+  "topic-grinch": {
+    "src": "/og/pages/topic-grinch-24a52824b364fe83.png",
+    "alt": "JotColoring printable coloring pages share image: Grinch coloring pages. Featuring Grinch Waving in a Santa Hat Coloring Page, Grinch Sharing a Heart Gift with Max and Cindy-Lou Who Coloring Page, Grinch Tying an Antler onto Max Coloring Page.",
+    "sha256": "24a52824b364fe838bc48a12504e166ba7f1f72064455ecb39ad566b78b76e70",
+    "title": "Grinch coloring pages.",
+    "description": "Grinch drawings feature the Grinch, Max and Cindy-Lou Who with gifts, Christmas trees and festive greetings."
   }
 }
