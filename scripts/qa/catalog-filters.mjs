@@ -87,4 +87,15 @@ for(const topic of ['chrysler','gmc']){
 }
 const invalid=await releaseFetch(base+'/api/catalog-filters?source=https%3A%2F%2Foutside.invalid%2F',{redirect:'manual'});
 assert.equal(invalid.status,400,'Reject external filter form source');checks.push({path:'/api/catalog-filters (invalid source)',status:invalid.status});
+// A global pending-D1 adapter looked healthy in sequential smoke tests, but a
+// simultaneous request could inherit canceled I/O and terminate with Error 1101.
+// A harmless cookie exercises the existing cache-bypass policy on actual HTML.
+for(let round=1;round<=2;round++){
+ const simultaneous=await Promise.all(['/coloring-by-age/3-5/','/coloring-pages/all/?q=flower','/coloring-pages/all/?difficulty=medium'].map(async path=>{
+  const response=await releaseFetch(base+path,{headers:{Cookie:'jot_public_read_qa=1'}}),html=await response.text();
+  assert.equal(response.status,200,'Independent simultaneous catalog read: '+path);
+  assert.ok(html.includes('</html>')&&/<main\b/.test(html)&&/data-content-id=/.test(html),'Complete gallery from independent request: '+path);
+  return{path,round,simultaneous:true,status:response.status,commit:response.headers.get('x-jotcoloring-commit')};
+ }));checks.push(...simultaneous);
+}
 console.log(JSON.stringify({status:'PASS',base,checks},null,2));

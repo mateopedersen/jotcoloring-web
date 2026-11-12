@@ -19,11 +19,20 @@ function fixture(operation:()=>Promise<unknown>){
 test('concurrent identical reads share the database operation, with independent returned objects',async()=>{
  let release!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;});
  const f=fixture(async()=>{await gate;return{count:42};}),db=publicCatalogDatabase(f.db);
- assert.equal(db,publicCatalogDatabase(f.db));
+ assert.notEqual(db,publicCatalogDatabase(f.db),'a shared Workers binding must not retain request I/O');
  const reads=Array.from({length:30},()=>db.prepare('SELECT COUNT(*) AS count FROM content WHERE status=?').bind('published').first<{count:number}>());
  assert.equal(f.calls,1);release();const results=await Promise.all(reads);
  assert.ok(results.every(value=>value?.count===42));results[0]!.count=0;assert.equal(results[1]!.count,42);
  await db.prepare('SELECT COUNT(*) AS count FROM content WHERE status=?').bind('published').first();assert.equal(f.calls,2,'completed data is not cached');
+});
+
+test('independent requests on the same binding never share pending I/O or failures',async()=>{
+ let release!:()=>void;const gate=new Promise<void>(resolve=>{release=resolve;});
+ const f=fixture(async()=>{const call=f.calls;await gate;if(call===1)throw new Error('The originating request was canceled');return{count:call};});
+ const first=publicCatalogDatabase(f.db),second=publicCatalogDatabase(f.db);
+ const one=first.prepare('SELECT COUNT(*) AS count FROM content').first(),two=second.prepare('SELECT COUNT(*) AS count FROM content').first();
+ assert.equal(f.calls,2,'identical SQL in another request needs its own I/O');release();
+ const results=await Promise.allSettled([one,two]);assert.equal(results[0].status,'rejected');assert.deepEqual(results[1],{status:'fulfilled',value:{count:2}});
 });
 
 test('parameters, result method, column selection and databases keep independent reads',async()=>{

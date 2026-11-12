@@ -1,6 +1,5 @@
 import type {Database,Statement} from './types';
 
-const adapters=new WeakMap<Database,Database>();
 const MAX_PENDING_READS=128;
 
 export function isTransientCatalogReadError(error:unknown):boolean{
@@ -20,11 +19,13 @@ export function isTransientCatalogReadError(error:unknown):boolean{
  return /D1.*(?:overloaded|too many resources consumed)|D1_ERROR.*(?:temporarily unavailable|database is locked)|network connection lost|(?:storage|code update).*caused (?:the )?(?:object|request).*reset|code was updated|replica (?:was )?disconnected|transient.*remote node/i.test(message);
 }
 
-/** Share only simultaneous public reads. Completed results are never retained,
- * so publication, withdrawal and source replacement remain immediately visible.
- * Writes, transactions and imports keep their original execution semantics. */
+/** Create a request-local adapter. Workers bindings can be shared between
+ * requests, but their pending I/O promises cannot: another request can outlive
+ * the owner and be canceled with a 1101 "will never generate a response" error.
+ * Coalesce only reads using this adapter in the same repository/request. Never
+ * memoize adapters by the binding. Completed results are not retained, so source
+ * replacement/withdrawal stay visible. Writes and imports keep their semantics. */
 export function publicCatalogDatabase(db:Database):Database{
- const existing=adapters.get(db);if(existing)return existing;
  const pending=new Map<string,Promise<unknown>>();
  const read=<T>(key:string,execute:()=>Promise<T>):Promise<T>=>{
   const current=pending.get(key);if(current)return current.then(value=>structuredClone(value) as T);
@@ -55,5 +56,5 @@ export function publicCatalogDatabase(db:Database):Database{
   batch(statements){return db.batch(statements);},
   exec(sql){return db.exec(sql);}
  };
- adapters.set(db,adapter);return adapter;
+ return adapter;
 }
