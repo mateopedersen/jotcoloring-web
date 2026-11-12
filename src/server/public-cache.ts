@@ -70,7 +70,7 @@ export async function withPublicCache(request:Request,env:Env,release:string,nex
     const hit=await cache!.match(key);
     if(hit){
       if(request.headers.get('if-none-match')&&request.headers.get('if-none-match')===hit.headers.get('etag')){
-        return finish(new Response(null,{status:304,headers:{ETag:hit.headers.get('etag')!}}),'HIT');
+        return finish(new Response(null,{status:304,headers:{ETag:hit.headers.get('etag')!,...(hit.headers.has('link')?{Link:hit.headers.get('link')!}:{})}}),'HIT');
       }
       return finish(hit,'HIT');
     }
