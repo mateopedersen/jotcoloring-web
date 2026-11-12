@@ -218,10 +218,24 @@ test('difficulty-scoped collection discovery handles ten categories within D1 co
  const repo=new D1CatalogRepository(env,db),query={difficulty:['hard'],limit:12},page=await repo.list(query);hydrated=0;
  // Production D1 exhausted its CPU window when discovery repeated the difficulty
  // subquery once per taxonomy leaf. Filtered discovery must reuse the gallery.
- let discoveryReads=0;db.prepare=(sql:string)=>{discoveryReads++;if(sql.startsWith('SELECT a.*,ar.review_version'))hydrated++;assert.ok(!sql.includes(' UNION ALL '),'filtered discovery must not sample every category');return prepare(sql);};
+ let discoveryReads=0;const discoverySQL:string[]=[];db.prepare=(sql:string)=>{discoveryReads++;discoverySQL.push(sql);if(sql.startsWith('SELECT a.*,ar.review_version'))hydrated++;assert.ok(!sql.includes(' UNION ALL '),'filtered discovery must not sample every category');return prepare(sql);};
  const related=await repo.relatedCollections(query,page);assert.equal(hydrated,0,'reuse the already hydrated filtered page');assert.ok(discoveryReads<=3,'only definitions and exact visible counts need reads');assert.equal(page.total,10);assert.equal(related.matches.length,10);for(const match of related.matches){const target=['animals','nature','characters','holidays','education','vehicles','art-patterns','everyday-life','space','bible'].includes(match.collection.id)?{collection:match.collection.id}:{category:match.collection.parent||match.collection.id,subcategory:match.collection.parent?match.collection.id:undefined};assert.equal(match.collection.total,(await repo.list({...query,...target})).total,'card count must match its actual destination');}
+ const countQueries=discoverySQL.filter(sql=>sql.includes('WITH matching AS MATERIALIZED'));
+ assert.equal(countQueries.length,1,'all destination counts share one source-bound review scan');
+ assert.doesNotMatch(countQueries[0],/IN \(SELECT ar.content_id/,'do not rebuild global review lists per destination');
  for(const filter of [{difficulty:['easy']},{difficulty:['medium']},{difficulty:['very-hard']},{recommended_age:'3-5' as const},{age:['kids']}]){const empty=await repo.list(filter);assert.equal(empty.total,0);discoveryReads=0;assert.deepEqual((await repo.relatedCollections(filter,empty)).matches,[]);assert.equal(discoveryReads,1,'an empty selection must not launch global neighbor queries');}
  for(const filter of [{age:['adults']},{recommended_age:'9-12' as const},{recommended_age:'9-12' as const,difficulty:['hard']}]){const filtered=await repo.list({...filter,limit:12});assert.equal(filtered.total,10);discoveryReads=0;assert.equal((await repo.relatedCollections(filter,filtered)).matches.length,10);assert.ok(discoveryReads<=3,'age and combined filters reuse their existing results too');}
+ // A stale, archived or unverified candidate must not inflate a related count.
+ // Multiple roots of a public collection still describe a single drawing.
+ await db.prepare("INSERT INTO content_category(content_id,category_id) VALUES('scoped-animals','dinosaurs')").run();
+ await db.prepare("UPDATE content SET status='archived' WHERE id='scoped-fantasy'").run();
+ await db.prepare("UPDATE asset SET sha256=? WHERE content_id='scoped-flowers' AND role='printable_webp_bw'").bind('b'.repeat(64)).run();
+ await db.prepare("UPDATE asset SET verified=0 WHERE content_id='scoped-space' AND role='printable_webp_bw'").run();
+ await db.prepare("UPDATE content SET active_version=2 WHERE id='scoped-food'").run();
+ for(const filter of [{difficulty:['hard']},{recommended_age:'9-12' as const},{recommended_age:'9-12' as const,difficulty:['hard']},{age:['adults'],difficulty:['hard']}]){
+  const selected=await repo.list({...filter,limit:12}),discovery=await repo.relatedCollections(filter,selected);
+  for(const match of discovery.matches){const group=await import('../src/taxonomy/navigation').then(m=>m.navigationCollection(match.collection.id));const target=group?{collection:group.id}:{category:match.collection.parent||match.collection.id,subcategory:match.collection.parent?match.collection.id:undefined};assert.equal(match.collection.total,(await repo.list({...filter,...target})).total,'current counts must match the source-bound destination after a replacement');}
+ }
 });
 
 test('unfiltered collection suggestions sample a fixed number of roots instead of every imported leaf',async()=>{

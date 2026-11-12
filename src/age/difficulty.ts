@@ -25,10 +25,10 @@ export function catalogDifficultyFilter(values:readonly string[],alias='c'){
 export function catalogReviewSeed(values:readonly string[],recommendedAge:boolean,alias='c'){
  if(!values.length&&!recommendedAge)throw new Error('Choose an age or detail filter.');
  const index=values.length?'age_recommendation_detail':'age_recommendation_band';
- const clauses=[`EXISTS (SELECT 1 FROM asset da INDEXED BY asset_content WHERE da.content_id=ar.content_id AND da.content_version=ar.content_version AND da.role='printable_webp_bw' AND da.sha256=ar.source_sha256${values.length?' AND da.verified=1':''})`];
+ const clauses=[`EXISTS (SELECT 1 FROM asset da INDEXED BY asset_current_source WHERE da.content_id=ar.content_id AND da.content_version=ar.content_version AND da.role='printable_webp_bw' AND da.sha256=ar.source_sha256${values.length?' AND da.verified=1':''})`];
  if(recommendedAge)clauses.push('ar.band=?');
  if(values.length)clauses.push(detailScoreClause(values));
- return {source:`age_recommendation ar INDEXED BY ${index} CROSS JOIN content ${alias} INDEXED BY sqlite_autoindex_content_1 ON ${alias}.id=ar.content_id AND ${alias}.active_version=ar.content_version`,sql:clauses.join(' AND ')};
+ return {source:`age_recommendation ar INDEXED BY ${index} CROSS JOIN content ${alias} INDEXED BY content_public_revision ON ${alias}.id=ar.content_id AND ${alias}.active_version=ar.content_version`,sql:clauses.join(' AND ')};
 }
 /** After topic membership has narrowed the candidates, use the review's content
  * key instead of building two age/detail lists for the entire catalog. Keep the
@@ -38,7 +38,7 @@ export function scopedCatalogReviewFilter(values:readonly string[],recommendedAg
  const clauses=[`ar.content_id=${alias}.id`,`ar.content_version=${alias}.active_version`];
  if(recommendedAge)clauses.push('ar.band=?');
  if(values.length)clauses.push('da.verified=1',detailScoreClause(values));
- return `EXISTS (SELECT 1 FROM age_recommendation ar JOIN asset da ON da.content_id=ar.content_id AND da.content_version=ar.content_version AND da.role='printable_webp_bw' AND da.sha256=ar.source_sha256 WHERE ${clauses.join(' AND ')})`;
+ return `EXISTS (SELECT 1 FROM age_recommendation ar JOIN asset da INDEXED BY asset_current_source ON da.content_id=ar.content_id AND da.content_version=ar.content_version AND da.role='printable_webp_bw' AND da.sha256=ar.source_sha256 WHERE ${clauses.join(' AND ')})`;
 }
 export function searchDifficultyValues(values:readonly string[]){return [...difficultyValues(values),...(values.includes('detailed')?['detailed']:[])];}
 export function searchDifficultySQL(alias='d'){return `${alias}.difficulty`;}
