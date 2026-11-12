@@ -44,6 +44,15 @@ test('HEAD hits have no body and ETag hits return 304 without rendering',async()
  const head=await f.run(new Request(f.env.PUBLIC_SITE_URL+'/coloring/fox/',{method:'HEAD'}));assert.equal(head.status,200);assert.equal(await head.text(),'');assert.equal(f.calls,1);
  const notModified=await f.run(new Request(f.env.PUBLIC_SITE_URL+'/coloring/fox/',{headers:{'If-None-Match':'"revision-1"'}}));assert.equal(notModified.status,304);assert.equal(await notModified.text(),'');assert.equal(f.calls,1);
 });
+test('conditional edge-cache responses retain the canonical PDF file identity',async()=>{
+ const f=fixture(),url=f.env.PUBLIC_SITE_URL+'/api/download/rabbit/pdf?v='+'a'.repeat(24);
+ const link='<https://assets.jotcoloring.com/published/rabbit/pdf.abc.pdf>; rel="canonical"';
+ const next=async()=>new Response('%PDF-1.7',{headers:{'Content-Type':'application/pdf',ETag:'"pdf-1"',Link:link}});
+ const first=await f.run(new Request(url),next);assert.equal(first.headers.get('Link'),link);await Promise.all(f.pending);
+ const hit=await f.run(new Request(url),()=>{throw Error('must use cached file')});assert.equal(hit.headers.get('Link'),link);
+ const conditional=await f.run(new Request(url,{headers:{'If-None-Match':'"pdf-1"'}}),next);
+ assert.equal(conditional.status,304);assert.equal(conditional.headers.get('Link'),link);assert.equal(await conditional.text(),'');
+});
 test('errors, private responses, Set-Cookie and mismatched origins are never stored',async()=>{
  for(const response of [new Response('not found',{status:404}),new Response('private',{headers:{'Content-Type':'text/html','Cache-Control':'private'}}),new Response('session',{headers:{'Content-Type':'text/html','Set-Cookie':'x=y'}}),new Response('wrong MIME',{headers:{'Content-Type':'application/json'}})]){
   const f=fixture();await f.run(undefined,async()=>response);await Promise.all(f.pending);assert.equal(f.entries.size,0);
