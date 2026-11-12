@@ -3,9 +3,21 @@ import type {Database,Statement} from './types';
 const adapters=new WeakMap<Database,Database>();
 const MAX_PENDING_READS=128;
 
-export function isCatalogOverloaded(error:unknown):boolean{
- const message=error instanceof Error?error.message:String(error);
- return /D1.*(?:overloaded|too many resources consumed)|D1_ERROR.*(?:temporarily unavailable|database is locked)/i.test(message);
+export function isTransientCatalogReadError(error:unknown):boolean{
+ // D1 often wraps its useful diagnostic in Error.cause. Follow a bounded chain;
+ // only known transient failures qualify, never SQL/schema/validation errors.
+ const messages:string[]=[],seen=new Set<unknown>();
+ for(let current:unknown=error;current!=null&&!seen.has(current)&&seen.size<8;){
+  seen.add(current);
+  if(typeof current==='object'){
+   const detail=current as {message?:unknown;cause?:unknown};
+   if(typeof detail.message==='string')messages.push(detail.message);
+   current=detail.cause;
+  }else{messages.push(String(current));break;}
+ }
+ const message=messages.join('\n');
+ if(/SQLITE_ERROR|no such (?:table|column)|syntax error|constraint failed|VALIDATION_ERROR/i.test(message))return false;
+ return /D1.*(?:overloaded|too many resources consumed)|D1_ERROR.*(?:temporarily unavailable|database is locked)|network connection lost|(?:storage|code update).*caused (?:the )?(?:object|request).*reset|code was updated|replica (?:was )?disconnected|transient.*remote node/i.test(message);
 }
 
 /** Share only simultaneous public reads. Completed results are never retained,
@@ -19,7 +31,7 @@ export function publicCatalogDatabase(db:Database):Database{
   const result=(async()=>{
    try{return await execute();}
    catch(error){
-    if(!isCatalogOverloaded(error))throw error;
+    if(!isTransientCatalogReadError(error))throw error;
     // One bounded retry for an idempotent read, with jitter across isolates.
     await new Promise(resolve=>setTimeout(resolve,150+Math.floor(Math.random()*150)));
     return execute();

@@ -74,7 +74,7 @@
 .jc-share-platform--list .jc-social-mark svg{width:19px;height:19px}
 .jc-share-platform--list .jc-social-mark b{font-size:15px}
 .jc-share-platform--list>span:not(.jc-social-mark){flex:1;min-width:0}
-.jc-share-platform--list small{display:block;font-size:var(--type-note-size);font-weight:550;color:var(--text-ink, #000);margin-top:3px;white-space:nowrap}
+.jc-share-platform--list small{display:block;font-size:var(--type-note-size);font-weight:550;color:var(--text-ink, #000);margin-top:3px;white-space:normal;overflow-wrap:anywhere}
 .jc-share-platform--list>svg{flex:none;color:#bda18a;width:10px}
 .jc-share-caption textarea{width:100%;min-height:95px;padding:13px 15px;border:1px solid #dfd3c7;border-radius:12px;background:#fffdf9;color:var(--text-ink, #000);font-weight:550;font-size:var(--type-note-size);line-height:1.65}
 .jc-share-caption-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px}

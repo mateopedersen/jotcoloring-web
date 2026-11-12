@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {publicCatalogDatabase} from '../src/server/catalog-reads';
+import {publicCatalogDatabase,isTransientCatalogReadError} from '../src/server/catalog-reads';
 import type {Database,Statement} from '../src/server/types';
 
 function fixture(operation:()=>Promise<unknown>){
@@ -59,4 +59,26 @@ test('validation, permanent failures, writes, CTE mutations and batches are neve
  assert.equal(f.writes,3);assert.equal(f.batches,1);
  const cte=db.prepare('WITH old AS (SELECT id FROM content) DELETE FROM content RETURNING id');
  await assert.rejects(()=>cte.first(),/no such table/);assert.equal(f.calls,2);
+});
+
+test('D1 wrapped connection resets receive exactly one shared read retry',async()=>{
+ for(const cause of ['Network connection lost.','The code was updated.','The replica was disconnected.','A transient error on a remote node.','The storage caused the object to be reset.']){
+  let attempts=0;const f=fixture(async()=>{if(++attempts===1)throw new Error('D1_ERROR: Database read failed',{cause:new Error(cause)});return{count:9};}),db=publicCatalogDatabase(f.db);
+  const results=await Promise.all(Array.from({length:8},()=>db.prepare('SELECT count FROM content').first()));
+  assert.equal(f.calls,2,cause);assert.ok(results.every(value=>(value as {count:number}).count===9));
+ }
+});
+
+test('transient classification handles cycles and rejects unknown or permanent failures',()=>{
+ const cyclic=new Error('D1_ERROR: request failed');cyclic.cause=cyclic;
+ assert.equal(isTransientCatalogReadError(cyclic),false);
+ assert.equal(isTransientCatalogReadError({cause:{message:'D1 DB is overloaded'}}),true);
+ for(const error of [new Error('D1_ERROR: unknown failure'),new Error('SQLITE_ERROR: no such table',{cause:new Error('Network connection lost.')}),new Error('VALIDATION_ERROR: invalid input'),null])assert.equal(isTransientCatalogReadError(error),false);
+});
+
+test('a persistent wrapped connection reset is bounded without retrying CTE or write operations',async()=>{
+ const f=fixture(async()=>{throw new Error('D1_ERROR: Database read failed',{cause:new Error('Network connection lost.')});}),db=publicCatalogDatabase(f.db);
+ await assert.rejects(()=>db.prepare('SELECT count FROM content').all(),/Database read failed/);assert.equal(f.calls,2);
+ await assert.rejects(()=>db.prepare('WITH ids AS (SELECT id FROM content) DELETE FROM content RETURNING id').first(),/Database read failed/);assert.equal(f.calls,3);
+ await db.prepare('UPDATE content SET title=?').bind('One').run();assert.equal(f.writes,1);
 });

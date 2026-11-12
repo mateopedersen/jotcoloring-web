@@ -4,10 +4,20 @@
  * are not page-overflow failures. A clean probe still needs visual inspection.
  */
 export function measureLayout() {
-  const visible = e => {
-    const r = e.getBoundingClientRect(), s = getComputedStyle(e);
-    return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' &&
-      s.display !== 'none' && !e.closest('[hidden],.sr-only,dialog:not([open])');
+  const visible=e=>{
+    if(!e)return false;
+    const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+    if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
+      e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
+    for(let p=e;p;p=p.parentElement){
+      const style=getComputedStyle(p);
+      if(Number(style.opacity)===0)return false;
+      // Accessibility-only labels can use a local class rather than .sr-only.
+      if(style.position==='absolute'&&p.clientWidth<=1&&p.clientHeight<=1&&
+        (style.clip!=='auto'||style.clipPath!=='none'))return false;
+      if(p.matches('details:not([open])')&&!p.querySelector(':scope>summary')?.contains(e))return false;
+    }
+    return true;
   };
   const contained = e => {
     for (let p = e.parentElement; p && p !== document.body; p = p.parentElement)
@@ -62,7 +72,21 @@ export function measureLayout() {
  * Masonry galleries and explicitly designated image carousels may scroll.
  */
 export function measureControls() {
-  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none'&&!e.closest('[hidden],.sr-only,dialog:not([open])');};
+  const visible=e=>{
+    if(!e)return false;
+    const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+    if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
+      e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
+    for(let p=e;p;p=p.parentElement){
+      const style=getComputedStyle(p);
+      if(Number(style.opacity)===0)return false;
+      // Accessibility-only labels can use a local class rather than .sr-only.
+      if(style.position==='absolute'&&p.clientWidth<=1&&p.clientHeight<=1&&
+        (style.clip!=='auto'||style.clipPath!=='none'))return false;
+      if(p.matches('details:not([open])')&&!p.querySelector(':scope>summary')?.contains(e))return false;
+    }
+    return true;
+  };
   const identify=e=>({tag:e.tagName,className:typeof e.className==='string'?e.className:'svg',text:e.textContent.trim().replace(/\s+/g,' ').slice(0,85)});
   const labels=[...document.querySelectorAll('.jc-footer-link-label,.support-tabs>a>b,.jc-file-copy,.aw-preview-actions button>span:last-child,.aw-dialog-secondary button>span:last-child,.jc-photo-formats strong,.jc-photo-formats small,.jc-dl-format>span,.jc-age-links>a>span,.settings-tabs button,.cf-cta>span:first-child,.jc-category-label>span,.aw-new-board-copy')].filter(visible);
   const escapingLabels=[];
@@ -106,8 +130,12 @@ export function measureMobileControls() {
     const r=e.getBoundingClientRect(),s=getComputedStyle(e);
     if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
       e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
-    for(let p=e.parentElement;p;p=p.parentElement){
-      if(Number(getComputedStyle(p).opacity)===0)return false;
+    for(let p=e;p;p=p.parentElement){
+      const style=getComputedStyle(p);
+      if(Number(style.opacity)===0)return false;
+      // Accessibility-only labels can use a local class rather than .sr-only.
+      if(style.position==='absolute'&&p.clientWidth<=1&&p.clientHeight<=1&&
+        (style.clip!=='auto'||style.clipPath!=='none'))return false;
       if(p.matches('details:not([open])')&&!p.querySelector(':scope>summary')?.contains(e))return false;
     }
     return true;
@@ -150,7 +178,21 @@ export function measureMobileControls() {
 /** Visible form controls need real accessible names, including sliders whose
  * wrapping label contains a preceding (also labelable) output element. */
 export function measureControlNames() {
-  const visible=e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'&&Number(s.opacity)!==0&&!e.closest('[hidden],[aria-hidden=true],.sr-only,dialog:not([open])');};
+  const visible=e=>{
+    if(!e)return false;
+    const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+    if(!r.width||!r.height||s.display==='none'||s.visibility==='hidden'||Number(s.opacity)===0||
+      e.closest('[hidden],.sr-only,dialog:not([open])'))return false;
+    for(let p=e;p;p=p.parentElement){
+      const style=getComputedStyle(p);
+      if(Number(style.opacity)===0)return false;
+      // Accessibility-only labels can use a local class rather than .sr-only.
+      if(style.position==='absolute'&&p.clientWidth<=1&&p.clientHeight<=1&&
+        (style.clip!=='auto'||style.clipPath!=='none'))return false;
+      if(p.matches('details:not([open])')&&!p.querySelector(':scope>summary')?.contains(e))return false;
+    }
+    return true;
+  };
   const name=e=>e.getAttribute('aria-label')||
     (e.getAttribute('aria-labelledby')||'').split(/\s+/).map(id=>document.getElementById(id)?.textContent.trim()).filter(Boolean).join(' ')||
     e.getAttribute('title')||(e.labels?.length?[...e.labels].map(l=>l.textContent.trim()).join(' '):'')||
