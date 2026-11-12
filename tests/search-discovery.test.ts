@@ -243,3 +243,18 @@ test('reviewed music artist qualifiers find the whole subject while scene modifi
  assert.equal((await search.search('Khalid singer',48,{category:'animals'})).total,0);
  assert.deepEqual(searchTopicIds('dog singer'),[]);
 });
+
+
+test('X former-name queries find reviewed X artwork and retain scene and category filters',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-12'});
+ await add('x-kite','X Logo Diamond Kite','social-media x');
+ await add('x-lamp','X Logo Desk Lamp','social-media x');
+ await add('unrelated-kite','Garden Kite','objects');
+ for(const q of ['X formerly Twitter','Twitter','X Twitter']){
+  assert.deepEqual(searchTopicIds(q),['x']);
+  assert.deepEqual(new Set((await search.search(q)).ids),new Set(['x-kite','x-lamp']));
+ }
+ assert.deepEqual((await search.search('X formerly Twitter kite')).ids,['x-kite']);
+ assert.equal((await search.search('X formerly Twitter',48,{category:'flowers'})).total,0);
+});
