@@ -2,6 +2,7 @@
  * Exercise cached and uncached public delivery, not only origin availability.
  */
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 if(process.argv[2]!=='production')throw new Error('Select production explicitly.');
 const origin='https://jotcoloring.com',cdn='https://assets.jotcoloring.com';
 async function request(url,options={}){return fetch(url,{...options,credentials:'omit',signal:AbortSignal.timeout(20000)});}
@@ -20,7 +21,14 @@ for(const item of items){
   assert.ok(disposition.startsWith('attachment;'),`Download must be an attachment: ${url}`);
   assert.ok(disposition.includes(`${item.slug}.${extension}`),`Download filename must match its topic: ${url}`);
   const bytes=Number(response.headers.get('content-length'));assert.ok(bytes>0,url);if(format==='pdf')assert.ok(bytes<=1_000_000,url);
-  downloads.push({url,mime,bytes});
+  let canonical;
+  if(format==='pdf'){
+   const match=/^<([^>]+)>; rel="canonical"$/.exec(response.headers.get('link')||'');
+   assert.ok(match,`PDF download must identify its canonical immutable file: ${url}`);
+   canonical=asset(match[1],mime);
+   assert.ok(new URL(canonical).pathname.endsWith('.pdf'),canonical);
+  }
+  downloads.push({url,mime,bytes,canonical});
  }
 }
 const jobs=[...media],results=[];let index=0;
@@ -30,7 +38,12 @@ for(const sample of downloads.slice(0,2)){
  const response=await request(sample.url);assert.equal(response.status,200,sample.url);
  assert.equal(response.headers.get('content-type')?.split(';')[0],sample.mime,sample.url);
  const bytes=new Uint8Array(await response.arrayBuffer());assert.equal(bytes.byteLength,sample.bytes,sample.url);
- if(sample.mime==='application/pdf')assert.equal(new TextDecoder().decode(bytes.subarray(0,5)),'%PDF-',sample.url);
+ if(sample.mime==='application/pdf'){
+  assert.equal(new TextDecoder().decode(bytes.subarray(0,5)),'%PDF-',sample.url);
+  const canonical=await request(sample.canonical);assert.equal(canonical.status,200);
+  const file=new Uint8Array(await canonical.arrayBuffer());
+  assert.equal(createHash('sha256').update(file).digest('hex'),createHash('sha256').update(bytes).digest('hex'),'Canonical PDF must contain the identical download bytes');
+ }
  else{assert.equal(new TextDecoder('latin1').decode(bytes.subarray(0,4)),'RIFF',sample.url);assert.equal(new TextDecoder('latin1').decode(bytes.subarray(8,12)),'WEBP',sample.url);}
 }
 let cacheHits=0;

@@ -40,6 +40,28 @@ test('public PDF and WebP downloads keep attachment filenames with the media CDN
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('Content-Type'), fixture.mime);
     assert.equal(response.headers.get('Content-Disposition'), `attachment; filename="${row.slug}.${fixture.extension}"`);
+    assert.equal(response.headers.get('Link'), fixture.extension === 'pdf'
+      ? `<https://assets.jotcoloring.com/${row.object_key}>; rel="canonical"` : null);
     assert.deepEqual(new Uint8Array(await response.arrayBuffer()), fixture.bytes);
   }
+});
+
+test('PDF canonical headers survive GET, HEAD and conditional requests without trusting foreign hosts or private keys',async()=>{
+ const bytes=new TextEncoder().encode('%PDF-1.7\n%%EOF'),hash=createHash('sha256').update(bytes).digest('hex');
+ const row={slug:'rabbit',mime:'application/pdf',object_key:'published/rabbit/printable.pdf',sha256:hash,bytes:bytes.length};
+ const statement={bind:()=>statement,first:async()=>row};
+ const env={PUBLIC_MEDIA_BASE_URL:'https://assets.jotcoloring.com',CATALOG_DB:{prepare:()=>statement},PUBLISHED:{head:async()=>({size:bytes.length}),get:async()=>({size:bytes.length,body:new Response(bytes.slice()).body})}} as unknown as Env;
+ const expected='<https://assets.jotcoloring.com/published/rabbit/printable.pdf>; rel="canonical"';
+ for(const init of [{},{method:'HEAD'},{headers:{'If-None-Match':`"${hash}"`}}]){
+  const response=await publicAsset(new Request('https://jotcoloring.com/api/download/rabbit/pdf',init),env,'rabbit','printable_pdf_a4_bw',true);
+  assert.equal(response.headers.get('Link'),expected);
+  assert.equal(response.status,'headers' in init?304:200);
+  if('method' in init||'headers' in init)assert.equal((await response.arrayBuffer()).byteLength,0);
+ }
+ for(const base of ['https://assets.jotcoloring.com.attacker.test','https://secret@assets.jotcoloring.com','http://assets.jotcoloring.com']){
+  const response=await publicAsset(new Request('https://jotcoloring.com/api/download/rabbit/pdf'),{...env,PUBLIC_MEDIA_BASE_URL:base},'rabbit','printable_pdf_a4_bw',true);
+  assert.equal(response.headers.get('Link'),null);
+ }
+ row.object_key='private/source.pdf';
+ assert.equal((await publicAsset(new Request('https://jotcoloring.com/api/download/rabbit/pdf'),env,'rabbit','printable_pdf_a4_bw',true)).headers.get('Link'),null);
 });
