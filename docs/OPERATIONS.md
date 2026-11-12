@@ -86,6 +86,23 @@ AI ücretli çağrı bütçesi **0**. Ayrı ücretsiz hesap için9.000 günlük 
 
 ## Public dosya kontrolü
 
+### Yaş ve ayrıntı filtrelerinin okuma indeksleri
+
+`0036_public_catalog_read_indexes.sql` yalnız `content_public_revision` ve
+`asset_current_source` indekslerini ekler. Çizim, metadata, inceleme, yayın
+durumu veya kuyruk verisi değiştirmez. Kaynak hash'i ve etkin revision
+kontrolleri korunur. İlgili koleksiyonların kesin sayıları aynı aday kümesinden
+tek sorguda hesaplanır; örtüşen konu grupları bir çizimi iki kez saymaz.
+
+Mevcut ortamda bu indeksleri uygularken
+`scripts/ops/apply-public-read-indexes.ts staging --apply`, ardından production
+karşılığı kullanılır. Araç ayrı `JOT_WRANGLER_AUTH_FILE` ve mutlak
+`JOT_READ_INDEX_REPORT_DIR` ister; tam hedefi, yalnız iki indeks içeren migration'ı,
+özel R2 şema yedeğinin checksum readback'ini ve migration kaydını doğrular.
+`PRAGMA optimize` sonrasında indeks tanımları tekrar okunur. Otomatik web yayını
+migration çalıştırmaz; yeni indeksleri kullanan web sürümünden önce bu hazırlık
+tamamlanmalıdır. Bu şema yedeği içerik dosyalarının tam yedeği değildir.
+
 Eski arama sonuçları, yer imleri ve açık sayfalar önceki dosya checksum'ını içeren
 `/api/download/ID/pdf?v=...` veya Image bağlantılarını tutabilir. Geçerli eski
 checksum'lı indirme adresi, yalnız aynı içerik ve dosya rolünün halen yayındaki,
