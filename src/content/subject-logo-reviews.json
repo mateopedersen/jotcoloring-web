@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "180 additional subject identities: 113 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "183 additional subject identities: 116 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2734,6 +2734,51 @@
         "two-edsel-hudson-final-1440-1.png": "5d79b0c0f79da9a8239335c77376a338c3efa3ae72b4074f44c45c0cdc3d8093",
         "two-edsel-hudson-final-390-1.png": "9949a9084e0a34c49a6622c299304b5981ddf94b617611e98b681ea171ddd717",
         "two-edsel-hudson-browser-verification.json": "c434dbe22df2720da56938799d33b93906ea9f215ee566287e4ebd892ff8197b"
+      }
+    },
+    "kaiser": {
+      "asset_sha256": "ea1ac28d249ec8e8117689ef980cd116c0baee3382f8c490ab9a707749d4d5f9",
+      "src": "/subject-logos/subjects/kaiser.ea1ac28d249e.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/slides/1947_Kaiser-Frazer_Folder-02-03.html",
+      "reviewed_at": "2026-11-13T15:15:52.918543+00:00",
+      "artwork_preview_id": "jc-kaiser-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/kaiser-coloring-page-100/catalog_thumb_bw.a3f3b9ef54875cf3a8696be8.webp",
+      "actual_final_card_proofs": {
+        "three-kaiser-frazer-lasalle-final-1440-1.png": "7c6e7f54c301e20e05d12eb78ce73dd175a997855636cda3487f97e1ed4bb5a1",
+        "three-kaiser-frazer-lasalle-final-390-1.png": "33f2eb1834ccaeee7cc0765216308633f517607db0e92b70226e477ba10954ec",
+        "three-kaiser-frazer-lasalle-browser-verification.json": "4876dafc9d5a339b18715c6880fe7428999158ff62a46d051476b8a19ca3efc5"
+      }
+    },
+    "frazer": {
+      "asset_sha256": "f1cca8c737e11f09852b08090f90f78f439d9a0e12f1211e83349bbf078a8bf2",
+      "src": "/subject-logos/subjects/frazer.f1cca8c737e1.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/slides/1947_Kaiser-Frazer_Folder-02-03.html",
+      "reviewed_at": "2026-11-13T15:15:52.918916+00:00",
+      "artwork_preview_id": "jc-frazer-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/frazer-coloring-page-100/catalog_thumb_bw.6be551c79e22270187098e9e.webp",
+      "actual_final_card_proofs": {
+        "three-kaiser-frazer-lasalle-final-1440-1.png": "7c6e7f54c301e20e05d12eb78ce73dd175a997855636cda3487f97e1ed4bb5a1",
+        "three-kaiser-frazer-lasalle-final-390-1.png": "33f2eb1834ccaeee7cc0765216308633f517607db0e92b70226e477ba10954ec",
+        "three-kaiser-frazer-lasalle-browser-verification.json": "4876dafc9d5a339b18715c6880fe7428999158ff62a46d051476b8a19ca3efc5"
+      }
+    },
+    "lasalle": {
+      "asset_sha256": "483bddd0e6e5a7fa6c7eff7aa93346637a9ab7c51d2ddc3889c2f14194c0229d",
+      "src": "/subject-logos/subjects/lasalle.483bddd0e6e5.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://newcadillacdatabase.org/static/CDB/Dbas_txt/mascotsd.htm",
+      "reviewed_at": "2026-11-13T15:15:52.919123+00:00",
+      "artwork_preview_id": "jc-lasalle-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lasalle-coloring-page-100/catalog_thumb_bw.5ce75a6779694577274b9c37.webp",
+      "actual_final_card_proofs": {
+        "three-kaiser-frazer-lasalle-final-1440-1.png": "7c6e7f54c301e20e05d12eb78ce73dd175a997855636cda3487f97e1ed4bb5a1",
+        "three-kaiser-frazer-lasalle-final-390-1.png": "33f2eb1834ccaeee7cc0765216308633f517607db0e92b70226e477ba10954ec",
+        "three-kaiser-frazer-lasalle-browser-verification.json": "4876dafc9d5a339b18715c6880fe7428999158ff62a46d051476b8a19ca3efc5"
       }
     }
   }
