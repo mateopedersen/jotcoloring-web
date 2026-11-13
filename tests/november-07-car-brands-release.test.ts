@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {COLORING_TAXONOMY,NEW_EXACT_TOPIC_CATEGORY_IDS,categoryLineage,categoryPath,resolveCategoryAlias} from '../src/taxonomy/catalog';
 import {collectionForRoot} from '../src/taxonomy/navigation';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 import {NOVEMBER_07_CAR_BRANDS_RELEASE_ID,NOVEMBER_07_CAR_BRANDS_TOPIC_COUNTS,NOVEMBER_07_CAR_BRANDS_ZIP_CHECKSUMS,reviewedReleaseScope,reviewedTopicCount,matchesReviewedReleaseScope,matchesReviewedSourceArchives,matchesReviewedTopicLineage} from '../src/server/reviewed-release-scope';
 import {NOVEMBER_07_CAR_BRAND_TOPICS} from '../src/taxonomy/november-07-car-brands';
 
@@ -31,7 +31,7 @@ test('all six brands resolve to an exact Cars topic, valid landing page, aliases
   assert.equal(COLORING_TAXONOMY.find(row=>row.id===topic.id)?.intro,topic.intro);
   assert.ok(NEW_EXACT_TOPIC_CATEGORY_IDS.has(topic.id));assert.ok(collectionForRoot('vehicles'));
   const location=catalogLocation(categoryPath(topic.id));assert.ok(location);
-  assert.ok(landingSummary(location!).split(/\s+/).length>=40,topic.id+' has a full landing introduction');
+  assert.equal(reviewedLandingIntroduction(location!)?.purpose,'category-overview',topic.id+' has a full landing introduction');
   assert.ok(migration.includes(`VALUES('${topic.id}'`),topic.id+' is included in migration');
  }
  const expected:Record<string,string>={gmc:'cars',ford:'cars',kia:'cars',chevrolet:'cars',bentley:'cars',buick:'cars'};

@@ -1,18 +1,27 @@
 # Collection introductions
 
-Owner direction, November 5, 2026. This supersedes the former generated coloring
+Owner direction, updated November 13, 2026. This supersedes the former generated coloring
 advice in `landing-guidance.json` and `number-guidance.json`.
 
 The collection header introduces the actual printable collection. Lead with its
 specific subject and natural American English search language, such as “free
 panda coloring pages.” Describe varieties supported by the reviewed catalog.
-Explain how to choose a drawing and reach its printable PDF, image download, or
-online coloring option. Keep these statements natural and useful; do not repeat
+Explain what visitors can find in that collection: its subject groups, drawing
+varieties, or relevant activities. Do not copy a representative artwork caption
+into a category header. For example, Sports introduces its current basketball,
+karate, gymnastics, and winter sports collections, not Barbie fastening skates
+beside a particular bench. A number collection introduces the numeral and its
+designs, not an unrelated animal from one sample drawing.
+
+File controls already explain PDF, Image, and Studio. Mention those actions only
+where they help; they are not mandatory sentences in every overview.
+Keep these statements natural and useful; do not repeat
 keywords, list unrelated search terms, promise rankings, or write palette advice
 to pad the introduction. Each collection needs distinct copy and a distinct
 opening. There is no Google prescribed word count.
 
-The current concise header copy is 40–107 words. It is deliberately separate
+The current concise header copy is a collection overview, not a scene inventory.
+It is deliberately separate
 from the accepted short SEO/social identity and individual artwork descriptions.
 Do not overwrite those source bound records during a visitor copy edit. Current
 counts remain dynamic UI data; never hard code them into prose. Do not invent
@@ -29,11 +38,15 @@ endorsement of branded characters or public figures.
    the topic name changed.
 3. Add an entry to `src/taxonomy/landing-introductions.json`. Use
    `collection:ID`, `topic:ID`, or `number:VALUE`, matching the canonical location.
-   Copy the accepted short identity exactly into `sourceIntro`; put the new
-   paragraph in `text`. `reviewedLandingIntroduction` invalidates it when that
-   short identity changes.
+   Copy the accepted short identity exactly into `sourceIntro`, set
+   `purpose: "category-overview"`, and put the individually written overview in
+   `text`. This purpose records the required editorial scope; it does not claim a
+   new visual review. `reviewedLandingIntroduction` invalidates it when that
+   short identity changes. Never generate the overview by appending `sourceIntro`
+   or an individual drawing description to a repeated opening.
 4. Run `pnpm test`. The collection copy tests traverse every canonical topic,
-   collection, and number series. Missing or stale entries, duplicate openings,
+   collection, and number series. Missing or stale entries, missing overview
+   scope, duplicate openings,
    rejected padding, unsupported fixed counts, and malformed text fail the
    release checks. A runtime fallback displays only the current accepted short
    description; it never invents a longer introduction for an unreviewed topic.

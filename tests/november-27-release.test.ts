@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {COLORING_TAXONOMY,categoryLineage,categoryPath,resolveCategoryAlias,NEW_EXACT_TOPIC_CATEGORY_IDS} from '../src/taxonomy/catalog';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {landingSummary,reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 import {NOVEMBER_27_RELEASE_ID,NOVEMBER_27_TOPIC_COUNTS,NOVEMBER_27_ZIP_CHECKSUMS,reviewedReleaseScope,reviewedTopicCount,matchesReviewedReleaseScope,matchesReviewedSourceArchives,matchesReviewedTopicLineage} from '../src/server/reviewed-release-scope';
 
 test('November 5 intake has an exact bounded 27-topic, 2,658-artwork release scope',()=>{
@@ -23,7 +23,7 @@ test('every new subject has a unique exact route, reviewed parent lineage, and s
  assert.equal(topics.length,27);
  for(const id of topics){
   const category=COLORING_TAXONOMY.find(item=>item.id===id)!;assert.ok(category);assert.equal(category.parent,parents[id]);assert.equal(categoryPath(id),`/coloring-pages/${id}/`);
-  const location=catalogLocation(categoryPath(id));assert.ok(location);const intro=landingSummary(location);assert.ok(intro.split(/\s+/).length>=40,id+' has its own reviewed topic introduction');assert.notEqual(intro,category.intro,id+' introduction stays bound to its current source');
+  const location=catalogLocation(categoryPath(id));assert.ok(location);const intro=landingSummary(location);assert.equal(reviewedLandingIntroduction(location)?.purpose,'category-overview',id+' has its own current topic overview');assert.notEqual(intro,category.intro,id+' introduction stays bound to its current source');
   const lineage=categoryLineage(id);assert.equal(lineage.at(-1),id);assert.ok(lineage.includes(parents[id]));
   assert.ok(matchesReviewedTopicLineage(NOVEMBER_27_RELEASE_ID,id,lineage));
   assert.equal(matchesReviewedTopicLineage(NOVEMBER_27_RELEASE_ID,id,[id]),false);

@@ -1,5 +1,16 @@
 # JotColoring content operations
 
+## Category overviews — owner clarification, November 13
+
+Every category header explains the relevant range visitors can browse. Do not
+paste a single artwork caption or sample scene into a category introduction.
+Keep the overview concise and topic specific; PDF, Image, and Studio instructions
+need not be repeated in every paragraph. All existing landing introductions have
+been reviewed for this scope. New entries require `purpose: "category-overview"`
+and their current exact `sourceIntro` binding. Follow
+`docs/content/collection-introductions.md`. This visible-copy edit does not
+authorize rewriting source artwork, short SEO/social identities, IDs, or URLs.
+
 ## Collection header copy — owner direction, November 5
 
 Read `docs/content/collection-introductions.md`. Every collection, subject, and
