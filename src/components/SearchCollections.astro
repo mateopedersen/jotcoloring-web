@@ -3,6 +3,7 @@ import {SEARCH_COLLECTION_OPTIONS} from '../search/collection-options';
 import {matchingSearchCollections,searchCollectionHref} from '../search/collection-matches';
 import CategoryIcon from './CategoryIcon.astro';
 import Icon from './HomeIcon.astro';
+import {subjectLogo} from '../ui/subject-logo';
 interface Props {query:string;counts:{id:string;count:number}[];recommendedAge?:string}
 const {query,counts,recommendedAge}=Astro.props;
 const published=new Set(counts.filter(c=>c.count>0).map(c=>c.id));
@@ -10,13 +11,14 @@ const options=SEARCH_COLLECTION_OPTIONS.filter(c=>published.has(c.id)||c.parent=
 const matches=matchingSearchCollections(query,options);
 const href=(option:(typeof matches)[number])=>{const url=new URL(searchCollectionHref(option),Astro.url);if(recommendedAge){url.searchParams.set('recommended_age',recommendedAge);url.hash='catalog-results';}return url.pathname+url.search+url.hash;};
 ---
-{matches.length>0&&<nav class="jc-search-collections" aria-label="Matching coloring page collections"><span>Explore Collections</span><div>{matches.map(option=><a href={href(option)} data-search-collection={option.id}><CategoryIcon name={option.icon||'all'} size={32}/><span><strong>{option.name}</strong><small>Coloring Pages Collection</small></span><Icon name="arrow" size={16}/></a>)}</div></nav>}
+{matches.length>0&&<nav class="jc-search-collections" aria-label="Matching coloring page collections"><span>Explore Collections</span><div>{matches.map(option=><a href={href(option)} data-search-collection={option.id}><>{subjectLogo(option.id)?<img class="jc-search-subject-logo" data-surface={subjectLogo(option.id)!.surface} src={subjectLogo(option.id)!.src} width="32" height="32" alt="" loading="lazy" decoding="async"/>:<CategoryIcon name={option.icon||'all'} size={32}/>}</><span><strong>{option.name}</strong><small>Coloring Pages Collection</small></span><Icon name="arrow" size={16}/></a>)}</div></nav>}
 <style>
 .jc-search-collections{display:grid;gap:10px;margin:0 0 18px;min-width:0}
 .jc-search-collections>span{font-size:15px;font-weight:700;line-height:1.5;color:#713b1c}
 .jc-search-collections>div{display:flex;flex-wrap:wrap;gap:10px;min-width:0}
 .jc-search-collections a{display:flex;align-items:center;gap:11px;flex:0 1 310px;min-width:0;max-width:100%;padding:12px 15px;border:1px solid #edc6a9;border-radius:14px;background:#fff8ef;color:#1d1713;text-decoration:none}
 .jc-search-collections a>svg{flex:none}
+.jc-search-subject-logo{display:block;width:32px;height:32px;object-fit:contain;flex:none}.jc-search-subject-logo[data-surface="dark"]{background:#17262e;padding:3px;border-radius:5px}.jc-search-subject-logo[data-surface="light"]{background:#fff;padding:3px;border-radius:5px}
 .jc-search-collections a>span{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}
 .jc-search-collections strong{font-family:'Avenir Next','Manrope Variable',sans-serif;font-size:17px;font-weight:700;line-height:1.35;overflow-wrap:anywhere}
 .jc-search-collections small{font-size:13px;font-weight:550;line-height:1.4;color:#713b1c}

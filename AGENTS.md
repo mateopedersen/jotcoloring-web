@@ -152,3 +152,11 @@ Review metadata twice and check the final PDF and share cover for actual matchin
 artwork and complete, readable copy. Verify the public page and real PDF/Image
 bytes twice. Prepared, publishing, R2-verified and publicly verified counts must
 remain separate; a local editorial seal does not mean a completed live release.
+
+
+## JotColoring: authentic subject logos beside coloring artwork
+
+Owner direction, 2026-11-13. Apply to future JotColoring collection and subject cards in every chat and checkout.
+- For a specific car brand, sports team, franchise or other clearly identified branded subject, use its authentic, correctly matched logo or official symbol in the card emblem position, alongside JotColoring’s own relevant coloring artwork in the paper preview. Keep the supplied JotColoring logo. Do not replace the drawing with an empty logo-only card or use a generic category icon when a verified subject logo is available.
+- Verify identity against primary official brand/team/franchise sources (or authoritative historical sources for defunct brands), inspect the actual logo and final desktop/mobile cards, and record asset sources and checksums. Never generate, guess or silently substitute another brand’s logo. Keep exact subject-ID mappings and local stable assets.
+- Generic unbranded topics keep an appropriate topic symbol beside their own artwork; do not invent a corporate logo for topics such as Race Car. Preserve stable URLs, accepted artwork, metadata, counts, other categories and normal publication gates; verify the real public cards after release.
