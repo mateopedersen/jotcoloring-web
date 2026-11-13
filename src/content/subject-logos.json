@@ -2472,6 +2472,105 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:02:26.736Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "labubu": {
+      "id": "labubu",
+      "sha256": "7067912ae989afed788eb042288b4f0ffa997a2d3537ecc1f7121805f5c48758",
+      "bytes": 394956,
+      "asset_source": "https://prod-america-res.popmart.com/default/20250724_180929_472689____labubu-time-to-chill_____1200x1200.jpg",
+      "identity_reference": "https://www.popmart.com/us/collection/313",
+      "source_page_reference": "https://www.popmart.com/us/collection/313",
+      "source_page_sha256": "79fbb785b72904c96313b2ff47da0f2a276e3c8c20c5d0fb124d5ae6abb36b53",
+      "source_container_sha256": "c03511e42ba8acef70403a49b1cc35d686473f2e06e2a48e75013c00bc9a5bd6",
+      "source_crop_pixels": [
+        300,
+        120,
+        890,
+        735
+      ],
+      "surface": "light",
+      "source_kind": "manufacturer_named_character_product_portrait",
+      "asset_kind": "official_character_portrait",
+      "product_name": "LABUBU Time to chill-Vinyl Plush Doll",
+      "src": "/subject-logos/subjects/labubu.7067912ae989.png",
+      "name": "Labubu",
+      "source_sha256": "9880472eda3ff8c68cbadb1f2bebc95ba2399c4b23bcf1093d8ac92406cc99a5",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:12:18.082Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "zimomo": {
+      "id": "zimomo",
+      "sha256": "e9f50e572bb994b54256ea391cd24a093d8b10bdfc3a08569662041b30a28a2e",
+      "bytes": 241364,
+      "asset_source": "https://prod-america-res.popmart.com/default/20251128_155508_442842____1_zimomo-warm-sweater-figure_figurine_details_pop-mart-us_____1200x1200.jpg",
+      "identity_reference": "https://www.popmart.com/us/collection/313",
+      "source_page_reference": "https://www.popmart.com/us/collection/313",
+      "source_page_sha256": "79fbb785b72904c96313b2ff47da0f2a276e3c8c20c5d0fb124d5ae6abb36b53",
+      "source_container_sha256": "d0795b9b28e65c30cd81c548fe8e0dbd19d130efec4514641f0e7440304fad74",
+      "source_crop_pixels": [
+        315,
+        15,
+        910,
+        800
+      ],
+      "surface": "light",
+      "source_kind": "manufacturer_named_character_product_portrait",
+      "asset_kind": "official_character_portrait",
+      "product_name": "ZIMOMO Warm Sweater Figure",
+      "src": "/subject-logos/subjects/zimomo.e9f50e572bb9.png",
+      "name": "Zimomo",
+      "source_sha256": "7f6eb24400b134d4a0b4bc859db8d0cbec703246f52c700d398ec66ec015b1ef",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:12:18.104Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "minecraft": {
+      "id": "minecraft",
+      "sha256": "04109cc4f3fe2f1beb75071cfdaad41604e45afe362c24237eaf8e83fc75f6fe",
+      "bytes": 133955,
+      "asset_source": "https://store-images.s-microsoft.com/image/apps.46509.13850085746326678.06e2dc5c-7997-46e9-a8e6-0e48b57cb13b.86bf6099-e11f-428b-a60a-1947131b7c26",
+      "identity_reference": "https://www.xbox.com/en-US/games/store/minecraft/9MVXMVT8ZKWC",
+      "source_page_sha256": "c5048289acecc4af0f8385dd7e7263a5f66452f0f8a3e9ca10ceb5b1962168e8",
+      "source_container_sha256": "4969da7353933cf9e9c0fb0816b162c5eb1b3431183a3ef231eadacc108ab37f",
+      "source_crop_pixels": [
+        120,
+        82,
+        970,
+        287
+      ],
+      "source_kind": "publisher_game_box_art_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/minecraft.04109cc4f3fe.png",
+      "name": "Minecraft",
+      "source_sha256": "82dd4d84cc1c1a20ed4bade7786902c651de91a7c42b3e491cc350e3cf1e8cd7",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T13:16:12.927Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "pennywise": {
+      "id": "pennywise",
+      "sha256": "868a51afd264f9d0f51439da22756643728806f030b79ea4fc1ce7f717d4a17a",
+      "bytes": 196431,
+      "asset_source": "https://irs.www.warnerbros.com/gallery-v2-jpeg/movies/file/ajax/fieldimage/und/form-8s5ltfxpwcjj5zy-pvt-d5nfnlsidejhoxrmsvkcxew/IT-19590r.jpg",
+      "identity_reference": "https://www.warnerbros.com/movies/it",
+      "source_page_sha256": "cf0952aa026828a05e5c997f0b52b9cc84f4450ce72184f4e566ab09ab994ac3",
+      "source_container_sha256": "7f831365d4f0c86e67e223c44dec5e1e95705cfb216b7fc6fa9eef12c1a09905",
+      "source_crop_pixels": [
+        190,
+        0,
+        490,
+        315
+      ],
+      "source_kind": "publisher_film_character_still",
+      "asset_kind": "official_character_portrait",
+      "surface": "dark",
+      "src": "/subject-logos/subjects/pennywise.868a51afd264.png",
+      "name": "Pennywise",
+      "source_sha256": "981f8805093626b42a060d6dc3c367e3646fda3704a22567cdc6aa2d2d14cc29",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:16:12.944Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
