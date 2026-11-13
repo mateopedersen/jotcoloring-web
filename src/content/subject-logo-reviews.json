@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "96 additional subject logos: 62 automotive brands and 34 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "112 additional subject logos: 77 automotive brands and 35 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -1378,6 +1378,310 @@
         "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
         "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
         "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "mercedes-benz": {
+      "asset_sha256": "aed4d7bc6506dee7f71016f80f20670c2d4fd8e60d829c90f9ae649c680d7fd5",
+      "src": "/subject-logos/cars/mercedes-benz.aed4d7bc6506.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.mbusa.com/en/home",
+      "reviewed_at": "2026-11-13T11:28:55.088995+00:00",
+      "artwork_preview_id": "jc-mercedes-benz-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mercedes-benz-badge-archive-and-design-100-coloring-page/catalog_thumb_bw.aea4bc3bcfd8d20803b5c202.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "subaru": {
+      "asset_sha256": "106813ad5774b1708a6c05010853d530dac9193198b52493b7fc282c03df8dd1",
+      "src": "/subject-logos/cars/subaru.106813ad5774.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.subaru.co.jp/en/",
+      "reviewed_at": "2026-11-13T11:28:55.089345+00:00",
+      "artwork_preview_id": "jc-subaru-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/subaru-coloring-page-100/catalog_thumb_bw.9fd8cd8ef1399b0fc23efeb8.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "toyota": {
+      "asset_sha256": "6c1cd339f29ba3800410e3d2a9958bfe501c6bf018fbed72a42f8348e6676732",
+      "src": "/subject-logos/cars/toyota.6c1cd339f29b.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.toyota.com/",
+      "reviewed_at": "2026-11-13T11:28:55.089464+00:00",
+      "artwork_preview_id": "jc-toyota-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/toyota-coloring-page-100/catalog_thumb_bw.6fedb6367ea11bce23565d5b.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "nissan": {
+      "asset_sha256": "024b3bef74b81e1e433d81de4a336c4c47549cd56502a248d5a72c153f837ef8",
+      "src": "/subject-logos/cars/nissan.024b3bef74b8.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.nissanusa.com/",
+      "reviewed_at": "2026-11-13T11:28:55.089658+00:00",
+      "artwork_preview_id": "jc-nissan-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/nissan-coloring-page-100/catalog_thumb_bw.619782b5ad3f8cfe097932fe.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "maserati": {
+      "asset_sha256": "c8b1bdb848278a217e93161ab7bd6146caa02fd0a7b7f622330618f00b690135",
+      "src": "/subject-logos/cars/maserati.c8b1bdb84827.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.maserati.com/us/en",
+      "reviewed_at": "2026-11-13T11:28:55.089861+00:00",
+      "artwork_preview_id": "jc-maserati-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/maserati-coloring-page-100/catalog_thumb_bw.5cde2d742d1e4b56b4fb1c1b.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "morgan": {
+      "asset_sha256": "e2b0fbad5f7d15d2c437eaa7606622a0782de501cc0c034241c8ed8df4f2d281",
+      "src": "/subject-logos/cars/morgan.e2b0fbad5f7d.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://morgan-motor.com/",
+      "reviewed_at": "2026-11-13T11:28:55.090014+00:00",
+      "artwork_preview_id": "jc-morgan-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/morgan-coloring-page-100/catalog_thumb_bw.21fad4e68fe1988a187f6339.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "mini": {
+      "asset_sha256": "7cd31177e2a9a4a8bca45c9d1735a2751dd6764fef28541c263aecfee3fa0e7a",
+      "src": "/subject-logos/cars/mini.7cd31177e2a9.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.miniusa.com/",
+      "reviewed_at": "2026-11-13T11:28:55.090125+00:00",
+      "artwork_preview_id": "jc-mini-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mini-coloring-page-100/catalog_thumb_bw.03aa028b1dae620c3ffb5b47.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "mclaren": {
+      "asset_sha256": "9b272af0b74e3931279bda26bf78a621834809a095bd326f5b6cb45c97f57af0",
+      "src": "/subject-logos/cars/mclaren.9b272af0b74e.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://cars.mclaren.com/en",
+      "reviewed_at": "2026-11-13T11:28:55.090311+00:00",
+      "artwork_preview_id": "jc-mclaren-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mclaren-coloring-page-100/catalog_thumb_bw.1a574d21fa3baec416a56c06.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "rolls-royce": {
+      "asset_sha256": "a007e4dcefb00e7abd5fc909ce4be2ec034d1dcf41e9ff7592e3656d29bddbe3",
+      "src": "/subject-logos/cars/rolls-royce.a007e4dcefb0.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.rolls-roycemotorcars.com/en_GB/home.html",
+      "reviewed_at": "2026-11-13T11:28:55.090410+00:00",
+      "artwork_preview_id": "jc-rolls-royce-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/rolls-royce-coloring-page-100/catalog_thumb_bw.ec211ce57c842bd22b90bb96.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "renault": {
+      "asset_sha256": "9827a1834fcf1ab3e488b51bcf5d872a4e4f48497d94a18ce81aa0ceb4d54732",
+      "src": "/subject-logos/cars/renault.9827a1834fcf.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.renault.fr/",
+      "reviewed_at": "2026-11-13T11:28:55.090538+00:00",
+      "artwork_preview_id": "jc-renault-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/renault-coloring-page-100/catalog_thumb_bw.fc68bf099e7b93b68ef4c7ac.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "polestar": {
+      "asset_sha256": "da6847d1b308f396d282ae576f45400800450063ac2ede4ab8fe3f6948021bc9",
+      "src": "/subject-logos/cars/polestar.da6847d1b308.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.polestar.com/us/",
+      "reviewed_at": "2026-11-13T11:28:55.090631+00:00",
+      "artwork_preview_id": "jc-polestar-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/polestar-coloring-page-100/catalog_thumb_bw.bb1a62eb425565656fd1e201.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "li-auto": {
+      "asset_sha256": "078baf8944c7b0a50ae9d4c418e3da4cb99d13b17df5b43121a2859bf47dafc5",
+      "src": "/subject-logos/cars/li-auto.078baf8944c7.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.lixiang.com/",
+      "reviewed_at": "2026-11-13T11:28:55.090756+00:00",
+      "artwork_preview_id": "jc-li-auto-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/li-auto-coloring-page-100/catalog_thumb_bw.228df735a0cd4ddf1e29f215.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "de-tomaso": {
+      "asset_sha256": "c503e1306b16e977cdd45c8ba4aedc6067144a5a6e7ece3beab50306444754e4",
+      "src": "/subject-logos/cars/de-tomaso.c503e1306b16.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://detomaso-automobili.com/",
+      "reviewed_at": "2026-11-13T11:28:55.091048+00:00",
+      "artwork_preview_id": "jc-de-tomaso-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/de-tomaso-coloring-page-100/catalog_thumb_bw.7fa4ea76f65a45d935d2045b.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "faraday-future": {
+      "asset_sha256": "eb8758e96c29e3eb0d1b2f8581948ea7ae7781cd2d7e4667e284f703a6a744d0",
+      "src": "/subject-logos/cars/faraday-future.eb8758e96c29.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.ff.com/us/",
+      "reviewed_at": "2026-11-13T11:28:55.091180+00:00",
+      "artwork_preview_id": "jc-faraday-future-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/faraday-future-coloring-page-100/catalog_thumb_bw.179f5a8f314f86a5a5bf7c70.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "starbucks": {
+      "asset_sha256": "0a590dd9d2c5462c92d6cfa1c4e5348f7dd779398a4fa784a1c9b5def7d57bae",
+      "src": "/subject-logos/subjects/starbucks.0a590dd9d2c5.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.starbucks.com/",
+      "reviewed_at": "2026-11-13T11:28:55.091471+00:00",
+      "artwork_preview_id": "jc-starbucks-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/food/starbucks-starbucks-coloring-page-100-branded-mugs-and-coffee-beans/catalog_thumb_bw.80d3ccdf99e7dda55e19eed7.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "zeekr": {
+      "asset_sha256": "9a0ff899310c7f692377f49b96d127bb5d7e1ca7ac3177659e30f26ed6471930",
+      "src": "/subject-logos/cars/zeekr.9a0ff899310c.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.zeekrlife.com/global/",
+      "reviewed_at": "2026-11-13T11:28:55.091597+00:00",
+      "artwork_preview_id": "jc-zeekr-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/zeekr-coloring-page-100/catalog_thumb_bw.51ea1eda2beb2312baad49e2.webp",
+      "actual_final_card_proofs": {
+        "sixteen-final-390-1.png": "a9c155129aadda9b12c52c8199b8733f2c24b0ee54172b33cbc5e4b739c40ce7",
+        "sixteen-final-390-2.png": "385f592695763618111919a871ab4b8d2435ad34e63d7b7b2a9c58adb4b28348",
+        "sixteen-final-390-3.png": "9fb055b83116adcc0856e9a503860ac10418e69204e932213c61d2017ad13e04",
+        "sixteen-final-1440-3.png": "b54bd0bbad16e0cb833e1483f8b4124d850e456725ff8d4e9507384c15ee3a9d",
+        "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
+        "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
+        "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
       }
     }
   }
