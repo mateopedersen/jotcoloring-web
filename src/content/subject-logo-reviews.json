@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "157 additional subject identities: 98 automotive brands and 59 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "159 additional subject identities: 98 automotive brands and 61 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2389,6 +2389,36 @@
         "two-popmart-final-1440-1.png": "bbf4df774b27027fa09dc0c9b9bbf7ebfd7989c80280eb2ad3ef46098a7cac1d",
         "two-popmart-final-390-1.png": "712190d0ece7901a46a9cf64fdb1798637f5fa6c20e37e73c67cab1326416fb7",
         "two-popmart-browser-verification.json": "27d5e1df477c377195ae889046c12735a73daaa787b30bee46d98af849fa83ff"
+      }
+    },
+    "minecraft": {
+      "asset_sha256": "04109cc4f3fe2f1beb75071cfdaad41604e45afe362c24237eaf8e83fc75f6fe",
+      "src": "/subject-logos/subjects/minecraft.04109cc4f3fe.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.xbox.com/en-US/games/store/minecraft/9MVXMVT8ZKWC",
+      "reviewed_at": "2026-11-13T13:16:36.187278+00:00",
+      "artwork_preview_id": "jc-minecraft-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/minecraft-builders-and-a-wolf-on-an-adventure-path/catalog_thumb_bw.d339aad111cd13495c7604aa.webp",
+      "actual_final_card_proofs": {
+        "two-game-film-final-1440-1.png": "a56a960d27f2eed01576605b973dc13a61102d1ce8fdb2f18bb1456d618bff79",
+        "two-game-film-final-390-1.png": "c852f921d1b98fef984a1d757e65ff84348eaa2e6c3430e350b11e2915ea6ad9",
+        "two-game-film-browser-verification.json": "6b5a8624aabe1f7266abe6ef4783b9c23a47e256580a2d3e7d150f6cdb8883a9"
+      }
+    },
+    "pennywise": {
+      "asset_sha256": "868a51afd264f9d0f51439da22756643728806f030b79ea4fc1ce7f717d4a17a",
+      "src": "/subject-logos/subjects/pennywise.868a51afd264.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.warnerbros.com/movies/it",
+      "reviewed_at": "2026-11-13T13:16:36.187522+00:00",
+      "artwork_preview_id": "jc-pennywise-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/fantasy/pennywise-pennywise-coloring-page-100-clown/catalog_thumb_bw.c450e885ce15e39a074cd251.webp",
+      "actual_final_card_proofs": {
+        "two-game-film-final-1440-1.png": "a56a960d27f2eed01576605b973dc13a61102d1ce8fdb2f18bb1456d618bff79",
+        "two-game-film-final-390-1.png": "c852f921d1b98fef984a1d757e65ff84348eaa2e6c3430e350b11e2915ea6ad9",
+        "two-game-film-browser-verification.json": "6b5a8624aabe1f7266abe6ef4783b9c23a47e256580a2d3e7d150f6cdb8883a9"
       }
     }
   }

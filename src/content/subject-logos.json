@@ -2524,6 +2524,53 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:12:18.104Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "minecraft": {
+      "id": "minecraft",
+      "sha256": "04109cc4f3fe2f1beb75071cfdaad41604e45afe362c24237eaf8e83fc75f6fe",
+      "bytes": 133955,
+      "asset_source": "https://store-images.s-microsoft.com/image/apps.46509.13850085746326678.06e2dc5c-7997-46e9-a8e6-0e48b57cb13b.86bf6099-e11f-428b-a60a-1947131b7c26",
+      "identity_reference": "https://www.xbox.com/en-US/games/store/minecraft/9MVXMVT8ZKWC",
+      "source_page_sha256": "c5048289acecc4af0f8385dd7e7263a5f66452f0f8a3e9ca10ceb5b1962168e8",
+      "source_container_sha256": "4969da7353933cf9e9c0fb0816b162c5eb1b3431183a3ef231eadacc108ab37f",
+      "source_crop_pixels": [
+        120,
+        82,
+        970,
+        287
+      ],
+      "source_kind": "publisher_game_box_art_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/minecraft.04109cc4f3fe.png",
+      "name": "Minecraft",
+      "source_sha256": "82dd4d84cc1c1a20ed4bade7786902c651de91a7c42b3e491cc350e3cf1e8cd7",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T13:16:12.927Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "pennywise": {
+      "id": "pennywise",
+      "sha256": "868a51afd264f9d0f51439da22756643728806f030b79ea4fc1ce7f717d4a17a",
+      "bytes": 196431,
+      "asset_source": "https://irs.www.warnerbros.com/gallery-v2-jpeg/movies/file/ajax/fieldimage/und/form-8s5ltfxpwcjj5zy-pvt-d5nfnlsidejhoxrmsvkcxew/IT-19590r.jpg",
+      "identity_reference": "https://www.warnerbros.com/movies/it",
+      "source_page_sha256": "cf0952aa026828a05e5c997f0b52b9cc84f4450ce72184f4e566ab09ab994ac3",
+      "source_container_sha256": "7f831365d4f0c86e67e223c44dec5e1e95705cfb216b7fc6fa9eef12c1a09905",
+      "source_crop_pixels": [
+        190,
+        0,
+        490,
+        315
+      ],
+      "source_kind": "publisher_film_character_still",
+      "asset_kind": "official_character_portrait",
+      "surface": "dark",
+      "src": "/subject-logos/subjects/pennywise.868a51afd264.png",
+      "name": "Pennywise",
+      "source_sha256": "981f8805093626b42a060d6dc3c367e3646fda3704a22567cdc6aa2d2d14cc29",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:16:12.944Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
