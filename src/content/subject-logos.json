@@ -2888,6 +2888,80 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T14:23:36.551Z",
       "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
+    },
+    "desoto": {
+      "id": "desoto",
+      "name": "DeSoto",
+      "sha256": "fb8f1da64b36b0253957a2e0573b78f62529ff9dbb7875b650b234113ad9fafe",
+      "bytes": 144442,
+      "asset_source": "https://over-drive-magazine.com/wp-content/uploads/2025/01/1957-DeSoto-Prestige-Brochure-1-16C.pdf",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/167036",
+      "source_container_sha256": "541e3f3c8c87db15e862e906eabee18a09bd307a6150d183691be2752fa156a5",
+      "source_page_sha256": "70c5dacb4f848d1b4447c9c18c6c5c6122f1881f58a7cd3bd963907f2ab3e34e",
+      "source_crop_pixels": [
+        1400,
+        1400,
+        1890,
+        1550
+      ],
+      "source_kind": "archived_original_manufacturer_brochure_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/desoto.fb8f1da64b36.png",
+      "source_sha256": "55b4f3d0e4fb403116bd644e889a1cba2f25ba0510841e6c05eff3e7b55e4093",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T14:34:06.077Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "nash": {
+      "id": "nash",
+      "name": "Nash",
+      "sha256": "4a64385dd66fbe65d1917f0c782a3aec05d92f30bf6f3fd75e1379abcff1cbd3",
+      "bytes": 42840,
+      "asset_source": "https://oldcarbrochures.org/United%20States/Nash/1954%20Nash/1954%20Nash%20Airflyte%20Brochure/1954_Nash_Airflight-01.jpg",
+      "identity_reference": "https://oldcarbrochures.org/United%20States/Nash/1954%20Nash/1954%20Nash%20Airflyte%20Brochure/index.html",
+      "source_container_sha256": "019bde77d36819738ff5c8d97ed0d1702765c551b46cef36a6441dd2a4d49004",
+      "source_page_sha256": "be60edd850a23041d68b82ef695947be918bd388b8b49f1391e4172a3abf733f",
+      "source_crop_pixels": [
+        615,
+        161,
+        963,
+        267
+      ],
+      "source_kind": "archived_original_manufacturer_brochure_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/nash.4a64385dd66f.png",
+      "source_sha256": "727fb1c2e9926d317310d63d32e3508be1902b6a789a79e1e3b4feffa8d24250",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T14:34:06.102Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "blaze": {
+      "id": "blaze",
+      "sha256": "9eb120ce3b2ec591f135fa130bff90f039922d1df7c40f5f1a800d28ccaeebd4",
+      "bytes": 199802,
+      "asset_source": "https://service.mattel.com/instruction_sheets/DKV68%20DOM-IS.pdf",
+      "identity_reference": "https://service.mattel.com/us/productDetail.aspx?prodno=DKV68&siteid=27",
+      "source_page_sha256": "eda11ff8f4838dc3b1f8718bf39f7573d7ea73a2be79d7f766c0f73474943f64",
+      "source_container_sha256": "c42cc0baf12c7cb288331e68c53a4a1309a70cfcea53a89f6d56be166491497d",
+      "source_document_page": 1,
+      "source_crop_render_size": [
+        6500,
+        4596
+      ],
+      "source_crop_pixels": [
+        3400,
+        220,
+        4290,
+        714
+      ],
+      "source_kind": "licensed_manufacturer_manual_original_show_logo",
+      "surface": "light",
+      "src": "/subject-logos/subjects/blaze.9eb120ce3b2e.png",
+      "name": "Blaze",
+      "source_sha256": "e833fcfcef0682890fd4213e56676cf52f0c4e1e7423d62fd69faecb5b72d362",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:42:15.398Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
