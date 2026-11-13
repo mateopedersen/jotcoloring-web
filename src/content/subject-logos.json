@@ -2788,6 +2788,106 @@
       "shape": "wide",
       "reviewed_at": "2026-11-13T14:13:42.215Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "auburn": {
+      "id": "auburn",
+      "sha256": "d2d891601cbb654a12a7398002bbda100d27828ac817f6d5d7181b5f29e53e94",
+      "bytes": 610302,
+      "asset_source": "https://acdamstore.com/cdn/shop/files/X6536.png?v=1773250788&width=1600",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "source_container_sha256": "2c757dc998118b3f0f8c52646d2a7a02e48c182c8bac17653227279b95ef8263",
+      "source_crop_pixels": [
+        45,
+        427,
+        660,
+        878
+      ],
+      "source_kind": "historical_automobile_museum_brand_emblem_reproduction",
+      "surface": "light",
+      "src": "/subject-logos/subjects/auburn.d2d891601cbb.png",
+      "name": "Auburn",
+      "source_sha256": "f89c0b237822b71c824fb839f43125f8d4bd09ae3e31eb0d782ba64e66875e7f",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:21:11.254Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "cord": {
+      "id": "cord",
+      "sha256": "472470664dba41dfaf897f15aa82681cd323d83695f2920c433588decc53a1d1",
+      "bytes": 595246,
+      "asset_source": "https://acdamstore.com/cdn/shop/files/X6536.png?v=1773250788&width=1600",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "source_container_sha256": "2c757dc998118b3f0f8c52646d2a7a02e48c182c8bac17653227279b95ef8263",
+      "source_crop_pixels": [
+        735,
+        413,
+        1455,
+        885
+      ],
+      "source_kind": "historical_automobile_museum_brand_emblem_reproduction",
+      "surface": "light",
+      "src": "/subject-logos/subjects/cord.472470664dba.png",
+      "name": "Cord",
+      "source_sha256": "53e2a504252ccca764ab355fe914acbb333bd48840c7ea3809e0fb7f6d31c038",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:21:11.280Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "duesenberg": {
+      "id": "duesenberg",
+      "sha256": "3b795048ff5f4a526eff9e30523ce1ff79fdeb396b011ee6cbfa3d378cb97f13",
+      "bytes": 368401,
+      "asset_source": "https://acdamstore.com/cdn/shop/files/X6536.png?v=1773250788&width=1600",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "source_container_sha256": "2c757dc998118b3f0f8c52646d2a7a02e48c182c8bac17653227279b95ef8263",
+      "source_crop_pixels": [
+        240,
+        1013,
+        975,
+        1335
+      ],
+      "source_kind": "historical_automobile_museum_brand_emblem_reproduction",
+      "surface": "light",
+      "src": "/subject-logos/subjects/duesenberg.3b795048ff5f.png",
+      "name": "Duesenberg",
+      "source_sha256": "98071027afc512704b04e4fa05a68e4af0a349414786182374fc3ef6f9d9ae67",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T14:21:11.298Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "glickenhaus": {
+      "id": "glickenhaus",
+      "sha256": "0ea976a66f3bf88ca4ba57833a108b50b56d2ad54482cbe782a318ba831a2dfb",
+      "bytes": 33846,
+      "asset_source": "https://press.fiawec.com/assets/fileuploads/63/fe/63fe1e571c7a7.pdf",
+      "identity_reference": "https://vpic.nhtsa.dot.gov/mid/manufacturer/details/16928",
+      "source_container_sha256": "ae90501d7571bec4a05f08e1b501a9573beed4c037ae8bb926a94e02bdbdf67a",
+      "source_document_page": 11,
+      "source_image_object": "Im1.jp2",
+      "source_kind": "official_championship_press_document_native_team_logo",
+      "surface": "light",
+      "src": "/subject-logos/subjects/glickenhaus.0ea976a66f3b.png",
+      "name": "Glickenhaus",
+      "source_sha256": "400d27c0dc6aa619c83ead1e62801669b944b6b740a210b721e29c435b3f534b",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:21:11.302Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "rainbow-friends": {
+      "id": "rainbow-friends",
+      "sha256": "855a954678bdf10a7dbadfd2a08dc36eb72d62a0d52da17b49d5dbb413a9947b",
+      "bytes": 370061,
+      "asset_source": "https://img1.wsimg.com/isteam/ip/8f6e44fc-cbe0-41b5-8cb0-7b42bea1770c/rainbowFriendsLogo1_withmarks.png",
+      "identity_reference": "https://roycharcle.com/",
+      "source_page_sha256": "f87787ee05448aa88db01e554d226288ee17f18792fb3ea5263599f4e82fec2a",
+      "source_kind": "creator_website_native_game_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/rainbow-friends.855a954678bd.png",
+      "name": "Rainbow Friends",
+      "source_sha256": "dcac075f301da47794633390546f9a77ab50cd38c1c9a1a6587f803ecf1316d8",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:23:36.551Z",
+      "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
     }
   }
 }

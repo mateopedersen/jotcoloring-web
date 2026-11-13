@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "169 additional subject identities: 105 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "174 additional subject identities: 109 automotive brands and 65 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2569,6 +2569,81 @@
         "saleen-original-final-1440-1.png": "896214eb3c56454cbeeba7326ea8aaf0638bec20fca05efabeac174c164578d6",
         "saleen-original-final-390-1.png": "b925efb6a0007916ab0173f1c2c524ec57f50cbaba57c3dea2bc65dbe531f941",
         "saleen-original-browser-verification.json": "7675a064f3d0b9a0622bd72f3446c0090e81d2345c14e1907bfdaf0409ea5223"
+      }
+    },
+    "auburn": {
+      "asset_sha256": "d2d891601cbb654a12a7398002bbda100d27828ac817f6d5d7181b5f29e53e94",
+      "src": "/subject-logos/subjects/auburn.d2d891601cbb.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "reviewed_at": "2026-11-13T14:23:00.356435+00:00",
+      "artwork_preview_id": "jc-auburn-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/auburn-coloring-page-100/catalog_thumb_bw.9c6571f586335b3275dbd147.webp",
+      "actual_final_card_proofs": {
+        "four-historical-racing-final-390-1.png": "5ff15e2bb0486036bb44a1d376612e58d7b3ca92030ec59c6d937018bc099c07",
+        "four-historical-racing-final-1440-1.png": "ebb887931bd9e696c34538107b523235d8795c15b8e2713c7d921877de289f8a",
+        "four-historical-racing-browser-verification.json": "131e4fe10a453fe638b864fd32ca9640d82eccafc739c461507344127b64236d"
+      }
+    },
+    "cord": {
+      "asset_sha256": "472470664dba41dfaf897f15aa82681cd323d83695f2920c433588decc53a1d1",
+      "src": "/subject-logos/subjects/cord.472470664dba.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "reviewed_at": "2026-11-13T14:23:00.357243+00:00",
+      "artwork_preview_id": "jc-cord-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/cord-coloring-page-100/catalog_thumb_bw.7ab9185ee0afd34695779f52.webp",
+      "actual_final_card_proofs": {
+        "four-historical-racing-final-390-1.png": "5ff15e2bb0486036bb44a1d376612e58d7b3ca92030ec59c6d937018bc099c07",
+        "four-historical-racing-final-1440-1.png": "ebb887931bd9e696c34538107b523235d8795c15b8e2713c7d921877de289f8a",
+        "four-historical-racing-browser-verification.json": "131e4fe10a453fe638b864fd32ca9640d82eccafc739c461507344127b64236d"
+      }
+    },
+    "duesenberg": {
+      "asset_sha256": "3b795048ff5f4a526eff9e30523ce1ff79fdeb396b011ee6cbfa3d378cb97f13",
+      "src": "/subject-logos/subjects/duesenberg.3b795048ff5f.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://acdamstore.com/products/auburn-cord-or-duesenberg-logo-patch",
+      "reviewed_at": "2026-11-13T14:23:00.357722+00:00",
+      "artwork_preview_id": "jc-duesenberg-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/duesenberg-coloring-page-100/catalog_thumb_bw.d45bf4440852394518ce455f.webp",
+      "actual_final_card_proofs": {
+        "four-historical-racing-final-390-1.png": "5ff15e2bb0486036bb44a1d376612e58d7b3ca92030ec59c6d937018bc099c07",
+        "four-historical-racing-final-1440-1.png": "ebb887931bd9e696c34538107b523235d8795c15b8e2713c7d921877de289f8a",
+        "four-historical-racing-browser-verification.json": "131e4fe10a453fe638b864fd32ca9640d82eccafc739c461507344127b64236d"
+      }
+    },
+    "glickenhaus": {
+      "asset_sha256": "0ea976a66f3bf88ca4ba57833a108b50b56d2ad54482cbe782a318ba831a2dfb",
+      "src": "/subject-logos/subjects/glickenhaus.0ea976a66f3b.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://vpic.nhtsa.dot.gov/mid/manufacturer/details/16928",
+      "reviewed_at": "2026-11-13T14:23:00.357886+00:00",
+      "artwork_preview_id": "jc-glickenhaus-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/glickenhaus-coloring-page-100/catalog_thumb_bw.939d37733e6023b4e207b587.webp",
+      "actual_final_card_proofs": {
+        "four-historical-racing-final-390-1.png": "5ff15e2bb0486036bb44a1d376612e58d7b3ca92030ec59c6d937018bc099c07",
+        "four-historical-racing-final-1440-1.png": "ebb887931bd9e696c34538107b523235d8795c15b8e2713c7d921877de289f8a",
+        "four-historical-racing-browser-verification.json": "131e4fe10a453fe638b864fd32ca9640d82eccafc739c461507344127b64236d"
+      }
+    },
+    "rainbow-friends": {
+      "asset_sha256": "855a954678bdf10a7dbadfd2a08dc36eb72d62a0d52da17b49d5dbb413a9947b",
+      "src": "/subject-logos/subjects/rainbow-friends.855a954678bd.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://roycharcle.com/",
+      "reviewed_at": "2026-11-13T14:24:57.209956+00:00",
+      "artwork_preview_id": "jc-rainbow-friends-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/rainbow-friends-coloring-page-100/catalog_thumb_bw.8b59d6c42007e829f662ac34.webp",
+      "actual_final_card_proofs": {
+        "rainbow-friends-original-final-1440-1.png": "e348d859658f11ab93a05c31eeb33f93fd1d1ebca97ff21f6308b1588041aeb1",
+        "rainbow-friends-original-final-390-1.png": "c2272fd4cb391ef6cfb567a978fcf8075c0096ddf28ef8e36aa38dbc523059e2",
+        "rainbow-friends-original-browser-verification.json": "480f31832374c283950280bf7dd63f5ac316d92f606d9578b456c7e66838deb3"
       }
     }
   }
