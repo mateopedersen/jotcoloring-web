@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "145 additional subject logos: 96 automotive brands and 49 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "149 additional subject logos: 98 automotive brands and 51 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2209,6 +2209,66 @@
         "tesla-bentley-final-1440-1.png": "cff39d4663c29704d9bd341f089ac9ce959e9c2792100bdc2ad46a29cb2d6f11",
         "tesla-bentley-final-390-1.png": "9602a03060f534a0e262e24ba76b4063bc17b4714b4ba5f87bfc5d8ae013df5f",
         "tesla-bentley-browser-verification.json": "fd60f785e39e4ad922ea584531686cc5f8952a6b62fe32e66ab4fef4ab2eec44"
+      }
+    },
+    "k-pop-demon-hunters": {
+      "asset_sha256": "c3ff87a2543fc731d6443018f7afb49c2e3bcc0d9d9f2cc6127b1e648d8b073a",
+      "src": "/subject-logos/subjects/k-pop-demon-hunters.c3ff87a2543f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.netflix.com/title/81498621",
+      "reviewed_at": "2026-11-13T12:57:48.182192+00:00",
+      "artwork_preview_id": "jc-k-pop-demon-hunters-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/kpop-demon-hunters-friends-make-a-floral-arch/catalog_thumb_bw.73de245d8f2b15c022f74073.webp",
+      "actual_final_card_proofs": {
+        "four-kpop-auto-final-1440-1.png": "d6cf3bdf8fe6481d2d548bf140906debc95950c849f914a1ba77b7fecb00048a",
+        "four-kpop-auto-final-390-1.png": "a60292f67a06c38fab717e91f7068427aba1202e90bc467fc9543a393a7343b5",
+        "four-kpop-auto-browser-verification.json": "752dbdb90fe40fe473395fd033d76f5d4489de75b8c2b8166190a114299aa844"
+      }
+    },
+    "huntrix": {
+      "asset_sha256": "779ee8622ced88c0938300eb708441688e6b11dc2645ddc0c53b38bf122df85d",
+      "src": "/subject-logos/subjects/huntrix.779ee8622ced.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.netflix.com/tudum/articles/kpop-demon-hunters-release-date-cast-news",
+      "reviewed_at": "2026-11-13T12:57:48.182640+00:00",
+      "artwork_preview_id": "jc-k-pop-demon-hunters-very-hard-022",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/huntr-x-faces-gwi-ma-s-fiery-presence/catalog_thumb_bw.e5d991343efaa8fcccfb9104.webp",
+      "actual_final_card_proofs": {
+        "four-kpop-auto-final-1440-1.png": "d6cf3bdf8fe6481d2d548bf140906debc95950c849f914a1ba77b7fecb00048a",
+        "four-kpop-auto-final-390-1.png": "a60292f67a06c38fab717e91f7068427aba1202e90bc467fc9543a393a7343b5",
+        "four-kpop-auto-browser-verification.json": "752dbdb90fe40fe473395fd033d76f5d4489de75b8c2b8166190a114299aa844"
+      }
+    },
+    "datsun": {
+      "asset_sha256": "3a9086fe732313f8ee4a152a605f01db99dd837573a8e2a17da58960b1534a43",
+      "src": "/subject-logos/cars/datsun.3a9086fe7323.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.nissan-global.com/EN/IR_OLD/LIBRARY/ASSETS/DATA/2012/SR12_E_All.pdf",
+      "reviewed_at": "2026-11-13T12:57:48.183066+00:00",
+      "artwork_preview_id": "jc-datsun-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/datsun-coloring-page-100/catalog_thumb_bw.e8c494f87d0c86884c6fc456.webp",
+      "actual_final_card_proofs": {
+        "four-kpop-auto-final-1440-1.png": "d6cf3bdf8fe6481d2d548bf140906debc95950c849f914a1ba77b7fecb00048a",
+        "four-kpop-auto-final-390-1.png": "a60292f67a06c38fab717e91f7068427aba1202e90bc467fc9543a393a7343b5",
+        "four-kpop-auto-browser-verification.json": "752dbdb90fe40fe473395fd033d76f5d4489de75b8c2b8166190a114299aa844"
+      }
+    },
+    "daewoo": {
+      "asset_sha256": "0b490b149c283e5b5b1012f516c4bbe71293291889cf555ff7a684b307840468",
+      "src": "/subject-logos/cars/daewoo.0b490b149c28.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://static.nhtsa.gov/nhtsa/downloads/MfrMail/01-022-N11B-9577.pdf",
+      "reviewed_at": "2026-11-13T12:57:48.183318+00:00",
+      "artwork_preview_id": "jc-daewoo-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/daewoo-coloring-page-100/catalog_thumb_bw.f56c8ed229c39f72d3495e2d.webp",
+      "actual_final_card_proofs": {
+        "four-kpop-auto-final-1440-1.png": "d6cf3bdf8fe6481d2d548bf140906debc95950c849f914a1ba77b7fecb00048a",
+        "four-kpop-auto-final-390-1.png": "a60292f67a06c38fab717e91f7068427aba1202e90bc467fc9543a393a7343b5",
+        "four-kpop-auto-browser-verification.json": "752dbdb90fe40fe473395fd033d76f5d4489de75b8c2b8166190a114299aa844"
       }
     }
   }

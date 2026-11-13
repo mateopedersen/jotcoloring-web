@@ -2253,6 +2253,88 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T12:49:29.695Z",
       "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
+    },
+    "k-pop-demon-hunters": {
+      "id": "k-pop-demon-hunters",
+      "asset_source": "https://occ-0-7290-448.1.nflxso.net/dnm/api/v6/S4oi7EPZbv2UEPaukW54OORa0S8/AAAABZE_i-efKxhpGBvMRiL6ZkL9NFCkiyj5VURMEO8I6K0nTtGc4IGKZ1wA5NeGsDtV3X5sSetGq3YcNlbdNl8qyj8IsrUZ8wOxOg.png?r=1de",
+      "identity_reference": "https://www.netflix.com/title/81498621",
+      "source_page_sha256": "baa53dee53d36b7cabad64032226fcabbca17a5e0586fe1245dd045bb529ac00",
+      "sha256": "c3ff87a2543fc731d6443018f7afb49c2e3bcc0d9d9f2cc6127b1e648d8b073a",
+      "bytes": 11202,
+      "surface": "dark",
+      "src": "/subject-logos/subjects/k-pop-demon-hunters.c3ff87a2543f.png",
+      "name": "KPop Demon Hunters",
+      "source_sha256": "36e892da9888cf9399866eb263f03efa8f3bf4ea6c2cca52e4382579f17bf58e",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T12:57:24.279Z",
+      "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
+    },
+    "huntrix": {
+      "id": "huntrix",
+      "sha256": "779ee8622ced88c0938300eb708441688e6b11dc2645ddc0c53b38bf122df85d",
+      "bytes": 228337,
+      "asset_source": "https://assets.adg.org/media/submissions/2025-11-18_10-43-43/KPOP_design_presenation.pdf",
+      "identity_reference": "https://www.netflix.com/tudum/articles/kpop-demon-hunters-release-date-cast-news",
+      "source_container_sha256": "a8c22e666ce5a250e7dd650b9764167a82134a457b9d5411c022b92c2e48edf9",
+      "source_page": 3,
+      "source_crop_points": [
+        315.216,
+        102.13195342820181,
+        473.616,
+        261.26778783958605
+      ],
+      "source_kind": "film_production_design_awards_submission_official_group_symbol",
+      "surface": "dark",
+      "asset_kind": "official_group_symbol_and_wordmark",
+      "src": "/subject-logos/subjects/huntrix.779ee8622ced.png",
+      "name": "HUNTR/X",
+      "source_sha256": "7a8549f798aa028a38d63207e183c5b479c16c885ccb123efac03335669ba479",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T12:57:24.303Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "datsun": {
+      "id": "datsun",
+      "sha256": "3a9086fe732313f8ee4a152a605f01db99dd837573a8e2a17da58960b1534a43",
+      "bytes": 343458,
+      "asset_source": "https://www.nissan-global.com/EN/IR_OLD/LIBRARY/ASSETS/DATA/2012/SR12_E_All.pdf",
+      "surface": "light",
+      "source_container_sha256": "370c4576ac322e8795e6eb2faae3239b2dc5c5fe529f66ba10eb7d5a5bf80c20",
+      "source_page": 6,
+      "source_crop_points": [
+        60.79016496465043,
+        77.17325,
+        162.73059544383344,
+        137.97641666666667
+      ],
+      "identity_reference": "https://www.nissan-global.com/EN/IR_OLD/LIBRARY/ASSETS/DATA/2012/SR12_E_All.pdf",
+      "source_kind": "manufacturer_sustainability_report_brand_mark",
+      "src": "/subject-logos/cars/datsun.3a9086fe7323.png",
+      "name": "Datsun",
+      "source_sha256": "44880e11dcd3e5e33147c871dc372f26cde4635b1250ee09eee5fd382bd72ee5",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T12:57:24.319Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "daewoo": {
+      "id": "daewoo",
+      "asset_source": "https://raw.githubusercontent.com/filippofilip95/car-logos-dataset/master/logos/optimized/daewoo.png",
+      "sha256": "0b490b149c283e5b5b1012f516c4bbe71293291889cf555ff7a684b307840468",
+      "bytes": 165497,
+      "identity_reference": "https://static.nhtsa.gov/nhtsa/downloads/MfrMail/01-022-N11B-9577.pdf",
+      "source_kind": "existing_logo_reproduction_compared_to_manufacturer_NHTSA_filing",
+      "source_reference_sha256": "e73d12c0a588c5e8cca5cae4ca6e63d80d5e936cd7d7a4eec0a7f19c4cf017ea",
+      "source_reference_pages": [
+        2,
+        3
+      ],
+      "surface": "light",
+      "src": "/subject-logos/cars/daewoo.0b490b149c28.png",
+      "name": "Daewoo",
+      "source_sha256": "0491e6a7206bfce4ca658d97f4fcbddfe6816002acffc930b290ba90a64c2ada",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T12:57:24.358Z",
+      "transformation": "Existing logo reproduction decoded to PNG and outer uniform padding trimmed; compared with original manufacturer filing."
     }
   }
 }
