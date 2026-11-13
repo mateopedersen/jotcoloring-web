@@ -1,6 +1,7 @@
 import subjects from '../content/subject-logos.json';
 import reviews from '../content/subject-logo-reviews.json';
 import {nbaTeamLogo} from './team-logo';
+import {wnbaTeamLogo} from './wnba-team-logo';
 
 export interface SubjectLogo {
  src:string;
@@ -13,6 +14,8 @@ export interface SubjectLogo {
 export function subjectLogo(topicId:string):SubjectLogo|undefined {
  const team=nbaTeamLogo(topicId);
  if(team)return {src:team.src,kind:'team',surface:'none',shape:'square'};
+ const wnba=wnbaTeamLogo(topicId);
+ if(wnba)return {src:wnba.src,kind:'team',surface:wnba.surface as SubjectLogo['surface'],shape:'square'};
  if(!Object.prototype.hasOwnProperty.call(subjects.subjects,topicId))return;
  const logo=subjects.subjects[topicId as keyof typeof subjects.subjects];
  if(!logo.reviewed_at||!Object.prototype.hasOwnProperty.call(reviews.subjects,topicId))return;
