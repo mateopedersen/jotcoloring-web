@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "185 additional subject identities: 118 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "193 additional subject identities: 124 automotive brands and 69 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2809,6 +2809,142 @@
         "fisker-vinfast-race-car-final-1440-1.png": "7c028c9bd999d8ec5a687d46b15711364a9c9c9827b4da81bb1c4df507eeda94",
         "fisker-vinfast-race-car-final-390-1.png": "d4842d71545ffc0ceb2cd1b1d245438d59d7f52a3e39fc381263f02d4a933a5c",
         "fisker-vinfast-race-car-browser-verification.json": "d4fc9b86fe1c235e14f66aa32c0bd387c142e225e5c0efaf9cc49ea10ddce4fd"
+      }
+    },
+    "anadol": {
+      "asset_sha256": "c16ddae2da6881ea0ad0b425ef173dd708bffa11da4489e47e16a6c138ca7ea8",
+      "src": "/subject-logos/subjects/anadol.c16ddae2da68.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://anadolturkey.com/web/images/stories/tamir_kitabi/Tamir_Kitabi.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.862064+00:00",
+      "artwork_preview_id": "jc-anadol-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/anadol-coloring-page-100/catalog_thumb_bw.ddffc5daca08cb1f5465a7b2.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "willys": {
+      "asset_sha256": "e4401c7774d6121c2622a1b10dbc03f9823b5eb52a2e75d342419e6897ae0c36",
+      "src": "/subject-logos/subjects/willys.e4401c7774d6.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.wokr.org/gallery/Wil_195.htm",
+      "reviewed_at": "2026-11-13T16:09:34.862451+00:00",
+      "artwork_preview_id": "jc-willys-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/willys-coloring-page-100/catalog_thumb_bw.b792b366e7a55e4436a97aa2.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "baker-electric": {
+      "asset_sha256": "8f99f84098a7454d3dbe8cd82724309e53c138079e96f3487b6485e12fec24c3",
+      "src": "/subject-logos/subjects/baker-electric.8f99f84098a7.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.earlyelectric.com/downloads_files/baker/1908Brochure.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.863107+00:00",
+      "artwork_preview_id": "jc-baker-electric-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/baker-electric-coloring-page-100/catalog_thumb_bw.676c3914b2cec49568fc3316.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "detroit-electric": {
+      "asset_sha256": "098f6577e6fa6038f5af659505f558bde1e92505816279280727751df0fe9484",
+      "src": "/subject-logos/subjects/detroit-electric.098f6577e6fa.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.earlyelectric.com/downloads_files/detroit/1917DetroitBrochure.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.863530+00:00",
+      "artwork_preview_id": "jc-detroit-electric-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/detroit-electric-coloring-page-100/catalog_thumb_bw.60b6174b8ac0b649cc077758.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "eagle": {
+      "asset_sha256": "0560d89f3ee5bc6c3b1f12cb46bb8051a14ac350e8bb08872151538b85339f81",
+      "src": "/subject-logos/subjects/eagle.0560d89f3ee5.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.auto-brochures.com/makes/amc/eagle%20vision/AMC_US%20EagleVision_1995.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.863798+00:00",
+      "artwork_preview_id": "jc-eagle-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/eagle-coloring-page-100/catalog_thumb_bw.281d06381eb7870a30f1ddc1.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "geo": {
+      "asset_sha256": "12f1beaa817e626bcd8cceb4120b78301d7336e904ca518aa1f9850f3b104094",
+      "src": "/subject-logos/subjects/geo.12f1beaa817e.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://xr793.com/wp-content/uploads/2024/12/1990-GEO-Full-Line.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.864194+00:00",
+      "artwork_preview_id": "jc-geo-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/geo-coloring-page-100/catalog_thumb_bw.ae723187e17052dcc1f97c71.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "roblox": {
+      "asset_sha256": "e547f8c001fe860f3de2c1d82e6f4bef166ec26561a455a5110446c17d688991",
+      "src": "/subject-logos/subjects/roblox.e547f8c001fe.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.sec.gov/Archives/edgar/data/1315098/000110465926044380/rblx-20251231xars.pdf",
+      "reviewed_at": "2026-11-13T16:09:34.864380+00:00",
+      "artwork_preview_id": "jc-roblox-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/roblox-coloring-page-100/catalog_thumb_bw.3166451ae544d5495eb2ef37.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
+      }
+    },
+    "rocket-league": {
+      "asset_sha256": "2c25dc5786ee09abb21c9984eb37297ba661e7d9c5839e6acc74dca0ec983daa",
+      "src": "/subject-logos/subjects/rocket-league.2c25dc5786ee.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://store.steampowered.com/app/252950/Rocket_League/",
+      "reviewed_at": "2026-11-13T16:09:34.864590+00:00",
+      "artwork_preview_id": "jc-rocket-league-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/rocket-league-coloring-page-100/catalog_thumb_bw.19dc915c641ddf5dc96151c8.webp",
+      "actual_final_card_proofs": {
+        "eight-final-brand-final-1440-2.png": "76467155a21042353db0d4022426859826091096ae08bfb43185fa023535d2f1",
+        "eight-final-brand-final-1440-1.png": "65e23d5ce126a058876103e0e2e53d14d55300d8128b9e3f2e3389699b386a1d",
+        "eight-final-brand-final-390-2.png": "51666ce17e45de83d60bc3f23b0d535fa68570a8175e9d8ed748436b73e13461",
+        "eight-final-brand-final-390-1.png": "08a4a37d04daf750c646111ddf2b8c1fe5edc870ce3a488b3c9425b2d9e5de4e",
+        "eight-final-brand-browser-verification.json": "e54d3e207bdd17b8255087aa1391fd8782dea768afe01a7a2686acd3b3080dcc"
       }
     }
   }
