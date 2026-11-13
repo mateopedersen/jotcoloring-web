@@ -1,0 +1,646 @@
+{
+  "version": 1,
+  "scope": "63 additional subject logos: 35 automotive brands and 28 other branded subjects; existing 30 NBA logos preserved separately.",
+  "proofs": {
+    "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
+    "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
+    "desktop-mobile-1440.png": "35bc77da846d65dd66121e5b070109beb4ebbe2ff260e5b269dee292e0637efe",
+    "desktop-mobile-390.png": "95644efb5a328fc1cfe6d9a1d4c9d8f60cf26b874383dc96c7f8703d29d91631",
+    "related-search-1440.png": "f4140fc84944579d19cc9a78c56c21025287d0ad221a4a2a65a9911187e28b59",
+    "related-search-390.png": "cd4669595c6dda9383a27466f6b649b313264372fe27cee728070430c6fb138e",
+    "monchhichi-final-1440.png": "30445d10da851b27a602e6319a1a62de1669d51d2b1ab4653c5495ebbd0f9e18",
+    "monchhichi-final-390.png": "89311db58ae125b811f398f744fe3dedbd485f6ca977d3c97bc920ed8f61c1d7"
+  },
+  "subjects": {
+    "byd": {
+      "asset_sha256": "2b8ca934df800f3a3da8088817de44d971068ef7e55353495ff355fa401a5e9a",
+      "src": "/subject-logos/cars/byd.2b8ca934df80.svg",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.byd.com/",
+      "reviewed_at": "2026-11-13T10:31:01.942797+00:00",
+      "artwork_preview_id": "jc-byd-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/byd-dolphin-surf-2025-europe-100-coloring-page/catalog_thumb_bw.8394f2c180aac24b2b5e6f3d.webp"
+    },
+    "gmc": {
+      "asset_sha256": "f3ac382262c3837c8b3e24840be3b587254b5c06b65e30d73ed003e7bcb0827e",
+      "src": "/subject-logos/cars/gmc.f3ac382262c3.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.gmc.com/",
+      "reviewed_at": "2026-11-13T10:31:01.943151+00:00",
+      "artwork_preview_id": "jc-gmc-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/gmc-coloring-page-100/catalog_thumb_bw.435613677fbad73f0e0def15.webp"
+    },
+    "kia": {
+      "asset_sha256": "9accc93b657588643aa950b2f87d0d9ccd9994e7608d7f8239692622c22f78e2",
+      "src": "/subject-logos/cars/kia.9accc93b6575.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.kia.com/",
+      "reviewed_at": "2026-11-13T10:31:01.943281+00:00",
+      "artwork_preview_id": "jc-kia-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/kia-coloring-page-100/catalog_thumb_bw.eb8f0358804da3fa068dceb1.webp"
+    },
+    "chevrolet": {
+      "asset_sha256": "46dc287368c7acb95bb31d7ba7bd5d040ee01471e48b7d914d76c57cd6b79020",
+      "src": "/subject-logos/cars/chevrolet.46dc287368c7.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.chevrolet.com/",
+      "reviewed_at": "2026-11-13T10:31:01.943599+00:00",
+      "artwork_preview_id": "jc-chevrolet-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/chevrolet-coloring-page-100/catalog_thumb_bw.b40f24eaaba5f32dddd6baf2.webp"
+    },
+    "buick": {
+      "asset_sha256": "a203965ce53e9dd6516f809ebe6483d17a76bc155add22eb6eb98b38f0e7c59b",
+      "src": "/subject-logos/cars/buick.a203965ce53e.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.buick.com/",
+      "reviewed_at": "2026-11-13T10:31:01.943915+00:00",
+      "artwork_preview_id": "jc-buick-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/buick-coloring-page-100/catalog_thumb_bw.c44655e548fd51131c250345.webp"
+    },
+    "suzuki": {
+      "asset_sha256": "26bc8a51c63f7dbbabc2bc483f4b30e287ec01d1387acc31dd2274a8c7e857c4",
+      "src": "/subject-logos/cars/suzuki.26bc8a51c63f.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.globalsuzuki.com/",
+      "reviewed_at": "2026-11-13T10:31:01.944205+00:00",
+      "artwork_preview_id": "jc-suzuki-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/suzuki-coloring-page-100/catalog_thumb_bw.44a6b8ab6e748f8386e3161d.webp"
+    },
+    "pagani": {
+      "asset_sha256": "df40dbf91154274334c66d39b8241ce9b70325e12221ace7300f25f92f05814f",
+      "src": "/subject-logos/cars/pagani.df40dbf91154.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.pagani.com/",
+      "reviewed_at": "2026-11-13T10:31:01.944422+00:00",
+      "artwork_preview_id": "jc-pagani-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/pagani-coloring-page-100/catalog_thumb_bw.eb5a2507c585ec9c120fab28.webp"
+    },
+    "land-rover": {
+      "asset_sha256": "2dc6a0ef634bef33c8c7eab8f5b5e803b65d71de9c85f86ee159c3c52eecaeb0",
+      "src": "/subject-logos/cars/land-rover.2dc6a0ef634b.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.landrover.com/",
+      "reviewed_at": "2026-11-13T10:31:01.944753+00:00",
+      "artwork_preview_id": "jc-land-rover-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/land-rover-coloring-page-100/catalog_thumb_bw.f0c25c8637b381a46a2aea88.webp"
+    },
+    "cadillac": {
+      "asset_sha256": "18ba35477a6d37b58476229fe6506540c86a3ac50c742adb16ba62d06e342be3",
+      "src": "/subject-logos/cars/cadillac.18ba35477a6d.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.cadillac.com/",
+      "reviewed_at": "2026-11-13T10:31:01.944990+00:00",
+      "artwork_preview_id": "jc-cadillac-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/cadillac-coloring-page-100/catalog_thumb_bw.d5e05d60e896cfe8448f93ce.webp"
+    },
+    "alpine": {
+      "asset_sha256": "cb07a68ce2f7bc0c88128a345aba0ade16611f4b62e40ba622f40600343f3828",
+      "src": "/subject-logos/cars/alpine.cb07a68ce2f7.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.alpinecars.com/",
+      "reviewed_at": "2026-11-13T10:31:01.945215+00:00",
+      "artwork_preview_id": "jc-alpine-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/alpine-coloring-page-100/catalog_thumb_bw.53d9df883a3fe06a65479eac.webp"
+    },
+    "czinger": {
+      "asset_sha256": "ec17506b3e57977034ab4a1cdd3ec1639b9978d72ff01c050499e232c375bd6b",
+      "src": "/subject-logos/cars/czinger.ec17506b3e57.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.czinger.com/",
+      "reviewed_at": "2026-11-13T10:31:01.945364+00:00",
+      "artwork_preview_id": "jc-czinger-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/czinger-coloring-page-100/catalog_thumb_bw.49d4f74894349c58f9f60d70.webp"
+    },
+    "delorean": {
+      "asset_sha256": "960e33d38c5337e4b1203455477bd0f7917d28d6f7aa735db07f2588bb667a47",
+      "src": "/subject-logos/cars/delorean.960e33d38c53.svg",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://delorean.com/",
+      "reviewed_at": "2026-11-13T10:31:01.945512+00:00",
+      "artwork_preview_id": "jc-delorean-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/delorean-coloring-page-100/catalog_thumb_bw.a557fd90773efe7762d39fb9.webp"
+    },
+    "denza": {
+      "asset_sha256": "d2cc21033071ea3632082ca18c8c8f2f59455c08cb5703f6857ceaf3b271927b",
+      "src": "/subject-logos/cars/denza.d2cc21033071.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.denza.com/eu",
+      "reviewed_at": "2026-11-13T10:31:01.945826+00:00",
+      "artwork_preview_id": "jc-denza-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/denza-coloring-page-100/catalog_thumb_bw.d9b87fe2425ae6ac7e90c591.webp"
+    },
+    "hennessey": {
+      "asset_sha256": "ae11dbb881fda7c65f7ee3490a9dccee28f6580908391234598d51c12a539100",
+      "src": "/subject-logos/cars/hennessey.ae11dbb881fd.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.hennesseyspecialvehicles.com/",
+      "reviewed_at": "2026-11-13T10:31:01.945968+00:00",
+      "artwork_preview_id": "jc-hennessey-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/hennessey-coloring-page-100/catalog_thumb_bw.b94285e5fc0853def07c462b.webp"
+    },
+    "leapmotor": {
+      "asset_sha256": "f4f4f8b6d57b12e216d20c6802d717edcd4097b6e64d40ce5634038862f42e81",
+      "src": "/subject-logos/cars/leapmotor.f4f4f8b6d57b.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.leapmotor.com/",
+      "reviewed_at": "2026-11-13T10:31:01.946174+00:00",
+      "artwork_preview_id": "jc-leapmotor-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/leapmotor-coloring-page-100/catalog_thumb_bw.72ecf163c816943f072e10f6.webp"
+    },
+    "nio": {
+      "asset_sha256": "51b3c43cc6b8ffcd0055f31cd77a3ad899ca5411dd8da5b9f916c6ebc1d82622",
+      "src": "/subject-logos/cars/nio.51b3c43cc6b8.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.nio.com/",
+      "reviewed_at": "2026-11-13T10:31:01.946303+00:00",
+      "artwork_preview_id": "jc-nio-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/nio-coloring-page-100/catalog_thumb_bw.11a491b878f8e782aaf9cbb0.webp"
+    },
+    "shelby-american": {
+      "asset_sha256": "05068c8e36110dfcbb6e579a1d2e0a667ae952d641dbab82803a82085f5012a6",
+      "src": "/subject-logos/cars/shelby-american.05068c8e3611.jpg",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.shelby.com/",
+      "reviewed_at": "2026-11-13T10:31:01.946520+00:00",
+      "artwork_preview_id": "jc-shelby-american-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/shelby-american-coloring-page-100/catalog_thumb_bw.912db1967764b06ab19eb601.webp"
+    },
+    "togg": {
+      "asset_sha256": "79804eb423f2c0f107306c01618058f40c1d227917a36dafb28c2625fbbb615b",
+      "src": "/subject-logos/cars/togg.79804eb423f2.svg",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.togg.com.tr/",
+      "reviewed_at": "2026-11-13T10:31:01.946642+00:00",
+      "artwork_preview_id": "jc-togg-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/togg-coloring-page-100/catalog_thumb_bw.8b0090040f7ef8c3447c71e2.webp"
+    },
+    "xiaomi": {
+      "asset_sha256": "35ed09461b4581515321fabcf17044c3e02ee22c9f3e0579dd706aacdbae487b",
+      "src": "/subject-logos/cars/xiaomi.35ed09461b45.svg",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.mi.com/global/",
+      "reviewed_at": "2026-11-13T10:31:01.946745+00:00",
+      "artwork_preview_id": "jc-xiaomi-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/xiaomi-coloring-page-100/catalog_thumb_bw.c3720a0b36ab7b72106a8c34.webp"
+    },
+    "xpeng": {
+      "asset_sha256": "bee0e76fc476f673b611495cf8a83e79181cdea5b673ec72885eed37df2fed9d",
+      "src": "/subject-logos/cars/xpeng.bee0e76fc476.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.xpeng.com/",
+      "reviewed_at": "2026-11-13T10:31:01.947195+00:00",
+      "artwork_preview_id": "jc-xpeng-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/xpeng-coloring-page-100/catalog_thumb_bw.310816d2c517060bf6ba262a.webp"
+    },
+    "automobili-pininfarina": {
+      "asset_sha256": "8f21e8b7b7d8895bc1477e64864a5626f52673d77c1efc48b2a0518804f2b279",
+      "src": "/subject-logos/cars/automobili-pininfarina.8f21e8b7b7d8.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.automobili-pininfarina.com/",
+      "reviewed_at": "2026-11-13T10:31:01.947399+00:00",
+      "artwork_preview_id": "jc-automobili-pininfarina-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/automobili-pininfarina-coloring-page-100/catalog_thumb_bw.9260edb622f49aed91205020.webp"
+    },
+    "gordon-murray-automotive": {
+      "asset_sha256": "cf4c6a379d6b125705538ca1bf29d5065172b250d12eacbbf5e15f3b7fdd9a6e",
+      "src": "/subject-logos/cars/gordon-murray-automotive.cf4c6a379d6b.svg",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.gordonmurray.com/",
+      "reviewed_at": "2026-11-13T10:31:01.947611+00:00",
+      "artwork_preview_id": "jc-gordon-murray-automotive-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/gordon-murray-automotive-coloring-page-100/catalog_thumb_bw.cbde19c8e64dfdc49dd0c264.webp"
+    },
+    "karma-automotive": {
+      "asset_sha256": "2059cd21c0b41547fbdaa4460e5752a67cd79522b3d66f62026edee8d8e36b64",
+      "src": "/subject-logos/cars/karma-automotive.2059cd21c0b4.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://karmaautomotive.com/",
+      "reviewed_at": "2026-11-13T10:31:01.947822+00:00",
+      "artwork_preview_id": "jc-karma-automotive-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/karma-automotive-coloring-page-100/catalog_thumb_bw.75d4f3d3c7edf31a1dc480b4.webp"
+    },
+    "hello-kitty": {
+      "asset_sha256": "b86e6ef8ba8397d00e12816d83ccc9f228c9ff0351642e086d82f5b7d95ffdd7",
+      "src": "/subject-logos/subjects/hello-kitty.b86e6ef8ba83.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.sanrio.co.jp/characters/hellokitty/",
+      "reviewed_at": "2026-11-13T10:31:01.948093+00:00",
+      "artwork_preview_id": "jc-hello-kitty-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/hello-kitty-reads-in-a-star-patterned-bed/catalog_thumb_bw.18eb26b8fad408d968e18282.webp"
+    },
+    "kuromi": {
+      "asset_sha256": "3dc52aac57897374436c3394c434de26090482a8c11e6bdf4bd7f3dce581d4d0",
+      "src": "/subject-logos/subjects/kuromi.3dc52aac5789.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.sanrio.co.jp/characters/kuromi/",
+      "reviewed_at": "2026-11-13T10:31:01.948337+00:00",
+      "artwork_preview_id": "jc-kuromi-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/kuromi-coloring-page-100/catalog_thumb_bw.d57ff2617040bf5e72d32666.webp"
+    },
+    "pompompurin": {
+      "asset_sha256": "88c5a9f17886159de250607cb9cb5ca7dcee436dfb2789c3f0a19e434c7b7de1",
+      "src": "/subject-logos/subjects/pompompurin.88c5a9f17886.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.sanrio.co.jp/characters/pompompurin/",
+      "reviewed_at": "2026-11-13T10:31:01.948527+00:00",
+      "artwork_preview_id": "jc-pompompurin-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/animals/pompompurin-coloring-page-100/catalog_thumb_bw.9933f550685d73315373172a.webp"
+    },
+    "cinnamoroll": {
+      "asset_sha256": "9344d335e7591c8599e7cc32730b315401037d58e15c14dcf23853de74867520",
+      "src": "/subject-logos/subjects/cinnamoroll.9344d335e759.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.sanrio.co.jp/characters/cinnamon/",
+      "reviewed_at": "2026-11-13T10:31:01.948712+00:00",
+      "artwork_preview_id": "jc-cinnamoroll-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/animals/cinnamoroll-coloring-page-100/catalog_thumb_bw.0a6d5e3a4305efb86623ba53.webp"
+    },
+    "gudetama": {
+      "asset_sha256": "db1101b8b9e53e5e860d5b12ebeee44fe909c0f47fc347ae60c633da9fb1e9dc",
+      "src": "/subject-logos/subjects/gudetama.db1101b8b9e5.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.sanrio.co.jp/characters/gudetama/",
+      "reviewed_at": "2026-11-13T10:31:01.948899+00:00",
+      "artwork_preview_id": "jc-gudetama-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/gudetama-coloring-page-100/catalog_thumb_bw.f4ddda83131f4b3054caa79c.webp"
+    },
+    "sanrio": {
+      "asset_sha256": "4431f4f985f63b29a661381f22550797922a9ea52cbb24b8045623bd729c78ea",
+      "src": "/subject-logos/subjects/sanrio.4431f4f985f6.svg",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.sanrio.co.jp/",
+      "reviewed_at": "2026-11-13T10:31:01.948991+00:00",
+      "artwork_preview_id": "jc-sanrio-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/sanrio-coloring-page-100/catalog_thumb_bw.d25d004390bb166ab0108013.webp"
+    },
+    "bluey": {
+      "asset_sha256": "b141ff2ed46227f61d67411764552837e42f136d9eb6f383a7dfdaa465f3a17b",
+      "src": "/subject-logos/subjects/bluey.b141ff2ed462.svg",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.bluey.tv/",
+      "reviewed_at": "2026-11-13T10:31:01.949097+00:00",
+      "artwork_preview_id": "jc-bluey-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/bluey-family-reads-inside-a-blanket-tent/catalog_thumb_bw.2e76bc0710c2dc2881f48fb8.webp"
+    },
+    "angry-birds": {
+      "asset_sha256": "1ba242d7b779c0b9e6bbfa6273418b9df8348a36734ad66fd53f3ef712170fdd",
+      "src": "/subject-logos/subjects/angry-birds.1ba242d7b779.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.angrybirds.com/",
+      "reviewed_at": "2026-11-13T10:31:01.949230+00:00",
+      "artwork_preview_id": "jc-angry-birds-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/angry-birds-coloring-page-100/catalog_thumb_bw.bc69e3e275abd7bf721fa2af.webp"
+    },
+    "among-us": {
+      "asset_sha256": "304087d5b93f93cebf6f9b3ab670759810af42cfda04990f4be1b0988498fd38",
+      "src": "/subject-logos/subjects/among-us.304087d5b93f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.innersloth.com/games/among-us/",
+      "reviewed_at": "2026-11-13T10:31:01.949408+00:00",
+      "artwork_preview_id": "jc-among-us-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/among-us-coloring-page-100/catalog_thumb_bw.0de5b2864d5006ac52a8174e.webp"
+    },
+    "snapchat": {
+      "asset_sha256": "5f1563935ac089d0cf1773f642ddbfb6cdb16e8c4ac14fec95a3c11b6f963389",
+      "src": "/subject-logos/subjects/snapchat.5f1563935ac0.svg",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.snap.com/brand-guidelines",
+      "reviewed_at": "2026-11-13T10:31:01.949532+00:00",
+      "artwork_preview_id": "jc-snapchat-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/snapchat-snapchat-coloring-page-100-page-has-a-tree-in-the-center/catalog_thumb_bw.4f8b0cf54f03001f3c2a901b.webp"
+    },
+    "sonny-angel": {
+      "asset_sha256": "d1a3a746b33881dcb5afd58fc8f879c583918fdad396653b1fc3787a51e60ab9",
+      "src": "/subject-logos/subjects/sonny-angel.d1a3a746b338.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.sonnyangel.com/en/",
+      "reviewed_at": "2026-11-13T10:31:01.949660+00:00",
+      "artwork_preview_id": "jc-sonny-angel-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/sonny-angel-coloring-page-100/catalog_thumb_bw.800a2aa43c9912f490258214.webp"
+    },
+    "beyblade": {
+      "asset_sha256": "bb022fd6e77d752234ebae89ef65ede50d27ebd297928b71e39b2dc030343001",
+      "src": "/subject-logos/subjects/beyblade.bb022fd6e77d.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://beyblade.com/",
+      "reviewed_at": "2026-11-13T10:31:01.949797+00:00",
+      "artwork_preview_id": "jc-beyblade-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/beyblade-beyblade-coloring-page-100-team-celebrates-beneath-bunting/catalog_thumb_bw.9a83c41a9872fb83b230a66a.webp"
+    },
+    "squishmallow": {
+      "asset_sha256": "5755b226166927300c3597edede4b5059ee271e56d8f62254aee567b30047c0b",
+      "src": "/subject-logos/subjects/squishmallow.5755b2261669.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://squishmallows.com/",
+      "reviewed_at": "2026-11-13T10:31:01.950021+00:00",
+      "artwork_preview_id": "jc-squishmallow-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/squishmallow-squishmallow-coloring-page-100-forest-scene/catalog_thumb_bw.b6f7e94490d21123b72d590a.webp"
+    },
+    "elf-on-the-shelf": {
+      "asset_sha256": "d862ab4fb6e86626541497896e3ec14db614cdb069887e66e1b14d8e19d62fe9",
+      "src": "/subject-logos/subjects/elf-on-the-shelf.d862ab4fb6e8.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://elfontheshelf.com/",
+      "reviewed_at": "2026-11-13T10:31:01.950327+00:00",
+      "artwork_preview_id": "jc-elf-on-the-shelf-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/holidays/elf-on-the-shelf-celebrating-at-a-winter-fairground-coloring-page/catalog_thumb_bw.f19b64c696ac2765e334d8fa.webp"
+    },
+    "smiski": {
+      "asset_sha256": "676bbbd17450bc24814fa76cdeed0346283ebae2f4581572fc90d2593c9eacc2",
+      "src": "/subject-logos/subjects/smiski.676bbbd17450.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://smiski.com/e/",
+      "reviewed_at": "2026-11-13T10:31:01.950428+00:00",
+      "artwork_preview_id": "jc-smiski-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/smiski-coloring-page-100/catalog_thumb_bw.fa4833090c88760f49e2ff06.webp"
+    },
+    "star-trek": {
+      "asset_sha256": "f77708dbf68f9f6b1032fb4497c6a61231f37a57a9fb435ddb9bdd53795fa273",
+      "src": "/subject-logos/subjects/star-trek.f77708dbf68f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.startrek.com/en-un",
+      "reviewed_at": "2026-11-13T10:31:01.950550+00:00",
+      "artwork_preview_id": "jc-star-trek-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/space/star-trek-star-trek-coloring-page-100-starship-with-a-moon/catalog_thumb_bw.5214a32884bf2074ce395515.webp"
+    },
+    "barbie": {
+      "asset_sha256": "54125abe763d5ca9f8b903dbbee5f62634e431e7fcb97e0b5760a50a9ae0721e",
+      "src": "/subject-logos/subjects/barbie.54125abe763d.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://shop.mattel.com/pages/barbie",
+      "reviewed_at": "2026-11-13T10:31:01.950652+00:00",
+      "artwork_preview_id": "jc-barbie-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/barbie-and-a-friend-in-starry-wizard-costumes/catalog_thumb_bw.2494acc57e6bf5dab87e306d.webp"
+    },
+    "gta-6": {
+      "asset_sha256": "1a10e4d9b5128036439ba81877c7da8571a3666a46f533111e93c5f8ba72dda9",
+      "src": "/subject-logos/subjects/gta-6.1a10e4d9b512.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.rockstargames.com/VI",
+      "reviewed_at": "2026-11-13T10:31:01.950875+00:00",
+      "artwork_preview_id": "jc-gta-6-120",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/gta-6-jason-and-lucia-classic-car-showroom-coloring-page/catalog_thumb_bw.85922f9a0fd4c64fee06c6fe.webp"
+    },
+    "twinkle-twinkle": {
+      "asset_sha256": "6eba3b1bdc415f31bfe33de15ad20136802650464dc555c7749d04d3e5734320",
+      "src": "/subject-logos/subjects/twinkle-twinkle.6eba3b1bdc41.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/twinkle-twinkle",
+      "reviewed_at": "2026-11-13T10:31:01.951185+00:00",
+      "artwork_preview_id": "jc-twinkle-twinkle-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/twinkle-twinkle-coloring-page-100/catalog_thumb_bw.b7e8d4abf446c3530b000b8c.webp"
+    },
+    "skullpanda": {
+      "asset_sha256": "903e329e82f6610973d306a8aec09c118d9e997826caaef71e194f6e61609529",
+      "src": "/subject-logos/subjects/skullpanda.903e329e82f6.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/skullpanda",
+      "reviewed_at": "2026-11-13T10:31:01.951450+00:00",
+      "artwork_preview_id": "jc-skullpanda-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/skullpanda-coloring-page-100/catalog_thumb_bw.4896674d634d8715b800e219.webp"
+    },
+    "pucky": {
+      "asset_sha256": "e597cbedd9c1bd1b9c3d2fe975a67df5d15e7aaf85f4225e43b326dcf2286c00",
+      "src": "/subject-logos/subjects/pucky.e597cbedd9c1.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/pucky",
+      "reviewed_at": "2026-11-13T10:31:01.951690+00:00",
+      "artwork_preview_id": "jc-pucky-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/pucky-coloring-page-100/catalog_thumb_bw.8f616e681910ea9411a30bf5.webp"
+    },
+    "hacipupu": {
+      "asset_sha256": "3a3998df9411cafb67cba09dd6b35d13d409079bafc0a540e2bdd6633e67ab18",
+      "src": "/subject-logos/subjects/hacipupu.3a3998df9411.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/hacipupu",
+      "reviewed_at": "2026-11-13T10:31:01.951914+00:00",
+      "artwork_preview_id": "jc-hacipupu-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/hacipupu-coloring-page-100/catalog_thumb_bw.6aba0c939e679b89f4698b2a.webp"
+    },
+    "crybaby": {
+      "asset_sha256": "f9e93a53e82f8c9a6978d30cb5b2b8a2d9a14a5530d477a090b5eea830d47c44",
+      "src": "/subject-logos/subjects/crybaby.f9e93a53e82f.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/crybaby",
+      "reviewed_at": "2026-11-13T10:31:01.952134+00:00",
+      "artwork_preview_id": "jc-crybaby-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/crybaby-coloring-page-100/catalog_thumb_bw.f54eb0fb41c2cde4a9ceb6ba.webp"
+    },
+    "monchhichi": {
+      "asset_sha256": "beeed7bccf75cb7ec241bdc4c3a4a637e6b37ea42c977dd98e1dbd93e4de6e22",
+      "src": "/subject-logos/subjects/monchhichi.beeed7bccf75.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.monchhichi.co.jp/",
+      "reviewed_at": "2026-11-13T10:31:01.952265+00:00",
+      "artwork_preview_id": "jc-monchhichi-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/monchhichi-coloring-page-100/catalog_thumb_bw.e01c9d5c995826e82915beaa.webp"
+    },
+    "chiikawa": {
+      "asset_sha256": "7f1f20b6f9200894e44c091c42a03489671026857ab7927f3133cfd9a3da7d2e",
+      "src": "/subject-logos/subjects/chiikawa.7f1f20b6f920.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.anime-chiikawa.jp/",
+      "reviewed_at": "2026-11-13T10:31:01.952392+00:00",
+      "artwork_preview_id": "jc-chiikawa-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/chiikawa-coloring-page-100/catalog_thumb_bw.9c11411e178a399086e3e4a5.webp"
+    },
+    "anpanman": {
+      "asset_sha256": "328e36aa92cdc983c681a4d61d7ae2824ee3d0ef27a0308c217ca2f24896ff4e",
+      "src": "/subject-logos/subjects/anpanman.328e36aa92cd.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.anpanman.jp/",
+      "reviewed_at": "2026-11-13T10:31:01.952536+00:00",
+      "artwork_preview_id": "jc-anpanman-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/anpanman-coloring-page-100/catalog_thumb_bw.c38aedd9e96ac61c5fa9ce8c.webp"
+    },
+    "facebook": {
+      "asset_sha256": "062fa8ee9212f966744906343911ba033c7f4ad4d93918ea3b3c8b34d9597b02",
+      "src": "/subject-logos/subjects/facebook.062fa8ee9212.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://about.meta.com/brand/resources/facebook/logo/",
+      "reviewed_at": "2026-11-13T10:31:01.952709+00:00",
+      "artwork_preview_id": "jc-facebook-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/facebook-facebook-coloring-page-100-letter-f-on-a-piece-of-paper/catalog_thumb_bw.8d33f337e21b33903437dbbb.webp"
+    },
+    "instagram": {
+      "asset_sha256": "e6911975401c3fe6e05aea715755dae53e0a9d295af61b32aca98c923fa116f7",
+      "src": "/subject-logos/subjects/instagram.e6911975401c.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://about.meta.com/brand/resources/instagram/",
+      "reviewed_at": "2026-11-13T10:31:01.953007+00:00",
+      "artwork_preview_id": "jc-instagram-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/instagram-instagram-coloring-page-100-window/catalog_thumb_bw.addfbcfc3a65f194f42959e9.webp"
+    },
+    "genesis": {
+      "asset_sha256": "4fc867e49ae9cd6d917a64a3d0b6f9c2ab8073f3afbf2a35061e246909a3a162",
+      "src": "/subject-logos/cars/genesis.4fc867e49ae9.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.genesis.com/",
+      "reviewed_at": "2026-11-13T10:31:01.953228+00:00",
+      "artwork_preview_id": "jc-genesis-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/genesis-coloring-page-100/catalog_thumb_bw.8aee12bf6466943d0062515c.webp"
+    },
+    "hyundai": {
+      "asset_sha256": "895b38ca89ba30416661fb90ab0223ba58031fd1e5f0b4ca1cd3e827f62a9ae9",
+      "src": "/subject-logos/cars/hyundai.895b38ca89ba.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.hyundai.com/worldwide/en/",
+      "reviewed_at": "2026-11-13T10:31:01.953366+00:00",
+      "artwork_preview_id": "jc-hyundai-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/hyundai-coloring-page-100/catalog_thumb_bw.6de2bab3bd0d4517d469cf5a.webp"
+    },
+    "isuzu": {
+      "asset_sha256": "096e464c31ab6d090ccd8bf018ff39be38a8846b01150ca87689a05756da25d3",
+      "src": "/subject-logos/cars/isuzu.096e464c31ab.png",
+      "surface": "none",
+      "shape": "wide",
+      "identity_reference": "https://www.isuzu.co.jp/world/",
+      "reviewed_at": "2026-11-13T10:31:01.953486+00:00",
+      "artwork_preview_id": "jc-isuzu-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/isuzu-coloring-page-100/catalog_thumb_bw.6c94f71b58ec778ad9ebb668.webp"
+    },
+    "infiniti": {
+      "asset_sha256": "f825092cb76a8934c2aacc63b01330a907d1c61e498899f36e975fc0fa0dd59a",
+      "src": "/subject-logos/cars/infiniti.f825092cb76a.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.infiniti.com/",
+      "reviewed_at": "2026-11-13T10:31:01.953745+00:00",
+      "artwork_preview_id": "jc-infiniti-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/infiniti-coloring-page-100/catalog_thumb_bw.e0d477f809373b2d90271b9e.webp"
+    },
+    "abarth": {
+      "asset_sha256": "a5eab4524a24bc926713490037ce259edffd8a9bc5c0f0c9679df17a6760289d",
+      "src": "/subject-logos/cars/abarth.a5eab4524a24.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.abarth.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954105+00:00",
+      "artwork_preview_id": "jc-abarth-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/abarth-coloring-page-100/catalog_thumb_bw.e8ef9bf90379687f09756afd.webp"
+    },
+    "caterham": {
+      "asset_sha256": "90e088be576000e74a079485158da0d251cdf7a2a4c8ada0ca84c74b60f1824b",
+      "src": "/subject-logos/cars/caterham.90e088be5760.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://caterhamcars.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954220+00:00",
+      "artwork_preview_id": "jc-caterham-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/caterham-coloring-page-100/catalog_thumb_bw.b74f0af94a620de7be6b7674.webp"
+    },
+    "opel": {
+      "asset_sha256": "8fea667503e19ef4324b16bf401b0362230a904858fbda1280de89dc3fb42770",
+      "src": "/subject-logos/cars/opel.8fea667503e1.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.opel.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954364+00:00",
+      "artwork_preview_id": "jc-opel-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/opel-coloring-page-100/catalog_thumb_bw.5a841c651a7f0b431bf6e799.webp"
+    },
+    "volkswagen": {
+      "asset_sha256": "234184ee1edf7f9fe05f2c3a70d32668284351754407faeb6e7d55eeb9afea5a",
+      "src": "/subject-logos/cars/volkswagen.234184ee1edf.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.volkswagen.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954511+00:00",
+      "artwork_preview_id": "jc-volkswagen-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/volkswagen-coloring-page-100/catalog_thumb_bw.28fe1bf42ea1e6daf9b16f84.webp"
+    },
+    "porsche": {
+      "asset_sha256": "3fb8017542ee8f82733087054061f7696b9190172f9efa39d0ff4b92e23edbb3",
+      "src": "/subject-logos/cars/porsche.3fb8017542ee.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.porsche.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954705+00:00",
+      "artwork_preview_id": "jc-porsche-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/porsche-coloring-page-100/catalog_thumb_bw.ce9ae937cabb863fcc1022b7.webp"
+    },
+    "geely": {
+      "asset_sha256": "94077896b44581875153710de6d712a329e100265a77ffd154216f2903a130c0",
+      "src": "/subject-logos/cars/geely.94077896b445.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://global.geely.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954797+00:00",
+      "artwork_preview_id": "jc-geely-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/geely-coloring-page-100/catalog_thumb_bw.6506c609927cd66f775c6780.webp"
+    },
+    "panoz": {
+      "asset_sha256": "40618ee96f879d5ca35d57e95ae489ad636cce41fa6fa48aff3e1efddc466e90",
+      "src": "/subject-logos/cars/panoz.40618ee96f87.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://panoz.com/",
+      "reviewed_at": "2026-11-13T10:31:01.954936+00:00",
+      "artwork_preview_id": "jc-panoz-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/panoz-coloring-page-100/catalog_thumb_bw.4a1e7512788eca91c4bcaea9.webp"
+    },
+    "rezvani": {
+      "asset_sha256": "01eac23806687f5e91ea6b633eee1e295d053fc7899752862360d2cf57796d70",
+      "src": "/subject-logos/cars/rezvani.01eac2380668.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://www.rezvanimotors.com/",
+      "reviewed_at": "2026-11-13T10:31:01.955074+00:00",
+      "artwork_preview_id": "jc-rezvani-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/rezvani-coloring-page-100/catalog_thumb_bw.2a59d54c76ef4851768f3840.webp"
+    }
+  }
+}
