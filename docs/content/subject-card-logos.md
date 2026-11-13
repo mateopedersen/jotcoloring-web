@@ -37,3 +37,7 @@ Labubu and Zimomo cards now use distinct official character portraits from separ
 Minecraft uses the original game wordmark from its Microsoft Xbox product artwork; Pennywise uses the character portrait in Warner Bros’ official IT film gallery. The logo/portrait distinction and native source bytes are recorded. The original coloring previews remain beside both emblems, with actual desktop/mobile inspection.
 
 Plymouth, Packard and Imperial use unchanged original manufacturer brochure badges/wordmarks retained by independent historical archives. Native PDF image or original scan crops, source containers, page provenance and exact crop bounds are recorded. No club or archive logo is substituted; own coloring artwork stays beside each emblem.
+
+Rugrats uses the unchanged native series logo from Paramount Press Express public S3 artwork, identified through the official show page. The direct local HTML response was geographically blocked and is not recorded as source evidence. Native artwork bytes, the official page reference, and actual desktop/mobile cards are recorded alongside the original own coloring preview.
+
+Transformers Rescue Bots uses Hasbro’s native embedded series-logo image from page one of its original Flip Racers playbook. Exact PDF and image checksums and actual source/final desktop/mobile inspection are retained; no artwork redrawn.

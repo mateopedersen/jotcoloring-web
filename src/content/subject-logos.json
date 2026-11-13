@@ -2640,6 +2640,40 @@
       "shape": "wide",
       "reviewed_at": "2026-11-13T13:32:09.322Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "rugrats": {
+      "id": "rugrats",
+      "sha256": "0cecc073fa23e84d3f7547e5056c1278de40a289b43fe4d04066248652cf5890",
+      "bytes": 278793,
+      "asset_source": "https://public-assets-pressexpress.s3.amazonaws.com/assets/releases/docimages/40475/382923-985702/50cfb0129a46a067ded6ea4af2978343.png",
+      "identity_reference": "https://www.paramountpressexpress.com/nickelodeon/shows/rugrats",
+      "source_page_evidence": "Official Paramount Press Express page opened through web research; its public image link points to this exact publisher S3 asset. Local HTML request returned geographic-access page, which is not treated as source evidence.",
+      "source_kind": "publisher_native_series_logo",
+      "surface": "light",
+      "src": "/subject-logos/subjects/rugrats.0cecc073fa23.png",
+      "name": "Rugrats",
+      "source_sha256": "95eb66688d34578618db9f43eae23cb7bd2e23e3e0b4f56d7de27274d2ebe7f2",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:38:11.357Z",
+      "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
+    },
+    "rescue-bots": {
+      "id": "rescue-bots",
+      "sha256": "a0d12a04661eb3ccfff1ea65cc82de32d81f252d6d6a530449cab0ba51fa04af",
+      "bytes": 48841,
+      "asset_source": "https://www.hasbro.com/common/documents/71e45a8550569047f5993be28957f9ce/0C8ADADC2A5E42F9942996A4BD24596D.pdf",
+      "identity_reference": "https://www.hasbro.com/common/documents/71e45a8550569047f5993be28957f9ce/0C8ADADC2A5E42F9942996A4BD24596D.pdf",
+      "source_container_sha256": "36dedfb3c3ccc21352e7f6b09e5ca6973f0ea5eec143a7593b07938bea271d1a",
+      "source_pdf_page": 1,
+      "source_pdf_image": "Im1.jp2",
+      "source_kind": "manufacturer_pdf_native_embedded_series_logo",
+      "surface": "dark",
+      "src": "/subject-logos/subjects/rescue-bots.a0d12a04661e.png",
+      "name": "Rescue Bots",
+      "source_sha256": "f45a430a51381ca3dcacaeba38f79007e25a3481c14aa7c4235a42d0c86e532f",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:40:32.940Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
