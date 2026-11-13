@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "63 additional subject logos: 35 automotive brands and 28 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "70 additional subject logos: 40 automotive brands and 30 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -641,6 +641,125 @@
       "reviewed_at": "2026-11-13T10:31:01.955074+00:00",
       "artwork_preview_id": "jc-rezvani-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/rezvani-coloring-page-100/catalog_thumb_bw.2a59d54c76ef4851768f3840.webp"
+    },
+    "hummer": {
+      "asset_sha256": "c3729d10a00b3ef7ac6a5624b2bb7d8abf8238f5f0d99487f93a06b54bfa8e5c",
+      "src": "/subject-logos/cars/hummer.c3729d10a00b.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://experience.gm.com/discontinued-brands",
+      "reviewed_at": "2026-11-13T11:09:31.256756+00:00",
+      "artwork_preview_id": "jc-hummer-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/hummer-coloring-page-100/catalog_thumb_bw.caff65f7fbdde5403d27f9bf.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "oldsmobile": {
+      "asset_sha256": "529b7da6ad28eb61013ba1a48c4a846c3dd899b9181cab7ecb8225f12b47af88",
+      "src": "/subject-logos/cars/oldsmobile.529b7da6ad28.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://experience.gm.com/discontinued-brands",
+      "reviewed_at": "2026-11-13T11:09:31.256920+00:00",
+      "artwork_preview_id": "jc-oldsmobile-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/oldsmobile-coloring-page-100/catalog_thumb_bw.ad630347e25f29aa51acdfce.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "pontiac": {
+      "asset_sha256": "cef73e4e946987e9f5045639857943299c7a122b715e4e12cb7d024e75772a84",
+      "src": "/subject-logos/cars/pontiac.cef73e4e9469.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://experience.gm.com/discontinued-brands",
+      "reviewed_at": "2026-11-13T11:09:31.257003+00:00",
+      "artwork_preview_id": "jc-pontiac-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/pontiac-coloring-page-100/catalog_thumb_bw.094fe439f06c9485b5f24632.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "saturn": {
+      "asset_sha256": "8860a82853bfcd21dfc1e36764b2b125465c4661d2a48e609728111ca5ce27d5",
+      "src": "/subject-logos/cars/saturn.8860a82853bf.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://experience.gm.com/discontinued-brands",
+      "reviewed_at": "2026-11-13T11:09:31.257070+00:00",
+      "artwork_preview_id": "jc-saturn-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/saturn-coloring-page-100/catalog_thumb_bw.dc8e8068ec880f3df7ef749e.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "saab": {
+      "asset_sha256": "6865285e30636c59717ade5719acaf6f80e7de5ddddc17eba9845bd9b02dac22",
+      "src": "/subject-logos/cars/saab.6865285e3063.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://experience.gm.com/discontinued-brands",
+      "reviewed_at": "2026-11-13T11:09:31.257169+00:00",
+      "artwork_preview_id": "jc-saab-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/saab-coloring-page-100/catalog_thumb_bw.46ea3ba880010679ea13d0fc.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "x": {
+      "asset_sha256": "dd46f96b6f47fcd33683b79ddfaf3daca1d4f8aeba3c0f2bde1584c69cc699d4",
+      "src": "/subject-logos/subjects/x.dd46f96b6f47.svg",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://about.x.com/en/who-we-are/brand-toolkit?web=1",
+      "reviewed_at": "2026-11-13T11:09:31.257203+00:00",
+      "artwork_preview_id": "jc-x-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/x-x-coloring-page-100-round-shape/catalog_thumb_bw.e48d4fa3c7b8601f3c1c4b93.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
+    },
+    "tiktok": {
+      "asset_sha256": "f3e4ff9e706bc46476a2bdd64832908ad70200f6d4a18e01108b9d2bf7056a61",
+      "src": "/subject-logos/subjects/tiktok.f3e4ff9e706b.png",
+      "surface": "none",
+      "shape": "square",
+      "identity_reference": "https://developers.tiktok.com/docs/en/getting-started-design-guidelines",
+      "reviewed_at": "2026-11-13T11:09:31.257242+00:00",
+      "artwork_preview_id": "jc-tiktok-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/tiktok-tiktok-coloring-page-100-a-large-letter-n-in-the-center-of-the-page/catalog_thumb_bw.344642cbebd8e3486966f90f.webp",
+      "actual_final_card_proofs": {
+        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
+        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
+        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
+        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
+        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+      }
     }
   }
 }
