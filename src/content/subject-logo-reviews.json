@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "131 additional subject logos: 91 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "136 additional subject logos: 92 automotive brands and 44 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -1985,6 +1985,81 @@
         "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
         "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
         "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
+      }
+    },
+    "rio": {
+      "asset_sha256": "e7500841527c634749995e82c32e5bdfb5cd89e40ff9d1793403ca3523086516",
+      "src": "/subject-logos/subjects/rio.e7500841527c.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://movies.disney.com/rio",
+      "reviewed_at": "2026-11-13T12:30:50.093077+00:00",
+      "artwork_preview_id": "jc-rio-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rio-coloring-page-100/catalog_thumb_bw.56589305febf03b256270725.webp",
+      "actual_final_card_proofs": {
+        "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
+        "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
+        "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
+      }
+    },
+    "mrbeast": {
+      "asset_sha256": "95fbf1c5f7331c89f69a0ca29b6aa05c4e52e50a3e9dc5e29a84dcc6d7781f2b",
+      "src": "/subject-logos/subjects/mrbeast.95fbf1c5f733.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://mrbeast.store/",
+      "reviewed_at": "2026-11-13T12:30:50.093232+00:00",
+      "artwork_preview_id": "jc-mrbeast-page-083",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/people/mrbeast-coloring-page-083/catalog_thumb_bw.ba71955b4ddd8308e5227010.webp",
+      "actual_final_card_proofs": {
+        "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
+        "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
+        "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
+      }
+    },
+    "blippi": {
+      "asset_sha256": "5480d5dda94598a1bf60b2cdea7f4223d09a19ca01659236c8f16172ddfeaad6",
+      "src": "/subject-logos/subjects/blippi.5480d5dda945.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.blippi.com/",
+      "reviewed_at": "2026-11-13T12:30:50.093275+00:00",
+      "artwork_preview_id": "jc-blippi-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/people/blippi-blippi-coloring-page-100-toy-train-and-wagon-in-the-park/catalog_thumb_bw.3f2f8c1b1ff73a3e7337cd91.webp",
+      "actual_final_card_proofs": {
+        "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
+        "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
+        "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
+      }
+    },
+    "scooby-doo": {
+      "asset_sha256": "d9bbbdd2fd63b543e572046bef55a4884ea8dea9eaf480d41d5ff508a44e0b78",
+      "src": "/subject-logos/subjects/scooby-doo.d9bbbdd2fd63.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.warnerbros.com/tv/scooby-doo-where-are-you",
+      "reviewed_at": "2026-11-13T12:30:50.093343+00:00",
+      "artwork_preview_id": "jc-scooby-doo-096",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/scooby-dips-beneath-a-dragon-parade/catalog_thumb_bw.88310aaacf376f6d8d48b6af.webp",
+      "actual_final_card_proofs": {
+        "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
+        "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
+        "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
+      }
+    },
+    "volvo": {
+      "asset_sha256": "8316dbec3376b5de15917ffd3e8bc4a1bc2528102a38977dae3f89c0b6645cc2",
+      "src": "/subject-logos/cars/volvo.8316dbec3376.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.volvocars.com/uk/media/images/6933f23bfe9b414988bfb458007ff2c5/",
+      "reviewed_at": "2026-11-13T12:30:50.093379+00:00",
+      "artwork_preview_id": "jc-volvo-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/volvo-iron-mark-wheels-and-design-objects-100-coloring-page/catalog_thumb_bw.256e785d34e3ac91abd5ec30.webp",
+      "actual_final_card_proofs": {
+        "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
+        "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
+        "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
       }
     }
   }
