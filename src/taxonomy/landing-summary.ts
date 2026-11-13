@@ -2,7 +2,7 @@ import {landingIdentity} from './landing-identity';
 import type {CatalogLocation} from './catalog-location';
 import introductions from './landing-introductions.json';
 
-export interface LandingIntroduction {sourceIntro:string;text:string}
+export interface LandingIntroduction {sourceIntro:string;purpose:'category-overview';text:string}
 const copy=introductions as Record<string,LandingIntroduction>;
 
 export function landingIntroductionKey(location:CatalogLocation){
@@ -10,12 +10,13 @@ export function landingIntroductionKey(location:CatalogLocation){
 }
 
 /** The accepted short identity continues to bind SEO and social artwork. The
- * separately authored visible introduction explains this actual collection.
+ * separately authored visible overview explains the collection's subject range,
+ * rather than copying the caption of a representative image.
  * No automatic palette advice, word-count padding, or invented artwork facts.
  */
 export function reviewedLandingIntroduction(location:CatalogLocation){
  const key=landingIntroductionKey(location),entry=key?copy[key]:undefined;
- return entry?.sourceIntro===landingIdentity(location).intro?entry:undefined;
+ return entry?.purpose==='category-overview'&&entry.sourceIntro===landingIdentity(location).intro?entry:undefined;
 }
 
 export function landingSummary(location:CatalogLocation){

@@ -14,7 +14,9 @@ test('every canonical collection, subject and numeral has a distinct informative
  for(const path of paths){
   const location=catalogLocation(path)!;
   assert.ok(location,path);const summary=landingSummary(location);
-  assert.ok(summary.split(/\s+/).length>=40&&summary.split(/\s+/).length<=120,`${path}: ${summary.split(/\s+/).length} words`);
+  // A concise overview can explain a focused topic without repeating file
+  // controls or padding it to the old forty-word target.
+  assert.ok(summary.split(/\s+/).length>=24&&summary.split(/\s+/).length<=120,`${path}: ${summary.split(/\s+/).length} words`);
   assert.ok(!/[-–—]/.test(summary),path);
   assert.match(summary,/[.!?]$/);
   assert.ok(!copy.has(summary),`Repeated introduction: ${path} and ${copy.get(summary)}`);
@@ -22,9 +24,9 @@ test('every canonical collection, subject and numeral has a distinct informative
   if(location.collection||location.topic||location.number){
    const entry=reviewedLandingIntroduction(location);
    assert.ok(entry,`Missing or stale reviewed collection introduction: ${path}`);
+   assert.equal(entry.purpose,'category-overview',path);
    assert.equal(entry.sourceIntro,landingIdentity(location).intro,path);
    assert.match(summary,/\bfree\b/i,path);assert.match(summary,/\bcoloring pages\b/i,path);
-   assert.match(summary,/\bPDF\b/,path);assert.match(summary,/\bimage\b/i,path);
    const opening=summary.replace(/\bT\.\s+rex/gi,'T rex').replace(/\bJ\.\s+Cole/g,'J Cole').split(/(?<=[.!?])\s/)[0];
    assert.match(opening,/coloring pages/i,`${path}: introduce the collection first`);
    assert.ok(!openings.has(opening),`Repeated opening: ${path} and ${openings.get(opening)}`);
@@ -47,8 +49,20 @@ test('panda collection copy introduces the printable collection and keeps colori
  const location=catalogLocation('/coloring-pages/pandas/')!;
  const text=landingSummary(location);
  assert.match(text,/^Browse free panda coloring pages/);
- assert.match(text,/bamboo groves/);assert.match(text,/download a printable PDF or image/);
+ assert.match(text,/bamboo groves/);assert.match(text,/feeding, resting, and playing/);
  assert.doesNotMatch(text,/Keep the panda|quieter background|main figure/);
+});
+
+test('broad category overviews describe their range instead of one cover drawing',()=>{
+ const sports=landingSummary(catalogLocation('/collections/sports/')!);
+ for(const subject of ['basketball','karate','gymnastics','winter sports'])assert.ok(sports.includes(subject),subject);
+ assert.doesNotMatch(sports,/Barbie|park bench|pavilion|frozen pond|fasten/i);
+ const aircraft=landingSummary(catalogLocation('/coloring-pages/aircraft/')!);
+ assert.doesNotMatch(aircraft,/sunflower|A biplane flies/i);
+ const music=landingSummary(catalogLocation('/coloring-pages/music/')!);
+ assert.match(music,/instruments|musical notes/i);assert.doesNotMatch(music,/Barbie plays/i);
+ const number=landingSummary(catalogLocation('/coloring-pages/numbers/1/')!);
+ assert.match(number,/digit|numeral/);assert.doesNotMatch(number,/raccoon baker|pond side turtle/i);
 });
 
 test('replacement source metadata cannot keep a stale authored introduction',()=>{

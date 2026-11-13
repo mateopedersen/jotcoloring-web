@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {COLORING_TAXONOMY,NEW_EXACT_TOPIC_CATEGORY_IDS,categoryLineage,categoryPath,resolveCategoryAlias} from '../src/taxonomy/catalog';
 import {NAVIGATION_COLLECTIONS,collectionForRoot} from '../src/taxonomy/navigation';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 import {NOVEMBER_06_RELEASE_ID,NOVEMBER_06_TOPIC_COUNTS,NOVEMBER_06_ZIP_CHECKSUMS,reviewedReleaseScope,reviewedTopicCount,matchesReviewedReleaseScope,matchesReviewedSourceArchives,matchesReviewedTopicLineage} from '../src/server/reviewed-release-scope';
 
 test('November 6 combined intake is exactly eighteen topics and 1,800 designs',()=>{
@@ -28,7 +28,7 @@ test('every intake topic has its correct parent, canonical route, searchable ali
   assert.equal(matchesReviewedTopicLineage(NOVEMBER_06_RELEASE_ID,id,[id]),false);
   assert.ok(collectionForRoot(lineage[0]),id+' has a public navigation home');
   assert.ok(NEW_EXACT_TOPIC_CATEGORY_IDS.has(id));assert.ok(migration.includes(`VALUES('${id}'`),id+' migration row');
-  const intro=landingSummary(catalogLocation(categoryPath(id))!);assert.ok(intro.split(/\s+/).length>=40,id+' has a reviewed landing introduction');
+  assert.equal(reviewedLandingIntroduction(catalogLocation(categoryPath(id))!)?.purpose,'category-overview',id+' has a current category overview');
  }
  assert.equal(categoryPath('social-media'),'/collections/social-media/');assert.ok(migration.includes("VALUES('social-media','Social Media',NULL,391)"));
  assert.equal(categoryPath('cars'),'/coloring-pages/cars/');assert.ok(collectionForRoot('vehicles'));

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {COLORING_TAXONOMY,NEW_FIVE_TOPIC_CATEGORY_IDS,categoryLineage,categoryPath,resolveCategoryAlias} from '../src/taxonomy/catalog';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 import {NOVEMBER_07_FIVE_TOPICS} from '../src/taxonomy/november-07-five-topics';
 import {NOVEMBER_07_FIVE_TOPICS_RELEASE_ID,NOVEMBER_07_FIVE_TOPIC_COLLECTION_COUNTS,NOVEMBER_07_FIVE_TOPIC_ZIP_CHECKSUMS,reviewedReleaseScope,reviewedTopicCount,matchesReviewedReleaseScope,matchesReviewedSourceArchives,matchesReviewedTopicLineage} from '../src/server/reviewed-release-scope';
 
@@ -33,7 +33,7 @@ test('new subjects resolve to their accurate parent pages and individual landing
   assert.ok(NEW_FIVE_TOPIC_CATEGORY_IDS.has(topic.id));
   assert.ok(catalogLocation(categoryPath(topic.id)));
   const location=catalogLocation(categoryPath(topic.id))!;
-  assert.ok(landingSummary(location).split(/\s+/).length>=40,topic.id+' has a complete visitor introduction');
+  assert.equal(reviewedLandingIntroduction(location)?.purpose,'category-overview',topic.id+' has a complete visitor introduction');
   assert.ok(migration.includes(`VALUES('${topic.id}'`),topic.id+' is present in catalog migration');
  }
  const dogs=categoryLineage('dogs');

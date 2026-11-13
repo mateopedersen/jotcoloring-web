@@ -30,7 +30,7 @@ const texts:Record<string,string>={
 };
 
 const path='src/taxonomy/landing-introductions.json';
-const copy=JSON.parse(await fs.readFile(path,'utf8')) as Record<string,{sourceIntro:string;text:string}>;
+const copy=JSON.parse(await fs.readFile(path,'utf8')) as Record<string,{sourceIntro:string;text:string;purpose?:string}>;
 const wordCount=(s:string)=>s.trim().split(/\s+/).length;
 const keys=new Set<string>();
 for(const category of NOVEMBER_10_ARTIST_TOPICS){
@@ -41,6 +41,10 @@ for(const category of NOVEMBER_10_ARTIST_TOPICS){
  const key=`topic:${category.id}`;
  if(keys.has(key))throw new Error('Duplicate artist landing identity: '+key);
  keys.add(key);
+ // Historical installer output must not overwrite newer owner-reviewed
+ // category overviews. A new artist still requires a current overview review
+ // and purpose marker before the normal release checks can pass.
+ if(copy[key]?.purpose==='category-overview')continue;
  copy[key]={sourceIntro:category.intro,text};
 }
 if(Object.keys(texts).length!==keys.size)throw new Error('Unexpected artist landing copy key.');

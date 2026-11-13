@@ -6,7 +6,7 @@ import {NOVEMBER_09_AUTO29_ARCHIVE_NAMES as names} from '../src/server/november-
 import {NOVEMBER_09_AUTO29_TOPICS as topics} from '../src/taxonomy/november-09-auto29';
 import {categoryLineage,categoryPath,resolveCategoryAlias} from '../src/taxonomy/catalog';
 import {catalogLocation} from '../src/taxonomy/catalog-location';
-import {landingSummary} from '../src/taxonomy/landing-summary';
+import {landingSummary,reviewedLandingIntroduction} from '../src/taxonomy/landing-summary';
 
 test('November 9 automobile intake is exactly 29 checksum-pinned topics and 2,900 drawings',()=>{
  const scope=reviewedReleaseScope(id);
@@ -29,7 +29,7 @@ test('each new car brand routes to one Cars topic with a full intro and matching
   assert.equal(matchesReviewedTopicLineage(id,t.id,[t.id]),false);
   assert.equal(resolveCategoryAlias(t.name+' coloring pages'),t.id);
   const location=catalogLocation(categoryPath(t.id));assert.equal(location?.topic?.id,t.id);
-  assert.ok(landingSummary(location!).split(/\s+/).length>=40,t.id+' visitor introduction');assert.doesNotMatch(landingSummary(location!),/The set pairs full-vehicle outlines with close-up design details/);
+  assert.equal(reviewedLandingIntroduction(location!)?.purpose,'category-overview',t.id+' visitor introduction');assert.doesNotMatch(landingSummary(location!),/The set pairs full-vehicle outlines with close-up design details/);
   assert.ok(migration.includes(`VALUES('${t.id}'`),t.id+' migration');
  }
 });
