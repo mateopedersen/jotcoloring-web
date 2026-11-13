@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "155 additional subject logos: 98 automotive brands and 57 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "157 additional subject identities: 98 automotive brands and 59 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2359,6 +2359,36 @@
         "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
         "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
         "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "labubu": {
+      "asset_sha256": "7067912ae989afed788eb042288b4f0ffa997a2d3537ecc1f7121805f5c48758",
+      "src": "/subject-logos/subjects/labubu.7067912ae989.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/313",
+      "reviewed_at": "2026-11-13T13:12:59.065819+00:00",
+      "artwork_preview_id": "jc-labubu-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/labubu-coloring-page-100/catalog_thumb_bw.e54de1d8b2fe42a7e529c6f9.webp",
+      "actual_final_card_proofs": {
+        "two-popmart-final-1440-1.png": "bbf4df774b27027fa09dc0c9b9bbf7ebfd7989c80280eb2ad3ef46098a7cac1d",
+        "two-popmart-final-390-1.png": "712190d0ece7901a46a9cf64fdb1798637f5fa6c20e37e73c67cab1326416fb7",
+        "two-popmart-browser-verification.json": "27d5e1df477c377195ae889046c12735a73daaa787b30bee46d98af849fa83ff"
+      }
+    },
+    "zimomo": {
+      "asset_sha256": "e9f50e572bb994b54256ea391cd24a093d8b10bdfc3a08569662041b30a28a2e",
+      "src": "/subject-logos/subjects/zimomo.e9f50e572bb9.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.popmart.com/us/collection/313",
+      "reviewed_at": "2026-11-13T13:12:59.066279+00:00",
+      "artwork_preview_id": "jc-zimomo-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/zimomo-coloring-page-100/catalog_thumb_bw.319ef6634c29a5626c31544f.webp",
+      "actual_final_card_proofs": {
+        "two-popmart-final-1440-1.png": "bbf4df774b27027fa09dc0c9b9bbf7ebfd7989c80280eb2ad3ef46098a7cac1d",
+        "two-popmart-final-390-1.png": "712190d0ece7901a46a9cf64fdb1798637f5fa6c20e37e73c67cab1326416fb7",
+        "two-popmart-browser-verification.json": "27d5e1df477c377195ae889046c12735a73daaa787b30bee46d98af849fa83ff"
       }
     }
   }
