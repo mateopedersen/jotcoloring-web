@@ -2990,6 +2990,52 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T14:56:48.300Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "edsel": {
+      "id": "edsel",
+      "sha256": "5f9a328d00a0e0065390799da0cb47620a1c064b29e68cfc080d1adf6d3f348b",
+      "bytes": 45540,
+      "asset_source": "https://www.oldcarbrochures.com/static/NA/Edsel/1958_Edsel/1958%20Edsel%20Full%20Line%20Prestige%20Brochure/b_1958%20Edsel%20Full%20Line%20Prestige-01.jpg",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/363681",
+      "source_container_sha256": "fbb66a3606a9a1c59f59f8536e0c810df8ac1f1c189b988a49aef05363a4f1d0",
+      "source_document_page": 1,
+      "source_crop_pixels": [
+        1155,
+        105,
+        1540,
+        240
+      ],
+      "source_kind": "original_manufacturer_brochure_title_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/edsel.5f9a328d00a0.png",
+      "name": "Edsel",
+      "source_sha256": "87e8cfb36b9f0b52081daa3fee16d2e609e3c8898ed13ed6f59c71bad42b74c8",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T15:04:30.013Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "hudson": {
+      "id": "hudson",
+      "sha256": "b4f1288d62dc9cd59a5fe58e9ae38156eabea9b9cfc11ec4757e967b913f576c",
+      "bytes": 68425,
+      "asset_source": "https://over-drive-magazine.com/wp-content/uploads/2022/08/1953-Hudson-FO-Brochure-1-12B-HIU.pdf",
+      "identity_reference": "https://over-drive-magazine.com/document/1953-hudson-full-size-car-fold-out-brochure/",
+      "source_container_sha256": "9cd63314e8157314db98dd92aa2109181166ad9434600b3d2105bcaeee5a1549",
+      "source_document_page": 1,
+      "source_crop_pixels": [
+        380,
+        380,
+        1880,
+        660
+      ],
+      "source_kind": "original_manufacturer_brochure_title_wordmark",
+      "surface": "light",
+      "src": "/subject-logos/subjects/hudson.b4f1288d62dc.png",
+      "name": "Hudson",
+      "source_sha256": "fd416cf9f2fb9eb60e65e0a7491184c9c504ac45da0fcccdf7d903dee4c16d47",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T15:04:30.025Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
