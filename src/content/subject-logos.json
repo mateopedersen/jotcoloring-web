@@ -2746,6 +2746,30 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:49:04.091Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "tucker": {
+      "id": "tucker",
+      "sha256": "760c8ae7f95371164a2a3b979ee8c084442192fc2ddd60bf88490ca236ba4717",
+      "bytes": 268302,
+      "asset_source": "https://storm.oldcarmanualproject.com/tucker/front.jpg",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/3823",
+      "source_page_sha256": "621843d09b5d50802a39871ca7a1b004fc08bb48f34d9911c26a51583f80ba6c",
+      "source_identity_page_sha256": "a4760d09a9ee352947a3d7811af4ab6c34389c0fde7023bbe39ec7d16a2da6c7",
+      "source_container_sha256": "394905460e3abaf6e168106846b8cdc545a73b02ced58b81615980b221cd74eb",
+      "source_crop_pixels": [
+        700,
+        90,
+        1105,
+        710
+      ],
+      "source_kind": "original_manufacturer_brochure_crest",
+      "surface": "light",
+      "src": "/subject-logos/subjects/tucker.760c8ae7f953.png",
+      "name": "Tucker",
+      "source_sha256": "205e33f9e2577d5e438a9ee674da6af4d5607c8c4d25e6813d1a4eb7210f332a",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:56:23.915Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

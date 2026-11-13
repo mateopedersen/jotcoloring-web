@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "167 additional subject identities: 103 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "168 additional subject identities: 104 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2539,6 +2539,21 @@
         "three-primary-manual-final-1440-1.png": "6d806d9a313e872e24a1568da27e22bbc2f09966b45f95544d4b5431ffc5db5a",
         "three-primary-manual-final-390-1.png": "900af18145d7a6452323756cf3d709122ff677d20026f8dee203207e749b12b2",
         "three-primary-manual-browser-verification.json": "d3cf15da3af7253d130cc1baa6cf8497f4fc81730ed6fcfcea5e996e370beac1"
+      }
+    },
+    "tucker": {
+      "asset_sha256": "760c8ae7f95371164a2a3b979ee8c084442192fc2ddd60bf88490ca236ba4717",
+      "src": "/subject-logos/subjects/tucker.760c8ae7f953.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/3823",
+      "reviewed_at": "2026-11-13T13:57:24.284870+00:00",
+      "artwork_preview_id": "jc-tucker-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/tucker-coloring-page-100/catalog_thumb_bw.0389288559a0a675bce35a05.webp",
+      "actual_final_card_proofs": {
+        "tucker-original-final-390-1.png": "3de848dc14510475ff8198b8ae1c21a31f8b3d72fbadebbc36f0e5e971030040",
+        "tucker-original-final-1440-1.png": "58f063f4abf1a2e8a80faff5064c3f3ab1dd9f8283c39560c877adb62beac49f",
+        "tucker-original-browser-verification.json": "77f79bc9b39eced79f2c37b55a51effaad5310f99b09aa6c3240089bbdedff20"
       }
     }
   }
