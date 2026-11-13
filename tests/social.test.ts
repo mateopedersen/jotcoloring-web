@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
+import {convertSVGTextToPath} from '@napi-rs/canvas';
 import {createHash} from 'node:crypto';
 import generated from '../src/social/generated.json';
 import {SOCIAL_PAGES,socialPageKey,socialBinding,contentSocialSpec,OG_VERSION} from '../src/social/model';
@@ -14,6 +15,15 @@ import {BRAND_REVIEW_VERSION} from '../src/server/branding';
 import type {Asset,Env,Manifest} from '../src/server/types';
 const digest=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
 const binding=socialBinding({slug:'a-real-page',title:'A real page',description:'A fox beside a flower.',alt_text:'A fox beside a flower.',category_ids:['animals','woodland'],recommendedAge:'6-8',sourceSHA256:'a'.repeat(64)});
+test('social fonts render accented player names as distinct glyphs instead of missing-character boxes',()=>{
+ measureCopy('Dončić',48);
+ for(const [alias,weight] of [['JotMedium',550],['JotBold',750],['JotExtra',800]] as const){
+  const outline=(char:string)=>String(convertSVGTextToPath(`<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="0" y="60" font-size="48" font-weight="${weight}" font-family="${alias}">${char}</text></svg>`));
+  const missing=outline('\u{10FFFF}');
+  for(const char of new Set('čćņģŞğëö'))assert.notEqual(outline(char),missing,`${alias} must contain ${char}`);
+  for(const [accented,plain] of [['č','c'],['ć','c'],['ņ','n'],['ģ','g'],['Ş','S'],['ğ','g']])assert.notEqual(outline(accented),outline(plain),`${alias} must preserve ${accented}`);
+ }
+});
 test('social HEAD reads object metadata without transferring the image body',async()=>{let heads=0;const row={slug:'fox',mime:'image/png',bytes:1234,sha256:'a'.repeat(64),object_key:'published/fox.png'},statement={bind:()=>statement,first:async()=>row};const env={CATALOG_DB:{prepare:()=>statement},PUBLISHED:{head:async()=>{heads++;return{size:1234}},get:async()=>{throw new Error('HEAD must not fetch a body.')}}} as unknown as Env;const response=await publicAsset(new Request('https://jotcoloring.com/og/coloring/fox.png',{method:'HEAD'}),env,'fox','social_og');assert.equal(heads,1);assert.equal(response.status,200);assert.equal(response.headers.get('content-type'),'image/png');assert.equal(response.headers.get('content-length'),'1234');assert.equal((await response.arrayBuffer()).byteLength,0);});
 test('all registered page identities have unique PNG covers with real geometry, color and source bindings',async()=>{const hashes=new Set<string>();for(const [key,card]of Object.entries(generated)){const bytes=await fs.readFile('public'+card.src),meta=await sharp(bytes).metadata(),stats=await sharp(bytes).stats();assert.equal(meta.width,1200,key);assert.equal(meta.height,630,key);assert.equal(meta.format,'png');assert.ok(bytes.length<1_000_000);assert.equal(digest(bytes),card.sha256);assert.ok(!hashes.has(card.sha256),'Cover must be specific: '+key);hashes.add(card.sha256);assert.ok(stats.channels[0].stdev>25,'Artwork and text must actually render.');const b=pngBinding(bytes) as {version:string;key?:string;slug?:string};assert.equal(b.version,OG_VERSION);assert.equal(key,b.key||'coloring-'+b.slug);}for(const page of SOCIAL_PAGES)assert.ok(page.key in generated,page.key);});
 test('GTA 6 collection cover binds its topic route, current title, game identity and reviewed artwork sources',async()=>{const key='topic-gta-6',card=generated[key];assert.ok(card);assert.equal(card.title,'GTA 6 Coloring Pages');assert.match(card.description,/GTA 6/);assert.match(card.description,/fictional Leonida/);const spec=SOCIAL_PAGES.find(page=>page.key===key);assert.equal(spec?.paths[0],'/coloring-pages/gta-6/');assert.equal(spec?.headline,card.title);const binding=pngBinding(await fs.readFile('public'+card.src)) as {key?:string;path?:string;title?:string;description?:string;sources?:Array<{slug:string;sha256:string}>};assert.equal(binding.key,key);assert.equal(binding.path,'/coloring-pages/gta-6/');assert.equal(binding.title,card.title);assert.ok(binding.sources?.length===3);});
