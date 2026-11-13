@@ -1663,6 +1663,111 @@
       "source_sha256": "17b5ab6433588cbd78f8b956130c5c686c59b363bec8adba6a77321f7537f1d6",
       "shape": "wide",
       "reviewed_at": "2026-11-13T11:26:29.435Z"
+    },
+    "sonic": {
+      "name": "Sonic",
+      "src": "/subject-logos/subjects/sonic.f0ae034cdf54.png",
+      "asset_source": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+      "identity_reference": "https://sonic.sega.jp/SonicChannel/character/sonic.html",
+      "asset_kind": "official_character_portrait",
+      "source_sha256": "e8fbfe1530684d67aabb0ccaeeee9aae28c1a85c11ace76f0c9a906b7d235ed8",
+      "sha256": "f0ae034cdf54b03da41f05600f93c665b9eb22f2d8e65afbd0509055ca97df55",
+      "bytes": 267150,
+      "surface": "light",
+      "shape": "tall",
+      "source_crop": {
+        "left": 690,
+        "top": 0,
+        "width": 380,
+        "height": 630
+      },
+      "transformation": "Crop native official wordmark or character art without redrawing/recoloring; GIF symbol uses its original first frame. Original source container preserved privately.",
+      "reviewed_at": "2026-11-13T11:39:03.124995+00:00",
+      "source_crop_review": "Exact resulting native crop viewed individually; original official artwork and specific publisher identity checked. Logo/wordmark and character portrait kinds are recorded separately."
+    },
+    "amy-rose": {
+      "name": "Amy Rose",
+      "src": "/subject-logos/subjects/amy-rose.a0ae6e0f29d2.png",
+      "asset_source": "https://sonic.sega.jp/SonicChannel/upload_images/character-amy.jpg",
+      "identity_reference": "https://sonic.sega.jp/SonicChannel/character/amy.html",
+      "asset_kind": "official_character_portrait",
+      "source_sha256": "f345de4a8b8ad49ed178fcf6919da23daec5b18b0937c1ea8898b98cae2a8179",
+      "sha256": "a0ae6e0f29d2063fda5e9305077c01e9bfb2529249cfeaedabdef2c811c9b100",
+      "bytes": 321886,
+      "surface": "light",
+      "shape": "square",
+      "source_crop": {
+        "left": 640,
+        "top": 0,
+        "width": 480,
+        "height": 630
+      },
+      "transformation": "Crop native official wordmark or character art without redrawing/recoloring; GIF symbol uses its original first frame. Original source container preserved privately.",
+      "reviewed_at": "2026-11-13T11:39:03.125125+00:00",
+      "source_crop_review": "Exact resulting native crop viewed individually; original official artwork and specific publisher identity checked. Logo/wordmark and character portrait kinds are recorded separately."
+    },
+    "mofusand": {
+      "name": "Mofusand",
+      "src": "/subject-logos/subjects/mofusand.4ec559cd3704.png",
+      "asset_source": "https://mofusand-mofumofu-market.jp/cdn/shop/files/logo_724_249.png?v=1666073429&width=600",
+      "identity_reference": "https://mofusand-mofumofu-market.jp/en",
+      "asset_kind": "official_native_wordmark",
+      "source_sha256": "1c7db6678535a589acf4026cef90081054abaefc94040ffea294d34dffee5abb",
+      "sha256": "4ec559cd3704da9940c835e16dfec2ad2fa7e7b91bae9e5b830325f4c543c5ab",
+      "bytes": 9737,
+      "surface": "light",
+      "shape": "wide",
+      "source_crop": {
+        "left": 300,
+        "top": 10,
+        "width": 290,
+        "height": 59
+      },
+      "transformation": "Crop native official wordmark or character art without redrawing/recoloring; GIF symbol uses its original first frame. Original source container preserved privately.",
+      "reviewed_at": "2026-11-13T11:39:03.125127+00:00",
+      "source_crop_review": "Exact resulting native crop viewed individually; original official artwork and specific publisher identity checked. Logo/wordmark and character portrait kinds are recorded separately."
+    },
+    "pusheen": {
+      "name": "Pusheen",
+      "src": "/subject-logos/subjects/pusheen.ba7a0a078363.png",
+      "asset_source": "https://pusheen.com/cdn/shop/files/SHOP_Transparent-GIF-Logo.gif?v=1783459572&width=1445",
+      "identity_reference": "https://pusheen.com/",
+      "asset_kind": "official_character_symbol",
+      "source_sha256": "cc488b8396086f47d8d6ad7f78f3f7538e7f51b2889a35db06769c3e75e591cd",
+      "sha256": "ba7a0a078363b78114fecca240974ef0ddefc72da75ee98eb4eb130c6e147c76",
+      "bytes": 8400,
+      "surface": "light",
+      "shape": "square",
+      "source_crop": {
+        "left": 690,
+        "top": 0,
+        "width": 390,
+        "height": 266
+      },
+      "transformation": "Crop native official wordmark or character art without redrawing/recoloring; GIF symbol uses its original first frame. Original source container preserved privately.",
+      "reviewed_at": "2026-11-13T11:39:03.125128+00:00",
+      "source_crop_review": "Exact resulting native crop viewed individually; original official artwork and specific publisher identity checked. Logo/wordmark and character portrait kinds are recorded separately."
+    },
+    "rilakkuma": {
+      "name": "Rilakkuma",
+      "src": "/subject-logos/subjects/rilakkuma.5a0edbd9f4ce.png",
+      "asset_source": "https://www.san-x.co.jp/uploads/1769160899666-m44wqu0g12/001_rk.webp",
+      "identity_reference": "https://www.san-x.co.jp/rilakkuma/",
+      "asset_kind": "official_native_wordmark",
+      "source_sha256": "5835e5d2edb7229dfcac460c22f35f925d58bc98b388ba5f3c62e18b5854d88a",
+      "sha256": "5a0edbd9f4ced91bf5216c9f0a183f4d0f5369d22cc55c3117f34f6219630bd9",
+      "bytes": 36275,
+      "surface": "light",
+      "shape": "wide",
+      "source_crop": {
+        "left": 125,
+        "top": 244,
+        "width": 500,
+        "height": 94
+      },
+      "transformation": "Crop native official wordmark or character art without redrawing/recoloring; GIF symbol uses its original first frame. Original source container preserved privately.",
+      "reviewed_at": "2026-11-13T11:39:03.125129+00:00",
+      "source_crop_review": "Exact resulting native crop viewed individually; original official artwork and specific publisher identity checked. Logo/wordmark and character portrait kinds are recorded separately."
     }
   }
 }

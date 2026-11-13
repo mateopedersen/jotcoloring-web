@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "112 additional subject logos: 77 automotive brands and 35 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "117 additional subject logos/symbols: 77 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -1682,6 +1682,81 @@
         "sixteen-final-1440-2.png": "9a36ea4bbf598c0a988b52bfafa6fcc5431ee1e2f966a99c03808840f38a3b02",
         "sixteen-final-1440-1.png": "004c8716d791aa9b202793cd12b52cfe6156d16af6b676d727083df381d487aa",
         "sixteen-browser-verification.json": "6b48cea0d13ed76e909e90de04ffc9e85d82cc846aa5754397d47520ede98560"
+      }
+    },
+    "sonic": {
+      "asset_sha256": "f0ae034cdf54b03da41f05600f93c665b9eb22f2d8e65afbd0509055ca97df55",
+      "src": "/subject-logos/subjects/sonic.f0ae034cdf54.png",
+      "surface": "light",
+      "shape": "tall",
+      "identity_reference": "https://sonic.sega.jp/SonicChannel/character/sonic.html",
+      "reviewed_at": "2026-11-13T11:40:58.779910+00:00",
+      "artwork_preview_id": "jc-sonic-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/sonic-and-friends-plan-a-garden-celebration/catalog_thumb_bw.b124cbc55455b7ed14786432.webp",
+      "actual_final_card_proofs": {
+        "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
+        "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
+        "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
+      }
+    },
+    "amy-rose": {
+      "asset_sha256": "a0ae6e0f29d2063fda5e9305077c01e9bfb2529249cfeaedabdef2c811c9b100",
+      "src": "/subject-logos/subjects/amy-rose.a0ae6e0f29d2.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://sonic.sega.jp/SonicChannel/character/amy.html",
+      "reviewed_at": "2026-11-13T11:40:58.781022+00:00",
+      "artwork_preview_id": "jc-amy-rose-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/amy-rose-coloring-page-100/catalog_thumb_bw.5fd936ee2fbe7feca7454566.webp",
+      "actual_final_card_proofs": {
+        "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
+        "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
+        "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
+      }
+    },
+    "mofusand": {
+      "asset_sha256": "4ec559cd3704da9940c835e16dfec2ad2fa7e7b91bae9e5b830325f4c543c5ab",
+      "src": "/subject-logos/subjects/mofusand.4ec559cd3704.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://mofusand-mofumofu-market.jp/en",
+      "reviewed_at": "2026-11-13T11:40:58.781267+00:00",
+      "artwork_preview_id": "jc-mofusand-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/animals/mofusand-coloring-page-100/catalog_thumb_bw.d1fa578a975962c445642f87.webp",
+      "actual_final_card_proofs": {
+        "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
+        "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
+        "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
+      }
+    },
+    "pusheen": {
+      "asset_sha256": "ba7a0a078363b78114fecca240974ef0ddefc72da75ee98eb4eb130c6e147c76",
+      "src": "/subject-logos/subjects/pusheen.ba7a0a078363.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://pusheen.com/",
+      "reviewed_at": "2026-11-13T11:40:58.781588+00:00",
+      "artwork_preview_id": "jc-pusheen-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/pusheen-coloring-page-100/catalog_thumb_bw.c8ebc1a064338ab02b20239f.webp",
+      "actual_final_card_proofs": {
+        "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
+        "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
+        "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
+      }
+    },
+    "rilakkuma": {
+      "asset_sha256": "5a0edbd9f4ced91bf5216c9f0a183f4d0f5369d22cc55c3117f34f6219630bd9",
+      "src": "/subject-logos/subjects/rilakkuma.5a0edbd9f4ce.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.san-x.co.jp/rilakkuma/",
+      "reviewed_at": "2026-11-13T11:40:58.782103+00:00",
+      "artwork_preview_id": "jc-rilakkuma-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rilakkuma-coloring-page-100/catalog_thumb_bw.5ec12475c828767b10ae0d42.webp",
+      "actual_final_card_proofs": {
+        "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
+        "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
+        "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
       }
     }
   }
