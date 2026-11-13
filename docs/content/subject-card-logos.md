@@ -41,3 +41,7 @@ Plymouth, Packard and Imperial use unchanged original manufacturer brochure badg
 Rugrats uses the unchanged native series logo from Paramount Press Express public S3 artwork, identified through the official show page. The direct local HTML response was geographically blocked and is not recorded as source evidence. Native artwork bytes, the official page reference, and actual desktop/mobile cards are recorded alongside the original own coloring preview.
 
 Transformers Rescue Bots uses Hasbro’s native embedded series-logo image from page one of its original Flip Racers playbook. Exact PDF and image checksums and actual source/final desktop/mobile inspection are retained; no artwork redrawn.
+
+Scion and International Harvester use exact original manufacturer brochure logo regions from historical archive scans. Blue’s Clues uses its original paw/wordmark from a Mattel licensed-product manual. Source document hashes, page/render/crop coordinates and actual original/final card inspection are bound to exact subject IDs. No other brand or generic category symbol is substituted.
+
+Tucker uses its complete original crest and period tagline from the 1948 manufacturer brochure scan, cross-checked against The Henry Ford’s Tucker Corporation trade-catalog artifact. Source archive and museum identity references, byte hashes and exact crop are recorded; no museum or club logo is substituted.

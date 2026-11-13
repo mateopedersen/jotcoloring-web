@@ -2674,6 +2674,102 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:40:32.940Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "scion": {
+      "id": "scion",
+      "sha256": "8dd51f3a78e592f9f19d6f622b11f6909b92b5d66fc246ad22f43bb1960c81d0",
+      "bytes": 9889,
+      "asset_source": "https://www.auto-brochures.com/makes/Scion/FR-S/Scion_US%20FR-S_2016.pdf",
+      "identity_reference": "https://www.auto-brochures.com/scion.html",
+      "source_container_sha256": "db0c49537b391e2c46543e5fef7bf31995c6f8f0db06c77565e933b713bb5ee0",
+      "source_pdf_page": 1,
+      "source_crop_pixels": [
+        3850,
+        4780,
+        540,
+        400
+      ],
+      "source_kind": "original_manufacturer_or_licensed_product_manual_mark",
+      "surface": "light",
+      "source_render_dpi": 600,
+      "src": "/subject-logos/subjects/scion.8dd51f3a78e5.png",
+      "name": "Scion",
+      "source_sha256": "0ab1366cf38e501a87dfc9b8698266480424f878f416a67d8bdcaa3f123a09ee",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:49:04.074Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "international-harvester": {
+      "id": "international-harvester",
+      "sha256": "1b9af4a7c9c3464793d409a7064fc04156aadac38d5e8b5fa8efea0c1f69902b",
+      "bytes": 49557,
+      "asset_source": "https://www.auto-brochures.com/makes/International/International_US%20Full%20Line_1975.pdf",
+      "identity_reference": "https://www.auto-brochures.com/international.html",
+      "source_container_sha256": "810dc00b49b20a9942e6393bdd8475418b713bb3481eee0fdc28db9a5008077a",
+      "source_pdf_page": 16,
+      "source_crop_pixels": [
+        60,
+        990,
+        325,
+        1138
+      ],
+      "source_kind": "original_manufacturer_or_licensed_product_manual_mark",
+      "surface": "light",
+      "source_pdf_image": "Im24.jpg",
+      "src": "/subject-logos/subjects/international-harvester.1b9af4a7c9c3.png",
+      "name": "International Harvester",
+      "source_sha256": "e7d715dab914fc335252182426c160263af1fbeade81f48d692dbafc0cf193f9",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:49:04.079Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "blues-clues": {
+      "id": "blues-clues",
+      "sha256": "f1635bb4d47f441bf1be4af7b3f0cb55d87c564967ce32cebf9e2ec9b85a4450",
+      "bytes": 69215,
+      "asset_source": "https://service.mattel.com/instruction_sheets/b8730-0920.pdf",
+      "identity_reference": "https://service.mattel.com/instruction_sheets/b8730-0920.pdf",
+      "source_container_sha256": "d909404d487b74167ac20578766f4b6d41ea4ec6385482e570c1895ff5cd07ff",
+      "source_pdf_page": 1,
+      "source_crop_pixels": [
+        1380,
+        2000,
+        1000,
+        920
+      ],
+      "source_kind": "original_manufacturer_or_licensed_product_manual_mark",
+      "surface": "light",
+      "source_render_dpi": 600,
+      "src": "/subject-logos/subjects/blues-clues.f1635bb4d47f.png",
+      "name": "Blue's Clues",
+      "source_sha256": "5d3eecc914649f182ee5ec65c3333ce7cb3f465d9c30e5f9a2e4863fe501a975",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:49:04.091Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "tucker": {
+      "id": "tucker",
+      "sha256": "760c8ae7f95371164a2a3b979ee8c084442192fc2ddd60bf88490ca236ba4717",
+      "bytes": 268302,
+      "asset_source": "https://storm.oldcarmanualproject.com/tucker/front.jpg",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/3823",
+      "source_page_sha256": "621843d09b5d50802a39871ca7a1b004fc08bb48f34d9911c26a51583f80ba6c",
+      "source_identity_page_sha256": "a4760d09a9ee352947a3d7811af4ab6c34389c0fde7023bbe39ec7d16a2da6c7",
+      "source_container_sha256": "394905460e3abaf6e168106846b8cdc545a73b02ced58b81615980b221cd74eb",
+      "source_crop_pixels": [
+        700,
+        90,
+        1105,
+        710
+      ],
+      "source_kind": "original_manufacturer_brochure_crest",
+      "surface": "light",
+      "src": "/subject-logos/subjects/tucker.760c8ae7f953.png",
+      "name": "Tucker",
+      "source_sha256": "205e33f9e2577d5e438a9ee674da6af4d5607c8c4d25e6813d1a4eb7210f332a",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:56:23.915Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

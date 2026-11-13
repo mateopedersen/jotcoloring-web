@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "164 additional subject identities: 101 automotive brands and 63 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "168 additional subject identities: 104 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2494,6 +2494,66 @@
         "rescue-bots-final-390-1.png": "49517eabb2db73b6dd0ac5a934a549f0ed233366d7f87ff9bca0afbe310873d7",
         "rescue-bots-final-1440-1.png": "fc719afb07e024eaab6fc2157b8bd84b809055636cd87b2abad6c8fc9efb17bb",
         "rescue-bots-browser-verification.json": "5fa591b8d69ed94896d0eac9eec7a0e10d8de43f13923e5b2cd113a1b8f85238"
+      }
+    },
+    "scion": {
+      "asset_sha256": "8dd51f3a78e592f9f19d6f622b11f6909b92b5d66fc246ad22f43bb1960c81d0",
+      "src": "/subject-logos/subjects/scion.8dd51f3a78e5.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.auto-brochures.com/scion.html",
+      "reviewed_at": "2026-11-13T13:50:29.423969+00:00",
+      "artwork_preview_id": "jc-scion-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/scion-coloring-page-100/catalog_thumb_bw.189a016a141dd4f0b039525d.webp",
+      "actual_final_card_proofs": {
+        "three-primary-manual-final-1440-1.png": "6d806d9a313e872e24a1568da27e22bbc2f09966b45f95544d4b5431ffc5db5a",
+        "three-primary-manual-final-390-1.png": "900af18145d7a6452323756cf3d709122ff677d20026f8dee203207e749b12b2",
+        "three-primary-manual-browser-verification.json": "d3cf15da3af7253d130cc1baa6cf8497f4fc81730ed6fcfcea5e996e370beac1"
+      }
+    },
+    "international-harvester": {
+      "asset_sha256": "1b9af4a7c9c3464793d409a7064fc04156aadac38d5e8b5fa8efea0c1f69902b",
+      "src": "/subject-logos/subjects/international-harvester.1b9af4a7c9c3.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.auto-brochures.com/international.html",
+      "reviewed_at": "2026-11-13T13:50:29.424329+00:00",
+      "artwork_preview_id": "jc-international-harvester-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/international-harvester-coloring-page-100/catalog_thumb_bw.8a185d5fd315e9d946e84170.webp",
+      "actual_final_card_proofs": {
+        "three-primary-manual-final-1440-1.png": "6d806d9a313e872e24a1568da27e22bbc2f09966b45f95544d4b5431ffc5db5a",
+        "three-primary-manual-final-390-1.png": "900af18145d7a6452323756cf3d709122ff677d20026f8dee203207e749b12b2",
+        "three-primary-manual-browser-verification.json": "d3cf15da3af7253d130cc1baa6cf8497f4fc81730ed6fcfcea5e996e370beac1"
+      }
+    },
+    "blues-clues": {
+      "asset_sha256": "f1635bb4d47f441bf1be4af7b3f0cb55d87c564967ce32cebf9e2ec9b85a4450",
+      "src": "/subject-logos/subjects/blues-clues.f1635bb4d47f.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://service.mattel.com/instruction_sheets/b8730-0920.pdf",
+      "reviewed_at": "2026-11-13T13:50:29.424535+00:00",
+      "artwork_preview_id": "jc-blues-clues-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/blues-clues-blue-s-clues-coloring-page-100-a-mural-of-the-garden-and-beach/catalog_thumb_bw.c9ddb7275a0329a7bf3c7bc0.webp",
+      "actual_final_card_proofs": {
+        "three-primary-manual-final-1440-1.png": "6d806d9a313e872e24a1568da27e22bbc2f09966b45f95544d4b5431ffc5db5a",
+        "three-primary-manual-final-390-1.png": "900af18145d7a6452323756cf3d709122ff677d20026f8dee203207e749b12b2",
+        "three-primary-manual-browser-verification.json": "d3cf15da3af7253d130cc1baa6cf8497f4fc81730ed6fcfcea5e996e370beac1"
+      }
+    },
+    "tucker": {
+      "asset_sha256": "760c8ae7f95371164a2a3b979ee8c084442192fc2ddd60bf88490ca236ba4717",
+      "src": "/subject-logos/subjects/tucker.760c8ae7f953.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/3823",
+      "reviewed_at": "2026-11-13T13:57:24.284870+00:00",
+      "artwork_preview_id": "jc-tucker-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/tucker-coloring-page-100/catalog_thumb_bw.0389288559a0a675bce35a05.webp",
+      "actual_final_card_proofs": {
+        "tucker-original-final-390-1.png": "3de848dc14510475ff8198b8ae1c21a31f8b3d72fbadebbc36f0e5e971030040",
+        "tucker-original-final-1440-1.png": "58f063f4abf1a2e8a80faff5064c3f3ab1dd9f8283c39560c877adb62beac49f",
+        "tucker-original-browser-verification.json": "77f79bc9b39eced79f2c37b55a51effaad5310f99b09aa6c3240089bbdedff20"
       }
     }
   }
