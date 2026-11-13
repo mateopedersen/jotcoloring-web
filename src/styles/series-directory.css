@@ -10,7 +10,7 @@
 .jc-series-team-logo,.jc-series-brand-logo,.jc-series-topic-symbol{display:block;width:108px;height:108px;max-width:100%;object-fit:contain;filter:drop-shadow(0 3px 2px #201a1614)}
 @media(max-width:600px){.jc-series-team-logo,.jc-series-brand-logo,.jc-series-topic-symbol{width:58px;height:58px}}
 
-.jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"]{padding:9px;border-radius:14px;background:#fff;filter:drop-shadow(0 3px 2px #201a1614)}
-.jc-series-brand-logo[data-surface="dark"]{background:#17262e}
+.jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"],.jc-series-team-logo[data-surface="light"],.jc-series-team-logo[data-surface="dark"]{padding:9px;border-radius:14px;background:#fff;filter:drop-shadow(0 3px 2px #201a1614)}
+.jc-series-brand-logo[data-surface="dark"],.jc-series-team-logo[data-surface="dark"]{background:#17262e}
 .jc-series-brand-logo[data-shape="wide"]{height:64px}
-@media(max-width:600px){.jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"]{padding:5px;border-radius:8px}.jc-series-brand-logo[data-shape="wide"]{height:38px}}
+@media(max-width:600px){.jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"],.jc-series-team-logo[data-surface="light"],.jc-series-team-logo[data-surface="dark"]{padding:5px;border-radius:8px}.jc-series-brand-logo[data-shape="wide"]{height:38px}}
