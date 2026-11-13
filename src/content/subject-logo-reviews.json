@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "117 additional subject logos/symbols: 77 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "126 additional subject logos: 86 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -1757,6 +1757,159 @@
         "five-character-final-390-1.png": "39b8160956e5a5cab146cc3f87e78a86ba22603dddfd12a449bf3960c5679972",
         "five-character-final-1440-1.png": "fc7a2ac43fac37fddcb1e91dde2177a4e33efd7fe73c44e38f3d9b15dcdf7cc1",
         "five-character-browser-verification.json": "416611d3cc919cd5037044d9e17379ba75d2f668faa2e9f188443030eaeb85a7"
+      }
+    },
+    "bugatti": {
+      "asset_sha256": "1346a3816b0a7d4bfbbb15f97af0f192a87a672e0e549237c75ebf1d1fb8b67e",
+      "src": "/subject-logos/cars/bugatti.1346a3816b0a.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://newsroom.bugatti.com/",
+      "reviewed_at": "2026-11-13T12:16:58.291593+00:00",
+      "artwork_preview_id": "jc-bugatti-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/bugatti-la-voiture-noire-100-coloring-page/catalog_thumb_bw.826670ff113e5a6bf3cb0afb.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "jaguar": {
+      "asset_sha256": "6d6a98286223e7cb63245f9c630f95b00159c8bbaed7e1be5caca85de116563d",
+      "src": "/subject-logos/cars/jaguar.6d6a98286223.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://media.jaguar.com/",
+      "reviewed_at": "2026-11-13T12:16:58.291838+00:00",
+      "artwork_preview_id": "jc-jaguar-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/jaguar-coloring-page-100/catalog_thumb_bw.2a4b02e7b92a01fe3dbf56c8.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "aston-martin": {
+      "asset_sha256": "c3af6f92110f2f2fdb8c0b99284be5dabc94d217df5fa230691530d201a18907",
+      "src": "/subject-logos/cars/aston-martin.c3af6f92110f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://media.astonmartin.com/",
+      "reviewed_at": "2026-11-13T12:16:58.291989+00:00",
+      "artwork_preview_id": "jc-aston-martin-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/aston-martin-coloring-page-100/catalog_thumb_bw.8d57b2ac04b2de1a68ba1384.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "chery": {
+      "asset_sha256": "1f75c97a397791c6021690d28e724c09cf9ae33aaee5b55b938310da8a1498e5",
+      "src": "/subject-logos/cars/chery.1f75c97a3977.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.chery.cn/",
+      "reviewed_at": "2026-11-13T12:16:58.292083+00:00",
+      "artwork_preview_id": "jc-chery-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/chery-tiggo-2-pro-100-coloring-page/catalog_thumb_bw.fec2ed6d6aaf68ab168c6923.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "chrysler": {
+      "asset_sha256": "5bcee077c4f940636c6323aff8722423b7492ab777a0fa47467f207d6428b812",
+      "src": "/subject-logos/cars/chrysler.5bcee077c4f9.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.stellantis.com/en/brands",
+      "reviewed_at": "2026-11-13T12:16:58.292228+00:00",
+      "artwork_preview_id": "jc-chrysler-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/chrysler-coloring-page-100/catalog_thumb_bw.d9d8f8843d30f58614c67ee6.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "dodge": {
+      "asset_sha256": "197d1e2285dab49506cbb6147d9858e63eeb037c5493e43e624e53a5ad706dd8",
+      "src": "/subject-logos/cars/dodge.197d1e2285da.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.stellantis.com/en/brands",
+      "reviewed_at": "2026-11-13T12:16:58.292529+00:00",
+      "artwork_preview_id": "jc-dodge-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/dodge-coloring-page-100/catalog_thumb_bw.e3fb2ef28edf3d3377ed8d51.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "ds-automobiles": {
+      "asset_sha256": "6a5a93d22d0804e7a361e2a9566449e40d953b4457dd23d7cbf67e5945c54a43",
+      "src": "/subject-logos/cars/ds-automobiles.6a5a93d22d08.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.stellantis.com/en/brands",
+      "reviewed_at": "2026-11-13T12:16:58.292713+00:00",
+      "artwork_preview_id": "jc-ds-automobiles-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ds-automobiles-coloring-page-100/catalog_thumb_bw.eb230e32e6042461fe88e022.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "jeep": {
+      "asset_sha256": "c450a62f60a35a178a5a45fd48d3f14ad36c7f6f46eaf5a34c6dafe3707a4ad1",
+      "src": "/subject-logos/cars/jeep.c450a62f60a3.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.stellantis.com/en/brands",
+      "reviewed_at": "2026-11-13T12:16:58.292861+00:00",
+      "artwork_preview_id": "jc-jeep-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/jeep-coloring-page-100/catalog_thumb_bw.a269afac630088783e0ad3a4.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "ram": {
+      "asset_sha256": "e8a05b6af4e359c31e1207f28cbcde09106871f3050a0a52debc178652efb519",
+      "src": "/subject-logos/cars/ram.e8a05b6af4e3.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.stellantis.com/en/brands",
+      "reviewed_at": "2026-11-13T12:16:58.293037+00:00",
+      "artwork_preview_id": "jc-ram-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ram-coloring-page-100/catalog_thumb_bw.2d758981272053984965d83d.webp",
+      "actual_final_card_proofs": {
+        "nine-media-final-390-1.png": "ec6eed661dd7c7159282c5c24b6552e21b4b71a5fcb493edac60e8e01c73897a",
+        "nine-media-final-390-2.png": "1c7236357efd814c9e40221d73e3f04a27f653fab091c764ddf63312d4f72159",
+        "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
+        "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
+        "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
       }
     }
   }
