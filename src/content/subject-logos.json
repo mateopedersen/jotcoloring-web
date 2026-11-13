@@ -2934,6 +2934,34 @@
       "shape": "wide",
       "reviewed_at": "2026-11-13T14:34:06.102Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "blaze": {
+      "id": "blaze",
+      "sha256": "9eb120ce3b2ec591f135fa130bff90f039922d1df7c40f5f1a800d28ccaeebd4",
+      "bytes": 199802,
+      "asset_source": "https://service.mattel.com/instruction_sheets/DKV68%20DOM-IS.pdf",
+      "identity_reference": "https://service.mattel.com/us/productDetail.aspx?prodno=DKV68&siteid=27",
+      "source_page_sha256": "eda11ff8f4838dc3b1f8718bf39f7573d7ea73a2be79d7f766c0f73474943f64",
+      "source_container_sha256": "c42cc0baf12c7cb288331e68c53a4a1309a70cfcea53a89f6d56be166491497d",
+      "source_document_page": 1,
+      "source_crop_render_size": [
+        6500,
+        4596
+      ],
+      "source_crop_pixels": [
+        3400,
+        220,
+        4290,
+        714
+      ],
+      "source_kind": "licensed_manufacturer_manual_original_show_logo",
+      "surface": "light",
+      "src": "/subject-logos/subjects/blaze.9eb120ce3b2e.png",
+      "name": "Blaze",
+      "source_sha256": "e833fcfcef0682890fd4213e56676cf52f0c4e1e7423d62fd69faecb5b72d362",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:42:15.398Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

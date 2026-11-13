@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "176 additional subject identities: 111 automotive brands and 65 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "177 additional subject identities: 111 automotive brands and 66 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2674,6 +2674,21 @@
         "two-original-wordmarks-final-390-1.png": "fb390cf9689d4c49db58a28b0205a238467c10710098ef0b4f888a85bdc68c07",
         "two-original-wordmarks-final-1440-1.png": "6b69ce176f05606b4051c67d3375a64c30ac6d3bed3402413f02975137d374ef",
         "two-original-wordmarks-browser-verification.json": "dab8654edc2dee91ce6ab69510096d4309e6616c892c42208d4aead1f7b1be69"
+      }
+    },
+    "blaze": {
+      "asset_sha256": "9eb120ce3b2ec591f135fa130bff90f039922d1df7c40f5f1a800d28ccaeebd4",
+      "src": "/subject-logos/subjects/blaze.9eb120ce3b2e.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://service.mattel.com/us/productDetail.aspx?prodno=DKV68&siteid=27",
+      "reviewed_at": "2026-11-13T14:43:47.581375+00:00",
+      "artwork_preview_id": "jc-blaze-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/blaze-blaze-and-the-monster-machines-coloring-page-100-blaze-in-the-race-day-crowd/catalog_thumb_bw.c1dda756c80e6686009474f0.webp",
+      "actual_final_card_proofs": {
+        "blaze-original-final-390-1.png": "43953273f0a75c788ba488474a8acee472a2e24d790df8388fd3701edb2c630f",
+        "blaze-original-final-1440-1.png": "7c88b07dab03b0a381b81f597ad04feb7bec65c3b586e379894d1e6185d3960d",
+        "blaze-original-browser-verification.json": "ebf8cbfba6cceefc4e33dd9c6ad1f53c5130cf6e6593013aab10084f1d619181"
       }
     }
   }
