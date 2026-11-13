@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "136 additional subject logos: 92 automotive brands and 44 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "143 additional subject logos: 94 automotive brands and 49 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2060,6 +2060,125 @@
         "five-next-symbols-final-390-1.png": "a5fa4e0228f0639c445281ab84df497a1884d624c25372047a6f0d7facf90bcc",
         "five-next-symbols-final-1440-1.png": "de59f251d0764decd8b8f058da0bf5580f50f9639aa717c078c3c761935c6056",
         "five-next-symbols-browser-verification.json": "ce1d1f1ade966430bea7daa0d8fc5ad0f7c13b2c0d622aa3c8311ef65fe5924e"
+      }
+    },
+    "amc": {
+      "asset_sha256": "2e39c4259b4a3ab3b7883aece7c2d34087f849d408dc89150e85a837b1445be2",
+      "src": "/subject-logos/cars/amc.2e39c4259b4a.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.amcrc.com/",
+      "reviewed_at": "2026-11-13T12:45:54.200489+00:00",
+      "artwork_preview_id": "jc-amc-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/amc-coloring-page-100/catalog_thumb_bw.0164a445024280f4a4e61e92.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "mercury": {
+      "asset_sha256": "6cae4ccae338bca4f6abdaec6bd897421f9a7849e76d5b76a4a5798465f513a3",
+      "src": "/subject-logos/cars/mercury.6cae4ccae338.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://corporate.ford.com/articles/history/history-of-the-mercury-brand/",
+      "reviewed_at": "2026-11-13T12:45:54.200827+00:00",
+      "artwork_preview_id": "jc-mercury-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mercury-coloring-page-100/catalog_thumb_bw.746f99d753390d7f80abfdd4.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "home-alone": {
+      "asset_sha256": "1ceb1144c1fdfff173b04b1746b23d5d8a7a88a5457e1a9593cad7ddc909449c",
+      "src": "/subject-logos/subjects/home-alone.1ceb1144c1fd.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://family.20thcenturystudios.com/movies/home-alone",
+      "reviewed_at": "2026-11-13T12:45:54.201078+00:00",
+      "artwork_preview_id": "jc-home-alone-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/holidays/home-alone-home-alone-coloring-page-100-living-room-with-a-decorated-tree/catalog_thumb_bw.2a52d18e6757ba5d062677c6.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "descendants": {
+      "asset_sha256": "3d1d8ce95f7c04b6e9e8acb0c450600d94489be1385a40051c6b3a212b274816",
+      "src": "/subject-logos/subjects/descendants.3d1d8ce95f7c.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://books.disney.com/content/uploads/2016/08/CJs-Treasure-Chase-Excerpt.pdf",
+      "reviewed_at": "2026-11-13T12:45:54.201288+00:00",
+      "artwork_preview_id": "jc-descendants-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/the-descendants-paint-a-dragon-mural/catalog_thumb_bw.71e2a83389841d2ab6b381ae.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "jurassic-park": {
+      "asset_sha256": "f26eaee8ae5e70faf4d2219334fa0a770aca121f5a0d953ba24216cd4ecf966c",
+      "src": "/subject-logos/subjects/jurassic-park.f26eaee8ae5e.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.universalpicturesathome.com/movies/jurassic-park",
+      "reviewed_at": "2026-11-13T12:45:54.201790+00:00",
+      "artwork_preview_id": "jc-jurassic-park-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dinosaurs/jurassic-park-coloring-page-100/catalog_thumb_bw.46d2b05c7da8b5976066a553.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "gundam": {
+      "asset_sha256": "1932419926b85093650f1e2c2a7756c3e0a553344384fedcd7ac9fa8bf165e77",
+      "src": "/subject-logos/subjects/gundam.1932419926b8.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://en.gundam-official.com/",
+      "reviewed_at": "2026-11-13T12:45:54.201898+00:00",
+      "artwork_preview_id": "jc-gundam-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/robots/gundam-coloring-page-100/catalog_thumb_bw.c096ae5219e54202d0a49a45.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "fnaf": {
+      "asset_sha256": "d43c57c53a5f6b2abe649baec611b54198777be0dbb34dbd8aeb4f48074f186f",
+      "src": "/subject-logos/subjects/fnaf.d43c57c53a5f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://steelwoolstudios.com/game/five-nights-at-freddys-help-wanted/",
+      "reviewed_at": "2026-11-13T12:45:54.202081+00:00",
+      "artwork_preview_id": "jc-fnaf-very-hard-025",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/video-games/glamrock-friends-around-a-birthday-cake/catalog_thumb_bw.f1153387a6e10fc6a676a3d8.webp",
+      "actual_final_card_proofs": {
+        "seven-history-film-final-390-2.png": "f0c20aa5da38484a2b4da2240c9fe36988401edc69522c59a615de4eacb07a3e",
+        "seven-history-film-final-390-1.png": "2d528d4f3b46b0c0db2c133965fe7239a70363c29b8b32ba5b5589ef9bede4dd",
+        "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
+        "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
+        "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
       }
     }
   }
