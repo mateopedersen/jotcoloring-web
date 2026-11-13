@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "143 additional subject logos: 94 automotive brands and 49 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "145 additional subject logos: 96 automotive brands and 49 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2179,6 +2179,36 @@
         "seven-history-film-final-1440-1.png": "86b4e6c7f0b792d5d86daba7f04022270ed8ac0f16243d0821b29d194e10078f",
         "seven-history-film-final-1440-2.png": "97aa2d26fb1c4b660e86743a5d8eb550c23e8e25b135dbebe03eefa827b1a0e5",
         "seven-history-film-browser-verification.json": "f316e7844b25a1509f583562180f24d1c4be7e3b0432451f875f2d1b917d9830"
+      }
+    },
+    "bentley": {
+      "asset_sha256": "6199c9548a5ab503e1f8e8f7da77ebf7e915253525987b20726f251701002275",
+      "src": "/subject-logos/cars/bentley.6199c9548a5a.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.bentleymedia.com/en",
+      "reviewed_at": "2026-11-13T12:49:54.725183+00:00",
+      "artwork_preview_id": "jc-bentley-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/bentley-coloring-page-100/catalog_thumb_bw.190e7492f524eb64840d365d.webp",
+      "actual_final_card_proofs": {
+        "tesla-bentley-final-1440-1.png": "cff39d4663c29704d9bd341f089ac9ce959e9c2792100bdc2ad46a29cb2d6f11",
+        "tesla-bentley-final-390-1.png": "9602a03060f534a0e262e24ba76b4063bc17b4714b4ba5f87bfc5d8ae013df5f",
+        "tesla-bentley-browser-verification.json": "fd60f785e39e4ad922ea584531686cc5f8952a6b62fe32e66ab4fef4ab2eec44"
+      }
+    },
+    "tesla": {
+      "asset_sha256": "72cd76c64166895015f35b527dbe177cd2bb52630cc1b287cd3ed9c56fc79c86",
+      "src": "/subject-logos/cars/tesla.72cd76c64166.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://static.nhtsa.gov/odi/tsbs/2024/MC-11008802-0001.pdf",
+      "reviewed_at": "2026-11-13T12:49:54.725508+00:00",
+      "artwork_preview_id": "jc-tesla-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/tesla-model-3-performance-2024-refresh-100-coloring-page/catalog_thumb_bw.60fa695c89f6cc95312d9b7f.webp",
+      "actual_final_card_proofs": {
+        "tesla-bentley-final-1440-1.png": "cff39d4663c29704d9bd341f089ac9ce959e9c2792100bdc2ad46a29cb2d6f11",
+        "tesla-bentley-final-390-1.png": "9602a03060f534a0e262e24ba76b4063bc17b4714b4ba5f87bfc5d8ae013df5f",
+        "tesla-bentley-browser-verification.json": "fd60f785e39e4ad922ea584531686cc5f8952a6b62fe32e66ab4fef4ab2eec44"
       }
     }
   }
