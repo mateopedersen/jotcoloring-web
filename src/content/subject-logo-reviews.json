@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "162 additional subject identities: 101 automotive brands and 61 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "164 additional subject identities: 101 automotive brands and 63 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2464,6 +2464,36 @@
         "three-history-final-390-1.png": "98151ce0b5e020436740556f6cf473ecf224e217f698c77eaee298d31ccaa2ec",
         "three-history-final-1440-1.png": "6c635860ccda61bac9e2073e5362a3360d690421a95045ef4ee6b5b417d2fcef",
         "three-history-browser-verification.json": "00605d03907ebe41a1b318d22c11e2bc259e9a9daf65dbfa019e8b62e505910c"
+      }
+    },
+    "rugrats": {
+      "asset_sha256": "0cecc073fa23e84d3f7547e5056c1278de40a289b43fe4d04066248652cf5890",
+      "src": "/subject-logos/subjects/rugrats.0cecc073fa23.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.paramountpressexpress.com/nickelodeon/shows/rugrats",
+      "reviewed_at": "2026-11-13T13:39:18.914501+00:00",
+      "artwork_preview_id": "jc-rugrats-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rugrats-coloring-page-100/catalog_thumb_bw.4f98b941ca6f6b67bb4eacd1.webp",
+      "actual_final_card_proofs": {
+        "rugrats-final-390-1.png": "7bcd0cf12f9d3bb9861df8c98d7b26a6b56fe166af9b45745ba72b56c5f89843",
+        "rugrats-final-1440-1.png": "b785e41a26ce0538fa925a728b4ea9ba920c8e250ce68907edae8f1281e9dc20",
+        "rugrats-browser-verification.json": "1419dbe931b3eeca2da3e7b8394cf22d311ef11637d50c5870ed95c717b531b7"
+      }
+    },
+    "rescue-bots": {
+      "asset_sha256": "a0d12a04661eb3ccfff1ea65cc82de32d81f252d6d6a530449cab0ba51fa04af",
+      "src": "/subject-logos/subjects/rescue-bots.a0d12a04661e.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.hasbro.com/common/documents/71e45a8550569047f5993be28957f9ce/0C8ADADC2A5E42F9942996A4BD24596D.pdf",
+      "reviewed_at": "2026-11-13T13:41:37.852027+00:00",
+      "artwork_preview_id": "jc-rescue-bots-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/robots/rescue-bots-coloring-page-100/catalog_thumb_bw.8adc517468078283edb036d4.webp",
+      "actual_final_card_proofs": {
+        "rescue-bots-final-390-1.png": "49517eabb2db73b6dd0ac5a934a549f0ed233366d7f87ff9bca0afbe310873d7",
+        "rescue-bots-final-1440-1.png": "fc719afb07e024eaab6fc2157b8bd84b809055636cd87b2abad6c8fc9efb17bb",
+        "rescue-bots-browser-verification.json": "5fa591b8d69ed94896d0eac9eec7a0e10d8de43f13923e5b2cd113a1b8f85238"
       }
     }
   }
