@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "159 additional subject identities: 98 automotive brands and 61 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "162 additional subject identities: 101 automotive brands and 61 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2419,6 +2419,51 @@
         "two-game-film-final-1440-1.png": "a56a960d27f2eed01576605b973dc13a61102d1ce8fdb2f18bb1456d618bff79",
         "two-game-film-final-390-1.png": "c852f921d1b98fef984a1d757e65ff84348eaa2e6c3430e350b11e2915ea6ad9",
         "two-game-film-browser-verification.json": "6b5a8624aabe1f7266abe6ef4783b9c23a47e256580a2d3e7d150f6cdb8883a9"
+      }
+    },
+    "plymouth": {
+      "asset_sha256": "e409f77e461255c9c67b2ad3335d048ab9bcd9e46344fe412acf6b251ff09be4",
+      "src": "/subject-logos/subjects/plymouth.e409f77e4612.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.auto-brochures.com/plymouth.html",
+      "reviewed_at": "2026-11-13T13:33:13.548931+00:00",
+      "artwork_preview_id": "jc-plymouth-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/plymouth-coloring-page-100/catalog_thumb_bw.8bfa35e5a7ad60bc2625fe5d.webp",
+      "actual_final_card_proofs": {
+        "three-history-final-390-1.png": "98151ce0b5e020436740556f6cf473ecf224e217f698c77eaee298d31ccaa2ec",
+        "three-history-final-1440-1.png": "6c635860ccda61bac9e2073e5362a3360d690421a95045ef4ee6b5b417d2fcef",
+        "three-history-browser-verification.json": "00605d03907ebe41a1b318d22c11e2bc259e9a9daf65dbfa019e8b62e505910c"
+      }
+    },
+    "packard": {
+      "asset_sha256": "8532f529bc949f5a015952ea40d419f552abe2efe2e6fa09a0f91c8593abeaac",
+      "src": "/subject-logos/subjects/packard.8532f529bc94.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://packardinfo.com/xoops/html/modules/archive/content.php?catID=5&cat_pid=53&ContentID=554",
+      "reviewed_at": "2026-11-13T13:33:13.549609+00:00",
+      "artwork_preview_id": "jc-packard-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/packard-coloring-page-100/catalog_thumb_bw.45e0d350a2ac5cd1289d89ef.webp",
+      "actual_final_card_proofs": {
+        "three-history-final-390-1.png": "98151ce0b5e020436740556f6cf473ecf224e217f698c77eaee298d31ccaa2ec",
+        "three-history-final-1440-1.png": "6c635860ccda61bac9e2073e5362a3360d690421a95045ef4ee6b5b417d2fcef",
+        "three-history-browser-verification.json": "00605d03907ebe41a1b318d22c11e2bc259e9a9daf65dbfa019e8b62e505910c"
+      }
+    },
+    "imperial": {
+      "asset_sha256": "d7f8f73a7f4adc20ccddc9094f69de69cc28e42cb6c56767e68bd767afd8e711",
+      "src": "/subject-logos/subjects/imperial.d7f8f73a7f4a.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.web.imperialclub.info/Yr/1955/55Brochure/",
+      "reviewed_at": "2026-11-13T13:33:13.549873+00:00",
+      "artwork_preview_id": "jc-imperial-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/imperial-coloring-page-100/catalog_thumb_bw.83e2729a1a41d1a28d2a5691.webp",
+      "actual_final_card_proofs": {
+        "three-history-final-390-1.png": "98151ce0b5e020436740556f6cf473ecf224e217f698c77eaee298d31ccaa2ec",
+        "three-history-final-1440-1.png": "6c635860ccda61bac9e2073e5362a3360d690421a95045ef4ee6b5b417d2fcef",
+        "three-history-browser-verification.json": "00605d03907ebe41a1b318d22c11e2bc259e9a9daf65dbfa019e8b62e505910c"
       }
     }
   }

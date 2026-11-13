@@ -35,3 +35,5 @@ Six further cards use source-bound HIRONO, Grinch, John Deere, My Little Pony, R
 Labubu and Zimomo cards now use distinct official character portraits from separately named POP MART products. They are recorded as character portraits, not invented logos or the shared parent-brand emblem. Original product image hashes, visible crop regions and source-page product names are preserved. Each final desktop/mobile card was inspected beside its own JotColoring artwork.
 
 Minecraft uses the original game wordmark from its Microsoft Xbox product artwork; Pennywise uses the character portrait in Warner Bros’ official IT film gallery. The logo/portrait distinction and native source bytes are recorded. The original coloring previews remain beside both emblems, with actual desktop/mobile inspection.
+
+Plymouth, Packard and Imperial use unchanged original manufacturer brochure badges/wordmarks retained by independent historical archives. Native PDF image or original scan crops, source containers, page provenance and exact crop bounds are recorded. No club or archive logo is substituted; own coloring artwork stays beside each emblem.

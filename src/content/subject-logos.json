@@ -2571,6 +2571,75 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:16:12.944Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "plymouth": {
+      "id": "plymouth",
+      "sha256": "e409f77e461255c9c67b2ad3335d048ab9bcd9e46344fe412acf6b251ff09be4",
+      "bytes": 47292,
+      "asset_source": "https://www.auto-brochures.com/makes/plymouth/prowler/Plymouth_US-Prowler_1997.pdf",
+      "identity_reference": "https://www.auto-brochures.com/plymouth.html",
+      "source_page_sha256": "fd35bb5a474db21f589042df65a14cbd98256e740a8de572f0e4b4f7bb0ecb30",
+      "source_container_sha256": "f8fae769fb7b2c4ff58ebc4c7eda8ed16987d3cf373680ea0f52395a19cdb385",
+      "source_crop_pixels": [
+        8,
+        35,
+        145,
+        263
+      ],
+      "source_kind": "original_manufacturer_brochure_scanned_badge",
+      "surface": "dark",
+      "src": "/subject-logos/subjects/plymouth.e409f77e4612.png",
+      "name": "Plymouth",
+      "source_sha256": "87986fffe2be312d21345b83cec937dea8a462f1c9fb3c49b7eed0faa3044467",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:32:09.219Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "packard": {
+      "id": "packard",
+      "sha256": "8532f529bc949f5a015952ea40d419f552abe2efe2e6fa09a0f91c8593abeaac",
+      "bytes": 466118,
+      "asset_source": "https://packardinfo.com/xoops/html/downloads/1955_TheNewPackard_Brochure.pdf",
+      "identity_reference": "https://packardinfo.com/xoops/html/modules/archive/content.php?catID=5&cat_pid=53&ContentID=554",
+      "source_page_sha256": "2e044f90dc54f5fcbebd08828b8954ec851e218c5248398669494541097d3b6f",
+      "source_container_sha256": "7726194307d1bb4a5cc74160d7f25ba1fcb0d3396c304ac68defa2a5f6671c69",
+      "source_crop_pixels": [
+        611,
+        475,
+        2525,
+        1444
+      ],
+      "source_kind": "original_manufacturer_brochure_scanned_emblem",
+      "surface": "dark",
+      "src": "/subject-logos/subjects/packard.8532f529bc94.png",
+      "name": "Packard",
+      "source_sha256": "1f6e9bbaa371651a9f3b75c2aadcf9c6635ccd0195efdf7a1a26cbed1c5200d4",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:32:09.291Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "imperial": {
+      "id": "imperial",
+      "sha256": "d7f8f73a7f4adc20ccddc9094f69de69cc28e42cb6c56767e68bd767afd8e711",
+      "bytes": 132851,
+      "asset_source": "https://www.web.imperialclub.info/Yr/1955/55Brochure/insideA-big.jpg",
+      "identity_reference": "https://www.web.imperialclub.info/Yr/1955/55Brochure/",
+      "source_page_sha256": "0c30de0a372d6f10719acd1425993061927eb374bdee54ea9a985af6d9a1da4b",
+      "source_container_sha256": "a784daeb4cee48c0f1fc7bb913b9563cb13b0c1191c539b31ce96acfa4a00002",
+      "source_crop_pixels": [
+        1910,
+        0,
+        3982,
+        380
+      ],
+      "source_kind": "original_manufacturer_brochure_scanned_wordmark_and_emblem",
+      "surface": "light",
+      "src": "/subject-logos/subjects/imperial.d7f8f73a7f4a.png",
+      "name": "Imperial",
+      "source_sha256": "1dc4083877b651f9ece6e0320f23f26341d58ab918bbef095cffc0debef1df8d",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T13:32:09.322Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
