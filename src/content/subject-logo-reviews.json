@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "178 additional subject identities: 111 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "180 additional subject identities: 113 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2704,6 +2704,36 @@
         "rudolph-original-final-390-1.png": "fdad7bd5713aff772eee4559b65cca9e3881b19b11e141dd582a51d9123064fb",
         "rudolph-original-final-1440-1.png": "422fb09a896ff302fce85c8aa49a8c30dd3aae08a403e89d0a01a4c19b9fc3bb",
         "rudolph-original-browser-verification.json": "5e5cddab85281c6f049c03c51da8a1efe171223b306f34c2fd7d4a28fe75244e"
+      }
+    },
+    "edsel": {
+      "asset_sha256": "5f9a328d00a0e0065390799da0cb47620a1c064b29e68cfc080d1adf6d3f348b",
+      "src": "/subject-logos/subjects/edsel.5f9a328d00a0.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/363681",
+      "reviewed_at": "2026-11-13T15:05:56.722258+00:00",
+      "artwork_preview_id": "jc-edsel-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/edsel-coloring-page-100/catalog_thumb_bw.abc270c7f51c62d06ace3f30.webp",
+      "actual_final_card_proofs": {
+        "two-edsel-hudson-final-1440-1.png": "5d79b0c0f79da9a8239335c77376a338c3efa3ae72b4074f44c45c0cdc3d8093",
+        "two-edsel-hudson-final-390-1.png": "9949a9084e0a34c49a6622c299304b5981ddf94b617611e98b681ea171ddd717",
+        "two-edsel-hudson-browser-verification.json": "c434dbe22df2720da56938799d33b93906ea9f215ee566287e4ebd892ff8197b"
+      }
+    },
+    "hudson": {
+      "asset_sha256": "b4f1288d62dc9cd59a5fe58e9ae38156eabea9b9cfc11ec4757e967b913f576c",
+      "src": "/subject-logos/subjects/hudson.b4f1288d62dc.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://over-drive-magazine.com/document/1953-hudson-full-size-car-fold-out-brochure/",
+      "reviewed_at": "2026-11-13T15:05:56.722588+00:00",
+      "artwork_preview_id": "jc-hudson-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/hudson-coloring-page-100/catalog_thumb_bw.49c0c857ee25008b679ee951.webp",
+      "actual_final_card_proofs": {
+        "two-edsel-hudson-final-1440-1.png": "5d79b0c0f79da9a8239335c77376a338c3efa3ae72b4074f44c45c0cdc3d8093",
+        "two-edsel-hudson-final-390-1.png": "9949a9084e0a34c49a6622c299304b5981ddf94b617611e98b681ea171ddd717",
+        "two-edsel-hudson-browser-verification.json": "c434dbe22df2720da56938799d33b93906ea9f215ee566287e4ebd892ff8197b"
       }
     }
   }
