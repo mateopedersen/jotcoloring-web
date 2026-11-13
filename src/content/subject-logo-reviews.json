@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "70 additional subject logos: 40 automotive brands and 30 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "96 additional subject logos: 62 automotive brands and 34 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -652,12 +652,15 @@
       "artwork_preview_id": "jc-hummer-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/hummer-coloring-page-100/catalog_thumb_bw.caff65f7fbdde5403d27f9bf.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477078+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "oldsmobile": {
       "asset_sha256": "529b7da6ad28eb61013ba1a48c4a846c3dd899b9181cab7ecb8225f12b47af88",
@@ -669,12 +672,15 @@
       "artwork_preview_id": "jc-oldsmobile-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/oldsmobile-coloring-page-100/catalog_thumb_bw.ad630347e25f29aa51acdfce.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477204+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "pontiac": {
       "asset_sha256": "cef73e4e946987e9f5045639857943299c7a122b715e4e12cb7d024e75772a84",
@@ -686,12 +692,15 @@
       "artwork_preview_id": "jc-pontiac-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/pontiac-coloring-page-100/catalog_thumb_bw.094fe439f06c9485b5f24632.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477206+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "saturn": {
       "asset_sha256": "8860a82853bfcd21dfc1e36764b2b125465c4661d2a48e609728111ca5ce27d5",
@@ -703,12 +712,15 @@
       "artwork_preview_id": "jc-saturn-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/saturn-coloring-page-100/catalog_thumb_bw.dc8e8068ec880f3df7ef749e.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477208+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "saab": {
       "asset_sha256": "6865285e30636c59717ade5719acaf6f80e7de5ddddc17eba9845bd9b02dac22",
@@ -720,12 +732,15 @@
       "artwork_preview_id": "jc-saab-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/saab-coloring-page-100/catalog_thumb_bw.46ea3ba880010679ea13d0fc.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477209+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "x": {
       "asset_sha256": "dd46f96b6f47fcd33683b79ddfaf3daca1d4f8aeba3c0f2bde1584c69cc699d4",
@@ -737,12 +752,15 @@
       "artwork_preview_id": "jc-x-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/x-x-coloring-page-100-round-shape/catalog_thumb_bw.e48d4fa3c7b8601f3c1c4b93.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
-      }
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477210+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
     },
     "tiktok": {
       "asset_sha256": "f3e4ff9e706bc46476a2bdd64832908ad70200f6d4a18e01108b9d2bf7056a61",
@@ -754,11 +772,612 @@
       "artwork_preview_id": "jc-tiktok-100",
       "artwork_preview_url": "https://assets.jotcoloring.com/published/social-media/tiktok-tiktok-coloring-page-100-a-large-letter-n-in-the-center-of-the-page/catalog_thumb_bw.344642cbebd8e3486966f90f.webp",
       "actual_final_card_proofs": {
-        "seven-browser-verification.json": "62beba7668d323f2395e53c7b324158c24339b04f9503ed4471b7944b3b6c877",
-        "seven-final-1440-1.png": "387a8b666484bc0bc8a2f3ad58f56e2fc23382de2d618918cc884f32386a062e",
-        "seven-final-1440-2.png": "3c55b33f1a4bd6e5f90ebc73195c4250492ee6482e3d5541ba7fbb4c5446103c",
-        "seven-final-390-1.png": "4a0380026846d360c8027e3a711af4eaeae046280f109685f309e0927c106c25",
-        "seven-final-390-2.png": "3c043d7d15d756323cbaebddcbb58ec70b0a40759cec73d7b4364791be46dd9b"
+        ".local/seven-live-logos-nov13/browser-verification.json": "a3e060c7d726b5a803b2595ad6a24ea7b87f08b21ef36fb810707e49397e634b",
+        ".local/seven-live-logos-nov13/public-verification.json": "b80b650a847c12a7882f526f0270dc19e80e7a6127d63bcd208523ac4bffd251",
+        ".local/seven-live-logos-nov13/card-contact-1440-1.png": "a81edbab46d76cd0857bc72671e6be2cd23f25ab95cde3427dfea835349f0614",
+        ".local/seven-live-logos-nov13/card-contact-1440-2.png": "a58edc291e2209c71090e7c7f7d3f44100f0eb17553d24f021c7296fb493c348",
+        ".local/seven-live-logos-nov13/card-contact-390-1.png": "d8b401a814bd490f8ef7b77172abe3e5067617b807859f6e9bfa4a9f8b8e96a9",
+        ".local/seven-live-logos-nov13/card-contact-390-2.png": "ae9851e5b98e9a7083bbf9ddec3f132a00fd270b49b2d85c11c5528db4747d07"
+      },
+      "public_card_reviewed_at": "2026-11-13T11:18:54.477211+00:00",
+      "review_note": "Source-bound private card review completed before release; actual public cards inspected again at desktop/mobile with two public asset/card checks. Public proof replaces private contact-sheet file references after a private preview filename collision."
+    },
+    "audi": {
+      "asset_sha256": "162af9ea54010600568cf34df9d7ae1f3c1a55124dfab8734e72421a3355edf3",
+      "src": "/subject-logos/cars/audi.162af9ea5401.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.audi.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963246+00:00",
+      "artwork_preview_id": "jc-audi-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/audi-four-rings-emblem-cabin-and-equipment-100-coloring-page/catalog_thumb_bw.342acc26b26dd4601a4847c4.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "daihatsu": {
+      "asset_sha256": "3c26d69728e3abf7720f74683d5509107dc9d5f83754a710c2a3c273229d7b1c",
+      "src": "/subject-logos/cars/daihatsu.3c26d69728e3.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.daihatsu.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963409+00:00",
+      "artwork_preview_id": "jc-daihatsu-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/daihatsu-coloring-page-100/catalog_thumb_bw.7811824c93b35ea5966cc6d1.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "lexus": {
+      "asset_sha256": "6c42cf779da98402501c165d7feb6e639424bfd87690262df1b07b437f770081",
+      "src": "/subject-logos/cars/lexus.6c42cf779da9.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.lexus.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963467+00:00",
+      "artwork_preview_id": "jc-lexus-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lexus-coloring-page-100/catalog_thumb_bw.ce5898d33f0f2f685a9b08cf.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "mitsubishi": {
+      "asset_sha256": "34c629bab28c20c53f15a045f2c52c41ebc7f710c2b7708d96e98bead87c5e59",
+      "src": "/subject-logos/cars/mitsubishi.34c629bab28c.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.mitsubishi-motors.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963507+00:00",
+      "artwork_preview_id": "jc-mitsubishi-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mitsubishi-coloring-page-100/catalog_thumb_bw.8604a12c11f90d72df18d57b.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "mazda": {
+      "asset_sha256": "7e2f1deff6ed46f781be784e14c04f61750f68e61504b662d98ab59da1f84430",
+      "src": "/subject-logos/cars/mazda.7e2f1deff6ed.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.mazda.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963548+00:00",
+      "artwork_preview_id": "jc-mazda-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mazda-coloring-page-100/catalog_thumb_bw.2e6ec775ddf52cd3ba579781.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "lancia": {
+      "asset_sha256": "29f8279ac298cda348dfc43dec9e9dc2b8182c04a894d7249ff2c7171117569d",
+      "src": "/subject-logos/cars/lancia.29f8279ac298.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.lancia.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963587+00:00",
+      "artwork_preview_id": "jc-lancia-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lancia-coloring-page-100/catalog_thumb_bw.e852577104af1f2dcd973c26.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "fiat": {
+      "asset_sha256": "1fb86df656a77cad3f97ca068908159eccd8328e120000837ff925694eb72067",
+      "src": "/subject-logos/cars/fiat.1fb86df656a7.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.fiat.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963628+00:00",
+      "artwork_preview_id": "jc-fiat-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/fiat-coloring-page-100/catalog_thumb_bw.98e4e6c30685246cb7d3913c.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "alfa-romeo": {
+      "asset_sha256": "5f6c18b000f519c1a57d856bb5b31048b2be394e74c833f6bfa607e8d1cd6ec3",
+      "src": "/subject-logos/cars/alfa-romeo.5f6c18b000f5.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.alfaromeo.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963665+00:00",
+      "artwork_preview_id": "jc-alfa-romeo-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/alfa-romeo-coloring-page-100/catalog_thumb_bw.73d7a5204a0060b9d79cb1a1.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "tvr": {
+      "asset_sha256": "2301f2469336737416afb06c20ec95e994f54ff4f819da13e6873a8b0603b43e",
+      "src": "/subject-logos/cars/tvr.2301f2469336.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.tvr.co.uk/",
+      "reviewed_at": "2026-11-13T11:17:03.963701+00:00",
+      "artwork_preview_id": "jc-tvr-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/tvr-coloring-page-100/catalog_thumb_bw.9c54166f7f9a2984a5c0e202.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "citroen": {
+      "asset_sha256": "67a66caebbca424b857a79e26dc998a169ccb30ced2b11644fbea14a47963f78",
+      "src": "/subject-logos/cars/citroen.67a66caebbca.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.citroen.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963738+00:00",
+      "artwork_preview_id": "jc-citroen-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/citroen-coloring-page-100/catalog_thumb_bw.31766bc071100242ce939289.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "koenigsegg": {
+      "asset_sha256": "4f9b9ffbee52c32667ed6f7e129c9d732e4860c8e5062d3f57de13ea55a8b7d6",
+      "src": "/subject-logos/cars/koenigsegg.4f9b9ffbee52.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.koenigsegg.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963796+00:00",
+      "artwork_preview_id": "jc-koenigsegg-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/koenigsegg-coloring-page-100/catalog_thumb_bw.9baf3985e3d34c856d7af7ee.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "peugeot": {
+      "asset_sha256": "8fddae72bc922ad93f191df0385a4b402bc0d5f27819a125be9732a50fd1b48c",
+      "src": "/subject-logos/cars/peugeot.8fddae72bc92.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.peugeot.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963836+00:00",
+      "artwork_preview_id": "jc-peugeot-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/peugeot-coloring-page-100/catalog_thumb_bw.9bdcf24094c188c43147daaa.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "ssc-north-america": {
+      "asset_sha256": "5396e643fb229787d63de30000c3e5a676cfa04fbc42011f87059f3360984546",
+      "src": "/subject-logos/cars/ssc-north-america.5396e643fb22.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.sscnorthamerica.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963875+00:00",
+      "artwork_preview_id": "jc-ssc-north-america-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ssc-north-america-coloring-page-100/catalog_thumb_bw.d4ea19e15a953d496faee0fd.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "studebaker": {
+      "asset_sha256": "f186290c0d3a86c107bb8dd7c94d6f1e47b206ded7301a2b206c35c43a420ce9",
+      "src": "/subject-logos/cars/studebaker.f186290c0d3a.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://studebakermuseum.org/",
+      "reviewed_at": "2026-11-13T11:17:03.963910+00:00",
+      "artwork_preview_id": "jc-studebaker-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/studebaker-coloring-page-100/catalog_thumb_bw.dac489686c07458a58fc4b20.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "smart": {
+      "asset_sha256": "e360efd364a9671cadef7ffaa5e8bd68be5d200c143e27b6d4db1af519c9d72b",
+      "src": "/subject-logos/cars/smart.e360efd364a9.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.smart.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963955+00:00",
+      "artwork_preview_id": "jc-smart-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/smart-coloring-page-100/catalog_thumb_bw.409bbcc8413c7ef2d0d0eeff.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "ford": {
+      "asset_sha256": "d5c98499bf8a1d6667c8b9132ffcf4a532075c6a3daedfb794a3e3e8d9345fca",
+      "src": "/subject-logos/cars/ford.d5c98499bf8a.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.ford.com/",
+      "reviewed_at": "2026-11-13T11:17:03.963999+00:00",
+      "artwork_preview_id": "jc-ford-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ford-coloring-page-100/catalog_thumb_bw.e6ca0f763f5cdfcd88084a98.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "mg": {
+      "asset_sha256": "ff41ec78349e5731c86fc7ad62413637d56a313f17cad07b0b92e7cc068c3fbc",
+      "src": "/subject-logos/cars/mg.ff41ec78349e.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.mgmotor.eu/",
+      "reviewed_at": "2026-11-13T11:17:03.964045+00:00",
+      "artwork_preview_id": "jc-mg-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/mg-coloring-page-100/catalog_thumb_bw.d3810ffcd6c624aa7d1a5bdb.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "lotus": {
+      "asset_sha256": "1d087296f964c114485fadba9def47810aa4c882dbf465028a07925784963d82",
+      "src": "/subject-logos/cars/lotus.1d087296f964.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.lotuscars.com/",
+      "reviewed_at": "2026-11-13T11:17:03.964079+00:00",
+      "artwork_preview_id": "jc-lotus-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lotus-coloring-page-100/catalog_thumb_bw.3543e608e3276dbef0354a91.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "lucid": {
+      "asset_sha256": "d782fc269ec2390980db2019df7e68f67a6720a472ac3ef7ef7cc0d32d2fe4ed",
+      "src": "/subject-logos/cars/lucid.d782fc269ec2.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://lucidmotors.com/",
+      "reviewed_at": "2026-11-13T11:17:03.964112+00:00",
+      "artwork_preview_id": "jc-lucid-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lucid-coloring-page-100/catalog_thumb_bw.a4859e73f468d3ecb24bd6d7.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "rivian": {
+      "asset_sha256": "00decf692ef3d68df6090262cd2b4b381a3be6ee61df570e1be58984dbae8c64",
+      "src": "/subject-logos/cars/rivian.00decf692ef3.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://rivian.com/",
+      "reviewed_at": "2026-11-13T11:17:03.964147+00:00",
+      "artwork_preview_id": "jc-rivian-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/rivian-coloring-page-100/catalog_thumb_bw.1e4b2c8be373073c5c3630dc.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "rimac": {
+      "asset_sha256": "d4be82ae0fef438e0ea3fdb89e17be5c188d6888b7c8d034cab001f58b91ce97",
+      "src": "/subject-logos/cars/rimac.d4be82ae0fef.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.rimac-automobili.com/",
+      "reviewed_at": "2026-11-13T11:17:03.964188+00:00",
+      "artwork_preview_id": "jc-rimac-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/rimac-coloring-page-100/catalog_thumb_bw.170f7163b40455312a654fb5.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "bmw": {
+      "asset_sha256": "adbee06e00a0e25c54b3f92ca2caeab5f46d26539f9ef49efc50f053fce04dff",
+      "src": "/subject-logos/cars/bmw.adbee06e00a0.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.bmw.com.tr/tr/index.html",
+      "reviewed_at": "2026-11-13T11:17:03.964241+00:00",
+      "artwork_preview_id": "jc-bmw-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/bmw-bmw-coloring-page-100-bmw-suv-in-the-garden/catalog_thumb_bw.654d4c74892c9274e46e3b9d.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "peppa-pig": {
+      "asset_sha256": "b40dda2a316a1e7970c1e4a121973e4d5e705ca53967804659308243731346cd",
+      "src": "/subject-logos/subjects/peppa-pig.b40dda2a316a.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://www.peppapig.com/",
+      "reviewed_at": "2026-11-13T11:17:03.964335+00:00",
+      "artwork_preview_id": "jc-peppa-pig-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/peppa-pig-peppa-pig-coloring-page-100-peppa-and-george-at-a-garden-picnic/catalog_thumb_bw.886284522d8fd465b8ef8acb.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "rick-and-morty": {
+      "asset_sha256": "ec47e8e65e460ff07fbf0ea84e4718e913faa7898c181e3bda693100e006f695",
+      "src": "/subject-logos/subjects/rick-and-morty.ec47e8e65e46.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.adultswim.com/videos/rick-and-morty",
+      "reviewed_at": "2026-11-13T11:17:03.964414+00:00",
+      "artwork_preview_id": "jc-rick-and-morty-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rick-and-morty-coloring-page-100/catalog_thumb_bw.cf465154ef929e4e0bc16406.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "the-nightmare-before-christmas": {
+      "asset_sha256": "d9a0bb936baa0250d4364d738b87434d02202a359c8460ae8cdf255ed1981a8c",
+      "src": "/subject-logos/subjects/the-nightmare-before-christmas.d9a0bb936baa.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://movies.disney.com/the-nightmare-before-christmas",
+      "reviewed_at": "2026-11-13T11:17:03.964477+00:00",
+      "artwork_preview_id": "jc-the-nightmare-before-christmas-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/holidays/nightmare-before-christmas-characters-around-a-holiday-tree-coloring-page/catalog_thumb_bw.14deb7bb9eb8145984f69175.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
+      }
+    },
+    "hocus-pocus": {
+      "asset_sha256": "cb0f3035df4970cbf994cc895a659ab9f35368e92fff2c5d7ffa880e55a0a94b",
+      "src": "/subject-logos/subjects/hocus-pocus.cb0f3035df49.png",
+      "surface": "dark",
+      "shape": "square",
+      "identity_reference": "https://movies.disney.com/hocus-pocus",
+      "reviewed_at": "2026-11-13T11:17:03.964511+00:00",
+      "artwork_preview_id": "jc-hocus-pocus-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/holidays/hocus-pocus-hocus-pocus-coloring-page-100-friends-gather-outside-a-cottage/catalog_thumb_bw.245e3d8685e412bf2daf4f21.webp",
+      "actual_final_card_proofs": {
+        "twentysix-final-1440-3.png": "868f7fbf3a7c69a6e7004c52ac78db988cbfd3113f2d96ffc32dfb19b5db6706",
+        "twentysix-final-1440-2.png": "a9153112bc8fdc625eca8e927cde8e48b62fb3395f39348229d1230eb17d5e8d",
+        "twentysix-final-1440-1.png": "f24042358baa3c3feddc143ea68d4d7d677b166e86a96bb96e174d0a0971af08",
+        "twentysix-final-1440-5.png": "1560386dd2c0dfe811d0286109eef94de747c86e93640b144a9185d3b3b8e7e1",
+        "twentysix-final-1440-4.png": "cda6c12cac2a5364ae526b837d5305652435db1770bfd455b2fbe81896ac09a9",
+        "twentysix-final-390-2.png": "a4b820f7213a4bc33ace738b5ebac7cf8564d90bd321db7828bf14545115c9f1",
+        "twentysix-final-390-3.png": "ce10c3cb6294c938d890bb8d83b9de7a8de78f8cbcc966bcebc647f331d493a7",
+        "twentysix-final-390-1.png": "6f4a61e808cd5c434bb9b372413bb19c31037d430e24c5ea1ae22050070288b9",
+        "twentysix-final-390-4.png": "9431248c0deac0527d272fc3348b8b40234ef11439521a58b6560880ad7c309f",
+        "twentysix-final-390-5.png": "abbf53f876c9f48a63cedb543087c6cd37dfe6f711e8e6391d2503f5e2f23df9",
+        "twentysix-browser-verification.json": "36b5ac0c66cc1b88ece297a7f5bfdd1cf9f5f63f518f6f0ee2a098c8bc942504"
       }
     }
   }
