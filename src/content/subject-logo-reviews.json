@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "174 additional subject identities: 109 automotive brands and 65 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "176 additional subject identities: 111 automotive brands and 65 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2644,6 +2644,36 @@
         "rainbow-friends-original-final-1440-1.png": "e348d859658f11ab93a05c31eeb33f93fd1d1ebca97ff21f6308b1588041aeb1",
         "rainbow-friends-original-final-390-1.png": "c2272fd4cb391ef6cfb567a978fcf8075c0096ddf28ef8e36aa38dbc523059e2",
         "rainbow-friends-original-browser-verification.json": "480f31832374c283950280bf7dd63f5ac316d92f606d9578b456c7e66838deb3"
+      }
+    },
+    "desoto": {
+      "asset_sha256": "fb8f1da64b36b0253957a2e0573b78f62529ff9dbb7875b650b234113ad9fafe",
+      "src": "/subject-logos/subjects/desoto.fb8f1da64b36.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.thehenryford.org/collections/explore/artifact/167036",
+      "reviewed_at": "2026-11-13T14:36:05.233691+00:00",
+      "artwork_preview_id": "jc-desoto-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/desoto-coloring-page-100/catalog_thumb_bw.294e7ad9582211546587c91a.webp",
+      "actual_final_card_proofs": {
+        "two-original-wordmarks-final-390-1.png": "fb390cf9689d4c49db58a28b0205a238467c10710098ef0b4f888a85bdc68c07",
+        "two-original-wordmarks-final-1440-1.png": "6b69ce176f05606b4051c67d3375a64c30ac6d3bed3402413f02975137d374ef",
+        "two-original-wordmarks-browser-verification.json": "dab8654edc2dee91ce6ab69510096d4309e6616c892c42208d4aead1f7b1be69"
+      }
+    },
+    "nash": {
+      "asset_sha256": "4a64385dd66fbe65d1917f0c782a3aec05d92f30bf6f3fd75e1379abcff1cbd3",
+      "src": "/subject-logos/subjects/nash.4a64385dd66f.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://oldcarbrochures.org/United%20States/Nash/1954%20Nash/1954%20Nash%20Airflyte%20Brochure/index.html",
+      "reviewed_at": "2026-11-13T14:36:05.234054+00:00",
+      "artwork_preview_id": "jc-nash-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/nash-coloring-page-100/catalog_thumb_bw.37f9654ddf742fdeabc99ce8.webp",
+      "actual_final_card_proofs": {
+        "two-original-wordmarks-final-390-1.png": "fb390cf9689d4c49db58a28b0205a238467c10710098ef0b4f888a85bdc68c07",
+        "two-original-wordmarks-final-1440-1.png": "6b69ce176f05606b4051c67d3375a64c30ac6d3bed3402413f02975137d374ef",
+        "two-original-wordmarks-browser-verification.json": "dab8654edc2dee91ce6ab69510096d4309e6616c892c42208d4aead1f7b1be69"
       }
     }
   }
