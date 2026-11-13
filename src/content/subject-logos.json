@@ -3036,6 +3036,74 @@
       "shape": "wide",
       "reviewed_at": "2026-11-13T15:04:30.025Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "kaiser": {
+      "id": "kaiser",
+      "sha256": "ea1ac28d249ec8e8117689ef980cd116c0baee3382f8c490ab9a707749d4d5f9",
+      "bytes": 32651,
+      "asset_source": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/1947_Kaiser-Frazer_Folder-02-03.jpg",
+      "identity_reference": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/slides/1947_Kaiser-Frazer_Folder-02-03.html",
+      "source_container_sha256": "651b94170357fd2cfe29e9da27ed28b55b1d821af20d99b3fb717c03ad8b42c2",
+      "source_native_size": [
+        1990,
+        1320
+      ],
+      "source_crop_pixels": [
+        955,
+        25,
+        1048,
+        156
+      ],
+      "source_kind": "original_manufacturer_sales_brochure_emblem",
+      "surface": "light",
+      "src": "/subject-logos/subjects/kaiser.ea1ac28d249e.png",
+      "name": "Kaiser",
+      "source_sha256": "89907e50e197c2dfd3d2358984a2c46e6b22f3d38b2e6079e3c01d96c305ddd9",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T15:14:27.896Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "frazer": {
+      "id": "frazer",
+      "sha256": "f1cca8c737e11f09852b08090f90f78f439d9a0e12f1211e83349bbf078a8bf2",
+      "bytes": 59297,
+      "asset_source": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/1947_Kaiser-Frazer_Folder-02-03.jpg",
+      "identity_reference": "https://www.oldcarbrochures.org/United%20States/Kaiser-Frazer/1947_Kaiser-Frazer/1947-Kaiser-Frazer-Folder/slides/1947_Kaiser-Frazer_Folder-02-03.html",
+      "source_container_sha256": "651b94170357fd2cfe29e9da27ed28b55b1d821af20d99b3fb717c03ad8b42c2",
+      "source_native_size": [
+        1990,
+        1320
+      ],
+      "source_crop_pixels": [
+        1175,
+        713,
+        1300,
+        890
+      ],
+      "source_kind": "original_manufacturer_sales_brochure_emblem",
+      "surface": "light",
+      "src": "/subject-logos/subjects/frazer.f1cca8c737e1.png",
+      "name": "Frazer",
+      "source_sha256": "f3183b26b92d6fe31e61e527bdd88ac593938936116a0bdec2f277d7447f24e8",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T15:14:27.904Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "lasalle": {
+      "id": "lasalle",
+      "sha256": "483bddd0e6e5a7fa6c7eff7aa93346637a9ab7c51d2ddc3889c2f14194c0229d",
+      "bytes": 72697,
+      "asset_source": "https://newcadillacdatabase.org/static/CDB/Dbas_emb/las_embl.jpg",
+      "identity_reference": "https://newcadillacdatabase.org/static/CDB/Dbas_txt/mascotsd.htm",
+      "source_page_sha256": "cf64e1346a37f1274f13d152eb575fff2fd825bcfe810f233f291ca074753cb6",
+      "source_kind": "museum_historical_emblem_reproduction",
+      "surface": "light",
+      "src": "/subject-logos/subjects/lasalle.483bddd0e6e5.png",
+      "name": "Lasalle",
+      "source_sha256": "f36403103af88d57e6a84ad9c98dd508bf00063c5bfde1ba24421e5172cca497",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T15:14:27.910Z",
+      "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
     }
   }
 }
