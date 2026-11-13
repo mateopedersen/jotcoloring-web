@@ -3,9 +3,10 @@
  */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {readOnlyFetch} from './read-only-fetch.mjs';
 if(process.argv[2]!=='production')throw new Error('Select production explicitly.');
 const origin='https://jotcoloring.com',cdn='https://assets.jotcoloring.com';
-async function request(url,options={}){return fetch(url,{...options,credentials:'omit',signal:AbortSignal.timeout(20000)});}
+async function request(url,options={}){return readOnlyFetch(url,{...options,credentials:'omit'});}
 const catalog=await request(origin+'/api/catalog?limit=48');assert.equal(catalog.status,200);
 const {items,total}=await catalog.json();assert.ok(items.length>0&&items.length<=48);
 const media=new Map(),downloads=[];
