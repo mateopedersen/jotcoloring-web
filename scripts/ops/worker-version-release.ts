@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
+import {readOnlyFetch,transientReadStatus} from '../qa/read-only-fetch.mjs';
 const ACCOUNT='48c779c8eaa80234e0bb9d57f96e588b';
 const UUID=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
 export type Stage='staging'|'production';
@@ -127,11 +128,19 @@ export async function rehearseVersionBundle(target:WorkerTarget,directory:string
   await fs.writeFile(path.join(directory,'result.json'),JSON.stringify(evidence,null,2)+'\n');
   return evidence;
 }
+export async function transientDeploymentReadback(response:Response){
+  if(transientReadStatus(response))return true;
+  if(response.status!==404)return false;
+  // A newly accepted deployment can briefly be absent from the read API.
+  // Other missing resources, permission failures and wrong UUIDs still fail.
+  const body=await response.clone().json().catch(()=>null) as {errors?:{code?:number}[]}|null;
+  return Array.isArray(body?.errors)&&body.errors.some(error=>error.code===10336);
+}
 async function readDeployment(name:string,deployment:string){
   if(!/^jotcoloring-(staging|production)(-jobs)?$/.test(name)||!UUID.test(deployment))throw new Error('Unreviewed deployment readback target');
   const token=process.env.CLOUDFLARE_API_TOKEN;
   if(!token||process.env.CLOUDFLARE_ACCOUNT_ID!==ACCOUNT)throw new Error('Reviewed deployment credentials unavailable');
-  const response=await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/workers/scripts/${name}/deployments/${deployment}`,{headers:{Authorization:`Bearer ${token}`},redirect:'error',signal:AbortSignal.timeout(30000)});
+  const response=await readOnlyFetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/workers/scripts/${name}/deployments/${deployment}`,{headers:{Authorization:`Bearer ${token}`},redirect:'error'},{timeoutMs:30000,retryResponse:transientDeploymentReadback});
   let body:any;try{body=await response.json()}catch{throw new Error('Deployment readback returned an invalid response')}
   if(!response.ok||body.success!==true)throw new Error(`Deployment readback failed (HTTP${response.status}; codes:${(body.errors||[]).map((e:any)=>Number(e.code)).join(',')})`);
   // Never record the response's author email or other account metadata.
@@ -141,7 +150,7 @@ async function readServiceGrouping(target:WorkerTarget){
   assertWorkerName(target.stage,target.name);
   const token=process.env.CLOUDFLARE_API_TOKEN;
   if(!token||process.env.CLOUDFLARE_ACCOUNT_ID!==ACCOUNT)throw new Error('Reviewed deployment credentials unavailable');
-  const response=await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/workers/services/${target.name}`,{headers:{Authorization:`Bearer ${token}`},redirect:'error',signal:AbortSignal.timeout(30000)});
+  const response=await readOnlyFetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/workers/services/${target.name}`,{headers:{Authorization:`Bearer ${token}`},redirect:'error'},{timeoutMs:30000});
   let body:any;try{body=await response.json()}catch{throw new Error('Worker grouping readback returned an invalid response')}
   if(!response.ok||body.success!==true)throw new Error(`Worker grouping readback failed (HTTP${response.status})`);
   const script=body.result?.default_environment?.script;

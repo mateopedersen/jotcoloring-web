@@ -55,6 +55,13 @@ GitHub Actions tek otomatik yayın yoludur. Workers Builds'in user-token sınır
 
 Mevcut `Verify / verify` kontrol kapısı korunur. Typecheck, bütün testler, Python operasyon kontrolü, tracked sır taraması, ortam build'i ve gerçek config metadata parity aynı workflow'dadır. Yayın job'ı yalnız main/staging push, başarılı verify, doğru upstream repo ve `JOTCOLORING_DEPLOY_ENABLED=true` ile çalışır. Aynı commit artifact'i hash'lenir; token yalnız son yayın adımında vardır. Önce jobs, sonra web `versions upload` ve elde edilen kesin UUID'nin%100 etkinleştirilmesiyle yayımlanır; readback eşitliği zorunludur. Otomatik provision/auto-create kapalıdır. Queue consumers, cron ve routes korunur; bunların değişimi ayrı operatör işidir. Workflow'a production migration veya içerik aktarımı eklenmez. Ham CLI çıktısı önceki sürüm yazarlarını içerebildiğinden public loga basılmaz; sürüm/deployment/commit receipt ve sayısal hata kodları gösterilir.
 
+Yayın doğrulamasındaki geçici bağlantı hataları ve geçici HTTP yanıtları yalnız
+gövdesiz GET/HEAD okumalarında en fazla üç kez denenir. Yeni kabul edilmiş
+deployment için Cloudflare 404/10336 yanıtı da bu sınıra dahildir; aynı kesin
+deployment adresi yeniden okunur. Upload ve activation işlemleri tekrarlanmaz.
+Yetki hataları, yanlış sürüm, checksum veya dosya sözleşmesi uyuşmazlığı başarı
+sayılmaz; sınırlı denemeler tükenirse kontrol yine başarısız olur.
+
 Preview için ayrı D1/R2/Queue isimleri kullanılır. Preview Queue tüketemez; staging Worker tüketir. Preview cron ayrı çalışmaz. Staging kuyruğu üzerinden test yapmak üretim kuyruğuna mesaj gönderme yetkisi değildir. Preview/AI varsayılanları üretim bütçesini devralmaz. Güvenilmeyen fork PR koduna production secrets verilmez.
 
 ## Yedek ve doğrulanmış geri yükleme
