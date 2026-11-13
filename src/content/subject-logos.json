@@ -2962,6 +2962,34 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T14:42:15.398Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "rudolph": {
+      "id": "rudolph",
+      "sha256": "889f31309a22a82ea01324ef14f061af5b3db3219caa9650c35a69b2313960fc",
+      "bytes": 44662,
+      "asset_source": "https://shop.thetoyfactory.biz/media/toy_factory/default/dwn_2024_toyfactory_catalog_weblr.pdf",
+      "identity_reference": "https://www.universalpicturesathome.com/movies/rudolph-the-red-nosed-reindeer",
+      "source_container_sha256": "c8303b2fa38bff8318dd6282be188f9518833dc14cb3c1f2eca756d2ce357f62",
+      "source_document_page": 42,
+      "source_pdf_image": "Im0.jpg",
+      "source_native_size": [
+        816,
+        1056
+      ],
+      "source_crop_pixels": [
+        178,
+        53,
+        392,
+        161
+      ],
+      "source_kind": "licensed_manufacturer_catalog_original_franchise_logo",
+      "surface": "light",
+      "src": "/subject-logos/subjects/rudolph.889f31309a22.png",
+      "name": "Rudolph",
+      "source_sha256": "c8c49abff11861c801b45ce807215e1f23f19021a71a1806c553271eb1a9f99f",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T14:56:48.300Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }
