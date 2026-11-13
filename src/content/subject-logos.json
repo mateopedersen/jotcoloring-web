@@ -2335,6 +2335,143 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T12:57:24.358Z",
       "transformation": "Existing logo reproduction decoded to PNG and outer uniform padding trimmed; compared with original manufacturer filing."
+    },
+    "hirono": {
+      "id": "hirono",
+      "sha256": "87437aaa4d7a38179e322f47b40f1d369c0aca3340135f4e6091a91f0b8726b3",
+      "bytes": 43535,
+      "asset_source": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/79446133/office-action/OfficeAction8376733.pdf",
+      "identity_reference": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/79446133/office-action/OfficeAction8376733.pdf",
+      "surface": "light",
+      "source_kind": "actual_trademark_record_mark",
+      "source_crop_pixels": [
+        70,
+        160,
+        300,
+        435
+      ],
+      "source_container_sha256": "57218be0d8bfdf8649dbbc0c8d70c7010b33259e6e23079bbef017eac9cafc87",
+      "source_page": 15,
+      "src": "/subject-logos/subjects/hirono.87437aaa4d7a.png",
+      "name": "HIRONO",
+      "source_sha256": "1da7c49d865da611a6d51f029d463ed1458edf0a7a5896dc220bc342717a3440",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:02:26.683Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "grinch": {
+      "id": "grinch",
+      "sha256": "77665f9c7d3b273b72f70491beb766c8fcc80b0d4f18bb66e6c7a8157877357c",
+      "bytes": 112725,
+      "asset_source": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blte717fa1e159d2faa/695ec44d9b41bb235d229d71/IlluminationPresentsDrSeussTheGrinch_keyart_desktop_2000x3000.jpg?width=768",
+      "identity_reference": "https://www.universalpicturesathome.com/movies/illumination-presents-dr-seuss-the-grinch",
+      "surface": "light",
+      "source_kind": "publisher_keyart_title_crop",
+      "source_crop_pixels": [
+        23,
+        105,
+        425,
+        328
+      ],
+      "source_container_sha256": "46dd3d0ade02a59fda41b940931364ab502984491e668f70cc8f0d2950654509",
+      "src": "/subject-logos/subjects/grinch.77665f9c7d3b.png",
+      "name": "Grinch",
+      "source_sha256": "ae2346db5b95fe584c9ccbc9a08910674d0d3a0b28775f617324a547255f1224",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:02:26.692Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "john-deere": {
+      "id": "john-deere",
+      "sha256": "0f299f91992c3ff2fcf827f5fc7ce9ad99f6e75a20d33136ff0228abe39a1778",
+      "bytes": 15655,
+      "asset_source": "https://www.deere.com/assets/docs/common/dws/ddf-api-doc/Dealer_Data_Feed_Documentation.pdf",
+      "identity_reference": "https://www.deere.com/assets/docs/common/dws/ddf-api-doc/Dealer_Data_Feed_Documentation.pdf",
+      "surface": "light",
+      "source_kind": "manufacturer_pdf_original_embedded_logo",
+      "source_crop_pixels": [
+        0,
+        0,
+        529,
+        162
+      ],
+      "source_container_sha256": "9a8e338f58220ef41a3367b6c4a8fa4aba6a23b0a12514e43a122b985293293d",
+      "source_page": 63,
+      "src": "/subject-logos/subjects/john-deere.0f299f91992c.png",
+      "name": "John Deere",
+      "source_sha256": "72f890fa168a8a892eb1e67da81a0002f18e384137792421ccd396015236459a",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T13:02:26.697Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "my-little-pony": {
+      "id": "my-little-pony",
+      "sha256": "b150c9e9f59d6688c568d6e7d9e46fff311c96ada8abc511de2f2f8daa13c8e6",
+      "bytes": 129641,
+      "asset_source": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "surface": "light",
+      "source_kind": "publisher_original_pdf_mark_crop",
+      "source_container_sha256": "c36c7bdfa693ab22e073e4aa6310ab568d1d26191c7178347de11cd06edcccfa",
+      "source_page": 1,
+      "source_crop_points": [
+        36.96,
+        396.21724137931034,
+        252.384,
+        577.7068965517242
+      ],
+      "src": "/subject-logos/subjects/my-little-pony.b150c9e9f59d.png",
+      "name": "My Little Pony",
+      "source_sha256": "093c8f0d987334ee89f8211a07a453c798c62ce220c8879e8202c78e794cdda6",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:02:26.713Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "rarity": {
+      "id": "rarity",
+      "sha256": "3f7875fbdb46e7330c57474776a600fbd24ce13935b5e89537469d8b488c6736",
+      "bytes": 88161,
+      "asset_source": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "surface": "light",
+      "source_kind": "publisher_original_pdf_mark_crop",
+      "source_container_sha256": "c36c7bdfa693ab22e073e4aa6310ab568d1d26191c7178347de11cd06edcccfa",
+      "source_page": 1,
+      "source_crop_points": [
+        42.24,
+        33.76551724137931,
+        250.79999999999998,
+        168.82758620689654
+      ],
+      "src": "/subject-logos/subjects/rarity.3f7875fbdb46.png",
+      "name": "Rarity",
+      "source_sha256": "9c9549c0efad35f21d8c1209c9337b87088413701167cac75b4974d50dcc14e8",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:02:26.725Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "rainbow-dash": {
+      "id": "rainbow-dash",
+      "sha256": "2e8e59a378f076ffbe256dbcc67c96b6f6d4f44f2f551cc1dc43ece4c9d93fb9",
+      "bytes": 96694,
+      "asset_source": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rainbow_Dash.pdf",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rainbow_Dash.pdf",
+      "surface": "light",
+      "source_kind": "publisher_original_pdf_mark_crop",
+      "source_container_sha256": "52a13580d5cdc4491b69c142d93a46123b9a6ca21776f70c5e353f79f8fa89d2",
+      "source_page": 1,
+      "source_crop_points": [
+        532.224,
+        49.59310344827586,
+        757.68,
+        199.42758620689656
+      ],
+      "src": "/subject-logos/subjects/rainbow-dash.2e8e59a378f0.png",
+      "name": "Rainbow Dash",
+      "source_sha256": "adf4134bae5249a6a262d233621b0efaa154283eed561b447c8dd43f19c0e484",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T13:02:26.736Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

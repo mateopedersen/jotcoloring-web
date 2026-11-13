@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "149 additional subject logos: 98 automotive brands and 51 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "155 additional subject logos: 98 automotive brands and 57 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2269,6 +2269,96 @@
         "four-kpop-auto-final-1440-1.png": "d6cf3bdf8fe6481d2d548bf140906debc95950c849f914a1ba77b7fecb00048a",
         "four-kpop-auto-final-390-1.png": "a60292f67a06c38fab717e91f7068427aba1202e90bc467fc9543a393a7343b5",
         "four-kpop-auto-browser-verification.json": "752dbdb90fe40fe473395fd033d76f5d4489de75b8c2b8166190a114299aa844"
+      }
+    },
+    "hirono": {
+      "asset_sha256": "87437aaa4d7a38179e322f47b40f1d369c0aca3340135f4e6091a91f0b8726b3",
+      "src": "/subject-logos/subjects/hirono.87437aaa4d7a.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/79446133/office-action/OfficeAction8376733.pdf",
+      "reviewed_at": "2026-11-13T13:03:17.626756+00:00",
+      "artwork_preview_id": "jc-hirono-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/dolls-toys/hirono-coloring-page-100/catalog_thumb_bw.9404e0e8a61fcbf26f334018.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "grinch": {
+      "asset_sha256": "77665f9c7d3b273b72f70491beb766c8fcc80b0d4f18bb66e6c7a8157877357c",
+      "src": "/subject-logos/subjects/grinch.77665f9c7d3b.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.universalpicturesathome.com/movies/illumination-presents-dr-seuss-the-grinch",
+      "reviewed_at": "2026-11-13T13:03:17.627182+00:00",
+      "artwork_preview_id": "jc-grinch-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/holidays/christmas-is-kindness-grinch-with-cindy-lou-who-and-max-coloring-page/catalog_thumb_bw.81653f237410ebe4fcde62f3.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "john-deere": {
+      "asset_sha256": "0f299f91992c3ff2fcf827f5fc7ce9ad99f6e75a20d33136ff0228abe39a1778",
+      "src": "/subject-logos/subjects/john-deere.0f299f91992c.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.deere.com/assets/docs/common/dws/ddf-api-doc/Dealer_Data_Feed_Documentation.pdf",
+      "reviewed_at": "2026-11-13T13:03:17.627333+00:00",
+      "artwork_preview_id": "jc-john-deere-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/john-deere-coloring-page-100/catalog_thumb_bw.04e05ecb49a8ac5ba71b751d.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "my-little-pony": {
+      "asset_sha256": "b150c9e9f59d6688c568d6e7d9e46fff311c96ada8abc511de2f2f8daa13c8e6",
+      "src": "/subject-logos/subjects/my-little-pony.b150c9e9f59d.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "reviewed_at": "2026-11-13T13:03:17.627558+00:00",
+      "artwork_preview_id": "jc-rarity-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rarity-coloring-page-100/catalog_thumb_bw.48249789363a9ad399ab115e.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "rarity": {
+      "asset_sha256": "3f7875fbdb46e7330c57474776a600fbd24ce13935b5e89537469d8b488c6736",
+      "src": "/subject-logos/subjects/rarity.3f7875fbdb46.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rarity.pdf",
+      "reviewed_at": "2026-11-13T13:03:17.627771+00:00",
+      "artwork_preview_id": "jc-rarity-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rarity-coloring-page-100/catalog_thumb_bw.48249789363a9ad399ab115e.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
+      }
+    },
+    "rainbow-dash": {
+      "asset_sha256": "2e8e59a378f076ffbe256dbcc67c96b6f6d4f44f2f551cc1dc43ece4c9d93fb9",
+      "src": "/subject-logos/subjects/rainbow-dash.2e8e59a378f0.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.hasbro.com/common/assets/flash/Casual/dad2af6e1c4311ddbd0b0800200c9a66/1ff13b5019b9f36910068c5c12f9b58f/pdfs/Rainbow_Dash.pdf",
+      "reviewed_at": "2026-11-13T13:03:17.627994+00:00",
+      "artwork_preview_id": "jc-rainbow-dash-page-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/cartoons/rainbow-dash-coloring-page-100/catalog_thumb_bw.7b47bdb16ab7318c3d88b751.webp",
+      "actual_final_card_proofs": {
+        "six-pony-brand-final-1440-1.png": "e763f9d6513a0cbba57e8129ab1a4075f18fbbf7455173958f77f24dffde760c",
+        "six-pony-brand-final-390-1.png": "973b5841de0300c5ae56ea47bdef47daa65d0b90f2dd11caff034d6e6a783360",
+        "six-pony-brand-browser-verification.json": "f277ff91fded416201808be3ee2ce4fa8e21528ea53bd860f742fed462020d21"
       }
     }
   }
