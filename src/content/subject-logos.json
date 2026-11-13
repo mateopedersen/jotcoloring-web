@@ -3104,6 +3104,54 @@
       "shape": "wide",
       "reviewed_at": "2026-11-13T15:14:27.910Z",
       "transformation": "Native official asset decoded to PNG and outer uniform padding trimmed; emblem unchanged."
+    },
+    "fisker": {
+      "id": "fisker",
+      "sha256": "0c14db64fc3608374f00b17f4dd3371475a442ae49b41bd04312df2507a987af",
+      "bytes": 217593,
+      "asset_source": "https://www.sec.gov/Archives/edgar/data/1720990/000172099023000045/fiskerars10kfye123122.pdf",
+      "identity_reference": "https://www.sec.gov/Archives/edgar/data/1720990/000172099023000045/fiskerars10kfye123122.pdf",
+      "source_container_sha256": "37fc3a0eaf625a16f139a380cca6e95dd6ab79287aaa70bad2433dd997e803db",
+      "source_document_page": 1,
+      "source_kind": "original_company_publication_logo",
+      "surface": "light",
+      "source_pdf_image": "Im0.jp2",
+      "source_native_size": [
+        1442,
+        811
+      ],
+      "src": "/subject-logos/subjects/fisker.0c14db64fc36.png",
+      "name": "Fisker",
+      "source_sha256": "ee7ef9501bbe5a6f93b985e7d11f60caaeb3cb28b70e252c705012608edee326",
+      "shape": "square",
+      "reviewed_at": "2026-11-13T15:22:18.980Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "vinfast": {
+      "id": "vinfast",
+      "sha256": "26798b1584ef6906812b62f2eff921865c2d8410a81be4cbee13e8c86ecc5159",
+      "bytes": 44713,
+      "asset_source": "https://static-cms-prod.vinfastauto.com/statics/app-manual/VF%20App_VN%20Market%20App%20Manual_Sep%202026.pdf",
+      "identity_reference": "https://static-cms-prod.vinfastauto.com/statics/app-manual/VF%20App_VN%20Market%20App%20Manual_Sep%202026.pdf",
+      "source_container_sha256": "54885f98b19eb8fa771e12bb960b5a64345f438900a7e878fed54862503bd694",
+      "source_document_page": 1,
+      "source_kind": "original_company_publication_logo",
+      "surface": "light",
+      "source_render_scale_to": 6000,
+      "source_crop_pixels": [
+        4610,
+        200,
+        1090,
+        310
+      ],
+      "source_crop_convention": "x,y,width,height",
+      "source_render_method": "Poppler cropped page rendering",
+      "src": "/subject-logos/subjects/vinfast.26798b1584ef.png",
+      "name": "Vinfast",
+      "source_sha256": "f57bd5acd0bf3841e67ef5266af20b6174fd400d173aed11a04f8256253762a1",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T15:22:18.991Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

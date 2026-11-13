@@ -7,8 +7,8 @@
 @media(max-width:600px){.jc-series-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 12px}.jc-series-cover{height:175px}.jc-series-cover-kicker{top:12px;left:11px;font-size:7px;letter-spacing:.07em}.jc-series-paper{height:111px;top:42px;right:9px;width:48%}.jc-series-cover-symbol{top:51px;left:9px;height:50px;font-size:47px}.jc-series-cover-symbol[data-digits="3"]{font-size:34px;left:6px;top:59px}.jc-series-cover-symbol[data-digits="4"]{font-size:28px;left:5px;top:67px}.jc-series-cover-symbol>svg{width:55px;height:55px}.jc-series-cover-label{font-size:9px;left:11px;bottom:10px}.jc-series-copy{padding:13px 11px}.site-v3 .jc-series-copy h3{font-size:18px;gap:5px;align-items:flex-start}.jc-series-copy h3>svg{width:16px;height:16px;margin-top:3px}.jc-series-copy>strong{font-size:11px}.jc-series-copy>p{font-size:12px;line-height:1.6}.jc-series-open{font-size:11px}.jc-series-directory>header{align-items:flex-start}.jc-series-directory>header>span{display:none}.jc-series-directory>header p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.jc-series-card{transition:none}}
 
-.jc-series-team-logo,.jc-series-brand-logo{display:block;width:108px;height:108px;max-width:100%;object-fit:contain;filter:drop-shadow(0 3px 2px #201a1614)}
-@media(max-width:600px){.jc-series-team-logo,.jc-series-brand-logo{width:58px;height:58px}}
+.jc-series-team-logo,.jc-series-brand-logo,.jc-series-topic-symbol{display:block;width:108px;height:108px;max-width:100%;object-fit:contain;filter:drop-shadow(0 3px 2px #201a1614)}
+@media(max-width:600px){.jc-series-team-logo,.jc-series-brand-logo,.jc-series-topic-symbol{width:58px;height:58px}}
 
 .jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"]{padding:9px;border-radius:14px;background:#fff;filter:drop-shadow(0 3px 2px #201a1614)}
 .jc-series-brand-logo[data-surface="dark"]{background:#17262e}

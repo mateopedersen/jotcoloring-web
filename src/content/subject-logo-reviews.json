@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "183 additional subject identities: 116 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "185 additional subject identities: 118 automotive brands and 67 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2779,6 +2779,36 @@
         "three-kaiser-frazer-lasalle-final-1440-1.png": "7c6e7f54c301e20e05d12eb78ce73dd175a997855636cda3487f97e1ed4bb5a1",
         "three-kaiser-frazer-lasalle-final-390-1.png": "33f2eb1834ccaeee7cc0765216308633f517607db0e92b70226e477ba10954ec",
         "three-kaiser-frazer-lasalle-browser-verification.json": "4876dafc9d5a339b18715c6880fe7428999158ff62a46d051476b8a19ca3efc5"
+      }
+    },
+    "fisker": {
+      "asset_sha256": "0c14db64fc3608374f00b17f4dd3371475a442ae49b41bd04312df2507a987af",
+      "src": "/subject-logos/subjects/fisker.0c14db64fc36.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://www.sec.gov/Archives/edgar/data/1720990/000172099023000045/fiskerars10kfye123122.pdf",
+      "reviewed_at": "2026-11-13T15:28:49.135839+00:00",
+      "artwork_preview_id": "jc-fisker-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/fisker-coloring-page-100/catalog_thumb_bw.07dd0462c7711f494b51dba0.webp",
+      "actual_final_card_proofs": {
+        "fisker-vinfast-race-car-final-1440-1.png": "7c028c9bd999d8ec5a687d46b15711364a9c9c9827b4da81bb1c4df507eeda94",
+        "fisker-vinfast-race-car-final-390-1.png": "d4842d71545ffc0ceb2cd1b1d245438d59d7f52a3e39fc381263f02d4a933a5c",
+        "fisker-vinfast-race-car-browser-verification.json": "d4fc9b86fe1c235e14f66aa32c0bd387c142e225e5c0efaf9cc49ea10ddce4fd"
+      }
+    },
+    "vinfast": {
+      "asset_sha256": "26798b1584ef6906812b62f2eff921865c2d8410a81be4cbee13e8c86ecc5159",
+      "src": "/subject-logos/subjects/vinfast.26798b1584ef.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://static-cms-prod.vinfastauto.com/statics/app-manual/VF%20App_VN%20Market%20App%20Manual_Sep%202026.pdf",
+      "reviewed_at": "2026-11-13T15:28:49.136196+00:00",
+      "artwork_preview_id": "jc-vinfast-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/vinfast-coloring-page-100/catalog_thumb_bw.46549eb2f945cc829f86a8b9.webp",
+      "actual_final_card_proofs": {
+        "fisker-vinfast-race-car-final-1440-1.png": "7c028c9bd999d8ec5a687d46b15711364a9c9c9827b4da81bb1c4df507eeda94",
+        "fisker-vinfast-race-car-final-390-1.png": "d4842d71545ffc0ceb2cd1b1d245438d59d7f52a3e39fc381263f02d4a933a5c",
+        "fisker-vinfast-race-car-browser-verification.json": "d4fc9b86fe1c235e14f66aa32c0bd387c142e225e5c0efaf9cc49ea10ddce4fd"
       }
     }
   }
