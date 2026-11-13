@@ -1,0 +1,246 @@
+{
+  "sourcePage": "https://www.nba.com/teams",
+  "checkedAt": "2026-11-13",
+  "teams": {
+    "atlanta-hawks": {
+      "teamId": 1610612737,
+      "src": "/team-logos/nba/atlanta-hawks.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg",
+      "sha256": "efe7639e6daac1a103c13a1c3cc0b2d00979397ab70333e9d8ded492ea250504",
+      "viewBox": "0 0 400 400",
+      "bytes": 1882
+    },
+    "boston-celtics": {
+      "teamId": 1610612738,
+      "src": "/team-logos/nba/boston-celtics.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612738/primary/L/logo.svg",
+      "sha256": "531038092e848f7319e05d1785ef875353d6168c20ce419218503f1cc24cfd4c",
+      "viewBox": "0 0 400 400",
+      "bytes": 31426
+    },
+    "brooklyn-nets": {
+      "teamId": 1610612751,
+      "src": "/team-logos/nba/brooklyn-nets.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612751/primary/L/logo.svg",
+      "sha256": "6a3b134fbf97503b196848f6c933246a87c33ee623f13022c4cf7219a785ab34",
+      "viewBox": "0 0 400 400",
+      "bytes": 6207
+    },
+    "charlotte-hornets": {
+      "teamId": 1610612766,
+      "src": "/team-logos/nba/charlotte-hornets.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612766/primary/L/logo.svg",
+      "sha256": "cf2c99a2d619f635920a94b69e20b2efb2babb992d5a821c22b0129e0cc57f46",
+      "viewBox": "0 0 400 400",
+      "bytes": 9095
+    },
+    "chicago-bulls": {
+      "teamId": 1610612741,
+      "src": "/team-logos/nba/chicago-bulls.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612741/primary/L/logo.svg",
+      "sha256": "a11d0d6480b75e4eebca54130d195a462547705c8c7e6b501a11a62d57854068",
+      "viewBox": "0 0 400 400",
+      "bytes": 8876
+    },
+    "cleveland-cavaliers": {
+      "teamId": 1610612739,
+      "src": "/team-logos/nba/cleveland-cavaliers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612739/primary/L/logo.svg",
+      "sha256": "ef345729b4d9f69863d2f6f20b80bda21191ecf5f49a40a0a4f428d0864a301b",
+      "viewBox": "0 0 400 400",
+      "bytes": 1212
+    },
+    "dallas-mavericks": {
+      "teamId": 1610612742,
+      "src": "/team-logos/nba/dallas-mavericks.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612742/primary/L/logo.svg",
+      "sha256": "1547494512746c1827808f1650407e675025b20b07bb5bd185093ac49630db5c",
+      "viewBox": "0 0 400 400",
+      "bytes": 11931
+    },
+    "denver-nuggets": {
+      "teamId": 1610612743,
+      "src": "/team-logos/nba/denver-nuggets.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612743/primary/L/logo.svg",
+      "sha256": "4e180a9d1906a726d1eb5d5074ae3468cdf25da5e388a98a112563683b6c8730",
+      "viewBox": "0 0 400 400",
+      "bytes": 2916
+    },
+    "detroit-pistons": {
+      "teamId": 1610612765,
+      "src": "/team-logos/nba/detroit-pistons.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612765/primary/L/logo.svg",
+      "sha256": "efc20345b37e52206e025a0dbe5b57e28d8f4226b1a70573a9792a2e18595e0b",
+      "viewBox": "0 0 400 400",
+      "bytes": 5623
+    },
+    "golden-state-warriors": {
+      "teamId": 1610612744,
+      "src": "/team-logos/nba/golden-state-warriors.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612744/primary/L/logo.svg",
+      "sha256": "99af50c32a1b1c19ede6286cda294e98cd19263d1d2b50cd4b79b0e868c96a0a",
+      "viewBox": "0 0 400 400",
+      "bytes": 3171
+    },
+    "houston-rockets": {
+      "teamId": 1610612745,
+      "src": "/team-logos/nba/houston-rockets.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612745/primary/L/logo.svg",
+      "sha256": "9a0fd3d351f0726db427e8bed6db098bf88d15e98582b4b8dfd5a3638d6263f0",
+      "viewBox": "0 0 151 200",
+      "bytes": 4452
+    },
+    "indiana-pacers": {
+      "teamId": 1610612754,
+      "src": "/team-logos/nba/indiana-pacers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612754/primary/L/logo.svg",
+      "sha256": "07b320f178a5bf9a800e1369289b1af59d777feff21936856b6f8cf9ef66ea8a",
+      "viewBox": "0 0 400 400",
+      "bytes": 4131
+    },
+    "los-angeles-clippers": {
+      "teamId": 1610612746,
+      "src": "/team-logos/nba/los-angeles-clippers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612746/primary/L/logo.svg",
+      "sha256": "6fe94cd7b648afe8a700d2ae7c0a78bec1685adb7374214cbde7251520aa6a5a",
+      "viewBox": "0 0 400 400",
+      "bytes": 4262
+    },
+    "los-angeles-lakers": {
+      "teamId": 1610612747,
+      "src": "/team-logos/nba/los-angeles-lakers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612747/primary/L/logo.svg",
+      "sha256": "5b68f7b92ba7d05878ef7130162c77c1e5e7d4c5ac0608c7bb9f13f995a678b7",
+      "viewBox": "0 0 400 400",
+      "bytes": 12296
+    },
+    "memphis-grizzlies": {
+      "teamId": 1610612763,
+      "src": "/team-logos/nba/memphis-grizzlies.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612763/primary/L/logo.svg",
+      "sha256": "677c8053201e90471f0eda3fdd8364c7a598bcba72a7a6e61ed26cbc9ecadcaf",
+      "viewBox": "0 0 400 400",
+      "bytes": 3282
+    },
+    "miami-heat": {
+      "teamId": 1610612748,
+      "src": "/team-logos/nba/miami-heat.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612748/primary/L/logo.svg",
+      "sha256": "bb56d6319628bed94e5154d20cef555b20321939e05c37f3af7d9fea486b74b3",
+      "viewBox": "0 0 400 400",
+      "bytes": 6159
+    },
+    "milwaukee-bucks": {
+      "teamId": 1610612749,
+      "src": "/team-logos/nba/milwaukee-bucks.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612749/primary/L/logo.svg",
+      "sha256": "1a315b6ea7d465c48fc58d42cea16732089422e631d8453e8f2945032d0ff4c5",
+      "viewBox": "0 0 400 400",
+      "bytes": 5336
+    },
+    "minnesota-timberwolves": {
+      "teamId": 1610612750,
+      "src": "/team-logos/nba/minnesota-timberwolves.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612750/primary/L/logo.svg",
+      "sha256": "e23cca4da95fe6a0629cd0a425e5dbefbf410948abf7499718d8fb858df5fa9d",
+      "viewBox": "0 0 512 512",
+      "bytes": 6917
+    },
+    "new-orleans-pelicans": {
+      "teamId": 1610612740,
+      "src": "/team-logos/nba/new-orleans-pelicans.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612740/primary/L/logo.svg",
+      "sha256": "3d74bfcf573428a09814ddae46db420a31dfe5e77faf75b0d7da7b1649ba93b1",
+      "viewBox": "0 0 400 400",
+      "bytes": 15595
+    },
+    "new-york-knicks": {
+      "teamId": 1610612752,
+      "src": "/team-logos/nba/new-york-knicks.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg",
+      "sha256": "42e914c5226c3ff71fa09fe018e8604a4abb6a935e1896e5414733d6cd5fcde9",
+      "viewBox": "0 0 512 512",
+      "bytes": 7473
+    },
+    "oklahoma-city-thunder": {
+      "teamId": 1610612760,
+      "src": "/team-logos/nba/oklahoma-city-thunder.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg",
+      "sha256": "fb684464e11e07989b3121108b54f12fafc85631644ad534f3fef53fd9927d89",
+      "viewBox": "0 0 400 400",
+      "bytes": 8885
+    },
+    "orlando-magic": {
+      "teamId": 1610612753,
+      "src": "/team-logos/nba/orlando-magic.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612753/primary/L/logo.svg",
+      "sha256": "aa38562ae665b4266e21f38698abdd2b45bb5a099e23246973a6bd8b71f056bf",
+      "viewBox": "0 0 50 50",
+      "bytes": 5155
+    },
+    "philadelphia-76ers": {
+      "teamId": 1610612755,
+      "src": "/team-logos/nba/philadelphia-76ers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612755/primary/L/logo.svg",
+      "sha256": "1e3fbaf4f2d48a4e8e3ce38cea06af858f1ac103e24d16cfb64728d39e29780d",
+      "viewBox": "0 0 400 400",
+      "bytes": 3400
+    },
+    "phoenix-suns": {
+      "teamId": 1610612756,
+      "src": "/team-logos/nba/phoenix-suns.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612756/primary/L/logo.svg",
+      "sha256": "b4ec319fc4551e87c13bdfbe4eddcaeb38701a2a946fc977887669bbb6bb06e1",
+      "viewBox": "0 0 400 400",
+      "bytes": 2459
+    },
+    "portland-trail-blazers": {
+      "teamId": 1610612757,
+      "src": "/team-logos/nba/portland-trail-blazers.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612757/primary/L/logo.svg",
+      "sha256": "65fbdafe950a7064f5303a1a45942b1519061cf9f56681e304763c81f87ca719",
+      "viewBox": "0 0 400 400",
+      "bytes": 2051
+    },
+    "sacramento-kings": {
+      "teamId": 1610612758,
+      "src": "/team-logos/nba/sacramento-kings.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612758/primary/L/logo.svg",
+      "sha256": "36bcebbe9c06361db15791796bd6fd1ee39dd88047b1ecb7d3a00702617141cf",
+      "viewBox": "0 0 400 400",
+      "bytes": 3669
+    },
+    "san-antonio-spurs": {
+      "teamId": 1610612759,
+      "src": "/team-logos/nba/san-antonio-spurs.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612759/primary/L/logo.svg",
+      "sha256": "c4df842e0d660dbc6dd1f8e523b1ca03dd2cfee314624071a6ab8425ab885271",
+      "viewBox": "0 0 400 400",
+      "bytes": 1912
+    },
+    "toronto-raptors": {
+      "teamId": 1610612761,
+      "src": "/team-logos/nba/toronto-raptors.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612761/primary/L/logo.svg",
+      "sha256": "cb754caf37f8132f366e20d5af618575c314bc7d716253566d11932e4d723883",
+      "viewBox": "0 0 400 400",
+      "bytes": 10023
+    },
+    "utah-jazz": {
+      "teamId": 1610612762,
+      "src": "/team-logos/nba/utah-jazz.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612762/primary/L/logo.svg",
+      "sha256": "f1df72b502f198c452085fc01dcfcb1f352a93a5fa085cb0314bd0fa1aea1358",
+      "viewBox": "0 0 648 648",
+      "bytes": 1492
+    },
+    "washington-wizards": {
+      "teamId": 1610612764,
+      "src": "/team-logos/nba/washington-wizards.svg",
+      "source": "https://cdn.nba.com/logos/nba/1610612764/primary/L/logo.svg",
+      "sha256": "4e99c8f715c1af7e5cce17d507d5a4b21cf83f3c721cbb526f1b8597d58660b4",
+      "viewBox": "0 0 400 400",
+      "bytes": 3156
+    }
+  }
+}
