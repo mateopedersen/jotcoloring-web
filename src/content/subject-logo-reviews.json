@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "126 additional subject logos: 86 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "131 additional subject logos: 91 automotive brands and 40 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -1910,6 +1910,81 @@
         "nine-media-final-1440-2.png": "8b55cf5fbed0f92478259fdf878bf7b11a5b55468d0c25d2a062f70dada3835f",
         "nine-media-final-1440-1.png": "06f6d247f43388acf834e15619e3db002eb80f5e8e829fbc03873b07a672db65",
         "nine-media-browser-verification.json": "e89b7020118e72ad4cc3dbae0ebe6015aab090e663cd3b00b8c489f44e59f5d3"
+      }
+    },
+    "lincoln": {
+      "asset_sha256": "09c0f552109653d7a8ddc6532bf134e5f33e62a78947481dd5b6af216a5a259b",
+      "src": "/subject-logos/cars/lincoln.09c0f5521096.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.lincoln.com/",
+      "reviewed_at": "2026-11-13T12:25:02.273361+00:00",
+      "artwork_preview_id": "jc-lincoln-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/lincoln-coloring-page-100/catalog_thumb_bw.c7b7ea46b75f4a22fde073b1.webp",
+      "actual_final_card_proofs": {
+        "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
+        "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
+        "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
+      }
+    },
+    "ineos-automotive": {
+      "asset_sha256": "99dd10d23c8fc642718f3eb5a0f81498fa2ab97fa2699ea7113ee8ceddcba694",
+      "src": "/subject-logos/cars/ineos-automotive.99dd10d23c8f.png",
+      "surface": "dark",
+      "shape": "wide",
+      "identity_reference": "https://www.ineos.com/businesses/ineos-automotive/",
+      "reviewed_at": "2026-11-13T12:25:02.273607+00:00",
+      "artwork_preview_id": "jc-ineos-automotive-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ineos-automotive-coloring-page-100/catalog_thumb_bw.ce304f9418d0a1ab2a7683c0.webp",
+      "actual_final_card_proofs": {
+        "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
+        "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
+        "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
+      }
+    },
+    "acura": {
+      "asset_sha256": "038fcbead3efadad9e53abb7e2f479a366326df6b09d711d1d17270bfd8f1b25",
+      "src": "/subject-logos/cars/acura.038fcbead3ef.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://acuranews.com/en-US/releases/release-659c9cd9378c39b0e79d19004c34c982/photos/0",
+      "reviewed_at": "2026-11-13T12:25:02.273766+00:00",
+      "artwork_preview_id": "jc-acura-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/acura-coloring-page-100/catalog_thumb_bw.ecce02dd8edd01992ed166da.webp",
+      "actual_final_card_proofs": {
+        "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
+        "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
+        "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
+      }
+    },
+    "honda": {
+      "asset_sha256": "30059966bac0787e8e624009e25eb049fb9ea99c7cd518493fea56d189c2cfff",
+      "src": "/subject-logos/cars/honda.30059966bac0.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://hondanews.eu/gb/en/cars/media/pressreleases/569436/honda-to-adopt-new-h-mark-as-symbol-of-its-automobile-business",
+      "reviewed_at": "2026-11-13T12:25:02.273861+00:00",
+      "artwork_preview_id": "jc-honda-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/honda-coloring-page-100/catalog_thumb_bw.7acd1fe847a0de10fbbc1e43.webp",
+      "actual_final_card_proofs": {
+        "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
+        "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
+        "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
+      }
+    },
+    "ferrari": {
+      "asset_sha256": "cc6589dac520d517d14c63d1edcbb8df5bfa38c00b36642b5d0db138c2a08630",
+      "src": "/subject-logos/cars/ferrari.cc6589dac520.png",
+      "surface": "light",
+      "shape": "square",
+      "identity_reference": "https://ferrariclubofamerica.us/wp-content/uploads/2026/04/FCA-logo-guidelines-2025.pdf",
+      "reviewed_at": "2026-11-13T12:25:02.274090+00:00",
+      "artwork_preview_id": "jc-ferrari-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/ferrari-ferrari-coloring-page-100-classic-ferrari-convertible/catalog_thumb_bw.a8bcb2250c31fcb6da642a30.webp",
+      "actual_final_card_proofs": {
+        "five-more-car-final-390-1.png": "c5d55da3d8cef2daa2b34bcb72ed7dbd04c2b93eb2d8ca847584e68822e633c6",
+        "five-more-car-final-1440-1.png": "f1b1964ea4743c339ec850b142a8de0ea7f6507420a628657b3c649609bcab93",
+        "five-more-car-browser-verification.json": "5295714c6b48bc0e2e36b875ccf9506d6fd56080abd19e1382a1698d89073279"
       }
     }
   }
