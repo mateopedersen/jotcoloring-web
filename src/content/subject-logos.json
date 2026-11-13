@@ -2770,6 +2770,24 @@
       "shape": "square",
       "reviewed_at": "2026-11-13T13:56:23.915Z",
       "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
+    },
+    "saleen": {
+      "id": "saleen",
+      "name": "Saleen",
+      "sha256": "f50e3a9692afba19cceeeee8e8514a38122dec164c241550a4223034de41e897",
+      "bytes": 37419,
+      "asset_source": "https://ir.ebaystatic.com/pictures/aw/pics/pdf/us/help/community/vpp/Saleen.pdf",
+      "identity_reference": "https://www.saleen.com/brand/",
+      "source_container_sha256": "3e91a3aeb74f18462d302030dc3493124b6dd673beeaeec4be7dd0c2963a07ab",
+      "source_kind": "manufacturer_authored_rights_program_document_native_logo",
+      "source_document_page": 1,
+      "source_image_object": "Im1.jpg",
+      "surface": "light",
+      "src": "/subject-logos/subjects/saleen.f50e3a9692af.png",
+      "source_sha256": "6f4beed97b5f9e4fc78094cfc4e729e5f37e181c59dca0d7485d20987ae71683",
+      "shape": "wide",
+      "reviewed_at": "2026-11-13T14:13:42.215Z",
+      "transformation": "Original source document logo region rendered to PNG and outer uniform padding trimmed; no emblem redrawn."
     }
   }
 }

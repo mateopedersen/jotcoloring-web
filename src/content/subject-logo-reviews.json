@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "168 additional subject identities: 104 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
+  "scope": "169 additional subject identities: 105 automotive brands and 64 other branded subjects; existing 30 NBA logos preserved separately.",
   "proofs": {
     "browser-verification.json": "e137c91fe59cffad6dec997ec57104725fd1b7e7f9e2acf19e15671a1c192a01",
     "related-search-verification.json": "a88bc2f34aa214326d243c6c8703bf6c561fb604281a4bc59e73ad64fd3e9e9f",
@@ -2554,6 +2554,21 @@
         "tucker-original-final-390-1.png": "3de848dc14510475ff8198b8ae1c21a31f8b3d72fbadebbc36f0e5e971030040",
         "tucker-original-final-1440-1.png": "58f063f4abf1a2e8a80faff5064c3f3ab1dd9f8283c39560c877adb62beac49f",
         "tucker-original-browser-verification.json": "77f79bc9b39eced79f2c37b55a51effaad5310f99b09aa6c3240089bbdedff20"
+      }
+    },
+    "saleen": {
+      "asset_sha256": "f50e3a9692afba19cceeeee8e8514a38122dec164c241550a4223034de41e897",
+      "src": "/subject-logos/subjects/saleen.f50e3a9692af.png",
+      "surface": "light",
+      "shape": "wide",
+      "identity_reference": "https://www.saleen.com/brand/",
+      "reviewed_at": "2026-11-13T14:14:42.485417+00:00",
+      "artwork_preview_id": "jc-saleen-100",
+      "artwork_preview_url": "https://assets.jotcoloring.com/published/vehicles/saleen-coloring-page-100/catalog_thumb_bw.d1cfeaed8c5ad2ed80d1f9c3.webp",
+      "actual_final_card_proofs": {
+        "saleen-original-final-1440-1.png": "896214eb3c56454cbeeba7326ea8aaf0638bec20fca05efabeac174c164578d6",
+        "saleen-original-final-390-1.png": "b925efb6a0007916ab0173f1c2c524ec57f50cbaba57c3dea2bc65dbe531f941",
+        "saleen-original-browser-verification.json": "7675a064f3d0b9a0622bd72f3446c0090e81d2345c14e1907bfdaf0409ea5223"
       }
     }
   }
