@@ -36,6 +36,9 @@ export function numberSubjects(words:string[]):NumberSubject[]{
  for(let index=0;index<words.length;index++){
   if(!prefixes.includes(words[index]))continue;
   const parsed=readNumber(words,index+1);if(!parsed)continue;
+  // A plural range/list is scene text, not a request for its first numeral's
+  // collection. Intent words omit “from”, “to” and “and”, leaving adjacent values.
+  if(['numbers','digits','numerals'].includes(words[index])&&readNumber(words,parsed.end))continue;
   const names=[String(parsed.number),written(parsed.number),...(parsed.number>=1000?[parsed.number.toLocaleString('en-US')]:[])];
   const phrases=prefixes.flatMap(prefix=>[...new Set(names)].map(name=>quote(prefix+' '+name)));
   result.push({start:index,...parsed,titleExpression:'title : ('+phrases.join(' OR ')+')'});index=parsed.end-1;
