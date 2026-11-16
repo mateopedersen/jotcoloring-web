@@ -32,7 +32,18 @@ test('real ad tags never load on local, staging or alternate-origin previews',()
  for(const origin of ['http://jotcoloring.com','https://www.jotcoloring.com','http://127.0.0.1:8145','https://staging.jotcoloring.com','https://jotcoloring.example','https://jotcoloring.com.evil.test'])assert.equal(isApprovedAdvertisingOrigin(origin),false,origin);
 });
 
-test('production delivery hold overrides a saved adult marketing choice',()=>{
- assert.equal(ADVERTISING_DELIVERY_ENABLED,false);
- for(const path of ['/coloring-by-age/adults/','/coloring-by-age/3-5/','/contact/','/']){assert.equal(permitsAdvertising(path),false,path);assert.equal(mayRequestAdvertising(path,'adult',accepted),false,path);}
+test('explicit delivery hold overrides a saved adult marketing choice',()=>{
+ for(const path of ['/coloring-by-age/adults/','/coloring-by-age/3-5/','/contact/','/']){assert.equal(permitsAdvertising(path,'','',false),false,path);assert.equal(mayRequestAdvertising(path,'adult',accepted,'','',false),false,path);}
+});
+
+test('production delivery still requires the approved route, adult choice and consent',()=>{
+ assert.equal(ADVERTISING_DELIVERY_ENABLED,true);
+ assert.equal(permitsAdvertising('/coloring-by-age/adults/'),true);
+ assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted),true);
+ for(const age of ['unknown','under18','private'] as const)assert.equal(mayRequestAdvertising('/coloring-by-age/adults/',age,accepted),false);
+ assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',undefined),false);
+ assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',advertisingChoice(false,now)),false);
+ for(const path of ['/coloring-by-age/3-5/','/contact/','/privacy/','/cookies/','/'])assert.equal(mayRequestAdvertising(path,'adult',accepted),false,path);
+ assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted,'?q=private'),false);
+ assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted,'','#private'),false);
 });

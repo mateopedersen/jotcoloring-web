@@ -29,11 +29,21 @@ test('ad host permissions cannot escape the clean adult collection route',()=>{
  assert.ok(policy.includes("object-src 'none'"));
 });
 
-test('paused production grants no provider origins or inline creative exception',()=>{
+test('explicit delivery hold grants no provider origins or inline creative exception',()=>{
  for(const path of ['/coloring-by-age/adults/','/coloring-by-age/adults/?q=private','/coloring-by-age/3-5/','/contact/','/privacy/','/cookies/','/']){
-  const policy=jotContentSecurityPolicy(new URL(path,'https://jotcoloring.com'));
+  const policy=jotContentSecurityPolicy(new URL(path,'https://jotcoloring.com'),false);
   for(const origin of [ADVERTISING_PROVIDER_ORIGIN,'https://static.nresystems.com','https://cdn.storageimagedisplay.com'])assert.ok(!policy.includes(origin),path);
   assert.ok(!directive(policy,'script-src')?.includes("'unsafe-inline'"),path);
+  assert.equal(directive(policy,'script-src-attr'),"script-src-attr 'none'",path);
+ }
+});
+
+test('production CSP grants provider access only on the approved clean adult page',()=>{
+ for(const path of ['/coloring-by-age/adults/','/coloring-by-age/adults/?q=private','/coloring-by-age/3-5/','/contact/','/privacy/','/cookies/','/']){
+  const policy=jotContentSecurityPolicy(new URL(path,'https://jotcoloring.com'));
+  const eligible=path==='/coloring-by-age/adults/';
+  assert.equal(policy.includes(ADVERTISING_PROVIDER_ORIGIN),eligible,path);
+  assert.equal(directive(policy,'script-src')?.includes("'unsafe-inline'"),eligible,path);
   assert.equal(directive(policy,'script-src-attr'),"script-src-attr 'none'",path);
  }
 });
