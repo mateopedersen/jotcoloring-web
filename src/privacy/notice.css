@@ -16,3 +16,5 @@
 .jc-storage-actions>a>.jc-direction-icon{width:17px;height:17px;flex:none}
 .jc-storage-dialog-top>button{display:grid;place-items:center;flex:none;width:44px;height:44px;min-width:44px;min-height:44px;padding:10px;line-height:1}
 .jc-storage-dialog-top>button>svg{display:block;width:20px;height:20px;flex:none}
+
+.jc-storage-dialog [data-advertising-off-everywhere]{font:inherit;font-size:13px;line-height:1.4;min-height:44px;padding:10px 13px;border:1px solid #b88a66;border-radius:10px;color:#6a3e22;background:#fffaf3;cursor:pointer;margin:0 0 8px}.jc-storage-dialog [data-advertising-off-everywhere]:hover{background:#f4e5d2;color:#4e2a13}.jc-storage-dialog [data-advertising-off-everywhere]+a{display:inline-block;margin-left:8px;color:#89401f;text-underline-offset:3px}
