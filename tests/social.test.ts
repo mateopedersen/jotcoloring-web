@@ -5,7 +5,7 @@ import sharp from 'sharp';
 import {convertSVGTextToPath} from '@napi-rs/canvas';
 import {createHash} from 'node:crypto';
 import generated from '../src/social/generated.json';
-import {SOCIAL_PAGES,socialPageKey,socialBinding,contentSocialSpec,OG_VERSION} from '../src/social/model';
+import {SOCIAL_PAGES,socialPageKey,socialBinding,contentSocialSpec,OG_VERSION,firstSocialSentence} from '../src/social/model';
 import {socialOrigin,socialMetadata} from '../src/social/meta';
 import {pngBinding,stampPNG} from '../src/social/png';
 import {fitCopy,measureCopy,renderSocial,siteIcon} from '../scripts/social/render';
@@ -54,3 +54,5 @@ test('a detailed scene description uses the free third line above file controls'
  const lines=result.report.textBoxes.filter(box=>box.x===58&&box.y>400&&box.y<490);
  assert.equal(lines.length,3);assert.equal(lines.map(box=>box.text).join(' '),description);assert.ok(lines.every(box=>box.y+box.height<494));
 });
+
+test('collection social copy keeps abbreviated subject names in its complete first sentence',()=>{assert.equal(firstSocialSentence('Free St. Louis Cardinals coloring pages show baseball players. More scenes follow.'),'Free St. Louis Cardinals coloring pages show baseball players.');assert.equal(firstSocialSentence('Michael Porter Jr. appears with teammates. More artwork follows.'),'Michael Porter Jr. appears with teammates.');assert.equal(firstSocialSentence('A player holds a bat. A second scene follows.'),'A player holds a bat.');});

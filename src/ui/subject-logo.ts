@@ -1,3 +1,4 @@
+import {mlbTeamLogo} from './mlb-team-logo';
 import subjects from '../content/subject-logos.json';
 import reviews from '../content/subject-logo-reviews.json';
 import {nbaTeamLogo} from './team-logo';
@@ -12,6 +13,8 @@ export interface SubjectLogo {
 
 /** Resolve only an explicitly reviewed subject, never a guessed name or parent. */
 export function subjectLogo(topicId:string):SubjectLogo|undefined {
+ const mlb=mlbTeamLogo(topicId);
+ if(mlb)return {src:mlb.src,kind:'team',surface:mlb.surface as SubjectLogo['surface'],shape:'square'};
  const team=nbaTeamLogo(topicId);
  if(team)return {src:team.src,kind:'team',surface:'none',shape:'square'};
  const wnba=wnbaTeamLogo(topicId);
