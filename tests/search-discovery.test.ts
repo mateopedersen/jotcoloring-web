@@ -12,6 +12,24 @@ class LocalSearch implements Database{
  prepare(query:string):Statement{let values:unknown[]=[];const self=this;return{bind(...args){values=args;return this},async all(){return{results:self.sql.prepare(query).all(...values as any),success:true} as any},async first(column?:string){const r=self.sql.prepare(query).get(...values as any);return(column?r?.[column]:r)||null as any},async run(){self.sql.prepare(query).run(...values as any);return{results:[],success:true} as any}};}
  async batch():Promise<any>{throw Error('Not used in these read/search checks');}async exec(sql:string){this.sql.exec(sql);}
 }
+test('plural numeral ranges find their literal scene without selecting the first endpoint collection',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,number:string)=>search.project({id,title,tags:'number '+number,categories:'education numbers',category_ids:['education','numbers'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-14'});
+ await add('path-666-wide','Garden path displaying numbers from 663 to 669','666');
+ await add('path-666-narrow','Garden path displaying numbers from 664 to 668','666');
+ await add('signs-888','Garden signs showing the sequence 887, 888 and 889','888');
+ await add('literal-663','Number 663 with Flowers','663');
+ for(const [id,title] of [['path-666-wide','Garden path displaying numbers from 663 to 669'],['path-666-narrow','Garden path displaying numbers from 664 to 668']]){
+  assert.deepEqual((await search.search(title)).ids,[id]);
+  assert.deepEqual((await search.search(title,48,{number:'666',category:'numbers'})).ids,[id]);
+  assert.equal((await search.search(title,48,{number:'888'})).total,0);
+ }
+ assert.deepEqual((await search.search('numbers 663 to 669')).ids,['path-666-wide']);
+ assert.deepEqual((await search.search('numbers 664 and 668')).ids,['path-666-narrow']);
+ assert.deepEqual((await search.search('number 663')).ids,['literal-663']);
+ assert.deepEqual((await search.search('numbers 663')).ids,['literal-663']);
+ assert.equal((await search.search('Garden path displaying numbers from 663 to 670')).total,0);
+});
 test('known short words still complete a newly published name; inflections, exact names and topic aliases stay relevant',async()=>{
  const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');
  const add=async(id:string,title:string,categories:string,description='')=>search.project({id,title,description,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-01',age_groups:['kids']});
