@@ -1,10 +1,11 @@
 import {permitsAdvertising} from './model';
 import {ADVERTISING_PROVIDER_ORIGIN} from './units';
+import {ADVERTISING_DELIVERY_ENABLED} from './config';
 
 // Advertising permissions are limited to the clean adult-specific route. The
 // client still requires both fresh on-page age confirmation and separate consent.
-export function jotContentSecurityPolicy(url:URL){
- const eligible=permitsAdvertising(url.pathname,url.search,url.hash);
+export function jotContentSecurityPolicy(url:URL,deliveryEnabled:boolean=ADVERTISING_DELIVERY_ENABLED){
+ const eligible=permitsAdvertising(url.pathname,url.search,url.hash,deliveryEnabled);
  const ad=eligible?` ${ADVERTISING_PROVIDER_ORIGIN}`:'';
  const adImages=eligible?' https://static.nresystems.com https://cdn.storageimagedisplay.com':'';
  // The unmodified provider tag creates an about:blank frame with a rotating
