@@ -969,6 +969,28 @@
     "src": "https://assets.jotcoloring.com/published/navigation/v1/3ad57c1bc5baf98371dfb9eac24e6fbac2d7cb9726634c9c987b7a70d58f44cd.png",
     "title": "Barbie Coloring Pages"
   },
+  "/coloring-pages/baseball/": {
+    "src": "https://assets.jotcoloring.com/published/navigation/v1/13de2445c7e27c13502ae1c5b3eded2c73e169cf48e20d7772ef6ce3effa4fae.png",
+    "alt": "JotColoring baseball coloring collections share image: Baseball Coloring Pages Featuring Ezequiel Tovar Throwing in a Rockies Uniform, Toronto Blue Jays Pennant with Baseball Equipment, Washington Nationals Cap on a Stadium Seat.",
+    "title": "Baseball Coloring Pages",
+    "description": "Browse baseball team coloring pages featuring player portraits, batting and fielding poses, team emblems and baseball equipment.",
+    "sha256": "13de2445c7e27c13502ae1c5b3eded2c73e169cf48e20d7772ef6ce3effa4fae",
+    "identity_sha256": "fafb02c0cc8a1f49c638c5c48e6ceecabdbeb568935c794d1794e980030a799b",
+    "sources": [
+      {
+        "id": "jc-colorado-rockies-002",
+        "sha256": "20c0461329c07267a702f05953f67fdfbc2ad14c737171fdb6ea7905ce2dd72f"
+      },
+      {
+        "id": "jc-toronto-blue-jays-001",
+        "sha256": "805d4ba173ada2c77316f97d6bb134c7848b5230d3d277f282ffbcc069c8a022"
+      },
+      {
+        "id": "jc-washington-nationals-001",
+        "sha256": "8fa3bb144bad4026bed2c923e4ddff07c2185860877c5737f7e322fda83f6109"
+      }
+    ]
+  },
   "/coloring-pages/beaches/": {
     "alt": "JotColoring printable coloring pages share image: Beaches Coloring Pages Featuring Barbie Holds a Seashell at the Beach, Barbie Builds a Beach Sandcastle, Barbie and a Friend Share a Seaside Picnic.",
     "description": "Barbie collects a seashell, builds a sandcastle, and shares a seaside picnic with a friend. Shoreline scenery, beach objects, and clothing details fill these coastal scenes.",
