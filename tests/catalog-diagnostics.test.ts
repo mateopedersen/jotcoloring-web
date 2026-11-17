@@ -1,6 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {summarizeDiagnosticEvent} from '../scripts/ops/catalog-diagnostics.mjs';
+import {summarizeDiagnosticEvent,diagnosticPage} from '../scripts/ops/catalog-diagnostics.mjs';
+test('diagnostic targets stay on the finite public read-only route allowlist',()=>{
+ assert.equal(diagnosticPage('ages-9-12'),'https://jotcoloring.com/coloring-by-age/9-12/');
+ for(const target of ['https://example.com/','/api/admin/','__proto__','constructor'])assert.throws(()=>diagnosticPage(target));
+});
+test('an age gallery diagnostic still drops other routes and other visitor traces',()=>{
+ const page=diagnosticPage('ages-9-12');
+ const event={event:{request:{url:page,headers:{'x-jot-diagnostic':'ours'}}},logs:[],exceptions:[]};
+ assert.ok(summarizeDiagnosticEvent(event,'ours',page));
+ assert.equal(summarizeDiagnosticEvent(event,'other',page),null);
+ assert.equal(summarizeDiagnosticEvent(event,'ours'),null);
+ assert.equal(summarizeDiagnosticEvent(event,'ours','https://example.com/'),null);
+});
 test('diagnostic telemetry excludes other visitors and routes',()=>{
  for(const request of [{url:'https://jotcoloring.com/collections/vehicles/',headers:{}},{url:'https://jotcoloring.com/coloring-pages/cars/',headers:{'x-jot-diagnostic':'ours'}}])assert.equal(summarizeDiagnosticEvent({event:{request},logs:[{message:['private visitor data']}]},'ours'),null);
 });
