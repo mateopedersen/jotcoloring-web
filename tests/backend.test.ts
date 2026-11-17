@@ -427,3 +427,14 @@ test('directory artwork preserves exact current cover fields with two bounded re
  await db.prepare("UPDATE asset SET verified=0 WHERE content_id='cover-fox' AND content_version=2 AND role='catalog_thumb_bw'").run();assert.deepEqual(await repo.directoryCovers(['woodland']),[null]);
  await db.prepare("UPDATE asset SET verified=1 WHERE content_id='cover-fox'").run();await db.prepare("UPDATE content SET status='archived' WHERE id='cover-fox'").run();assert.deepEqual(await repo.directoryArtwork(['cover-fox']),[null]);
 });
+
+test('directory count subsets preserve exact counts and names without reading unrelated categories',async()=>{
+ const {db,search,env}=setup();await add(db,search,'count-fox','Fox');
+ await db.prepare("INSERT INTO content_category(content_id,category_id) VALUES('count-fox','woodland')").run();
+ const repo=new D1CatalogRepository(env,db),all=await repo.categories();
+ assert.deepEqual(await repo.categories(['woodland','pets','woodland']),all.filter(c=>['woodland','pets'].includes(c.id)));
+ assert.deepEqual(await repo.categories([]),[]);
+ assert.deepEqual(await repo.categories(["woodland'); DROP TABLE category; --"]),[]);
+ assert.equal((await repo.categories()).length,all.length);
+ await assert.rejects(()=>repo.categories(Array(1001).fill('woodland')),AppError);
+});

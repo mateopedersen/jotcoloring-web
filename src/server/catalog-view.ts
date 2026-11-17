@@ -5,6 +5,7 @@ import type {CatalogPage,CatalogQuery,CollectionArtwork,Env} from './types';
 import type {CatalogLocation} from '../taxonomy/catalog-location';
 import {catalogParameters} from '../taxonomy/catalog-query';
 import {COLORING_TAXONOMY} from '../taxonomy/catalog';
+import {directoryCountIds} from '../taxonomy/series-directory';
 
 /** Resolve required reads in the page frontmatter, before Astro commits streamed headers. */
 export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,repo:CatalogRepository=createCatalog(env)){
@@ -28,7 +29,7 @@ export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,r
  };
  try{query=parseCatalogQuery(catalogParameters(location,url.searchParams));}
  catch(e){status=e instanceof AppError&&e.status<500?e.status:503;error=e instanceof AppError&&e.status<500?e.message:'These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
- try{categoryCounts=await repo.categories();}
+ try{categoryCounts=await repo.categories(!filtered&&!location.allPages&&needsDirectoryCounts?directoryCountIds(location):undefined);}
  catch(e){
   console.error('Catalog category counts unavailable',e instanceof Error?e.message:'unknown');
   if(!filtered&&!location.allPages&&needsDirectoryCounts){status=503;error='These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
