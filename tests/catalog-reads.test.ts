@@ -56,8 +56,8 @@ test('transient overload gets one shared retry and a later request reads fresh d
 
 test('persistent overload is bounded and rejected operations do not poison later requests',async()=>{
  let failing=true;const f=fixture(async()=>{if(failing)throw Error('D1_ERROR: D1 DB is overloaded');return{count:7};}),db=publicCatalogDatabase(f.db);
- await assert.rejects(()=>db.prepare('SELECT count FROM content').first(),/overloaded/);assert.equal(f.calls,2);
- failing=false;assert.deepEqual(await db.prepare('SELECT count FROM content').first(),{count:7});assert.equal(f.calls,3);
+ await assert.rejects(()=>db.prepare('SELECT count FROM content').first(),/overloaded/);assert.equal(f.calls,3);
+ failing=false;assert.deepEqual(await db.prepare('SELECT count FROM content').first(),{count:7});assert.equal(f.calls,4);
 });
 
 test('validation, permanent failures, writes, CTE mutations and batches are never retried or coalesced',async()=>{
@@ -87,7 +87,15 @@ test('transient classification handles cycles and rejects unknown or permanent f
 
 test('a persistent wrapped connection reset is bounded without retrying CTE or write operations',async()=>{
  const f=fixture(async()=>{throw new Error('D1_ERROR: Database read failed',{cause:new Error('Network connection lost.')});}),db=publicCatalogDatabase(f.db);
- await assert.rejects(()=>db.prepare('SELECT count FROM content').all(),/Database read failed/);assert.equal(f.calls,2);
- await assert.rejects(()=>db.prepare('WITH ids AS (SELECT id FROM content) DELETE FROM content RETURNING id').first(),/Database read failed/);assert.equal(f.calls,3);
+ await assert.rejects(()=>db.prepare('SELECT count FROM content').all(),/Database read failed/);assert.equal(f.calls,3);
+ await assert.rejects(()=>db.prepare('WITH ids AS (SELECT id FROM content) DELETE FROM content RETURNING id').first(),/Database read failed/);assert.equal(f.calls,4);
  await db.prepare('UPDATE content SET title=?').bind('One').run();assert.equal(f.writes,1);
+});
+
+test('a replica reset lasting two reads recovers for every same-request consumer without retaining stale results',async()=>{
+ let attempts=0;
+ const f=fixture(async()=>{if(++attempts<=2)throw new Error('D1_ERROR: Database read failed',{cause:new Error('The replica was disconnected.')});return{count:attempts};}),db=publicCatalogDatabase(f.db);
+ const values=await Promise.all(Array.from({length:16},()=>db.prepare('SELECT count FROM content').first()));
+ assert.equal(f.calls,3);assert.ok(values.every(value=>(value as {count:number}).count===3));
+ assert.deepEqual(await db.prepare('SELECT count FROM content').first(),{count:4});
 });

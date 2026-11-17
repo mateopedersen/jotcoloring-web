@@ -89,5 +89,6 @@ test('optional count failure does not block a leaf gallery',async()=>{
  try{
   let lists=0;const result=await load('/coloring-pages/veterans-day/',repository({categories:async()=>{throw Error('D1 DB is overloaded');},list:async()=>{lists++;return page;}}));
   assert.equal(result.status,200);assert.equal(result.error,'');assert.equal(lists,1);
+  assert.equal(result.headers['Cache-Control'],'no-store','A temporary filter outage must not become a cached empty topic selector');
  }finally{console.error=original;}
 });

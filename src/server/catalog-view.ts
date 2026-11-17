@@ -20,10 +20,10 @@ export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,r
  let series:Awaited<ReturnType<typeof loadSeriesDirectory>>=[];
  let cover:CollectionArtwork|null=null;
  let relatedCollections:Awaited<ReturnType<CatalogRepository['relatedCollections']>>|undefined;
- let directoryMode=false,error='',status=200;
+ let directoryMode=false,error='',status=200,partialControls=false;
  const finish=()=>{
   const headers:Record<string,string>={};
-  if(status>=400)headers['Cache-Control']='no-store';
+  if(status>=400||partialControls)headers['Cache-Control']='no-store';
   if(status===503)headers['Retry-After']='2';
   return {collection,topic,number,category,subcategory,filtered,query,result,categoryCounts,series,cover,relatedCollections,directoryMode,error,status,headers};
  };
@@ -31,6 +31,9 @@ export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,r
  catch(e){status=e instanceof AppError&&e.status<500?e.status:503;error=e instanceof AppError&&e.status<500?e.message:'These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
  try{categoryCounts=await repo.categories(!filtered&&!location.allPages&&needsDirectoryCounts?directoryCountIds(location):undefined);}
  catch(e){
+  // A usable leaf gallery may survive an optional count outage, but its
+  // incomplete filter choices must never enter the successful HTML cache.
+  partialControls=true;
   console.error('Catalog category counts unavailable',e instanceof Error?e.message:'unknown');
   if(!filtered&&!location.allPages&&needsDirectoryCounts){status=503;error='These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
  }

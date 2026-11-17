@@ -30,12 +30,16 @@ export function publicCatalogDatabase(db:Database):Database{
  const read=<T>(key:string,execute:()=>Promise<T>):Promise<T>=>{
   const current=pending.get(key);if(current)return current.then(value=>structuredClone(value) as T);
   const result=(async()=>{
-   try{return await execute();}
-   catch(error){
-    if(!isTransientCatalogReadError(error))throw error;
-    // One bounded retry for an idempotent read, with jitter across isolates.
-    await new Promise(resolve=>setTimeout(resolve,150+Math.floor(Math.random()*150)));
-    return execute();
+   for(let attempt=0;;attempt++){
+    try{return await execute();}
+    catch(error){
+     if(attempt===2||!isTransientCatalogReadError(error))throw error;
+     // Brief replica resets can outlast one 150ms retry after publication.
+     // Only recognized transient SELECT failures get two bounded backoffs;
+     // healthy reads, validation errors and all writes retain their behavior.
+     const delay=(attempt===0?250:750)+Math.floor(Math.random()*250);
+     await new Promise(resolve=>setTimeout(resolve,delay));
+    }
    }
   })();
   if(pending.size<MAX_PENDING_READS){pending.set(key,result);void result.finally(()=>{if(pending.get(key)===result)pending.delete(key);}).catch(()=>{});}
