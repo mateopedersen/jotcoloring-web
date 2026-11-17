@@ -1,7 +1,7 @@
 ---
 import type {SeriesEntry} from '../taxonomy/series-directory';
 import {seriesCaption} from '../taxonomy/series-directory';
-import type {Content} from '../server/types';
+import type {CollectionArtwork} from '../server/types';
 import CategoryIcon from './CategoryIcon.astro';
 import ArrowIcon from './ArrowIcon.astro';
 import ArtworkImage from './ArtworkImage.astro';
@@ -10,7 +10,7 @@ import {subjectLogo} from '../ui/subject-logo';
 import {subjectSymbol} from '../ui/subject-symbol';
 import {COLLECTION_COVER_SIZES,FIRST_ROW_IMAGES} from '../ui/artwork-loading';
 import '../styles/series-directory.css';
-const {entries,title='Choose Your Next Collection'}=Astro.props as {entries:(SeriesEntry&{cover?:Content})[];title?:string};
+const {entries,title='Choose Your Next Collection'}=Astro.props as {entries:(SeriesEntry&{cover?:CollectionArtwork})[];title?:string};
 ---
 <section id="collection-series" class="jc-series-directory" aria-labelledby="series-heading"><header><div><h2 id="series-heading">{title}</h2><p>Choose a collection to see its coloring pages.</p></div><span>{entries.length.toLocaleString('en-US')} Collections</span></header><div class="jc-series-grid">{entries.map((entry,index)=>{
  const image=collectionCover(entry.cover);
