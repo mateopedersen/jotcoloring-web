@@ -14,3 +14,6 @@
 .jc-series-brand-logo[data-surface="dark"],.jc-series-team-logo[data-surface="dark"]{background:#17262e}
 .jc-series-brand-logo[data-shape="wide"]{height:64px}
 @media(max-width:600px){.jc-series-brand-logo[data-surface="light"],.jc-series-brand-logo[data-surface="dark"],.jc-series-team-logo[data-surface="light"],.jc-series-team-logo[data-surface="dark"]{padding:5px;border-radius:8px}.jc-series-brand-logo[data-shape="wide"]{height:38px}}
+
+/* The footer keeps its navigation arrow; narrow headings use the full card width. */
+@container(max-width:240px){.site-v3 .jc-series-copy h3{display:block}.jc-series-copy h3>svg{display:none}}
