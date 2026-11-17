@@ -1,6 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {summarizeDiagnosticEvent,diagnosticPage} from '../scripts/ops/catalog-diagnostics.mjs';
+import {summarizeDiagnosticEvent,diagnosticPage,diagnosticHTMLSummary} from '../scripts/ops/catalog-diagnostics.mjs';
+test('diagnostic readiness distinguishes a real age gallery from a directory or failure page',()=>{
+ const age=diagnosticPage('ages-9-12'),vehicles=diagnosticPage('vehicles');
+ assert.equal(diagnosticHTMLSummary('<article data-content-id="real">',age).ready,true);
+ assert.equal(diagnosticHTMLSummary('<article data-content-id="real">',vehicles).ready,false);
+ assert.equal(diagnosticHTMLSummary('<a data-series-id="real">',vehicles).ready,true);
+ assert.equal(diagnosticHTMLSummary('These pages could not be loaded.',age).ready,false);
+ assert.equal(diagnosticHTMLSummary('',age).ready,false);
+});
 test('diagnostic targets stay on the finite public read-only route allowlist',()=>{
  assert.equal(diagnosticPage('ages-9-12'),'https://jotcoloring.com/coloring-by-age/9-12/');
  for(const target of ['https://example.com/','/api/admin/','__proto__','constructor'])assert.throws(()=>diagnosticPage(target));
