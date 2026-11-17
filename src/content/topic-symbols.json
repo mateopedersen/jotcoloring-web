@@ -1,0 +1,248 @@
+{
+  "basketball": {
+    "src": "/topic-symbols/basketball.13c9c1a802c8.svg",
+    "label": "Textured leather basketball",
+    "sha256": "13c9c1a802c8bc8e2146f4b05e9f49d1ae50e810a0b7ff698c152b6ddd159b77",
+    "kind": "original-topic-symbol"
+  },
+  "soccer": {
+    "src": "/topic-symbols/soccer.1ff1d0edbee9.svg",
+    "label": "Paneled soccer ball",
+    "sha256": "1ff1d0edbee982b97142cc565a011708dc8896c00daa85fa5abb198a8a3b4dfd",
+    "kind": "original-topic-symbol"
+  },
+  "baseball": {
+    "src": "/topic-symbols/baseball.370d70629636.svg",
+    "label": "Stitched baseball with wooden bat",
+    "sha256": "370d70629636cb439f85100e9ccc2077efcb5ac7ab02c456db4141c44501dc75",
+    "kind": "original-topic-symbol"
+  },
+  "winter-sports": {
+    "src": "/topic-symbols/winter-sports.18f6e8a6719f.svg",
+    "label": "White leather figure skate and polished steel blade",
+    "sha256": "18f6e8a6719fa62194c6324e2f5f973952832b0f81aec0bbfa95a790a1f73dc1",
+    "kind": "original-topic-symbol"
+  },
+  "karate": {
+    "src": "/topic-symbols/karate.e26d4044199b.svg",
+    "label": "Woven white karate gi and tied black belt",
+    "sha256": "e26d4044199b1595f17805a2e16ba1f76bee4c574f3ce1db4901de7899b5586f",
+    "kind": "original-topic-symbol"
+  },
+  "gymnastics": {
+    "src": "/topic-symbols/gymnastics.d0ca6951bc32.svg",
+    "label": "Wooden gymnastics rings and suspension straps",
+    "sha256": "d0ca6951bc326f63ff5f81587746087b95dd670d29e6a554e12229f15b354dcd",
+    "kind": "original-topic-symbol"
+  },
+  "cars": {
+    "src": "/topic-symbols/cars.5795b17e00c5.svg",
+    "label": "Unbranded car in three-quarter view",
+    "sha256": "5795b17e00c5cf694a1ae0d9bfc7963fad7f76ed2489464515c59409d94b8e17",
+    "kind": "original-topic-symbol"
+  },
+  "police-car": {
+    "src": "/topic-symbols/police-car.0be519458f88.svg",
+    "label": "Police car with red and blue emergency lights",
+    "sha256": "0be519458f8860efbca4a45bc4d10db88e5b8a74a4c1fd1a5d4b3488a0fe69fe",
+    "kind": "original-topic-symbol"
+  },
+  "ambulance": {
+    "src": "/topic-symbols/ambulance.497cd908e74a.svg",
+    "label": "Ambulance",
+    "sha256": "497cd908e74a04aff133e2a6bad5cd2ab28a104a5c7b16f563f2f19e28793c4d",
+    "kind": "original-topic-symbol"
+  },
+  "trucks": {
+    "src": "/topic-symbols/trucks.4ddbf5715fae.svg",
+    "label": "Truck",
+    "sha256": "4ddbf5715faee183ee5ea8ff9eb4d1ec7ab201870dc38a9dac8856d3cebfd339",
+    "kind": "original-topic-symbol"
+  },
+  "school-bus": {
+    "src": "/topic-symbols/school-bus.17e5ccf3b91b.svg",
+    "label": "School bus",
+    "sha256": "17e5ccf3b91b2a7756afe6c2b661187f915adbca11b505cbde26d9db29f32b4d",
+    "kind": "original-topic-symbol"
+  },
+  "trains": {
+    "src": "/topic-symbols/trains.bbd28a4e0f43.svg",
+    "label": "Train",
+    "sha256": "bbd28a4e0f43bbc0b47b1caa91e921a25fef85781b8b19e5a9f517381780578c",
+    "kind": "original-topic-symbol"
+  },
+  "aircraft": {
+    "src": "/topic-symbols/aircraft.cea4da5faa84.svg",
+    "label": "Aircraft",
+    "sha256": "cea4da5faa84c55719c1d5a5ead198b6c72c0432f6cf23d5542ef9d94db9472c",
+    "kind": "original-topic-symbol"
+  },
+  "jet": {
+    "src": "/topic-symbols/jet.cea4da5faa84.svg",
+    "label": "Aircraft",
+    "sha256": "cea4da5faa84c55719c1d5a5ead198b6c72c0432f6cf23d5542ef9d94db9472c",
+    "kind": "original-topic-symbol"
+  },
+  "boats": {
+    "src": "/topic-symbols/boats.9293f18fb0c5.svg",
+    "label": "Sailboat",
+    "sha256": "9293f18fb0c508f9bdff69c7b67323b80650c4f19dd7fd63640532c844999e88",
+    "kind": "original-topic-symbol"
+  },
+  "bicycles": {
+    "src": "/topic-symbols/bicycles.c6c4a6e5a539.svg",
+    "label": "Bicycle",
+    "sha256": "c6c4a6e5a539279c22956d6b4cdd9c053c3a1e7cc38189ff8a880cc3667acdcd",
+    "kind": "original-topic-symbol"
+  },
+  "excavator": {
+    "src": "/topic-symbols/excavator.09083ddc72de.svg",
+    "label": "Excavator",
+    "sha256": "09083ddc72de199e8b45ba1f9e9fd42aa2358f89277f2ad748e95281c6e017e8",
+    "kind": "original-topic-symbol"
+  },
+  "construction-vehicles": {
+    "src": "/topic-symbols/construction-vehicles.09083ddc72de.svg",
+    "label": "Excavator",
+    "sha256": "09083ddc72de199e8b45ba1f9e9fd42aa2358f89277f2ad748e95281c6e017e8",
+    "kind": "original-topic-symbol"
+  },
+  "hot-air-balloon": {
+    "src": "/topic-symbols/hot-air-balloon.054f0304576d.svg",
+    "label": "Hot air balloon",
+    "sha256": "054f0304576dab736d5285570ef45864801c5f3d1532602d12a069e14d6558a0",
+    "kind": "original-topic-symbol"
+  },
+  "science": {
+    "src": "/topic-symbols/science.09c822e0e31d.svg",
+    "label": "Science flask",
+    "sha256": "09c822e0e31d2766719590b38292ada6c0b0d61343b48b4900f016883ea65e82",
+    "kind": "original-topic-symbol"
+  },
+  "drinks": {
+    "src": "/topic-symbols/drinks.38f9a28224a0.svg",
+    "label": "Milkshake",
+    "sha256": "38f9a28224a0f79b3be884330ab328a7545db6578fd63bf1da1c6f6e5683cadc",
+    "kind": "original-topic-symbol"
+  },
+  "milkshake": {
+    "src": "/topic-symbols/milkshake.38f9a28224a0.svg",
+    "label": "Milkshake",
+    "sha256": "38f9a28224a0f79b3be884330ab328a7545db6578fd63bf1da1c6f6e5683cadc",
+    "kind": "original-topic-symbol"
+  },
+  "musical-notes": {
+    "src": "/topic-symbols/musical-notes.06cd5c0c1ee1.svg",
+    "label": "Musical notes",
+    "sha256": "06cd5c0c1ee1c4e1360858f4879bf15295165639afe036fe564e4c1f52989196",
+    "kind": "original-topic-symbol"
+  },
+  "rain": {
+    "src": "/topic-symbols/rain.fe5691a701d2.svg",
+    "label": "Rain cloud",
+    "sha256": "fe5691a701d2adee32ccceeeb53e884a79fe8310307602a902d2bb8b3bf8c2ef",
+    "kind": "original-topic-symbol"
+  },
+  "rainbow": {
+    "src": "/topic-symbols/rainbow.54d6c621414c.svg",
+    "label": "Rainbow",
+    "sha256": "54d6c621414c20d7396e8361537dbab42a7c0a805bf216f933a2bf7585dc6889",
+    "kind": "original-topic-symbol"
+  },
+  "winter": {
+    "src": "/topic-symbols/winter.2ab58cc434c0.svg",
+    "label": "Snowflake",
+    "sha256": "2ab58cc434c038e49aaaf7fe8b9ef7657707ff86d1895dd71ffbb37179b3f79e",
+    "kind": "original-topic-symbol"
+  },
+  "january": {
+    "src": "/topic-symbols/january.2ab58cc434c0.svg",
+    "label": "Snowflake",
+    "sha256": "2ab58cc434c038e49aaaf7fe8b9ef7657707ff86d1895dd71ffbb37179b3f79e",
+    "kind": "original-topic-symbol"
+  },
+  "december": {
+    "src": "/topic-symbols/december.2ab58cc434c0.svg",
+    "label": "Snowflake",
+    "sha256": "2ab58cc434c038e49aaaf7fe8b9ef7657707ff86d1895dd71ffbb37179b3f79e",
+    "kind": "original-topic-symbol"
+  },
+  "summer": {
+    "src": "/topic-symbols/summer.6c9f7d85e693.svg",
+    "label": "Sun",
+    "sha256": "6c9f7d85e693bf743288efef2e40e30a39ddb4f025d34c3d0097aab631450a12",
+    "kind": "original-topic-symbol"
+  },
+  "autumn": {
+    "src": "/topic-symbols/autumn.21266122469a.svg",
+    "label": "Fall leaf",
+    "sha256": "21266122469a8fa8476fd8f0068ae46954b6a7e8eb7c3074857e4141be4c11e3",
+    "kind": "original-topic-symbol"
+  },
+  "fall-leaf": {
+    "src": "/topic-symbols/fall-leaf.21266122469a.svg",
+    "label": "Fall leaf",
+    "sha256": "21266122469a8fa8476fd8f0068ae46954b6a7e8eb7c3074857e4141be4c11e3",
+    "kind": "original-topic-symbol"
+  },
+  "christmas": {
+    "src": "/topic-symbols/christmas.8b9aa02f171e.svg",
+    "label": "Christmas tree",
+    "sha256": "8b9aa02f171ecd995673c905e55090fa0352d40882e1184a35089bf41c2ca712",
+    "kind": "original-topic-symbol"
+  },
+  "christmas-tree": {
+    "src": "/topic-symbols/christmas-tree.8b9aa02f171e.svg",
+    "label": "Christmas tree",
+    "sha256": "8b9aa02f171ecd995673c905e55090fa0352d40882e1184a35089bf41c2ca712",
+    "kind": "original-topic-symbol"
+  },
+  "christmas-eve": {
+    "src": "/topic-symbols/christmas-eve.8b9aa02f171e.svg",
+    "label": "Christmas tree",
+    "sha256": "8b9aa02f171ecd995673c905e55090fa0352d40882e1184a35089bf41c2ca712",
+    "kind": "original-topic-symbol"
+  },
+  "halloween": {
+    "src": "/topic-symbols/halloween.22e6adec10b9.svg",
+    "label": "Halloween pumpkin",
+    "sha256": "22e6adec10b99d9b5adcb55f3be28a27058b12abd95f0ccba24a0b9155b9d004",
+    "kind": "original-topic-symbol"
+  },
+  "trick-or-treat": {
+    "src": "/topic-symbols/trick-or-treat.22e6adec10b9.svg",
+    "label": "Halloween pumpkin",
+    "sha256": "22e6adec10b99d9b5adcb55f3be28a27058b12abd95f0ccba24a0b9155b9d004",
+    "kind": "original-topic-symbol"
+  },
+  "hanukkah": {
+    "src": "/topic-symbols/hanukkah.c33ea3a08da3.svg",
+    "label": "Hanukkiah",
+    "sha256": "c33ea3a08da32ce983ae9d9c344a203f7b5f9b50d7195c61ff1ff303f84f79bf",
+    "kind": "original-topic-symbol"
+  },
+  "eid": {
+    "src": "/topic-symbols/eid.fc00d12c0d57.svg",
+    "label": "Crescent and star",
+    "sha256": "fc00d12c0d576419cdbed85307b257b45e29869d9b09b395ce77f1cb5c3e5e0e",
+    "kind": "original-topic-symbol"
+  },
+  "ramadan": {
+    "src": "/topic-symbols/ramadan.fc00d12c0d57.svg",
+    "label": "Crescent and star",
+    "sha256": "fc00d12c0d576419cdbed85307b257b45e29869d9b09b395ce77f1cb5c3e5e0e",
+    "kind": "original-topic-symbol"
+  },
+  "st-patricks-day": {
+    "src": "/topic-symbols/st-patricks-day.1d5ea5d425d8.svg",
+    "label": "Shamrock",
+    "sha256": "1d5ea5d425d8d4a03d442ecadb2ecc5654fb80e9a5d0e01caafc9101112b4f62",
+    "kind": "original-topic-symbol"
+  },
+  "gingerbread-man": {
+    "src": "/topic-symbols/gingerbread-man.07832f4ea0a7.svg",
+    "label": "Gingerbread cookie",
+    "sha256": "07832f4ea0a7fde99f935a1f04c4e7db0fde1ebe65f11fc97444c9801ef319b9",
+    "kind": "original-topic-symbol"
+  }
+}
