@@ -36,7 +36,9 @@ export function jotContentSecurityPolicy(url:URL,deliveryEnabled:boolean=ADVERTI
  const provider=advertising?' https://bellnewyork.org':'';
  // The official JSAsync tag inserts its creative as an inline script element.
  // Permit those elements only on verified public ad HTML. Inline event handlers,
- // eval, API/private/query/error responses and all other directives stay restricted.
+ // API/private/query/error responses and all other directives stay restricted.
+ // Support also confirmed the official tag requires eval in this public context.
+ const providerEvaluation=advertising?" 'unsafe-eval'":'';
  const creativeScripts=advertising?`; script-src-elem 'self' 'unsafe-inline'${provider}`:'';
- return `default-src 'self'; img-src 'self' data: blob: https://media.jotcoloring.com https://assets.jotcoloring.com${provider}${advertising?' https://static.nresystems.com https://cdn.storageimagedisplay.com':''}; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'${provider}${creativeScripts}; script-src-attr 'none'; worker-src 'self' blob:; connect-src 'self' https://media.jotcoloring.com https://assets.jotcoloring.com ws://127.0.0.1:*${provider}; frame-src https://docs.google.com${provider}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`;
+ return `default-src 'self'; img-src 'self' data: blob: https://media.jotcoloring.com https://assets.jotcoloring.com${provider}${advertising?' https://static.nresystems.com https://cdn.storageimagedisplay.com':''}; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'${provider}${providerEvaluation}${creativeScripts}; script-src-attr 'none'; worker-src 'self' blob:; connect-src 'self' https://media.jotcoloring.com https://assets.jotcoloring.com ws://127.0.0.1:*${provider}; frame-src https://docs.google.com${provider}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`;
 }
