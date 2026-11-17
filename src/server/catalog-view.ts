@@ -4,6 +4,7 @@ import {loadSeriesDirectory} from './series-directory';
 import type {CatalogPage,CatalogQuery,CollectionArtwork,Env} from './types';
 import type {CatalogLocation} from '../taxonomy/catalog-location';
 import {catalogParameters} from '../taxonomy/catalog-query';
+import {COLORING_TAXONOMY} from '../taxonomy/catalog';
 
 /** Resolve required reads in the page frontmatter, before Astro commits streamed headers. */
 export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,repo:CatalogRepository=createCatalog(env)){
@@ -11,6 +12,7 @@ export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,r
  const category=collection?.roots[0]||topic?.parent||topic?.id||(number?'education':'');
  const subcategory=topic?.parent?topic.id:number?'numbers':'';
  const filtered=[...url.searchParams.keys()].some(key=>key!=='page');
+ const needsDirectoryCounts=!!collection||(!topic&&!number)||topic?.id==='numbers'||!!topic&&COLORING_TAXONOMY.some(entry=>entry.parent===topic.id);
  let query:CatalogQuery={age:[],difficulty:[],sort:'trending'};
  let result:CatalogPage={items:[],total:0,page:1,page_size:12,total_pages:0,next_cursor:null,has_more:false};
  let categoryCounts:Awaited<ReturnType<CatalogRepository['categories']>>=[];
@@ -29,7 +31,7 @@ export async function loadCatalogView(env:Env,location:CatalogLocation,url:URL,r
  try{categoryCounts=await repo.categories();}
  catch(e){
   console.error('Catalog category counts unavailable',e instanceof Error?e.message:'unknown');
-  if(!filtered&&!location.allPages){status=503;error='These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
+  if(!filtered&&!location.allPages&&needsDirectoryCounts){status=503;error='These coloring pages are temporarily busy. Please try again in a moment.';return finish();}
  }
  if(!filtered&&!location.allPages)try{series=await loadSeriesDirectory(env,repo,location,categoryCounts);}
  catch(e){

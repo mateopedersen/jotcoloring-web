@@ -83,3 +83,11 @@ test('failed browse counts do not become a successful empty directory',async()=>
   assert.equal(result.status,503);assert.equal(result.headers['Cache-Control'],'no-store');assert.equal(lists,0);
  }finally{console.error=original;}
 });
+
+test('optional count failure does not block a leaf gallery',async()=>{
+ const original=console.error;console.error=()=>{};
+ try{
+  let lists=0;const result=await load('/coloring-pages/veterans-day/',repository({categories:async()=>{throw Error('D1 DB is overloaded');},list:async()=>{lists++;return page;}}));
+  assert.equal(result.status,200);assert.equal(result.error,'');assert.equal(lists,1);
+ }finally{console.error=original;}
+});
