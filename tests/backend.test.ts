@@ -40,6 +40,26 @@ test('search ranks the actual subject collection first and searches descriptions
 });
 test('related repository hydrates a bounded published candidate pool and uses indexed tag/category lookups',async()=>{const {db,search,env}=setup();for(let n=0;n<120;n++){const id='related-'+String(n).padStart(3,'0');await add(db,search,id,'Fox '+n,n===4?'draft':n===5?'archived':'published');await db.prepare('INSERT INTO content_tag(content_id,tag) VALUES(?,?)').bind(id,'fox').run();}const repo=new D1CatalogRepository(env,db),source=await repo.get('related-060');assert.ok(source);const result=await repo.related(source);assert.equal(result.collection?.total,118);assert.equal(result.collection?.href,'/collections/animals/');assert.ok(result.candidateCount<=88);assert.ok(result.matches.length>0);assert.ok(result.matches.every(m=>!['related-060','related-004','related-005'].includes(m.item.id)));assert.deepEqual((await repo.related(source)).matches.map(m=>m.item.id),result.matches.map(m=>m.item.id));const plan=db.sql.prepare('EXPLAIN QUERY PLAN SELECT content_id FROM content_tag WHERE tag=? AND content_id>? ORDER BY content_id LIMIT 8').all('fox',source.id);assert.match(JSON.stringify(plan),/tag_content/);const categoryPlan=db.sql.prepare('EXPLAIN QUERY PLAN SELECT content_id FROM content_category WHERE category_id=? AND content_id>? ORDER BY content_id LIMIT 20').all('animals',source.id);assert.match(JSON.stringify(categoryPlan),/category_content/);});
 async function add(db:LocalD1,search:LocalD1,id:string,title:string,status='published',score=100){await db.prepare('INSERT INTO content(id,slug,title,status,active_version,latest_version,published_at,sort_score,provenance_json,difficulty) VALUES(?,?,?,?,?,?,?,?,?,?)').bind(id,id,title,status,1,1,'2026-10-28T10:00:00Z',score,'{}','detailed').run();await db.prepare('INSERT INTO content_category(content_id,category_id) VALUES(?,?)').bind(id,'animals').run();await db.prepare('INSERT INTO content_age(content_id,age) VALUES(?,?)').bind(id,'adults').run();await new D1SearchProvider(search).project({id,source_version:1,visibility:status,locale:'en',title,tags:'fox flowers',categories:'animals',updated_at:'2026-10-28',age_groups:['adults'],category_ids:['animals'],difficulty:'detailed',published_at:'2026-10-28',sort_score:score});}
+test('drawing recommendation totals stay exact without reading large content rows and reflect withdrawals immediately',async()=>{
+ const {db,search,env}=setup();
+ for(const [id,status] of [['source','published'],['overlap','published'],['draft','draft'],['archived','archived'],['no-revision','published']] as const){
+  await add(db,search,id,'Fox '+id,status);
+  await db.prepare("INSERT INTO content_category(content_id,category_id) VALUES(?,?)").bind(id,'dinosaurs').run();
+  await db.prepare('UPDATE content SET provenance_json=? WHERE id=?').bind(JSON.stringify({notes:'source evidence '.repeat(2000)}),id).run();
+ }
+ await db.prepare("UPDATE content SET active_version=NULL WHERE id='no-revision'").run();
+ let countSQL='';const prepare=db.prepare.bind(db);
+ db.prepare=sql=>{if(sql.startsWith('SELECT ? AS id,? AS name,COUNT(*) AS count'))countSQL=sql;return prepare(sql);};
+ const repo=new D1CatalogRepository(env,db),source=(await repo.get('source'))!;
+ assert.equal((await repo.related(source)).collection?.total,2);
+ assert.ok(countSQL,'the real recommendation path must perform its exact collection count');
+ const plan=db.sql.prepare('EXPLAIN QUERY PLAN '+countSQL).all('animals','Animals',JSON.stringify(['animals','dinosaurs']));
+ assert.match(JSON.stringify(plan),/USING COVERING INDEX content_public_revision/);
+ const original=countSQL.replace('INDEXED BY content_public_revision','INDEXED BY sqlite_autoindex_content_1');
+ assert.deepEqual(db.sql.prepare(countSQL).get('animals','Animals',JSON.stringify(['animals','dinosaurs'])),db.sql.prepare(original).get('animals','Animals',JSON.stringify(['animals','dinosaurs'])));
+ await db.prepare("UPDATE content SET status='archived' WHERE id='overlap'").run();
+ assert.equal((await repo.related(source)).collection?.total,1);
+});
 test('series directories count published memberships once, choose current verified covers and refresh after publication',async()=>{
  const {db,search,env}=setup(),repo=new D1CatalogRepository(env,db);
  for(const [id,title,status,verified] of [['a-222','Number 222 Shapes','published',1],['b-222','Number 222 Rings','published',0],['c-1001','Number 1001 Leaves','draft',1]] as const){
