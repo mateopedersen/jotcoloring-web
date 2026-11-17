@@ -2,7 +2,7 @@ import {isApprovedAdvertisingOrigin,permitsAdvertising} from './model';
 import {ADVERTISING_DELIVERY_ENABLED} from './config';
 
 // No route alone grants an exception: only a real public HTML response with one
-// shared-layout slot does. Sponsored links do not load a third-party ad client.
+// shared-layout slot does. Only successful canonical HTML with a genuine display slot qualifies.
 async function advertisingHTML(request:Request,response:Response,deliveryEnabled:boolean,previewPlacement=false){
  const url=new URL(request.url);
  const localPreview=previewPlacement&&['127.0.0.1','localhost'].includes(url.hostname);
@@ -31,7 +31,8 @@ export async function prepareAdvertisingResponse(request:Request,response:Respon
  const headers=new Headers(response.headers);headers.delete('content-length');headers.delete('etag');
  return{response:new Response(placed,{status:response.status,statusText:response.statusText,headers}),available:isApprovedAdvertisingOrigin(new URL(request.url).origin)};
 }
-export function jotContentSecurityPolicy(_url:URL,_deliveryEnabled:boolean=ADVERTISING_DELIVERY_ENABLED,_responseHasSlot=false){
- // First-party sponsored HTML needs no advertising-domain or inline-script exception.
- return "default-src 'self'; img-src 'self' data: blob: https://media.jotcoloring.com https://assets.jotcoloring.com; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; script-src-attr 'none'; worker-src 'self' blob:; connect-src 'self' https://media.jotcoloring.com https://assets.jotcoloring.com ws://127.0.0.1:*; frame-src https://docs.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'";
+export function jotContentSecurityPolicy(url:URL,deliveryEnabled:boolean=ADVERTISING_DELIVERY_ENABLED,responseHasSlot=false){
+ const advertising=deliveryEnabled&&responseHasSlot&&isApprovedAdvertisingOrigin(url.origin)&&permitsAdvertising(url.pathname,url.search,url.hash,deliveryEnabled);
+ const provider=advertising?' https://bellnewyork.org':'';
+ return `default-src 'self'; img-src 'self' data: blob: https://media.jotcoloring.com https://assets.jotcoloring.com${provider}${advertising?' https://static.nresystems.com https://cdn.storageimagedisplay.com':''}; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'${provider}; script-src-attr 'none'; worker-src 'self' blob:; connect-src 'self' https://media.jotcoloring.com https://assets.jotcoloring.com ws://127.0.0.1:*${provider}; frame-src https://docs.google.com${provider}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'`;
 }
