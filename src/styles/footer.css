@@ -87,3 +87,9 @@
 }
 @media(prefers-reduced-motion:reduce){.jc-footer .jc-footer-nav-links>a{transition:none}}
 @media(forced-colors:active){.jc-footer .jc-footer-nav-links>a,.jc-footer .jc-footer-link-arrow{border-color:ButtonText}.jc-footer .jc-footer-nav-links>a:focus-visible{outline-color:Highlight}}
+
+/* Cookie controls occupy a named grid cell, never an implicit extra row. */
+.jc-footer .jc-footer-advertising{grid-column:1;grid-row:2;justify-self:start;min-height:44px;max-width:100%;padding:8px 12px;margin:0;border:1px solid #d9baa2;border-radius:10px;background:#fffaf3;color:#75442f;font:inherit;font-size:14px;font-weight:650;line-height:1.5;text-align:left;white-space:normal;cursor:pointer}
+.jc-footer .jc-footer-advertising:hover{color:#5e2e16;border-color:#a94f24;background:#ffecd5}.jc-footer .jc-footer-advertising:focus-visible{outline:3px solid #a94f24;outline-offset:4px}
+.jc-footer .jc-footer-signature>span{font-size:15px;line-height:1.6}
+@media(max-width:900px){.jc-footer .jc-footer-bottom{grid-template-columns:minmax(0,1fr) auto;gap:16px}.jc-footer .jc-footer-advertising{grid-column:1;grid-row:3}.jc-footer .jc-footer-closing{grid-column:1/-1;grid-row:2}.jc-footer .jc-footer-backtop{grid-column:2;grid-row:3}.jc-footer .jc-footer-signature>span{font-size:14px}}
