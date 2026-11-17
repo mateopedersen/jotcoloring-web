@@ -64,3 +64,30 @@ test('all catalog routes finish reads and apply status before rendering their ne
  const component=readFileSync(new URL('../src/components/CatalogView.astro',import.meta.url),'utf8');
  assert.doesNotMatch(component,/Astro.response.status|createCatalog\(|await repo\./);
 });
+
+test('directory read failure never fans out into gallery and recommendation queries or a cacheable wrong view',async()=>{
+ const original=console.error;console.error=()=>{};
+ try{
+  const env={CATALOG_DB:{prepare(){throw Error('No direct database query expected');}}} as unknown as Env;
+  let lists=0,recommendations=0;
+  const repo=repository({categories:async()=>[{id:'cars',name:'Cars',parent_id:'vehicles',count:100}],directoryCovers:async()=>{throw Error('D1 DB is overloaded');},list:async()=>{lists++;return page;},relatedCollections:async()=>{recommendations++;throw Error('Recommendations must not run');}});
+  const url=new URL('https://jotcoloring.com/collections/vehicles/');const view=await loadCatalogView(env,catalogLocation(url.pathname)!,url,repo);
+  assert.equal(view.status,503);assert.equal(view.headers['Cache-Control'],'no-store');assert.equal(view.headers['Retry-After'],'2');assert.equal(lists,0);assert.equal(recommendations,0);assert.match(view.error,/temporarily busy/);
+ }finally{console.error=original;}
+});
+
+test('failed browse counts do not become a successful empty directory',async()=>{
+ const original=console.error;console.error=()=>{};
+ try{
+  let lists=0;const result=await load('/collections/vehicles/',repository({categories:async()=>{throw Error('D1 DB is overloaded');},list:async()=>{lists++;return page;}}));
+  assert.equal(result.status,503);assert.equal(result.headers['Cache-Control'],'no-store');assert.equal(lists,0);
+ }finally{console.error=original;}
+});
+
+test('optional count failure does not block a leaf gallery',async()=>{
+ const original=console.error;console.error=()=>{};
+ try{
+  let lists=0;const result=await load('/coloring-pages/veterans-day/',repository({categories:async()=>{throw Error('D1 DB is overloaded');},list:async()=>{lists++;return page;}}));
+  assert.equal(result.status,200);assert.equal(result.error,'');assert.equal(lists,1);
+ }finally{console.error=original;}
+});

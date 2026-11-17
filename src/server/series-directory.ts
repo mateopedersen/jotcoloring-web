@@ -4,7 +4,7 @@ import {canonicalNumberSubject} from '../taxonomy/number-topics';
 import {seriesDirectory,type NumberSeries} from '../taxonomy/series-directory';
 import type {CatalogLocation} from '../taxonomy/catalog-location';
 import type {CatalogRepository} from './catalog';
-import type {Content,Env} from './types';
+import type {CollectionArtwork,Env} from './types';
 export async function loadSeriesDirectory(env:Env,repo:CatalogRepository,location:CatalogLocation,counts:{id:string;count:number}[]){
  let numbers:NumberSeries[]=[],groupTotals:Record<string,number>={};const db=env.CATALOG_DB?publicCatalogDatabase(env.CATALOG_DB):undefined;
  if(!db||location.number)return [];
@@ -16,10 +16,10 @@ export async function loadSeriesDirectory(env:Env,repo:CatalogRepository,locatio
   const rows=(await db.prepare("SELECT json_extract(g.value,'$.id') AS id,COUNT(DISTINCT c.id) AS count FROM json_each(?) g CROSS JOIN json_each(g.value,'$.roots') root CROSS JOIN content_category cc INDEXED BY category_content ON cc.category_id=root.value CROSS JOIN content c INDEXED BY sqlite_autoindex_content_1 ON c.id=cc.content_id WHERE c.status='published' AND c.active_version IS NOT NULL AND c.example_only=0 GROUP BY json_extract(g.value,'$.id')").bind(JSON.stringify(groups)).all<{id:string;count:number}>()).results;
   groupTotals=Object.fromEntries(rows.map(row=>[row.id,row.count]));
  }
- const entries=seriesDirectory(location,counts,numbers,groupTotals),covers=new Map<string,Content>();
+ const entries=seriesDirectory(location,counts,numbers,groupTotals),covers=new Map<string,CollectionArtwork>();
  const roots=[...new Set(entries.filter(entry=>!entry.number).flatMap(entry=>entry.roots))];
- for(let offset=0;offset<roots.length;offset+=40){const batch=roots.slice(offset,offset+40),images=await repo.categoryCovers(batch);batch.forEach((id,index)=>{if(images[index])covers.set(id,images[index]!);});}
+ for(let offset=0;offset<roots.length;offset+=40){const batch=roots.slice(offset,offset+40),images=await (repo.directoryCovers?repo.directoryCovers(batch):repo.categoryCovers(batch));batch.forEach((id,index)=>{if(images[index])covers.set(id,images[index]!);});}
  const ids=[...new Set(entries.flatMap(entry=>entry.coverId?[entry.coverId]:[]))];
- for(let offset=0;offset<ids.length;offset+=40){const batch=ids.slice(offset,offset+40),images=await repo.getMany(batch);batch.forEach((id,index)=>{if(images[index])covers.set(id,images[index]!);});}
+ for(let offset=0;offset<ids.length;offset+=40){const batch=ids.slice(offset,offset+40),images=await (repo.directoryArtwork?repo.directoryArtwork(batch):repo.getMany(batch));batch.forEach((id,index)=>{if(images[index])covers.set(id,images[index]!);});}
  return entries.map(entry=>({...entry,cover:(entry.coverId?covers.get(entry.coverId):undefined)||entry.roots.map(id=>covers.get(id)).find(Boolean)}));
 }

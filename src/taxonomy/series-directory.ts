@@ -5,11 +5,19 @@ import {landingIdentity} from './landing-identity';
 import {catalogLocation,type CatalogLocation} from './catalog-location';
 export interface SeriesEntry {id:string;name:string;path:string;icon:string;intro:string;count:number;roots:string[];number?:number;coverId?:string}
 export interface NumberSeries {number:string;count:number;cover_id:string|null}
+function directoryTopics(location:CatalogLocation){
+ return location.collection?COLORING_TAXONOMY.filter(t=>location.collection!.roots.includes(t.id)||t.parent===location.collection!.id):COLORING_TAXONOMY.filter(t=>t.parent===location.topic?.id);
+}
+/** Only counts that can become cards in this exact directory are needed. */
+export function directoryCountIds(location:CatalogLocation){
+ if(!location.collection&&!location.topic)return [...new Set(NAVIGATION_COLLECTIONS.flatMap(c=>c.roots))];
+ return directoryTopics(location).map(t=>t.id);
+}
 export function seriesDirectory(location:CatalogLocation,counts:{id:string;count:number}[],numbers:NumberSeries[]=[],groupTotals:Record<string,number>={}):SeriesEntry[]{
  if(location.number||location.allPages)return [];
  const totals=new Map(counts.map(row=>[row.id,row.count])),group=location.collection,topic=location.topic;
  if(!group&&!topic)return NAVIGATION_COLLECTIONS.flatMap(c=>{const count=groupTotals[c.id]||0;return count>0?[{...c,path:collectionPath(c.id),count}]:[];});
- let topics=group?COLORING_TAXONOMY.filter(t=>group.roots.includes(t.id)||t.parent===group.id):COLORING_TAXONOMY.filter(t=>t.parent===topic?.id);
+ let topics=directoryTopics(location);
  const includeNumbers=group?.id==='education'||topic?.id==='numbers';
  const numerals=includeNumbers?numbers.flatMap(row=>{const n=numberTopic(row.number);return n&&row.count>0?[{id:n.id,name:n.name,path:n.path,icon:'education',intro:NUMBER_INTROS[n.number],count:row.count,roots:['numbers'],number:n.number,coverId:row.cover_id||undefined}]:[];}).sort((a,b)=>a.number-b.number):[];
  if(numerals.length)topics=topics.filter(t=>t.id!=='numbers');

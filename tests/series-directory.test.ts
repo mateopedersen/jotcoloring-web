@@ -48,3 +48,13 @@ test('every accepted subject has a useful collection caption rather than an abbr
   assert.ok(intro.replace(/\s+/gu,' ').trim().startsWith(caption.replace(/…$/u,'')),id);
  }
 });
+
+test('scoped directory counts include every candidate without unrelated taxonomy branches',async()=>{
+ const {directoryCountIds}=await import('../src/taxonomy/series-directory');
+ for(const path of ['/collections/vehicles/','/collections/sports/','/collections/education/','/coloring-pages/cars/']){
+  const where=location(path),all=COLORING_TAXONOMY.map(t=>({id:t.id,count:1}));
+  const needed=new Set(directoryCountIds(where)),entries=seriesDirectory(where,all);
+  assert.ok(entries.length>0,path);assert.ok(needed.size<COLORING_TAXONOMY.length,path);
+  assert.deepEqual(seriesDirectory(where,all.filter(c=>needed.has(c.id))),entries,path);
+ }
+});

@@ -401,3 +401,40 @@ test('known drawing IDs and slugs use point lookups even when almost the entire 
  assert.doesNotMatch(known.sql,/SELECT \*/,'large private provenance is not selected for public cards');
  sql.close();search.sql.close();
 });
+
+test('directory artwork preserves exact current cover fields with two bounded reads instead of full hydration',async()=>{
+ const {db,search,env}=setup();await add(db,search,'cover-fox','Fox by a Tree');
+ await db.prepare("UPDATE content SET description='A fox rests beside a tree.',alt_text='A resting fox.' WHERE id='cover-fox'").run();
+ await db.prepare("INSERT INTO content_category(content_id,category_id) VALUES('cover-fox','woodland')").run();
+ const roles=['catalog_thumb_small_bw','catalog_thumb_medium_bw','catalog_thumb_bw','printable_webp_bw','social_og'];
+ const attach=async(version:number,hash:string)=>{for(const [i,role]of roles.entries())await db.prepare('INSERT INTO asset(asset_id,content_id,content_version,role,object_key,original_key,mime,bytes,sha256,width,height,asset_version,verified) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)').bind('cover-fox-'+role+'-'+version,'cover-fox',version,role,`published/cover-fox/${version}/${role}-${hash}.webp`,'incoming/cover-fox/'+role,'image/webp',100,hash,[240,400,900,2480,1200][i],[340,566,1273,3508,630][i],version,1).run();};
+ await attach(1,'a'.repeat(64));
+ const prepare=db.prepare.bind(db);let reads=0;db.prepare=(sql:string)=>{if(/^SELECT/i.test(sql))reads++;return prepare(sql);};
+ const fields=['id','slug','title','description','alt','thumbnail','thumbnailSrcset','lineArtUrl','width','height','social_image'] as const;
+ for(const base of [undefined,'https://assets.jotcoloring.com']){
+  env.PUBLIC_MEDIA_BASE_URL=base;const repo=new D1CatalogRepository(env,db);
+  reads=0;const complete=await repo.categoryCovers(['woodland','pets','woodland']);assert.equal(reads,7);
+  reads=0;const compact=await repo.directoryCovers(['woodland','pets','woodland']);assert.equal(reads,2);
+  assert.deepEqual(compact.map(c=>c?Object.fromEntries(fields.map(k=>[k,c[k]])):null),complete.map(c=>c?Object.fromEntries(fields.map(k=>[k,c[k]])):null));
+  assert.deepEqual(compact.map(c=>c?.id||null),['cover-fox',null,'cover-fox']);
+ }
+ const repo=new D1CatalogRepository(env,db);reads=0;assert.deepEqual(await repo.directoryCovers([]),[]);assert.equal(reads,0);
+ await assert.rejects(()=>repo.directoryArtwork(Array(41).fill('cover-fox')),AppError);
+ await db.prepare("UPDATE content SET active_version=2,latest_version=2 WHERE id='cover-fox'").run();
+ assert.deepEqual(await repo.directoryCovers(['woodland']),[null],'an older verified thumbnail is not current artwork');
+ await attach(2,'b'.repeat(64));const updated=(await repo.directoryCovers(['woodland']))[0]!;
+ assert.ok(updated.thumbnail.includes('b'.repeat(64)));assert.ok(updated.lineArtUrl.includes('b'.repeat(64)));
+ await db.prepare("UPDATE asset SET verified=0 WHERE content_id='cover-fox' AND content_version=2 AND role='catalog_thumb_bw'").run();assert.deepEqual(await repo.directoryCovers(['woodland']),[null]);
+ await db.prepare("UPDATE asset SET verified=1 WHERE content_id='cover-fox'").run();await db.prepare("UPDATE content SET status='archived' WHERE id='cover-fox'").run();assert.deepEqual(await repo.directoryArtwork(['cover-fox']),[null]);
+});
+
+test('directory count subsets preserve exact counts and names without reading unrelated categories',async()=>{
+ const {db,search,env}=setup();await add(db,search,'count-fox','Fox');
+ await db.prepare("INSERT INTO content_category(content_id,category_id) VALUES('count-fox','woodland')").run();
+ const repo=new D1CatalogRepository(env,db),all=await repo.categories();
+ assert.deepEqual(await repo.categories(['woodland','pets','woodland']),all.filter(c=>['woodland','pets'].includes(c.id)));
+ assert.deepEqual(await repo.categories([]),[]);
+ assert.deepEqual(await repo.categories(["woodland'); DROP TABLE category; --"]),[]);
+ assert.equal((await repo.categories()).length,all.length);
+ await assert.rejects(()=>repo.categories(Array(1001).fill('woodland')),AppError);
+});

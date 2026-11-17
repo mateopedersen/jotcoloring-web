@@ -26,4 +26,7 @@ async function main(){
   console.log(JSON.stringify({requests:checks.length,failed:checks.filter(c=>c.status!==200||c.busy||c.series_cards===0).length,matching_trace_events:events.length,report:'.local/catalog-diagnostics.json'}));
  }finally{ws?.close();if(tail)await api('/tails/'+tail.id,'DELETE');}
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href)await main();
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
+ try{await main();process.stdout.write('',()=>process.exit(0));}
+ catch(error){console.error(error instanceof Error?error.message:'Diagnostic failed');process.exit(1);}
+}
