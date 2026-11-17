@@ -26,7 +26,8 @@ export function mountOptionalAdvertisement(){
   if(requested||reloadRequested||!inView||document.visibilityState!=='visible'||!mayRequestAdvertising(location.pathname,adult()?'adult':'unknown',current(),location.search,location.hash))return;
   if(!isApprovedAdvertisingOrigin(location.origin)){slot.dataset.advertisingPreview='true';return;}
   const unit=selectAdvertisingUnit(availableWidth());if(!unit)return;requested=true;loadedWidth=unit.width;slot.dataset.advertisingFormat=unit.width===728?'desktop':'mobile';slot.dataset.advertisingRequested='true';stage.style.width=unit.width+'px';stage.style.minHeight=unit.height+'px';stage.hidden=false;status.textContent='Loading advertisement…';
-  window.atOptions={key:unit.key,format:unit.format,height:unit.height,width:unit.width,params:unit.params};
+  // This retained legacy controller uses the original synchronous iframe tag.
+  window.atOptions={key:unit.key,format:'iframe',height:unit.height,width:unit.width,params:unit.params};
   const script=document.createElement('script');script.type='text/javascript';script.src=unit.scriptURL;
   script.addEventListener('load',()=>{if(!reloadRequested)status.textContent='';},{once:true});
   script.addEventListener('error',()=>{stage.replaceChildren();stage.hidden=true;if(!reloadRequested)status.textContent='The advertisement is unavailable. You can keep browsing.';},{once:true});stage.append(script);

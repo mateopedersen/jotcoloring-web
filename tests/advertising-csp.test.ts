@@ -12,3 +12,17 @@ test('actual public display responses grant only the exact provider without weak
 test('delivery hold cannot be overridden by a real slot',async()=>{assert.equal(await hasAdvertisingResponse(new Request('https://jotcoloring.com/'),response(),false),false);assert.equal((await prepareAdvertisingResponse(new Request('https://jotcoloring.com/'),response(),false)).available,false);assert.ok(!jotContentSecurityPolicy(new URL('https://jotcoloring.com/'),false,true).includes(ADVERTISING_PROVIDER_ORIGIN));});
 
 test('HTML-like attachments never receive ad permissions',async()=>{const download=response();download.headers.set('Content-Disposition','attachment; filename=example.html');assert.equal(await hasAdvertisingResponse(new Request('https://jotcoloring.com/'),download,true),false);});
+
+test('creative script elements are allowed only on qualified public ad HTML; handlers and eval remain blocked',()=>{
+ const publicPolicy=jotContentSecurityPolicy(new URL('https://jotcoloring.com/coloring-by-age/9-12/'),true,true);
+ assert.equal(directive(publicPolicy,'script-src-elem'),"script-src-elem 'self' 'unsafe-inline' https://bellnewyork.org");
+ assert.equal(directive(publicPolicy,'script-src-attr'),"script-src-attr 'none'");
+ assert.ok(!directive(publicPolicy,'script-src')?.includes("'unsafe-eval'"));
+ assert.equal(directive(publicPolicy,'object-src'),"object-src 'none'");
+ assert.equal(directive(publicPolicy,'base-uri'),"base-uri 'self'");
+ for(const [path,enabled,slot]of [['/',true,false],['/',false,true],['/?q=private',true,true],['/api/catalog/',true,true]]as const){
+  const policy=jotContentSecurityPolicy(new URL(path,'https://jotcoloring.com'),enabled,slot);
+  assert.equal(directive(policy,'script-src-elem'),undefined,path);
+  assert.ok(!directive(policy,'script-src')?.includes("'unsafe-inline'"),path);
+ }
+});

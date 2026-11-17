@@ -5,12 +5,12 @@ const key='1234567890abcdef1234567890abcdef';
 const unit=(width,height)=>({key,width,height,src:'https://bauval.org/22/'+key});
 const config={enabled:true,mode:'display-banner',hosts:['example.fi'],scriptHosts:['bauval.org'],storageKey:'ad-choice',desktop:unit(728,90),mobile:unit(300,250)};
 function fixture({width=1000,host='example.fi',search='',hash='',stored=null,canonical='https://example.fi/',failStorage=false,visible=true}={}){
- const scripts=[],events={},docEvents={},writes=[];let storage=stored,reloads=0;
- const stage={style:{},append(script){scripts.push(script);},replaceChildren(){scripts.length=0;}};
+ const scripts=[],headScripts=[],containers=[],events={},docEvents={},writes=[];let storage=stored,reloads=0;
+ const stage={style:{},append(node){(node.tagName==='SCRIPT'?scripts:containers).push(node);},replaceChildren(){scripts.length=0;containers.length=0;}};
  const slot={dataset:{},hidden:false,clientWidth:width,querySelector:()=>stage};
- const doc={visibilityState:visible?'visible':'hidden',querySelector(selector){return selector.startsWith('link')?{href:canonical}:slot;},querySelectorAll:()=>[],addEventListener(type,fn){docEvents[type]=fn;},createElement(tag){assert.equal(tag,'script');return{addEventListener(){}};}};
+ const doc={head:{append(script){headScripts.push(script);}},visibilityState:visible?'visible':'hidden',querySelector(selector){return selector.startsWith('link')?{href:canonical}:slot;},querySelectorAll:()=>[],addEventListener(type,fn){docEvents[type]=fn;},createElement(tag){assert(['script','div'].includes(tag));return{tagName:tag.toUpperCase(),addEventListener(){}};}};
  const target={document:doc,location:{hostname:host,pathname:'/',search,hash,reload(){reloads++;}},requestAnimationFrame(fn){fn();},addEventListener(type,fn){events[type]=fn;},localStorage:{getItem(){if(failStorage)throw Error('Unavailable');return storage;},setItem(k,v){writes.push([k,v]);storage=v;}}};
- return {target,slot,stage,scripts,writes,events,docEvents,reloads:()=>reloads};
+ return {target,slot,stage,scripts,headScripts,containers,writes,events,docEvents,reloads:()=>reloads};
 }
 test('a fresh public visit requests the exact fitting official tag automatically without an invented creative or permission write',()=>{
  for(const [width,expected] of [[1000,728],[728,728],[727,300],[300,300]]){
@@ -38,3 +38,14 @@ test('turning the banner off hides it without erasing plans, navigating or autom
  const f=fixture();mountDisplayBanner(config,f.target);f.target.Calendar365Banner.setAllowed(false);assert.equal(f.slot.hidden,true);assert.equal(f.scripts.length,0);assert.equal(JSON.parse(f.writes[0][1]).advertising,false);assert.equal(f.reloads(),0);f.target.Calendar365Banner.setAllowed(true);assert.equal(f.scripts.length,0,'already executed tags are not reissued; next page load applies the choice');
 });
 test("previous JotColoring allowed:false records remain an explicit refusal",()=>{const f=fixture({stored:JSON.stringify({version:1,allowed:false,savedAt:Date.now(),expiresAt:Date.now()+86400000})});mountDisplayBanner(config,f.target);assert.equal(f.scripts.length,0);assert.equal(f.slot.hidden,true);});
+
+test('official JS ASYNC registers one exact container and options before its head script',()=>{
+ const js=u=>({...u,format:'js',container:'atContainer-'+u.key}),cfg={...config,desktop:js(config.desktop),mobile:js(config.mobile)};
+ for(const width of [1000,390]){const f=fixture({width});mountDisplayBanner(cfg,f.target);assert.equal(f.scripts.length,0);assert.equal(f.headScripts.length,1);assert.equal(f.containers.length,1);assert.equal(f.containers[0].id,'atContainer-'+key);assert.deepEqual(f.target.atAsyncOptions,[{key,format:'js',async:true,container:'atContainer-'+key,params:{}}]);assert.equal(f.target.atOptions,undefined);assert.equal(f.writes.length,0);mountDisplayBanner(cfg,f.target);f.events.resize();assert.equal(f.headScripts.length,1);}
+});
+test('JS ASYNC honors rejection and rejects an incorrect official container without paid requests',()=>{
+ const js=u=>({...u,format:'js',container:'atContainer-'+u.key}),cfg={...config,desktop:js(config.desktop),mobile:js(config.mobile)};
+ const f=fixture({stored:JSON.stringify({version:1,advertising:false,expiresAt:Date.now()+86400000})});mountDisplayBanner(cfg,f.target);assert.equal(f.headScripts.length,0);assert.equal(f.containers.length,0);
+ const bad=fixture();mountDisplayBanner({...cfg,desktop:{...cfg.desktop,container:'unrelated'},mobile:{...cfg.mobile,container:'unrelated'}},bad.target);assert.equal(bad.headScripts.length,0);
+ const denied=fixture();mountDisplayBanner(cfg,denied.target);denied.target.Calendar365Banner.setAllowed(false);assert.equal(denied.containers.length,0);assert.equal(denied.slot.hidden,true);denied.target.Calendar365Banner.setAllowed(true);assert.equal(denied.headScripts.length,1);assert.equal(denied.reloads(),0);
+});

@@ -7,6 +7,6 @@ const enabled=permitsAdvertising(Astro.url.pathname,Astro.url.search);
 <script>
 import {mountDisplayBanner} from '../advertising/display-runtime.mjs';
 import {type BannerUnit,ADVERTISING_UNIT,ADVERTISING_DESKTOP_UNIT} from '../advertising/units';
-const unit=(u:BannerUnit)=>({key:u.key,src:u.scriptURL,width:u.width,height:u.height});
+const unit=(u:BannerUnit)=>({key:u.key,src:u.scriptURL,width:u.width,height:u.height,format:u.format,container:u.container});
 mountDisplayBanner({enabled:true,mode:'display-banner',hosts:['jotcoloring.com'],scriptHosts:['bellnewyork.org'],storageKey:'jotcoloring:optional-advertising',desktop:unit(ADVERTISING_DESKTOP_UNIT),mobile:unit(ADVERTISING_UNIT),displayLabels:{on:'Advertising is enabled. Changes fully apply on your next page load.',off:'Advertising is disabled. Save unfinished work and reload to stop previously loaded advertising code.'}});
 </script>
