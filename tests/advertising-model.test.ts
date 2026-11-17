@@ -1,49 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ADVERTISING_DELIVERY_ENABLED} from '../src/advertising/config';
-import {advertisingChoice,parseAdvertisingChoice,mayRequestAdvertising,permitsAdvertising,ADVERTISING_CHOICE_LIFETIME,isApprovedAdvertisingOrigin,type AdultChoice,type AdvertisingChoice} from '../src/advertising/model';
+import {advertisingChoice,parseAdvertisingChoice,mayRequestAdvertising,permitsAdvertising,ADVERTISING_CHOICE_LIFETIME,isApprovedAdvertisingOrigin,adultSession,parseAdultSession,ADULT_SESSION_LIFETIME,type AdultChoice,type AdvertisingChoice} from '../src/advertising/model';
+const publicPaths=['/','/coloring-by-age/adults/','/coloring-by-age/3-5/','/coloring-pages/all/','/coloring-pages/bluey/','/coloring-pages/numbers/1/','/collections/ocean/','/coloring/real-art/','/studio/','/create/photo/','/my-artwork/','/licensing/','/contact/','/privacy/','/cookies/'];
 const enabledPermits=(pathname:string,search='',hash='')=>permitsAdvertising(pathname,search,hash,true);
 const enabledRequest=(pathname:string,age:AdultChoice,choice:AdvertisingChoice|undefined,search='',hash='')=>mayRequestAdvertising(pathname,age,choice,search,hash,true);
-const now=Date.UTC(2026,10,16),accepted=advertisingChoice(true,now);
-test('only the adult-specific collection permits optional ads',()=>{
- for(const path of ['/coloring-by-age/adults/'])assert.equal(enabledPermits(path),true);
- for(const path of ['/','/licensing/','/contact/','/coloring-by-age/','/coloring-by-age/3-5/','/coloring-by-age/teens/','/coloring-pages/all/','/coloring-pages/bluey/','/coloring/example/','/download/example/','/studio/','/create/','/licensing/?age=adult','/coloring-by-age/adults/fake/'])assert.equal(enabledPermits(path),false,path);
-});
-test('saved optional consent alone never permits an ad request and age is not persisted',()=>{
- for(const age of ['unknown','under18','private'] as const)assert.equal(enabledRequest('/coloring-by-age/adults/',age,accepted),false);
- assert.equal(enabledRequest('/coloring-by-age/adults/','adult',accepted),true);
- assert.equal(enabledRequest('/coloring-by-age/3-5/','adult',accepted),false);
- assert.equal(enabledRequest('/coloring-by-age/adults/','adult',advertisingChoice(false,now)),false);
- assert.equal(enabledRequest('/coloring-by-age/adults/','adult',undefined),false);
- assert.deepEqual(Object.keys(accepted).sort(),['allowed','expiresAt','savedAt','version']);
-});
-test('expired, malformed and future consent choices fail closed',()=>{
- assert.deepEqual(parseAdvertisingChoice(JSON.stringify(accepted),now),accepted);
- for(const raw of [null,'{}','true','{"version":1,"allowed":"true"}',JSON.stringify({...accepted,savedAt:now+1}),JSON.stringify({...accepted,expiresAt:now}),JSON.stringify({...accepted,expiresAt:now+ADVERTISING_CHOICE_LIFETIME+1})])assert.equal(parseAdvertisingChoice(raw,now),undefined);
-});
-
-test('opaque query parameters and fragments cannot activate advertising',()=>{
- for(const query of ['?q=private+notes','?utm_source=example','?age=18','?']){assert.equal(enabledPermits('/coloring-by-age/adults/',query),false);assert.equal(enabledRequest('/coloring-by-age/adults/','adult',accepted,query),false);}
- assert.equal(enabledRequest('/coloring-by-age/adults/','adult',accepted,'','#private'),false);
-});
-
-test('real ad tags never load on local, staging or alternate-origin previews',()=>{
- assert.equal(isApprovedAdvertisingOrigin('https://jotcoloring.com'),true);
- for(const origin of ['http://jotcoloring.com','https://www.jotcoloring.com','http://127.0.0.1:8145','https://staging.jotcoloring.com','https://jotcoloring.example','https://jotcoloring.com.evil.test'])assert.equal(isApprovedAdvertisingOrigin(origin),false,origin);
-});
-
-test('explicit delivery hold overrides a saved adult marketing choice',()=>{
- for(const path of ['/coloring-by-age/adults/','/coloring-by-age/3-5/','/contact/','/']){assert.equal(permitsAdvertising(path,'','',false),false,path);assert.equal(mayRequestAdvertising(path,'adult',accepted,'','',false),false,path);}
-});
-
-test('production delivery still requires the approved route, adult choice and consent',()=>{
- assert.equal(ADVERTISING_DELIVERY_ENABLED,true);
- assert.equal(permitsAdvertising('/coloring-by-age/adults/'),true);
- assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted),true);
- for(const age of ['unknown','under18','private'] as const)assert.equal(mayRequestAdvertising('/coloring-by-age/adults/',age,accepted),false);
- assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',undefined),false);
- assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',advertisingChoice(false,now)),false);
- for(const path of ['/coloring-by-age/3-5/','/contact/','/privacy/','/cookies/','/'])assert.equal(mayRequestAdvertising(path,'adult',accepted),false,path);
- assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted,'?q=private'),false);
- assert.equal(mayRequestAdvertising('/coloring-by-age/adults/','adult',accepted,'','#private'),false);
-});
+const now=Date.UTC(2026,10,17),accepted=advertisingChoice(true,now);
+test('all clean public canonical page families can offer one shared advertisement',()=>{for(const path of publicPaths)assert.equal(enabledPermits(path),true,path);for(const path of ['/api/','/api/download/art/pdf/','/admin/','/assets/file.pdf','/favicon.ico','/without-trailing-slash','//contact/','/contact/?q=x','https://elsewhere.test/','/../'])assert.equal(enabledPermits(path),false,path);});
+test('saved optional consent alone never permits an ad request',()=>{for(const path of publicPaths){for(const age of ['unknown','under18','private'] as const)assert.equal(enabledRequest(path,age,accepted),false,path);assert.equal(enabledRequest(path,'adult',accepted),true,path);assert.equal(enabledRequest(path,'adult',advertisingChoice(false,now)),false,path);assert.equal(enabledRequest(path,'adult',undefined),false,path);}assert.deepEqual(Object.keys(accepted).sort(),['allowed','expiresAt','savedAt','version']);});
+test('expired, malformed and future consent choices fail closed',()=>{assert.deepEqual(parseAdvertisingChoice(JSON.stringify(accepted),now),accepted);for(const raw of [null,'{}','true','{"version":1,"allowed":"true"}',JSON.stringify({...accepted,savedAt:now+1}),JSON.stringify({...accepted,expiresAt:now}),JSON.stringify({...accepted,expiresAt:now+ADVERTISING_CHOICE_LIFETIME+1})])assert.equal(parseAdvertisingChoice(raw,now),undefined);});
+test('opaque query parameters and fragments cannot activate advertising',()=>{for(const path of publicPaths)for(const query of ['?q=private+notes','?utm_source=example','?age=18','?']){assert.equal(enabledPermits(path,query),false);assert.equal(enabledRequest(path,'adult',accepted,query),false);}assert.equal(enabledRequest('/','adult',accepted,'','#private'),false);});
+test('real ad tags never load on local, staging or alternate-origin previews',()=>{assert.equal(isApprovedAdvertisingOrigin('https://jotcoloring.com'),true);for(const origin of ['http://jotcoloring.com','https://www.jotcoloring.com','http://127.0.0.1:8145','https://staging.jotcoloring.com','https://jotcoloring.example','https://jotcoloring.com.evil.test'])assert.equal(isApprovedAdvertisingOrigin(origin),false,origin);});
+test('explicit delivery hold overrides every public path and saved permission',()=>{for(const path of publicPaths){assert.equal(permitsAdvertising(path,'','',false),false,path);assert.equal(mayRequestAdvertising(path,'adult',accepted,'','',false),false,path);}});
+test('adult declaration contains no birth date or under-age answer and expires within one tab day',()=>{const value=adultSession(now);assert.deepEqual(Object.keys(value).sort(),['adult','confirmedAt','expiresAt','version']);assert.equal(value.expiresAt-now,ADULT_SESSION_LIFETIME);assert.deepEqual(parseAdultSession(JSON.stringify(value),now),value);assert.equal(parseAdultSession(JSON.stringify(value),now+1000)?.adult,true);for(const raw of [null,'{}','true','{"adult":true}','{"version":1,"adult":"true"}',JSON.stringify({...value,adult:false}),JSON.stringify({...value,birthDate:'2000-01-01'}),JSON.stringify({...value,confirmedAt:now+1}),JSON.stringify({...value,expiresAt:now}),JSON.stringify({...value,expiresAt:now+ADULT_SESSION_LIFETIME+1})])assert.equal(parseAdultSession(raw,now),undefined);});
+test('production delivery retains the independent adult and permission gates',()=>{assert.equal(ADVERTISING_DELIVERY_ENABLED,true);for(const path of publicPaths){assert.equal(permitsAdvertising(path),true);assert.equal(mayRequestAdvertising(path,'adult',accepted),true);assert.equal(mayRequestAdvertising(path,'unknown',accepted),false);assert.equal(mayRequestAdvertising(path,'adult',undefined),false);}});

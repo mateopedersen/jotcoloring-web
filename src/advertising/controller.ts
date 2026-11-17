@@ -1,37 +1,44 @@
-import {ADVERTISING_CHOICE_KEY,advertisingChoice,parseAdvertisingChoice,mayRequestAdvertising,isApprovedAdvertisingOrigin,type AdultChoice} from './model';
-import {ADVERTISING_UNIT} from './units';
+import {ADVERTISING_CHOICE_KEY,ADULT_SESSION_KEY,adultSession,parseAdultSession,advertisingChoice,parseAdvertisingChoice,mayRequestAdvertising,isApprovedAdvertisingOrigin,type AdultChoice} from './model';
+import {selectAdvertisingUnit} from './units';
 
-declare global {interface Window {atOptions?:{key:string;format:'iframe';height:number;width:number;params:Record<string,never>}}}
+declare global {interface Window {atOptions?:{key:string;format:'iframe';height:number;width:number;params:Record<string,never>};JotAdvertising?:{apply:(age:AdultChoice,allowed:boolean)=>Promise<boolean>;off:()=>Promise<boolean>;adult:()=>boolean;allowed:()=>boolean|undefined}}}
 export function mountOptionalAdvertisement(){
- const slot=document.querySelector<HTMLElement>('[data-advertising-slot]'),unit=ADVERTISING_UNIT;if(!slot||!unit||slot.dataset.advertisingMounted)return;slot.dataset.advertisingMounted='true';
- const gate=slot.querySelector<HTMLElement>('[data-advertising-gate]')!,ageStep=slot.querySelector<HTMLElement>('[data-advertising-age-step]')!,consentStep=slot.querySelector<HTMLElement>('[data-advertising-consent-step]')!,stage=slot.querySelector<HTMLElement>('[data-advertising-stage]')!,status=slot.querySelector<HTMLElement>('[data-advertising-status]')!,settings=slot.querySelector<HTMLButtonElement>('[data-advertising-settings]')!,controls=slot.querySelector<HTMLElement>('[data-advertising-controls]')!;
- settings.disabled=false;
- let adult:AdultChoice='unknown',memory:string|null=null,requested=false,inView=false;
- const read=()=>{try{return localStorage.getItem(ADVERTISING_CHOICE_KEY)||memory;}catch{return memory;}};
- const save=(allowed:boolean)=>{memory=JSON.stringify(advertisingChoice(allowed));try{localStorage.setItem(ADVERTISING_CHOICE_KEY,memory);}catch{/* The choice remains usable on this page only. */}};
- const close=()=>{gate.hidden=true;settings.setAttribute('aria-expanded','false');settings.focus({preventScroll:true});};
+ const slot=document.querySelector<HTMLElement>('[data-advertising-slot]');if(!slot||slot.dataset.advertisingMounted)return;slot.dataset.advertisingMounted='true';
+ const stage=slot.querySelector<HTMLElement>('[data-advertising-stage]')!,status=slot.querySelector<HTMLElement>('[data-advertising-status]')!,pending=slot.querySelector<HTMLElement>('[data-advertising-pending]')!,confirmation=slot.querySelector<HTMLDialogElement>('[data-advertising-confirm]')!;
+ let memory:string|null=null,adultMemoryUntil=0,requested=false,inView=false,formEdited=false,reloadRequested=false,approvedReload=false,loadedWidth=0,expiryTimer:ReturnType<typeof setTimeout>|undefined;
+ const read=()=>{try{return memory||localStorage.getItem(ADVERTISING_CHOICE_KEY);}catch{return memory;}};
+ const current=()=>parseAdvertisingChoice(read());
+ const availableWidth=()=>{const parent=slot.parentElement!;const style=getComputedStyle(parent);return Math.min(parent.clientWidth-parseFloat(style.paddingLeft||'0')-parseFloat(style.paddingRight||'0'),innerWidth-20);};
+ const adult=()=>{try{return !!parseAdultSession(sessionStorage.getItem(ADULT_SESSION_KEY))||adultMemoryUntil>Date.now();}catch{return adultMemoryUntil>Date.now();}};
+ const changed=()=>document.dispatchEvent(new Event('jot:advertising-choice'));
+ const save=(allowed:boolean)=>{memory=JSON.stringify(advertisingChoice(allowed));try{localStorage.setItem(ADVERTISING_CHOICE_KEY,memory);}catch{/* The choice remains usable on this page only. */}changed();};
+ const forgetAdult=()=>{adultMemoryUntil=0;if(expiryTimer)clearTimeout(expiryTimer);try{sessionStorage.removeItem(ADULT_SESSION_KEY);}catch{}};
+ // Observe only a boolean, never a field value, upload, artwork or serialized form.
+ const edited=(event:Event)=>{const target=event.target;if(target instanceof Element&&!target.closest('[data-advertising-slot],[data-storage-notice],[data-storage-dialog]')&&target.closest('form,[contenteditable="true"]'))formEdited=true;};
+ document.addEventListener('input',edited);document.addEventListener('change',edited);
+ const dirty=()=>formEdited||!!document.querySelector('.jc-studio [data-save-state][data-state="dirty"],.jc-studio [data-save-state][data-state="saving"],.jc-studio [data-save-state][data-state="error"]');
+ const showPending=()=>{slot.hidden=false;stage.replaceChildren();stage.hidden=true;pending.hidden=false;status.textContent='Optional cookies are off. Reload after saving your work to finish stopping previously loaded code.';};
+ const reloadLoaded=()=>{if(reloadRequested)return;reloadRequested=true;showPending();location.reload();};
+ window.addEventListener('beforeunload',event=>{if(reloadRequested&&dirty()&&!approvedReload){event.preventDefault();event.returnValue='';}});
+ const confirmWithdrawal=()=>new Promise<boolean>(resolve=>{const opener=document.activeElement instanceof HTMLElement?document.activeElement:undefined;let finished=false;const finish=(yes:boolean)=>{if(finished)return;finished=true;confirmation.removeEventListener('click',clicked);confirmation.removeEventListener('cancel',cancelled);confirmation.close();if(opener?.isConnected)opener.focus({preventScroll:true});resolve(yes);};const clicked=(event:Event)=>{const button=(event.target as Element).closest('button');if(button?.hasAttribute('data-advertising-confirm-reload'))finish(true);else if(button?.hasAttribute('data-advertising-cancel-reload'))finish(false);};const cancelled=(event:Event)=>{event.preventDefault();finish(false);};confirmation.addEventListener('click',clicked);confirmation.addEventListener('cancel',cancelled);confirmation.showModal();confirmation.querySelector<HTMLButtonElement>('[data-advertising-cancel-reload]')?.focus({preventScroll:true});});
+ const off=async()=>{if(requested&&dirty()&&!await confirmWithdrawal())return false;approvedReload=true;forgetAdult();save(false);stage.hidden=true;status.textContent='';if(requested)reloadLoaded();return true;};
  const load=()=>{
-  if(requested||!inView||document.visibilityState!=='visible'||!mayRequestAdvertising(location.pathname,adult,parseAdvertisingChoice(read()),location.search,location.hash))return;
-  if(!isApprovedAdvertisingOrigin(location.origin)){slot.dataset.advertisingPreview='true';status.textContent='Preview: advertising choices work here. Provider code loads only on jotcoloring.com.';controls.hidden=false;return;}
-  requested=true;slot.dataset.advertisingRequested='true';stage.hidden=false;status.textContent='Loading optional advertisement…';controls.hidden=false;
-  // Keep the provider options and tag URL unchanged; no proxy or iframe wrapper.
+  if(requested||reloadRequested||!inView||document.visibilityState!=='visible'||!mayRequestAdvertising(location.pathname,adult()?'adult':'unknown',current(),location.search,location.hash))return;
+  if(!isApprovedAdvertisingOrigin(location.origin)){slot.dataset.advertisingPreview='true';return;}
+  const unit=selectAdvertisingUnit(availableWidth());if(!unit)return;requested=true;loadedWidth=unit.width;slot.dataset.advertisingFormat=unit.width===728?'desktop':'mobile';slot.dataset.advertisingRequested='true';stage.style.width=unit.width+'px';stage.style.minHeight=unit.height+'px';stage.hidden=false;status.textContent='Loading advertisement…';
   window.atOptions={key:unit.key,format:unit.format,height:unit.height,width:unit.width,params:unit.params};
   const script=document.createElement('script');script.type='text/javascript';script.src=unit.scriptURL;
-  script.addEventListener('load',()=>{status.textContent='Optional advertising is enabled.';},{once:true});
-  script.addEventListener('error',()=>{stage.replaceChildren();stage.hidden=true;status.textContent='The optional advertisement is unavailable. You can keep browsing.';},{once:true});
-  stage.append(script);
+  script.addEventListener('load',()=>{if(!reloadRequested)status.textContent='';},{once:true});
+  script.addEventListener('error',()=>{stage.replaceChildren();stage.hidden=true;if(!reloadRequested)status.textContent='The advertisement is unavailable. You can keep browsing.';},{once:true});stage.append(script);
  };
  const schedule=()=>{if(document.readyState!=='complete'){window.addEventListener('load',schedule,{once:true});return;}if('requestIdleCallback' in window)window.requestIdleCallback(load,{timeout:1500});else setTimeout(load,0);};
- if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{inView=entries.some(e=>e.isIntersecting);if(inView)schedule();},{rootMargin:'200px 0px'});observer.observe(slot);}else inView=true;
- settings.addEventListener('click',()=>{gate.hidden=!gate.hidden;settings.setAttribute('aria-expanded',String(!gate.hidden));if(!gate.hidden){ageStep.hidden=adult==='adult';consentStep.hidden=adult!=='adult';gate.querySelector<HTMLButtonElement>('div:not([hidden]) button')?.focus({preventScroll:true});}});
- slot.addEventListener('click',event=>{
-  const button=(event.target as Element).closest<HTMLButtonElement>('button');if(!button)return;
-  const age=button.dataset.advertisingAge;if(age){adult=age as AdultChoice;if(adult!=='adult'){close();status.textContent='Optional ads stay off. You can keep browsing without them.';return;}if(parseAdvertisingChoice(read())?.allowed===true){close();status.textContent='Your saved optional-advertising choice applies to this visit. You can turn it off at any time.';schedule();return;}ageStep.hidden=true;consentStep.hidden=false;consentStep.querySelector<HTMLButtonElement>('button')?.focus({preventScroll:true});return;}
-  if(button.hasAttribute('data-advertising-deny')){save(false);if(requested){location.reload();return;}controls.hidden=true;stage.hidden=true;close();status.textContent='Optional ads are off. Your coloring pages and tools remain available.';return;}
-  if(button.hasAttribute('data-advertising-allow')){if(adult!=='adult')return;save(true);close();schedule();}
-  if(button.hasAttribute('data-advertising-revoke')){save(false);location.reload();}
- });
- document.addEventListener('jot:advertising-revoked',()=>{save(false);adult='unknown';if(requested)location.reload();else{controls.hidden=true;stage.hidden=true;stage.replaceChildren();close();status.textContent='Optional ads are off. Your coloring pages and tools remain available.';}});
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')schedule();});
- window.addEventListener('storage',event=>{if(event.key===ADVERTISING_CHOICE_KEY&&requested&&parseAdvertisingChoice(read())?.allowed!==true)location.reload();});
+ const startExpiry=()=>{if(expiryTimer)clearTimeout(expiryTimer);let expiresAt=Date.now()+24*60*60*1000;try{expiresAt=parseAdultSession(sessionStorage.getItem(ADULT_SESSION_KEY))?.expiresAt||expiresAt;}catch{}expiryTimer=setTimeout(()=>{forgetAdult();changed();if(requested){approvedReload=false;reloadLoaded();}},Math.max(0,expiresAt-Date.now()));};
+ const apply=async(age:AdultChoice,allowed:boolean)=>{if(!allowed||age==='under18'||age==='private')return off();if(age!=='adult')return false;adultMemoryUntil=Date.now()+24*60*60*1000;try{sessionStorage.setItem(ADULT_SESSION_KEY,JSON.stringify(adultSession()));}catch{}startExpiry();save(true);schedule();return true;};
+ if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{inView=entries.some(e=>e.isIntersecting);if(inView)schedule();},{rootMargin:'200px 0px'});observer.observe(slot);}else{inView=true;schedule();}
+ slot.querySelector('[data-advertising-reload]')?.addEventListener('click',()=>location.reload());
+ window.addEventListener('resize',()=>{if(reloadRequested)return;if(requested)slot.hidden=availableWidth()<loadedWidth;else schedule();});
+ document.addEventListener('jot:advertising-revoked',()=>{void off();});
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){if(requested&&!adult()){approvedReload=false;reloadLoaded();}else schedule();}});
+ window.addEventListener('storage',event=>{if(event.key!==ADVERTISING_CHOICE_KEY&&event.key!==null)return;memory=event.key===null?null:event.newValue;changed();if(current()?.allowed!==true){forgetAdult();if(requested){approvedReload=false;reloadLoaded();}else{stage.hidden=true;status.textContent='';}}});
+ window.JotAdvertising={apply,off,adult,allowed:()=>current()?.allowed};if(adult())startExpiry();document.dispatchEvent(new Event('jot:advertising-ready'));schedule();
 }
