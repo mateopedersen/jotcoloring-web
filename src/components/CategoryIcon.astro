@@ -1,6 +1,8 @@
 ---
 import {categoryPresentation} from '../icons/category';
 import VectorIcon from './VectorIcon.astro';
-const {name='all',size=28}=Astro.props;
+import {subjectSymbol} from '../ui/subject-symbol';
+const {name='all',topic=name,size=28}=Astro.props;
+const symbol=subjectSymbol(topic);
 ---
-<VectorIcon name={categoryPresentation(name).icon} size={size} class="category-3d"/>
+{symbol?<img src={symbol.src} data-topic-symbol={topic} width={size} height={size} style={`width:${size}px;height:${size}px;object-fit:contain;flex-shrink:0`} alt="" aria-hidden="true" decoding="async"/>:<VectorIcon name={categoryPresentation(name).icon} size={size} class="category-3d"/>}
