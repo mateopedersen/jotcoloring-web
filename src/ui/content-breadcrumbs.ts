@@ -11,7 +11,17 @@ export function contentBreadcrumbs(item:BreadcrumbContent):ContentCrumb[]{
  const members=new Set(item.category_ids||[]);
  const child=[item.subcategory,...members].filter((id):id is string=>!!id).map(categoryById).find(c=>c?.parent===item.category&&members.has(c.id));
  const number=child?.id==='numbers'?numberTopicForArt(item):undefined;
- if(child&&!number)crumbs.push({name:child.name,path:categoryPath(child.id)});
  if(number)crumbs.push({name:number.name,path:number.path});
+ else {
+  // Follow the selected branch only while it has one reviewed child.
+  const reviewedCategories=[...members].map(categoryById);
+  let current=child;
+  while(current){
+   crumbs.push({name:current.name,path:categoryPath(current.id)});
+   const parentId=current.id;
+   const children=reviewedCategories.filter(category=>category?.parent===parentId);
+   current=children.length===1?children[0]:undefined;
+  }
+ }
  crumbs.push({name:item.title,path:`/coloring/${item.slug}/`});return crumbs.filter((crumb,index)=>crumbs.findIndex(c=>c.path===crumb.path)===index);
 }

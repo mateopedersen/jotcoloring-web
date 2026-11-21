@@ -41,3 +41,13 @@ test('arithmetic titles use agreeing digit/word subject aliases and reject scene
  assert.equal(contentBreadcrumbs({...item,tags:['number','two cats']}).length,4);
  assert.equal(contentBreadcrumbs({...item,tags:['100','101']}).length,4);
 });
+
+test('a nested reviewed topic appears after its parent in visible and structured breadcrumbs',()=>{
+ const item={slug:'gharial-at-a-riverbank',title:'Gharial at a Riverbank',category:'animals',categoryName:'Animals',subcategory:'reptiles',category_ids:['animals','reptiles','gharial','cuttlefish']};
+ const paths=['/','/collections/animals/','/coloring-pages/reptiles/','/coloring-pages/gharial/','/coloring/gharial-at-a-riverbank/'];
+ assert.deepEqual(contentBreadcrumbs(item).map(crumb=>crumb.path),paths);
+ const {['@graph']:graph}=pageSchema({origin:'https://jotcoloring.com',canonical:paths.at(-1)!,title:item.title,description:'A gharial rests beside water.',image:'https://jotcoloring.com/og.png',imageAlt:item.title,item});
+ const breadcrumbList=graph.find(node=>node['@type']==='BreadcrumbList');
+ assert.deepEqual(breadcrumbList?.itemListElement?.map(crumb=>crumb.item),paths.map(path=>'https://jotcoloring.com'+path));
+ assert.equal(contentBreadcrumbs({...item,category_ids:['animals','reptiles']}).at(-2)?.path,'/coloring-pages/reptiles/');
+});
