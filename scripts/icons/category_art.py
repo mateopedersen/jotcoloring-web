@@ -211,6 +211,16 @@ def register(ns):
     add('art-patterns','Art & patterns · colored geometric tiles and pencil',b)
     # Plural search ideas reuse the exact depicted subject, never a generic fox.
     A('foxes','Foxes · red fox',old['animals'],'Subjects')
+    # Rounded triangular ears and a smaller, sandy muzzle distinguish a fennec.
+    fennec=P('M90 95Q108 83 116 83Q123 92 112 104Q96 119 69 108Z',M('gold'),'#ae7751',1.5)
+    fennec+=E(65,88,25,24,M('cocoa'),'stroke="#b78a65" stroke-width="1.4"')
+    fennec+=P('M38 63Q17 50 13 14Q13 8 21 11Q44 22 54 48M91 63Q112 50 116 14Q116 8 109 11Q86 22 76 48Z',M('gold'),'#ae7751',1.6)
+    fennec+=P('M36 53Q23 42 21 22Q37 31 45 47ZM93 53Q106 42 108 22Q92 31 84 47Z',M('pink'))
+    fennec+=P('M32 63Q39 43 64 43Q89 43 97 63Q93 82 64 90Q35 82 32 63Z',M('gold'),'#ae7751',1.55)
+    fennec+=P('M34 69Q48 60 64 77Q80 60 94 69Q86 84 64 90Q42 84 34 69Z',M('cream'))
+    fennec+=eyes([48,80],64,3.2)+P('M60 76Q64 73 68 76L64 81Z','#5a4436')+smile(64,81)
+    fennec+=E(54,108,10,5,M('cream'))+E(75,108,10,5,M('cream'))
+    add('fennec-fox','Fennec Fox · oversized ears and sandy coat',fennec)
     # Footer link illustrations each depict the action or information they open.
     def footer(name,label,art):A(name,label,S()+art,'Site navigation')
     compass=C(64,59,45,M('paper'),'stroke="#b5a487" stroke-width="1.8"')+C(64,59,37,M('glass'),'stroke="#7ba7a5" stroke-width="1.2"')+P('m64 26 9 33-9 33-9-33Z',M('coral'),'#bb7656',1.1)+P('m64 26 9 33h-9Z',M('paper'))+P('M30 59h7m54 0h7M64 23v7m0 59v7',stroke='#6f9291',sw=2)+C(64,59,5,M('gold'),'stroke="#a78b53" stroke-width="1"')
