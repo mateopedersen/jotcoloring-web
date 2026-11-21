@@ -3,5 +3,6 @@ export const SEARCH_TOPIC_ALIASES=[
  {names:['kpop','k pop','kpop demon hunters','k pop demon hunters','demon hunters'],ids:['k-pop-demon-hunters','huntrix']},
  {names:['twitter','x formerly twitter','x twitter','twitter x'],ids:['x']},
  {names:['huntrix','huntrx','huntr/x'],ids:['huntrix']},
- {names:['shoebill stork'],ids:['shoebill']}
+ {names:['shoebill stork','shoebill storks','whale-headed stork','whale-headed storks'],ids:['shoebill']},
+ {names:['bear cat'],ids:['binturong']}
 ];

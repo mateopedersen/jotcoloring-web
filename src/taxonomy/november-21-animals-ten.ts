@@ -23,7 +23,7 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "visual": "Find gharial coloring pages with narrow snouts, scaly tails, hatchlings, and richly detailed river habitats.",
     "icon": "reptiles",
     "sample": "gharial-hatchling-emerging-from-an-egg",
-    "intro": "Free gharial coloring pages follow these long snouted reptiles from sandy riverbanks to rippling water. The drawings include hatchlings emerging from eggs, adults resting near reeds, and underwater scenes with fish.",
+    "intro": "Free gharial coloring pages show reptiles with slender snouts on sandy riverbanks and in rippling water. The drawings include hatchlings emerging from eggs, adults resting near reeds, and underwater scenes with fish.",
     "aliases": [
       "gharial coloring pages",
       "gavial"
@@ -42,7 +42,8 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "aliases": [
       "musk ox coloring pages",
       "muskox",
-      "musk oxen"
+      "musk oxen",
+      "muskoxen"
     ],
     "editorial_only": true
   },
@@ -56,7 +57,8 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "sample": "striped-cuttlefish-facing-a-shrimp",
     "intro": "Free cuttlefish coloring pages highlight broad mantles, wavy fins, and curling arms. The collection ranges from side views with open outlines to intricate underwater scenes crowded with shells, seagrass, and coral.",
     "aliases": [
-      "cuttlefish coloring pages"
+      "cuttlefish coloring pages",
+      "cuttle fish"
     ],
     "editorial_only": true
   },
