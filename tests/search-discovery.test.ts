@@ -290,3 +290,14 @@ test('a canonical subject wins over its parent alias and keeps every cursor memb
  assert.equal(found.size,100);assert.ok([...found].some(id=>id==='guitar-000'),'guitarist headings remain reachable through reviewed topic membership');
  assert.ok(!(await search.search('Guitar',48)).ids.includes('piano-only'),'Guitar does not expand to all musical instruments');
 });
+
+test('the historical name shoebill stork finds the species and preserves scene filters',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-21'});
+ await add('shoebill-reeds','Shoebill Wading Beside Reeds','animals birds shoebill');
+ await add('shoebill-chick','Shoebill Looking Down at Its Chick','animals birds shoebill');
+ await add('stork-reeds','Stork Walking in Reeds','animals birds');
+ assert.deepEqual(searchTopicIds('shoebill stork coloring pages'),['shoebill']);
+ assert.deepEqual(new Set((await search.search('shoebill stork')).ids),new Set(['shoebill-reeds','shoebill-chick']));
+ assert.deepEqual((await search.search('shoebill stork chick')).ids,['shoebill-chick']);
+});

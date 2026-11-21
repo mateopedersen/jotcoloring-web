@@ -96,7 +96,7 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "parent": "birds",
     "visual": "Color shoebills with broad bills, layered feathers, and chicks in reed-filled wetlands.",
     "icon": "birds",
-    "sample": "shoebill-looking-down-at-a-chick",
+    "sample": "shoebill-looking-down-at-its-chick",
     "intro": "Free shoebill coloring pages show these birds standing among reeds, wading past lily pads, and looking down at their chicks. Choose a portrait of the broad bill or a whole wetland scene.",
     "aliases": [
       "shoebill coloring pages",
@@ -111,7 +111,7 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "parent": "jungle-animals",
     "visual": "Browse binturong coloring pages with whiskered faces, curling tails, and leafy tree-climbing scenes.",
     "icon": "jungle-animals",
-    "sample": "binturong-climbing-down-a-tree",
+    "sample": "binturong-descending-a-slanted-trunk",
     "intro": "Free binturong coloring pages follow whiskered binturongs along branches, into tree hollows, and through leafy forest scenes. The drawings show tufted ears and long tails in both simple portraits and full rainforest settings.",
     "aliases": [
       "binturong coloring pages",
@@ -126,7 +126,7 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "parent": "jungle-animals",
     "visual": "Color tarsiers with large eyes, long tails, and grasping fingers in bamboo and forest scenes.",
     "icon": "jungle-animals",
-    "sample": "tarsier-leaping-between-branches",
+    "sample": "tarsier-leaping-between-two-branch-tips",
     "intro": "Free tarsier coloring pages feature tarsiers gripping bamboo, resting in forks of branches, and leaping between perches. Choose an open outline or a detailed forest scene filled with ferns and vines.",
     "aliases": [
       "tarsier coloring pages"
@@ -140,7 +140,7 @@ export const NOVEMBER_21_ANIMAL_TOPICS: readonly ColoringCategory[] = [
     "parent": "safari-animals",
     "visual": "Find aardvark coloring pages with long ears, digging claws, termite mounds, and burrow scenes.",
     "icon": "safari-animals",
-    "sample": "aardvark-watching-a-trail-of-ants",
+    "sample": "aardvark-watching-a-short-trail-of-ants",
     "intro": "Free aardvark coloring pages show aardvarks sniffing near termite mounds, digging, and sheltering in burrows. The simpler drawings feature open outlines, while the detailed scenes include roots, stones, and grassland plants.",
     "aliases": [
       "aardvark coloring pages"
