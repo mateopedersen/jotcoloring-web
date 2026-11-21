@@ -48,6 +48,7 @@ test('a nested reviewed topic appears after its parent in visible and structured
  assert.deepEqual(contentBreadcrumbs(item).map(crumb=>crumb.path),paths);
  const {['@graph']:graph}=pageSchema({origin:'https://jotcoloring.com',canonical:paths.at(-1)!,title:item.title,description:'A gharial rests beside water.',image:'https://jotcoloring.com/og.png',imageAlt:item.title,item});
  const breadcrumbList=graph.find(node=>node['@type']==='BreadcrumbList');
- assert.deepEqual(breadcrumbList?.itemListElement?.map(crumb=>crumb.item),paths.map(path=>'https://jotcoloring.com'+path));
+ assert.ok(breadcrumbList && 'itemListElement' in breadcrumbList && breadcrumbList.itemListElement);
+ assert.deepEqual(breadcrumbList.itemListElement.map(crumb=>crumb.item),paths.map(path=>'https://jotcoloring.com'+path));
  assert.equal(contentBreadcrumbs({...item,category_ids:['animals','reptiles']}).at(-2)?.path,'/coloring-pages/reptiles/');
 });
