@@ -2,7 +2,7 @@
 const {paragraphs,text}=Astro.props as {paragraphs?:readonly string[];text?:string};
 const copy=(paragraphs||text?.split(/\n\s*\n/)||[]).map(p=>p.trim()).filter(Boolean);
 ---
-<div class="jc-browse-introduction">{copy.map(paragraph=><p>{paragraph}</p>)}</div>
+<div class="jc-browse-introduction">{copy.map(paragraph=><p>{paragraph}</p>)}<slot/></div>
 <style>
  .jc-browse-introduction{width:100%;max-width:none;min-width:0;}
  .jc-browse-introduction p{width:100%;max-width:none;margin:0;color:var(--text-ink,#30261e);font-size:16px;font-weight:500;line-height:1.7;overflow-wrap:break-word;word-break:normal;}
