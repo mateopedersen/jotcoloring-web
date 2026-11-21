@@ -1,0 +1,38 @@
+---
+import {categoryPath} from '../taxonomy/catalog';
+import {WILDLIFE_TOPIC_LINKS} from '../taxonomy/wildlife-topic-links';
+
+interface Props {
+  topicId: string;
+}
+
+const {topicId} = Astro.props;
+const links = WILDLIFE_TOPIC_LINKS[topicId];
+---
+{links && (
+  <aside class="jc-topic-reading" aria-label="Related coloring pages and animal facts" data-topic-reading={topicId}>
+    <p>{links.lead}{' '}<a href={categoryPath(links.related[0].id)}>{links.related[0].label}</a>{' and '}<a href={categoryPath(links.related[1].id)}>{links.related[1].label}</a>.</p>
+    <p>{links.factsLead}{' '}<a href={links.source.href}>{links.source.label}</a>.</p>
+  </aside>
+)}
+
+<style>
+  .jc-topic-reading {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eedfd1;
+  }
+
+  .jc-topic-reading p {
+    text-align: start;
+  }
+
+  .jc-topic-reading a {
+    color: #8b350e;
+    font-weight: 650;
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+</style>
