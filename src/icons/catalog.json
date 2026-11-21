@@ -1,5 +1,5 @@
 {
-  "url": "/illustrations/jotcoloring-icons-afbb244d05ef.svg",
+  "url": "/illustrations/jotcoloring-icons-4d51fc687309.svg",
   "viewBox": "0 0 128 128",
   "scenes": [
     {
@@ -645,6 +645,11 @@
     {
       "id": "foxes",
       "label": "Foxes · red fox",
+      "group": "Subjects"
+    },
+    {
+      "id": "fennec-fox",
+      "label": "Fennec Fox · oversized ears and sandy coat",
       "group": "Subjects"
     },
     {

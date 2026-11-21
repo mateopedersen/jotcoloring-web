@@ -1,3 +1,4 @@
+import {NOVEMBER_21_ANIMAL_TOPICS} from '../taxonomy/november-21-animals-ten';
 import {DOWNLOAD_ONLY_TOPICS} from '../ui/coloring-availability';
 import {NOVEMBER_10_ARTIST_COVER_COPY} from '../taxonomy/november-10-artists';
 import {NOVEMBER_08_AUTOMOBILE_COVER_COPY} from './november-08-automobile-copy';
@@ -61,6 +62,12 @@ for(const [id,description]of Object.entries(november11TopicCopy)){
  let spec=SOCIAL_PAGES.find(p=>p.paths.includes(categoryPath(id)));
  if(!spec){spec=page('topic-'+id,categoryPath(id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(id)} Coloring Pages`,description,category.icon,[],['PDF & Image']);SOCIAL_PAGES.push(spec);}
  spec.headline=`${coloringTopic(id)} Coloring Pages`;spec.description=description;if(id==='hanukkah')spec.icon='all';
+}
+for (const topic of NOVEMBER_21_ANIMAL_TOPICS) {
+ const spec = SOCIAL_PAGES.find(page => page.paths.includes(categoryPath(topic.id)));
+ if (!spec) throw new Error('Missing social identity for ' + topic.id);
+ spec.headline = topic.name + ' Coloring Pages';
+ spec.description = topic.visual;
 }
 const gta6Cover=SOCIAL_PAGES.find(spec=>spec.key==='topic-gta-6');if(gta6Cover){gta6Cover.headline='GTA 6 Coloring Pages';gta6Cover.description='Free GTA 6 coloring pages feature Grand Theft Auto VI fan art from fictional Leonida';}
 for(const spec of SOCIAL_PAGES){const copy={...NOVEMBER_08_AUTOMOBILE_COVER_COPY,...NOVEMBER_10_ARTIST_COVER_COPY}[spec.key.replace(/^topic-/, '')];if(spec.key.startsWith('topic-')&&copy)spec.description=copy;}
