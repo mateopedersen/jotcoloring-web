@@ -301,3 +301,35 @@ test('the historical name shoebill stork finds the species and preserves scene f
  assert.deepEqual(new Set((await search.search('shoebill stork')).ids),new Set(['shoebill-reeds','shoebill-chick']));
  assert.deepEqual((await search.search('shoebill stork chick')).ids,['shoebill-chick']);
 });
+
+test('reviewed wildlife aliases find the intended collection before literal unrelated matches',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,categories:string)=>search.project({id,title,categories,category_ids:categories.split(' '),tags:'',source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-21'});
+ await add('binturong','Binturong Climbing a Branch','animals jungle-animals binturong');
+ await add('bear-and-cat','Bear and Cat Together','dolls-toys squishy');
+ await add('musk-ox','Musk Ox Calf in the Tundra','animals polar-animals musk-ox');
+ await add('cuttlefish','Cuttlefish with Wavy Mantle Stripes','ocean cuttlefish');
+ await add('shoebill','Shoebill Wading Beside Reeds','animals birds shoebill');
+ for(const [query,id] of [
+  ['bear cat','binturong'],
+  ['muskoxen','musk-ox'],
+  ['cuttle fish','cuttlefish'],
+  ['shoebill storks','shoebill'],
+  ['whale-headed stork','shoebill'],
+ ]){
+  assert.deepEqual(searchTopicIds(query),[id],query);
+  assert.equal((await search.search(query)).ids[0],id,query);
+ }
+ assert.deepEqual((await search.search('bear cat',48,{category:'dolls-toys'})).ids,['bear-and-cat']);
+});
+
+test('the exact artwork title keeps first rank when intent drops words from the title',async(t)=>{
+ const db=new LocalSearch(),search=new D1SearchProvider(db,'test-cursor-secret-long-enough');t.after(()=>db.sql.close());
+ const add=(id:string,title:string,description='')=>search.project({id,title,description,tags:'',categories:'ocean dugong',category_ids:['ocean','dugong'],source_version:1,visibility:'published',locale:'en',updated_at:'2026-11-21'});
+ await add('z-target','Dugong Gliding Over Seagrass');
+ await add('a-related','Dugong Gliding Above a Seagrass Meadow');
+ await add('b-related','Dugong Gliding Over Rocks','The dugong swims parallel to a bed of seagrass.');
+ for(const query of ['Dugong Gliding Over Seagrass','Dugong Gliding Over Seagrass Coloring Page']){
+  assert.equal((await search.search(query,12,{category:'dugong'})).ids[0],'z-target',query);
+ }
+});
