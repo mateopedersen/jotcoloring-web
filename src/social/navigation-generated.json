@@ -4016,5 +4016,115 @@
     ],
     "src": "https://assets.jotcoloring.com/published/navigation/v1/bbd2a0689eb605c4ba19a759838e0402884394acaaabd5298da0af10b92e5234.png",
     "title": "Woodland Coloring Pages"
+  },
+  "/coloring-pages/numbers/67/": {
+    "src": "/og/pages/topic-67-c89f568fb7479090.png",
+    "alt": "JotColoring printable coloring pages share image: Number 67 Coloring Pages Featuring Number 67 with Balloons and Stars Coloring Page, Number 67 as Two Kites Coloring Page, Number 67 as Jigsaw Pieces Coloring Page.",
+    "sha256": "c89f568fb7479090bbb9ac6f1141e5d56569c12b20ccb0efd98e86ab3bb6848f",
+    "title": "Number 67 Coloring Pages",
+    "description": "Print number 67 coloring pages with bold digits, playful scenes, and detailed patterns. Find 67 drawn as kites, puzzle pieces, buildings, and more.",
+    "identity_sha256": "0e53d0a7fa0c34876bb5ee2d7580351c498157abe20a54e511c69798e95af880",
+    "sources": [
+      {
+        "id": "jc-67-easy-001",
+        "sha256": "3f9695377597a6a1fc0fc38341f39f4cebce386987766989f18b57f48687cf96"
+      },
+      {
+        "id": "jc-67-easy-003",
+        "sha256": "37aff1956e9e8e12472caf01312fcbac789a16f8a5817dd3d1259e53d29ca5c9"
+      },
+      {
+        "id": "jc-67-easy-006",
+        "sha256": "a02a1a1fef54f1385e9b656ae288d763177e0970cc1e11f94a52fb641f1dda6e"
+      }
+    ]
+  },
+  "/coloring-pages/christmas-stocking/": {
+    "src": "/og/pages/topic-christmas-stocking-389f53e0032b2a78.png",
+    "alt": "JotColoring printable coloring pages share image: Christmas Stocking Coloring Pages Featuring Stars, Presents, and a Candy Cane Coloring Page, Elf Holding a Bell Stocking Coloring Page, Stocking on a Gift Sleigh Coloring Page.",
+    "sha256": "389f53e0032b2a780c9fbd6906f6e63d245a222c10933c57c10d114b37108569",
+    "title": "Christmas Stocking Coloring Pages",
+    "description": "Print Christmas stocking coloring pages with candy canes, wrapped gifts, and festive characters. Find both simple stocking outlines and detailed designs.",
+    "identity_sha256": "12b629cd84bd33b1d36af77ef2f48e8a65da66fed23f0b2495b9553c69030143",
+    "sources": [
+      {
+        "id": "jc-christmas-stocking-easy-001",
+        "sha256": "f0688831f0643ce4f2d9ac0d930434d0a8ed8097eb9f79a3406d2ab52b6e0205"
+      },
+      {
+        "id": "jc-christmas-stocking-easy-013",
+        "sha256": "be83fbe953aaaed56cdb4bad9bb897bb013482fe120e548371ff4876e5efe69e"
+      },
+      {
+        "id": "jc-christmas-stocking-easy-014",
+        "sha256": "86ede635a9663483b740ca6d8849687ce0dd98ad984dbd186ca16fe4df55e42f"
+      }
+    ]
+  },
+  "/coloring-pages/capybara/": {
+    "src": "/og/pages/topic-capybara-c461f042c89717ca.png",
+    "alt": "JotColoring printable coloring pages share image: Capybara Coloring Pages Featuring Capybara Chewing Grass in Side Profile Coloring Page, Capybara Pair under One Big Leaf Coloring Page, Capybara Adult and Young Nuzzling Coloring Page.",
+    "sha256": "c461f042c89717ca22911ca82ace451cd3c60a5136cc755b43b87e497f17c3a2",
+    "title": "Capybara Coloring Pages",
+    "description": "Print capybara coloring pages with capybaras swimming, resting under leaves, and exploring pond edges. Choose a simple outline or a detailed wildlife scene.",
+    "identity_sha256": "f2ddd36b196503bf4d054b8b28bae33105d56927e42c8ac51556911572385056",
+    "sources": [
+      {
+        "id": "jc-capybara-easy-001",
+        "sha256": "16757c5e005e12281517a53f6ed2d8f28bff9e97b45c7c321371047f9ece9df5"
+      },
+      {
+        "id": "jc-capybara-easy-015",
+        "sha256": "89f4d229ca4d25f655f39e330ffd371506a6b9224fcddc9160086e8aa274f946"
+      },
+      {
+        "id": "jc-capybara-easy-020",
+        "sha256": "be60f8bacc498a8627cce0b8085268fa796bf3a477095ac451fff077b557e6f9"
+      }
+    ]
+  },
+  "/coloring-pages/dirt-bike/": {
+    "src": "/og/pages/topic-dirt-bike-29515f8197cf8c06.png",
+    "alt": "JotColoring printable coloring pages share image: Dirt Bike Coloring Pages Featuring Dirt Bike on a Stand Coloring Page, Dirt Bike Jumping a Low Mound Coloring Page, Dirt Bike Crossing a Rock Ledge Coloring Page.",
+    "sha256": "29515f8197cf8c06dc71bdd57504b1929f0ede7b2669f13ca6ccef7f5d07c2dc",
+    "title": "Dirt Bike Coloring Pages",
+    "description": "Print dirt bike coloring pages featuring motocross jumps, trail riders, and close views of off-road bikes with knobby tires and exposed engines.",
+    "identity_sha256": "b0688c1d87c96b81e0bcbd179eec64aceb1b34adf286ed86ef3948598899ad40",
+    "sources": [
+      {
+        "id": "jc-dirt-bike-easy-001",
+        "sha256": "b6f165e4994f312bf0adbe8373c15fc2be12b8935d93b3213d23948ad7fa9011"
+      },
+      {
+        "id": "jc-dirt-bike-easy-006",
+        "sha256": "215a44debf82577f1fca620ad153a4d3f9e49ae7ecf6847b33d1a13c7d44fa10"
+      },
+      {
+        "id": "jc-dirt-bike-easy-011",
+        "sha256": "15eaab98ec15a94363d3f2ece20ee9ce8d0f43c19ef2e5c4954419a52befc78b"
+      }
+    ]
+  },
+  "/coloring-pages/mothers-day/": {
+    "src": "/og/pages/topic-mothers-day-d342cf002b5447e9.png",
+    "alt": "JotColoring printable coloring pages share image: Mother’s Day Coloring Pages Featuring Mother’s Day Heart Sign for Two Coloring Page, Mother’s Day Card on a Breakfast Tray Coloring Page, Mother’s Day Tulips in a Flowerpot Coloring Page.",
+    "sha256": "d342cf002b5447e9369e6793b449e83e3a0886e65515870033f984018340ada2",
+    "title": "Mother’s Day Coloring Pages",
+    "description": "Print Mother’s Day coloring pages with greeting cards, tulips, family activities, and animals with their young. Find a design to color and give.",
+    "identity_sha256": "c3296bfaa3f968af84d7a58401e68f0e06590c592ee6e69048118392f641f6ad",
+    "sources": [
+      {
+        "id": "jc-mothers-day-easy-002",
+        "sha256": "f351e1f362219551ede4c7539c4d296490e6613b372c2542e784e5e4fc30e53d"
+      },
+      {
+        "id": "jc-mothers-day-easy-003",
+        "sha256": "c624948d3f3b3c29d9e612e8f0838fac7902a08980c8c412dd8810c61d79fc09"
+      },
+      {
+        "id": "jc-mothers-day-easy-017",
+        "sha256": "03bbf8ae79ce3cc23cb2595c64eed579d2ca32b2e30577e9e0e0d74b2bade584"
+      }
+    ]
   }
 }

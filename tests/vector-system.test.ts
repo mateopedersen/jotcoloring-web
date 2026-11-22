@@ -7,6 +7,7 @@ import sharp from 'sharp';
 import catalog from '../src/icons/catalog.json';
 import {ICON_SPRITE,illustrationHref,illustrationImageHref,illustrationMarkup} from '../src/icons/registry';
 import {iconDocument} from '../src/icons/render';
+import {subjectSymbol} from '../src/ui/subject-symbol';
 import {componentArt,siteIcon} from '../scripts/social/render';
 
 test('the shared sprite has unique IDs, closed internal references, a content hash and no executable content',async()=>{
@@ -64,7 +65,15 @@ test('browser icons have self-contained paint servers and match their original a
 
 test('subject navigation renders distinct artwork instead of collapsing topics to one animal',async()=>{
  const {ROOT_CATEGORIES,childCategories}=await import('../src/taxonomy/catalog');
- for(const entries of [ROOT_CATEGORIES.map(c=>c.icon),childCategories('animals').map(c=>c.icon),catalog.icons.filter(c=>c.group==='Site navigation').map(c=>c.id)]){
-  const hashes=new Set<string>();for(const id of entries){const pixels=await sharp(Buffer.from(await iconDocument(id,48))).ensureAlpha().raw().toBuffer();hashes.add(createHash('sha256').update(pixels).digest('hex'));}assert.equal(hashes.size,entries.length,'Each subject needs its own visible silhouette');
+ const navigation=catalog.icons.filter(c=>c.group==='Site navigation').map(c=>({id:c.id,icon:c.id}));
+ for(const entries of [ROOT_CATEGORIES,childCategories('animals'),navigation]){
+  const hashes=new Set<string>();
+  for(const {id,icon} of entries){
+   const emblem=subjectSymbol(id);
+   const art=emblem?await fs.readFile('public'+emblem.src):Buffer.from(await iconDocument(icon,48));
+   const pixels=await sharp(art).resize(48,48).ensureAlpha().raw().toBuffer();
+   hashes.add(createHash('sha256').update(pixels).digest('hex'));
+  }
+  assert.equal(hashes.size,entries.length,'Each subject needs its own visible silhouette');
  }
 });

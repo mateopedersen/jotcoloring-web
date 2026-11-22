@@ -7,7 +7,7 @@ export const NOVEMBER_23_TOPICS: readonly ColoringCategory[] = [
     "topic": "Christmas Stocking",
     "parent": "christmas",
     "visual": "Stockings filled with gifts, candy canes, and holiday surprises.",
-    "icon": "christmas",
+    "icon": "holidays",
     "sample": "stars-presents-and-a-candy-cane-coloring-page",
     "intro": "Print Christmas stocking coloring pages with candy canes, wrapped gifts, and festive characters. Find both simple stocking outlines and detailed designs.",
     "aliases": [
@@ -81,7 +81,7 @@ export const NOVEMBER_23_COVERS = [
     "path": "/coloring-pages/christmas-stocking/",
     "headline": "Christmas Stocking Coloring Pages",
     "description": "Stockings filled with gifts, candy canes, and holiday surprises.",
-    "icon": "christmas",
+    "icon": "holidays",
     "art": [
       "stars-presents-and-a-candy-cane-coloring-page",
       "elf-holding-a-bell-stocking-coloring-page",
