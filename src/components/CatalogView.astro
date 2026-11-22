@@ -29,6 +29,7 @@ import {landingIdentity} from '../taxonomy/landing-identity';
 import {landingSummary} from '../taxonomy/landing-summary';
 import {catalogAllPath} from '../taxonomy/routes';
 import {DIRECTORY_SEO,ALL_PAGES_SEO} from '../seo/catalog-copy';
+import {NOVEMBER_23_COVERS} from '../taxonomy/november-23-topics';
 import {catalogBreadcrumbs} from '../taxonomy/catalog-breadcrumbs';
 import type {CatalogViewData} from '../server/catalog-view';
 const {location,data}=Astro.props as {location:CatalogLocation;data:CatalogViewData};
@@ -40,6 +41,7 @@ const heading=query.q?`Coloring pages for “${query.q}”`:identity.heading;
 const summary=query.q?`Browse the drawings matching “${query.q}” and narrow your selection with the filters.`:landingSummary(location);
 const intro=query.q?'Explore the pages that match your idea. Try another word, choose a theme or adjust the filters to find something you love.':identity.intro;
 const directoryRoot=!collection&&!topic&&!number;
+const topicDescription=!query.q&&NOVEMBER_23_COVERS.find(cover=>cover.path===location.path)?.seoDescription;
 const focusedSEO=directoryRoot&&!query.q?(location.allPages?ALL_PAGES_SEO:DIRECTORY_SEO):undefined;
 
 const activeFilters=[...(query.age||[]),...(query.difficulty||[]),...(query.recommended_age?[AGE_BANDS.find(b=>b.id===query.recommended_age)!.label]:[])];
@@ -54,7 +56,7 @@ const readingTopicId=topic?.id||(number?`number-${number.number}`:undefined);
 const showTopicReading=readingTopicId&&!filtered&&!location.allPages&&result.page===1&&result.total>0&&!error;
 
 ---
-<Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||(!directoryMode&&!result.total)}><Fragment slot="head">{firstImage&&<link rel="preload" as="image" href={firstImage.src} imagesrcset={firstImage.srcset} imagesizes={firstImage.srcset?firstImageSizes:undefined} fetchpriority="high"/>}</Fragment><Header active={category} search={query.q||''}/>
+<Layout title={focusedSEO?.title||`${heading}${paginationTitle} | JotColoring`} description={focusedSEO?.description||topicDescription||intro} canonical={canonical} socialFallback={cover?.social_image?{src:cover.social_image,alt:`Example from ${heading}: ${cover.alt}`,title:heading,description:intro}:undefined} noindex={filtered||!!error||(!directoryMode&&!result.total)}><Fragment slot="head">{firstImage&&<link rel="preload" as="image" href={firstImage.src} imagesrcset={firstImage.srcset} imagesizes={firstImage.srcset?firstImageSizes:undefined} fetchpriority="high"/>}</Fragment><Header active={category} search={query.q||''}/>
 <main id="main" class="iv-catalog-wrap hv-container jc-catalog-page"><nav class="breadcrumbs" aria-label="Breadcrumb">{crumbs.map((crumb,i)=><>{i>0&&<Icon name="chevron" size={12}/>}<a href={crumb.href} aria-current={i===crumbs.length-1?'page':undefined}>{crumb.name}</a></>)}</nav>
 <section class="iv-category-hero iv-category-hero--compact"><span class="jc-collection-symbol" aria-hidden="true"><CategoryIcon name={identity.icon} topic={location.number?.id||location.topic?.id||identity.icon} size={76}/></span><div class="jc-collection-heading"><h1>{query.q?heading:displayTitle(heading)}</h1><a class="jc-view-pages" href={directoryMode?'#collection-series':'#catalog-results'}>{directoryMode?'View Collections':'View Coloring Pages'}<Icon name="arrow" size={17}/></a></div>
   <div class="jc-collection-overview">

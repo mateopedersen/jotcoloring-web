@@ -74,7 +74,8 @@ export const NOVEMBER_23_COVERS = [
       "number-67-with-balloons-and-stars-coloring-page",
       "number-67-as-two-kites-coloring-page",
       "number-67-as-jigsaw-pieces-coloring-page"
-    ]
+    ],
+    "seoDescription": "Print number 67 coloring pages with bold digits, playful scenes, and detailed patterns. Find 67 drawn as kites, puzzle pieces, buildings, and more."
   },
   {
     "key": "topic-christmas-stocking",
@@ -86,7 +87,8 @@ export const NOVEMBER_23_COVERS = [
       "stars-presents-and-a-candy-cane-coloring-page",
       "elf-holding-a-bell-stocking-coloring-page",
       "stocking-on-a-gift-sleigh-coloring-page"
-    ]
+    ],
+    "seoDescription": "Print Christmas stocking coloring pages with candy canes, wrapped gifts, and festive characters. Find both simple stocking outlines and detailed designs."
   },
   {
     "key": "topic-capybara",
@@ -98,7 +100,8 @@ export const NOVEMBER_23_COVERS = [
       "capybara-chewing-grass-in-side-profile-coloring-page",
       "capybara-pair-under-one-big-leaf-coloring-page",
       "capybara-adult-and-young-nuzzling-coloring-page"
-    ]
+    ],
+    "seoDescription": "Print capybara coloring pages with capybaras swimming, resting under leaves, and exploring pond edges. Choose a simple outline or a detailed wildlife scene."
   },
   {
     "key": "topic-dirt-bike",
@@ -110,7 +113,8 @@ export const NOVEMBER_23_COVERS = [
       "dirt-bike-on-a-stand-coloring-page",
       "dirt-bike-jumping-a-low-mound-coloring-page",
       "dirt-bike-crossing-a-rock-ledge-coloring-page"
-    ]
+    ],
+    "seoDescription": "Print dirt bike coloring pages featuring motocross jumps, trail riders, and close views of off-road bikes with knobby tires and exposed engines."
   },
   {
     "key": "topic-mothers-day",
@@ -122,6 +126,7 @@ export const NOVEMBER_23_COVERS = [
       "mothers-day-heart-sign-for-two-coloring-page",
       "mothers-day-card-on-a-breakfast-tray-coloring-page",
       "mothers-day-tulips-in-a-flowerpot-coloring-page"
-    ]
+    ],
+    "seoDescription": "Print Mother’s Day coloring pages with greeting cards, tulips, family activities, and animals with their young. Find a design to color and give."
   }
 ];
