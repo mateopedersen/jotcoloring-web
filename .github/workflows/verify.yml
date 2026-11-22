@@ -10,6 +10,8 @@ concurrency:
   # A running jobs→web release must not be interrupted by the next push.
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 env:
+  # CI uses the packaged CPU runtime and does not need the optional CUDA binaries.
+  ONNXRUNTIME_NODE_INSTALL_CUDA: skip
   JOT_DEPLOY_ENV: ${{ github.event_name == 'push' && github.ref_name == 'main' && 'production' || github.event_name == 'push' && github.ref_name == 'staging' && 'staging' || 'local' }}
   WRANGLER_SEND_METRICS: 'false'
   WRANGLER_LOG_PATH: .local/ci-wrangler.log
