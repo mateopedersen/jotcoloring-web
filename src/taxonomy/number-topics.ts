@@ -1,6 +1,6 @@
 import {numberSubjects} from '../search/number-subjects';
 /** Reviewed numeral topics; package labels never establish age or difficulty. */
-export const NUMBER_VALUES=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,99,100,101,111,222,333,444,555,666,777,888,999,1000,1001,2222] as const;
+export const NUMBER_VALUES=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,67,99,100,101,111,222,333,444,555,666,777,888,999,1000,1001,2222] as const;
 export const numberTopic=(value:string|number)=>/^[1-9]\d{0,8}$/.test(String(value))&&(NUMBER_VALUES as readonly number[]).includes(Number(value))?{number:Number(value),id:'number-'+value,name:'Number '+value,path:'/coloring-pages/numbers/'+value+'/'}:undefined;
 export const NUMBER_INTROS:Record<number,string>={
  1:'An outlined number 1 joins a pond-side turtle, a raccoon baker, and other illustrated scenes. Geometric versions divide the digit into curved and straight-sided sections.',
@@ -18,6 +18,7 @@ export const NUMBER_INTROS:Record<number,string>={
  13:'Kites and ducklings appear in counting scenes around number 13, including a robot character. Geometric versions add curved and angular sections inside the digits.',
  14:'Pears, snow globes, and a rabbit at a musical stage accompany number 14. The numeral pair also appears in sectioned decorative designs.',
  15:'Folding fans and an otter on a dock with watering cans are among these number 15 scenes. Curved and angular patterns provide another way to explore the two digits.',
+ 67:"Print number 67 coloring pages with bold digits, playful scenes, and detailed patterns. Find 67 drawn as kites, puzzle pieces, buildings, and more.",
  99:'Rounded number 99 outlines sit alongside imagined stone formations, including a waterfall between two nines. Ornamental arithmetic displays add equations and decorative details.',
  100:'Explore number 100 through clear digit outlines, a dinosaur museum scene, and floral arithmetic displays. Some drawings arrange ten groups of ten around the number.',
  101:'Bold outlined digits and crystalline cave formations give number 101 different shapes and settings. Place-value designs show how hundreds, tens, and ones form the number.',

@@ -1,5 +1,6 @@
 ---
 import {categoryPath} from '../taxonomy/catalog';
+import {NOVEMBER_23_TOPIC_LINKS} from '../taxonomy/november-23-topic-links';
 import {WILDLIFE_TOPIC_LINKS} from '../taxonomy/wildlife-topic-links';
 
 interface Props {
@@ -8,7 +9,14 @@ interface Props {
 
 const {topicId} = Astro.props;
 const links = WILDLIFE_TOPIC_LINKS[topicId];
+const related = NOVEMBER_23_TOPIC_LINKS[topicId];
 ---
+{related && (
+  <aside class="jc-topic-reading" aria-label="Related coloring pages and references" data-topic-reading={topicId}>
+    <p>Explore <a href={related.related[0].href}>{related.related[0].label}</a> and <a href={related.related[1].href}>{related.related[1].label}</a>.</p>
+    <p>Learn more from <a href={related.source.href}>{related.source.label}</a>.</p>
+  </aside>
+)}
 {links && (
   <aside class="jc-topic-reading" aria-label="Related coloring pages and animal facts" data-topic-reading={topicId}>
     <p>{links.lead}{' '}<a href={categoryPath(links.related[0].id)}>{links.related[0].label}</a>{' and '}<a href={categoryPath(links.related[1].id)}>{links.related[1].label}</a>.</p>
