@@ -1,0 +1,27 @@
+{
+  "number-67": {
+    "src": "/topic-symbols/number-67.a03cecec2883.webp",
+    "sha256": "a03cecec288302e780868c5a86ee779260e86d4e91c01cc3b9ca33caccbed501",
+    "source_sha256": "37aff1956e9e8e12472caf01312fcbac789a16f8a5817dd3d1259e53d29ca5c9"
+  },
+  "christmas-stocking": {
+    "src": "/topic-symbols/christmas-stocking.0441470bdd5f.webp",
+    "sha256": "0441470bdd5f0f8d2381d687af6dadc5984bea3efce4db19c0ead39c1f0dd052",
+    "source_sha256": "f0688831f0643ce4f2d9ac0d930434d0a8ed8097eb9f79a3406d2ab52b6e0205"
+  },
+  "capybara": {
+    "src": "/topic-symbols/capybara.4fb7599bf1e7.webp",
+    "sha256": "4fb7599bf1e78bc4e91d29a15956010793c8af293559260dfb566b750b1b452e",
+    "source_sha256": "16757c5e005e12281517a53f6ed2d8f28bff9e97b45c7c321371047f9ece9df5"
+  },
+  "dirt-bike": {
+    "src": "/topic-symbols/dirt-bike.01d39617aede.webp",
+    "sha256": "01d39617aedeff3ba0e6a73cbfbdf1c0e079877ee8b07f576b470188ca85ceaf",
+    "source_sha256": "b6f165e4994f312bf0adbe8373c15fc2be12b8935d93b3213d23948ad7fa9011"
+  },
+  "mothers-day": {
+    "src": "/topic-symbols/mothers-day.3383c6c4fa51.webp",
+    "sha256": "3383c6c4fa51f0113f20ea9e4e61a26a55820aca25638f2bb52228c88c5f1df6",
+    "source_sha256": "03bbf8ae79ce3cc23cb2595c64eed579d2ca32b2e30577e9e0e0d74b2bade584"
+  }
+}

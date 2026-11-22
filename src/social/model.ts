@@ -1,3 +1,4 @@
+import {NOVEMBER_23_COVERS} from '../taxonomy/november-23-topics';
 import {NOVEMBER_21_ANIMAL_TOPICS} from '../taxonomy/november-21-animals-ten';
 import {DOWNLOAD_ONLY_TOPICS} from '../ui/coloring-availability';
 import {NOVEMBER_10_ARTIST_COVER_COPY} from '../taxonomy/november-10-artists';
@@ -62,6 +63,12 @@ for(const [id,description]of Object.entries(november11TopicCopy)){
  let spec=SOCIAL_PAGES.find(p=>p.paths.includes(categoryPath(id)));
  if(!spec){spec=page('topic-'+id,categoryPath(id),'category','PRINTABLE COLORING PAGES',`${coloringTopic(id)} Coloring Pages`,description,category.icon,[],['PDF & Image']);SOCIAL_PAGES.push(spec);}
  spec.headline=`${coloringTopic(id)} Coloring Pages`;spec.description=description;if(id==='hanukkah')spec.icon='all';
+}
+for (const cover of NOVEMBER_23_COVERS) {
+ const spec=page(cover.key,cover.path,'category','PRINTABLE COLORING PAGES',cover.headline,cover.description,cover.icon,cover.art,['PDF & Image']);
+ const existing=SOCIAL_PAGES.findIndex(candidate=>candidate.paths.includes(cover.path));
+ if(existing<0)SOCIAL_PAGES.push(spec);
+ else SOCIAL_PAGES[existing]=spec;
 }
 for (const topic of NOVEMBER_21_ANIMAL_TOPICS) {
  const spec = SOCIAL_PAGES.find(page => page.paths.includes(categoryPath(topic.id)));
