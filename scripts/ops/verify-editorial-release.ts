@@ -1,5 +1,6 @@
 /** Bounded public GET-only release checks. No AI jobs, credentials or writes. */
 import fs from 'node:fs/promises';import {createHash} from 'node:crypto';
+import {decodeMarkup as decode} from './decode-markup';
 import {AGE_VERSION,AGE_BANDS} from '../../src/age/model';import {displayTitle} from '../../src/ui/titles';import {categories,animalCategories} from '../../src/ui/categories';import {pngBinding} from '../../src/social/png';
 const stage=process.argv[2],origins={local:'http://localhost:4322',staging:'https://staging.jotcoloring.com',production:'https://jotcoloring.com'};
 if(!(stage in origins))throw new Error('Choose local, staging or production.');
@@ -10,7 +11,6 @@ const check=(name:string,pass:boolean,detail?:unknown)=>checks.push({name,pass,.
 const hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
 async function get(route:string){const url=new URL(route,origin);if(url.origin!==origin||++requests>230)throw new Error('Unexpected target or request limit.');const response=await fetch(url,{redirect:'manual',signal:AbortSignal.timeout(30000)});return{response,bytes:new Uint8Array(await response.arrayBuffer())};}
 const text=(b:Uint8Array)=>new TextDecoder().decode(b);
-const decode=(s:string)=>s.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 function attr(html:string,tag:string,key:string,value:string,name:string){for(const m of html.matchAll(new RegExp('<'+tag+'\\b[^>]*>','g'))){const attrs=Object.fromEntries([...m[0].matchAll(/([\w:-]+)="([^"]*)"/g)].map(a=>[a[1],decode(a[2])]));if(attrs[key]===value)return attrs[name];}return undefined;}
 const report={stage,origin,started:new Date().toISOString(),checks,requests:0,status:'RUNNING',finished:''};
 try{
