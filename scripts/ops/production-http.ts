@@ -4,6 +4,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
 import {inspectScripts} from './script-policy';
+import {decodeMarkup as decodeXML} from './decode-markup';
 
 const origin = 'https://jotcoloring.com';
 const alternateOrigin = 'https://jotcoloring-production.melihozcanapple.workers.dev';
@@ -32,7 +33,6 @@ const headerNames = ['content-type','content-length','content-disposition','cach
 function check(name:string, passed:boolean, detail?:unknown) { evidence.checks.push({name,status:passed?'PASS':'FAIL',...(detail===undefined?{}:{detail})}); }
 const digest = (bytes:Buffer) => createHash('sha256').update(bytes).digest('hex');
 const signature = (bytes:Buffer) => bytes.subarray(0,5).toString()==='%PDF-'?'application/pdf':bytes.subarray(0,4).toString()==='RIFF'&&bytes.subarray(8,12).toString()==='WEBP'?'image/webp':'unknown';
-const decodeXML = (text:string) => text.replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&quot;','"').replaceAll('&apos;',"'");
 async function get(route:string, headers:Record<string,string>={}) {
   const url = new URL(route,origin);
   if (!allowedOrigins.has(url.origin) || url.username || url.password) throw new Error('Unapproved target');

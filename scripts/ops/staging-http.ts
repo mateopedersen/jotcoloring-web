@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
+import {decodeMarkup as decodeXML} from './decode-markup';
 const origin='https://jotcoloring-staging.melihozcanapple.workers.dev';
 const expectedOrigin=JSON.parse(await fs.readFile('wrangler.jsonc','utf8')).env.staging.vars.PUBLIC_SITE_URL;
 const cases=JSON.parse(await fs.readFile('docs/evidence/search-acceptance.json','utf8')).results;
@@ -17,7 +18,6 @@ async function get(route:string,headers:Record<string,string>={}){const url=new 
 function check(name:string,pass:boolean,detail?:unknown){evidence.checks.push({name,status:pass?'PASS':'FAIL',...(detail===undefined?{}:{detail})});}
 const signature=(b:Buffer)=>b.subarray(0,5).toString()==='%PDF-'?'application/pdf':b.subarray(0,4).toString()==='RIFF'&&b.subarray(8,12).toString()==='WEBP'?'image/webp':'unknown';
 const digest=(b:Buffer)=>createHash('sha256').update(b).digest('hex');
-const decodeXML=(s:string)=>s.replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&quot;','"').replaceAll('&apos;',"'");
 try{
  const health=await get('/api/health');check('Public staging health',health.status===200&&JSON.parse(health.bytes.toString()).status==='available');evidence.health={...health,bytes:undefined,body:JSON.parse(health.bytes.toString())};
  const catalog=await get('/api/catalog?limit=48');const page=JSON.parse(catalog.bytes.toString());const items=page.items as any[];
