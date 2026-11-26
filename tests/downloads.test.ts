@@ -1,12 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {catalogDownload,downloadPage,formatChoice,fileName,fileSize,parseDownloadLink,safeFileURL,safeMediaURL,validateDownloadBlob,readDownloadResponse} from '../src/downloads/model';
+import {catalogDownload,downloadPage,downloadNavigationPath,formatChoice,fileName,fileSize,parseDownloadLink,safeFileURL,safeMediaURL,validateDownloadBlob,readDownloadResponse} from '../src/downloads/model';
 import {LatestRequest} from '../src/ui/latest-request';
 import {readFileSync} from 'node:fs';
 import type {Content} from '../src/server/types';
 const item={id:'jc-fox',slug:'fox-with-flowers',title:'Fox With Flowers',description:'A fox sits beside flowers.',alt:'A fox beside flowers.',preview:'/api/media/jc-fox/preview?v=123',thumbnail:'/api/media/jc-fox/thumb',downloads:{pdf:'/api/download/jc-fox/pdf?v=123',webp:'/api/download/jc-fox/webp?v=456',letter:'/api/download/jc-fox/letter?v=789'},downloadMetadata:{pdfBytes:780000,webpBytes:450000},width:1024,height:1536} as Content;
 const pdf=()=>new Blob(['%PDF-1.7\nbody'],{type:'application/pdf'});
 const webp=()=>new Blob(['RIFF1234WEBPcontent'],{type:'image/webp'});
+test('download navigation keeps local Studio and artwork links with their route state',()=>{
+ assert.equal(downloadNavigationPath('/studio/?page=jc-fox#canvas'),'/studio/?page=jc-fox#canvas');
+ assert.equal(downloadNavigationPath('/coloring/fox-with-flowers/'),'/coloring/fox-with-flowers/');
+ assert.equal(downloadNavigationPath('https://example.org/settings'),undefined);
+ assert.equal(downloadNavigationPath(undefined),undefined);
+});
 test('all source links resolve the correct download kind without accepting third-party URLs',()=>{assert.deepEqual(parseDownloadLink('/api/download/jc-fox/pdf?v=123'),{source:'catalog',id:'jc-fox',kind:'pdf'});assert.equal(parseDownloadLink('/download/fox-with-flowers/?format=image')?.kind,'webp');assert.equal(parseDownloadLink('/api/download/jc-fox/letter')?.kind,'pdf');assert.equal(parseDownloadLink('/api/creator/jobs/aabbeeff-1122-3344-5566-778899001122/result?format=webp&download=1')?.source,'job');for(const path of ['https://evil.test/api/download/one/pdf','//evil.test/api/download/one/pdf','/api/download/a/zip','/api/download/a/../b/pdf','/nothing'])assert.equal(parseDownloadLink(path),undefined);});
 test('same-tab download permalinks preserve real format names and reject invalid slugs',()=>{assert.equal(downloadPage('fox-with-flowers','webp'),'/download/fox-with-flowers/?format=webp');assert.equal(formatChoice('image'),'webp');assert.equal(formatChoice('<script>'),'pdf');assert.throws(()=>downloadPage('../escape'));assert.equal(fileSize(780000),'780 KB');assert.equal(fileSize(undefined),'Prepared when you download');});
 test('catalog downloads keep actual bytes, dimensions, MIME and uncolored source metadata',()=>{const data=catalogDownload(item);assert.equal(data.publicCatalog,true);assert.match(data.title,/ Coloring Page$/);assert.equal(data.files.length,2);assert.equal(data.files[0].bytes,780000);assert.equal(data.files[1].mime,'image/webp');assert.equal(data.files[1].filename,'fox-with-flowers.webp');assert.ok(data.files.every(f=>!f.label.includes('Letter')));assert.equal(data.alt,item.alt);assert.equal(data.width,1024);assert.equal(data.publicPage,'/coloring/fox-with-flowers/');assert.throws(()=>catalogDownload({...item,downloads:{...item.downloads,pdf:'https://evil.test/a.pdf'}}));});
