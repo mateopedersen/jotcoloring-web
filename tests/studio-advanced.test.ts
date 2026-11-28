@@ -43,7 +43,7 @@ test('rotated download changes image dimensions and keeps visible colors',async(
 });
 test('1,000 original scene compositions render as distinct black-and-white, nonempty coloring pages',async()=>{
  assert.equal(STARTER_PAGES.length,1000);assert.equal(new Set(STARTER_PAGES.map(p=>p.id)).size,1000);assert.equal(new Set(STARTER_PAGES.map(p=>p.title)).size,1000);const signatures=new Set<string>();
- for(const page of STARTER_PAGES){const svg=starterPageSvg(page).replace('width="1024" height="1408"','width="160" height="220"');assert.doesNotMatch(svg,/<script|foreignObject|https?:\/\/(?!www.w3.org)/);const img=await loadImage(Buffer.from(svg)),c=createCanvas(160,220);c.getContext('2d').drawImage(img,0,0);const d=c.getContext('2d').getImageData(0,0,160,220).data;let dark=0;for(let i=0;i<d.length;i+=4){assert.equal(d[i],d[i+1]);assert.equal(d[i],d[i+2]);if(d[i]<180)dark++;}assert.ok(dark>400&&dark<18000,`${page.id}: ${dark}`);signatures.add(hash(d));}
+ for(const page of STARTER_PAGES){const svg=starterPageSvg(page).replace('width="1024" height="1408"','width="160" height="220"');assert.doesNotMatch(svg,/<script|foreignObject|https?:\/\/(?!www\.w3\.org\/)/);const img=await loadImage(Buffer.from(svg)),c=createCanvas(160,220);c.getContext('2d').drawImage(img,0,0);const d=c.getContext('2d').getImageData(0,0,160,220).data;let dark=0;for(let i=0;i<d.length;i+=4){assert.equal(d[i],d[i+1]);assert.equal(d[i],d[i+2]);if(d[i]<180)dark++;}assert.ok(dark>400&&dark<18000,`${page.id}: ${dark}`);signatures.add(hash(d));}
  assert.equal(signatures.size,1000);assert.ok(searchStarterPages('rabbit garden','Animals').length>0);assert.ok(searchStarterPages('rabbit','','Easy').every(p=>p.detail==='Easy'));assert.equal(searchStarterPages('impossible-subject').length,0);
 });
 

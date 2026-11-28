@@ -39,7 +39,30 @@ export function mountWorkspace(c:Context){
  el<HTMLButtonElement>('[data-grid]').onclick=e=>{const grid=el('[data-guide-grid]');grid.hidden=!grid.hidden;(e.currentTarget as HTMLButtonElement).setAttribute('aria-pressed',String(!grid.hidden));onTransform();};
  el<HTMLButtonElement>('[data-focus]').onclick=e=>{root.classList.toggle('focus-mode');(e.currentTarget as HTMLButtonElement).setAttribute('aria-pressed',String(root.classList.contains('focus-mode')));};
  function onTransform(){const grid=el('[data-guide-grid]'),fit=artworkPlacement(c.canvas.width,c.canvas.height),scaleX=parseFloat(c.canvas.style.width)/c.canvas.width,scaleY=parseFloat(c.canvas.style.height)/c.canvas.height;grid.style.left=(parseFloat(c.canvas.style.left)+fit.x*scaleX)+'px';grid.style.top=c.canvas.style.top;grid.style.width=fit.width*scaleX+'px';grid.style.height=fit.height*scaleY+'px';}
- let referenceSequence=0;el<HTMLInputElement>('[data-reference-file]').onchange=async e=>{const file=(e.target as HTMLInputElement).files?.[0];if(!file)return;const sequence=++referenceSequence;try{if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>20_000_000)throw new Error('Choose a PNG, JPG, or WEBP smaller than 20 MB.');const url=URL.createObjectURL(file),img=new Image();try{img.src=url;await img.decode();if(sequence!==referenceSequence){URL.revokeObjectURL(url);return;}if(img.naturalWidth*img.naturalHeight>32_000_000)throw new Error('Use a reference image below 32 million pixels.');}catch(error){URL.revokeObjectURL(url);throw error;}if(referenceUrl)URL.revokeObjectURL(referenceUrl);referenceUrl=url;el<HTMLImageElement>('[data-reference-image]').src=url;el('[data-reference-board]').hidden=false;el<HTMLButtonElement>('[data-extract-palette]').disabled=false;c.message('Reference opened privately on this device.');}catch(error){c.message((error as Error).message,true);}};
+ let referenceSequence=0;
+ el<HTMLInputElement>('[data-reference-file]').onchange=async event=>{
+  const file=(event.target as HTMLInputElement).files?.[0];
+  if(!file)return;
+  const sequence=++referenceSequence;
+  try{
+   if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>20_000_000)throw new Error('Choose a PNG, JPG, or WEBP smaller than 20 MB.');
+   const previous=el<HTMLImageElement>('[data-reference-image]');
+   const image=previous.cloneNode(false) as HTMLImageElement;
+   const url=URL.createObjectURL(file);
+   try{
+    image.src=url;
+    await image.decode();
+    if(sequence!==referenceSequence){URL.revokeObjectURL(url);return;}
+    if(image.naturalWidth*image.naturalHeight>32_000_000)throw new Error('Use a reference image below 32 million pixels.');
+   }catch(error){URL.revokeObjectURL(url);throw error;}
+   previous.replaceWith(image);
+   if(referenceUrl)URL.revokeObjectURL(referenceUrl);
+   referenceUrl=url;
+   el('[data-reference-board]').hidden=false;
+   el<HTMLButtonElement>('[data-extract-palette]').disabled=false;
+   c.message('Reference opened privately on this device.');
+  }catch(error){if(sequence===referenceSequence)c.message((error as Error).message,true);}
+ };
  el<HTMLButtonElement>('[data-reference-close]').onclick=()=>{el('[data-reference-board]').hidden=true;};
  el<HTMLButtonElement>('[data-extract-palette]').onclick=()=>{const img=el<HTMLImageElement>('[data-reference-image]');if(!img.naturalWidth||!c.project())return;const canvas=makeCanvas(120,120),ctx=canvas.getContext('2d')!;ctx.drawImage(img,0,0,120,120);const colors=extractPalette(ctx.getImageData(0,0,120,120).data);c.project().customPalette=[...new Set([...(c.project().customPalette||[]),...colors])].slice(-24);c.changed();syncPalettes();openTab('colors');c.message(`Added ${colors.length} colors from your reference.`);};
  function openTab(tab:string){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==tab);root.querySelectorAll<HTMLElement>('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));}
