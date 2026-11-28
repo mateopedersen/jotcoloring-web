@@ -705,7 +705,8 @@ function makeMetadata(sourceTopic:string,record:any){
  const [titleHint,scene]=entry.split('::');if(!titleHint||!scene)throw Error(`Invalid inspected image description: ${sourceTopic} ${number}`);
  const prefix=prefixes[sourceTopic],num=String(number).padStart(3,'0');
  const duplicatePrefix:Record<string,RegExp>={rhino:/^(?:rhino|rhinoceros)\s+/i,gymnastics:/^gymnastics\s+/i,pusheen:/^pusheen\s+/i,puppy:/^(?:puppy|dog)\s+/i};
- const cleanTitleHint=titleHint.replace(duplicatePrefix[sourceTopic]??/$^/,'');
+ const prefixPattern=duplicatePrefix[sourceTopic];
+ const cleanTitleHint=prefixPattern?titleHint.replace(prefixPattern,''):titleHint;
  const title=`${prefix} ${titleCase(cleanTitleHint)} Coloring Page ${num}`;
  const description=sourceSentence(sourceTopic,scene);
  const alt=`Black-and-white ${searchable[sourceTopic]} coloring-page line art: ${scene}.`;

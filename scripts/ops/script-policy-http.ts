@@ -2,7 +2,13 @@
 import fs from 'node:fs/promises';
 import {inspectScripts} from './script-policy';
 const origin = process.argv[2] || 'https://staging.jotcoloring.com';
-if (!['https://staging.jotcoloring.com','https://jotcoloring-staging.melihozcanapple.workers.dev','https://jotcoloring.com','http://127.0.0.1:4321'].includes(origin)) throw new Error('Origin is not approved');
+const approvedOrigins = new Set([
+  'https://staging.jotcoloring.com',
+  'https://jotcoloring-staging.melihozcanapple.workers.dev',
+  'https://jotcoloring.com',
+  'http://127.0.0.1:4321',
+]);
+if (!approvedOrigins.has(origin)) throw new Error('Origin is not approved');
 const routes = ['/coloring-pages/','/create/text/','/create/photo/','/coloring/woodland-friends/','/my-artwork/','/studio/'];
 const evidence: any = {measured_at:new Date().toISOString(), origin, scope:'Read-only six-page script/CSP compatibility and direct module response check; no browser interaction, media or load claim', routes:[], modules:[]};
 let requests = 0;
