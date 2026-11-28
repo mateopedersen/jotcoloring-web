@@ -9,7 +9,7 @@ import {artworkPlacement} from './branding';
 type Context={root:HTMLElement;canvas:HTMLCanvasElement;stage:HTMLElement;project:()=>Project;mask:()=>HTMLCanvasElement;mutate:(fn:()=>void)=>void;changed:()=>void;render:()=>void;rebuild:()=>void;save:()=>Promise<void>;message:(s:string,error?:boolean)=>void;color:()=>string;setColor:(c:string)=>void;chooseTool:(t:string)=>void;layerCanvas:(id:string)=>HTMLCanvasElement|undefined;fit:()=>void};
 export function mountWorkspace(c:Context){
  const root=c.root,el=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!;
- const state=workspaceState();let referenceUrl='',exportUrl='',exportBusy=false,versionSignature='',layerVisibility:Record<string,boolean>|undefined,lastLayer='';
+ const state=workspaceState();let exportUrl='',exportBusy=false,versionSignature='',layerVisibility:Record<string,boolean>|undefined,lastLayer='';
  const dialog=el<HTMLDialogElement>('[data-export-dialog]'),help=el<HTMLDialogElement>('[data-help-dialog]');
  function renderColors(selector:string,colors:readonly string[],removable=false){const list=el(selector);list.replaceChildren();for(const color of colors){const b=document.createElement('button');b.type='button';b.dataset.color=color;b.style.setProperty('--swatch',color);b.setAttribute('aria-label',`Choose color ${color}${removable?'; Shift-click to remove':''}`);b.setAttribute('aria-pressed',String(color===c.color()));b.onclick=e=>{if(removable&&e.shiftKey){c.project().customPalette=(c.project().customPalette||[]).filter(v=>v!==color);c.changed();syncPalettes();}else c.setColor(color);};list.append(b);}}
  function syncPalettes(){renderColors('[data-preset-colors]',PALETTES[Number(el<HTMLSelectElement>('[data-palette-preset]').value)]?.colors||PALETTES[0].colors);renderColors('[data-harmony-colors]',harmonies(c.color(),el<HTMLSelectElement>('[data-harmony]').value));renderColors('[data-recent-colors]',state.recent);renderColors('[data-saved-colors]',c.project()?.customPalette||[],true);}
@@ -46,25 +46,23 @@ export function mountWorkspace(c:Context){
   const sequence=++referenceSequence;
   try{
    if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>20_000_000)throw new Error('Choose a PNG, JPG, or WEBP smaller than 20 MB.');
-   const previous=el<HTMLImageElement>('[data-reference-image]');
-   const image=previous.cloneNode(false) as HTMLImageElement;
-   const url=URL.createObjectURL(file);
+   const bitmap=await createImageBitmap(file);
    try{
-    image.src=url;
-    await image.decode();
-    if(sequence!==referenceSequence){URL.revokeObjectURL(url);return;}
-    if(image.naturalWidth*image.naturalHeight>32_000_000)throw new Error('Use a reference image below 32 million pixels.');
-   }catch(error){URL.revokeObjectURL(url);throw error;}
-   previous.replaceWith(image);
-   if(referenceUrl)URL.revokeObjectURL(referenceUrl);
-   referenceUrl=url;
+    if(sequence!==referenceSequence)return;
+    if(bitmap.width*bitmap.height>32_000_000)throw new Error('Use a reference image below 32 million pixels.');
+    const preview=el<HTMLCanvasElement>('[data-reference-image]');
+    const scale=Math.min(1,1200/Math.max(bitmap.width,bitmap.height));
+    preview.width=Math.max(1,Math.round(bitmap.width*scale));
+    preview.height=Math.max(1,Math.round(bitmap.height*scale));
+    preview.getContext('2d')!.drawImage(bitmap,0,0,preview.width,preview.height);
+   }finally{bitmap.close();}
    el('[data-reference-board]').hidden=false;
    el<HTMLButtonElement>('[data-extract-palette]').disabled=false;
    c.message('Reference opened privately on this device.');
   }catch(error){if(sequence===referenceSequence)c.message((error as Error).message,true);}
  };
  el<HTMLButtonElement>('[data-reference-close]').onclick=()=>{el('[data-reference-board]').hidden=true;};
- el<HTMLButtonElement>('[data-extract-palette]').onclick=()=>{const img=el<HTMLImageElement>('[data-reference-image]');if(!img.naturalWidth||!c.project())return;const canvas=makeCanvas(120,120),ctx=canvas.getContext('2d')!;ctx.drawImage(img,0,0,120,120);const colors=extractPalette(ctx.getImageData(0,0,120,120).data);c.project().customPalette=[...new Set([...(c.project().customPalette||[]),...colors])].slice(-24);c.changed();syncPalettes();openTab('colors');c.message(`Added ${colors.length} colors from your reference.`);};
+ el<HTMLButtonElement>('[data-extract-palette]').onclick=()=>{const img=el<HTMLCanvasElement>('[data-reference-image]');if(!img.width||!c.project())return;const canvas=makeCanvas(120,120),ctx=canvas.getContext('2d')!;ctx.drawImage(img,0,0,120,120);const colors=extractPalette(ctx.getImageData(0,0,120,120).data);c.project().customPalette=[...new Set([...(c.project().customPalette||[]),...colors])].slice(-24);c.changed();syncPalettes();openTab('colors');c.message(`Added ${colors.length} colors from your reference.`);};
  function openTab(tab:string){root.querySelectorAll<HTMLElement>('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==tab);root.querySelectorAll<HTMLElement>('[data-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));}
  el<HTMLButtonElement>('[data-rename-project]').onclick=()=>{const p=c.project();if(!p)return;const name=prompt('Name your artwork',p.title)?.trim().slice(0,120);if(!name)return;p.title=name;c.changed();root.querySelectorAll<HTMLElement>('[data-project-title]').forEach(e=>{e.textContent=name;e.title=name;});document.title=name+' · Studio · JotColoring';};
  el<HTMLButtonElement>('[data-version-save]').onclick=()=>{const p=c.project();if(!p)return;const name=el<HTMLInputElement>('[data-version-name]').value.trim().slice(0,60)||'Version '+((p.versions?.length||0)+1);const versions=[...(p.versions||[]),{id:crypto.randomUUID(),name,createdAt:Date.now(),drawing:drawingOf(p)}].slice(-8);if(JSON.stringify(versions).length>20_000_000){c.message('These versions use too much space. Download a backup or remove an older checkpoint.',true);return;}p.versions=versions;c.changed();sync();c.message('Checkpoint saved with this project.');};
